@@ -7,3 +7,9 @@ export default function Projekte() {
    <div>Projekte</div>
   )
 }
+
+
+
+
+// export async function getStaticPaths() {
+// }

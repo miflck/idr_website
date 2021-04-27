@@ -1,0 +1,22 @@
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content
+  }
+}
+
+// @font-face {
+//   font-family: "Trash";
+//   font-weight: normal;
+//   font-style: normal;
+//  src: url("../assets/trash-regular.ttf") format("truetype");
+// }
+
+
+
+.portrait {
+  width: 300px;
+}
+.name {
+    color: #f08173;
+    /* background-color: blue; */
+}

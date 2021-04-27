@@ -1,12 +1,14 @@
 import { request,MENSCHEN } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
-// import styles from './team.module.css'
-import styles from '../styles/Home.module.css'
+import styles from './team.module.scss'
+// import styles from '../styles/Home.module.scss'
 // hä? wie geht denn das? :(
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
-    // console.log("Team props",props);
+    // console.log("props",props);
+
+
     return(
       <>
       
@@ -14,6 +16,14 @@ const Team =(props)=>{
               // console.log("projekte", mensch.projekte)
               // einbauen sortieren nach mensch.funktion.titel
               // {menschen.funktion.titel}
+           
+              let PDFElement;
+                if(mensch.publikationsliste != null && mensch.publikationsliste.url != null){
+                    PDFElement= <a className={styles.publikationsliste} href={mensch.publikationsliste.url}>Publikationsliste</a> 
+                }else{
+                    PDFElement= <> </>
+                }
+
               return(
                 <div key={index}>
                   {/* Portrait Bild */}
@@ -26,7 +36,7 @@ const Team =(props)=>{
                   <p className={styles.name}>
                     {mensch.name}
                   </p>
-                  <a className={styles.email} href="mailto:,{mensch.email}">
+                  <a className={styles.email} href={`mailto:,${mensch.email}`}>
                     {/* wie soll man das schreiben? */}
                     {mensch.email}
                   </a><br></br>
@@ -41,19 +51,22 @@ const Team =(props)=>{
                   <div>
                       Projektliste <br></br>
                       {mensch.projekte.map((projekt, index) => {
-                          console.log("liste", projekt)
+                          // console.log("liste", projekt)
                         return (
                           // irgendwie anders verlinken zum projekt, vielleicht dann schauen, wenn die projektunterseiten da sind
-                          <a href={projekt.titel} key={index}>
+                          <a 
+                          // mit slug ersetzen = lücken mit strichli füllen
+                          // href={projekt.titel} 
+                          key={index}>
                               {projekt.titel}
                           </a>
                         )
                       })}
                   </div>
-                  {/* if(publikationsliste=!null){} */}
-                  {/* <a href={mensch.publikationsliste.url}>Ihr PDF-Dokument</a> */}
-                  {/* {mensch.publikationsliste} */}
-                  
+                
+                {/* Publikaitonsliste, falls vorhanden */}
+                
+                {PDFElement}
 
                 </div>
               )
@@ -84,4 +97,5 @@ export async function getStaticProps() {
     }
   }
 
+ 
 
