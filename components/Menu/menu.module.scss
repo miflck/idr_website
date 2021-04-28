@@ -1,0 +1,45 @@
+.menuwrapper {
+    .menubutton {
+        position: fixed;
+        right: var(--padding);
+        top: -1px;
+        font-size: calc(var(--fontsizenormal)*1.5);
+        color: var(--maincolor);
+        cursor: pointer;
+        &:hover{
+            color: var(--secondcolor);
+        }
+    }
+    .menucontent {
+        display: none;
+    }
+
+    &.open {
+        .menubutton{
+        color: var(--secondcolor);
+        }
+        .menucontent {
+            // position: absolute;
+            // right: var(--padding);
+            // top: 30px;
+            background-color: var(--maincolor);
+            padding: var(--padding);
+           
+            div {
+                color: var(--secondcolor);
+                text-transform: uppercase;
+                width: 85vw;
+                &:hover {
+                    color: var(--maincolor);
+                    background-color: var(--secondcolor);
+                }
+            }
+            display: block;
+            .activelink {
+                color: yellow;
+            }
+
+        }
+    }
+
+}
