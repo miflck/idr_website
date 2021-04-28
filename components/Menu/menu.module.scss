@@ -1,4 +1,5 @@
 .menuwrapper {
+    background-color: var(--maincolor);
     .menubutton {
         position: fixed;
         right: var(--padding);
@@ -7,7 +8,7 @@
         color: var(--maincolor);
         cursor: pointer;
         &:hover{
-            color: var(--secondcolor);
+           transform:skew(-30deg);
         }
     }
     .menucontent {
@@ -19,16 +20,14 @@
         color: var(--secondcolor);
         }
         .menucontent {
-            // position: absolute;
-            // right: var(--padding);
-            // top: 30px;
-            background-color: var(--maincolor);
-            padding: var(--padding);
-           
             div {
                 color: var(--secondcolor);
                 text-transform: uppercase;
-                width: 85vw;
+                font-size: var(--fontsizenormal);
+                line-height: var(--lineheightnormal);
+                width: 100vw;
+                padding: var(--padding) var(--padding) 5px var(--padding);
+                // margin-top: 5px;
                 &:hover {
                     color: var(--maincolor);
                     background-color: var(--secondcolor);
@@ -36,7 +35,8 @@
             }
             display: block;
             .activelink {
-                color: yellow;
+                border: solid 1px var(--secondcolor);
+                border-radius: 20px;
             }
 
         }
