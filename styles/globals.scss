@@ -1,0 +1,34 @@
+@import "./variables.scss";
+
+@font-face {
+  font-family: "Sang";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../assets/SangBleuKingdom-Regular.otf") format("opentype");
+}
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Sang", Times, serif;
+  // background-color: var(--secondcolor);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: var(--fontsizenormal);
+  line-height: var(--lineheightnormal);
+  font-family: "Sang";
+  font-weight: normal;
+  color: var(--maincolor);
+  text-transform: uppercase;
+  margin: 0;
+  padding: var(--padding);
+  padding-bottom: 5px;
+}

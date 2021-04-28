@@ -1,8 +1,7 @@
-.menschwrapper {
+.veranstaltungswrapper{
     color: var(--maincolor);
     width: 100vw;
     padding-left: var(--padding); 
-    // padding-bottom: var(--padding);
     border-top: 1px solid var(--maincolor);
     background-color: var(--secondcolor);
 
@@ -12,35 +11,32 @@
         margin: 0;
         width: 95vw;
     }
-    .portrait {
-        width: 300px;
-        margin: var(--padding) 0px;
-    }
-    .name {
+    .title {
         text-transform: uppercase;
+        padding-top: var(--padding);
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
-        // margin-bottom: var(--padding);
     }
-    .links {
-        padding-bottom: var(--padding);
-        .email {
-
-        }
-        .website {
-            
-        }
-    }
-    .lebenslauf {
+    .referentIn{
         padding-bottom: var(--padding);
     }
-    .projektliste {
-        padding-bottom: var(--padding);
-        .projekt{
-    
-        }
+    .datum{
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        width: fit-content;
+        padding: 2px 3px 0px;
+        color: var(--maincolor);
+        background-color: transparent;
+        // margin: var(--padding) 0px ;
+        margin-bottom: var(--padding);
     }
-    .pdf {
+    .untertitel{
+        padding-bottom: var(--padding);
+    }
+    .organisation{
+        padding-bottom: var(--padding);
+    }
+    .beschreibung{
         padding-bottom: var(--padding);
     }
 }

@@ -3,66 +3,83 @@
 import Head from 'next/head'
 import { request, PROJEKTEINZEL } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
+// import SliceZone  from '../components/Slices/SliceZone';
 
 
 export default function Projekteinzelansicht (props) {
 console.log("props", props)
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
-const {data:{projekt:{
+  const {data:{projekt:{
     titel,
     leitung,
     verantwortung,
     mitarbeit,
     kooperationen,
     finanzierung,
-    projektinhalte,
+    projektinhalte
     }=""}=""}=props || ""
 
+    // console.log("projektinhalte", props)
+
+    if(props.data) {
+    
   return (
    <div>
-       {titel}
 
+      {titel}
 
-
-
-       {/* hier Component einbauen wie SliceZone für Projektinhalte */}
-
-
-
-
-       {/* Leitung */}
+      <div>
+        { projektinhalte != null &&
+        projektinhalte.map((block, index) => {
+          // console.log(block)
+            return (
+          <div key={index}>
+            {
+            block._modelApiKey === 'text' &&
+              <StructuredText data={block.text.value}></StructuredText>
+            }
+            {
+              block._modelApiKey === 'einzelbild' &&
+              <img src={block.image.url}/>
+            }
+            {
+              block._modelApiKey === 'pdf' &&
+              <a href={block.pdf.url}>PDF</a>
+            }
+          </div>
+          )})
+        }
+      </div>
+  
+        {/* Leitung  */}
        <div>
             Leitung <br></br>
             {leitung.map((leitung, index) => {
+              console.log("leitung", leitung)
                 return (
-                <div>{leitung.name}</div>
+                <a key={index} href={leitung.slug}>{leitung.name}</a>
                 )
               })}
         </div>
-        {/* Verantwortung */}
+         {/* Verantwortung  */}
         <div>
             Verantwortung <br></br>
             {verantwortung.map((verantwortung, index) => {
                 return (
-                <div>{verantwortung.name}</div>
+                <a key={index} href={verantwortung.slug}>{verantwortung.name}</a>
                 )
               })}
         </div>
-        {/* Mitarbeit, falls welche da */}
+        {/* Mitarbeit, falls welche da  */}
         <div>
-                {mitarbeit.map((mitarbeit, index) => {
-                    let MitarbeitElement;
-                    if(mitarbeit != null && mitarbeit.name != null){
-                        MitarbeitElement= <div> {mitarbeit.name}</div> 
-                    }else{
-                        MitarbeitElement= <> </>
-                    }
-                    return (
-                    <MitarbeitElement/>
-                    )
-                })}
+            { mitarbeit != null &&
+              mitarbeit.map((mitarbeiterin, index) => {
+              // console.log("mitarbeit", mitarbeiterin)
+                return (
+                  <a key={index} href={mitarbeiterin.slug}>{mitarbeiterin.name}</a>
+                )
+              })}
         </div>
-
         <div>
             Kooperationen
             <StructuredText data={kooperationen.value} />
@@ -71,9 +88,19 @@ const {data:{projekt:{
             Finanzierung
         <StructuredText data={finanzierung.value} />
             </div>
-       
+        
+         
    </div>
+  
   )
+
+}
+else{
+  return (
+    <>
+    </>
+  )
+}
 }
 
 

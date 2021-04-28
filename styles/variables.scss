@@ -1,0 +1,14 @@
+html {
+    --maincolor: #0000ff;
+    --secondcolor: #f08173;
+    // --maincolor: black;
+    // --secondcolor: white;
+
+    --padding: 10px;
+    --fontsizenormal: 18px;
+    --lineheightnormal: 21px;
+    --fontsizehalf: calc(var(--fontsizenormal)/1.5);
+    --lineheighthalf: calc(var(--lineheightnormal)/1.5);
+    --fontsizetitle: calc(var(--fontsizenormal)*2);
+    --lineheighttitle: calc(var(--lineheightnormal)*2);
+  }

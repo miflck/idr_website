@@ -1,13 +1,10 @@
 import { request,MENSCHEN } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from './team.module.scss'
-// import styles from '../styles/Home.module.scss'
-// hä? wie geht denn das? :(
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
-    // console.log("props",props);
-
+    console.log("props",props);
 
     return(
       <>
@@ -15,17 +12,39 @@ const Team =(props)=>{
             {allMenschens.map((mensch, index) => {
               // console.log("projekte", mensch.projekte)
               // einbauen sortieren nach mensch.funktion.titel
+              // let funktionsid = {mensch.funktion.titel}
+
               // {menschen.funktion.titel}
-           
+              let FunktionsElement;
+              let string1 = "ForscherInnen"
+              let string2 = "Leitung und Büro"
+              let stringtotest = `${mensch.funktion.titel}`
+              console.log('funktion',stringtotest)
+              // if(string1.equals(stringtotest)) {
+              //   FunktionsElement = <div className={styles.forscherinnen}> hier alle forscherinnen, {mensch.name} </div>
+              // }
+              // else if(string2.equals(stringtotest)){
+              //   FunktionsElement = <div className={styles.leitungundbuero}> hier alle büros, {mensch.name} </div>
+              // }
+              // Büro hat ID 34114834
+              //ForscherInnen hat ID 34114835
+              // let numericStringArray = ['34114835', '34114834'];
+              // let numericStringArray = [`${mensch.funktion.titel}`];
+              // numericStringArray.sort();
+              // console.log('sortierennummer',numericStringArray)
+
               let PDFElement;
                 if(mensch.publikationsliste != null && mensch.publikationsliste.url != null){
-                    PDFElement= <a className={styles.publikationsliste} href={mensch.publikationsliste.url}>Publikationsliste</a> 
+                    PDFElement= <div className={styles.pdf}>
+                                    <a href={mensch.publikationsliste.url}>Publikationsliste</a>
+                                    </div> 
                 }else{
                     PDFElement= <> </>
                 }
 
               return(
-                <div key={index}>
+                <>
+                <div key={index} className={styles.menschwrapper}>
                   {/* Portrait Bild */}
                   <img 
                     className={styles.portrait}
@@ -36,39 +55,40 @@ const Team =(props)=>{
                   <p className={styles.name}>
                     {mensch.name}
                   </p>
-                  <a className={styles.email} href={`mailto:,${mensch.email}`}>
-                    {/* wie soll man das schreiben? */}
-                    {mensch.email}
-                  </a><br></br>
-                  <a className={styles.website} href={mensch.website} target="_blank">
-                    {mensch.website}
-                  </a>
-                  
-                  <StructuredText data={mensch.lebenslauf.value} />
-               
-                  
-                 {/* auch ein if einbauen, oder haben eh alle projekte in der projektliste? */}
-                  <div>
+                  <div className={styles.links}>
+                      <a className={styles.email} href={`mailto:,${mensch.email}`}>
+                        {/* wie soll man das schreiben? */}
+                        {mensch.email}
+                      </a><br></br>
+                      <a className={styles.website} href={mensch.website} target="_blank">
+                        {mensch.website}
+                      </a>
+                  </div>
+                  <div className={styles.lebenslauf}>
+                    <StructuredText data={mensch.lebenslauf.value} />
+                  </div>
+                  <div className={styles.projektliste}>
                       Projektliste <br></br>
                       {mensch.projekte.map((projekt, index) => {
-                          // console.log("liste", projekt)
+                          console.log("liste", projekt)
                         return (
-                          // irgendwie anders verlinken zum projekt, vielleicht dann schauen, wenn die projektunterseiten da sind
-                          <a 
-                          // mit slug ersetzen = lücken mit strichli füllen
-                          // href={projekt.titel} 
-                          key={index}>
+                          <div key={index} className={styles.projekt}> 
+                            <a href={projekt.slug}>
                               {projekt.titel}
-                          </a>
+                            </a>
+                          </div>
                         )
                       })}
                   </div>
-                
-                {/* Publikaitonsliste, falls vorhanden */}
-                
-                {PDFElement}
+                  {/* Publikaitonsliste, falls vorhanden */}
+                  {PDFElement}
 
                 </div>
+
+
+
+
+                </>
               )
             })}
             
