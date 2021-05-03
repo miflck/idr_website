@@ -1,3 +1,5 @@
+@import "./breakpoints.scss";
+
 html {
     --maincolor: #0000ff;
     --secondcolor: #f08173;
@@ -5,6 +7,7 @@ html {
     // --secondcolor: white;
 
     //-> hier ev in em oder rem definieren?
+    // -> 1rem =16px
     --padding: 10px;
     --fontsizenormal: 18px;
     --lineheightnormal: 21px;
@@ -14,3 +17,20 @@ html {
     --fontsizetitle: calc(var(--fontsizenormal)*2);
     --lineheighttitle: calc(var(--lineheightnormal)*2);
   }
+
+
+@media (min-width: $breakpointSmall) {
+   
+}
+
+@media (min-width: $breakpointMedium) {
+ 
+}
+
+@media (min-width: $breakpointLarge) {
+  
+}
+
+@media (min-width: $breakpointXLarge) {
+
+}

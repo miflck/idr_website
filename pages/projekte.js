@@ -7,6 +7,12 @@ import { request,PROJEKTE } from "../lib/datocms";
 import styles from './projekte.module.scss'
 // import ListItem from "../../../components/List/listItem"
 
+import Layout from '../components/Layout/layout'
+
+import ListWrapper from '../components/List/listWrapper'
+import ListItem from '../components/List/listItem'
+
+
 
 
 export default function Projekte(props) {
@@ -14,8 +20,15 @@ export default function Projekte(props) {
   const {projekte:{allProjekts}}=props;
 
   return (
-   <div className={styles.projektlistwrapper}>
+
+<Layout>
+
+ {/*  <div className={styles.projektlistwrapper}>*/}
+     <ListWrapper>
+          
           {allProjekts.map((projekt, index) => {
+
+<ListItem {...projekt}/>
 
             //-> hier ein eigenes component draus machen und also props z.b ...projekt übergeben:
             // e.g <Item ...projekt />
@@ -52,7 +65,9 @@ export default function Projekte(props) {
                })}
 
 
-   </div>
+   {/*</div>*/}
+   </ListWrapper>
+   </Layout>
   )
 }
 
