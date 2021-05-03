@@ -1,7 +1,7 @@
-import { request,MENSCHEN } from "../lib/datocms";
+import { request,MENSCHEN } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from './team.module.scss'
-import Layout from '../components/Layout/layout'
+import Layout from '../../components/Layout/layout'
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;

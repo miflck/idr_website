@@ -1,10 +1,17 @@
-.projekteinzelwrapper {
+.einzelwrapper {
     padding: var(--padding); 
     border-bottom: 1px solid var(--maincolor);
     .titel {
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
+    }
+    div {
+        margin: 0;
+        p {
+            margin: 0;
+            margin-bottom: var(--padding);
+        }
     }
     .listenwrapper{
         div {
@@ -14,6 +21,7 @@
        
         p {
             margin: 0;
+            margin-bottom: var(--padding);
         }
     }
     a {

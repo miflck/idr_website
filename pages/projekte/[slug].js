@@ -1,5 +1,3 @@
-// alles was es nicht findet hauts nun in diese rein, also alle 404 error seiten
-
 import Layout from "../../components/Layout/layout"
 import { request, PROJEKTEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
@@ -25,7 +23,7 @@ export default function Projekteinzelansicht (props) {
     
   return (
    <Layout>
-        <div className={styles.projekteinzelwrapper}>
+        <div className={styles.einzelwrapper}>
         <div className={styles.titel}>
           {titel}
         </div>

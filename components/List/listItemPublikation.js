@@ -7,17 +7,17 @@ const ListItemPublikation =(publikation, index)=>{
 
     // filtern hier
 
-
+    let href=`/publikationen`
+    if(publikation.slug!=""){
+        href+=`/${publikation.slug}`
+    }
  
     return(
         <div className={styles.projektwrapper} key={index}>
             <div className={styles.projektcontent}>
 
             {/* Publikationtitel */}
-            <a 
-            // href={publikation.slug}
-            // href={`publikationen/${mensch.email}`}
-            >
+            <a href={href}>
                     <div className={styles.titel}>
                         {publikation.titel}
                     </div>

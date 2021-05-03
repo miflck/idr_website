@@ -1,7 +1,6 @@
 // projektliste als übersicht
 // dann single view von den projekten, unterseiten als [] setzen
 import { request, PROJEKTE } from "../../lib/datocms";
-import styles from './projekte.module.scss'
 
 import Layout from '../../components/Layout/layout'
 import ListWrapper from '../../components/List/listWrapper'

@@ -1,101 +1,65 @@
-// alles was es nicht findet hauts nun in diese rein, also alle 404 error seiten
-
 import Layout from "../../components/Layout/layout"
-import { request, PROJEKTEINZEL } from "../../lib/datocms";
+import { request, PUBLIKATIONEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
 
 
-
-
-// Publikationseinzelansicht neu machen
-
-
-
-
-
-
-
-
-
-export default function Projekteinzelansicht (props) {
+export default function Publikationseinzelansicht (props) {
 // console.log("props", props)
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
-  const {data:{projekt:{
+  const {data:{publikationen:{
     titel,
-    leitung,
-    verantwortung,
     mitarbeit,
-    kooperationen,
-    finanzierung,
-    projektinhalte
+    bild,
+    publikationsart,
+    publikationsinhalte
     }=""}=""}=props || ""
 
-    // console.log("projektinhalte", props)
+    console.log("publikationsinhalte", props)
 
     if(props.data) {
     
   return (
    <Layout>
-        <div className={styles.projekteinzelwrapper}>
-        <div className={styles.titel}>
-          {titel}
-        </div>
-        <div className={styles.modulareinhalte}>
-            {projektinhalte != null &&
-            projektinhalte.map((block, index) => {
-              // console.log(block)
-                return (
-              <div key={index}>
-                {
-                block._modelApiKey === 'text' &&
-                  <StructuredText data={block.text.value}></StructuredText>
-                }
-                {
-                  block._modelApiKey === 'einzelbild' &&
-                  <img src={block.image.url}/>
-                }
-                {
-                  block._modelApiKey === 'pdf' &&
-                  <a href={block.pdf.url}>Projekt PDF</a>
-                }
-              </div>
-              )})
-            }
-        </div>
+        <div className={styles.einzelwrapper}>
+            <div className={styles.titel}>
+              {titel}
+            </div>
+
+            <img 
+                className={styles.image}
+                src={bild.url} 
+                alt={bild.alt} 
+            />
             
-        <div className={styles.listenwrapper}> 
-          {/* Leitung  */}
-          <div>Leitung</div>
-              {leitung.map((leitung, index) => {
-                // console.log("leitung", leitung)
-                  return (
-                  <a key={index} href={leitung.slug}>{leitung.name}</a>
-                  )
-                })}
-          
-          {/* Verantwortung  */}
-          <div>Verantwortung</div>
-              {verantwortung.map((verantwortung, index) => {
-                  return (
-                  <a key={index} href={verantwortung.slug}>{verantwortung.name}</a>
-                  )
-                })}
-          {/* Mitarbeit, falls welche da  */}
-          <div>Mitarbeit</div>
-              { mitarbeit != null &&
-                mitarbeit.map((mitarbeiterin, index) => {
-                // console.log("mitarbeit", mitarbeiterin)
-                  return (
-                    <a key={index} href={mitarbeiterin.slug}>{mitarbeiterin.name}<br></br></a>
-                  )
-                })}
-          <div>Kooperationen</div>
-              <StructuredText data={kooperationen.value} />
-          
-          <div>Finanzierung</div>
-          <StructuredText data={finanzierung.value} />
-        </div>
+            <div className={styles.modulareinhalte}>
+                {publikationsinhalte != null &&
+                publikationsinhalte.map((block, index) => {
+                    return (
+                  <div key={index}>
+                    {
+                    block._modelApiKey === 'text' &&
+                      <StructuredText data={block.text.value}></StructuredText>
+                    }
+                    {
+                      block._modelApiKey === 'pdf' &&
+                      <a href={block.pdf.url}>Projekt PDF</a>
+                    }
+                  </div>
+                  )})
+                }
+            </div>
+                
+            <div className={styles.listenwrapper}> 
+              <div>Mitarbeit</div>
+                  { mitarbeit != null &&
+                    mitarbeit.map((mitarbeiterin, index) => {
+                      return (
+                        <a key={index} href={mitarbeiterin.slug}>{mitarbeiterin.name}<br></br></a>
+                      )
+                    })}
+            </div>
+
       </div>
    </Layout>
   )
@@ -111,7 +75,7 @@ else{
 
 export async function getStaticProps({params}) {
     const data = await request({
-        query: PROJEKTEINZEL,variables: { slug:params.slug},
+        query: PUBLIKATIONEINZEL,variables: { slug:params.slug},
       });
 
     return {

@@ -20,10 +20,7 @@ const ListItemProjekt =(projekt, index)=>{
                 <div className={styles.datum}>{enddatum}</div>
                             
                 {/* Projekttitel */}
-                <a 
-                href={href}
-                // href={`/projekte/${projekt.slug}`}
-                >
+                <a href={href}>
                     <div className={styles.titel}>
                         {projekt.titel}
                     </div>
