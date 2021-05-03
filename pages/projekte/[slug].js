@@ -1,7 +1,7 @@
 // alles was es nicht findet hauts nun in diese rein, also alle 404 error seiten
 
 import Layout from "../../components/Layout/layout"
-import { request, PROJEKTEINZEL } from "../lib/datocms";
+import { request, PROJEKTEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
 

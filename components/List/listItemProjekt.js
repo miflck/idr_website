@@ -11,7 +11,7 @@ const ListItemProjekt =(projekt, index)=>{
                 
         let href=`/projekte`
         if(projekt.slug!=""){
-            href=`${projekt.slug}`
+            href+=`/${projekt.slug}`
         }
     return(
         <div className={styles.projektwrapper} key={index}>
