@@ -4,9 +4,11 @@ html {
     // --maincolor: black;
     // --secondcolor: white;
 
+    //-> hier ev in em oder rem definieren?
     --padding: 10px;
     --fontsizenormal: 18px;
     --lineheightnormal: 21px;
+
     --fontsizehalf: calc(var(--fontsizenormal)/1.5);
     --lineheighthalf: calc(var(--lineheightnormal)/1.5);
     --fontsizetitle: calc(var(--fontsizenormal)*2);

@@ -16,6 +16,11 @@ export default function Projekte(props) {
   return (
    <div className={styles.projektlistwrapper}>
           {allProjekts.map((projekt, index) => {
+
+            //-> hier ein eigenes component draus machen und also props z.b ...projekt übergeben:
+            // e.g <Item ...projekt />
+            // ev aus dem projektlistwrapper auch gleich ein element machen?
+
                  const enddatum = new Date(projekt.enddatum).toLocaleString([], {
                   month: 'long', 
                   year: 'numeric'
