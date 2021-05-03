@@ -1,12 +1,18 @@
 import styles from './list.module.scss'
 
 
-const ListItem =(projekt, index)=>{
+const ListItemProjekt =(projekt, index)=>{
     //  console.log("ListItem prpüs", projekt)
      const enddatum = new Date(projekt.enddatum).toLocaleString([], {
                 month: 'long', 
                 year: 'numeric'
                 });
+
+                
+        let href=`/projekte`
+        if(projekt.slug!=""){
+            href=`${projekt.slug}`
+        }
     return(
         <div className={styles.projektwrapper} key={index}>
             <div className={styles.projektcontent}>
@@ -14,8 +20,11 @@ const ListItem =(projekt, index)=>{
                 <div className={styles.datum}>{enddatum}</div>
                             
                 {/* Projekttitel */}
-                <a href={projekt.slug}>
-                    <div className={styles.titel} >
+                <a 
+                href={href}
+                // href={`/projekte/${projekt.slug}`}
+                >
+                    <div className={styles.titel}>
                         {projekt.titel}
                     </div>
                 </a>
@@ -33,4 +42,4 @@ const ListItem =(projekt, index)=>{
     )
 }
 
- export default ListItem;
+ export default ListItemProjekt;

@@ -1,11 +1,11 @@
 // projektliste als übersicht
 // dann single view von den projekten, unterseiten als [] setzen
-import { request, PROJEKTE } from "../lib/datocms";
+import { request, PROJEKTE } from "../../lib/datocms";
 import styles from './projekte.module.scss'
 
-import Layout from '../components/Layout/layout'
-import ListWrapper from '../components/List/listWrapper'
-import ListItem from '../components/List/listItem'
+import Layout from '../../components/Layout/layout'
+import ListWrapper from '../../components/List/listWrapper'
+import ListItemProjekt from '../../components/List/listItemProjekt'
 
 
 export default function Projekte(props, index) {
@@ -16,7 +16,7 @@ export default function Projekte(props, index) {
           <ListWrapper>
                 {allProjekts.map((projekt, index) => {
                   return(
-                    <ListItem {...projekt} key={index}/>
+                    <ListItemProjekt {...projekt} key={index}/>
                   )})
                       }
             </ListWrapper>

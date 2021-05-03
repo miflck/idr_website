@@ -1,44 +1,51 @@
 .menschwrapper {
     color: var(--maincolor);
     width: 100vw;
-    padding-left: var(--padding); 
-    // padding-bottom: var(--padding);
-    border-top: 1px solid var(--maincolor);
+    padding: 0 var(--padding);
+    border-bottom: 1px solid var(--maincolor);
     background-color: var(--secondcolor);
 
     font-size: var(--fontsizehalf);
     line-height: var(--lineheighthalf);
+    a {
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        padding: 2px 4px 0px;
+        &:hover {
+            color: var(--secondcolor);
+            background-color: var(--maincolor);
+        }
+    }
     p {
         margin: 0;
         width: 95vw;
     }
     .portrait {
         width: 300px;
-        margin: var(--padding) 0px;
+        margin-top: var(--padding);
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
     }
     .name {
+        margin: 0;
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
-        // margin-bottom: var(--padding);
     }
     .links {
         padding-bottom: var(--padding);
-        .email {
-
-        }
-        .website {
-            
-        }
+        // .email {
+        // }
+        // .website {
+        // }
     }
     .lebenslauf {
         padding-bottom: var(--padding);
     }
     .projektliste {
         padding-bottom: var(--padding);
-        .projekt{
-    
-        }
+        // .projekt{
+        // }
     }
     .pdf {
         padding-bottom: var(--padding);

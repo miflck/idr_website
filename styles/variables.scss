@@ -1,10 +1,10 @@
 @import "./breakpoints.scss";
 
 html {
-    --maincolor: #0000ff;
-    --secondcolor: #f08173;
-    // --maincolor: black;
-    // --secondcolor: white;
+    // --maincolor: #0000ff;
+    // --secondcolor: #f08173;
+    --maincolor: black;
+    --secondcolor: #f0f0f0;
 
     //-> hier ev in em oder rem definieren?
     // -> 1rem =16px
@@ -12,8 +12,10 @@ html {
     --fontsizenormal: 18px;
     --lineheightnormal: 21px;
 
-    --fontsizehalf: calc(var(--fontsizenormal)/1.5);
-    --lineheighthalf: calc(var(--lineheightnormal)/1.5);
+    --fontsizesmall: calc(var(--fontsizenormal)/1.5);
+    --lineheighsmall: calc(var(--lineheightnormal)/1.5);
+    --fontsizehalf: calc(var(--fontsizenormal)-2);
+    --lineheighthalf: calc(var(--lineheightnormal)-5);
     --fontsizetitle: calc(var(--fontsizenormal)*2);
     --lineheighttitle: calc(var(--lineheightnormal)*2);
   }

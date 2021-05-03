@@ -2,13 +2,14 @@
     color: var(--maincolor);
     width: 100vw;
     padding-left: var(--padding); 
-    border-top: 1px solid var(--maincolor);
+    border-bottom: 1px solid var(--maincolor);
     background-color: var(--secondcolor);
 
     font-size: var(--fontsizehalf);
     line-height: var(--lineheighthalf);
     p {
         margin: 0;
+        padding: 0;
         width: 95vw;
     }
     .title {
@@ -24,7 +25,7 @@
         border: 1px solid var(--maincolor);
         border-radius: 20px;
         width: fit-content;
-        padding: 2px 3px 0px;
+        padding: 2px 4px 0px;
         color: var(--maincolor);
         background-color: transparent;
         // margin: var(--padding) 0px ;

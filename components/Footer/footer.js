@@ -6,9 +6,10 @@ const Footer=(props)=>{
 
     return(
         < div className={styles.footerwrapper}>
-        <a href="https://hkb-idr.ch/#publikationen">
-            Link zu irgendwas
-        </a>
+            <a href="https://hkb-idr.ch/#publikationen">Footer Link</a>
+            {/* Farbe wechseln als Extra, noch einbauen  */}
+            {/* <div onClick={} className={styles.buttonMaincolor}/>
+            <div className={styles.buttonSecondcolor}/> */}
         </div>
     )
 }

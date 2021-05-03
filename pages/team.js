@@ -16,11 +16,12 @@ const Team =(props)=>{
               // let funktionsid = {mensch.funktion.titel}
 
               // {menschen.funktion.titel}
-              let FunktionsElement;
-              let string1 = "ForscherInnen"
-              let string2 = "Leitung und Büro"
-              let stringtotest = `${mensch.funktion.titel}`
-              console.log('funktion',stringtotest)
+              // let FunktionsElement;
+              // let string1 = "ForscherInnen"
+              // let string2 = "Leitung und Büro"
+              // let stringtotest = `${mensch.funktion.titel}`
+              // console.log('funktion',stringtotest)
+
               // if(string1.equals(stringtotest)) {
               //   FunktionsElement = <div className={styles.forscherinnen}> hier alle forscherinnen, {mensch.name} </div>
               // }
@@ -43,6 +44,22 @@ const Team =(props)=>{
                     PDFElement= <> </>
                 }
 
+
+                let EmailElement;
+                if(mensch.email != ""){
+                  EmailElement= <div><a className={styles.email} href={`mailto:,${mensch.email}`}> {mensch.email} </a></div>
+                }else{
+                  EmailElement= <> </>
+                }
+
+
+                let WebsiteElement;
+                if(mensch.website != ""){
+                  WebsiteElement= <div><a className={styles.website} href={mensch.website} target="_blank">{mensch.website} </a></div>
+                }else{
+                  WebsiteElement= <> </>
+                }
+
               return(
                 <>
                 <div key={index} className={styles.menschwrapper}>
@@ -56,20 +73,16 @@ const Team =(props)=>{
                   <p className={styles.name}>
                     {mensch.name}
                   </p>
+
                   <div className={styles.links}>
-                      <a className={styles.email} href={`mailto:,${mensch.email}`}>
-                        {/* wie soll man das schreiben? */}
-                        {mensch.email}
-                      </a><br></br>
-                      <a className={styles.website} href={mensch.website} target="_blank">
-                        {mensch.website}
-                      </a>
+                      {EmailElement}
+                      {WebsiteElement}
                   </div>
                   <div className={styles.lebenslauf}>
                     <StructuredText data={mensch.lebenslauf.value} />
                   </div>
                   <div className={styles.projektliste}>
-                      Projektliste <br></br>
+                      {/* Projektliste <br></br> */}
                       {mensch.projekte.map((projekt, index) => {
                           console.log("liste", projekt)
                         return (
