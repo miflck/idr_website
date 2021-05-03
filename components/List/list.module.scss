@@ -1,0 +1,56 @@
+.projektlistwrapper {
+    color: var(--maincolor);
+    .projektwrapper { 
+        width: 100vw;
+        margin-bottom: 0px;
+        border-top: 1px solid var(--maincolor);
+        background-color: var(--secondcolor);
+        .projektcontent {
+            padding: 5px var(--padding) 2.5px var(--padding);
+            color: var(--maincolor);
+            .titel {
+                text-transform: uppercase;
+                font-size: var(--fontsizenormal);
+                line-height: var(--lineheightnormal);
+            }
+            .forschungsfeldwrapper {
+                font-size: var(--fontsizehalf);
+                line-height: var(--lineheightnormal);
+                text-transform: uppercase;
+                .forschungsfeld {
+                    border: 1px solid var(--maincolor);
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    color: var(--maincolor);
+                    background-color: transparent;
+                }
+                .forschungsfeld:nth-child(2) {
+                    margin-left: 20px;
+                }
+            }
+            .datum {
+                font-size: var(--fontsizehalf);
+                line-height: var(--lineheighthalf);
+                margin: 0px 3px 3px 0px;
+                text-transform: uppercase;
+            }
+        }
+        &:hover {
+            border-top: 1px solid var(--secondcolor);
+            background-color: var(--maincolor);
+            .projektcontent {
+                color: var(--secondcolor);
+            }
+            .forschungsfeldwrapper {
+                .forschungsfeld {
+                    border: 1px solid var(--secondcolor);
+                    color: var(--secondcolor);
+                }
+            }
+        }
+    }
+    .projektwrapper:last-child {
+        border-bottom: 1px solid var(--maincolor);
+    }
+}

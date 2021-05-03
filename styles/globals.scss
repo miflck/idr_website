@@ -13,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Sang", Times, serif;
-  // background-color: var(--secondcolor);
+  background-color: var(--secondcolor);
 }
 
 a {
@@ -31,4 +31,6 @@ h2 {
   margin: 0;
   padding: var(--padding);
   padding-bottom: 5px;
+
+  // position: static;
 }

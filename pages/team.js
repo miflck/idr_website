@@ -1,13 +1,14 @@
 import { request,MENSCHEN } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from './team.module.scss'
+import Layout from '../components/Layout/layout'
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
     console.log("props",props);
 
     return(
-      <>
+      <Layout>
       
             {allMenschens.map((mensch, index) => {
               // console.log("projekte", mensch.projekte)
@@ -96,7 +97,7 @@ const Team =(props)=>{
             
             
            
-      </>
+      </Layout>
     )
 }
 

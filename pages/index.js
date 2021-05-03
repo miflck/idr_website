@@ -2,29 +2,16 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
 import NavMenu from '../components/Menu/navMenu'
+import Layout from '../components/Layout/layout'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>IDR</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-
-    
-        <NavMenu/>
-  
-
-
-      <h2>HKB — Institute of Design Research</h2>
-        
+    <Layout>
+      <main className={styles.container}>
+          Startpage
+          {/* <main className={styles.main}>
+          </main> */}
       </main>
-
-      {/* <footer className={styles.footer}>
-        
-      </footer> */}
-    </div>
+    </Layout>
   )
 }

@@ -8,7 +8,10 @@
         color: var(--maincolor);
         cursor: pointer;
         &:hover{
-           transform:skew(-30deg);
+            font-style:oblique -30deg;
+        }
+        span:last-child{
+            display: none;
         }
     }
     .menucontent {
@@ -17,9 +20,16 @@
 
     &.open {
         .menubutton{
-        color: var(--secondcolor);
+            span:first-child{
+                display: none;
+            }
+            span:last-child{
+                display: block;
+            }
         }
         .menucontent {
+            display: block;
+            border-top: 1px solid var(--maincolor);
             div {
                 color: var(--secondcolor);
                 text-transform: uppercase;
@@ -27,17 +37,21 @@
                 line-height: var(--lineheightnormal);
                 width: 100vw;
                 padding: var(--padding) var(--padding) 5px var(--padding);
-                // margin-top: 5px;
+                border-bottom: 1px solid var(--secondcolor);
                 &:hover {
                     color: var(--maincolor);
                     background-color: var(--secondcolor);
+                    border-bottom: 1px solid var(--maincolor);
                 }
             }
-            display: block;
-            .activelink {
-                border: solid 1px var(--secondcolor);
-                border-radius: 20px;
+            div:last-child {
+                border-bottom: 0px solid var(--maincolor);
             }
+            
+            // .activelink {
+            //     // border: solid 1px var(--secondcolor);
+            //     border-radius: 20px;
+            // }
 
         }
     }

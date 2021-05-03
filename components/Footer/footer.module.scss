@@ -1,0 +1,14 @@
+.footerwrapper {
+    position: relative;
+    bottom: 0;
+    padding: 0 var(--padding);
+
+    font-size: var(--fontsizehalf);
+    text-transform: uppercase;
+    a {
+        color: var(--maincolor);
+        &:hover {
+            font-style:oblique 30deg;
+        }
+    }
+}

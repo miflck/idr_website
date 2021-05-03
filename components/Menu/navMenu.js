@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 import Link from 'next/link'
 
+
+
 const NavMenu = (props)=> {
 
   const [open,setMenuOpen] = useState(false)
@@ -18,7 +20,8 @@ const NavMenu = (props)=> {
           className={styles.menubutton}
           onClick={handleOnClick}
         >
-          +
+          <span>+</span>
+          <span>–</span>
         </div>
         {
           <div className={styles.menucontent}>
@@ -35,6 +38,11 @@ const NavMenu = (props)=> {
               <div>
                 <Link href={{pathname: '/team'}} activeClassName={styles.activelink}>
                     Team
+                </Link>
+              </div> 
+              <div>
+                <Link href={{pathname: '/publikationen'}} activeClassName={styles.activelink}>
+                    Publikationen
                 </Link>
               </div> 
           </div>

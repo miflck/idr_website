@@ -1,24 +1,24 @@
-// projektliste als übersicht
+// publikationen als übersicht
 // dann single view von den projekten, unterseiten als [] setzen
-import { request, PROJEKTE } from "../lib/datocms";
-import styles from './projekte.module.scss'
+import { request, PUBLIKATIONEN } from "../lib/datocms";
+// import styles from './projekte.module.scss'
 
 import Layout from '../components/Layout/layout'
 import ListWrapper from '../components/List/listWrapper'
 import ListItem from '../components/List/listItem'
 
 
-export default function Projekte(props, index) {
-  const {projekte:{allProjekts}}=props;
+export default function Publikationen(props, index) {
+  const {publikationen:{allPublikationens}}=props;
 
   return (
       <Layout>
           <ListWrapper>
-                {allProjekts.map((projekt, index) => {
+                {/* {allPublikationens.map((publikation, index) => {
                   return(
-                    <ListItem {...projekt} key={index}/>
+                    <ListItem {...publikation} key={index}/>
                   )})
-                      }
+                      } */}
             </ListWrapper>
       </Layout>
   )
@@ -26,13 +26,13 @@ export default function Projekte(props, index) {
 
 // de mit default alng ersetzten falls die nicht de ist
 export async function getStaticProps() {
-  const projekte = await request({
-      query: PROJEKTE,
+  const publikationen = await request({
+      query: PUBLIKATIONEN,
     });
 
   return {
     props: {
-      projekte,   
+      publikationen,   
     }, // will be passed to the page component as props
   }
 }
