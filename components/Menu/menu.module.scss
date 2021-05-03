@@ -1,5 +1,8 @@
 .menuwrapper {
-    background-color: var(--maincolor);
+    position: sticky;
+    top: 0;
+    background-color: var(--secondcolor);
+    z-index: 51;
     .menubutton {
         position: fixed;
         right: var(--padding);
@@ -19,6 +22,7 @@
     }
 
     &.open {
+        background-color: var(--maincolor);
         .menubutton{
             span:first-child{
                 display: none;
@@ -28,6 +32,11 @@
             }
         }
         .menucontent {
+            // animation: fadein 1s linear;
+            // @keyframes fadein {
+            //     0% {display: none;}
+            //     100% {display: blpck;}
+            // }
             display: block;
             border-bottom: 1px solid var(--maincolor);
             div {
@@ -57,6 +66,7 @@
             // }
 
         }
+       
     }
 
 }

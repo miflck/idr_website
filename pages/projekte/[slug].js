@@ -20,6 +20,24 @@ export default function Projekteinzelansicht (props) {
     // console.log("projektinhalte", props)
 
     if(props.data) {
+
+      let MitarbeitendenElement;
+                if(mitarbeit != null){
+                  MitarbeitendenElement= <>
+                    <div>Mitarbeit</div>
+                      {mitarbeit.map((mitarbeiterin, index) => {
+                        let href=`/team`
+                        if(mitarbeiterin.slug!=""){
+                            href+=`/${mitarbeiterin.slug}`
+                        }
+                       return (
+                            <a key={index} href={href}>{mitarbeiterin.name}<br></br></a>
+                          )
+                        })}
+                    </>
+                }else{
+                  MitarbeitendenElement= <> </>
+                }
     
   return (
    <Layout>
@@ -55,27 +73,29 @@ export default function Projekteinzelansicht (props) {
           <div>Leitung</div>
               {leitung.map((leitung, index) => {
                 // console.log("leitung", leitung)
+                  let href=`/team`
+                  if(leitung.slug!=""){
+                      href+=`/${leitung.slug}`
+                  }
                   return (
-                  <a key={index} href={leitung.slug}>{leitung.name}</a>
+                  <a key={index} href={href}>{leitung.name}</a>
                   )
                 })}
           
           {/* Verantwortung  */}
           <div>Verantwortung</div>
               {verantwortung.map((verantwortung, index) => {
+                let href=`/team`
+                if(verantwortung.slug!=""){
+                    href+=`/${verantwortung.slug}`
+                }
                   return (
-                  <a key={index} href={verantwortung.slug}>{verantwortung.name}</a>
+                  <a key={index} href={href}>{verantwortung.name}</a>
                   )
                 })}
           {/* Mitarbeit, falls welche da  */}
-          <div>Mitarbeit</div>
-              { mitarbeit != null &&
-                mitarbeit.map((mitarbeiterin, index) => {
-                // console.log("mitarbeit", mitarbeiterin)
-                  return (
-                    <a key={index} href={mitarbeiterin.slug}>{mitarbeiterin.name}<br></br></a>
-                  )
-                })}
+                {MitarbeitendenElement}
+
           <div>Kooperationen</div>
               <StructuredText data={kooperationen.value} />
           

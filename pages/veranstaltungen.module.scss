@@ -1,43 +1,49 @@
 .veranstaltungswrapper{
     color: var(--maincolor);
     width: 100vw;
-    padding-left: var(--padding); 
-    border-bottom: 1px solid var(--maincolor);
     background-color: var(--secondcolor);
-
-    font-size: var(--fontsizehalf);
-    line-height: var(--lineheighthalf);
-    p {
-        margin: 0;
-        padding: 0;
-        width: 95vw;
+    .veranstaltungscontent {
+        border-bottom: 1px solid var(--maincolor);
+        padding: var(--padding); 
+        font-size: var(--fontsizehalf);
+        line-height: var(--lineheighthalf);
+        p {
+            margin: 0;
+            padding: 0;
+            width: 95vw;
+        }
+        .title {
+            text-transform: uppercase;
+            font-size: var(--fontsizenormal);
+            line-height: var(--lineheightnormal);
+        }
+        .zentriert {
+            align-content: center;
+            text-align:center;
+            padding: var(--padding) 0;
+            .referentIn{
+                // padding-bottom: var(--padding);
+            }
+            .datum{
+                // border: 1px solid var(--maincolor);
+                // border-radius: 20px;
+                // width: fit-content;
+                // padding: 2px 4px 0px;
+                // margin: var(--padding) 0px ;
+                // margin-bottom: var(--padding);
+            }
+            .untertitel{
+                // padding-bottom: var(--padding);
+            }
+            .organisation{
+                // padding-bottom: var(--padding);
+            }
+        }
     }
-    .title {
-        text-transform: uppercase;
-        padding-top: var(--padding);
-        font-size: var(--fontsizenormal);
-        line-height: var(--lineheightnormal);
-    }
-    .referentIn{
-        padding-bottom: var(--padding);
-    }
-    .datum{
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        width: fit-content;
-        padding: 2px 4px 0px;
-        color: var(--maincolor);
-        background-color: transparent;
-        // margin: var(--padding) 0px ;
-        margin-bottom: var(--padding);
-    }
-    .untertitel{
-        padding-bottom: var(--padding);
-    }
-    .organisation{
-        padding-bottom: var(--padding);
-    }
-    .beschreibung{
-        padding-bottom: var(--padding);
+    div:last-child {
+        border-bottom: 0px solid var(--maincolor);
+        .beschreibung{
+            padding-bottom: calc(var(--padding)*2);
+        }
     }
 }

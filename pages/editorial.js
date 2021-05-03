@@ -1,23 +1,23 @@
 import { request,EDITORIALTEXTE } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
-import styles from '../styles/Home.module.css'
+import styles from './editorial.module.scss'
+import Layout from '../components/Layout/layout'
 
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
     return(
-      <>
+      <Layout>
             {allEditorials.map((editorial, index) => {
             //   console.log("editorial", editorial)
               return(
-                <div key={index}>
-                    {/* Forschungsfeld */}
-                    <div>
+                <div className={styles.editorialwrapper} key={index}>
+                    {/* Forschungsfeld */} 
                         {editorial.forschungsfeld.map((forschungsfeld, index) => {
                             return (
-                                <p key={index}>{forschungsfeld.titel} </p>
+                                <div className={styles.titel} key={index}>{forschungsfeld.titel} </div>
                             )
                         })}
-                    </div>
+                 
                     {/* Beitrag Text */}
                     <div>
                         {editorial.beitraege.map((beitrag, index) => {
@@ -26,38 +26,44 @@ const Editorial =(props)=>{
                             )
                         })}
                     </div>
-                    {/* menschen */}
-                    <div>
-                        {editorial.menschen.map((mensch, index) => {
-                            return (
-                                <div key={index}>
-                                    <p>Koordinator*in</p>
-                                    <p>{mensch.name}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
 
-                    {/* Projektliste */}
-                    <div>
-                        {editorial.projekte.map((projekt, index) => {
-                            return (
-                                <p>
-                                    <a key={index} 
-                                    // href={projekt.url.irgendwieso}
-                                    >
-                                    {projekt.titel}
-                                    </a>
-                                </p>
-                            )
-                        })}
+                    <div className={styles.listenwrapper}> 
+                        {/* Leitung  */}
+                        <div>Koordinator*in</div>
+                            {editorial.menschen.map((koordinatorin, index) => {
+                                // console.log("leitung", leitung)
+                                let href=`/team`
+                                if(koordinatorin.slug!=""){
+                                    href+=`/${koordinatorin.slug}`
+                                }
+                                return (
+                                <a key={index} href={href}>{koordinatorin.name}</a>
+                                )
+                                })}
+                    
+                        {/* Projektliste */}
+                        <div>Projekte</div>
+                            {editorial.projekte.map((projekt, index) => {
+                                let href=`/projekte`
+                                if(projekt.slug!=""){
+                                    href+=`/${projekt.slug}`
+                                }
+                                return (
+                                        <a key={index} 
+                                            href={href}
+                                        >
+                                        {projekt.titel}<br></br>
+                                        </a>
+                                )
+                            })}
+                        
                     </div>
 
 
                 </div>
               )
             })}  
-      </>
+      </Layout>
     )
 }
 

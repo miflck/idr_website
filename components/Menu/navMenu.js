@@ -31,8 +31,8 @@ const NavMenu = (props)=> {
                 </Link>
               </div>
               <div>
-                <Link href={{pathname: '/veranstaltungen'}} activeClassName={styles.activelink}>
-                    Veranstaltungen
+                <Link href={{pathname: '/editorial'}} activeClassName={styles.activelink}>
+                  Editorial
                 </Link>
               </div>
               <div>
@@ -44,7 +44,12 @@ const NavMenu = (props)=> {
                 <Link href={{pathname: '/publikationen'}} activeClassName={styles.activelink}>
                     Publikationen
                 </Link>
-              </div> 
+              </div>
+              <div>
+                <Link href={{pathname: '/veranstaltungen'}} activeClassName={styles.activelink}>
+                    Veranstaltungen
+                </Link>
+              </div>
           </div>
         }
       </div>

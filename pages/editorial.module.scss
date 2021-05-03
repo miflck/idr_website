@@ -1,6 +1,5 @@
-.einzelwrapper {
+.editorialwrapper {
     padding: var(--padding); 
-    margin-bottom: var(--padding);
     border-bottom: 1px solid var(--maincolor);
     color: var(--maincolor);
     .titel {
@@ -8,26 +7,11 @@
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
     }
-    .portrait {
-        margin-top: calc(var(--padding)/2);
-        margin-bottom: calc(var(--padding)/2);
-        width: 100%;
-        -webkit-filter: grayscale(1);
-        filter: grayscale(1);
-    }
-    .links {
+    p {
+        margin: 0;
         margin-bottom: var(--padding);
     }
-    div {
-        margin: 0;
-        p {
-            margin: 0;
-            margin-bottom: var(--padding);
-        }
-    }
     .listenwrapper{
-        font-size: var(--fontsizehalf);
-        line-height: var(--lineheighthalf);
         div {
             text-transform: uppercase;
             margin-top: var(--padding);
@@ -47,4 +31,5 @@
             background-color: var(--maincolor);
         }
     }
+
 }

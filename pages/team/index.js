@@ -5,12 +5,20 @@ import Layout from '../../components/Layout/layout'
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
-    console.log("props",props);
+    console.log("menschen",props);
 
-    return(
+       return(
       <Layout>
-      
+          <div className={styles.teamcontainer}>
             {allMenschens.map((mensch, index) => {
+
+
+              // sort by anleitung react 
+              // https://ramonak.io/posts/react-how-to-sort-array-of-objects-with-dropdown-and-hooks/
+
+
+
+
               // console.log("projekte", mensch.projekte)
               // einbauen sortieren nach mensch.funktion.titel
               // let funktionsid = {mensch.funktion.titel}
@@ -34,82 +42,32 @@ const Team =(props)=>{
               // let numericStringArray = [`${mensch.funktion.titel}`];
               // numericStringArray.sort();
               // console.log('sortierennummer',numericStringArray)
+              
+              // if(mensch.funktion.titel="ForscherInnen") {
 
-              let PDFElement;
-                if(mensch.publikationsliste != null && mensch.publikationsliste.url != null){
-                    PDFElement= <div className={styles.pdf}>
-                                    <a href={mensch.publikationsliste.url}>Publikationsliste</a>
-                                    </div> 
-                }else{
-                    PDFElement= <> </>
-                }
+                    let href=`/team`
+                    if(mensch.slug!=""){
+                        href+=`/${mensch.slug}`
+                    }
 
-
-                let EmailElement;
-                if(mensch.email != ""){
-                  EmailElement= <div><a className={styles.email} href={`mailto:,${mensch.email}`}> {mensch.email} </a></div>
-                }else{
-                  EmailElement= <> </>
-                }
-
-
-                let WebsiteElement;
-                if(mensch.website != ""){
-                  WebsiteElement= <div><a className={styles.website} href={mensch.website} target="_blank">{mensch.website} </a></div>
-                }else{
-                  WebsiteElement= <> </>
-                }
-
-              return(
-                <>
-                <div key={index} className={styles.menschwrapper}>
-                  {/* Portrait Bild */}
-                  <img 
-                    className={styles.portrait}
-                    src={mensch.portrait.url} 
-                    alt={mensch.portrait.alt} 
-                  />
-
-                  <p className={styles.name}>
-                    {mensch.name}
-                  </p>
-
-                  <div className={styles.links}>
-                      {EmailElement}
-                      {WebsiteElement}
-                  </div>
-                  <div className={styles.lebenslauf}>
-                    <StructuredText data={mensch.lebenslauf.value} />
-                  </div>
-                  <div className={styles.projektliste}>
-                      {/* Projektliste <br></br> */}
-                      {mensch.projekte.map((projekt, index) => {
-                          console.log("liste", projekt)
-                        return (
-                          <div key={index} className={styles.projekt}> 
-                            <a href={projekt.slug}>
-                              {projekt.titel}
+                    return(
+                      <div key={index} className={styles.menschwrapper}>
+                          {/* Portrait Bild */}
+                          <img 
+                            className={styles.portrait}
+                            src={mensch.portrait.url} 
+                            alt={mensch.portrait.alt} 
+                          />
+                          <div className={styles.name}>
+                            <a href={href}>
+                              {mensch.name}
                             </a>
                           </div>
-                        )
-                      })}
-                  </div>
-                  {/* Publikaitonsliste, falls vorhanden */}
-                  {PDFElement}
-
-                </div>
-
-
-
-
-                </>
-              )
+                      </div>
+                    )
+            // }
             })}
-            
-            
-            
-            
-           
+          </div>
       </Layout>
     )
 }

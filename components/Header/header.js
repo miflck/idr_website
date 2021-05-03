@@ -5,12 +5,12 @@ const Header=(props)=>{
     // const {children}=props || {}
 
     return(
-        <>
+        <div className={styles.headercontainer}>
         <title>IDR</title>
         <link rel="icon" href="../favicon.ico"/>
 
         <h2>HKB — Institute of Design Research</h2>
-        </>
+        </div>
     )
 }
 

@@ -1,11 +1,16 @@
 .footerwrapper {
-    position: relative;
+    position: fixed;
+    right: 0;
     bottom: 0;
-    padding: var(--padding);
+    left: 0;
+    padding: calc(var(--padding)/2);
+    background-color: var(--secondcolor);
+    border-top: 1px solid var(--maincolor);
 
     font-size: var(--fontsizesmall);
     line-height: var(--lineheighsmall);
     text-transform: uppercase;
+    color: var(--maincolor);
     a {
         border: 1px solid var(--maincolor);
         border-radius: 20px;

@@ -1,53 +1,35 @@
-.menschwrapper {
-    color: var(--maincolor);
-    width: 100vw;
-    padding: 0 var(--padding);
-    border-bottom: 1px solid var(--maincolor);
-    background-color: var(--secondcolor);
+.teamcontainer {
+    // schönere lösung gibt es sicher, für scrollbar bis footer.... 
+    margin-bottom: calc(var(--padding)*2);
+    .menschwrapper {
+        color: var(--maincolor);
+        padding: var(--padding);
+        border-bottom: 1px solid var(--maincolor);
+        background-color: var(--secondcolor);
 
-    font-size: var(--fontsizehalf);
-    line-height: var(--lineheighthalf);
-    a {
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        padding: 2px 4px 0px;
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
+        font-size: var(--fontsizehalf);
+        line-height: var(--lineheighthalf);
+        a {
+            border: 1px solid var(--maincolor);
+            border-radius: 20px;
+            padding: 2px 4px 0px;
+            &:hover {
+                color: var(--secondcolor);
+                background-color: var(--maincolor);
+            }
         }
-    }
-    p {
-        margin: 0;
-        width: 95vw;
-    }
-    .portrait {
-        width: 300px;
-        margin-top: var(--padding);
-        -webkit-filter: grayscale(1);
-        filter: grayscale(1);
-    }
-    .name {
-        margin: 0;
-        text-transform: uppercase;
-        font-size: var(--fontsizenormal);
-        line-height: var(--lineheightnormal);
-    }
-    .links {
-        padding-bottom: var(--padding);
-        // .email {
-        // }
-        // .website {
-        // }
-    }
-    .lebenslauf {
-        padding-bottom: var(--padding);
-    }
-    .projektliste {
-        padding-bottom: var(--padding);
-        // .projekt{
-        // }
-    }
-    .pdf {
-        padding-bottom: var(--padding);
+        .portrait {
+            margin-top: calc(var(--padding)/2);
+            margin-bottom: calc(var(--padding)/2);
+            width: 100%;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+        } 
+        .name {
+            // margin-bottom: var(--padding);
+            text-transform: uppercase;
+            font-size: var(--fontsizenormal);
+            line-height: var(--lineheightnormal);
+        }
     }
 }
