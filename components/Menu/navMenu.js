@@ -1,6 +1,6 @@
 import styles from './menu.module.scss'
 import React, { useState } from 'react';
-// import { Trans } from 'react-i18next'
+// import { Trans } from 'i18next';
 
 import Link from 'next/link'
 
