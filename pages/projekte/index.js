@@ -6,9 +6,12 @@ import Layout from '../../components/Layout/layout'
 import ListWrapper from '../../components/List/listWrapper'
 import ListItemProjekt from '../../components/List/listItemProjekt'
 
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Projekte(props, index) {
   const {projekte:{allProjekts}}=props;
+  const { t } = useTranslation('common')
 
   return (
       <Layout>
@@ -19,6 +22,8 @@ export default function Projekte(props, index) {
                   )})
                       }
             </ListWrapper>
+            {t("Test")}
+
       </Layout>
   )
 }
@@ -32,9 +37,14 @@ export async function getStaticProps({locale}) {
   return {
     props: {
       projekte,   
+      ...await serverSideTranslations(locale, ['common']),
     }, // will be passed to the page component as props
   }
 }
+
+
+
+
 
 // export async function getStaticPaths() {
 // }

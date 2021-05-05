@@ -1,17 +1,19 @@
 import styles from './menu.module.scss'
 import React, { useState } from 'react';
-// import { Trans } from 'i18next';
 
 import Link from 'next/link'
-
+import { useTranslation } from 'next-i18next'
 
 
 const NavMenu = (props)=> {
+  console.log("Menu props",props)
 
   const [open,setMenuOpen] = useState(false)
   const handleOnClick=(open)=>{
     setMenuOpen(open => !open)
   }
+
+  const { t } = useTranslation('common')
 
     return (
     <div
@@ -28,9 +30,11 @@ const NavMenu = (props)=> {
         {
           <div className={styles.menucontent}>
               <div>
+                
                 <Link href={{pathname: '/projekte'}} activeClassName={styles.activelink}>
                   {/* <Trans> */}
-                    Projekte
+                  Projekte
+          
                   {/* </Trans> */}
                 </Link>
               </div>

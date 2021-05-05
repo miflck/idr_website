@@ -1,4 +1,5 @@
 import styles from './list.module.scss'
+import Link from 'next/link'
 
 
 const ListItemProjekt =(projekt, index)=>{
@@ -19,12 +20,15 @@ const ListItemProjekt =(projekt, index)=>{
                 {/* Projekt Enddatum */}
                 <div className={styles.datum}>{enddatum}</div>
                             
-                {/* Projekttitel */}
-                <a href={href}>
+          
+
+                <Link href={href} activeClassName={styles.activelink}>
+                  <a>
                     <div className={styles.titel}>
                         {projekt.titel}
                     </div>
-                </a>
+                </a>          
+                </Link>
 
                 {/* Porjekt Forschungsfelder tags */}
                 <div className={styles.forschungsfeldwrapper}>

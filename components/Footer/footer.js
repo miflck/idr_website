@@ -1,7 +1,9 @@
 import styles from './footer.module.scss'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-// import i18n from "../../node_modules/i18next";
+ import i18n from "../../node_modules/i18next";
+
+
 import { HuePicker, ChromePicker } from 'react-color';
 import React, { useState, useEffect } from 'react';
 

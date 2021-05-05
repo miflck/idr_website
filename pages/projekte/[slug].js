@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout/layout"
-import { request, PROJEKTEINZEL } from "../../lib/datocms";
+import { request, PROJEKTEINZEL,ALLPROJEKTE } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
 
@@ -20,7 +20,6 @@ export default function Projekteinzelansicht (props) {
     // console.log("projektinhalte", props)
 
     if(props.data) {
-
       let MitarbeitendenElement;
                 if(mitarbeit != null){
                   MitarbeitendenElement= <>
@@ -50,6 +49,8 @@ export default function Projekteinzelansicht (props) {
             projektinhalte.map((block, index) => {
               // console.log(block)
                 return (
+                // index ist eigentlich nur zur not, es kann dann immer noch mehrer mit demselben key geben. besser wäre wohl die ID des elementes aus dato
+
               <div key={index}>
                 {
                 block._modelApiKey === 'text' &&
@@ -69,7 +70,11 @@ export default function Projekteinzelansicht (props) {
         </div>
             
         <div className={styles.listenwrapper}> 
-          {/* Leitung  */}
+          {/* 
+          Leitung  
+          - ev ein Component daraus machen? weil leitung, verantwortung,mitarbeit, Finanzierung etc immer dasselbe element? 
+          - die a mit Link ersetzen…
+          */}
           <div>Leitung</div>
               {leitung.map((leitung, index) => {
                 // console.log("leitung", leitung)
@@ -116,6 +121,8 @@ else{
 
 
 export async function getStaticProps({params, locale}) {
+
+  console.log("+++++++++++++++++++++++",locale)
     const data = await request({
         query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });
@@ -123,14 +130,37 @@ export async function getStaticProps({params, locale}) {
     return {
       props: {
         data,   
-        params
+        params,
+        locale
       }, // will be passed to the page component as props
     }
   }
 
+  
 // die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
-export async function getStaticPaths() {
-    const paths = []
+//-> nicht ganz, die brachen wir, falls wir auf dem server prerendern wollen. also statische seiten generieren, damit die maschine weiss, welche seiten zu generieren sind glaubs
+export async function getStaticPaths({locales}) {
+  const paths = [] 
+
+  // Irgendwie so würde man wohl die pfade finden
+  /*
+  const data = await request({
+    query: ALLPROJEKTE
+  });
+  // loop durch die sprachen
+  locales.forEach((locale, i) => {
+    data.allProjekts.forEach((projekt, j) => {
+      console.log(locale,projekt)
+      paths.push({ 
+        params: { 
+          slug:projekt.slug
+        }, 
+        locale})
+
+      }
+    )
+  }
+  )*/
     return {
         paths, fallback: true 
     }
