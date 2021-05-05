@@ -11,17 +11,25 @@ const Footer=(props)=>{
     return(
         < div className={styles.footerwrapper}>
             <a href="https://hkb-idr.ch/#publikationen">Footer Link</a>
-            {/* Farbe wechseln als Extra, noch einbauen  */}
-            {/* <div onClick={} className={styles.buttonMaincolor}/>
-            <div className={styles.buttonSecondcolor}/> */}
-
-
+            
             <Link href={router.asPath} locale="de">
       		    <a>de</a>
     	    </Link>
             <Link href={router.asPath} locale="en">
       		    <a>en</a>
     	    </Link>
+
+            {/* Farbe wechseln als Extra, noch einbauen  */}
+            <a 
+            // onClick={} 
+            className={styles.buttons} id={styles.maincolor}>
+                2
+            </a>
+            <a 
+            // onClick={} 
+            className={styles.buttons} id={styles.secondcolor}>
+                2
+            </a>
 
         </div>
     )

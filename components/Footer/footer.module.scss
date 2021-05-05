@@ -15,28 +15,35 @@
         border: 1px solid var(--maincolor);
         border-radius: 20px;
         padding: 2px 4px 0px;
+        margin-right: var(--padding);
         &:hover {
             color: var(--secondcolor);
             background-color: var(--maincolor);
         }
     }
-    div {
-        width: var(--fontsizenormal);
-        height: var(--fontsizenormal);
-        margin-left: var(--padding);
-        padding: 0;
-        float: right;
-        border: 1px solid var(--maincolor);
-        border-radius: 100%;
+    .buttons {
+        // padding: 0;
+        // float: right;
+        // border: 1px solid var(--maincolor);
+        // border-radius: 40%;
+        // font-size: var(--fontsizesmall);
+        // line-height: var(--lineheighsmall);
         // &:hover {
         //     border: 1px solid var(--secondcolor);
         // }
+        cursor: pointer;
+       
     }
-        .buttonMaincolor {
+        #maincolor {
             background-color: var(--maincolor);
+            &:hover {
+                color: var(--maincolor);
+                background-color: var(--maincolor);
+            }
         }
-        .buttonSecondcolor {
+        #secondcolor {
             background-color: var(--secondcolor);
+            color: var(--secondcolor);
         }
     
 }

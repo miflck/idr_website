@@ -1,3 +1,4 @@
+import NavMenu from '../Menu/navMenu'
 import styles from './header.module.scss'
 
 const Header=(props)=>{
@@ -10,6 +11,7 @@ const Header=(props)=>{
         <link rel="icon" href="../favicon.ico"/>
 
         <h2>HKB — Institute of Design Research</h2>
+        <NavMenu/>
         </div>
     )
 }

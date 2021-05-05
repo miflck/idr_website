@@ -12,7 +12,7 @@ const Layout=(props)=>{
     return(
         <div className={styles.layoutContainer}>
             <Header/>
-            <NavMenu/>
+            {/* <NavMenu/> ist im Header integriert*/}
             {children}
             <Footer/>
         </div>
