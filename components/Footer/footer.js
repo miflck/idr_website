@@ -2,12 +2,20 @@ import styles from './footer.module.scss'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 // import i18n from "../../node_modules/i18next";
-import { SketchPicker } from 'react-color';
-import React, { useState } from 'react';
+import { HuePicker, ChromePicker } from 'react-color';
+import React, { useState, useEffect } from 'react';
 
 const Footer=(props)=>{
-    // console.log("Footer",props)
-    // const {children}=props || {}
+
+    const [openmain,setColorPickerOpenMain] = useState(false)
+    const handleOnClickMain=(openmain)=>{
+        setColorPickerOpenMain(openmain => !openmain)
+    }
+    const [opensecond,setColorPickerOpenSecond] = useState(false)
+    const handleOnClickSecond=(opensecond)=>{
+        setColorPickerOpenSecond(opensecond => !opensecond)
+    }
+  
     const router = useRouter()
     // console.log("router",router)
     // useRouter zum rausfinden, wo man ist
@@ -16,10 +24,18 @@ const Footer=(props)=>{
     //   }
 
     const [colorHexCode, setColorHexCode] = useState('#000000');
-    const setNewMainColor=()=>{
-        // setProperty['--maincolor'] = '{colorHexCode}'
-        // document.querySelector(":root").style.setProperty('--maincolor', `${colorHexCode}`);
-      }
+    const [colorHexCodeSecond, setColorHexCodeSecond] = useState('#ffffff');
+
+    const [newColor, setNewColor ] = useState(false);
+    useEffect(() => {
+        const root = document.documentElement;
+        root?.style.setProperty('--maincolor', `${colorHexCode}`);
+    })
+    const [newColorSecond, setNewColorSecond ] = useState(false);
+    useEffect(() => {
+        const root = document.documentElement;
+        root?.style.setProperty('--secondcolor', `${colorHexCodeSecond}`)
+    })
 
     return(
         < div className={styles.footerwrapper}>
@@ -31,32 +47,34 @@ const Footer=(props)=>{
             <Link href={router.asPath} locale="en">
       		    <a>en</a>
     	    </Link>
-{/* 
-        <button onClick={() => changeLanguage('de')}>de</button>
-        <button onClick={() => changeLanguage('en')}>en</button> */}
+            
+            {/* <button onClick={() => changeLanguage('de')}>de</button>
+            <button onClick={() => changeLanguage('en')}>en</button> */}
 
-            {/* Farbe wechseln als Extra, noch einbauen  */}
-            <a 
-            // onClick={} 
-            className={styles.buttons} id={styles.maincolor}>
-                2
-            </a>
-            <a 
-            // onClick={} 
-            className={styles.buttons} id={styles.secondcolor}>
-                2
-            </a>
-
-            <SketchPicker
+        {/* Farbe wechseln als Extra einbauen  */}
+            <div
+            className={[styles.buttonsmaincolor, (openmain ? styles.open : [])].join(' ')} 
+            >
+                <a onClick={handleOnClickMain} >xx</a>
+                <ChromePicker className={styles.farbauswahlmaincolor}
                 color={colorHexCode}
-                onChange={e => setColorHexCode(e.hex)
-                // ,setNewMainColor({colorHexCode})
-                } />
-        
-            {colorHexCode}
+                onChange={e => setColorHexCode(e.hex) } 
+                onClick={() => setNewColor(newColor)}
+                />
+            </div>
 
+            <div
+            className={[styles.buttonssecondcolor, (opensecond ? styles.open : [])].join(' ')}
+            >
+                <a onClick={handleOnClickSecond}>xx</a>
+                <ChromePicker className={styles.farbauswahlsecondcolor}
+                color={colorHexCodeSecond}
+                onChange={e => setColorHexCodeSecond(e.hex) } 
+                onClick={() => setNewColorSecond(newColorSecond)}
+            />
+            </div>
 
-
+            
             
 
         </div>

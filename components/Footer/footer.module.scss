@@ -21,29 +21,48 @@
             background-color: var(--maincolor);
         }
     }
-    .buttons {
-        // padding: 0;
-        // float: right;
-        // border: 1px solid var(--maincolor);
-        // border-radius: 40%;
-        // font-size: var(--fontsizesmall);
-        // line-height: var(--lineheighsmall);
-        // &:hover {
-        //     border: 1px solid var(--secondcolor);
-        // }
-        cursor: pointer;
-       
-    }
-        #maincolor {
-            background-color: var(--maincolor);
-            &:hover {
-                color: var(--maincolor);
+
+    .buttonsmaincolor {
+            cursor: pointer;
+            // position: absolute;
+            float: right;
+            position: relative;
+            a {
                 background-color: var(--maincolor);
+                color: var(--maincolor);
+            }
+            .farbauswahlmaincolor {
+                display: none;
+            }
+            &.open {
+                .farbauswahlmaincolor {
+                    display: block;
+                }
             }
         }
-        #secondcolor {
-            background-color: var(--secondcolor);
-            color: var(--secondcolor);
-        }
+
+        .buttonssecondcolor {
+            cursor: pointer;
+        
+            float: right;
+            position: relative;
+                a {
+                    background-color: var(--secondcolor);
+                    color: var(--secondcolor);
+                }
+                
+                .farbauswahlsecondcolor {
+                    display: none;
+                }
+                &.open {
+                    .farbauswahlsecondcolor {
+                        display: block;
+                    }
+                }
+            }
+        
+
+        
+        
     
 }
