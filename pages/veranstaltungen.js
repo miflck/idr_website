@@ -38,9 +38,9 @@ export default Veranstaltungen;
 
 
 // de mit default alng ersetzten falls die nicht de ist
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
     const veranstaltungen = await request({
-        query: VERANSTALTUNGEN,
+        query: VERANSTALTUNGEN,  variables: {locale:locale},
       });
 
     return {

@@ -1,6 +1,8 @@
 .menuwrapper {
-    position: sticky;
-    top: 0;
+    // position: absolute;
+    // top: 55px;
+    position: fixed;
+    top:0;
     background-color: var(--secondcolor);
     z-index: 51;
     .menubutton {

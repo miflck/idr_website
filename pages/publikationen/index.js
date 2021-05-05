@@ -25,9 +25,9 @@ export default function Publikationen(props, index) {
 }
 
 // de mit default alng ersetzten falls die nicht de ist
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
   const publikationen = await request({
-      query: PUBLIKATIONEN,
+      query: PUBLIKATIONEN, variables: {locale:locale},
     });
 
   return {

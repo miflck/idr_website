@@ -77,9 +77,9 @@ const Team =(props)=>{
 
 
 // de mit default alng ersetzten falls die nicht de ist
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
     const menschen = await request({
-        query: MENSCHEN,
+        query: MENSCHEN,  variables: {locale:locale},
       });
 
     return {

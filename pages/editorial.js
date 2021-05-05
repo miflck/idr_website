@@ -72,9 +72,9 @@ const Editorial =(props)=>{
 
 
 // de mit default alng ersetzten falls die nicht de ist
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
     const editorialtexte = await request({
-        query: EDITORIALTEXTE,
+        query: EDITORIALTEXTE,  variables: {locale:locale},
       });
 
     return {

@@ -115,9 +115,9 @@ else{
 }
 
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({params, locale}) {
     const data = await request({
-        query: PROJEKTEINZEL,variables: { slug:params.slug},
+        query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });
 
     return {

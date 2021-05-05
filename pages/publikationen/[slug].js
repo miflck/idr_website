@@ -73,9 +73,10 @@ else{
 }
 
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({params, locale}) {
     const data = await request({
-        query: PUBLIKATIONEINZEL,variables: { slug:params.slug},
+      // überrpüfen ob es so stimmt mit der locale variable
+        query: PUBLIKATIONEINZEL,variables: { slug:params.slug, locale:locale},
       });
 
     return {

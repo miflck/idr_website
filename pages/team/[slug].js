@@ -102,9 +102,9 @@ export default function Menscheinzelansicht (props) {
   }
 
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({params, locale}) {
     const data = await request({
-        query: MENSCHEINZEL,variables: { slug:params.slug},
+        query: MENSCHEINZEL,variables: { slug:params.slug, locale:locale},
       });
 
     return {

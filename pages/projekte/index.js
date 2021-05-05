@@ -24,9 +24,9 @@ export default function Projekte(props, index) {
 }
 
 // de mit default alng ersetzten falls die nicht de ist
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
   const projekte = await request({
-      query: PROJEKTE,
+      query: PROJEKTE, variables: {locale:locale},
     });
 
   return {
