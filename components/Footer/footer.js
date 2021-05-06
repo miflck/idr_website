@@ -8,6 +8,8 @@ import React, { useState, useEffect } from 'react';
 
 const Footer=(props)=>{
 
+    console.log("props from footer",props)
+
     const [openmain,setColorPickerOpenMain] = useState(false)
     const handleOnClickMain=(openmain)=>{
         setColorPickerOpenMain(openmain => !openmain)
@@ -58,8 +60,12 @@ const Footer=(props)=>{
                 <a onClick={handleOnClickMain} >xx</a>
                 <ChromePicker className={styles.farbauswahlmaincolor}
                 color={colorHexCode}
-                onChange={e => setColorHexCode(e.hex) } 
+                //onChange={e => setColorHexCode(e.hex) } 
+                onChange={e => props.setColor(e.hex) } 
+
+
                 onClick={() => setNewColor(newColor)}
+                
                 />
             </div>
 
