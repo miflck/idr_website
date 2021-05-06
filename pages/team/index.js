@@ -45,7 +45,7 @@ for (const [key, value] of Object.entries(groupedPeople)) {
           <div className={styles.teamcontainer}>
 
 
-            {allMenschens.map((mensch, index) => {
+            {allMenschens.map((mensch) => {
 
 
               // sort by anleitung react 
@@ -86,7 +86,7 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                     }
 
                     return(
-                      <div key={index} className={styles.menschwrapper}>
+                      <div key={mensch.id} className={styles.menschwrapper}>
                           {/* Portrait Bild */}
                           <img 
                             className={styles.portrait}

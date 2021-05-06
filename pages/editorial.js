@@ -13,22 +13,22 @@ const Editorial =(props)=>{
   const { t } = useTranslation('common')
     return(
       <Layout>
-            {allEditorials.map((editorial, index) => {
-            //   console.log("editorial", editorial)
+            {allEditorials.map((editorial) => {
+              // console.log("editorial", editorial)
               return(
-                <div className={styles.editorialwrapper} key={index}>
+                <div className={styles.editorialwrapper} key={editorial.id}>
                     {/* Forschungsfeld */} 
                         {editorial.forschungsfeld.map((forschungsfeld, index) => {
                             return (
-                                <div className={styles.titel} key={index}>{forschungsfeld.titel} </div>
+                                <div className={styles.titel} key={forschungsfeld.id}>{forschungsfeld.titel} </div>
                             )
                         })}
                  
                     {/* Beitrag Text */}
                     <div>
-                        {editorial.beitraege.map((beitrag, index) => {
+                        {editorial.beitraege.map((beitrag) => {
                             return (
-                                <StructuredText data={beitrag.text.value} key={index}/>
+                                <StructuredText data={beitrag.text.value} key={beitrag.id}/>
                             )
                         })}
                     </div>
@@ -36,15 +36,15 @@ const Editorial =(props)=>{
                     <div className={styles.listenwrapper}> 
                         {/* Leitung  */}
                         <div>Koordinator*in</div>
-                            {editorial.menschen.map((koordinatorin, index) => {
+                            {editorial.menschen.map((koordinatorin) => {
                                 // console.log("leitung", leitung)
                                 let href=`/team`
                                 if(koordinatorin.slug!=""){
                                     href+=`/${koordinatorin.slug}`
                                 }
                                 return (
-                                <Link href={href}>
-                                  <a key={index}>{koordinatorin.name}</a>
+                                <Link href={href} key={koordinatorin.id}>
+                                  <a>{koordinatorin.name}</a>
                                 </Link>
                                 )
                                 })}
@@ -57,10 +57,8 @@ const Editorial =(props)=>{
                                     href+=`/${projekt.slug}`
                                 }
                                 return (
-                                  <Link href={href}>
-                                        <a key={index}>
-                                        {projekt.titel}<br></br>
-                                        </a>
+                                  <Link href={href} key={projekt.id}>
+                                        <a>{projekt.titel}<br></br></a>
                                   </Link>
                                 )
                             })}

@@ -2,12 +2,12 @@ import styles from './list.module.scss'
 import Link from 'next/link'
 
 
-const ListItemProjekt =(projekt, index)=>{
+const ListItemProjekt =(projekt)=>{
     //  console.log("ListItem prpüs", projekt)
      const enddatum = new Date(projekt.enddatum).toLocaleString([], {
                 month: 'long', 
                 year: 'numeric'
-                });
+                }); 
 
                 
         let href=`/projekte`
@@ -15,7 +15,7 @@ const ListItemProjekt =(projekt, index)=>{
             href+=`/${projekt.slug}`
         }
     return(
-        <div className={styles.projektwrapper} key={index}>
+        <div className={styles.projektwrapper} key={projekt.id}>
             <div className={styles.projektcontent}>
                 {/* Projekt Enddatum */}
                 <div className={styles.datum}>{enddatum}</div>
@@ -32,9 +32,9 @@ const ListItemProjekt =(projekt, index)=>{
 
                 {/* Porjekt Forschungsfelder tags */}
                 <div className={styles.forschungsfeldwrapper}>
-                    {projekt.forschungsfeld.map((forschungsfeld, index) => {
+                    {projekt.forschungsfeld.map((forschungsfeld) => {
                         return (
-                            <span className={styles.forschungsfeld} key={index}> {forschungsfeld.titel} </span>
+                            <span className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </span>
                         )
                     })}
                 </div>

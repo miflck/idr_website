@@ -7,16 +7,16 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 
-export default function Publikationen(props, index) {
+export default function Publikationen(props) {
   const {publikationen:{allPublikationens}}=props;
   const { t } = useTranslation('common')
 
   return (
       <Layout>
           <ListWrapper>
-                {allPublikationens.map((publikation, index) => {
+                {allPublikationens.map((publikation) => {
                   return(
-                    <ListItemPublikation {...publikation} key={index}/>
+                    <ListItemPublikation {...publikation} key={publikation.id}/>
                   )})
                       }
             </ListWrapper>
@@ -24,7 +24,7 @@ export default function Publikationen(props, index) {
   )
 }
 
-// de mit default alng ersetzten falls die nicht de ist
+
 export async function getStaticProps({locale}) {
   const publikationen = await request({
       query: PUBLIKATIONEN, variables: {locale:locale},

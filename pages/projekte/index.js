@@ -5,16 +5,16 @@ import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export default function Projekte(props, index) {
+export default function Projekte(props) {
   const {projekte:{allProjekts}}=props;
   const { t } = useTranslation('common')
 
   return (
       <Layout>
           <ListWrapper>
-                {allProjekts.map((projekt, index) => {
+                {allProjekts.map((projekt) => {
                   return(
-                    <ListItemProjekt {...projekt} key={index}/>
+                    <ListItemProjekt {...projekt} key={projekt.id}/>
                   )})
                       }
             </ListWrapper>
