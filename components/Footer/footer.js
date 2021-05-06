@@ -25,6 +25,7 @@ const Footer=(props)=>{
     //     i18n.changeLanguage(lng);
     //   }
 
+    /*
     const [colorHexCode, setColorHexCode] = useState('#000000');
     const [colorHexCodeSecond, setColorHexCodeSecond] = useState('#ffffff');
 
@@ -38,6 +39,7 @@ const Footer=(props)=>{
         const root = document.documentElement;
         root?.style.setProperty('--secondcolor', `${colorHexCodeSecond}`)
     })
+    */
 
     return(
         < div className={styles.footerwrapper}>
@@ -59,12 +61,12 @@ const Footer=(props)=>{
             >
                 <a onClick={handleOnClickMain} >xx</a>
                 <ChromePicker className={styles.farbauswahlmaincolor}
-                color={colorHexCode}
+               // color={colorHexCode}
                 //onChange={e => setColorHexCode(e.hex) } 
                 onChange={e => props.setColor(e.hex) } 
 
 
-                onClick={() => setNewColor(newColor)}
+             //   onClick={() => setNewColor(newColor)}
                 
                 />
             </div>
@@ -74,9 +76,9 @@ const Footer=(props)=>{
             >
                 <a onClick={handleOnClickSecond}>xx</a>
                 <ChromePicker className={styles.farbauswahlsecondcolor}
-                color={colorHexCodeSecond}
-                onChange={e => setColorHexCodeSecond(e.hex) } 
-                onClick={() => setNewColorSecond(newColorSecond)}
+                //color={colorHexCodeSecond}
+             //   onChange={e => setColorHexCodeSecond(e.hex) } 
+             //   onClick={() => setNewColorSecond(newColorSecond)}
                 />
             </div>
 
