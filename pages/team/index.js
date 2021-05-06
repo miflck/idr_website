@@ -12,9 +12,40 @@ const Team =(props)=>{
     // console.log("menschen",props);
     const { t } = useTranslation('common')
 
+
+console.log("allMenschens",allMenschens)
+
+
+function groupBy(objectArray, property,key) {
+  return objectArray.reduce(function (acc, obj) {
+    var innerObject = obj[property];
+   
+    if(!acc[innerObject[key]]) {
+      acc[innerObject[key]] = [];
+    }
+    acc[innerObject[key]].push(obj);
+    return acc;
+  }, {});
+}
+
+var groupedPeople = groupBy(allMenschens, 'funktion','titel');
+
+
+
+//groupedPeople.forEach(item => {})
+for (const [key, value] of Object.entries(groupedPeople)) {
+  console.log(key, value);
+}
+
+console.log(groupedPeople)
+
+
        return(
       <Layout>
           <div className={styles.teamcontainer}>
+
+
+
             {allMenschens.map((mensch, index) => {
 
 
