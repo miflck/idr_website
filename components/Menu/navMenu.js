@@ -28,32 +28,31 @@ const NavMenu = (props)=> {
         </div>
         {
           <div className={styles.menucontent}>
-              <div>
-                
+              
                 <Link href={{pathname: '/projekte'}} activeClassName={styles.activelink}>
-                  {t('Projektseite')}
+                <div>{t('Projektseite')} </div>
                 </Link>
-              </div>
-              <div>
+             
+              
                 <Link href={{pathname: '/editorial'}} activeClassName={styles.activelink}>
-                  {t('Editorialseite')}
+                <div>{t('Editorialseite')}</div>
                 </Link>
-              </div>
-              <div>
+              
+           
                 <Link href={{pathname: '/team'}} activeClassName={styles.activelink}>
-                {t('Teamseite')}
+                <div>{t('Teamseite')}</div>
                 </Link>
-              </div> 
-              <div>
+   
+  
                 <Link href={{pathname: '/publikationen'}} activeClassName={styles.activelink}>
-                {t('Publikaionenseite')}
+                <div>{t('Publikaionenseite')}</div>
                 </Link>
-              </div>
-              <div>
+      
+             
                 <Link href={{pathname: '/veranstaltungen'}} activeClassName={styles.activelink}>
-                {t('Veranstaltungsseite')}
+                <div>{t('Veranstaltungsseite')}</div>
                 </Link>
-              </div>
+           
           </div>
         }
       </div>

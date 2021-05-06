@@ -1,10 +1,11 @@
 .menuwrapper {
     position: relative;
     top:0;
-    background-color: var(--secondcolor);
+    background-color: 
+    // var(--secondcolor)
+    blue;
     z-index: 51;
-    // width: 100%;
-    // overflow: hidden;
+
     .menubutton {
         position: fixed;
         right: var(--padding);
@@ -12,9 +13,6 @@
         font-size: calc(var(--fontsizenormal)*1.5);
         color: var(--maincolor);
         cursor: pointer;
-        &:hover{
-            // font-style:oblique -30deg;
-        }
         span:last-child{
             display: none;
         }
@@ -42,11 +40,11 @@
             display: block;
             border-bottom: 1px solid var(--maincolor);
             div {
+                cursor: pointer;
                 color: var(--secondcolor);
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
-                // width: 100vw;
                 padding: var(--padding) var(--padding) 5px var(--padding);
                 border-bottom: 1px solid var(--secondcolor);
                 &:hover {
@@ -54,9 +52,6 @@
                     background-color: var(--secondcolor);
                     border-bottom: 1px solid var(--maincolor);
                 }
-                // a:hover {
-                //     font-style:oblique 30deg;
-                // }
             }
             div:last-child {
                 border-bottom: 0px solid var(--maincolor);

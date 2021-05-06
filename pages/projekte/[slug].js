@@ -67,7 +67,7 @@ export default function Projekteinzelansicht (props) {
                 }
                 {
                   block._modelApiKey === 'pdf' &&
-                  <Link href={block.pdf.url}><a>Projekt PDF</a></Link>
+                  <Link href={block.pdf.url}><a>{block.titel}</a></Link>
                 }
               </div>
               )})

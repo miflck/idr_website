@@ -28,6 +28,8 @@ function filterBy(data, filterterm) {
 
 
 var filterd = filterBy(allProjekts, "Social Communication");
+
+
 console.log("filtered",filterd)
 
 
@@ -38,17 +40,6 @@ console.log("filtered",filterd)
                 {allProjekts.map((projekt) => {
                   return(
                     <ListItemProjekt {...projekt} key={projekt.id}/>
-                  )})
-                      }
-            </ListWrapper>
-<br />
-<br />
-<br />
-
-            <ListWrapper>
-                {filterd.map((publikation) => {
-                  return(
-                    <ListItemProjekt {...publikation} key={publikation.id}/>
                   )})
                       }
             </ListWrapper>

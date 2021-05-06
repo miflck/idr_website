@@ -11,6 +11,8 @@ export default function Publikationen(props) {
   const {publikationen:{allPublikationens}}=props;
   const { t } = useTranslation('common')
 
+
+
   return (
       <Layout>
           <ListWrapper>
@@ -20,6 +22,8 @@ export default function Publikationen(props) {
                   )})
                       }
             </ListWrapper>
+
+
       </Layout>
   )
 }

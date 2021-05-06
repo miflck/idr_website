@@ -14,7 +14,6 @@ const Editorial =(props)=>{
     return(
       <Layout>
             {allEditorials.map((editorial) => {
-              // console.log("editorial", editorial)
               return(
                 <div className={styles.editorialwrapper} key={editorial.id}>
                     {/* Forschungsfeld */} 
@@ -37,7 +36,6 @@ const Editorial =(props)=>{
                         {/* Leitung  */}
                         <div>Koordinator*in</div>
                             {editorial.menschen.map((koordinatorin) => {
-                                // console.log("leitung", leitung)
                                 let href=`/team`
                                 if(koordinatorin.slug!=""){
                                     href+=`/${koordinatorin.slug}`
