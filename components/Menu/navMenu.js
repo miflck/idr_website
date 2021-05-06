@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 
 const NavMenu = (props)=> {
-  console.log("Menu props",props)
+
+  const { t } = useTranslation('common')
 
   const [open,setMenuOpen] = useState(false)
   const handleOnClick=(open)=>{
     setMenuOpen(open => !open)
   }
-
-  const { t } = useTranslation('common')
 
     return (
     <div
@@ -23,7 +23,6 @@ const NavMenu = (props)=> {
           className={styles.menubutton}
           onClick={handleOnClick}
         >
-          {/* das in den header unter den andern setzen */}
           <span>+</span>
           <span>–</span>
         </div>
@@ -32,38 +31,27 @@ const NavMenu = (props)=> {
               <div>
                 
                 <Link href={{pathname: '/projekte'}} activeClassName={styles.activelink}>
-                  {/* <Trans> */}
-                  Projekte
-          
-                  {/* </Trans> */}
+                  {t('Projektseite')}
                 </Link>
               </div>
               <div>
                 <Link href={{pathname: '/editorial'}} activeClassName={styles.activelink}>
-                  {/* <Trans> */}
-                    Editorial
-                  {/* </Trans> */}
+                  {t('Editorialseite')}
                 </Link>
               </div>
               <div>
                 <Link href={{pathname: '/team'}} activeClassName={styles.activelink}>
-                  {/* <Trans> */}
-                    Team
-                  {/* </Trans> */}
+                {t('Teamseite')}
                 </Link>
               </div> 
               <div>
                 <Link href={{pathname: '/publikationen'}} activeClassName={styles.activelink}>
-                  {/* <Trans> */}
-                    Publikationen
-                  {/* </Trans> */}
+                {t('Publikaionenseite')}
                 </Link>
               </div>
               <div>
                 <Link href={{pathname: '/veranstaltungen'}} activeClassName={styles.activelink}>
-                  {/* <Trans> */}
-                    Veranstaltungen
-                  {/* </Trans> */}
+                {t('Veranstaltungsseite')}
                 </Link>
               </div>
           </div>
@@ -73,3 +61,13 @@ const NavMenu = (props)=> {
   };
 
     export default NavMenu;
+
+    // export async function getStaticProps({locale}) {
+    //   console.log("..",locale)
+    //   return {
+    //     props: {
+    //       ...await serverSideTranslations(locale, ['common']),
+    //     }, // will be passed to the page component as props
+    //   }
+    // }
+    

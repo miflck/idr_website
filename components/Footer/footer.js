@@ -19,8 +19,7 @@ const Footer=(props)=>{
     }
   
     const router = useRouter()
-    // console.log("router",router)
-    // useRouter zum rausfinden, wo man ist
+
     // const changeLanguage = (lng) => {
     //     i18n.changeLanguage(lng);
     //   }
@@ -41,7 +40,7 @@ const Footer=(props)=>{
 
     return(
         < div className={styles.footerwrapper}>
-            <a href="https://hkb-idr.ch/#publikationen">Footer Link</a>
+            {/* <a href="https://hkb-idr.ch/#publikationen">Footer Link</a> */}
             
             <Link href={router.asPath} locale="de">
       		    <a>de</a>
@@ -73,11 +72,8 @@ const Footer=(props)=>{
                 color={colorHexCodeSecond}
                 onChange={e => setColorHexCodeSecond(e.hex) } 
                 onClick={() => setNewColorSecond(newColorSecond)}
-            />
+                />
             </div>
-
-            
-            
 
         </div>
     )

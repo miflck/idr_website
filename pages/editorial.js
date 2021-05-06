@@ -3,8 +3,13 @@ import { StructuredText } from "react-datocms";
 import styles from './editorial.module.scss'
 import Layout from '../components/Layout/layout'
 
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
+  const { t } = useTranslation('common')
     return(
       <Layout>
             {allEditorials.map((editorial, index) => {
@@ -80,6 +85,7 @@ export async function getStaticProps({locale}) {
     return {
       props: {
         editorialtexte,   
+        ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }
   }

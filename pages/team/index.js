@@ -3,9 +3,14 @@ import { StructuredText } from "react-datocms";
 import styles from './team.module.scss'
 import Layout from '../../components/Layout/layout'
 
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
-    console.log("menschen",props);
+    // console.log("menschen",props);
+    const { t } = useTranslation('common')
 
        return(
       <Layout>
@@ -85,6 +90,7 @@ export async function getStaticProps({locale}) {
     return {
       props: {
         menschen,   
+        ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }
   }

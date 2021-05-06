@@ -1,4 +1,8 @@
 {
-  "Test":"Test in English"
-    
-  }
+  "Test":"Test in English",
+  "Projektseite":"Projects",
+  "Editorialseite":"Editorial",
+  "Teamseite":"Team",
+  "Publikaionenseite":"Publications",
+  "Veranstaltungsseite":"Events"
+}

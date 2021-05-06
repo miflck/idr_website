@@ -1,10 +1,10 @@
 // import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
-import NavMenu from '../components/Menu/navMenu'
+// import NavMenu from '../components/Menu/navMenu'
 import Layout from '../components/Layout/layout'
 import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 
 
