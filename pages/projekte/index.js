@@ -4,6 +4,8 @@ import ListWrapper from '../../components/List/listWrapper'
 import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import React, { useState, useEffect } from 'react'
+import styles from '../../components/List/list.module.scss'
 
 export default function Projekte(props) {
   const {projekte:{allProjekts}}=props;
@@ -11,31 +13,52 @@ export default function Projekte(props) {
 
 
 
-//console.log(allProjekts)
-
-
-
-/*
 function filterBy(data, filterterm) {
-      return data.filter((obj) => {
-        return (obj.forschungsfeld.map((feld)=>{
-         // return feld.titel.toString().includes(filterterm);
-          //return(feld.titel.toString().includes(filterterm))
-
-        })
-        )
-      }
-    )
+  return data.filter((obj) => {
+    return obj.forschungsfeld.some((feld)=>{
+      return feld.titel.toString().includes(filterterm);
+      })
+    }
   )
 }
+  
+ var filterd = filterBy(allProjekts, "Social Communication");
+ console.log("filtered",filterd)
 
-var filterd = filterBy(allProjekts, "Social Communication");
-console.log("filtered",filterd)
 
-*/
+    const [search, setSearch] = useState('')
+    //contacts in projektnamen etc umwandeln?
+    // const [contacts, setContacts] = useState([])
+
+
+    const [open,setSearchbarOpen] = useState(false)
+  const handleOnClick=(open)=>{
+    setSearchbarOpen(open => !open)
+  }
 
   return (
       <Layout>
+
+        {/* Suchfeld */}
+        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')} 
+          >
+           <input 
+              className={styles.inputfeld}
+              type="text" 
+              placeholder="Suche" 
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span 
+              className={styles.suchemoji} 
+              onClick={handleOnClick}
+              >
+              {/* &#9786;  */}
+              &#128269;
+            </span>
+            
+        </div>
+
           <ListWrapper>
                 {allProjekts.map((projekt) => {
                   return(
