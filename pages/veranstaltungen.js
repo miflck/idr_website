@@ -11,7 +11,7 @@ const Veranstaltungen =(props)=>{
     // console.log("props",props);
     const { t } = useTranslation('common')
     return(
-      <Layout>
+      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.veranstaltungswrapper} >
             {allVeranstaltungs.map((veranstaltung) => {
                 const datum = new Date(veranstaltung.datum).toLocaleString([], {

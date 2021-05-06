@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react'
 import styles from '../../components/List/list.module.scss'
 
 export default function Projekte(props) {
-  console.log("Props from Projekte",props)
+  // console.log("Props from Projekte",props)
   const {projekte:{allProjekts}}=props;
   const { t } = useTranslation('common')
 
@@ -53,8 +53,7 @@ function filterBy(data, filterterm) {
   }
 
   return (
-      <Layout setColor={props.setColor}>
-
+      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor}  colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond} >
         {/* Suchfeld */}
         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')} 
           >

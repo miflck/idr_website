@@ -44,7 +44,7 @@ export default function Projekteinzelansicht (props) {
                 }
     
   return (
-   <Layout>
+   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.einzelwrapper}>
         <div className={styles.titel}>
           {titel}

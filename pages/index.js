@@ -7,7 +7,7 @@ export default function Home(props) {
   // console.log(props)
   const { t } = useTranslation('common')
   return (
-    <Layout>
+    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
       <main className={styles.container}>
           Startpage <br></br>
           {t('Test')}

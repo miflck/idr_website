@@ -6,14 +6,14 @@ import Footer from '../Footer/footer'
 
 
 const Layout=(props)=>{
-     console.log("Layout ",props)
+    //  console.log("Layout ",props)
     const {children}=props || {}
 
     return(
         <div className={styles.layoutContainer}>
             <Header/>
             {children}
-            <Footer setColor={props.setColor}/>
+            <Footer setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}/>
         </div>
     )
 }

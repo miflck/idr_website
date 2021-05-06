@@ -41,7 +41,7 @@ for (const [key, value] of Object.entries(groupedPeople)) {
 
 
        return(
-      <Layout>
+      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
           <div className={styles.teamcontainer}>
 
 

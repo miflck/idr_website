@@ -14,7 +14,7 @@ export default function Publikationen(props) {
 
 
   return (
-      <Layout>
+      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
           <ListWrapper>
                 {allPublikationens.map((publikation) => {
                   return(

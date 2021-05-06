@@ -11,16 +11,22 @@ import React, { useState, useEffect } from 'react';
 function MyApp({ Component, pageProps }) {
 
   const [colorHexCode, setColorHexCode] = useState('#000000');
+  const [colorHexCodeSecond, setColorHexCodeSecond] = useState('#ffffff');
 
 
   useEffect(() => {
     const root = document.documentElement;
     root?.style.setProperty('--maincolor', `${colorHexCode}`);
-    console.log("USe Effect in App",colorHexCode)
+    // console.log("USe Effect in App",colorHexCode)
   },[colorHexCode])
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root?.style.setProperty('--secondcolor', `${colorHexCodeSecond}`);
+},[colorHexCodeSecond])
+
   return (
-    <Component {...pageProps} setColor={setColorHexCode}/>
+    <Component {...pageProps} setMainColor={setColorHexCode} setSecondColor={setColorHexCodeSecond}  colorHexCode={colorHexCode} colorHexCodeSecond={colorHexCodeSecond}/>
   )
 }
 
