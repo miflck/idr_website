@@ -1,11 +1,7 @@
-// projektliste als übersicht
-// dann single view von den projekten, unterseiten als [] setzen
 import { request, PROJEKTE } from "../../lib/datocms";
-
 import Layout from '../../components/Layout/layout'
 import ListWrapper from '../../components/List/listWrapper'
 import ListItemProjekt from '../../components/List/listItemProjekt'
-
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -47,8 +43,6 @@ console.log("filtered",filterd)
                   )})
                       }
             </ListWrapper>
-            {t("Test")}
-
       </Layout>
   )
 }

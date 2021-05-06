@@ -2,9 +2,13 @@ import Layout from "../../components/Layout/layout"
 import { request, PROJEKTEINZEL,ALLPROJEKTE } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
-
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Link from 'next/link'
 
 export default function Projekteinzelansicht (props) {
+
+  const { t } = useTranslation('common')
 // console.log("props", props)
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{projekt:{
@@ -30,7 +34,7 @@ export default function Projekteinzelansicht (props) {
                             href+=`/${mitarbeiterin.slug}`
                         }
                        return (
-                            <a key={index} href={href}>{mitarbeiterin.name}<br></br></a>
+                            <Link href={href}><a key={index} >{mitarbeiterin.name}<br></br></a></Link>
                           )
                         })}
                     </>
@@ -62,7 +66,7 @@ export default function Projekteinzelansicht (props) {
                 }
                 {
                   block._modelApiKey === 'pdf' &&
-                  <a href={block.pdf.url}>Projekt PDF</a>
+                  <Link href={block.pdf.url}><a>Projekt PDF</a></Link>
                 }
               </div>
               )})
@@ -83,7 +87,7 @@ export default function Projekteinzelansicht (props) {
                       href+=`/${leitung.slug}`
                   }
                   return (
-                  <a key={index} href={href}>{leitung.name}</a>
+                  <Link href={href}><a key={index} >{leitung.name}</a></Link>
                   )
                 })}
           
@@ -95,7 +99,7 @@ export default function Projekteinzelansicht (props) {
                     href+=`/${verantwortung.slug}`
                 }
                   return (
-                  <a key={index} href={href}>{verantwortung.name}</a>
+                  <Link href={href}><a key={index} >{verantwortung.name}</a></Link>
                   )
                 })}
           {/* Mitarbeit, falls welche da  */}
@@ -131,7 +135,8 @@ export async function getStaticProps({params, locale}) {
       props: {
         data,   
         params,
-        locale
+        locale,
+        ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }
   }

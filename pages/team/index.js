@@ -1,8 +1,8 @@
 import { request,MENSCHEN } from "../../lib/datocms";
-import { StructuredText } from "react-datocms";
+// import { StructuredText } from "react-datocms";
 import styles from './team.module.scss'
 import Layout from '../../components/Layout/layout'
-
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -94,9 +94,9 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                             alt={mensch.portrait.alt} 
                           />
                           <div className={styles.name}>
-                            <a href={href}>
-                              {mensch.name}
-                            </a>
+                            <Link href={href}>
+                              <a>{mensch.name}</a>
+                            </Link>
                           </div>
                       </div>
                     )

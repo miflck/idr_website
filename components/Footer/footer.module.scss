@@ -30,6 +30,13 @@
             a {
                 background-color: var(--maincolor);
                 color: var(--maincolor);
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
             }
             .farbauswahlmaincolor {
                 display: none;
@@ -49,6 +56,13 @@
                 a {
                     background-color: var(--secondcolor);
                     color: var(--secondcolor);
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+
                 }
                 
                 .farbauswahlsecondcolor {

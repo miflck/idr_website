@@ -2,9 +2,13 @@ import Layout from "../../components/Layout/layout"
 import { request, PUBLIKATIONEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
-
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Link from 'next/link'
 
 export default function Publikationseinzelansicht (props) {
+  const { t } = useTranslation('common')
+
 // console.log("props", props)
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{publikationen:{
@@ -15,8 +19,8 @@ export default function Publikationseinzelansicht (props) {
     publikationsinhalte
     }=""}=""}=props || ""
 
-    console.log("publikationsinhalte", props)
-
+    // console.log("publikationsinhalte", props)
+    
     if(props.data) {
     
   return (
@@ -43,7 +47,7 @@ export default function Publikationseinzelansicht (props) {
                     }
                     {
                       block._modelApiKey === 'pdf' &&
-                      <a href={block.pdf.url}>Projekt PDF</a>
+                      <Link href={block.pdf.url}><a>Projekt PDF</a></Link>
                     }
                   </div>
                   )})
@@ -82,7 +86,8 @@ export async function getStaticProps({params, locale}) {
     return {
       props: {
         data,   
-        params
+        params,
+        ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }
   }

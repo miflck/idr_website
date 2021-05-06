@@ -2,9 +2,13 @@ import Layout from "../../components/Layout/layout"
 import { request, MENSCHEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
-
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Link from 'next/link'
 
 export default function Menscheinzelansicht (props) {
+
+  const { t } = useTranslation('common')
 // console.log("props", props)
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{menschen:{
@@ -35,13 +39,13 @@ export default function Menscheinzelansicht (props) {
                 }
                 let EmailElement;
                 if(email != ""){
-                  EmailElement= <div><a className={styles.email} href={`mailto:,${email}`}> {email} </a></div>
+                  EmailElement= <div><Link><a className={styles.email} href={`mailto:,${email}`}> {email} </a></Link></div>
                 }else{
                   EmailElement= <> </>
                 }
                 let WebsiteElement;
                 if(website != ""){
-                  WebsiteElement= <div><a className={styles.website} href={website} target="_blank">{website}</a></div>
+                  WebsiteElement= <div><Link><a className={styles.website} href={website} target="_blank">{website}</a></Link></div>
                 }else{
                   WebsiteElement= <> </>
                 }
@@ -79,9 +83,11 @@ export default function Menscheinzelansicht (props) {
                     }
                     return (
                       <div key={index} className={styles.projekt}> 
-                          <a href={href}>
-                            {projekt.titel}
-                          </a>
+                          <Link>
+                            <a href={href}>
+                              {projekt.titel}
+                            </a>
+                          </Link>
                       </div>
                     )
                   })}
@@ -110,7 +116,8 @@ export async function getStaticProps({params, locale}) {
     return {
       props: {
         data,   
-        params
+        params,
+        ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }
   }
