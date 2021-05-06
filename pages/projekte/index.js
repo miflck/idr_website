@@ -4,38 +4,84 @@ import ListWrapper from '../../components/List/listWrapper'
 import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import React, { useState, useEffect } from 'react'
+import styles from '../../components/List/list.module.scss'
 
 export default function Projekte(props) {
   const {projekte:{allProjekts}}=props;
   const { t } = useTranslation('common')
 
-
-
 //console.log(allProjekts)
 
-
-
-
 function filterBy(data, filterterm) {
-  return data.filter((obj) => {
-   return obj.forschungsfeld.some((feld)=>{
-      return feld.titel.toString().includes(filterterm);
-    })
-  }
-)
-
+      return data.filter((obj) => {
+       return obj.forschungsfeld.some((feld)=>{
+          //false;
+         //console.log("is in:",feld.titel.toString().includes(filterterm))
+          return feld.titel.toString().includes(filterterm);
+          //return(feld.titel.toString().includes(filterterm))
+       })
+      }) 
 }
+  
+ var filterd = filterBy(allProjekts, "Social Communication");
+ console.log("filtered",filterd)
 
 
-var filterd = filterBy(allProjekts, "Social Communication");
+    const [search, setSearch] = useState('')
+    //contacts in projektnamen, forschungsfeld etc umwandeln?
+    // const [contacts, setContacts] = useState([])
+  //   useEffect(() => {
+  //     const API_URL = 'https://my.api.mockaroo.com/phonebook.json?key=9ac1c5f0'
+  //     axios
+  //         .get(API_URL)
+  //         .then(res => {
+  //             const contacts = res.data
+  //             setContacts(contacts)
+  //         })
+  // }, [])
+    // const filteredContacts = search.length === 0 ? contacts : 
+    // contacts.filter(contact => contact.full_name.toLowerCase().includes(search.toLowerCase()))
 
-
-console.log("filtered",filterd)
-
-
+    const [open,setSearchbarOpen] = useState(false)
+  const handleOnClick=(open)=>{
+    setSearchbarOpen(open => !open)
+  }
 
   return (
       <Layout>
+
+        {/* Suchfeld */}
+        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')} 
+          >
+           <input 
+              className={styles.inputfeld}
+              type="text" 
+              placeholder="Suche" 
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span 
+              className={styles.suchemoji} 
+              onClick={handleOnClick}
+              >
+              {/* &#9786;  */}
+              &#128269;
+            </span>
+            {/* <div>  
+              <ul>
+              {contacts.map(contact => (
+                  <li key={contact.id}>
+                      Name:
+                        <span>{contact.full_name}</span>
+                      Phone: 
+                        <span>{contact.tel}</span>
+                  </li>   
+              ))}
+              </ul>
+          </div> */}
+        </div>
+
           <ListWrapper>
                 {allProjekts.map((projekt) => {
                   return(
@@ -43,7 +89,6 @@ console.log("filtered",filterd)
                   )})
                       }
             </ListWrapper>
-
       </Layout>
   )
 }
