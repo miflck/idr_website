@@ -1,18 +1,18 @@
 import styles from './list.module.scss'
 import Link from 'next/link'
 
-const ListItemPublikation =(publikation, index)=>{
+const ListItemPublikation =(publikation)=>{
     //  console.log("ListItem publikaion", publikation)
 
-    // filtern hier
+    // filtern hier nach publikationsart, publikationsart hat auch eine id
 
-    let href=`/publikationen`
+    let href=`/publikationen` 
     if(publikation.slug!=""){
         href+=`/${publikation.slug}`
     }
  
     return(
-        <div className={styles.projektwrapper} key={index}>
+        <div className={styles.projektwrapper} key={publikation.id}>
             <div className={styles.projektcontent}>
 
             {/* Publikationtitel */}
@@ -28,7 +28,7 @@ const ListItemPublikation =(publikation, index)=>{
                 src={publikation.bild.url} 
                 alt={publikation.bild.alt} 
             />
-                </div>
+            </div>
         </div>
     )
 }

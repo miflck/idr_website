@@ -13,18 +13,18 @@ const Veranstaltungen =(props)=>{
     return(
       <Layout>
         <div className={styles.veranstaltungswrapper} >
-            {allVeranstaltungs.map((veranstaltung, index) => {
+            {allVeranstaltungs.map((veranstaltung) => {
                 const datum = new Date(veranstaltung.datum).toLocaleString([], {
                 year: 'numeric', month: 'numeric', day: 'numeric',
                 hour: '2-digit', minute: '2-digit'});
                     return(
-                       <div className={styles.veranstaltungscontent} key={index}>
+                       <div className={styles.veranstaltungscontent} key={veranstaltung.id}>
                             <p className={styles.title}>{veranstaltung.titel}</p>
                             <p className={styles.referentIn}>{veranstaltung.referentIn}</p>
                             <div className={styles.zentriert}>
-                              <p className={styles.datum}>{datum} Uhr</p>
-                              <p className={styles.untertitel}>{veranstaltung.untertitel}</p>
-                              <p className={styles.organisation}>{veranstaltung.organisation}</p>
+                                <p className={styles.datum}>{datum} Uhr</p>
+                                <p className={styles.untertitel}>{veranstaltung.untertitel}</p>
+                                <p className={styles.organisation}>{veranstaltung.organisation}</p>
                             </div>
                             <p className={styles.beschreibung}>
                               <StructuredText data={veranstaltung.beschreibung.value}/>

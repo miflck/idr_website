@@ -13,6 +13,7 @@ export default function Menscheinzelansicht (props) {
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{menschen:{
     name,
+    id,
     slug,
     funktion,
     portrait,
@@ -32,20 +33,20 @@ export default function Menscheinzelansicht (props) {
                 let PDFElement;
                 if(publikationsliste != null && publikationsliste.url != null){
                     PDFElement= <div className={styles.pdf}>
-                                    <a href={publikationsliste.url}>Publikationsliste</a>
+                                    <Link href={publikationsliste.url}><a>Publikationsliste</a></Link>
                                     </div> 
                 }else{
                     PDFElement= <> </>
                 }
                 let EmailElement;
                 if(email != ""){
-                  EmailElement= <div><Link><a className={styles.email} href={`mailto:,${email}`}> {email} </a></Link></div>
+                  EmailElement= <div><Link href={`mailto:,${email}`}><a className={styles.email}>{email}</a></Link></div>
                 }else{
                   EmailElement= <> </>
                 }
                 let WebsiteElement;
                 if(website != ""){
-                  WebsiteElement= <div><Link><a className={styles.website} href={website} target="_blank">{website}</a></Link></div>
+                  WebsiteElement= <div><Link href={website} target="_blank"><a className={styles.website}>{website}</a></Link></div>
                 }else{
                   WebsiteElement= <> </>
                 }
@@ -75,16 +76,16 @@ export default function Menscheinzelansicht (props) {
 
               <div className={styles.projektliste}>
                   {/* Projektliste <br></br> */}
-                  {projekte.map((projekt, index) => {
+                  {projekte.map((projekt) => {
                     // console.log("liste", projekt)
                     let href=`/projekte`
                     if(projekt.slug!=""){
                         href+=`/${projekt.slug}`
                     }
                     return (
-                      <div key={index} className={styles.projekt}> 
-                          <Link>
-                            <a href={href}>
+                      <div key={projekt.id} className={styles.projekt}> 
+                          <Link href={href}>
+                            <a >
                               {projekt.titel}
                             </a>
                           </Link>

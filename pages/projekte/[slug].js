@@ -13,6 +13,7 @@ export default function Projekteinzelansicht (props) {
 // falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{projekt:{
     titel,
+    id,
     leitung,
     verantwortung,
     mitarbeit,
@@ -28,13 +29,13 @@ export default function Projekteinzelansicht (props) {
                 if(mitarbeit != null){
                   MitarbeitendenElement= <>
                     <div>Mitarbeit</div>
-                      {mitarbeit.map((mitarbeiterin, index) => {
+                      {mitarbeit.map((mitarbeiterin) => {
                         let href=`/team`
                         if(mitarbeiterin.slug!=""){
                             href+=`/${mitarbeiterin.slug}`
                         }
                        return (
-                            <Link href={href}><a key={index} >{mitarbeiterin.name}<br></br></a></Link>
+                            <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
                           )
                         })}
                     </>
@@ -50,12 +51,12 @@ export default function Projekteinzelansicht (props) {
         </div>
         <div className={styles.modulareinhalte}>
             {projektinhalte != null &&
-            projektinhalte.map((block, index) => {
+            projektinhalte.map((block) => {
               // console.log(block)
                 return (
                 // index ist eigentlich nur zur not, es kann dann immer noch mehrer mit demselben key geben. besser wäre wohl die ID des elementes aus dato
 
-              <div key={index}>
+              <div key={block.id}>
                 {
                 block._modelApiKey === 'text' &&
                   <StructuredText data={block.text.value}></StructuredText>
@@ -76,30 +77,31 @@ export default function Projekteinzelansicht (props) {
         <div className={styles.listenwrapper}> 
           {/* 
           Leitung  
-          - ev ein Component daraus machen? weil leitung, verantwortung,mitarbeit, Finanzierung etc immer dasselbe element? 
-          - die a mit Link ersetzen…
+          - ev ein Component daraus machen? weil leitung, verantwortung,mitarbeit, Finanzierung etc immer dasselbe element?
+          ja vielleicht :), vielleicht auch nur kosmetik? ich weiss es nicht :) 
+          - die a mit Link ersetzen… gemacht
           */}
           <div>Leitung</div>
-              {leitung.map((leitung, index) => {
+              {leitung.map((leitung) => {
                 // console.log("leitung", leitung)
                   let href=`/team`
                   if(leitung.slug!=""){
                       href+=`/${leitung.slug}`
                   }
                   return (
-                  <Link href={href}><a key={index} >{leitung.name}</a></Link>
+                  <Link href={href} key={leitung.id}><a>{leitung.name}</a></Link>
                   )
                 })}
           
           {/* Verantwortung  */}
           <div>Verantwortung</div>
-              {verantwortung.map((verantwortung, index) => {
+              {verantwortung.map((verantwortung) => {
                 let href=`/team`
                 if(verantwortung.slug!=""){
                     href+=`/${verantwortung.slug}`
                 }
                   return (
-                  <Link href={href}><a key={index} >{verantwortung.name}</a></Link>
+                  <Link href={href} key={verantwortung.id}><a>{verantwortung.name}</a></Link>
                   )
                 })}
           {/* Mitarbeit, falls welche da  */}
@@ -126,7 +128,7 @@ else{
 
 export async function getStaticProps({params, locale}) {
 
-  console.log("+++++++++++++++++++++++",locale)
+  // console.log("+++++++++++++++++++++++",locale)
     const data = await request({
         query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });

@@ -14,6 +14,7 @@ export default function Publikationseinzelansicht (props) {
   const {data:{publikationen:{
     titel,
     mitarbeit,
+    id,
     bild,
     publikationsart,
     publikationsinhalte
@@ -22,6 +23,24 @@ export default function Publikationseinzelansicht (props) {
     // console.log("publikationsinhalte", props)
     
     if(props.data) {
+      let MitarbeitendenElement;
+                if(mitarbeit != null){
+                  MitarbeitendenElement= <>
+                    <div>Mitarbeit</div>
+                      {mitarbeit.map((mitarbeiterin) => {
+                        let href=`/team`
+                        if(mitarbeiterin.slug!=""){
+                            href+=`/${mitarbeiterin.slug}`
+                        }
+                       return (
+                            <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
+                          )
+                        })}
+                    </>
+                }else{
+                  MitarbeitendenElement= <> </>
+                }
+
     
   return (
    <Layout>
@@ -35,12 +54,13 @@ export default function Publikationseinzelansicht (props) {
                 src={bild.url} 
                 alt={bild.alt} 
             />
-            
+           
             <div className={styles.modulareinhalte}>
                 {publikationsinhalte != null &&
-                publikationsinhalte.map((block, index) => {
+                publikationsinhalte.map((block) => {
+                  // console.log("was ist hier los",block.id)
                     return (
-                  <div key={index}>
+                  <div key={block.id}>
                     {
                     block._modelApiKey === 'text' &&
                       <StructuredText data={block.text.value}></StructuredText>
@@ -53,18 +73,13 @@ export default function Publikationseinzelansicht (props) {
                   )})
                 }
             </div>
+             
                 
             <div className={styles.listenwrapper}> 
-              <div>Mitarbeit</div>
-                  { mitarbeit != null &&
-                    mitarbeit.map((mitarbeiterin, index) => {
-                      return (
-                        <a key={index} href={mitarbeiterin.slug}>{mitarbeiterin.name}<br></br></a>
-                      )
-                    })}
-            </div>
-
-      </div>
+              {/* Mitarbeit, falls welche da  */}
+              {MitarbeitendenElement}
+            </div> 
+      </div> 
    </Layout>
   )
 }
@@ -79,7 +94,6 @@ else{
 
 export async function getStaticProps({params, locale}) {
     const data = await request({
-      // überrpüfen ob es so stimmt mit der locale variable
         query: PUBLIKATIONEINZEL,variables: { slug:params.slug, locale:locale},
       });
 
