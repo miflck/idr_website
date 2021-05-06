@@ -17,19 +17,15 @@ export default function Projekte(props) {
 
 
 function filterBy(data, filterterm) {
-      return data.filter((obj) => {
-       return obj.forschungsfeld.some((feld)=>{
-          //false;
-         //console.log("is in:",feld.titel.toString().includes(filterterm))
-          return feld.titel.toString().includes(filterterm);
-          //return(feld.titel.toString().includes(filterterm))
+  return data.filter((obj) => {
+   return obj.forschungsfeld.some((feld)=>{
+      return feld.titel.toString().includes(filterterm);
+    })
+  }
+)
 
-        })
-        
-      }
-    )
-  
 }
+
 
 var filterd = filterBy(allProjekts, "Social Communication");
 console.log("filtered",filterd)
@@ -45,6 +41,18 @@ console.log("filtered",filterd)
                   )})
                       }
             </ListWrapper>
+<br />
+<br />
+<br />
+
+            <ListWrapper>
+                {filterd.map((publikation) => {
+                  return(
+                    <ListItemProjekt {...publikation} key={publikation.id}/>
+                  )})
+                      }
+            </ListWrapper>
+
       </Layout>
   )
 }
