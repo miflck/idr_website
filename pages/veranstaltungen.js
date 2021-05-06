@@ -3,10 +3,13 @@ import { StructuredText } from "react-datocms"
 import styles from './veranstaltungen.module.scss'
 import Layout from '../components/Layout/layout'
 
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Veranstaltungen =(props)=>{
   const {veranstaltungen:{allVeranstaltungs}}=props;
     // console.log("props",props);
+    const { t } = useTranslation('common')
     return(
       <Layout>
         <div className={styles.veranstaltungswrapper} >
@@ -45,7 +48,8 @@ export async function getStaticProps({locale}) {
 
     return {
       props: {
-        veranstaltungen,   
+        veranstaltungen,
+        ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }
   }

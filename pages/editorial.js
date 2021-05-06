@@ -2,6 +2,7 @@ import { request,EDITORIALTEXTE } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from './editorial.module.scss'
 import Layout from '../components/Layout/layout'
+import Link from 'next/link'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -42,7 +43,9 @@ const Editorial =(props)=>{
                                     href+=`/${koordinatorin.slug}`
                                 }
                                 return (
-                                <a key={index} href={href}>{koordinatorin.name}</a>
+                                <Link href={href}>
+                                  <a key={index}>{koordinatorin.name}</a>
+                                </Link>
                                 )
                                 })}
                     
@@ -54,11 +57,11 @@ const Editorial =(props)=>{
                                     href+=`/${projekt.slug}`
                                 }
                                 return (
-                                        <a key={index} 
-                                            href={href}
-                                        >
+                                  <Link href={href}>
+                                        <a key={index}>
                                         {projekt.titel}<br></br>
                                         </a>
+                                  </Link>
                                 )
                             })}
                         
