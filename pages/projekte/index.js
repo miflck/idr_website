@@ -29,9 +29,19 @@ function filterBy(data, filterterm) {
 
 
     const [search, setSearch] = useState('')
-    //contacts in projektnamen etc umwandeln?
+    //contacts in projektnamen, forschungsfeld etc umwandeln?
     // const [contacts, setContacts] = useState([])
-
+  //   useEffect(() => {
+  //     const API_URL = 'https://my.api.mockaroo.com/phonebook.json?key=9ac1c5f0'
+  //     axios
+  //         .get(API_URL)
+  //         .then(res => {
+  //             const contacts = res.data
+  //             setContacts(contacts)
+  //         })
+  // }, [])
+    // const filteredContacts = search.length === 0 ? contacts : 
+    // contacts.filter(contact => contact.full_name.toLowerCase().includes(search.toLowerCase()))
 
     const [open,setSearchbarOpen] = useState(false)
   const handleOnClick=(open)=>{
@@ -58,7 +68,18 @@ function filterBy(data, filterterm) {
               {/* &#9786;  */}
               &#128269;
             </span>
-            
+            {/* <div>  
+              <ul>
+              {contacts.map(contact => (
+                  <li key={contact.id}>
+                      Name:
+                        <span>{contact.full_name}</span>
+                      Phone: 
+                        <span>{contact.tel}</span>
+                  </li>   
+              ))}
+              </ul>
+          </div> */}
         </div>
 
           <ListWrapper>
