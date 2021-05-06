@@ -13,6 +13,31 @@ export default function Projekte(props, index) {
   const {projekte:{allProjekts}}=props;
   const { t } = useTranslation('common')
 
+
+
+//console.log(allProjekts)
+
+
+
+/*
+function filterBy(data, filterterm) {
+      return data.filter((obj) => {
+        return (obj.forschungsfeld.map((feld)=>{
+         // return feld.titel.toString().includes(filterterm);
+          //return(feld.titel.toString().includes(filterterm))
+
+        })
+        )
+      }
+    )
+  )
+}
+
+var filterd = filterBy(allProjekts, "Social Communication");
+console.log("filtered",filterd)
+
+*/
+
   return (
       <Layout>
           <ListWrapper>
