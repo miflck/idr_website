@@ -31,19 +31,18 @@ function groupBy(objectArray, property,key) {
 var groupedPeople = groupBy(allMenschens, 'funktion','titel');
 
 
-
-//groupedPeople.forEach(item => {})
 for (const [key, value] of Object.entries(groupedPeople)) {
-  console.log(key, value);
+  console.log("key",key);
+  value.map((mensch)=>{
+    console.log(mensch)
+  })
 }
 
-console.log(groupedPeople)
 
 
        return(
       <Layout>
           <div className={styles.teamcontainer}>
-
 
 
             {allMenschens.map((mensch, index) => {
