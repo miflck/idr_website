@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 
 import { HuePicker, ChromePicker } from 'react-color';
 import React, { useState, useEffect } from 'react';
+import { useAppContext } from '../../context/AppContext'; // import based on where you put it
 
 const Footer=(props)=>{
 
@@ -25,20 +26,33 @@ const Footer=(props)=>{
     //     i18n.changeLanguage(lng);
     //   }
 
+    const  state  = useAppContext();
+
+    console.log("STATE ",state)
     const [colorHexCode, setColorHexCode] = useState('#000000');
     const [colorHexCodeSecond, setColorHexCodeSecond] = useState('#ffffff');
 
     const [newColor, setNewColor ] = useState(false);
+    const [newColorSecond, setNewColorSecond ] = useState(false);
+
+    /*
     useEffect(() => {
-        const root = document.documentElement;
-        root?.style.setProperty('--maincolor', `${colorHexCode}`);
-    })
+       // const root = document.documentElement;
+       // root?.style.setProperty('--maincolor', `${colorHexCode}`);
+        
+       console.log("use Effect colorHexCode")
+state.setColorHexCode(colorHexCode)
+
+
+    },[colorHexCode])
+
     const [newColorSecond, setNewColorSecond ] = useState(false);
     useEffect(() => {
         const root = document.documentElement;
         root?.style.setProperty('--secondcolor', `${colorHexCodeSecond}`)
-    })
-
+        console.log("use Effect newColorSecond")
+    },[colorHexCodeSecond])
+*/
     return(
         < div className={styles.footerwrapper}>
             <a href="https://hkb-idr.ch/#publikationen">Footer Link</a>
@@ -60,8 +74,8 @@ const Footer=(props)=>{
                 <a onClick={handleOnClickMain} >xx</a>
                 <ChromePicker className={styles.farbauswahlmaincolor}
                 color={colorHexCode}
-                onChange={e => setColorHexCode(e.hex) } 
-                onClick={() => setNewColor(newColor)}
+                onChange={e => state.setColorHexCode(e.hex) } 
+               // onClick={() => setNewColor(newColor)}
                 />
             </div>
 
@@ -71,8 +85,8 @@ const Footer=(props)=>{
                 <a onClick={handleOnClickSecond}>xx</a>
                 <ChromePicker className={styles.farbauswahlsecondcolor}
                 color={colorHexCodeSecond}
-                onChange={e => setColorHexCodeSecond(e.hex) } 
-                onClick={() => setNewColorSecond(newColorSecond)}
+                onChange={e => state.setColorHexCodeSecond(e.hex) } 
+                //onClick={() => state.setNewColorSecond(newColorSecond)}
             />
             </div>
 
