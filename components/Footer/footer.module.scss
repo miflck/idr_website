@@ -28,6 +28,10 @@
             background-color: var(--maincolor);
         }
     }
+    .activelanguage {
+        background: var(--maincolor);
+        color: var(--secondcolor);
+    }
 
     .buttonsmaincolor {
             cursor: pointer;

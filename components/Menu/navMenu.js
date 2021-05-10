@@ -53,7 +53,7 @@ const NavMenu = (props)=> {
                 <div>{t('Veranstaltungsseite')}</div>
                 </Link>
 
-                <div onClick={() => { window.history.back();}} className={styles.retour}><a>« zur letzen Seite</a></div>
+                {/* <div onClick={() => { window.history.back();}} className={styles.retour}><a>« zur letzen Seite</a></div> */}
            
           </div>
         }

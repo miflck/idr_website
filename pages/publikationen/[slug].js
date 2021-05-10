@@ -8,9 +8,6 @@ import Link from 'next/link'
 
 export default function Publikationseinzelansicht (props) {
   const { t } = useTranslation('common')
-
-// console.log("props", props)
-// falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{publikationen:{
     titel,
     mitarbeit,
@@ -19,8 +16,6 @@ export default function Publikationseinzelansicht (props) {
     publikationsart,
     publikationsinhalte
     }=""}=""}=props || ""
-
-    // console.log("publikationsinhalte", props)
     
     if(props.data) {
       let MitarbeitendenElement;
@@ -58,7 +53,6 @@ export default function Publikationseinzelansicht (props) {
             <div className={styles.modulareinhalte}>
                 {publikationsinhalte != null &&
                 publikationsinhalte.map((block) => {
-                  // console.log("was ist hier los",block.id)
                     return (
                   <div key={block.id}>
                     {

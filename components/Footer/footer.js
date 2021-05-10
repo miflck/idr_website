@@ -18,22 +18,47 @@ const Footer=(props)=>{
     const handleOnClickSecond=(opensecond)=>{
         setColorPickerOpenSecond(opensecond => !opensecond)
     }
-  
-    const router = useRouter()
-    //keine Ahnung, für was es diese zwei Funktionien gebraucht hat...
-    // const [newColor, setNewColor ] = useState(false);
-    // const [newColorSecond, setNewColorSecond ] = useState(false);
 
+    const router = useRouter()
+
+    const [changeLanguageState, setChangeLanguageState] = useState(true)
+    const handleLanguageChange=(changeLanguageState) => {
+        setChangeLanguageState(changeLanguageState)
+    }
+//     const [open,setSearchbarOpen] = useState(false)
+// const handleOnClick=(open)=>{
+//       setSearchbarOpen(open => !open)
+// }
+    // dann im java unten 
+    // className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}
+
+    let LanguageButtons;
+    if (changeLanguageState) {
+        LanguageButtons = <><Link href={router.asPath} locale="de" onClick={handleLanguageChange}>
+                                    <a className={styles.activelanguage}>de</a>
+                            </Link>
+                            <Link href={router.asPath} locale="en" onClick={handleLanguageChange}>
+                                    <a>en</a>
+                            </Link></>
+    }
+    else{
+        LanguageButtons = <><Link href={router.asPath} locale="de" onClick={handleLanguageChange}>
+                                    <a>de</a>
+                            </Link>
+                            <Link href={router.asPath}  locale="en" onClick={handleLanguageChange}>
+                                    <a className={styles.activelanguage}>en</a>
+                            </Link></>
+    }
     return(
         < div className={styles.footerwrapper}>
             {/* <a href="https://hkb-idr.ch/#publikationen">Footer Link</a> */}
-            
-            <Link href={router.asPath} locale="de">
-      		    <a>de</a>
-    	    </Link>
-            <Link href={router.asPath} locale="en">
-      		    <a>en</a>
-    	    </Link>
+            {LanguageButtons}
+            {/* <Link href={router.asPath} locale="de" onClick={true}>
+                <a>de</a>
+            </Link>
+            <Link href={router.asPath} locale="en" onClick={false}>
+                <a>en</a>
+            </Link> */}
            
         {/* Farbe wechseln als Extra einbauen  */}
             <div className={[styles.buttonsmaincolor, (openmain ? styles.open : [])].join(' ')} >
