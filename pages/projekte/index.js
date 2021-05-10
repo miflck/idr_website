@@ -10,10 +10,20 @@ import styles from '../../components/List/list.module.scss'
 export default function Projekte(props) {
   // console.log("Props from Projekte",props)
   const {projekte:{allProjekts}}=props;
+  const {projekte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
 
 //console.log(allProjekts)
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+// function searchInput(data, inputvalue) {
+//   return data.filter((obj) => {
+//     return obj.forschungsfeld.some((feld)=>{
+//         return feld.titel.toString().includes(inputvalue);
+//       })
+//     }
+//   )
+// }
+
 
 // nach Forschungsfelder filtern
 function filterBy(data, filterterm) {
@@ -36,16 +46,16 @@ useEffect(() => {
 
 
 const [search, setSearch] = useState('')
-  //     contacts in projektnamen, forschungsfeld etc umwandeln?
-  //     const [contacts, setContacts] = useState([])
-  //     useEffect(() => {
-  //     const API_URL = 'https://my.api.mockaroo.com/phonebook.json?key=9ac1c5f0'
-  //     axios
-  //         .get(API_URL)
-  //         .then(res => {
-  //             const contacts = res.data
-  //             setContacts(contacts)
-  //         })
+  // contacts in projektnamen, forschungsfeld etc umwandeln?
+  // const [contacts, setContacts] = useState([])
+  // useEffect(() => {
+  // const API_URL = 'https://my.api.mockaroo.com/phonebook.json?key=9ac1c5f0'
+  // axios
+  // .get(API_URL)
+  // .then(res => {
+  //   const contacts = res.data
+  //   setContacts(contacts)
+  //   })
   // }, [])
   // const filteredContacts = search.length === 0 ? contacts : 
   // contacts.filter(contact => contact.full_name.toLowerCase().includes(search.toLowerCase()))
@@ -53,6 +63,17 @@ const [search, setSearch] = useState('')
 const [open,setSearchbarOpen] = useState(false)
 const handleOnClick=(open)=>{
       setSearchbarOpen(open => !open)
+}
+
+let FilterElement;
+if(filter) {
+  FilterElement =  <div className={styles.aktivfilter} >
+                      {allForschungsfelders.map((forschungsfeld) =>{
+                        return(
+                          <a onClick={() => setFilter(forschungsfeld.titel)} className={styles.forschungsfeld} > {forschungsfeld.titel} </a>
+                        )})}
+                      <a onClick={() => setFilter("")}> kein Forschungsfeld Filter</a>
+                    </div>
 }
 
   return (
@@ -88,7 +109,8 @@ const handleOnClick=(open)=>{
           </div> */}
         </div>
 
-        <a onClick={() => setFilter("")}> Filter weg </a>
+
+       {FilterElement}
 
           {/* <ListWrapper>
                 {allProjekts.map((projekt) => {

@@ -1,5 +1,29 @@
+.aktivfilter {
+    user-select: none;
+    padding: 5px var(--padding) 2.5px var(--padding);
+    border-bottom: 1px solid var(--maincolor);
+    color: var(--maincolor);
+    font-size: var(--fontsizesmall);
+    line-height: var(--lineheightnormal);
+    text-transform: uppercase;
+    a {
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        width: fit-content;
+        padding: 2px 4px 0px;
+        color: var(--maincolor);
+        background-color: transparent;
+        margin-right: 20px;
+        &:hover {
+            color: var(--secondcolor);
+            background-color: var(--maincolor);
+            cursor: pointer;
+        }
+    }
+}
 .projektlistwrapper {
     color: var(--maincolor);
+    user-select: none;
     .projektwrapper { 
         width: 100vw;
         margin-bottom: 0px;
@@ -24,6 +48,11 @@
                     padding: 2px 4px 0px;
                     color: var(--maincolor);
                     background-color: transparent;
+                    &:hover {
+                        color: var(--maincolor);
+                        background-color: var(--secondcolor);
+                        cursor: pointer;
+                    }
                 }
                 .forschungsfeld:nth-child(2) {
                     margin-left: 20px;
