@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 
 const ListItemProjekt =(props)=>{
-     console.log("ListItem prpüs", props)
+   //  console.log("ListItem prpüs", props)
     //  const {projekt} = props;
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {

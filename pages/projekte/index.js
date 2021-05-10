@@ -24,6 +24,7 @@ export default function Projekte(props) {
   }
 const [filter, setFilter] = useState('')
 const [filterdList, setFilterdList] = useState([])
+
 useEffect(() => {
   setFilterdList (filterBy(allProjekts, filter) )
   // console.log("USe Effect in App",filter, filterdList)
@@ -34,20 +35,27 @@ useEffect(() => {
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
 function searchInput(data, inputvalue) {
   return data.filter((obj) => {
-    return obj.forschungsfeld.some((feld)=>{
-        return feld.titel.toString().includes(inputvalue);
-      })
+      return Object.keys(obj).some((key)=>{
+      if(Array.isArray(obj[key])){
+        return obj[key].some((entry)=>{
+          return Object.keys(entry).some((kkey=>{
+            return entry[kkey].toString().includes(inputvalue);
+          }))
+        })
+      }
+      else{
+        return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
+      }
+    })
     }
   )
 }
 
 const [search, setSearch] = useState('')
-//methode wie bei forschungsfeldfilter
-const [text, setText] = useState([])
+
 useEffect(() => {
-  setText (filterBy(allProjekts, text) )
-  // console.log("USe Effect in App",filter, filterdList)
-},[text])
+  setFilterdList(searchInput(allProjekts,search));
+},[search])
 
 
 
@@ -88,9 +96,11 @@ if(filter) {
               className={styles.inputfeld}
               type="text" 
               placeholder="Suche" 
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onClick={() => setText(search)}
+             // value={search}
+             onChange={(e) => setSearch(e.target.value)}
+              //onChange={(e) => console.log(e.target.value)}
+
+              //onClick={() => setText(search)}
             />
             <span 
               className={styles.suchemoji} 
