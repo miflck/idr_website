@@ -13,10 +13,9 @@ export default function Projekte(props) {
   const { t } = useTranslation('common')
 
 //console.log(allProjekts)
+// Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
 
-
-
-
+// nach Forschungsfelder filtern
 function filterBy(data, filterterm) {
   return data.filter((obj) => {
     return obj.forschungsfeld.some((feld)=>{
@@ -26,16 +25,20 @@ function filterBy(data, filterterm) {
   )
 }
 
+const [filter, setFilter] = useState('')
 
-  
- var filterd = filterBy(allProjekts, "Social Communication");
- console.log("filtered",filterd)
+const [filterdList, setFilterdList] = useState([])
+
+useEffect(() => {
+  setFilterdList (filterBy(allProjekts, filter) )
+  // console.log("USe Effect in App",filter, filterdList)
+},[filter])
 
 
-    const [search, setSearch] = useState('')
-    //contacts in projektnamen, forschungsfeld etc umwandeln?
-    // const [contacts, setContacts] = useState([])
-  //   useEffect(() => {
+const [search, setSearch] = useState('')
+  //     contacts in projektnamen, forschungsfeld etc umwandeln?
+  //     const [contacts, setContacts] = useState([])
+  //     useEffect(() => {
   //     const API_URL = 'https://my.api.mockaroo.com/phonebook.json?key=9ac1c5f0'
   //     axios
   //         .get(API_URL)
@@ -44,13 +47,13 @@ function filterBy(data, filterterm) {
   //             setContacts(contacts)
   //         })
   // }, [])
-    // const filteredContacts = search.length === 0 ? contacts : 
-    // contacts.filter(contact => contact.full_name.toLowerCase().includes(search.toLowerCase()))
+  // const filteredContacts = search.length === 0 ? contacts : 
+  // contacts.filter(contact => contact.full_name.toLowerCase().includes(search.toLowerCase()))
 
-    const [open,setSearchbarOpen] = useState(false)
-  const handleOnClick=(open)=>{
-    setSearchbarOpen(open => !open)
-  }
+const [open,setSearchbarOpen] = useState(false)
+const handleOnClick=(open)=>{
+      setSearchbarOpen(open => !open)
+}
 
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor}  colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond} >
@@ -68,7 +71,7 @@ function filterBy(data, filterterm) {
               className={styles.suchemoji} 
               onClick={handleOnClick}
               >
-              {/* &#9786;  */}
+              {/* &#9786;*/}
               &#128269;
             </span>
             {/* <div>  
@@ -85,23 +88,23 @@ function filterBy(data, filterterm) {
           </div> */}
         </div>
 
-          <ListWrapper>
+        <a onClick={() => setFilter("")}> Filter weg </a>
+
+          {/* <ListWrapper>
                 {allProjekts.map((projekt) => {
                   return(
-                    <ListItemProjekt {...projekt} key={projekt.id}/>
+                    <ListItemProjekt {...projekt} setFilter={setFilter} key={projekt.id}/>
                   )})
                       }
             </ListWrapper>
 
-< br />
+< br /> */}
 
-<h2>filtered result:</h2>
-< br />
-
+{/* <h2>filtered result:</h2> */}
             <ListWrapper>
-                {filterd.map((projekt) => {
+                {filterdList.map((projekt) => {
                   return(
-                    <ListItemProjekt {...projekt} key={projekt.id}/>
+                    <ListItemProjekt {...projekt} setFilter={setFilter} key={projekt.id}/>
                   )})
                       }
             </ListWrapper>

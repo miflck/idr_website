@@ -2,20 +2,22 @@ import styles from './list.module.scss'
 import Link from 'next/link'
 
 
-const ListItemProjekt =(projekt)=>{
-    //  console.log("ListItem prpüs", projekt)
-     const enddatum = new Date(projekt.enddatum).toLocaleString([], {
+const ListItemProjekt =(props)=>{
+     console.log("ListItem prpüs", props)
+    //  const {projekt} = props;
+
+     const enddatum = new Date(props.enddatum).toLocaleString([], {
                 month: 'long', 
                 year: 'numeric'
                 }); 
 
                 
         let href=`/projekte`
-        if(projekt.slug!=""){
-            href+=`/${projekt.slug}`
+        if(props.slug!=""){
+            href+=`/${props.slug}`
         }
     return(
-        <div className={styles.projektwrapper} key={projekt.id}>
+        <div className={styles.projektwrapper} key={props.id}>
             <div className={styles.projektcontent}>
                 {/* Projekt Enddatum */}
                 <div className={styles.datum}>{enddatum}</div>
@@ -25,16 +27,16 @@ const ListItemProjekt =(projekt)=>{
                 <Link href={href} activeClassName={styles.activelink}>
                   <a>
                     <div className={styles.titel}>
-                        {projekt.titel}
+                        {props.titel}
                     </div>
                 </a>          
                 </Link>
 
                 {/* Porjekt Forschungsfelder tags */}
                 <div className={styles.forschungsfeldwrapper}>
-                    {projekt.forschungsfeld.map((forschungsfeld) => {
+                    {props.forschungsfeld.map((forschungsfeld) => {
                         return (
-                            <span className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </span>
+                            <a onClick={() => props.setFilter(forschungsfeld.titel)} className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </a>
                         )
                     })}
                 </div>
