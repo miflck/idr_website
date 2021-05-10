@@ -22,11 +22,11 @@ export default function Projekteinzelansicht (props) {
     projektinhalte
     }=""}=""}=props || ""
 
-    // console.log("projektinhalte", props)
+    console.log("projektinhalte", props)
 
     if(props.data) {
       let MitarbeitendenElement;
-                if(mitarbeit != null){
+                if(mitarbeit != ""){
                   MitarbeitendenElement= <>
                     <div>Mitarbeit</div>
                       {mitarbeit.map((mitarbeiterin) => {
@@ -36,11 +36,27 @@ export default function Projekteinzelansicht (props) {
                         }
                        return (
                             <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
-                          )
-                        })}
+                          )})}
                     </>
                 }else{
                   MitarbeitendenElement= <> </>
+                }
+        let VerantwortungElement;
+                if(verantwortung != ""){
+                  VerantwortungElement= <>
+                    <div>Verantwortung</div>
+                    {verantwortung.map((verantwortung) => {
+                      let href=`/team`
+                      if(verantwortung.slug!=""){
+                          href+=`/${verantwortung.slug}`
+                      }
+                        return (
+                        <Link href={href} key={verantwortung.id}><a>{verantwortung.name}</a></Link>
+                        )
+                      })}
+                    </>
+                }else{
+                  VerantwortungElement= <> </>
                 }
     
   return (
@@ -94,18 +110,10 @@ export default function Projekteinzelansicht (props) {
                 })}
           
           {/* Verantwortung  */}
-          <div>Verantwortung</div>
-              {verantwortung.map((verantwortung) => {
-                let href=`/team`
-                if(verantwortung.slug!=""){
-                    href+=`/${verantwortung.slug}`
-                }
-                  return (
-                  <Link href={href} key={verantwortung.id}><a>{verantwortung.name}</a></Link>
-                  )
-                })}
+            {VerantwortungElement}
+          
           {/* Mitarbeit, falls welche da  */}
-                {MitarbeitendenElement}
+            {MitarbeitendenElement}
 
           <div>Kooperationen</div>
               <StructuredText data={kooperationen.value} />

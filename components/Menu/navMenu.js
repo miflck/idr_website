@@ -52,6 +52,8 @@ const NavMenu = (props)=> {
                 <Link href={{pathname: '/veranstaltungen'}} activeClassName={styles.activelink}>
                 <div>{t('Veranstaltungsseite')}</div>
                 </Link>
+
+                <div onClick={() => { window.history.back();}} className={styles.retour}><a>« zur letzen Seite</a></div>
            
           </div>
         }

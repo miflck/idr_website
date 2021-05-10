@@ -8,57 +8,60 @@ import React, { useState, useEffect } from 'react'
 import styles from '../../components/List/list.module.scss'
 
 export default function Projekte(props) {
-  // console.log("Props from Projekte",props)
+  console.log("Props from Projekte",props)
   const {projekte:{allProjekts}}=props;
   const {projekte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
 
-//console.log(allProjekts)
-// Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-// function searchInput(data, inputvalue) {
-//   return data.filter((obj) => {
-//     return obj.forschungsfeld.some((feld)=>{
-//         return feld.titel.toString().includes(inputvalue);
-//       })
-//     }
-//   )
-// }
-
-
-// nach Forschungsfelder filtern
-function filterBy(data, filterterm) {
-  return data.filter((obj) => {
-    return obj.forschungsfeld.some((feld)=>{
-        return feld.titel.toString().includes(filterterm);
-      })
-    }
-  )
-}
-
+//nach Forschungsfelder filtern
+  function filterBy(data, filterterm) {
+    return data.filter((obj) => {
+      return obj.forschungsfeld.some((feld)=>{
+          return feld.titel.toString().includes(filterterm);
+        })
+      }
+    )
+  }
 const [filter, setFilter] = useState('')
-
 const [filterdList, setFilterdList] = useState([])
-
 useEffect(() => {
   setFilterdList (filterBy(allProjekts, filter) )
   // console.log("USe Effect in App",filter, filterdList)
 },[filter])
 
 
+
+// Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+function searchInput(data, inputvalue) {
+  return data.filter((obj) => {
+    return obj.forschungsfeld.some((feld)=>{
+        return feld.titel.toString().includes(inputvalue);
+      })
+    }
+  )
+}
+
 const [search, setSearch] = useState('')
+//methode wie bei forschungsfeldfilter
+const [text, setText] = useState([])
+useEffect(() => {
+  setText (filterBy(allProjekts, text) )
+  // console.log("USe Effect in App",filter, filterdList)
+},[text])
+
+
+
   // contacts in projektnamen, forschungsfeld etc umwandeln?
-  // const [contacts, setContacts] = useState([])
+  // const [text, setText] = useState([])
   // useEffect(() => {
-  // const API_URL = 'https://my.api.mockaroo.com/phonebook.json?key=9ac1c5f0'
-  // axios
-  // .get(API_URL)
-  // .then(res => {
-  //   const contacts = res.data
-  //   setContacts(contacts)
+  // const API_URL = {props}
+  // .get(API_URL).then(res => {
+  //   const text = res.data
+  //   setText(text)
   //   })
   // }, [])
-  // const filteredContacts = search.length === 0 ? contacts : 
-  // contacts.filter(contact => contact.full_name.toLowerCase().includes(search.toLowerCase()))
+  // const filteredText = search.length === 0 ? text : 
+  // text.filter(text => text.IRGENDEINEVARIABEL.toLowerCase().includes(search.toLowerCase()))
 
 const [open,setSearchbarOpen] = useState(false)
 const handleOnClick=(open)=>{
@@ -68,11 +71,11 @@ const handleOnClick=(open)=>{
 let FilterElement;
 if(filter) {
   FilterElement =  <div className={styles.aktivfilter} >
+                    <a onClick={() => setFilter("")} className={styles.deaktivieren}> Filter deaktivieren </a>
                       {allForschungsfelders.map((forschungsfeld) =>{
                         return(
                           <a onClick={() => setFilter(forschungsfeld.titel)} className={styles.forschungsfeld} > {forschungsfeld.titel} </a>
                         )})}
-                      <a onClick={() => setFilter("")}> kein Forschungsfeld Filter</a>
                     </div>
 }
 
@@ -87,6 +90,7 @@ if(filter) {
               placeholder="Suche" 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onClick={() => setText(search)}
             />
             <span 
               className={styles.suchemoji} 

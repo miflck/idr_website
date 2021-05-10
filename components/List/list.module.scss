@@ -6,6 +6,10 @@
     font-size: var(--fontsizesmall);
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
+    .deaktivieren{
+        color: var(--secondcolor);
+        background-color: var(--maincolor);
+    }
     a {
         border: 1px solid var(--maincolor);
         border-radius: 20px;
@@ -25,7 +29,7 @@
     color: var(--maincolor);
     user-select: none;
     .projektwrapper { 
-        width: 100vw;
+        // width: 100vw;
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
         background-color: var(--secondcolor);
