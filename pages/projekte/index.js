@@ -14,15 +14,19 @@ export default function Projekte(props) {
   const { t } = useTranslation('common')
 
 //nach Forschungsfelder filtern
-  function filterBy(data, filterterm) {
+  function filterBy(data, filterterms) {
     return data.filter((obj) => {
-      // return data.map((neueswort) => {
+      //kann sein: every für && und some für || ? 
+      return filterterms.every((term)=>{
         return obj.forschungsfeld.some((feld)=>{
-          return feld.titel.toString().includes(filterterm);
+          console.log("feld",feld.titel,term,feld.titel.toString().includes(term))
+          return feld.titel.toString().includes(term);
         })
-      // })
+      })   
     })
   }
+
+
 // Filter dazu Test hat funktioniert bei Zeile 31 nach filter noch && "Social Communication" dazuzufügen
 // const [filter, setFilter] = useState('')
 // const [filter, setFilter] = useState([])
@@ -36,13 +40,16 @@ export default function Projekte(props) {
 
 const [filter, setFilter] = useState([])
 const addMoreItem = (item) => {
+
  setFilter([...filter, item])
- console.log("aktiver filter", filter)
+ console.log("aktiver filter", filter,item)
 }
 
 const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
+  console.log(" filter change", filter)
+
   setFilterdList (filterBy(allProjekts, filter) )
 },[filter])
 
