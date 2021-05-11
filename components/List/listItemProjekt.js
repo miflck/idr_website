@@ -36,7 +36,10 @@ const ListItemProjekt =(props)=>{
                 <div className={styles.forschungsfeldwrapper}>
                     {props.forschungsfeld.map((forschungsfeld) => {
                         return (
-                            <a onClick={() => props.setFilter(forschungsfeld.titel)} className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </a>
+                            <a 
+                            // onClick={() => props.setFilter(forschungsfeld.titel)} 
+                            onClick={() => props.addMoreItem(forschungsfeld.titel)}
+                            className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </a>
                         )
                     })}
                 </div>

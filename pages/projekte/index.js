@@ -16,19 +16,34 @@ export default function Projekte(props) {
 //nach Forschungsfelder filtern
   function filterBy(data, filterterm) {
     return data.filter((obj) => {
-      return obj.forschungsfeld.some((feld)=>{
+      // return data.map((neueswort) => {
+        return obj.forschungsfeld.some((feld)=>{
           return feld.titel.toString().includes(filterterm);
         })
-      }
-    )
+      // })
+    })
   }
+// Filter dazu Test hat funktioniert bei Zeile 31 nach filter noch && "Social Communication" dazuzufügen
+// const [filter, setFilter] = useState('')
+// const [filter, setFilter] = useState([])
+// const addMoreItem = () => {
+//   setFilter(prevItems => [...prevItems, {
+//     id: prevItems.length,
+//     value: filter
+//   }])
+//   console.log("aktiver filter", filter)
+// }
 
-  // Filter dazu Test hat funktioniert bei Zeile 31 nach filter noch && "Social Communication" dazuzufügen
-const [filter, setFilter] = useState('')
+const [filter, setFilter] = useState([])
+const addMoreItem = (item) => {
+ setFilter([...filter, item])
+ console.log("aktiver filter", filter)
+}
+
 const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
-  setFilterdList (filterBy(allProjekts, filter && "Social Communication") )
+  setFilterdList (filterBy(allProjekts, filter) )
 },[filter])
 
 // mit createStore arbeiten?
@@ -68,13 +83,26 @@ const handleOnClick=(open)=>{
       setSearchbarOpen(open => !open)
 }
 
+// const [aktiv,setForschungsfeldaktiv] = useState(false)
+// const handleAktivForschungsfeld=(aktiv)=>{
+//   setForschungsfeldaktiv(aktiv => !aktiv)
+// }
+
 let FilterElement;
 if(filter) {
   FilterElement =  <div className={styles.aktivfilter} >
-                    <a onClick={() => setFilter("")} className={styles.deaktivieren}> Filter deaktivieren </a>
+                    <a onClick={() => setFilter([])} className={styles.deaktivieren}> Filter deaktivieren </a>
                       {allForschungsfelders.map((forschungsfeld) =>{
                         return(
-                          <a onClick={() => setFilter(forschungsfeld.titel)} className={styles.forschungsfeld} > {forschungsfeld.titel} </a>
+                          <a 
+                          // onClick={() => setFilter(forschungsfeld.titel)
+                            onClick={() => addMoreItem(forschungsfeld.titel)}
+                            // , 
+                            // handleAktivForschungsfeld
+                          // } 
+                            // className={[styles.forschungsfeld, (aktiv ? styles.aktiv : [])].join(' ')} 
+                            className={styles.forschungsfeld}
+                            > {forschungsfeld.titel} </a>
                         )})}
                     </div>
 }
@@ -104,7 +132,9 @@ if(filter) {
             <ListWrapper>
                 {filterdList.map((projekt) => {
                   return(
-                    <ListItemProjekt {...projekt} setFilter={setFilter} key={projekt.id}/>
+                    <ListItemProjekt {...projekt} setFilter={setFilter} addMoreItem={addMoreItem} 
+                    // setForschungsfeldaktiv={setForschungsfeldaktiv} 
+                    key={projekt.id}/>
                   )})
                       }
             </ListWrapper>

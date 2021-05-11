@@ -20,45 +20,52 @@ const Footer=(props)=>{
     }
 
     const router = useRouter()
+    
+    const [aktiv, setAktiv] = useState(false)
+    // const handleLanguageChange=(aktiv) => {
+    //     setAktiv(aktiv => !aktiv)
+    // }
 
-    const [changeLanguageState, setChangeLanguageState] = useState(true)
-    const handleLanguageChange=(changeLanguageState) => {
-        setChangeLanguageState(changeLanguageState)
-    }
-//     const [open,setSearchbarOpen] = useState(false)
+    // if (router.locale.includes("en")) {
+    //     setAktiv(aktiv)
+    //     console.log("englisch", aktiv)
+    // }
+
+
+// const [open,setSearchbarOpen] = useState(false)
 // const handleOnClick=(open)=>{
-//       setSearchbarOpen(open => !open)
+//   setSearchbarOpen(open => !open)
 // }
     // dann im java unten 
     // className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}
 
-    let LanguageButtons;
-    if (changeLanguageState) {
-        LanguageButtons = <><Link href={router.asPath} locale="de" onClick={handleLanguageChange}>
-                                    <a className={styles.activelanguage}>de</a>
-                            </Link>
-                            <Link href={router.asPath} locale="en" onClick={handleLanguageChange}>
-                                    <a>en</a>
-                            </Link></>
-    }
-    else{
-        LanguageButtons = <><Link href={router.asPath} locale="de" onClick={handleLanguageChange}>
-                                    <a>de</a>
-                            </Link>
-                            <Link href={router.asPath}  locale="en" onClick={handleLanguageChange}>
-                                    <a className={styles.activelanguage}>en</a>
-                            </Link></>
-    }
+    // let LanguageButtons;
+    // if (changeLanguageState) {
+    //     LanguageButtons = <><Link href={router.asPath} locale="de" onClick={handleLanguageChange}>
+    //                                 <a className={styles.activelanguage}>de</a>
+    //                         </Link>
+    //                         <Link href={router.asPath} locale="en" onClick={handleLanguageChange}>
+    //                                 <a>en</a>
+    //                         </Link></>
+    // }
+    // else{
+    //     LanguageButtons = <><Link href={router.asPath} locale="de" onClick={handleLanguageChange}>
+    //                                 <a>de</a>
+    //                         </Link>
+    //                         <Link href={router.asPath}  locale="en" onClick={handleLanguageChange}>
+    //                                 <a className={styles.activelanguage}>en</a>
+    //                         </Link></>
+    // }
     return(
         < div className={styles.footerwrapper}>
-            {/* <a href="https://hkb-idr.ch/#publikationen">Footer Link</a> */}
-            {LanguageButtons}
-            {/* <Link href={router.asPath} locale="de" onClick={true}>
-                <a>de</a>
+            
+            {/* {LanguageButtons} */}
+            <Link href={router.asPath} locale="de" > 
+                <a className={[styles.languebutton, (aktiv ? styles.aktiv : [])].join(' ')}>de</a>
             </Link>
-            <Link href={router.asPath} locale="en" onClick={false}>
-                <a>en</a>
-            </Link> */}
+            <Link href={router.asPath} locale="en"  >
+                <a className={[styles.languebutton, (aktiv ? styles.aktiv : [])].join(' ')}>en</a>
+            </Link>
            
         {/* Farbe wechseln als Extra einbauen  */}
             <div className={[styles.buttonsmaincolor, (openmain ? styles.open : [])].join(' ')} >

@@ -11,6 +11,7 @@
     line-height: var(--lineheighsmall);
     text-transform: uppercase;
     color: var(--maincolor);
+   
     a {
         border: 1px solid var(--maincolor);
         border-radius: 20px;
@@ -22,16 +23,20 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        .languebutton{
+            .aktiv {
+                background: var(--maincolor);
+                color: var(--secondcolor);
+            }
+        }
 
         &:hover {
             color: var(--secondcolor);
             background-color: var(--maincolor);
         }
     }
-    .activelanguage {
-        background: var(--maincolor);
-        color: var(--secondcolor);
-    }
+
+    
 
     .buttonsmaincolor {
             cursor: pointer;

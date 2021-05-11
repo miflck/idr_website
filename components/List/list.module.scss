@@ -57,6 +57,9 @@
                         background-color: var(--secondcolor);
                         cursor: pointer;
                     }
+                    &.aktiv {
+                        background-color: yellow;
+                    }
                 }
                 .forschungsfeld:nth-child(2) {
                     margin-left: 20px;
