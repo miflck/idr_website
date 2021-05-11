@@ -28,12 +28,13 @@ const [filter, setFilter] = useState('')
 const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
-  setFilterdList (filterBy(allProjekts, filter) )
+  setFilterdList (filterBy(allProjekts, filter && "Social Communication") )
 },[filter])
 
 // mit createStore arbeiten?
 // https://redux.js.org/api/createstore/
 // Object.assign({}, state, newData)
+
 
 
 
