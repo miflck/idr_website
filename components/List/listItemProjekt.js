@@ -3,40 +3,11 @@ import Link from 'next/link'
 
 
 const ListItemProjekt =(props)=>{
-   //  console.log("ListItem prpüs", props)
-    //  const {projekt} = props;
-
-const CategoryDivs = []
-
-// for (var i=0;i<7;i++) {
-//     CategoryDivs.push(
-//     <div className={styles.categorydiv} key={i}>
-//         {/* {props.forschungsfeld} */}hi
-//     </div>
-//     )
-// }
-for (var i=0;i<7;i++) {
-    CategoryDivs.push(
-    <>
-        {props.forschungsfeld.map((forschungsfeld) => {
-            // if (forschungsfeld.titel = "Social Communication") {
-            return (
-                <div className={styles.categorydiv} key={forschungsfeld.id}> 
-                    {forschungsfeld.titel}
-                </div>
-                )
-            // }
-           
-        })}
-    </>
-    )
-}
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
                 month: 'long', 
                 year: 'numeric'
-                }); 
-
+                });
                 
         let href=`/projekte`
         if(props.slug!=""){
@@ -44,10 +15,6 @@ for (var i=0;i<7;i++) {
         }
     return(
         <div className={styles.projektwrapper} key={props.id}>
-            
-            <div className={styles.categorydivwrapper}>
-                {CategoryDivs}
-            </div>
 
             <div className={styles.projektcontent}>
                 {/* Projekt Enddatum */}
@@ -65,8 +32,7 @@ for (var i=0;i<7;i++) {
                 <div className={styles.forschungsfeldwrapper}>
                     {props.forschungsfeld.map((forschungsfeld) => {
                         return (
-                            <a 
-                            // onClick={() => props.setFilter(forschungsfeld.titel)} 
+                            <a
                             onClick={() => props.addMoreItem(forschungsfeld.titel)}
                             className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </a>
                         )
