@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 
 const ListItemProjekt =(props)=>{
+    console.log("---------------------- list item projekt props--------",props)
     // const {forschungsfelderliste:{forschungsfelderliste}}=props;
     // console.log("ListItem props", props)
     //  const {projekt} = props;
@@ -15,31 +16,52 @@ const ListItemProjekt =(props)=>{
 
 
 const CategoryDivs = []
-const AlleForschungsfelder = props.hidePainHarold.map((forschungsfeld) => { 
-        console.log("alle Forschungsfelder in array forschungsfeld", forschungsfeld)
-        // return (
-        //     <div className={styles.categorydiv} key={forschungsfeld.titel}>
-        //         {forschungsfeld}
-        //     </div>  
-        // )
+
+
+
+
+
+const alleForschungsfelderDivs = props.allForschungsfelder.map((forschungsfeld) => { 
+        console.log("alle Forschungsfelder in array forschungsfeld", forschungsfeld,forschungsfeld.titel,props.forschungsfeld.includes(forschungsfeld.titel))
+        
+        const found = props.forschungsfeld.filter(x => {
+            console.log(x.titel,forschungsfeld.titel)
+            return(x.titel === forschungsfeld.titel)
+        });
+       
+
+
+         return (
+            CategoryDivs.push(
+
+
+            
+             <div className={[styles.categorydiv, (found.length>0 ? styles.fill : [])].join(' ')} key={forschungsfeld.titel}>
+
+                </div>  
+            )
+         )
     })
 
 
+
+
 // es kennt forschungsfeld nur da drin 
-console.log("alle Forschungsfelder", AlleForschungsfelder)
+console.log("alle Forschungsfelder", alleForschungsfelderDivs)
 
 // davor rausfinden, welche zwei forschungsfelder aktuell sind
 // nicht druch 7 loopen sondern durch alle forschungsfelder
 for (var i=0;i<6;i++) {
     //bist du im aktuellen Forschungsfeld array? is in array wenn ja, class dazu mitgeben, wenn nein normales machen
     //mit wie state open oder so
-    CategoryDivs.push(
-    <div className={styles.categorydiv} key={i}>
-        <div className={styles.categorylinie}></div>
-    </div>
-    )
+    // CategoryDivs.push(
+    // <div className={styles.categorydiv} key={i}>
+    //     <div className={styles.categorylinie}>hallo </div>
+    // </div>
+    // )
 }
 
+console.log("CategoryDivs",CategoryDivs)
 
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
@@ -52,6 +74,7 @@ for (var i=0;i<6;i++) {
         if(props.slug!=""){
             href+=`/${props.slug}`
         }
+
     return(
         <div className={styles.projektwrapper} key={props.id}>
             

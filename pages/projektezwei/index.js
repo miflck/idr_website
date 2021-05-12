@@ -124,10 +124,10 @@ if(filter) {
 
             <ListWrapper>
                 {filterdList.map((projekt) => {
-                  const forschungsfelderliste = [allForschungsfelders]
+                  //const forschungsfelderliste = [allForschungsfelders]
                   // console.log("was wird hier mitgegeben",forschungsfelderliste)
                   return(
-                    <ListItemProjekt {...projekt} hidePainHarold={forschungsfelderliste} setFilter={setFilter} addMoreItem={addMoreItem} 
+                    <ListItemProjekt {...projekt} allForschungsfelder={allForschungsfelders} setFilter={setFilter} addMoreItem={addMoreItem} 
                     // setForschungsfeldaktiv={setForschungsfeldaktiv} 
                     key={projekt.id}/>
                   )})
