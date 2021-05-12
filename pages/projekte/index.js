@@ -26,29 +26,20 @@ export default function Projekte(props) {
     })
   }
 
-
-// Filter dazu Test hat funktioniert bei Zeile 31 nach filter noch && "Social Communication" dazuzufügen
-// const [filter, setFilter] = useState('')
-// const [filter, setFilter] = useState([])
-// const addMoreItem = () => {
-//   setFilter(prevItems => [...prevItems, {
-//     id: prevItems.length,
-//     value: filter
-//   }])
-//   console.log("aktiver filter", filter)
-// }
-
 const [filter, setFilter] = useState([])
 const addMoreItem = (item) => {
-
+//  mit splice erneute angeklickter filter wegnehmen
+// if(filter.includes(item)) {
+//   setFilter([]) hier removen, wenn schon im array
+// }
  setFilter([...filter, item])
- console.log("aktiver filter", filter,item)
+//  console.log("aktiver filter", filter,item)
 }
 
 const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
-  console.log(" filter change", filter)
+  // console.log(" filter change", filter)
 
   setFilterdList (filterBy(allProjekts, filter) )
 },[filter])

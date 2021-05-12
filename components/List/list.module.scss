@@ -25,14 +25,33 @@
         }
     }
 }
+
+
+
 .projektlistwrapper {
     color: var(--maincolor);
     user-select: none;
-    .projektwrapper { 
-        // width: 100vw;
+    z-index: 2;
+    .projektwrapper {
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
-        background-color: var(--secondcolor);
+   
+        .categorydivwrapper {
+            display: flex;
+            flex-direction: row;
+           // align-items: stretch;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            // z-index: -1;
+            .categorydiv {
+                border: 1px solid blue;
+                background-color: red;
+                //height: 100%;
+                width: 100%;
+            }
+        }
+        
         .projektcontent {
             padding: 5px var(--padding) 2.5px var(--padding);
             color: var(--maincolor);
@@ -57,9 +76,9 @@
                         background-color: var(--secondcolor);
                         cursor: pointer;
                     }
-                    &.aktiv {
-                        background-color: yellow;
-                    }
+                    // &.aktiv {
+                    //     background-color: yellow;
+                    // }
                 }
                 .forschungsfeld:nth-child(2) {
                     margin-left: 20px;
@@ -92,6 +111,7 @@
                 }
             }
         }
+        
     }
 }
 

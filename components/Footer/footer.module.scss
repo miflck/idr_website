@@ -6,7 +6,6 @@
     padding: calc(var(--padding)/2);
     background-color: var(--secondcolor);
     border-top: 1px solid var(--maincolor);
-
     font-size: var(--fontsizesmall);
     line-height: var(--lineheighsmall);
     text-transform: uppercase;
@@ -23,20 +22,15 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        .languebutton{
-            .aktiv {
-                background: var(--maincolor);
-                color: var(--secondcolor);
-            }
+        &.activelanguage {
+            background: var(--maincolor);
+            color: var(--secondcolor);
         }
-
         &:hover {
             color: var(--secondcolor);
             background-color: var(--maincolor);
         }
     }
-
-    
 
     .buttonsmaincolor {
             cursor: pointer;
@@ -52,7 +46,6 @@
                 -moz-user-select: none;
                 -ms-user-select: none;
                 user-select: none;
-
             }
             .farbauswahlmaincolor {
                 display: none;
@@ -66,7 +59,6 @@
 
         .buttonssecondcolor {
             cursor: pointer;
-        
             float: right;
             position: relative;
                 a {
@@ -78,9 +70,7 @@
                     -moz-user-select: none;
                     -ms-user-select: none;
                     user-select: none;
-
                 }
-                
                 .farbauswahlsecondcolor {
                     display: none;
                 }
