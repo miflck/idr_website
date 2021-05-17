@@ -19,7 +19,7 @@ export default function Projekte(props) {
       //kann sein: every für && und some für || ? 
       return filterterms.every((term)=>{
         return obj.forschungsfeld.some((feld)=>{
-          console.log("feld",feld.titel,term,feld.titel.toString().includes(term))
+          // console.log("feld",feld.titel,term,fesld.titel.toString().includes(term))
           return feld.titel.toString().includes(term);
         })
       })   
@@ -30,9 +30,18 @@ const [filter, setFilter] = useState([])
 const addMoreItem = (item) => {
 //  mit splice erneute angeklickter filter wegnehmen
 // if(filter.includes(item)) {
+  //index rausfinden und dann das weg splicen an diesem index mit IndexOf
 //   setFilter([]) hier removen, wenn schon im array
 // }
- setFilter([...filter, item])
+const copyfilter = [...filter]
+var index = copyfilter.indexOf(item);
+if (index !== -1) {
+  copyfilter.splice(index, 1);
+  setFilter([...copyfilter])
+}
+else{
+  setFilter([...filter, item])
+}
 //  console.log("aktiver filter", filter,item)
 }
 
@@ -40,16 +49,10 @@ const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
   // console.log(" filter change", filter)
-
   setFilterdList (filterBy(allProjekts, filter) )
 },[filter])
 
-// mit createStore arbeiten?
-// https://redux.js.org/api/createstore/
-// Object.assign({}, state, newData)
-
-
-
+// if(filter.includes(`${forschungsfeld.titel}`))
 
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
 function searchInput(data, inputvalue) {
@@ -71,34 +74,63 @@ function searchInput(data, inputvalue) {
 }
 
 const [search, setSearch] = useState('')
-
 useEffect(() => {
   setFilterdList(searchInput(allProjekts,search));
 },[search])
-
 const [open,setSearchbarOpen] = useState(false)
 const handleOnClick=(open)=>{
       setSearchbarOpen(open => !open)
 }
 
 // const [aktiv,setForschungsfeldaktiv] = useState(false)
-// const handleAktivForschungsfeld=(aktiv)=>{
+// const handleAktivForschungsfeld=()=>{ 
 //   setForschungsfeldaktiv(aktiv => !aktiv)
+//   console.log("state-aktiv",aktiv)
 // }
+// this.state = {
+//   black: true
+// }
+const [black, setColor] = useState(true)
+const changeColor=(black)=> {
+  setColor(black => !black)
+}
+// changeColor(
+//   this.setState({black: !this.state.black})
+// )
+
+
 
 let FilterElement;
 if(filter) {
-  FilterElement =  <div className={styles.aktivfilter} >
-                    <a onClick={() => setFilter([])} className={styles.deaktivieren}> Filter deaktivieren </a>
+  FilterElement =  <div className={styles.filterfeldwrapper} >
+                    <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > Filter deaktivieren </a> </div>
+                    <div className={styles.filterawrapper}>
                       {allForschungsfelders.map((forschungsfeld) =>{
-                        return(
-                          <a 
-                            onClick={() => addMoreItem(forschungsfeld.titel)}
-                            className={styles.forschungsfeld}
-                            > {forschungsfeld.titel} </a>
-                        )})}
+                        let btn_class;
+                        if(filter.includes(forschungsfeld.titel)) {
+                          btn_class = styles.forschungsfeldaktiv
+                        }
+                        else {
+                          btn_class = styles.forschungsfeld
+                        }
+                          return(
+                            <div className={btn_class}>
+                              <a 
+                              onClick={() => addMoreItem(forschungsfeld.titel)}
+                              // className={btn_class}
+                              key={forschungsfeld.titel}
+                              > 
+                              {forschungsfeld.titel} 
+                            </a>
+                            </div>
+                      )})}
+                    </div>
                     </div>
 }
+const BackgroundGrid = []
+ for (var i=0;i<6;i++) {
+  BackgroundGrid.push(<div className={styles.backgroundGrid} key={i}></div>)
+ }
 
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor}  colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond} >
@@ -120,15 +152,22 @@ if(filter) {
         </div>
 
 
-       {FilterElement}
+      {FilterElement}
+      <div className={styles.backgroundGridwrapper}>
+        {BackgroundGrid}
+      </div>
 
             <ListWrapper>
                 {filterdList.map((projekt) => {
                   //const forschungsfelderliste = [allForschungsfelders]
                   // console.log("was wird hier mitgegeben",forschungsfelderliste)
                   return(
-                    <ListItemProjekt {...projekt} allForschungsfelder={allForschungsfelders} setFilter={setFilter} addMoreItem={addMoreItem} 
-                    // setForschungsfeldaktiv={setForschungsfeldaktiv} 
+                    <ListItemProjekt {...projekt} 
+                      allForschungsfelder={allForschungsfelders} 
+                      setFilter={setFilter} 
+                      addMoreItem={addMoreItem} 
+                      // handleAktivForschungsfeld={handleAktivForschungsfeld}
+                      // setForschungsfeldaktiv={setForschungsfeldaktiv} 
                     key={projekt.id}/>
                   )})
                       }

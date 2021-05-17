@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import i18n from "../../node_modules/i18next";
 
-import { HuePicker, ChromePicker } from 'react-color';
+import { ChromePicker } from 'react-color';
 import React, { useState } from 'react';
 
 const Footer=(props)=>{
@@ -20,8 +20,6 @@ const Footer=(props)=>{
     
     let LanguageButtons;
     if (router.locale.includes("en")) {
-
-        // console.log("englisch jetzt")
         LanguageButtons = <><Link href={router.asPath} locale="de">
                                     <a >de</a>
                             </Link>
@@ -29,7 +27,6 @@ const Footer=(props)=>{
                                      <a className={styles.activelanguage}>en</a>
                              </Link></>
     } else {
-        // console.log("deutsch jetzt")
         LanguageButtons = <><Link href={router.asPath} locale="de">
                                     <a className={styles.activelanguage}>de</a>
                             </Link>

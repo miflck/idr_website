@@ -1,73 +1,185 @@
-.aktivfilter {
-    user-select: none;
-    padding: 5px var(--padding) 2.5px var(--padding);
-    border-bottom: 1px solid var(--maincolor);
-    color: var(--maincolor);
-    font-size: var(--fontsizesmall);
-    line-height: var(--lineheightnormal);
-    text-transform: uppercase;
-    .deaktivieren{
+// $secondcolor: red;
+
+.backgroundGridwrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    .backgroundGrid {
+        z-index: 20;
+        pointer-events: none;
+        height: 100vh;
         color: var(--secondcolor);
-        background-color: var(--maincolor);
-    }
-    a {
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        width: fit-content;
-        padding: 2px 4px 0px;
-        color: var(--maincolor);
-        background-color: transparent;
-        margin-right: 20px;
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-            cursor: pointer;
+        width: calc(100%/6);
+        border-right: 1px solid var(--maincolor);
+        &:last-child {
+            border-right: none;
         }
     }
 }
 
-
+.filterfeldwrapper {
+    user-select: none;
+    border-bottom: 1px solid var(--maincolor);
+    //color: var(--maincolor);
+    font-size: var(--fontsizesmall);
+    line-height: var(--lineheightnormal);
+    text-transform: uppercase;
+    background-color: var(--secondcolor);
+    .filterawrapper {
+        display: flex;
+        flex-direction: row;
+        border-top: 1px solid var(--maincolor);
+        div {
+            width: calc(100%/6);
+            padding: 5px var(--padding) 2.5px var(--padding);
+            border-right: 1px solid var(--maincolor);
+            &:last-child {
+                border-right: none;
+            }
+            a {
+                border: 1px solid var(--maincolor);
+                border-radius: 20px;
+                width: fit-content;
+                padding: 2px 4px 0px;
+                color: var(--maincolor);
+                background-color: transparent;
+                margin-right: 20px;
+                &:hover {
+                    color: var(--secondcolor);
+                    background-color: var(--maincolor);
+                    cursor: pointer;
+                }
+            }
+            //wenn nur forschungsfeld button
+            // .forschungsfeldaktiv {
+            //     background-color: var(--maincolor);
+            //     color: var(--secondcolor);
+            // }
+        }
+        .forschungsfeldaktiv {
+            background-color: var(--maincolor);
+            a {
+                color: var(--secondcolor);
+                border: 1px solid var(--secondcolor);
+            }
+        }
+    }
+    
+    .deaktivieren{
+        margin: 5px var(--padding) 2.5px var(--padding);
+        a {
+        color: var(--maincolor);
+        background-color: var(--secondcolor);
+        //border-style: dotted;
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        width: fit-content;
+        padding: 2px 4px 0px;
+        &:hover {
+            color: var(--secondcolor);
+        background-color: var(--maincolor);
+        }
+        }
+    }
+}
 
 .projektlistwrapper {
     color: var(--maincolor);
+    //background-color: transparent;
     user-select: none;
-    z-index: 2;
     .projektwrapper {
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
-   
+        //nicht hardcoden, sonder rauslesen, fit-content geht nicht :(
+        height: 70px;
         .categorydivwrapper {
             display: flex;
             flex-direction: row;
-           // align-items: stretch;
-            height: 100%;
             width: 100%;
+            pointer-events: none;
             position: absolute;
-             z-index: -1;
+            z-index: 2;
+           //background-color: transparent;
+            // mix-blend-mode: difference;
+            // background-blend-mode: difference;
+            // filter: invert(1);
             .categorydiv {
-                border: 1px solid var(--maincolor);
-                background-color: var(--secondcolor);
-                //height: 100%;
-                width: 100%;
-
-                &.fill{
-                    background-color: aqua;
+                height: 70px;
+                margin-top: -0.5px;
+                width: calc(100%/6);
+                // border-right: 1px solid var(--secondcolor);
+                // color: transparent;
+                //padding: 5px var(--padding) 2.5px var(--padding);
+                // font-size: var(--fontsizesmall);
+                // line-height: var(--lineheightnormal);
+                // text-transform: uppercase;
+                &:last-child {
+                    border-right: none;
                 }
-                .categorylinie {
-                    position:absolute;
-                    border-top:1px solid red;
-                    width:18%;
-                    height: 100%;
-                    transform: rotate(22.5deg);
-                    transform-origin: 0% 0%;
+                &.fill {
+                // background-color: var(--secondcolor);
+                // filter: brightness(40%);
+                // background-color: hsla(var(--maincolor), .1);;
+                // background-color: lighten($secondcolor, 10%);
+                border-radius: 100px;
+                border: 1px solid var(--maincolor);
+                // border-right: 10px solid var(--maincolor);
+                // border-left: 10px solid var(--maincolor);
 
+                    //triangle
+                // width: 0;
+                // height: 0;
+                // border-left: 50px solid transparent;
+                // border-right: 50px solid transparent;
+                // border-bottom: 70px solid var(--maincolor);
+
+                //shape schräg
+                // width: calc((100%/6));
+                // height: 70px;
+                // transform: skew(20deg);
+                // background: red;
+
+                // border-radius: random(10px,15px) 20px 30px 40px/30px;
+                // width: calc((100%/6));
+                // height: 70px;
+                // background: red;
+
+                    // filter: invert(0.5);
+                    // filter: hue-rotate(-30deg);
+                    // background-color: var(--maincolor);
+                    // border-right: 4vw solid var(--maincolor);
+                    // border-left: 2vw solid var(--maincolor);
+                    // mix-blend-mode: difference;
+                    // a {
+                    //     border: 1px solid var(--maincolor);
+                    //     border-radius: 20px;
+                    //     width: fit-content;
+                    //     padding: 2px 4px 0px;
+                    //     background-color: transparent;
+                    //     &.colored {
+                    //         color: var(--maincolor);
+                    //     }
+                    // }   
+                    // .categorylinie {
+                    //     position:absolute;
+                    //     border-top: 1px solid var(--maincolor);
+                    //     width: 19.75%;
+                    //     height: 100%;
+                    //     transform: rotate(18deg);
+                    //     transform-origin: 0% 0%;
+                    // }
                 }
             }
         }
         
+        
         .projektcontent {
             padding: 5px var(--padding) 2.5px var(--padding);
             color: var(--maincolor);
+            z-index: 5;
+            position: relative;
+            
             .titel {
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
@@ -103,30 +215,45 @@
                 margin: 0px 3px 3px 0px;
                 text-transform: uppercase;
             }
-
             .image {
                 -webkit-filter: grayscale(1);
                 filter: grayscale(1);
                 // border: 1px solid var(--maincolor);
-                
             }
         }
         &:hover {
-            // border-bottom: 1px solid var(--secondcolor);
-            background-color: var(--maincolor);
-            .projektcontent {
-                color: var(--secondcolor);
-            }
-            .forschungsfeldwrapper {
-                .forschungsfeld {
-                    border: 1px solid var(--secondcolor);
+                background-color: var(--maincolor);
+                .projektcontent {
                     color: var(--secondcolor);
                 }
-            }
+                .forschungsfeldwrapper {
+                    .forschungsfeld {
+                        border: 1px solid var(--secondcolor);
+                        color: var(--secondcolor);
+                    }
+                }
+                .categorydivwrapper {
+                    .categorydiv {
+                        &.fill{
+                            //background-color: var(--maincolor);
+                            // border-right: 10px solid var(--secondcolor);
+                            // border-left: 10px solid var(--secondcolor);
+                            // border-top: 1px solid var(--secondcolor);
+                            // border-bottom: 1px solid var(--secondcolor);
+                            border: 1px solid var(--secondcolor);
+                            // background-color: transparent;
+                            // mix-blend-mode: normal;
+                            // .categorylinie {
+                            //     border-top: 1px solid var(--secondcolor);
+                            // }
+                        }
+                    }
+                }
+            } 
         }
-        
     }
-}
+ 
+
 
 
 
@@ -160,7 +287,7 @@
             color: var(--maincolor);
             background-color: var(--secondcolor);
             border: 1px solid var(--maincolor);
-            font-size: var(--fontsizenormal);
+            font-size: var(--fontsizesmall);
             line-height: var(--lineheightnormal);
             // margin-top: var(--padding);
             &:focus {

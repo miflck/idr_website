@@ -10,7 +10,7 @@
     line-height: var(--lineheighsmall);
     text-transform: uppercase;
     color: var(--maincolor);
-   
+    z-index: 1000;
     a {
         border: 1px solid var(--maincolor);
         border-radius: 20px;
