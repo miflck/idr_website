@@ -81,27 +81,38 @@ const handleOnClick=(open)=>{
       setSearchbarOpen(open => !open)
 }
 
-// const [aktiv,setForschungsfeldaktiv] = useState(false)
-// const handleAktivForschungsfeld=(aktiv)=>{
-//   setForschungsfeldaktiv(aktiv => !aktiv)
-// }
+const [black, setColor] = useState(true)
+const changeColor=(black)=> {
+  setColor(black => !black)
+}
+
+
 
 let FilterElement;
 if(filter) {
-  FilterElement =  <div className={styles.aktivfilter} >
-                    <a onClick={() => setFilter([])} className={styles.deaktivieren}> Filter deaktivieren </a>
+  FilterElement =  <div className={styles.filterfeldwrapper} >
+                    <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > Filter deaktivieren </a> </div>
+                    <div className={styles.filterauflistung}>
                       {allForschungsfelders.map((forschungsfeld) =>{
-                        return(
-                          <a 
-                          // onClick={() => setFilter(forschungsfeld.titel)
-                            onClick={() => addMoreItem(forschungsfeld.titel)}
-                            // , 
-                            // handleAktivForschungsfeld
-                          // } 
-                            // className={[styles.forschungsfeld, (aktiv ? styles.aktiv : [])].join(' ')} 
-                            className={styles.forschungsfeld}
-                            > {forschungsfeld.titel} </a>
-                        )})}
+                        let btn_class;
+                        if(filter.includes(forschungsfeld.titel)) {
+                          btn_class = styles.forschungsfeldaktiv
+                        }
+                        else {
+                          btn_class = styles.forschungsfeld
+                        }
+                          return(
+                            <span className={btn_class}>
+                              <a 
+                              onClick={() => addMoreItem(forschungsfeld.titel)}
+                              // className={btn_class}
+                              key={forschungsfeld.titel}
+                              > 
+                              {forschungsfeld.titel} 
+                            </a>
+                            </span>
+                      )})}
+                    </div>
                     </div>
 }
 

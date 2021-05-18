@@ -75,6 +75,35 @@
             }
         }
     }
+
+    .filterauflistung {
+        padding: 0px var(--padding) calc(var(--padding)/2) var(--padding);
+        span {
+            a {
+                border: 1px solid var(--maincolor);
+                border-radius: 20px;
+                width: fit-content;
+                padding: 2px 4px 0px;
+                color: var(--maincolor);
+                background-color: transparent;
+                margin-right: 20px;
+                &:hover {
+                    color: var(--secondcolor);
+                    background-color: var(--maincolor);
+                    cursor: pointer;
+                }
+            }
+        }
+        .forschungsfeldaktiv {
+            background-color: var(--maincolor);
+            border-radius: 100px;
+            a {
+                background-color: var(--maincolor);
+                color: var(--secondcolor);
+                border: 1px solid var(--secondcolor);
+            }
+        }
+    }
     
     .deaktivieren{
         margin: 5px var(--padding) 2.5px var(--padding);

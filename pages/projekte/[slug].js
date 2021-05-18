@@ -116,7 +116,9 @@ export default function Projekteinzelansicht (props) {
           {forschungsfeld.map((forschungsfeld) => {
             return (
               <Link href="/projekte" key={forschungsfeld.id}>
-                <a onClick={() => props.addMoreItem(forschungsfeld.titel)}
+                <a 
+                // hier übergeben, dass es den filter anwählt auf der projektseite
+                // onClick={() => props.addMoreItem(forschungsfeld.titel)}
                   className={styles.forschungsfeld}> 
                   {forschungsfeld.titel} <br></br>
                 </a>

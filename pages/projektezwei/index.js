@@ -82,21 +82,10 @@ const handleOnClick=(open)=>{
       setSearchbarOpen(open => !open)
 }
 
-// const [aktiv,setForschungsfeldaktiv] = useState(false)
-// const handleAktivForschungsfeld=()=>{ 
-//   setForschungsfeldaktiv(aktiv => !aktiv)
-//   console.log("state-aktiv",aktiv)
-// }
-// this.state = {
-//   black: true
-// }
 const [black, setColor] = useState(true)
 const changeColor=(black)=> {
   setColor(black => !black)
 }
-// changeColor(
-//   this.setState({black: !this.state.black})
-// )
 
 
 
