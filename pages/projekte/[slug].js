@@ -19,7 +19,10 @@ export default function Projekteinzelansicht (props) {
     mitarbeit,
     kooperationen,
     finanzierung,
-    projektinhalte
+    projektinhalte,
+    forschungsfeld,
+    startdatum,
+    enddatum
     }=""}=""}=props || ""
 
     console.log("projektinhalte", props)
@@ -58,6 +61,14 @@ export default function Projekteinzelansicht (props) {
                 }else{
                   VerantwortungElement= <> </>
                 }
+        const startzeitraum = new Date(startdatum).toLocaleString([], {
+            month: 'long', 
+            year: 'numeric'
+            });
+        const endzeitraum = new Date(enddatum).toLocaleString([], {
+          month: 'long', 
+          year: 'numeric'
+        });
     
   return (
    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -97,6 +108,23 @@ export default function Projekteinzelansicht (props) {
           ja vielleicht :), vielleicht auch nur kosmetik? ich weiss es nicht :) 
           - die a mit Link ersetzen… gemacht
           */}
+          <div>Zeitraum</div>
+          {startzeitraum} – {endzeitraum}
+
+          {/* Porjekt Forschungsfelder tags */}
+          <div>Forschungsfelder</div>
+          {forschungsfeld.map((forschungsfeld) => {
+            return (
+              <Link href="/projekte" key={forschungsfeld.id}>
+                <a onClick={() => props.addMoreItem(forschungsfeld.titel)}
+                  className={styles.forschungsfeld}> 
+                  {forschungsfeld.titel} <br></br>
+                </a>
+              </Link>
+            )
+          })}
+          
+          
           <div>Leitung</div>
               {leitung.map((leitung) => {
                 // console.log("leitung", leitung)

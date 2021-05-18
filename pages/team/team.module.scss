@@ -1,6 +1,13 @@
 .teamcontainer {
     // schönere lösung gibt es sicher, für scrollbar bis footer.... 
     margin-bottom: calc(var(--padding)*2);
+    .funktionstitle {
+        padding: var(--padding) 0px calc(var(--padding)/2) var(--padding);
+        text-transform: uppercase;
+        font-size: var(--fontsizenormal);
+        line-height: var(--lineheightnormal);
+        border-bottom: 1px solid var(--maincolor);
+    }
     .menschwrapper {
         color: var(--maincolor);
         padding: var(--padding);
