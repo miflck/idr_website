@@ -1,4 +1,4 @@
-import styles from './list.module.scss'
+import styles from './listdrei.module.scss'
 import Link from 'next/link'
 
 
@@ -13,7 +13,7 @@ const alleForschungsfelderDivs = props.allForschungsfelder.map((forschungsfeld) 
        
          return (
             CategoryDivs.push(
-                <div className={[styles.categorydiv, (found.length>0 ? styles.fill : [])].join(' ')} key={forschungsfeld.titel}>
+                <div className={[styles.categorydivdrei, (found.length>0 ? styles.fill : [])].join(' ')} key={forschungsfeld.titel}>
                     {/* <div className={styles.categorylinie}></div> */}
                     {/* <a onClick={() => props.addMoreItem(forschungsfeld.titel)} className={[styles.forschungsfeld, (found.length>0 ? styles.colored : [])].join(' ')}>{forschungsfeld.titel}</a> */}
                 </div>  
@@ -33,8 +33,7 @@ const alleForschungsfelderDivs = props.allForschungsfelder.map((forschungsfeld) 
         }
 
     return(
-        <div className={styles.projektlistwrapper}>
-        <div className={styles.projektwrapper} key={props.id}>
+        <div className={styles.projektwrapperdrei} key={props.id}>
             
             <div className={styles.categorydivwrapper}>
                 {CategoryDivs}
@@ -66,7 +65,6 @@ const alleForschungsfelderDivs = props.allForschungsfelder.map((forschungsfeld) 
                 </div> */}
                 
             </div>
-        </div>
         </div>
     )
 }

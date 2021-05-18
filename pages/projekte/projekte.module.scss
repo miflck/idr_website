@@ -10,10 +10,10 @@
         color: var(--secondcolor);
         width: calc(100%/6);
             // grid
-            border-right: 1px solid var(--maincolor);
+            // border-right: 1px solid var(--maincolor);
         // zentriert
-        // margin-left: calc(100%/12);
-        // border-left: 1px solid var(--maincolor);
+        margin-left: calc(100%/12);
+        border-left: 1px solid var(--maincolor);
         &:last-child {
             border-right: none;
         }
@@ -28,46 +28,6 @@
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     background-color: var(--secondcolor);
-    .filterawrapper {
-        display: flex;
-        flex-direction: row;
-        border-top: 1px solid var(--maincolor);
-        
-        div {
-            width: calc(100%/6);
-            padding: 5px var(--padding) 2.5px var(--padding);
-                // grid
-                border-right: 1px solid var(--maincolor);
-                //forschungsfeld filter text zentriert
-                // text-align: center;
-            &:last-child {
-                border-right: none;
-            }
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                width: fit-content;
-                padding: 2px 4px 0px;
-                color: var(--maincolor);
-                background-color: transparent;
-                margin-right: 20px;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                }
-            }
-        }
-        .forschungsfeldaktiv {
-            background-color: var(--maincolor);
-            border-radius: 100px;
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--secondcolor);
-            }
-        }
-    }
 
     .filterauflistung {
         padding: 0px var(--padding) calc(var(--padding)/2) var(--padding);
@@ -135,8 +95,8 @@
             // background-blend-mode: difference;
             // filter: invert(1);
             .categorydiv {
-                height: 71px;
-                 margin-top: -1px;
+                height: 70px;
+                margin-top: -0.5px;
                 width: calc(100%/6);
                 // border-right: 1px solid var(--secondcolor);
                 // color: transparent;
@@ -148,8 +108,8 @@
                     border-right: none;
                 }
                 &.fill {
-                border-radius: 100px;
-                border: 1px solid var(--maincolor);
+                // border-radius: 100px;
+                // border: 1px solid var(--maincolor);
 
 
                 // background-color: var(--secondcolor);
@@ -162,11 +122,11 @@
 
                     //triangle
                 // filter: brightness(0.5);
-                // width: 0;
-                // height: 0;
-                // border-left: 100px solid transparent;
-                // border-right: 100px solid transparent;
-                // border-bottom: 70px solid var(--maincolor);
+                width: 0;
+                height: 0;
+                border-left: 100px solid transparent;
+                border-right: 100px solid transparent;
+                border-bottom: 70px solid var(--maincolor);
                 
 
                 //shape schräg
@@ -236,9 +196,6 @@
                         background-color: var(--secondcolor);
                         cursor: pointer;
                     }
-                    // &.aktiv {
-                    //     background-color: yellow;
-                    // }
                 }
                 .forschungsfeld:nth-child(2) {
                     margin-left: 20px;
@@ -270,17 +227,7 @@
                 .categorydivwrapper {
                     .categorydiv {
                         &.fill{
-                            //background-color: var(--maincolor);
-                            // border-right: 10px solid var(--secondcolor);
-                            // border-left: 10px solid var(--secondcolor);
-                            // border-top: 1px solid var(--secondcolor);
-                            // border-bottom: 1px solid var(--secondcolor);
                             border: 1px solid var(--secondcolor);
-                            // background-color: transparent;
-                            // mix-blend-mode: normal;
-                            // .categorylinie {
-                            //     border-top: 1px solid var(--secondcolor);
-                            // }
                         }
                     }
                 }
@@ -288,8 +235,6 @@
         }
     }
  
-
-
 
 
 
@@ -317,18 +262,13 @@
     &.open {
         .inputfeld {
             display: block;
-            height: 1.1em;
+            height: 1.4em;
             font-family: "Sang";
             color: var(--maincolor);
             background-color: var(--secondcolor);
             border: 1px solid var(--maincolor);
-            font-size: var(--fontsizesmall);
+            font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
-            // margin-top: var(--padding);
-            &:focus {
-                // background-color: yellow;
-                // border: yellowgreen;
-            }
         }
     }
 }

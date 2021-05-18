@@ -1,9 +1,6 @@
 .menuwrapper {
     position: relative;
     top:0;
-    background-color: 
-    // var(--secondcolor)
-    blue;
     z-index: 51;
 
     .menubutton {
@@ -39,6 +36,9 @@
             // }
             display: block;
             border-bottom: 1px solid var(--maincolor);
+            .activelink {
+                background-color: red;
+            }
             div {
                 cursor: pointer;
                 color: var(--secondcolor);

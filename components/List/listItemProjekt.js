@@ -14,7 +14,8 @@ const ListItemProjekt =(props)=>{
             href+=`/${props.slug}`
         }
     return(
-        <div className={styles.projektwrapper} key={props.id}>
+        <div className={styles.projektlistwrapper}>
+            <div className={styles.projektwrapper} key={props.id}>
 
             <div className={styles.projektcontent}>
                 {/* Projekt Enddatum */}
@@ -40,6 +41,7 @@ const ListItemProjekt =(props)=>{
                 </div>
                 
             </div>
+        </div>
         </div>
     )
 }

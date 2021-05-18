@@ -28,31 +28,22 @@ export default function Projekte(props) {
 
 const [filter, setFilter] = useState([])
 const addMoreItem = (item) => {
-//  mit splice erneute angeklickter filter wegnehmen
-// if(filter.includes(item)) {
-  //index rausfinden und dann das weg splicen an diesem index mit IndexOf
-//   setFilter([]) hier removen, wenn schon im array
-// }
-const copyfilter = [...filter]
-var index = copyfilter.indexOf(item);
-if (index !== -1) {
-  copyfilter.splice(index, 1);
-  setFilter([...copyfilter])
-}
-else{
-  setFilter([...filter, item])
-}
-//  console.log("aktiver filter", filter,item)
+  const copyfilter = [...filter]
+  var index = copyfilter.indexOf(item);
+  if (index !== -1) {
+    copyfilter.splice(index, 1);
+    setFilter([...copyfilter])
+  }
+  else{
+    setFilter([...filter, item])
+  }
 }
 
 const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
-  // console.log(" filter change", filter)
   setFilterdList (filterBy(allProjekts, filter) )
 },[filter])
-
-// if(filter.includes(`${forschungsfeld.titel}`))
 
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
 function searchInput(data, inputvalue) {
@@ -92,7 +83,7 @@ const changeColor=(black)=> {
 let FilterElement;
 if(filter) {
   FilterElement =  <div className={styles.filterfeldwrapper} >
-                    <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > Filter deaktivieren </a> </div>
+                    <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
                     <div className={styles.filterawrapper}>
                       {allForschungsfelders.map((forschungsfeld) =>{
                         let btn_class;

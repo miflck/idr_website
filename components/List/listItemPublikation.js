@@ -1,4 +1,4 @@
-import styles from './list.module.scss'
+import styles from './listpublikationen.module.scss'
 import Link from 'next/link'
 
 const ListItemPublikation =(publikation)=>{
@@ -12,6 +12,7 @@ const ListItemPublikation =(publikation)=>{
     }
  
     return(
+        <div className={styles.projektlistwrapper}>
         <div className={styles.projektwrapper} key={publikation.id}>
             <div className={styles.projektcontent}>
 
@@ -29,6 +30,7 @@ const ListItemPublikation =(publikation)=>{
                 alt={publikation.bild.alt} 
             />
             </div>
+        </div>
         </div>
     )
 }

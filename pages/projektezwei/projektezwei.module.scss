@@ -1,3 +1,5 @@
+// $secondcolor: red;
+
 .backgroundGridwrapper {
     width: 100%;
     display: flex;
@@ -135,8 +137,8 @@
             // background-blend-mode: difference;
             // filter: invert(1);
             .categorydiv {
-                height: 71px;
-                 margin-top: -1px;
+                height: 70px;
+                margin-top: -0.5px;
                 width: calc(100%/6);
                 // border-right: 1px solid var(--secondcolor);
                 // color: transparent;
@@ -297,7 +299,7 @@
     position: fixed;
     top: calc(var(--padding)/1.5);
     right: calc(var(--padding)*4);
-    z-index: 150;
+    z-index: 52;
     cursor: pointer;
     display: flex;
     flex-grow: 2;

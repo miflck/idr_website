@@ -1,19 +1,22 @@
+// $secondcolor: red;
+
 .backgroundGridwrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
+    // width: 100%;
+    // height: 150%;
+    // display: flex;
+    // flex-direction: row;
+    // position: absolute;
     .backgroundGrid {
         z-index: 2;
         pointer-events: none;
-        height: 100vh;
+        height: 100%;
         color: var(--secondcolor);
         width: calc(100%/6);
             // grid
-            border-right: 1px solid var(--maincolor);
+            // border-right: 1px solid var(--maincolor);
         // zentriert
-        // margin-left: calc(100%/12);
-        // border-left: 1px solid var(--maincolor);
+        margin-left: calc(100%/12);
+        border-left: 1px solid var(--maincolor);
         &:last-child {
             border-right: none;
         }
@@ -40,61 +43,39 @@
                 border-right: 1px solid var(--maincolor);
                 //forschungsfeld filter text zentriert
                 // text-align: center;
+                
+                cursor: pointer;
             &:last-child {
                 border-right: none;
             }
+            &:hover {
+                background-color: var(--maincolor);
+                a {
+                    color: var(--secondcolor);
+                }
+            }
             a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
+                // border: 1px solid var(--maincolor);
+                // border-radius: 20px;
                 width: fit-content;
                 padding: 2px 4px 0px;
                 color: var(--maincolor);
                 background-color: transparent;
                 margin-right: 20px;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                }
             }
         }
         .forschungsfeldaktiv {
             background-color: var(--maincolor);
-            border-radius: 100px;
+            //border-radius: 100px;
             a {
                 background-color: var(--maincolor);
                 color: var(--secondcolor);
-                border: 1px solid var(--secondcolor);
+                //border: 1px solid var(--secondcolor);
             }
         }
     }
 
-    .filterauflistung {
-        padding: 0px var(--padding) calc(var(--padding)/2) var(--padding);
-        span {
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                width: fit-content;
-                padding: 2px 4px 0px;
-                color: var(--maincolor);
-                background-color: transparent;
-                margin-right: 20px;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                }
-            }
-        }
-        .forschungsfeldaktiv {
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--maincolor);
-            }
-        }
-    }
+    
     
     .deaktivieren{
         margin: 5px var(--padding) 2.5px var(--padding);
@@ -118,25 +99,36 @@
 .projektlistwrapper {
     color: var(--maincolor);
     user-select: none;
-    .projektwrapper {
+    .projektwrapperdrei {
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
         //nicht hardcoden, sonder rauslesen, fit-content geht nicht :(
-        height: 70px;
+        //height: 70px;
         .categorydivwrapper {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            pointer-events: none;
-            position: absolute;
-            z-index: 2;
+            // display: flex;
+            // flex-direction: row;
+            // width: 100%;
+            // pointer-events: none;
+            //position: absolute;
+            // z-index: 2;
            //background-color: transparent;
             // mix-blend-mode: difference;
             // background-blend-mode: difference;
             // filter: invert(1);
-            .categorydiv {
-                height: 71px;
-                 margin-top: -1px;
+
+
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            pointer-events: none;
+            z-index: 2;
+            border-bottom: 1px solid var(--maincolor);
+            background-color: var(--secondcolor);
+            position: relative;
+
+            .categorydivdrei {
+                //height: 70px;
+                margin-top: -0.5px;
                 width: calc(100%/6);
                 // border-right: 1px solid var(--secondcolor);
                 // color: transparent;
@@ -148,26 +140,16 @@
                     border-right: none;
                 }
                 &.fill {
-                border-radius: 100px;
-                border: 1px solid var(--maincolor);
-
-
-                // background-color: var(--secondcolor);
-                // filter: brightness(40%);
-                // background-color: hsla(var(--maincolor), .1);;
-                // background-color: lighten($secondcolor, 10%);
-                
-                // border-right: 10px solid var(--maincolor);
-                // border-left: 10px solid var(--maincolor);
-
-                    //triangle
-                // filter: brightness(0.5);
-                // width: 0;
+                //triangle
+                //filter: brightness(0.5);
+                width: calc(100%/6);
+                height: 2em;
+                // width:0;
                 // height: 0;
-                // border-left: 100px solid transparent;
-                // border-right: 100px solid transparent;
-                // border-bottom: 70px solid var(--maincolor);
-                
+                // border-left: calc(100vw/12) solid transparent;
+                // border-right: calc(100vw/12) solid transparent;
+                // border-bottom: calc(2em) solid var(--maincolor);
+                background-color: var(--maincolor);
 
                 //shape schräg
                 // width: calc((100%/6));
@@ -214,7 +196,7 @@
             color: var(--maincolor);
             z-index: 5;
             position: relative;
-            
+            background-color: var(--secondcolor);
             .titel {
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
@@ -236,9 +218,6 @@
                         background-color: var(--secondcolor);
                         cursor: pointer;
                     }
-                    // &.aktiv {
-                    //     background-color: yellow;
-                    // }
                 }
                 .forschungsfeld:nth-child(2) {
                     margin-left: 20px;
@@ -260,22 +239,25 @@
                 background-color: var(--maincolor);
                 .projektcontent {
                     color: var(--secondcolor);
+                    background-color: var(--maincolor);
                 }
                 .forschungsfeldwrapper {
                     .forschungsfeld {
-                        border: 1px solid var(--secondcolor);
+                        //border: 1px solid var(--secondcolor);
+                        background-color: black;
                         color: var(--secondcolor);
                     }
                 }
                 .categorydivwrapper {
-                    .categorydiv {
+                    //background-color: var(--maincolor);
+                    .categorydivdrei {
                         &.fill{
-                            //background-color: var(--maincolor);
+                            //background-color: var(--secondcolor);
                             // border-right: 10px solid var(--secondcolor);
                             // border-left: 10px solid var(--secondcolor);
                             // border-top: 1px solid var(--secondcolor);
                             // border-bottom: 1px solid var(--secondcolor);
-                            border: 1px solid var(--secondcolor);
+                            //border: 1px solid var(--secondcolor);
                             // background-color: transparent;
                             // mix-blend-mode: normal;
                             // .categorylinie {
@@ -297,7 +279,7 @@
     position: fixed;
     top: calc(var(--padding)/1.5);
     right: calc(var(--padding)*4);
-    z-index: 150;
+    z-index: 52;
     cursor: pointer;
     display: flex;
     flex-grow: 2;
@@ -306,9 +288,6 @@
         line-height: calc(var(--lineheightnormal)*1.25);
         user-select: none;
         margin-left: var(--padding);
-        -webkit-text-stroke: 1px solid blue;
-        -webkit-text-fill-color: none;
-        color: yellow;
     }
     .inputfeld {
         display: none;

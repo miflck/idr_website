@@ -1,19 +1,20 @@
 import styles from './menu.module.scss'
 import React, { useState } from 'react';
-
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import ActiveLink from './ActiveLink'
+import Linkneu from './Linkneu'
 
 
 const NavMenu = (props)=> {
-
   const { t } = useTranslation('common')
 
   const [open,setMenuOpen] = useState(false)
   const handleOnClick=(open)=>{
     setMenuOpen(open => !open)
   }
+
 
     return (
     <div
@@ -28,15 +29,22 @@ const NavMenu = (props)=> {
         </div>
         {
           <div className={styles.menucontent}>
+              {/* <style jsx>{`
+                .active:after {
+                  content: ' (current page)';
+                }
+              `}</style> */}
+              <div>
+                <ActiveLink href={{pathname: '/projekte'}} activeClassName={styles.activelink} >
+                <a>
+                  {t('Projektseite')} 
+                  </a>
+                </ActiveLink>
+                </div>
               
-                <Link href={{pathname: '/projekte'}} activeClassName={styles.activelink}>
-                <div>{t('Projektseite')} </div>
-                </Link>
-             
-              
-                <Link href={{pathname: '/editorial'}} activeClassName={styles.activelink}>
+                <Linkneu href={{pathname: '/editorial'}} activeClassName={styles.activelink}>
                 <div>{t('Editorialseite')}</div>
-                </Link>
+                </Linkneu>
               
            
                 <Link href={{pathname: '/team'}} activeClassName={styles.activelink}>

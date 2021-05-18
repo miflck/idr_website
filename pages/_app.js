@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
 
-  const [colorHexCode, setColorHexCode] = useState('#ff0000');
+  const [colorHexCode, setColorHexCode] = useState('#000000');
   const [colorHexCodeSecond, setColorHexCodeSecond] = useState('#fefefe');
 
 
