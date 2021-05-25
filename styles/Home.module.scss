@@ -1,5 +1,56 @@
-@mixin mobile {
-  @media (max-width: 600px) {
-    @content
+// @mixin mobile {
+//   @media (max-width: 600px) {
+//     @content
+//   }
+// }
+
+.allekacheln {
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+
+
+  padding: calc(var(--padding) / 2);
+  user-select: none;
+ .kachelwrapper {
+  // float: left;
+    width: calc(50vw - 1.5 * var(--padding));
+    height: min-content;
+    .kachel {
+    margin: calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 2);
+    border: 1px solid var(--maincolor);
+    cursor: pointer;
+      .uebertitel {
+        text-transform: uppercase;
+        font-size: var(--fontsizenormal);
+        line-height: var(--lineheightnormal);
+      }
+      .titel {
+        font-size: var(--fontsizesmall);
+        line-height: var(--lineheightsmall);
+      }
+      .date {
+        border: solid 1px var(--maincolor);
+        border-radius: 20px;
+        width: fit-content;
+        padding: 1px 4px 0px 4px;
+        font-size: var(--fontsizesmall);
+        line-height: var(--lineheightsmall);
+      }
+      .image {
+        height: 15vh;
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
+      }
+   
+    &:hover {
+      background-color: var(--maincolor);
+      color: var(--secondcolor);
+    }
   }
+ } 
 }

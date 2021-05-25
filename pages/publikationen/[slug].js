@@ -53,6 +53,7 @@ export default function Publikationseinzelansicht (props) {
             <div className={styles.modulareinhalte}>
                 {publikationsinhalte != null &&
                 publikationsinhalte.map((block) => {
+                  console.log("......publikation", publikationsinhalte)
                     return (
                   <div key={block.id}>
                     {

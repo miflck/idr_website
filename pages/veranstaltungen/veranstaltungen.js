@@ -1,7 +1,7 @@
-import { request,VERANSTALTUNGEN } from "../lib/datocms"
+import { request,VERANSTALTUNGEN } from "../../lib/datocms"
 import { StructuredText } from "react-datocms"
 import styles from './veranstaltungen.module.scss'
-import Layout from '../components/Layout/layout'
+import Layout from '../../components/Layout/layout'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

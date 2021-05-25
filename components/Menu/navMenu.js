@@ -34,7 +34,11 @@ const NavMenu = (props)=> {
                   content: ' (current page)';
                 }
               `}</style> */}
-              <div>
+                <Link href={{pathname: '/'}} activeClassName={styles.activelink}>
+                  <div>{t('News')}</div>
+                </Link>
+
+                <div>
                 <ActiveLink href={{pathname: '/projekte'}} activeClassName={styles.activelink} >
                 <a>
                   {t('Projektseite')} 

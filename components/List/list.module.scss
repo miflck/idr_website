@@ -122,7 +122,7 @@
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
         //nicht hardcoden, sonder rauslesen, fit-content geht nicht :(
-        height: 70px;
+        // height: 70px;
         .categorydivwrapper {
             display: flex;
             flex-direction: row;
@@ -135,7 +135,7 @@
             // background-blend-mode: difference;
             // filter: invert(1);
             .categorydiv {
-                height: 71px;
+                //height: 71px;
                  margin-top: -1px;
                 width: calc(100%/6);
                 // border-right: 1px solid var(--secondcolor);
