@@ -6,9 +6,10 @@
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
+        margin-bottom: calc(var(--padding) / 2);
     }
     .portrait {
-        margin-top: calc(var(--padding)/2);
+        // margin-top: calc(var(--padding)/2);
         margin-bottom: calc(var(--padding)/2);
         width: 100%;
         -webkit-filter: grayscale(1);

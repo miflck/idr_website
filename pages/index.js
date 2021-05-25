@@ -42,8 +42,10 @@ export default function Home(props) {
                     <Link href={hrefprojekte}
                     >
                       <div className={styles.kachel}>
-                        <div className={styles.uebertitel}>Projekt</div>
-                        <div className={styles.titel}>{beitrag.titel}</div>
+                        <div className={styles.text}>
+                          <div className={styles.uebertitel}>Projekt</div>
+                          <div className={styles.titel}>{beitrag.titel}</div>
+                        </div>
                       </div>
                     </Link>
                     }
@@ -52,24 +54,30 @@ export default function Home(props) {
                       <Link href={hrefveranstaltungen}
                       >
                         <div className={styles.kachel}>
-                          <div className={styles.uebertitel}>Veranstaltung</div>
-                          <div className={styles.titel}>{beitrag.titel}</div>
-                          <div className={styles.date}>{date}</div>
+                          <div className={styles.text}>
+                            <div className={styles.uebertitel}>Veranstaltung</div>
+                            <div className={styles.titel}>{beitrag.titel}</div>
+                            <div className={styles.date}>{date} Uhr</div>
+                          </div>
                         </div>
                       </Link>
                     }
                     {
                       beitrag._modelApiKey === 'publikationen' &&
-                      <Link href={hrefpublikationen}
-                      >
+                      <Link href={hrefpublikationen}>
                         <div className={styles.kachel}>
-                          <div className={styles.uebertitel}>Publikation</div>
-                          <div className={styles.titel}>{beitrag.titel}</div>
-                          <img 
-                              className={styles.image}
-                              src={beitrag.bild.url} 
-                              alt={beitrag.bild.alt} 
-                          />
+                            <div className={styles.text}>
+                              <div className={styles.uebertitel}>Publikation</div>
+                              <div className={styles.titel}>{beitrag.titel}</div>
+                            </div>
+                            <div className={styles.bild}>
+                              <img
+                                  className={styles.image}
+                                  src={beitrag.bild.url} 
+                                  alt={beitrag.bild.alt} 
+                                />
+                            </div>
+                       
                         </div>
                       </Link>
                     }

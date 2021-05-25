@@ -6,7 +6,8 @@
         border-bottom: 1px solid var(--maincolor);
       
         .projektcontent {
-            padding: 5px var(--padding) 2.5px var(--padding);
+            // padding: 5px var(--padding) 2.5px var(--padding);
+            padding: var(--padding);
             color: var(--maincolor);
             z-index: 5;
             position: relative;
@@ -15,6 +16,7 @@
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
+                margin-bottom: calc(var(--padding) / 2);
             }
             
             .image {
