@@ -13,6 +13,7 @@ export default function Projekte(props) {
   const {projekte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
 
+
 //nach Forschungsfelder filtern
 function filterBy(data, filterterms) {
   return data.filter((obj) => {
@@ -133,7 +134,6 @@ if(filter) {
                 {filterdList.map((projekt) => {
                   return(
                     <ListItemProjekt {...projekt} setFilter={setFilter} addMoreItem={addMoreItem} 
-                    // setForschungsfeldaktiv={setForschungsfeldaktiv} 
                     key={projekt.id}/>
                   )})
                       }

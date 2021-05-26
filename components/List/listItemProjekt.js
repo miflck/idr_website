@@ -13,6 +13,7 @@ const ListItemProjekt =(props)=>{
         if(props.slug!=""){
             href+=`/${props.slug}`
         }
+
     return(
         <div className={styles.projektlistwrapper}>
             <div className={styles.projektwrapper} key={props.id}>
