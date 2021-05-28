@@ -9,8 +9,6 @@ import Link from 'next/link'
 export default function Menscheinzelansicht (props) {
 
   const { t } = useTranslation('common')
-// console.log("props", props)
-// falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{menschen:{
     name,
     id,
@@ -24,17 +22,10 @@ export default function Menscheinzelansicht (props) {
     publikationsliste
     }=""}=""}=props || ""
 
-  
-
-    // console.log("projektinhalte", props)
-
     if(props.data) {
-
                 let PDFElement;
                 if(publikationsliste != null && publikationsliste.url != null){
-                    PDFElement= <div className={styles.pdf}>
-                                    <Link href={publikationsliste.url}><a>Publikationsliste</a></Link>
-                                    </div> 
+                    PDFElement= <div className={styles.pdf}><Link href={publikationsliste.url}><a>Publikationsliste</a></Link></div> 
                 }else{
                     PDFElement= <> </>
                 }
@@ -70,7 +61,7 @@ export default function Menscheinzelansicht (props) {
                 {WebsiteElement}
             </div>
           
-            <div>
+            <div className={styles.text}>
               <StructuredText data={lebenslauf.value} />
             </div>
 

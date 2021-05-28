@@ -24,7 +24,7 @@ const Editorial =(props)=>{
                         })}
                  
                     {/* Beitrag Text */}
-                    <div>
+                    <div className={styles.text}>
                         {editorial.beitraege.map((beitrag) => {
                             return (
                                 <StructuredText data={beitrag.text.value} key={beitrag.id}/>

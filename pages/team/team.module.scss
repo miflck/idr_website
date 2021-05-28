@@ -1,42 +1,54 @@
 .teamcontainer {
-    // schönere lösung gibt es sicher, für scrollbar bis footer.... 
-    margin-bottom: calc(var(--padding)*2);
     .funktionstitle {
         padding: var(--padding) 0px calc(var(--padding)/2) var(--padding);
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
         border-bottom: 1px solid var(--maincolor);
+        color: var(--maincolor);
+        position: sticky;
+        top: 39.5px;
+        z-index: 51;
+        background-color: var(--secondcolor);
     }
     .menschwrapper {
         color: var(--maincolor);
         padding: var(--padding);
         border-bottom: 1px solid var(--maincolor);
         background-color: var(--secondcolor);
-
+        cursor: pointer;
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
-        a {
-            border: 1px solid var(--maincolor);
-            border-radius: 20px;
-            padding: 2px 4px 0px;
-            &:hover {
-                color: var(--secondcolor);
-                background-color: var(--maincolor);
-            }
-        }
         .portrait {
-            //margin-top: calc(var(--padding)/2);
-            margin-bottom: calc(var(--padding)/2);
+            margin-bottom: var(--padding);
+            display: block;
             width: 100%;
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
         } 
         .name {
-            // margin-bottom: var(--padding);
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
+            a {
+                border: 1px solid var(--maincolor);
+                border-radius: 20px;
+                padding: 4px 6px 0px;
+            }
+        }
+
+        &:hover{
+            background-color: var(--maincolor);
+            .name {
+                a {
+                    color: var(--secondcolor);
+                    border: 1px solid var(--secondcolor);
+                    &:hover {
+                        color: var(--maincolor);
+                        background-color: var(--secondcolor);
+                    }
+                }
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 import { request, NEWS } from "../lib/datocms";
-import styles from '../styles/Home.module.scss'
+// import styles from '../styles/Home.module.scss'
+import styles from './news.module.scss'
 import Layout from '../components/Layout/layout'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

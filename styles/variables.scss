@@ -19,21 +19,23 @@ html {
     --lineheighthalf: calc(var(--lineheightnormal)-5);
     --fontsizetitle: calc(var(--fontsizenormal)*2);
     --lineheighttitle: calc(var(--lineheightnormal)*2);
+
+    --columnwidth: 1;
   }
 
 
 @media (min-width: $breakpointSmall) {
-   
+  html {
+    --columnwidth: 2;
+  } 
 }
 
 @media (min-width: $breakpointMedium) {
- 
+  
 }
 
 @media (min-width: $breakpointLarge) {
-  // html {
-  //    --padding: 100px;
-  // }
+
 }
 
 @media (min-width: $breakpointXLarge) {

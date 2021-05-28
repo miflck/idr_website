@@ -9,22 +9,35 @@
         margin-bottom: calc(var(--padding) / 2);
     }
     .portrait {
-        // margin-top: calc(var(--padding)/2);
-        margin-bottom: calc(var(--padding)/2);
+        margin-bottom: var(--padding);
         width: 100%;
         -webkit-filter: grayscale(1);
         filter: grayscale(1);
+        display: block;
+    }
+    .image {
+        margin-bottom: var(--padding);
+        width: auto;
+        display: block;
     }
     .links {
         margin-bottom: var(--padding);
+        display: block;
     }
-    div {
+    .text {
         margin: 0;
+        margin-bottom: var(--padding);
+        columns: var(--columnwidth) auto;
         p {
             margin: 0;
-            margin-bottom: var(--padding);
         }
     }
+    .info{
+        p {
+            margin: 0;
+        }
+    }
+    //personenn auflistungen
     .listenwrapper{
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
@@ -32,7 +45,6 @@
             text-transform: uppercase;
             margin-top: var(--padding);
         }
-       
         p {
             margin: 0;
             margin-bottom: var(--padding);

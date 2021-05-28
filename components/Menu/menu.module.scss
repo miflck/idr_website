@@ -2,7 +2,6 @@
     position: relative;
     top:0;
     z-index: 51;
-
     .menubutton {
         position: fixed;
         right: var(--padding);
@@ -17,7 +16,6 @@
     .menucontent {
         display: none;
     }
-
     &.open {
         background-color: var(--maincolor);
         .menubutton{
@@ -29,17 +27,8 @@
             }
         }
         .menucontent {
-            // animation: fadein 1s linear;
-            // @keyframes fadein {
-            //     0% {display: none;}
-            //     100% {display: blpck;}
-            // }
             display: block;
-            border-bottom: 1px solid var(--maincolor);
-            .activelink {
-                background-color: red;
-            }
-            div {
+            .menusitelinks {
                 cursor: pointer;
                 color: var(--secondcolor);
                 text-transform: uppercase;
@@ -52,18 +41,17 @@
                     background-color: var(--secondcolor);
                     border-bottom: 1px solid var(--maincolor);
                 }
+                &.aktiv{
+                    color: var(--maincolor);
+                    background-color: var(--secondcolor);
+                    border-bottom: 1px solid var(--maincolor);
+                    // a {
+                    // border: solid 1px var(--secondcolor);
+                    // border-radius: 20px;
+                    // padding: 4px 6px 0px 6px;
+                    // }
+                }
             }
-            div:last-child {
-                border-bottom: 0px solid var(--maincolor);
-            }
-            
-            // .activelink {
-            //     // border: solid 1px var(--secondcolor);
-            //     border-radius: 20px;
-            // }
-
         }
-       
     }
-
 }

@@ -9,10 +9,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
-    // console.log("menschen",props);
     const { t } = useTranslation('common')
-
-
+    
 function groupBy(objectArray, property, key) {
   return objectArray.reduce(function (acc, obj) {
     var innerObject = obj[property];
@@ -42,6 +40,7 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                         href+=`/${mensch.slug}`
                     }
                     return(
+                      <Link href={href}>
                       <div key={mensch.id} className={styles.menschwrapper}>
                            {/* Portrait Bild  */}
                           <img 
@@ -50,11 +49,10 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                             alt={mensch.portrait.alt} 
                           />
                           <div className={styles.name}>
-                            <Link href={href}>
                               <a>{mensch.name}</a>
-                            </Link>
                           </div>
                       </div>
+                      </Link>
                     )})}
 
             <div className={styles.funktionstitle}>Forscher*innen</div>
@@ -64,6 +62,7 @@ for (const [key, value] of Object.entries(groupedPeople)) {
               href+=`/${mensch.slug}`
               }
             return(
+              <Link href={href}>
               <div key={mensch.id} className={styles.menschwrapper}>
                 {/* Portrait Bild  */}
                 <img 
@@ -72,11 +71,10 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                 alt={mensch.portrait.alt} 
                 />
                 <div className={styles.name}>
-                  <Link href={href}>
                     <a>{mensch.name}</a>
-                  </Link>
                 </div>
               </div>
+              </Link>
             )
             })}
           </div>

@@ -1,16 +1,18 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import styles from './menu.module.scss'
 
-const Linkneu = ({href, children }) => {
+const Linkneu = ({href, sitetitle}) => {
   const router = useRouter()
 
-  let className = children.props.className || ''
-  if (router.pathname === href) {
-    className = `${className} selected`
-  }
-
-  return <Link href={href}>{React.cloneElement(children, { className })}</Link>
+      return (
+        <Link href={href}>
+          <div className={[styles.menusitelinks, (router.asPath === href ? styles.aktiv : [])].join(' ')}>
+            <a>{sitetitle}</a>
+          </div>
+        </Link>
+      )
 }
 
 export default Linkneu;

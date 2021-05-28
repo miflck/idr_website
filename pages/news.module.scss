@@ -1,0 +1,82 @@
+@import "../styles/breakpoints.scss";
+
+@mixin desktop {
+    @media (min-width: $breakpointSmall) {
+      @content
+    }
+}
+
+.allekacheln {
+    width: 100vw;
+    position: absolute;
+    columns: 2 auto;
+    padding: 0 var(--padding);
+    margin: 0;
+    user-select: none;
+    color: var(--maincolor);
+    @include desktop {
+      columns: 3 auto;
+    }
+   .kachelwrapper {
+      width: calc(50vw - (1.5 * var(--padding)));
+      height: fit-content;
+      padding-top: var(--padding);
+      break-inside: avoid;
+      page-break-inside: avoid;
+      @include desktop {
+        width: calc(33.33vw - (1.5 * var(--padding)));
+      }
+      .kachel {
+        padding: calc(var(--padding) / 2);
+        border: 1px solid var(--maincolor);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        @include desktop {
+          flex-direction: row;
+        }
+        .text {
+          flex-grow: 2;
+          .uebertitel {
+            text-transform: uppercase;
+            font-size: var(--fontsizenormal);
+            line-height: var(--lineheightnormal);
+          }
+          .titel {
+            font-size: var(--fontsizehalf);
+            line-height: var(--lineheighthalf);
+          }
+          .date {
+            border: solid 1px var(--maincolor);
+            border-radius: 20px;
+            width: fit-content;
+            padding: 2px 6px 0px 6px;
+            font-size: var(--fontsizehalf);
+            line-height: var(--lineheighthalf);
+          }
+        }
+        .bild {
+          flex-grow: 1;
+          align-self: flex-start;
+          @include desktop {
+          align-self: flex-end;
+          }
+          .image {
+            height: 15vh;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+            display: block;
+            float: right;
+          }
+        }
+        
+      &:hover {
+        background-color: var(--maincolor);
+        color: var(--secondcolor);
+        .date {
+          border: solid 1px var(--secondcolor);
+        }
+      }
+    }
+   } 
+  }

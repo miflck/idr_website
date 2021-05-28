@@ -11,7 +11,23 @@ export default function Publikationen(props) {
   const {publikationen:{allPublikationens}}=props;
   const { t } = useTranslation('common')
 
-
+  // function groupBy(objectArray, property, key) {
+  //   return objectArray.reduce(function (acc, obj) {
+  //     var innerObject = obj[property];
+  //     if(!acc[innerObject[key]]) {
+  //       acc[innerObject[key]] = [];
+  //     }
+  //     acc[innerObject[key]].push(obj);
+  //     return acc;
+  //   }, {});
+  // }
+  
+  // var groupedPublications = groupBy(allPublikationens, 'publikationsart','titel');
+  // for (const [key, value] of Object.entries(groupedPublications)) {
+  //   //console.log("key",key);
+  //   value.map((publikation)=>{
+  //     console.log("wow")
+  //   })}
 
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>

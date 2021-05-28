@@ -13,7 +13,7 @@ export default function Publikationseinzelansicht (props) {
     mitarbeit,
     id,
     bild,
-    publikationsart,
+    info,
     publikationsinhalte
     }=""}=""}=props || ""
     
@@ -36,7 +36,6 @@ export default function Publikationseinzelansicht (props) {
                   MitarbeitendenElement= <> </>
                 }
 
-    
   return (
    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.einzelwrapper}>
@@ -49,16 +48,14 @@ export default function Publikationseinzelansicht (props) {
                 src={bild.url} 
                 alt={bild.alt} 
             />
-           
-            <div className={styles.modulareinhalte}>
-                {publikationsinhalte != null &&
+
+            {publikationsinhalte != null &&
                 publikationsinhalte.map((block) => {
-                  console.log("......publikation", publikationsinhalte)
                     return (
-                  <div key={block.id}>
+                  <div key={block.id} className={styles.text} >
                     {
                     block._modelApiKey === 'text' &&
-                      <StructuredText data={block.text.value}></StructuredText>
+                      <StructuredText data={block.text.value}/>
                     }
                     {
                       block._modelApiKey === 'pdf' &&
@@ -66,13 +63,13 @@ export default function Publikationseinzelansicht (props) {
                     }
                   </div>
                   )})
-                }
+            }
+            <div className={styles.info}>
+              <StructuredText data={info.value}/>
             </div>
-             
-                
-            <div className={styles.listenwrapper}> 
-              {/* Mitarbeit, falls welche da  */}
-              {MitarbeitendenElement}
+
+            <div className={styles.listenwrapper}>
+                {MitarbeitendenElement}
             </div> 
       </div> 
    </Layout>

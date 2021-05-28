@@ -1,7 +1,15 @@
 .veranstaltungswrapper{
     color: var(--maincolor);
-    width: 100vw;
-    background-color: var(--secondcolor);
+    width: 100%;
+    .veranstaltungslink {
+        .veranstaltungscontent {
+        cursor: pointer;
+        &:hover {
+            background-color: var(--maincolor);
+            color: var(--secondcolor);
+        }
+    }
+    }
     .veranstaltungscontent {
         border-bottom: 1px solid var(--maincolor);
         padding: var(--padding); 
@@ -40,10 +48,12 @@
             }
         }
     }
-    div:last-child {
+
+    &:last-child {
         border-bottom: 0px solid var(--maincolor);
         .beschreibung{
             padding-bottom: calc(var(--padding)*2);
         }
     }
+
 }

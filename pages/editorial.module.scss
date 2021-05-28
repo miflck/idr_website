@@ -7,9 +7,12 @@
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
     }
-    p {
-        margin: 0;
+    .text {
+        columns: var(--columnwidth) auto;
         margin-bottom: var(--padding);
+        p {
+            margin: 0;
+        }
     }
     .listenwrapper{
         div {

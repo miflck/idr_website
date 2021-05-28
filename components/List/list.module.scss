@@ -219,6 +219,7 @@
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
+                width: 60vw;
             }
             .forschungsfeldwrapper {
                 font-size: var(--fontsizesmall);
@@ -306,9 +307,6 @@
         line-height: calc(var(--lineheightnormal)*1.25);
         user-select: none;
         margin-left: var(--padding);
-        -webkit-text-stroke: 1px solid blue;
-        -webkit-text-fill-color: none;
-        color: yellow;
     }
     .inputfeld {
         display: none;
@@ -324,11 +322,6 @@
             border: 1px solid var(--maincolor);
             font-size: var(--fontsizesmall);
             line-height: var(--lineheightnormal);
-            // margin-top: var(--padding);
-            &:focus {
-                // background-color: yellow;
-                // border: yellowgreen;
-            }
         }
     }
 }

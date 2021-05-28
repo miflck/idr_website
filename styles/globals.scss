@@ -1,5 +1,11 @@
 @import "./variables.scss";
 
+@mixin desktop {
+  @media (min-width: $breakpointSmall) {
+    @content
+  }
+}
+
 @font-face {
   font-family: "Sang";
   font-weight: normal;
