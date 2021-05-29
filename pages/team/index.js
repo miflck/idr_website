@@ -1,5 +1,4 @@
 import { request,MENSCHEN } from "../../lib/datocms";
-// import { StructuredText } from "react-datocms";
 import styles from './team.module.scss'
 import Layout from '../../components/Layout/layout'
 import Link from 'next/link'
@@ -10,7 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
     const { t } = useTranslation('common')
-    
+
 function groupBy(objectArray, property, key) {
   return objectArray.reduce(function (acc, obj) {
     var innerObject = obj[property];
@@ -24,9 +23,7 @@ function groupBy(objectArray, property, key) {
 
 var groupedPeople = groupBy(allMenschens, 'funktion','titel');
 for (const [key, value] of Object.entries(groupedPeople)) {
-  //console.log("key",key);
   value.map((mensch)=>{
-    //console.log(mensch)
   })}
 
        return(
@@ -42,7 +39,6 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                     return(
                       <Link href={href}>
                       <div key={mensch.id} className={styles.menschwrapper}>
-                           {/* Portrait Bild  */}
                           <img 
                             className={styles.portrait}
                             src={mensch.portrait.url} 
@@ -64,7 +60,6 @@ for (const [key, value] of Object.entries(groupedPeople)) {
             return(
               <Link href={href}>
               <div key={mensch.id} className={styles.menschwrapper}>
-                {/* Portrait Bild  */}
                 <img 
                 className={styles.portrait}
                 src={mensch.portrait.url} 

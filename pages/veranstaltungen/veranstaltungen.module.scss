@@ -3,27 +3,38 @@
     width: 100%;
     .veranstaltungslink {
         .veranstaltungscontent {
+        border-bottom: 1px solid var(--maincolor);
         cursor: pointer;
         &:hover {
             background-color: var(--maincolor);
             color: var(--secondcolor);
         }
     }
+    &:last-child {
+        border-bottom: 0px solid var(--maincolor);
+        .beschreibung{
+            padding-bottom: calc(var(--padding)*2);
+        }
+    }
     }
     .veranstaltungscontent {
-        border-bottom: 1px solid var(--maincolor);
         padding: var(--padding); 
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
-        p {
-            margin: 0;
-            padding: 0;
-            width: 95vw;
-        }
+        // div {
+        //     margin: 0;
+        //     padding: 0;
+        // }
         .title {
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
+        }
+        .beschreibung {
+            columns: var(--columnwidth) auto;
+            p {
+                margin: 0;
+            }
         }
         .zentriert {
             align-content: center;
@@ -48,12 +59,4 @@
             }
         }
     }
-
-    &:last-child {
-        border-bottom: 0px solid var(--maincolor);
-        .beschreibung{
-            padding-bottom: calc(var(--padding)*2);
-        }
-    }
-
 }

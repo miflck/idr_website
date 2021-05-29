@@ -27,16 +27,16 @@ export default function Veranstaltungseinzelansicht (props) {
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.veranstaltungswrapper} >
                        <div className={styles.veranstaltungscontent} key={id}>
-                            <p className={styles.title}>{titel}</p>
-                            <p className={styles.referentIn}>{referentIn}</p>
+                            <div className={styles.title}>{titel}</div>
+                            <div className={styles.referentIn}>{referentIn}</div>
                             <div className={styles.zentriert}>
-                                <p className={styles.datum}>{date} Uhr</p>
-                                <p className={styles.untertitel}>{untertitel}</p>
-                                <p className={styles.organisation}>{organisation}</p>
+                                <div className={styles.datum}>{date} Uhr</div>
+                                <div className={styles.untertitel}>{untertitel}</div>
+                                <div className={styles.organisation}>{organisation}</div>
                             </div>
-                            <p className={styles.beschreibung}>
+                            <div className={styles.beschreibung}>
                               <StructuredText data={beschreibung.value}/>
-                            </p>
+                            </div>
                        </div>
         </div>
       </Layout>

@@ -27,16 +27,16 @@ const Veranstaltungen =(props)=>{
                     <Link href={href}>
                       <div className={styles.veranstaltungslink}>
                         <div className={styles.veranstaltungscontent} key={veranstaltung.id}>
-                              <p className={styles.title}>{veranstaltung.titel}</p>
-                              <p className={styles.referentIn}>{veranstaltung.referentIn}</p>
+                              <div className={styles.title}>{veranstaltung.titel}</div>
+                              <div className={styles.referentIn}>{veranstaltung.referentIn}</div>
                               <div className={styles.zentriert}>
-                                  <p className={styles.datum}>{datum} Uhr</p>
-                                  <p className={styles.untertitel}>{veranstaltung.untertitel}</p>
-                                  <p className={styles.organisation}>{veranstaltung.organisation}</p>
+                                  <div className={styles.datum}>{datum} Uhr</div>
+                                  <div className={styles.untertitel}>{veranstaltung.untertitel}</div>
+                                  <div className={styles.organisation}>{veranstaltung.organisation}</div>
                               </div>
-                              <p className={styles.beschreibung}>
+                              <div className={styles.beschreibung}>
                                 <StructuredText data={veranstaltung.beschreibung.value}/>
-                              </p>
+                              </div>
                         </div>
                        </div>
                     </Link>
