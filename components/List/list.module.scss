@@ -70,7 +70,7 @@
     }
 
     .filterauflistung {
-        padding: 0px var(--padding) calc(var(--padding)/2) var(--padding);
+        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
         span {
             a {
                 border: 1px solid var(--maincolor);
@@ -87,17 +87,10 @@
                 }
             }
         }
-        .forschungsfeldaktiv {
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--maincolor);
-            }
-        }
     }
     
     .deaktivieren{
-        margin: 5px var(--padding) 2.5px var(--padding);
+        margin: var(--paddingtop) var(--padding) var(--paddingbottom);
         cursor: pointer;
         a {
         color: var(--maincolor);
@@ -207,39 +200,56 @@
                 }
             }
         }
-        
-        
+
         .projektcontent {
-            padding: 5px var(--padding) 2.5px var(--padding);
+            padding: var(--paddingtop) var(--padding) var(--paddingbottom);
             color: var(--maincolor);
             z-index: 5;
             position: relative;
+
+            //verlauf zweier farben 
+            //background: linear-gradient(to left, red, white);
+
             
             .titel {
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
                 width: 60vw;
+                margin-bottom: 3px;
             }
             .forschungsfeldwrapper {
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightnormal);
                 text-transform: uppercase;
+                cursor: pointer;
                 .forschungsfeld {
-                    border: 1px solid var(--maincolor);
-                    border-radius: 20px;
-                    width: fit-content;
-                    padding: 2px 4px 0px;
-                    color: var(--maincolor);
-                    background-color: transparent;
-                    &:hover {
+                    a {
+                        border: 1px solid var(--maincolor);
+                        border-radius: 20px;
+                        width: fit-content;
+                        padding: 2px 4px 0px;
                         color: var(--maincolor);
-                        background-color: var(--secondcolor);
+                        background-color: transparent;
+                        margin-right: 20px;
+                        &:hover {
+                            color: var(--maincolor);
+                            background-color: var(--secondcolor);
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .forschungsfeldaktiv {
+                    a {
+                        border-radius: 20px;
+                        width: fit-content;
+                        padding: 2px 4px 0px;
+                        background-color: var(--maincolor);
+                        color: var(--secondcolor);
+                        border: 1px solid var(--maincolor);
+                        margin-right: 20px;
                         cursor: pointer;
                     }
-                    // &.aktiv {
-                    //     background-color: yellow;
-                    // }
                 }
                 .forschungsfeld:nth-child(2) {
                     margin-left: 20px;
@@ -248,7 +258,7 @@
             .datum {
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightsmall);
-                margin: 0px 3px 3px 0px;
+                margin-bottom: 3px;
                 text-transform: uppercase;
             }
             .image {
@@ -264,8 +274,17 @@
                 }
                 .forschungsfeldwrapper {
                     .forschungsfeld {
+                        a {
                         border: 1px solid var(--secondcolor);
                         color: var(--secondcolor);
+                        }
+                    }
+                    .forschungsfeldaktiv {
+                        a {
+                            background-color: var(--secondcolor);
+                            color: var(--maincolor);
+                            border: 1px solid var(--secondcolor);
+                        }
                     }
                 }
                 .categorydivwrapper {
@@ -276,7 +295,7 @@
                             // border-left: 10px solid var(--secondcolor);
                             // border-top: 1px solid var(--secondcolor);
                             // border-bottom: 1px solid var(--secondcolor);
-                            border: 1px solid var(--secondcolor);
+                            //border: 1px solid var(--secondcolor);
                             // background-color: transparent;
                             // mix-blend-mode: normal;
                             // .categorylinie {
@@ -289,7 +308,6 @@
         }
     }
  
-
 
 
 
@@ -311,7 +329,6 @@
     .inputfeld {
         display: none;
     }
-
     &.open {
         .inputfeld {
             display: block;
@@ -325,6 +342,3 @@
         }
     }
 }
-
-
-

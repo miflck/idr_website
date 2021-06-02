@@ -9,6 +9,7 @@
     }
     .text {
         columns: var(--columnwidth) auto;
+        column-gap: var(--columngap);
         margin-bottom: var(--padding);
         p {
             margin: 0;

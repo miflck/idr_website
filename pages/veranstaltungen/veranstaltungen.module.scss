@@ -1,6 +1,5 @@
 .veranstaltungswrapper{
     color: var(--maincolor);
-    width: 100%;
     .veranstaltungslink {
         .veranstaltungscontent {
         border-bottom: 1px solid var(--maincolor);
@@ -32,6 +31,7 @@
         }
         .beschreibung {
             columns: var(--columnwidth) auto;
+            column-gap: var(--columngap);
             p {
                 margin: 0;
             }
@@ -39,7 +39,12 @@
         .zentriert {
             align-content: center;
             text-align:center;
-            padding: var(--padding) 0;
+            margin: var(--padding);
+            padding: var(--padding);
+           // border: 1px solid var(--maincolor);
+            border-radius: 100px;
+
+            
             .referentIn{
                 // padding-bottom: var(--padding);
             }

@@ -3,10 +3,8 @@ import { StructuredText } from "react-datocms";
 import styles from './editorial.module.scss'
 import Layout from '../components/Layout/layout'
 import Link from 'next/link'
-
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
 
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;

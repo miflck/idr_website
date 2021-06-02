@@ -30,7 +30,7 @@
     background-color: var(--secondcolor);
 
     .filterauflistung {
-        padding: 0px var(--padding) calc(var(--padding)/2) var(--padding);
+        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
         span {
             a {
                 border: 1px solid var(--maincolor);
@@ -57,7 +57,7 @@
     }
     
     .deaktivieren{
-        margin: 5px var(--padding) 2.5px var(--padding);
+        margin: var(--paddingtop) var(--padding) 0px;
         cursor: pointer;
         a {
         color: var(--maincolor);
@@ -195,6 +195,13 @@
                         color: var(--maincolor);
                         background-color: var(--secondcolor);
                         cursor: pointer;
+                    }
+                }
+                .forschungsfeldaktiv {
+                    a {
+                        background-color: var(--maincolor);
+                        color: var(--secondcolor);
+                        border: 1px solid var(--maincolor);
                     }
                 }
                 .forschungsfeld:nth-child(2) {

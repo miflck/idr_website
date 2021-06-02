@@ -1,13 +1,13 @@
 .teamcontainer {
     .funktionstitle {
-        padding: var(--padding) 0px calc(var(--padding)/2) var(--padding);
+        padding: var(--padding) 0px var(--paddingbottom) var(--padding);
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
         border-bottom: 1px solid var(--maincolor);
         color: var(--maincolor);
         position: sticky;
-        top: 39.5px;
+        top: 42px;
         z-index: 51;
         background-color: var(--secondcolor);
     }
@@ -22,7 +22,7 @@
         .portrait {
             margin-bottom: var(--padding);
             display: block;
-            width: 100%;
+            width: var(--imagewidth);
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
         } 

@@ -4,6 +4,8 @@ import Link from 'next/link'
 
 const ListItemProjekt =(props)=>{
 
+    console.log("dkd--------", props)
+
      const enddatum = new Date(props.enddatum).toLocaleString([], {
                 month: 'long', 
                 year: 'numeric'
@@ -13,6 +15,31 @@ const ListItemProjekt =(props)=>{
         if(props.slug!=""){
             href+=`/${props.slug}`
         }
+
+        let ForschungsfeldElement;
+        if(props.filter) {
+            ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
+                {props.forschungsfeld.map((forschungsfeld) => {
+                    let btn_class;
+                    if(props.filter.includes(forschungsfeld.titel)) {
+                      btn_class = styles.forschungsfeldaktiv
+                    }
+                    else {
+                      btn_class = styles.forschungsfeld
+                    }
+                    return (
+                        <span className={btn_class}>
+                            <a
+                            onClick={() => props.addMoreItem(forschungsfeld.titel)}
+                            key={forschungsfeld.id}
+                            > 
+                              {forschungsfeld.titel} 
+                            </a>
+                        </span>
+                    )
+                })}
+            </div>
+            }
 
     return(
         <div className={styles.projektlistwrapper}>
@@ -30,16 +57,7 @@ const ListItemProjekt =(props)=>{
                 </a>          
                 </Link>
 
-                {/* Porjekt Forschungsfelder tags */}
-                <div className={styles.forschungsfeldwrapper}>
-                    {props.forschungsfeld.map((forschungsfeld) => {
-                        return (
-                            <a
-                            onClick={() => props.addMoreItem(forschungsfeld.titel)}
-                            className={styles.forschungsfeld} key={forschungsfeld.id}> {forschungsfeld.titel} </a>
-                        )
-                    })}
-                </div>
+                {ForschungsfeldElement}
                 
             </div>
         </div>

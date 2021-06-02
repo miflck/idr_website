@@ -1,17 +1,14 @@
 @import "./breakpoints.scss";
 
 html {
-    // colors werden direkt im footer definiert, default value ist black / white 
-    // --maincolor: #0000ff;
-    // --secondcolor: #f08173;
-    // --maincolor: black;
-    // --secondcolor: #f0ffff;
-
     //-> hier ev in em oder rem definieren?
     // -> 1rem =16px
-    --padding: 12.5px;
+    --padding: 15px;
+    --paddingbottom: 5px;
+    --paddingtop: 5px;
     --fontsizenormal: 18px;
     --lineheightnormal: 21px;
+    --imagewidth: 100%;
 
     --fontsizesmall: calc(var(--fontsizenormal)/1.5);
     --lineheighsmall: calc(var(--lineheightnormal)/1.5);
@@ -21,12 +18,14 @@ html {
     --lineheighttitle: calc(var(--lineheightnormal)*2);
 
     --columnwidth: 1;
+    --columngap: 50px;
   }
 
 
 @media (min-width: $breakpointSmall) {
   html {
     --columnwidth: 2;
+    --imagewidth: 50%;
   } 
 }
 

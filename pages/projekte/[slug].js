@@ -83,7 +83,7 @@ export default function Projekteinzelansicht (props) {
                 return (
                 // index ist eigentlich nur zur not, es kann dann immer noch mehrer mit demselben key geben. besser wäre wohl die ID des elementes aus dato
 
-              <div key={block.id}>
+              <div className={styles.textblock} key={block.id}>
                 {
                 block._modelApiKey === 'text' &&
                   <StructuredText data={block.text.value}></StructuredText>

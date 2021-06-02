@@ -37,9 +37,8 @@ h2 {
   margin: 0;
   padding: var(--padding);
   padding-bottom: 5px;
-
-  // position: static;
   border-bottom: 1px solid var(--maincolor);
+  user-select: none;
 }
 
 /* Firefox  */
