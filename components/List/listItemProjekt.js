@@ -1,5 +1,6 @@
 import styles from './list.module.scss'
 import Link from 'next/link'
+import Container from '../Container/container'
 
 
 const ListItemProjekt =(props)=>{
@@ -42,8 +43,11 @@ const ListItemProjekt =(props)=>{
             }
 
     return(
-        <div className={styles.projektlistwrapper}>
-            <div className={styles.projektwrapper} key={props.id}>
+
+        <Container>   <div className={styles.projektlistwrapper}> {/* komischer name, wäre der wrapper der liste, kann das nicht ganz weg? */}
+           
+       
+               <div className={styles.projektwrapper} key={props.id}>
 
             <div className={styles.projektcontent}>
                 {/* Projekt Enddatum */}
@@ -60,8 +64,10 @@ const ListItemProjekt =(props)=>{
                 {ForschungsfeldElement}
                 
             </div>
-        </div>
-        </div>
+           
+        </div> 
+   
+        </div>     </Container>
     )
 }
 

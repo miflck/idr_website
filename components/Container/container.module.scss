@@ -1,0 +1,60 @@
+@import "../../styles/breakpoints.scss";
+
+
+.container{
+   // border:solid thin black;
+    width: 100%;
+    max-width: 640px;
+
+   // display: flex; /* or inline-flex */
+  //  flex-wrap:wrap;
+  //border: solid thin red;
+ // padding-left: 1rem;
+  //padding-right: 1rem;
+
+}
+
+.margin_auto { 
+    margin-right: auto; 
+    margin-left: auto;  // einkommentieren für zentrieren
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+
+
+@media (min-width: $breakpointSmall) {
+    .container {
+        max-width: $breakpointSmall;
+        padding-left: 0rem;
+        padding-right: 0rem;
+      //  border: solid thin rgb(255, 251, 0);
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+    .container {
+        max-width: $breakpointMedium;
+      //  border: solid thin rgb(0, 255, 42);
+
+    }
+  }
+  
+  @media (min-width: $breakpointLarge) {
+    .container {
+        max-width:$breakpointLarge;
+   //     border: solid thin rgb(0, 132, 255);
+
+    }
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+    .container {
+        max-width:$breakpointXLarge;
+    //    border: solid thin rgb(225, 0, 255);
+
+    }
+  }
+

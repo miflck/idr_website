@@ -109,11 +109,20 @@
 }
 
 .projektlistwrapper {
+    // komischer name weil wäre der wrapper für die ganze liste?
     color: var(--maincolor);
     user-select: none;
+    //margin-block-start:1em;
+    //margin-block-end: 1em;
     .projektwrapper {
-        margin-bottom: 0px;
-        border-bottom: 1px solid var(--maincolor);
+        //margin-bottom: 0px;
+        padding-block-start: 0.25em;
+
+        padding-block-end: 1em;
+
+       // border-bottom: 1px solid var(--maincolor);
+        border-top: 1px solid var(--maincolor);
+
         //nicht hardcoden, sonder rauslesen, fit-content geht nicht :(
         // height: 70px;
         .categorydivwrapper {
@@ -215,7 +224,7 @@
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
-                width: 60vw;
+                //width: 60vw; // ? 
                 margin-bottom: 3px;
             }
             .forschungsfeldwrapper {
@@ -228,7 +237,8 @@
                         border: 1px solid var(--maincolor);
                         border-radius: 20px;
                         width: fit-content;
-                        padding: 2px 4px 0px;
+                        //padding:4px 8px;
+                        padding: 2px 10px 0px;
                         color: var(--maincolor);
                         background-color: transparent;
                         margin-right: 20px;
