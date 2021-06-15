@@ -1,13 +1,15 @@
 import styles from './list.module.scss'
 import Link from 'next/link'
-
+import Container from '../../components/Container/container'
 
 const ListItemProjekt =(props)=>{
 
-    console.log("dkd--------", props)
-
      const enddatum = new Date(props.enddatum).toLocaleString([], {
-                month: 'long', 
+                // month: 'long', 
+                year: 'numeric'
+                });
+    const startdatum = new Date(props.startdatum).toLocaleString([], {
+                // month: 'long', 
                 year: 'numeric'
                 });
                 
@@ -39,29 +41,25 @@ const ListItemProjekt =(props)=>{
                     )
                 })}
             </div>
-            }
+        }
 
-    return(
-        <div className={styles.projektlistwrapper}>
+    return (
             <div className={styles.projektwrapper} key={props.id}>
-
-            <div className={styles.projektcontent}>
-                {/* Projekt Enddatum */}
-                <div className={styles.datum}>{enddatum}</div>
-                            
-                <Link href={href} activeClassName={styles.activelink}>
-                  <a>
-                    <div className={styles.titel}>
-                        {props.titel}
+                <Container>
+                    <div className={styles.projektcontent}>
+                        {/* Projekt Enddatum */}
+                        <div className={styles.datum}>{startdatum} – {enddatum}</div>
+                        <Link href={href} activeClassName={styles.activelink}>
+                            <a>
+                                <div className={styles.titel}>
+                                    {props.titel}
+                                </div>
+                            </a>          
+                        </Link>
+                        {ForschungsfeldElement}
                     </div>
-                </a>          
-                </Link>
-
-                {ForschungsfeldElement}
-                
+                </Container>
             </div>
-        </div>
-        </div>
     )
 }
 

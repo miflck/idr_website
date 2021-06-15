@@ -3,10 +3,10 @@ import Layout from "../../components/Layout/layout"
 import ListWrapper from '../../components/List/listWrapper'
 import ListItemPublikation from "../../components/List/listItemPublikation";
 import styles from './publikationen.module.scss'
+import Container from "../../components/Container/container";
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
 
 export default function Publikationen(props) {
   const {publikationen:{allPublikationens}}=props;
@@ -32,7 +32,7 @@ export default function Publikationen(props) {
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
           
-          <div className={styles.funktionstitle}>Buch</div>
+          <div className={styles.funktionstitle}><Container>Buch</Container></div>
           <ListWrapper>
                   {groupedPublications.Buch.map((publikation) => {
                     return(
@@ -41,7 +41,7 @@ export default function Publikationen(props) {
                         }
           </ListWrapper>
 
-          <div className={styles.funktionstitle}>Forschungsbericht</div>
+          <div className={styles.funktionstitle}><Container>Forschungsbericht</Container></div>
           <ListWrapper>
                 {groupedPublications.Forschungsbericht.map((publikation) => {
                   return(
@@ -50,7 +50,7 @@ export default function Publikationen(props) {
                       }
           </ListWrapper>
 
-          <div className={styles.funktionstitle}>Sonstige</div>
+          <div className={styles.funktionstitle}><Container>Sonstige</Container></div>
           <ListWrapper>
                 {groupedPublications.Sonstige.map((publikation) => {
                   return(

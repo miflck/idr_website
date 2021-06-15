@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
+  // console.log(props);
   const { t } = useTranslation('common')
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -17,9 +18,9 @@ const Editorial =(props)=>{
                 <div className={styles.editorialwrapper} key={editorial.id}>
                   <Container>
                     {/* Forschungsfeld */} 
-                        {editorial.forschungsfeld.map((forschungsfeld, index) => {
+                        {editorial.forschungsfeld.map((forschungsfeld) => {
                             return (
-                                <div className={styles.titel} key={forschungsfeld.id}>{forschungsfeld.titel} </div>
+                                <div className={styles.titel} key={forschungsfeld.id} id={forschungsfeld.id}>{forschungsfeld.titel} </div>
                             )
                         })}
                  

@@ -113,12 +113,17 @@ export default function Projekteinzelansicht (props) {
           <div>Zeitraum</div>
           {startzeitraum} – {endzeitraum}
 
-          {/* Porjekt Forschungsfelder tags */}
+          {/* Projekt Forschungsfelder tags */}
           <div>Forschungsfelder</div>
           {forschungsfeld.map((forschungsfeld) => {
+            let href=`/editorial`
+            if(forschungsfeld.id!=""){
+                href+=`#${forschungsfeld.id}`
+            }
             return (
-              <Link href="/projekte" key={forschungsfeld.id}>
+              <Link href={href} key={forschungsfeld.id}>
                 <a 
+                //wenn nicht auf editorial seite verlinken, dann
                 // hier übergeben, dass es den filter anwählt auf der projektseite
                 // onClick={() => props.addMoreItem(forschungsfeld.titel)}
                   className={styles.forschungsfeld}> 

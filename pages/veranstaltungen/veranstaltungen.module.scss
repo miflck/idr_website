@@ -1,3 +1,58 @@
+.filterfeldwrapper {
+    user-select: none;
+    border-bottom: 1px solid var(--maincolor);
+    font-size: var(--fontsizesmall);
+    line-height: var(--lineheightnormal);
+    text-transform: uppercase;
+    background-color: var(--secondcolor);
+    .filterauflistung {
+        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
+        span {
+            a {
+                border: 1px solid var(--maincolor);
+                border-radius: 20px;
+                width: fit-content;
+                padding: 2px 4px 0px;
+                color: var(--maincolor);
+                background-color: transparent;
+                margin-right: 20px;
+                &:hover {
+                    color: var(--secondcolor);
+                    background-color: var(--maincolor);
+                    cursor: pointer;
+                }
+            }
+        }
+        .forschungsfeldaktiv {
+            a {
+                background-color: var(--maincolor);
+                color: var(--secondcolor);
+                border: 1px solid var(--maincolor);
+            }
+        }
+    }
+    
+    .deaktivieren{
+        margin: var(--paddingtop) var(--padding) 0px;
+        cursor: pointer;
+        a {
+        color: var(--maincolor);
+        background-color: var(--secondcolor);
+        //border-style: dotted;
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        width: fit-content;
+        padding: 2px 4px 0px;
+        &:hover {
+            color: var(--secondcolor);
+            background-color: var(--maincolor);
+        }
+        }
+    }
+}
+
+
+
 .veranstaltungswrapper{
     color: var(--maincolor);
     .veranstaltungslink {
@@ -7,7 +62,23 @@
         &:hover {
             background-color: var(--maincolor);
             color: var(--secondcolor);
-        }
+        
+            .forschungsfeldwrapper {
+                .forschungsfeld {
+                    a {
+                    border: 1px solid var(--secondcolor);
+                    color: var(--secondcolor);
+                    }
+                }
+                .forschungsfeldaktiv {
+                    a {
+                        background-color: var(--secondcolor);
+                        color: var(--maincolor);
+                        border: 1px solid var(--secondcolor);
+                    }
+                }
+            }
+    }
     }
     &:last-child {
         border-bottom: 0px solid var(--maincolor);
@@ -20,10 +91,6 @@
         padding: var(--padding); 
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
-        // div {
-        //     margin: 0;
-        //     padding: 0;
-        // }
         .title {
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
@@ -41,26 +108,48 @@
             text-align:center;
             margin: var(--padding);
             padding: var(--padding);
-           // border: 1px solid var(--maincolor);
             border-radius: 100px;
-
-            
-            .referentIn{
-                // padding-bottom: var(--padding);
+            .referentIn { }
+            .datum { }
+            .untertitel { }
+            .organisation{}
+        }
+        .forschungsfeldwrapper {
+            padding-top: var(--paddingbottom); 
+            font-size: var(--fontsizesmall);
+            line-height: var(--lineheightnormal);
+            text-transform: uppercase;
+            cursor: pointer;
+            .forschungsfeld {
+                a {
+                    border: 1px solid var(--maincolor);
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    color: var(--maincolor);
+                    background-color: transparent;
+                    margin-right: 20px;
+                    &:hover {
+                        color: var(--maincolor) !important;
+                        background-color: var(--secondcolor);
+                        cursor: pointer;
+                    }
+                }
             }
-            .datum{
-                // border: 1px solid var(--maincolor);
-                // border-radius: 20px;
-                // width: fit-content;
-                // padding: 2px 4px 0px;
-                // margin: var(--padding) 0px ;
-                // margin-bottom: var(--padding);
+            .forschungsfeldaktiv {
+                a {
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    background-color: var(--maincolor);
+                    color: var(--secondcolor);
+                    border: 1px solid var(--maincolor);
+                    margin-right: 20px;
+                    cursor: pointer;
+                }
             }
-            .untertitel{
-                // padding-bottom: var(--padding);
-            }
-            .organisation{
-                // padding-bottom: var(--padding);
+            .forschungsfeld:nth-child(2) {
+                margin-left: 20px;
             }
         }
     }

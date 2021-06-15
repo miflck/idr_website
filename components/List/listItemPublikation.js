@@ -1,5 +1,6 @@
 import styles from './listpublikationen.module.scss'
 import Link from 'next/link'
+import Container from '../Container/container'
 
 const ListItemPublikation =(publikation)=>{
     let href=`/publikationen` 
@@ -9,6 +10,7 @@ const ListItemPublikation =(publikation)=>{
     return(
         <Link href={href}>
             <div className={styles.projektwrapper} key={publikation.id}>
+            <Container>
                 <div className={styles.titel}>
                     <a>{publikation.titel}</a>
                 </div>
@@ -18,6 +20,7 @@ const ListItemPublikation =(publikation)=>{
                     src={publikation.bild.url} 
                     alt={publikation.bild.alt} 
                 />
+                </Container>
             </div>
         </Link>
     )

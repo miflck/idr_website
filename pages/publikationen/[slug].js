@@ -5,6 +5,7 @@ import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
+import Container from "../../components/Container/container";
 
 export default function Publikationseinzelansicht (props) {
   const { t } = useTranslation('common')
@@ -38,7 +39,8 @@ export default function Publikationseinzelansicht (props) {
 
   return (
    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        <div className={styles.einzelwrapper}>
+        <Container>
+          <div className={styles.einzelwrapper}>
             <div className={styles.titel}>
               {titel}
             </div>
@@ -72,6 +74,7 @@ export default function Publikationseinzelansicht (props) {
                 {MitarbeitendenElement}
             </div> 
       </div> 
+      </Container>
    </Layout>
   )
 }

@@ -4,7 +4,7 @@ import { StructuredText } from "react-datocms";
 import styles from './veranstaltungen.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Link from 'next/link'
+import Container from '../../components/Container/container'
 
 export default function Veranstaltungseinzelansicht (props) {
   const {data:{veranstaltung:{
@@ -27,6 +27,7 @@ export default function Veranstaltungseinzelansicht (props) {
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.veranstaltungswrapper} >
                        <div className={styles.veranstaltungscontent} key={id}>
+                         <Container>
                             <div className={styles.title}>{titel}</div>
                             <div className={styles.referentIn}>{referentIn}</div>
                             <div className={styles.zentriert}>
@@ -37,6 +38,7 @@ export default function Veranstaltungseinzelansicht (props) {
                             <div className={styles.beschreibung}>
                               <StructuredText data={beschreibung.value}/>
                             </div>
+                          </Container>
                        </div>
         </div>
       </Layout>

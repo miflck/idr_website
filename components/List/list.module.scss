@@ -23,7 +23,6 @@
 .filterfeldwrapper {
     user-select: none;
     border-bottom: 1px solid var(--maincolor);
-    //color: var(--maincolor);
     font-size: var(--fontsizesmall);
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
@@ -107,11 +106,10 @@
         }
     }
 }
-
-.projektlistwrapper {
-    color: var(--maincolor);
-    user-select: none;
+    
     .projektwrapper {
+        color: var(--maincolor);
+        user-select: none;
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
         //nicht hardcoden, sonder rauslesen, fit-content geht nicht :(
@@ -306,7 +304,6 @@
                 }
             } 
         }
-    }
  
 
 
