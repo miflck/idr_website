@@ -13,9 +13,8 @@ export default function Home(props) {
   const { t } = useTranslation('common')
 
   return (
-    <main className={styles.container}>
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-    </Layout>
+      <main className={styles.container}>
         
       <div className={styles.allekacheln}>
         {links.map((beitrag) => {
@@ -89,6 +88,7 @@ export default function Home(props) {
         </div>
      
     </main>
+    </Layout>
   )
 }
 

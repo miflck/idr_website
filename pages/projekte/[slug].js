@@ -5,6 +5,7 @@ import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
+import Container from '../../components/Container/container'
 
 export default function Projekteinzelansicht (props) {
 
@@ -73,6 +74,7 @@ export default function Projekteinzelansicht (props) {
   return (
    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.einzelwrapper}>
+          <Container>
         <div className={styles.titel}>
           {titel}
         </div>
@@ -150,7 +152,8 @@ export default function Projekteinzelansicht (props) {
           
           <div>Finanzierung</div>
           <StructuredText data={finanzierung.value} />
-        </div>
+          </div>
+        </Container>
       </div>
    </Layout>
   )

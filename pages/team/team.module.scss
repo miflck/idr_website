@@ -1,3 +1,10 @@
+@import "../../styles/breakpoints.scss";
+
+@mixin desktop {
+    @media (min-width: $breakpointSmall) {
+      @content
+    }
+}
 .teamcontainer {
     .funktionstitle {
         padding: var(--padding) 0px var(--paddingbottom) var(--padding);
@@ -14,7 +21,11 @@
     .menschwrapper {
         color: var(--maincolor);
         padding: var(--padding);
-        border-bottom: 1px solid var(--maincolor);
+        // border-bottom: 1px solid var(--maincolor);
+        // @include desktop {
+        //     border-left: 1px solid var(--maincolor);
+        // }
+        outline: 0.5px solid var(--maincolor);
         background-color: var(--secondcolor);
         cursor: pointer;
         font-size: var(--fontsizehalf);
@@ -22,7 +33,7 @@
         .portrait {
             margin-bottom: var(--padding);
             display: block;
-            width: var(--imagewidth);
+            width: 100%;
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
         } 
@@ -51,4 +62,7 @@
             }
         }
     }
+        columns: var(--columnwidth) 0;
+        column-gap: 0px;
+        break-inside: avoid;
 }

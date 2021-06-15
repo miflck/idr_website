@@ -1,10 +1,11 @@
-import Layout from "../../components/Layout/layout"
+import Layout from '../../components/Layout/layout'
 import { request, MENSCHEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
+import Container from '../../components/Container/container'
 
 export default function Menscheinzelansicht (props) {
 
@@ -45,6 +46,7 @@ export default function Menscheinzelansicht (props) {
       return (
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
           <div className={styles.einzelwrapper}>
+          <Container>
             <div className={styles.titel}>
               {name}
             </div>
@@ -85,8 +87,9 @@ export default function Menscheinzelansicht (props) {
                   })}
               </div>
 
-           {/* Publikaitonsliste, falls vorhanden */}
-           {PDFElement}
+              {/* Publikaitonsliste, falls vorhanden */}
+              {PDFElement}
+           </Container>
         </div>
     </Layout>
     )

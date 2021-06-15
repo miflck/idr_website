@@ -8,8 +8,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
+  const {menschen:{allForschungsfelders}}=props;
     const { t } = useTranslation('common')
 
+    console.log("forschungfeld in team", props);
 function groupBy(objectArray, property, key) {
   return objectArray.reduce(function (acc, obj) {
     var innerObject = obj[property];
@@ -30,8 +32,9 @@ for (const [key, value] of Object.entries(groupedPeople)) {
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
           <div className={styles.teamcontainer}>
 
-            <div className={styles.funktionstitle}>Leitung und Büro</div>
-            {groupedPeople.Leitung_und_Buero.map((mensch) => {
+           {/* <div className={styles.funktionstitle}>Leitung und Büro</div> */}
+            {/*  <div className={styles.teamkachelwrapper}> */}
+                {groupedPeople.Leitung_und_Buero.map((mensch) => {
                     let href=`/team`
                     if(mensch.slug!=""){
                         href+=`/${mensch.slug}`
@@ -50,28 +53,33 @@ for (const [key, value] of Object.entries(groupedPeople)) {
                       </div>
                       </Link>
                     )})}
+            {/* </div> */}
 
-            <div className={styles.funktionstitle}>Forscher*innen</div>
-            {groupedPeople.ForscherInnen.map((mensch) => {
-              let href=`/team`
-              if(mensch.slug!=""){
-              href+=`/${mensch.slug}`
-              }
-            return(
-              <Link href={href}>
-              <div key={mensch.id} className={styles.menschwrapper}>
-                <img 
-                className={styles.portrait}
-                src={mensch.portrait.url} 
-                alt={mensch.portrait.alt} 
-                />
-                <div className={styles.name}>
-                    <a>{mensch.name}</a>
-                </div>
-              </div>
-              </Link>
-            )
-            })}
+            {/* <div className={styles.funktionstitle}>Forscher*innen</div> */}
+           {/*  <div className={styles.teamkachelwrapper}> */}
+                {groupedPeople.ForscherInnen.map((mensch) => {
+                  let href=`/team`
+                  if(mensch.slug!=""){
+                  href+=`/${mensch.slug}`
+                  }
+                return(
+                  <Link href={href}>
+                  <div key={mensch.id} className={styles.menschwrapper}>
+                    <img 
+                    className={styles.portrait}
+                    src={mensch.portrait.url} 
+                    alt={mensch.portrait.alt} 
+                    />
+                    <div className={styles.name}>
+                        <a>{mensch.name}</a>
+                    </div>
+                  </div>
+                  </Link>
+                )
+                })}
+            {/* </div> */}
+
+
           </div>
       </Layout>
     )

@@ -2,6 +2,7 @@ import { request,EDITORIALTEXTE } from "../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from './editorial.module.scss'
 import Layout from '../components/Layout/layout'
+import Container from '../components/Container/container'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -14,6 +15,7 @@ const Editorial =(props)=>{
             {allEditorials.map((editorial) => {
               return(
                 <div className={styles.editorialwrapper} key={editorial.id}>
+                  <Container>
                     {/* Forschungsfeld */} 
                         {editorial.forschungsfeld.map((forschungsfeld, index) => {
                             return (
@@ -60,8 +62,7 @@ const Editorial =(props)=>{
                             })}
                         
                     </div>
-
-
+                    </Container>
                 </div>
               )
             })}  

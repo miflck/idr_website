@@ -12,13 +12,11 @@
     columns: 2 auto;
     padding: 0 var(--padding);
     margin: 0;
-    //margin bottom des layouts wieder zurückstufen
-    margin-top: calc(var(--padding) * -1.8);
     margin-bottom: calc(var(--padding) * 1.8);
     user-select: none;
     color: var(--maincolor);
     @include desktop {
-      columns: 3 auto;
+      columns: 3 auto; 
     }
    .kachelwrapper {
       width: calc(50vw - (1.5 * var(--padding)));

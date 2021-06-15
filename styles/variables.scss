@@ -8,7 +8,8 @@ html {
     --paddingtop: 5px;
     --fontsizenormal: 18px;
     --lineheightnormal: 21px;
-    --imagewidth: 100%;
+
+
 
     --fontsizesmall: calc(var(--fontsizenormal)/1.5);
     --lineheighsmall: calc(var(--lineheightnormal)/1.5);
@@ -25,7 +26,6 @@ html {
 @media (min-width: $breakpointSmall) {
   html {
     --columnwidth: 2;
-    --imagewidth: 50%;
   } 
 }
 
@@ -34,7 +34,9 @@ html {
 }
 
 @media (min-width: $breakpointLarge) {
-
+  html {
+    --columnwidth: 3;
+  } 
 }
 
 @media (min-width: $breakpointXLarge) {
