@@ -12,6 +12,9 @@
     columns: 2 auto;
     padding: 0 var(--padding);
     margin: 0;
+    //margin bottom des layouts wieder zurückstufen
+    margin-top: calc(var(--padding) * -1.8);
+    margin-bottom: calc(var(--padding) * 1.8);
     user-select: none;
     color: var(--maincolor);
     @include desktop {

@@ -27,8 +27,8 @@
     .text {
         margin: 0;
         margin-bottom: var(--padding);
-        columns: var(--columnwidth) auto;
-        column-gap: var(--columngap);
+        // columns: var(--columnwidth) auto;
+        // column-gap: var(--columngap);
         p {
             margin: 0;
         }

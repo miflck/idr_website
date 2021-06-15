@@ -1,20 +1,18 @@
 @import "../.././styles/breakpoints.scss";
 
 .layoutContainer{
-    // border:solid 5px green;
     margin-bottom: calc(var(--padding) * 1.8);
 }
 .container {
   width: 100%;
   max-width: 640px;
-  // margin-right: auto; 
-  // margin-left: auto; 
+  margin-right: auto; 
+  margin-left: auto; 
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-
 
 @media (min-width: $breakpointSmall) {
     .container {
@@ -39,4 +37,3 @@
         max-width:$breakpointLarge;
     }
   }
-

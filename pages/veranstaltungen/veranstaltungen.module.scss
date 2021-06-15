@@ -30,8 +30,8 @@
             line-height: var(--lineheightnormal);
         }
         .beschreibung {
-            columns: var(--columnwidth) auto;
-            column-gap: var(--columngap);
+            // columns: var(--columnwidth) auto;
+            // column-gap: var(--columngap);
             p {
                 margin: 0;
             }

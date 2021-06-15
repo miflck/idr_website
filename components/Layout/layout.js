@@ -12,9 +12,9 @@ const Layout=(props)=>{
     return(
         <div className={styles.layoutContainer}>
             <Header/>
-            {/* <div className={styles.container}> */}
-            {children}
-            {/* </div> */}
+            <div className={styles.container}>
+                {children}
+            </div>
             <Footer setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}/>
         </div>
     )
