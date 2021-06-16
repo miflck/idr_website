@@ -2,6 +2,8 @@ import { request, PUBLIKATIONEN } from "../../lib/datocms";
 import Layout from "../../components/Layout/layout"
 import ListWrapper from '../../components/List/listWrapper'
 import ListItemPublikation from "../../components/List/listItemPublikation";
+import ListItemPublikation2 from "../../components/List/listItemPublikation2";
+
 import styles from './publikationen.module.scss'
 import Container from "../../components/Container/container";
 
@@ -9,8 +11,10 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Publikationen(props) {
-  const {publikationen:{allPublikationens}}=props;
+  const {publikationen:{allPublikationens},publicationdata}=props;
   console.log("allempublikationens",props);
+  console.log("publicationdata",publicationdata);
+
   const { t } = useTranslation('common')
 
   function groupBy(objectArray, property, key) {
@@ -23,16 +27,48 @@ export default function Publikationen(props) {
       return acc;
     }, {});
   }
+
+
+  function groupByFlat(objectArray, property) {
+    return objectArray.reduce(function (acc, obj) {
+      var innerObject = obj[property];
+      if(!acc[obj[property]]) {
+        acc[obj[property]] = [];
+      }
+      acc[obj[property]].push(obj);
+      return acc;
+    }, {});
+  }
   
   var groupedPublications = groupBy(allPublikationens, 'publikationsart','titel');
   for (const [key, value] of Object.entries(groupedPublications)) {
     value.map((publikation)=>{
     })}
 
+
+
+    var groupedPublicationsTest = groupByFlat(publicationdata, 'type');
+    for (const [key, value] of Object.entries(groupedPublications)) {
+      value.map((publikation)=>{
+      })}
+console.log("grouped publication: ",groupedPublicationsTest)
+
+
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
           
           <div className={styles.funktionstitle}><Container>Buch</Container></div>
+
+
+          <ListWrapper>
+                  {groupedPublicationsTest.book.map((publikation) => {
+                    return(
+                      <ListItemPublikation2 {...publikation} key={publikation.id}/>
+                    )})
+                        }
+          </ListWrapper>
+
+
           <ListWrapper>
                   {groupedPublications.Buch.map((publikation) => {
                     return(

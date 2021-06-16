@@ -2,7 +2,8 @@ import styles from './listpublikationen.module.scss'
 import Link from 'next/link'
 import Container from '../Container/container'
 
-const ListItemPublikation =(publikation)=>{
+const ListItemPublikation2 =(publikation)=>{
+    console.log("Publikation ",publikation.title[0].text)
     let href=`/publikationen` 
     if(publikation.slug!=""){
         href+=`/${publikation.slug}`
@@ -12,19 +13,15 @@ const ListItemPublikation =(publikation)=>{
             <div className={styles.projektwrapper} key={publikation.id}>
             <Container>
                 <div className={styles.titel}>
-                    <a>{publikation.titel}</a>
+                    <a>{publikation.title[0].text}</a>
 
                 </div>
 
-                <img 
-                    className={styles.image}
-                    src={publikation.bild.url} 
-                    alt={publikation.bild.alt} 
-                />
+         
                 </Container>
             </div>
         </Link>
     )
 }
 
- export default ListItemPublikation;
+ export default ListItemPublikation2;
