@@ -55,10 +55,30 @@ const ListItemProjekt =(props)=>{
             </div>
         }
 
+        let background_style;
+        let colors=[];
+
+
+        props.forschungsfeld.map((forschungsfeld) => {
+        colors.push(forschungsfeld.colour.hex)
+        })
+        
+
+
+        background_style={
+          //  backgroundImage: `linear-Gradient(toRight, ${colors[0]} , ${colors[1]||"white"})`,
+          //background:"red"
+                  //  background: `linear-Gradient(toRight, blue , green)`,
+                    background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+                 //   backgroundImage: 'linear-gradient(to right, ${colors[0]}, #73b3fb)'
+          }
+
+        //
+
     return (
             <div className={styles.projektwrapper} key={props.id}>
                 <Container>
-                    <div className={styles.projektcontent}>
+                    <div className={styles.projektcontent} style={background_style}>
                         {/* Projekt Enddatum */}
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
                         <Link href={href} activeClassName={styles.activelink}>
