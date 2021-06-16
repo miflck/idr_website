@@ -117,11 +117,12 @@ export default function Projekteinzelansicht (props) {
           <div>Forschungsfelder</div>
           {forschungsfeld.map((forschungsfeld) => {
             let href=`/editorial`
-            if(forschungsfeld.id!=""){
-                href+=`#${forschungsfeld.id}`
+            console.log("feld id ",forschungsfeld)
+            if(forschungsfeld.slug!=""){
+                href+=`#${forschungsfeld.slug}`
             }
             return (
-              <Link href={href} key={forschungsfeld.id}>
+              <Link href={href} key={forschungsfeld.slug}>
                 <a 
                 //wenn nicht auf editorial seite verlinken, dann
                 // hier übergeben, dass es den filter anwählt auf der projektseite

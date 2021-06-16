@@ -23,15 +23,27 @@ const ListItemProjekt =(props)=>{
             ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
                 {props.forschungsfeld.map((forschungsfeld) => {
                     let btn_class;
+                    let colour_style;
+
+                    console.log("Farben",forschungsfeld.colour.hex)
+                    
                     if(props.filter.includes(forschungsfeld.titel)) {
                       btn_class = styles.forschungsfeldaktiv
+                      colour_style={
+                        backgroundColor: forschungsfeld.colour.hex,
+                      }
+                   //   const root = document.documentElement;
+                    //  root?.style.setProperty('--maincolor', `${forschungsfeld.colour.hex}`);
                     }
                     else {
                       btn_class = styles.forschungsfeld
+                      colour_style={
+                        color: 'black',
+                      }
                     }
                     return (
-                        <span className={btn_class}>
-                            <a
+                        <span className={btn_class} >
+                            <a style={colour_style}
                             onClick={() => props.addMoreItem(forschungsfeld.titel)}
                             key={forschungsfeld.id}
                             > 

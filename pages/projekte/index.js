@@ -107,6 +107,7 @@ if(filter) {
                     </div>
 }
 
+
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor}  colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>

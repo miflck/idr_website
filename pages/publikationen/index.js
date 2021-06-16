@@ -3,18 +3,15 @@ import Layout from "../../components/Layout/layout"
 import ListWrapper from '../../components/List/listWrapper'
 import ListItemPublikation from "../../components/List/listItemPublikation";
 import ListItemPublikation2 from "../../components/List/listItemPublikation2";
-
 import styles from './publikationen.module.scss'
 import Container from "../../components/Container/container";
-
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Publikationen(props) {
   const {publikationen:{allPublikationens},publicationdata}=props;
-  console.log("allempublikationens",props);
-  console.log("publicationdata",publicationdata);
-
+  // console.log("allempublikationens",props);
+  // console.log("publicationdata",publicationdata);
   const { t } = useTranslation('common')
 
   function groupBy(objectArray, property, key) {
@@ -56,10 +53,7 @@ console.log("grouped publication: ",groupedPublicationsTest)
 
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-          
-          <div className={styles.funktionstitle}><Container>Buch</Container></div>
-
-
+         
           <ListWrapper>
                   {groupedPublicationsTest.book.map((publikation) => {
                     return(
@@ -69,6 +63,8 @@ console.log("grouped publication: ",groupedPublicationsTest)
           </ListWrapper>
 
 
+          {/*  
+          <div className={styles.funktionstitle}><Container>Buch</Container></div>
           <ListWrapper>
                   {groupedPublications.Buch.map((publikation) => {
                     return(
@@ -93,7 +89,7 @@ console.log("grouped publication: ",groupedPublicationsTest)
                     <ListItemPublikation {...publikation} key={publikation.id}/>
                   )})
                       }
-          </ListWrapper>
+          </ListWrapper> */}
 
 
       </Layout>

@@ -20,7 +20,7 @@ const Editorial =(props)=>{
                     {/* Forschungsfeld */} 
                         {editorial.forschungsfeld.map((forschungsfeld) => {
                             return (
-                                <div className={styles.titel} key={forschungsfeld.id} id={forschungsfeld.id}>{forschungsfeld.titel} </div>
+                                <div className={styles.titel} key={forschungsfeld.id} id={forschungsfeld.slug}>{forschungsfeld.titel} </div>
                             )
                         })}
                  
