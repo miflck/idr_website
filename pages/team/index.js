@@ -36,9 +36,9 @@ const Team =(props)=>{
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
         return filterterms.every((term)=>{
-          //hier filtertag einfügen, oder nochmals eins rein, morgen schauen
-          return obj.forschungsfeld.some((feld)=>{
-            // console.log("feld",feld.titel,term,fesld.titel.toString().includes(term))
+          return obj.filtertag.some((feld)=>{
+            // console.log("feld", feld)
+            // console.log("feld",feld.titel,term,feld.titel.toString().includes(term))
             return feld.titel.toString().includes(term);
           })
         })   
@@ -123,19 +123,49 @@ const Team =(props)=>{
                     if(mensch.slug!=""){
                         href+=`/${mensch.slug}`
                     }
-                    return(
-                      <Link href={href}>
-                      <div key={mensch.id} className={styles.menschwrapper}>
-                          <img 
-                            className={styles.portrait}
-                            src={mensch.portrait.url} 
-                            alt={mensch.portrait.alt} 
-                          />
-                          <div className={styles.name}>
-                              <a>{mensch.name}</a>
-                          </div>
+
+                    let ForschungsfeldElement;
+                  if(filter) {
+                      ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
+                          {mensch.filtertag.map((filtertag) => {
+                              let btn_class;
+                              if(filter.includes(filtertag.titel)) {
+                                btn_class = styles.forschungsfeldaktiv
+                              }
+                              else {
+                                btn_class = styles.forschungsfeld
+                              }
+                              return (
+                                  <span className={btn_class}>
+                                      <a
+                                      onClick={() => addMoreItem(filtertag.titel)}
+                                      key={filtertag.id}
+                                      > 
+                                        {filtertag.titel} 
+                                      </a>
+                                  </span>
+                              )
+                          })}
                       </div>
-                      </Link>
+                  }
+
+                    return(
+                      <div key={mensch.id} className={styles.menschwrapper}>
+                        <Link href={href}>
+                          <span>
+                            <img 
+                              className={styles.portrait}
+                              src={mensch.portrait.url} 
+                              alt={mensch.portrait.alt} 
+                            />
+                            <div className={styles.name}>
+                                <a>{mensch.name}</a>
+                            </div>
+                          </span>
+                          </Link>
+                          {ForschungsfeldElement}
+                      </div>
+                
                     )})}
             {/* </div> */}
 

@@ -82,9 +82,6 @@
     }
     &:last-child {
         border-bottom: 0px solid var(--maincolor);
-        .beschreibung{
-            padding-bottom: calc(var(--padding)*2);
-        }
     }
     }
     .veranstaltungscontent {
@@ -102,6 +99,19 @@
             p {
                 margin: 0;
             }
+        }
+        .forschungsfeld {
+            a {
+            border: 1px solid var(--maincolor);
+            border-radius: 20px;
+            color: var(--maincolor);
+            padding: 4px 6px 0px;
+            
+            &:hover {
+                background-color: var(--maincolor);
+                color: var(--secondcolor);
+            }
+        }
         }
         .zentriert {
             align-content: center;

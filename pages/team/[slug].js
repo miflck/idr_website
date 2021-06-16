@@ -14,7 +14,7 @@ export default function Menscheinzelansicht (props) {
     name,
     id,
     slug,
-    funktion,
+    filtertag,
     portrait,
     lebenslauf,
     email,
@@ -23,6 +23,7 @@ export default function Menscheinzelansicht (props) {
     publikationsliste
     }=""}=""}=props || ""
 
+    console.log(props)
     if(props.data) {
                 let PDFElement;
                 if(publikationsliste != null && publikationsliste.url != null){
@@ -78,7 +79,7 @@ export default function Menscheinzelansicht (props) {
                     return (
                       <div key={projekt.id} className={styles.projekt}> 
                           <Link href={href}>
-                            <a >
+                            <a>
                               {projekt.titel}
                             </a>
                           </Link>
@@ -86,6 +87,14 @@ export default function Menscheinzelansicht (props) {
                     )
                   })}
               </div>
+
+              {filtertag.map((filtertag) => {
+                return (
+                <div key={filtertag.titel} className={styles.projekt}>
+                  <a>{filtertag.titel}</a>
+                </div>
+                )
+              })}
 
               {/* Publikaitonsliste, falls vorhanden */}
               {PDFElement}

@@ -12,47 +12,7 @@
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     background-color: var(--secondcolor);
-    .filterawrapper {
-        display: flex;
-        flex-direction: row;
-        border-top: 1px solid var(--maincolor);
-        
-        div {
-            width: calc(100%/6);
-            padding: 5px var(--padding) 2.5px var(--padding);
-                // grid
-                border-right: 1px solid var(--maincolor);
-                //forschungsfeld filter text zentriert
-                // text-align: center;
-            &:last-child {
-                border-right: none;
-            }
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                width: fit-content;
-                padding: 2px 4px 0px;
-                color: var(--maincolor);
-                background-color: transparent;
-                margin-right: 20px;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                }
-            }
-        }
-        .forschungsfeldaktiv {
-            background-color: var(--maincolor);
-            border-radius: 100px;
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--secondcolor);
-            }
-        }
-    }
-
+    
     .filterauflistung {
         padding: var(--paddingtop) var(--padding) var(--paddingbottom);
         span {
@@ -71,8 +31,14 @@
                 }
             }
         }
+        .forschungsfeldaktiv {
+            a {
+                background-color: var(--maincolor);
+                color: var(--secondcolor);
+                border: 1px solid var(--maincolor);
+            }
+        }
     }
-    
     .deaktivieren{
         margin: var(--paddingtop) var(--padding) var(--paddingbottom);
         cursor: pointer;
@@ -94,28 +60,26 @@
 
 
 .teamcontainer {
-    .funktionstitle {
-        padding: var(--padding) 0px var(--paddingbottom) var(--padding);
-        text-transform: uppercase;
-        font-size: var(--fontsizenormal);
-        line-height: var(--lineheightnormal);
-        border-bottom: 1px solid var(--maincolor);
-        color: var(--maincolor);
-        position: sticky;
-        top: 42px;
-        z-index: 51;
-        background-color: var(--secondcolor);
-    }
+    // .funktionstitle {
+    //     padding: var(--padding) 0px var(--paddingbottom) var(--padding);
+    //     text-transform: uppercase;
+    //     font-size: var(--fontsizenormal);
+    //     line-height: var(--lineheightnormal);
+    //     border-bottom: 1px solid var(--maincolor);
+    //     color: var(--maincolor);
+    //     position: sticky;
+    //     top: 42px;
+    //     z-index: 51;
+    //     background-color: var(--secondcolor);
+    // }
     .menschwrapper {
+        break-inside: avoid;
+        display:inline-table;
+        width: 100%;
         color: var(--maincolor);
         padding: var(--padding);
-        // border-bottom: 1px solid var(--maincolor);
-        // @include desktop {
-        //     border-left: 1px solid var(--maincolor);
-        // }
-        outline: 0.5px solid var(--maincolor);
+        outline: 1px solid var(--maincolor);
         background-color: var(--secondcolor);
-        cursor: pointer;
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
         .portrait {
@@ -124,27 +88,69 @@
             width: 100%;
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
+            cursor: pointer;
         } 
         .name {
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                padding: 4px 6px 0px;
+            cursor: pointer;
+            // a {
+            //     border: 1px solid var(--maincolor);
+            //     border-radius: 20px;
+            //     padding: 4px 6px 0px;
+            // }
+        }
+        .forschungsfeldwrapper {
+            padding-top: var(--paddingbottom); 
+            font-size: var(--fontsizesmall);
+            line-height: var(--lineheightnormal);
+            text-transform: uppercase;
+            .forschungsfeld {
+                a {
+                    cursor: pointer;
+                    border: 1px solid var(--maincolor);
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    color: var(--maincolor);
+                    background-color: transparent;
+                    margin-right: 20px;
+                    &:hover {
+                        color: var(--maincolor) !important;
+                        background-color: var(--secondcolor);
+                    }
+                }
+            }
+            .forschungsfeldaktiv {
+                a {
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    background-color: var(--maincolor);
+                    color: var(--secondcolor);
+                    border: 1px solid var(--maincolor);
+                    margin-right: 20px;
+                    cursor: pointer;
+                }
             }
         }
 
         &:hover{
             background-color: var(--maincolor);
-            .name {
-                a {
-                    color: var(--secondcolor);
+            color: var(--secondcolor);
+            .forschungsfeldwrapper {
+                .forschungsfeld {
+                    a {
                     border: 1px solid var(--secondcolor);
-                    &:hover {
-                        color: var(--maincolor);
+                    color: var(--secondcolor);
+                    }
+                }
+                .forschungsfeldaktiv {
+                    a {
                         background-color: var(--secondcolor);
+                        color: var(--maincolor);
+                        border: 1px solid var(--secondcolor);
                     }
                 }
             }

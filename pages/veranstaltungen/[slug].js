@@ -14,7 +14,8 @@ export default function Veranstaltungseinzelansicht (props) {
     referentIn,
     untertitel,
     organisation,
-    beschreibung
+    beschreibung,
+    forschungsfeld
   }=""}=""}=props || ""
     // console.log("veranstaltungsprops",veranstaltung);
     const { t } = useTranslation('common')
@@ -38,6 +39,13 @@ export default function Veranstaltungseinzelansicht (props) {
                             <div className={styles.beschreibung}>
                               <StructuredText data={beschreibung.value}/>
                             </div>
+                            {forschungsfeld.map((forschungsfeld) => {
+                                return (
+                                <div key={forschungsfeld.titel} className={styles.forschungsfeld}>
+                                  <a>{forschungsfeld.titel}</a>
+                                </div>
+                                )
+                              })}
                           </Container>
                        </div>
         </div>
