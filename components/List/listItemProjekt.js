@@ -66,17 +66,16 @@ const ListItemProjekt =(props)=>{
 
 
         background_style={
-          //  backgroundImage: `linear-Gradient(toRight, ${colors[0]} , ${colors[1]||"white"})`,
-          //background:"red"
-                  //  background: `linear-Gradient(toRight, blue , green)`,
-                    background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
-                 //   backgroundImage: 'linear-gradient(to right, ${colors[0]}, #73b3fb)'
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
           }
 
+          let background_style_small={
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+          }
         //
 
     return (
-            <div className={styles.projektwrapper} key={props.id}>
+            <div className={styles.projektwrapper} key={props.id} >
                 <Container>
                     <div className={styles.projektcontent} style={background_style}>
                         {/* Projekt Enddatum */}

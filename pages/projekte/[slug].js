@@ -70,10 +70,31 @@ export default function Projekteinzelansicht (props) {
           month: 'long', 
           year: 'numeric'
         });
+
+
+        let background_style;
+        let colors=[];
+
+
+        forschungsfeld.map((forschungsfeld) => {
+        colors.push(forschungsfeld.colour.hex)
+        })
+        
+
+
+        background_style={
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+          }
+
+          let background_style_small={
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+          }
+
+
     
   return (
    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        <div className={styles.einzelwrapper}>
+        <div className={styles.einzelwrapper} style={background_style}>
           <Container>
         <div className={styles.titel}>
           {titel}
