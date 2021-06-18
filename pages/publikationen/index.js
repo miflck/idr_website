@@ -40,7 +40,6 @@ export default function Publikationen(props) {
 
   function groupByFlat(objectArray, property) {
     return objectArray.reduce(function (acc, obj) {
-      var innerObject = obj[property];
       if(!acc[obj[property]]) {
         acc[obj[property]] = [];
       }
@@ -49,6 +48,19 @@ export default function Publikationen(props) {
     }, {});
   }
   
+  /*
+  function getListOfTypes(objectArray, property) {
+    return objectArray.reduce(function (acc, obj) {
+      if(!acc[obj[property]]) {
+        acc[obj[property]] = [];
+      }
+      acc[obj[property]].push(obj);
+      return acc;
+    }, {});
+  }*/
+
+
+
   // var groupedPublications = groupByFlat(publicationdata, 'type');
   //   for (const [key, value] of Object.entries(groupedPublications)) {
   //     value.map((publikation)=>{
@@ -88,16 +100,25 @@ export default function Publikationen(props) {
   // },[filter])
 
 
+  let typeList=groupByFlat(publicationdata,'type')
+  console.log("Type List ",typeList)
+  const publicationTypes = Object.keys(typeList);
+
+
 
   let FilterElement;
   if(filter) {
     FilterElement =  <div className={styles.filterfeldwrapper} >
                       <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
                       <div className={styles.filterauflistung}>
-                        {publicationdata.map((publicationtype) =>{
+                        {
+
+                         
+
+                            publicationTypes.map((publicationtype) =>{
                           // console.log("forschungsfeldeblabla", publicationtype.type)
                           let btn_class;
-                          if(filter.includes(publicationtype.type)) {
+                          if(filter.includes(publicationtype)) {
                             btn_class = styles.forschungsfeldaktiv
                           }
                           else {
@@ -106,13 +127,15 @@ export default function Publikationen(props) {
                           return(
                             <span className={btn_class}>
                               <a 
-                              onClick={() => addMoreItem(publicationtype.type)}
+                              onClick={() => addMoreItem(publicationtype)}
                               key={publicationtype.type}
                               >
-                                {publicationtype.type} 
+                                {publicationtype} 
                             </a>
                             </span>
-                          )})}
+                          )})
+                          
+                          }
                       </div>
                       </div>
   }

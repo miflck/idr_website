@@ -14,7 +14,8 @@ if (props) {
     }
 
     let PublikationstypeElement;
-    if(filter) {
+
+    if(props.filter) {
     let btn_class;
      if(props.filter.includes(props.type)) {
         btn_class = styles.forschungsfeldaktiv
