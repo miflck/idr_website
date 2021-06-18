@@ -10,8 +10,8 @@ import React, { useState, useEffect } from 'react'
 import arborAPI from "../../lib/export_arbor_JSON"
 
 export default function Publikationen(props) {
-  const {publicationdata}=props || ""
-  publicationdata = arborAPI.json();
+  let {publicationdata}=props || ""
+  publicationdata = arborAPI;
 
   if(props) {
   // const {publikationen:{allPublikationens},publicationdata}=props;
