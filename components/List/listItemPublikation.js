@@ -5,45 +5,45 @@ import { printIntrospectionSchema } from 'graphql'
 
 const ListItemPublikation =(props)=>{
     // console.log("Publikation ",props.title[0].text)
-    console.log("was kommt hier rein bei listitempublikation", props)
+    // console.log("was kommt hier rein bei listitempublikation", props)
 if (props) {
 
+    var titlewithunderline = props.title[0].text.split(' ').join('_');
     let href=`/publikationen` 
-    if(props.isbn!=""){
-        href+=`/${props.isbn}`
-    }
+        href+=`/${titlewithunderline}`
+    
 
     let PublikationstypeElement;
 
-    if(props.filter) {
-    let btn_class;
-     if(props.filter.includes(props.type)) {
-        btn_class = styles.forschungsfeldaktiv
+        if(props.filter) {
+        let btn_class;
+        var typewithoutunderline = props.type.split('_').join(' ');
+        if(props.filter.includes(props.type)) {
+            btn_class = styles.forschungsfeldaktiv
+            }
+        else {
+            btn_class = styles.forschungsfeld
+            }
+        PublikationstypeElement = <div className={styles.forschungsfeldwrapper}>
+                                    <span className={btn_class} >
+                                        <a onClick={() => props.addMoreItem(props.type)}> 
+                                            {typewithoutunderline} 
+                                        </a>
+                                    </span>
+                                </div>
         }
-     else {
-        btn_class = styles.forschungsfeld
-        }
-     PublikationstypeElement = <div className={styles.forschungsfeldwrapper}>
-                                 <span className={btn_class} >
-                                     <a onClick={() => props.addMoreItem(props.type)}
-                                     > 
-                                     {props.type} 
-                                     </a>
-                                 </span>
-                              </div>
-    }
 
     return(
-        <Link href={href}>
-            <div className={styles.projektwrapper} key={props.id}>
+        <div className={styles.projektwrapper} key={props.id}>
             <Container>
-                <div className={styles.titel}>
-                    <a>{props.title[0].text}</a>
-                </div>
+                <Link href={href}>
+                    <div className={styles.titel}>
+                        <a>{props.title[0].text}</a>
+                    </div>
+                </Link>
                 {PublikationstypeElement}
             </Container>
-            </div>
-        </Link>
+        </div>
     )
 }
 else{

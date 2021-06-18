@@ -12,63 +12,26 @@ import arborAPI from "../../lib/export_arbor_JSON"
 export default function Publikationen(props) {
   let {publicationdata}=props || ""
   publicationdata = arborAPI;
+  
 
   if(props) {
   // const {publikationen:{allPublikationens},publicationdata}=props;
-
   // console.log("allempublikationens",props);
-  console.log("publicationdata",publicationdata);
+  // console.log("publicationdata",publicationdata);
   const { t } = useTranslation('common')
 
-  
-
-  // function groupBy(objectArray, property, key) {
-  //   return objectArray.reduce(function (acc, obj) {
-  //     var innerObject = obj[property];
-  //     if(!acc[innerObject[key]]) {
-  //       acc[innerObject[key]] = [];
-  //     }
-  //     acc[innerObject[key]].push(obj);
-  //     return acc;
-  //   }, {});
-  // }
-  // var groupedPublications = groupBy(allPublikationens, 'publikationsart','titel');
-  // for (const [key, value] of Object.entries(groupedPublications)) {
-  //   value.map((publikation)=>{
-  //   })}
-
-
-  function groupByFlat(objectArray, property) {
-    return objectArray.reduce(function (acc, obj) {
-      if(!acc[obj[property]]) {
-        acc[obj[property]] = [];
-      }
-      acc[obj[property]].push(obj);
-      return acc;
-    }, {});
-  }
-  
-  /*
-  function getListOfTypes(objectArray, property) {
-    return objectArray.reduce(function (acc, obj) {
-      if(!acc[obj[property]]) {
-        acc[obj[property]] = [];
-      }
-      acc[obj[property]].push(obj);
-      return acc;
-    }, {});
-  }*/
-
-
-
-  // var groupedPublications = groupByFlat(publicationdata, 'type');
-  //   for (const [key, value] of Object.entries(groupedPublications)) {
-  //     value.map((publikation)=>{
-  //     })}
-  // console.log("grouped publication: ",groupedPublications)
-
-
-
+  console.log("hier vergleichen", publicationdata)
+ 
+//nach Publikationstypen filtern
+function filterBy(data, filterterms) {
+  return data.filter((obj) => {
+    //kann sein: every für && und some für || ? 
+    return filterterms.every((term)=>{
+      return obj.type.toString().includes(term);
+      // return obj.type.toString().equals(type, term);
+    })   
+  })
+}
   const [filter, setFilter] = useState([])
   const addMoreItem = (item) => {
   const copyfilter = [...filter]
@@ -85,39 +48,34 @@ export default function Publikationen(props) {
   const [filterdList, setFilterdList] = useState([])
 
   useEffect(() => {
-  setFilterdList (groupByFlat(publicationdata, filter) )
+  setFilterdList (filterBy(publicationdata, filter) )
   console.log("filter", filter)
   console.log("filterdList", filterdList)
   },[filter])
 
-  var groupedPublications = groupByFlat(publicationdata, filter);
-    for (const [key, value] of Object.entries(groupedPublications)) {
-      value.map((publikation)=>{
-      })}
-  console.log("grouped publication: ",groupedPublications)
-  // useEffect(() => {
-  // setFilterdList (filterBy(allProjekts, filter) )
-  // },[filter])
 
-
+  function groupByFlat(objectArray, property) {
+    return objectArray.reduce(function (acc, obj) {
+      if(!acc[obj[property]]) {
+        acc[obj[property]] = [];
+      }
+      acc[obj[property]].push(obj);
+      return acc;
+    }, {});
+  }
   let typeList=groupByFlat(publicationdata,'type')
-  console.log("Type List ",typeList)
+  // console.log("Type List ",typeList)
   const publicationTypes = Object.keys(typeList);
-
-
 
   let FilterElement;
   if(filter) {
     FilterElement =  <div className={styles.filterfeldwrapper} >
                       <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
                       <div className={styles.filterauflistung}>
-                        {
-
-                         
-
-                            publicationTypes.map((publicationtype) =>{
+                        {publicationTypes.map((publicationtype) =>{
                           // console.log("forschungsfeldeblabla", publicationtype.type)
                           let btn_class;
+                          var typewithoutunderline = publicationtype.split('_').join(' ');
                           if(filter.includes(publicationtype)) {
                             btn_class = styles.forschungsfeldaktiv
                           }
@@ -130,11 +88,10 @@ export default function Publikationen(props) {
                               onClick={() => addMoreItem(publicationtype)}
                               key={publicationtype.type}
                               >
-                                {publicationtype} 
+                                {typewithoutunderline} 
                             </a>
                             </span>
                           )})
-                          
                           }
                       </div>
                       </div>
@@ -146,44 +103,13 @@ export default function Publikationen(props) {
          {FilterElement}
 
           <ListWrapper>
-                  {publicationdata.map((publikation) => {
-                    console.log("props publikation weitergeben von index", publikation)
-                    return(
+                  {filterdList.map((publikation) => {
+                    // console.log("props publikation weitergeben von index", publikation)
+                    return (
                       <ListItemPublikation {...publikation} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} key={publikation.id}/>
                     )})
                         }
           </ListWrapper>
-
-          {/* groupedPublicationsTest.book.map */}
-          {/*  
-          <div className={styles.funktionstitle}><Container>Buch</Container></div>
-          <ListWrapper>
-                  {groupedPublications.Buch.map((publikation) => {
-                    return(
-                      <ListItemPublikation {...publikation} key={publikation.id}/>
-                    )})
-                        }
-          </ListWrapper>
-
-          <div className={styles.funktionstitle}><Container>Forschungsbericht</Container></div>
-          <ListWrapper>
-                {groupedPublications.Forschungsbericht.map((publikation) => {
-                  return(
-                    <ListItemPublikation {...publikation} key={publikation.id}/>
-                  )})
-                      }
-          </ListWrapper>
-
-          <div className={styles.funktionstitle}><Container>Sonstige</Container></div>
-          <ListWrapper>
-                {groupedPublications.Sonstige.map((publikation) => {
-                  return(
-                    <ListItemPublikation {...publikation} key={publikation.id}/>
-                  )})
-                      }
-          </ListWrapper> */}
-
-
       </Layout>
   )
 }

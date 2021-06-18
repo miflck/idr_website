@@ -30,14 +30,12 @@
         }
         .forschungsfeldaktiv {
             a {
+                padding: 2px 4px 0px;
                 background-color: var(--maincolor);
                 color: var(--secondcolor);
                 border: 1px solid var(--maincolor);
                 border-radius: 20px;
             }
-        }
-        .forschungsfeld:nth-child(2) {
-            margin-left: 20px;
         }
     }
     .image {
@@ -51,6 +49,13 @@
             .forschungsfeld {
                 color: var(--secondcolor);
                 border: 1px solid var(--secondcolor);
+            }
+            .forschungsfeldaktiv {
+                a{
+                    border: 1px solid var(--secondcolor);
+                    color: var(--maincolor);
+                    background-color: var(--secondcolor);
+                }
             }
         }
    } 

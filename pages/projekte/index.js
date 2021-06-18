@@ -13,6 +13,7 @@ export default function Projekte(props) {
   const {projekte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
 
+  console.log("hier vergleichen", props)
 
 //nach Forschungsfelder filtern
 function filterBy(data, filterterms) {
