@@ -11,6 +11,35 @@
         line-height: var(--lineheightnormal);
         margin-bottom: calc(var(--padding) / 2);
     }
+    .forschungsfeldwrapper {
+        font-size: var(--fontsizesmall);
+        line-height: var(--lineheightnormal);
+        text-transform: uppercase;
+        .forschungsfeld {
+            border: 1px solid var(--maincolor);
+            border-radius: 20px;
+            width: fit-content;
+            padding: 2px 4px 0px;
+            color: var(--maincolor);
+            background-color: transparent;
+            &:hover {
+                color: var(--maincolor) !important;
+                background-color: var(--secondcolor);
+                cursor: pointer;
+            }
+        }
+        .forschungsfeldaktiv {
+            a {
+                background-color: var(--maincolor);
+                color: var(--secondcolor);
+                border: 1px solid var(--maincolor);
+                border-radius: 20px;
+            }
+        }
+        .forschungsfeld:nth-child(2) {
+            margin-left: 20px;
+        }
+    }
     .image {
         -webkit-filter: grayscale(1);
         filter: grayscale(1);
@@ -18,5 +47,11 @@
     &:hover {
         background-color: var(--maincolor);
         color: var(--secondcolor);
+        .forschungsfeldwrapper {
+            .forschungsfeld {
+                color: var(--secondcolor);
+                border: 1px solid var(--secondcolor);
+            }
+        }
    } 
 }

@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout/layout"
-import { request, PUBLIKATIONEINZEL } from "../../lib/datocms";
+// import { request, PUBLIKATIONEINZEL } from "../../lib/datocms";
 import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
@@ -9,38 +9,37 @@ import Container from "../../components/Container/container";
 
 export default function Publikationseinzelansicht (props) {
   const { t } = useTranslation('common')
-  const {data:{publikationen:{
-    titel,
-    mitarbeit,
-    id,
-    bild,
-    info,
-    publikationsinhalte
-    }=""}=""}=props || ""
+  // const {data:{publikationen:{
+  //   titel,
+  //   mitarbeit,
+  //   id,
+  //   bild,
+  //   info,
+  //   publikationsinhalte
+  //   }=""}=""}=props || ""
     
     if(props.data) {
-      let MitarbeitendenElement;
-                if(mitarbeit != null){
-                  MitarbeitendenElement= <>
-                    <div>Mitarbeit</div>
-                      {mitarbeit.map((mitarbeiterin) => {
-                        let href=`/team`
-                        if(mitarbeiterin.slug!=""){
-                            href+=`/${mitarbeiterin.slug}`
-                        }
-                       return (
-                            <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
-                          )
-                        })}
-                    </>
-                }else{
-                  MitarbeitendenElement= <> </>
-                }
-
+    //   let MitarbeitendenElement;
+    //             if(mitarbeit != null){
+    //               MitarbeitendenElement= <>
+    //                 <div>Mitarbeit</div>
+    //                   {mitarbeit.map((mitarbeiterin) => {
+    //                     let href=`/team`
+    //                     if(mitarbeiterin.slug!=""){
+    //                         href+=`/${mitarbeiterin.slug}`
+    //                     }
+    //                    return (
+    //                         <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
+    //                       )
+    //                     })}
+    //                 </>
+    //             }else{
+    //               MitarbeitendenElement= <> </>
+    //             }
   return (
    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <Container>
-          <div className={styles.einzelwrapper}>
+          {/* <div className={styles.einzelwrapper}>
             <div className={styles.titel}>
               {titel}
             </div>
@@ -73,7 +72,7 @@ export default function Publikationseinzelansicht (props) {
             <div className={styles.listenwrapper}>
                 {MitarbeitendenElement}
             </div> 
-      </div> 
+      </div>  */}
       </Container>
    </Layout>
   )
