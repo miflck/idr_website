@@ -4,8 +4,12 @@ import ListWrapper from '../../components/List/listWrapper'
 import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import styles from './projekte.module.scss'
+
+
+import { AppContext,ACTIONS } from '../../context/state';
+
 
 export default function Projekte(props) {
   // console.log("Props from Projekte",props)
@@ -14,6 +18,16 @@ export default function Projekte(props) {
   const { t } = useTranslation('common')
 
   console.log("hier vergleichen", props)
+
+  // context
+  const globalState = useContext(AppContext);
+  const { dispatch } = globalState;
+
+  console.log("----- GLOBAL STATE", globalState,dispatch)
+
+	const handleShowGradient = (val) => {
+    dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
+	};
 
 //nach Forschungsfelder filtern
 function filterBy(data, filterterms) {
@@ -83,7 +97,7 @@ setColor(black => !black)
 
 let FilterElement;
 if(filter) {
-  FilterElement =  <div className={styles.filterfeldwrapper} >
+  FilterElement =  <div className={styles.filterfeldwrapper}  onMouseEnter={ ()=>handleShowGradient(true)} onMouseLeave={ ()=>handleShowGradient(false)} >
                     <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
                     <div className={styles.filterauflistung}>
                       {allForschungsfelders.map((forschungsfeld) =>{

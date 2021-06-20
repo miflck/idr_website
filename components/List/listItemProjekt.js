@@ -1,8 +1,19 @@
+import React, {useEffect, useContext } from 'react';
+import { AppContext, ACTIONS } from '../../context/state';
+
+
 import styles from './list.module.scss'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
 
 const ListItemProjekt =(props)=>{
+
+
+    const globalState = useContext(AppContext);
+    const {state}=globalState
+    const {dispatch}=globalState
+
+
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
                 // month: 'long', 
@@ -55,7 +66,9 @@ const ListItemProjekt =(props)=>{
             </div>
         }
 
-        let background_style;
+        let background_style={
+        };
+
         let colors=[];
 
 
@@ -64,10 +77,12 @@ const ListItemProjekt =(props)=>{
         })
         
 
+        if(state.showGradient){
+            background_style={
+                background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+              }
+        }
 
-        background_style={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-          }
 
           let background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`

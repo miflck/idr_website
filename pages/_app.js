@@ -5,6 +5,7 @@ import { appWithTranslation } from 'next-i18next'
 import React, { useState, useEffect } from 'react';
 
 
+import { StateProvider } from '../context/state.js'
 
 
 
@@ -26,7 +27,10 @@ function MyApp({ Component, pageProps }) {
 },[colorHexCodeSecond])
 
   return (
+    <StateProvider>
     <Component {...pageProps} setMainColor={setColorHexCode} setSecondColor={setColorHexCodeSecond}  colorHexCode={colorHexCode} colorHexCodeSecond={colorHexCodeSecond}/>
+    </StateProvider>
+
   )
 }
 
