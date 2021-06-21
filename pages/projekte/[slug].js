@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
+import TextElement from '../../components/TextElement/TextElement'
 
 export default function Projekteinzelansicht (props) {
 
@@ -109,7 +110,8 @@ export default function Projekteinzelansicht (props) {
               <div className={styles.textblock} key={block.id}>
                 {
                 block._modelApiKey === 'text' &&
-                  <StructuredText data={block.text.value}></StructuredText>
+                  // <StructuredText data={block.text.value}></StructuredText>
+                  <TextElement></TextElement>
                 }
                 {
                   block._modelApiKey === 'einzelbild' &&
