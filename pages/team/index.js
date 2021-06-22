@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect } from 'react'
+import FilterElement from "../../components/Filter/FilterElement";
 
 
 const Team =(props)=>{
@@ -13,7 +14,7 @@ const Team =(props)=>{
   const {menschen:{allFunktions}}=props;
     const { t } = useTranslation('common')
 
-    console.log("forschungfeld in team", props);
+    // console.log("forschungfeld in team", props);
 
     //GROUP BY FUNKTION DURCH FILTER FUNKTION + FORSCHUNGSFELDER ERSETZT
 // function groupBy(objectArray, property, key) {
@@ -31,15 +32,20 @@ const Team =(props)=>{
 //   value.map((mensch)=>{
 //   })}
 
+
+
+// VON HIER BIS -------------------------------------------------------
+
+
+
+
 //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
         return filterterms.every((term)=>{
-          return obj.filtertag.some((feld)=>{
-            // console.log("feld", feld)
-            // console.log("feld",feld.titel,term,feld.titel.toString().includes(term))
-            return feld.titel.toString().includes(term);
+          return obj.forschungsfeld.some((feld)=>{
+          return feld.titel.toString().includes(term);
           })
         })   
       })
@@ -110,12 +116,14 @@ const Team =(props)=>{
                         </div>
     }
 
-       return(
-      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-           {FilterElement}
-           
-           <div className={styles.teamcontainer}>
+// BIS HIER DRUCH FILTERELEMENT.JS ERSETZEN?-------------------------------------------------------
 
+      return(
+      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+           {/* <FilterElement {...props}></FilterElement> */}
+           {FilterElement}
+
+           <div className={styles.teamcontainer}>
            {/* <div className={styles.funktionstitle}>Leitung und Büro</div> */}
             {/*  <div className={styles.teamkachelwrapper}> */}
                 {filterdList.map((mensch) => {
@@ -127,9 +135,9 @@ const Team =(props)=>{
                     let ForschungsfeldElement;
                   if(filter) {
                       ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
-                          {mensch.filtertag.map((filtertag) => {
+                          {mensch.forschungsfeld.map((forschungsfeld) => {
                               let btn_class;
-                              if(filter.includes(filtertag.titel)) {
+                              if(filter.includes(forschungsfeld.titel)) {
                                 btn_class = styles.forschungsfeldaktiv
                               }
                               else {
@@ -138,10 +146,10 @@ const Team =(props)=>{
                               return (
                                   <span className={btn_class}>
                                       <a
-                                      onClick={() => addMoreItem(filtertag.titel)}
-                                      key={filtertag.id}
+                                      onClick={() => addMoreItem(forschungsfeld.titel)}
+                                      key={forschungsfeld.id}
                                       > 
-                                        {filtertag.titel} 
+                                        {forschungsfeld.titel} 
                                       </a>
                                   </span>
                               )
@@ -213,9 +221,6 @@ export async function getStaticProps({locale}) {
       props: {
         menschen,   
         ...await serverSideTranslations(locale, ['common']),
-      }, // will be passed to the page component as props
+      },
     }
   }
-
- 
-

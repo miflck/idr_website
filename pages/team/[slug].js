@@ -1,11 +1,12 @@
 import Layout from '../../components/Layout/layout'
 import { request, MENSCHEINZEL } from "../../lib/datocms";
-import { StructuredText } from "react-datocms";
 import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
+import TextElement from '../../components/TextElement/TextElement'
+import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
 export default function Menscheinzelansicht (props) {
 
@@ -14,7 +15,7 @@ export default function Menscheinzelansicht (props) {
     name,
     id,
     slug,
-    filtertag,
+    forschungsfeld,
     portrait,
     lebenslauf,
     email,
@@ -23,11 +24,14 @@ export default function Menscheinzelansicht (props) {
     publikationsliste
     }=""}=""}=props || ""
 
-    console.log(props)
-    if(props.data) {
+    console.log("props team slug",props)
+    if(props.data) { 
                 let PDFElement;
                 if(publikationsliste != null && publikationsliste.url != null){
-                    PDFElement= <div className={styles.pdf}><Link href={publikationsliste.url}><a>Publikationsliste</a></Link></div> 
+                    PDFElement= <div className={styles.pdf}>
+                      <Link href={publikationsliste.url}><a>Publikationsliste</a></Link>
+                      {/* <ButtonLink {...publikationsliste} href={publikationsliste.url}/> */}
+                      </div> 
                 }else{
                     PDFElement= <> </>
                 }
@@ -65,7 +69,7 @@ export default function Menscheinzelansicht (props) {
             </div>
           
             <div className={styles.text}>
-              <StructuredText data={lebenslauf.value} />
+              <TextElement {...lebenslauf}></TextElement>
             </div>
 
               <div className={styles.projektliste}>
@@ -88,10 +92,10 @@ export default function Menscheinzelansicht (props) {
                   })}
               </div>
 
-              {filtertag.map((filtertag) => {
+              {forschungsfeld.map((forschungsfeld) => {
                 return (
-                <div key={filtertag.titel} className={styles.projekt}>
-                  <a>{filtertag.titel}</a>
+                <div key={forschungsfeld.titel} className={styles.projekt}>
+                  <a>{forschungsfeld.titel}</a>
                 </div>
                 )
               })}

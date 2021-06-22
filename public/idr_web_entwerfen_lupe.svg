@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31mm" height="30.3mm" viewBox="0 0 87.9 86">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>idr_web_entwerfen</title>
+  <g>
+    <circle class="a" cx="31.7" cy="31.7" r="27.9"/>
+    <line class="a" x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
+  </g>
+</svg>

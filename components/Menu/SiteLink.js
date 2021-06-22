@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from './menu.module.scss'
 
-const Linkneu = ({href, sitetitle}) => {
+const SiteLink = ({href, sitetitle}) => {
   const router = useRouter()
 
       return (
@@ -15,4 +15,4 @@ const Linkneu = ({href, sitetitle}) => {
       )
 }
 
-export default Linkneu;
+export default SiteLink;

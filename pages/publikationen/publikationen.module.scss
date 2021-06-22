@@ -1,3 +1,6 @@
+@import "../../components/Filter/filterelement.module.scss";
+
+
 .funktionstitle {
     padding: var(--padding) 0px calc(var(--padding)/2) var(--padding);
     text-transform: uppercase;
@@ -9,59 +12,4 @@
     top: 39.5px;
     z-index: 51;
     background-color: var(--secondcolor);
-}
-
-.filterfeldwrapper {
-    user-select: none;
-    border-bottom: 1px solid var(--maincolor);
-    //color: var(--maincolor);
-    font-size: var(--fontsizesmall);
-    line-height: var(--lineheightnormal);
-    text-transform: uppercase;
-    background-color: var(--secondcolor);
-
-    .filterauflistung {
-        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
-        span {
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                width: fit-content;
-                padding: 2px 4px 0px;
-                color: var(--maincolor);
-                background-color: transparent;
-                margin-right: 20px;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                }
-            }
-        }
-        .forschungsfeldaktiv {
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--maincolor);
-            }
-        }
-    }
-    
-    .deaktivieren{
-        margin: var(--paddingtop) var(--padding) 0px;
-        cursor: pointer;
-        a {
-        color: var(--maincolor);
-        background-color: var(--secondcolor);
-        //border-style: dotted;
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        width: fit-content;
-        padding: 2px 4px 0px;
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-        }
-        }
-    }
 }

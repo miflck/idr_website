@@ -35,26 +35,29 @@ const ListItemProjekt =(props)=>{
                 {props.forschungsfeld.map((forschungsfeld) => {
                     let btn_class;
                     let colour_style;
-
-                    console.log("Farben",forschungsfeld.colour.hex)
-                    
+                    // let colour_stylehover;
+                    // console.log("Farben",forschungsfeld.colour.hex)
                     if(props.filter.includes(forschungsfeld.titel)) {
                       btn_class = styles.forschungsfeldaktiv
-                      colour_style={
-                        backgroundColor: forschungsfeld.colour.hex,
-                      }
-                   //   const root = document.documentElement;
+                    //   colour_style={
+                    //     backgroundColor: forschungsfeld.colour.hex,
+                    //   }
+                    //   const root = document.documentElement;
                     //  root?.style.setProperty('--maincolor', `${forschungsfeld.colour.hex}`);
                     }
                     else {
                       btn_class = styles.forschungsfeld
-                      colour_style={
-                        color: 'black',
-                      }
+                    //   colour_style= {
+                    //     color: 'var(--maincolor)',
+                    //   }
+                    //   colour_stylehover = {
+                    //       color: 'var(--secondcolor'),
+                    //   }
                     }
                     return (
                         <span className={btn_class} >
-                            <a style={colour_style}
+                            <a 
+                            // style={colour_style}
                             onClick={() => props.addMoreItem(forschungsfeld.titel)}
                             key={forschungsfeld.id}
                             > 
@@ -95,6 +98,7 @@ const ListItemProjekt =(props)=>{
                     <div className={styles.projektcontent} style={background_style}>
                         {/* Projekt Enddatum */}
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
+                        {/* was ist hier genau los? */}
                         <Link href={href} activeClassName={styles.activelink}>
                             <a>
                                 <div className={styles.titel}>

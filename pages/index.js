@@ -40,8 +40,7 @@ export default function Home(props) {
                 <div className={styles.kachelwrapper} key={beitrag.id}>
                     {
                     beitrag._modelApiKey === 'projekt' &&
-                    <Link href={hrefprojekte}
-                    >
+                    <Link href={hrefprojekte}>
                       <div className={styles.kachel}>
                         <div className={styles.text}>
                           <div className={styles.uebertitel}>Projekt</div>
@@ -52,8 +51,7 @@ export default function Home(props) {
                     }
                     {
                       beitrag._modelApiKey === 'veranstaltung' &&
-                      <Link href={hrefveranstaltungen}
-                      >
+                      <Link href={hrefveranstaltungen}>
                         <div className={styles.kachel}>
                           <div className={styles.text}>
                             <div className={styles.uebertitel}>Veranstaltung</div>

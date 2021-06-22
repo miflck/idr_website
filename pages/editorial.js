@@ -1,15 +1,15 @@
 import { request,EDITORIALTEXTE } from "../lib/datocms";
-import { StructuredText } from "react-datocms";
 import styles from './editorial.module.scss'
 import Layout from '../components/Layout/layout'
 import Container from '../components/Container/container'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import TextElement from '../components/TextElement/TextElement'
+import ButtonLink from '../components/ButtonLink/ButtonLink'
 
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
-  // console.log(props);
   const { t } = useTranslation('common')
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -17,24 +17,20 @@ const Editorial =(props)=>{
               return(
                 <div className={styles.editorialwrapper} key={editorial.id}>
                   <Container>
-                    {/* Forschungsfeld */} 
                         {editorial.forschungsfeld.map((forschungsfeld) => {
                             return (
                                 <div className={styles.titel} key={forschungsfeld.id} id={forschungsfeld.slug}>{forschungsfeld.titel} </div>
                             )
                         })}
-                 
-                    {/* Beitrag Text */}
                     <div className={styles.text}>
                         {editorial.beitraege.map((beitrag) => {
                             return (
-                                <StructuredText data={beitrag.text.value} key={beitrag.id}/>
+                              <TextElement key={beitrag.id} {...beitrag.text}></TextElement>
                             )
                         })}
                     </div>
 
                     <div className={styles.listenwrapper}> 
-                        {/* Leitung  */}
                         <div>Koordinator*in</div>
                             {editorial.menschen.map((koordinatorin) => {
                                 let href=`/team`
@@ -42,13 +38,10 @@ const Editorial =(props)=>{
                                     href+=`/${koordinatorin.slug}`
                                 }
                                 return (
-                                <Link href={href} key={koordinatorin.id}>
-                                  <a>{koordinatorin.name}</a>
-                                </Link>
+                                <ButtonLink {...koordinatorin} href={href}/>
                                 )
                                 })}
                     
-                        {/* Projektliste */}
                         <div>Projekte</div>
                             {editorial.projekte.map((projekt, index) => {
                                 let href=`/projekte`
@@ -56,9 +49,7 @@ const Editorial =(props)=>{
                                     href+=`/${projekt.slug}`
                                 }
                                 return (
-                                  <Link href={href} key={projekt.id}>
-                                        <a>{projekt.titel}<br></br></a>
-                                  </Link>
+                                  <ButtonLink {...projekt} href={href}/>
                                 )
                             })}
                         

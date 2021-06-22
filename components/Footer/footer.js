@@ -21,7 +21,7 @@ const Footer=(props)=>{
     let LanguageButtons;
     if (router.locale.includes("en")) {
         LanguageButtons = <><Link href={router.asPath} locale="de">
-                                    <a >de</a>
+                                    <a>de</a>
                             </Link>
                             <Link href={router.asPath} locale="en">
                                      <a className={styles.activelanguage}>en</a>

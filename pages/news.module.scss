@@ -1,4 +1,5 @@
 @import "../styles/breakpoints.scss";
+// @import "../styles/globals.scss";
 
 @mixin desktop {
     @media (min-width: $breakpointSmall) {
@@ -7,25 +8,24 @@
 }
 
 .allekacheln {
-    width: 100vw;
+    width: 100%;
     position: absolute;
-    columns: 2 auto;
     padding: 0 var(--padding);
     margin: 0;
-    margin-bottom: calc(var(--padding) * 1.8);
+    padding-bottom: calc(var(--padding) * 3);
     user-select: none;
     color: var(--maincolor);
     @include desktop {
-      columns: 3 auto; 
+      columns: 3 auto;
     }
    .kachelwrapper {
-      width: calc(50vw - (1.5 * var(--padding)));
+      width: 100%;
       height: fit-content;
       padding-top: var(--padding);
       break-inside: avoid;
       page-break-inside: avoid;
       @include desktop {
-        width: calc(33.33vw - (1.5 * var(--padding)));
+        width: 100%;
       }
       .kachel {
         padding: calc(var(--padding) / 2);
@@ -70,7 +70,6 @@
             float: right;
           }
         }
-        
       &:hover {
         background-color: var(--maincolor);
         color: var(--secondcolor);

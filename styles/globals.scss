@@ -12,7 +12,12 @@
   font-style: normal;
   src: url("../assets/SangBleuKingdom-Regular.otf") format("opentype");
 }
-
+@font-face {
+  font-family: "SangItalic";
+  font-weight: normal;
+  font-style: italic;
+  src: url("../assets/SangBleuKingdom-RegularItalic.otf") format("opentype");
+}
 
 html,
 body {

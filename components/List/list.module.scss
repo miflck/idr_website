@@ -1,25 +1,3 @@
-.backgroundGridwrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    .backgroundGrid {
-        z-index: 2;
-        pointer-events: none;
-        height: 100vh;
-        color: var(--secondcolor);
-        width: calc(100%/6);
-            // grid
-            border-right: 1px solid var(--maincolor);
-        // zentriert
-        // margin-left: calc(100%/12);
-        // border-left: 1px solid var(--maincolor);
-        &:last-child {
-            border-right: none;
-        }
-    }
-}
-
 .filterfeldwrapper {
     user-select: none;
     border-bottom: 1px solid var(--maincolor);
@@ -31,14 +9,10 @@
         display: flex;
         flex-direction: row;
         border-top: 1px solid var(--maincolor);
-        
         div {
             width: calc(100%/6);
             padding: 5px var(--padding) 2.5px var(--padding);
-                // grid
-                border-right: 1px solid var(--maincolor);
-                //forschungsfeld filter text zentriert
-                // text-align: center;
+            border-right: 1px solid var(--maincolor);
             &:last-child {
                 border-right: none;
             }
@@ -92,17 +66,16 @@
         margin: var(--paddingtop) var(--padding) var(--paddingbottom);
         cursor: pointer;
         a {
-        color: var(--maincolor);
-        background-color: var(--secondcolor);
-        //border-style: dotted;
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        width: fit-content;
-        padding: 2px 4px 0px;
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-        }
+            color: var(--maincolor);
+            background-color: var(--secondcolor);
+            border: 1px solid var(--maincolor);
+            border-radius: 20px;
+            width: fit-content;
+            padding: 2px 4px 0px;
+            &:hover {
+                color: var(--secondcolor);
+                background-color: var(--maincolor);
+            }
         }
     }
 }
@@ -112,11 +85,6 @@
         user-select: none;
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
-
-    
-
-        //nicht hardcoden, sonder rauslesen, fit-content geht nicht :(
-        // height: 70px;
         .categorydivwrapper {
             display: flex;
             flex-direction: row;
@@ -124,80 +92,15 @@
             pointer-events: none;
             position: absolute;
             z-index: 2;
-           //background-color: transparent;
-            // mix-blend-mode: difference;
-            // background-blend-mode: difference;
-            // filter: invert(1);
             .categorydiv {
-                //height: 71px;
                  margin-top: -1px;
                 width: calc(100%/6);
-                // border-right: 1px solid var(--secondcolor);
-                // color: transparent;
-                //padding: 5px var(--padding) 2.5px var(--padding);
-                // font-size: var(--fontsizesmall);
-                // line-height: var(--lineheightnormal);
-                // text-transform: uppercase;
                 &:last-child {
                     border-right: none;
                 }
                 &.fill {
                 border-radius: 100px;
                 border: 1px solid var(--maincolor);
-
-
-                // background-color: var(--secondcolor);
-                // filter: brightness(40%);
-                // background-color: hsla(var(--maincolor), .1);;
-                // background-color: lighten($secondcolor, 10%);
-                
-                // border-right: 10px solid var(--maincolor);
-                // border-left: 10px solid var(--maincolor);
-
-                    //triangle
-                // filter: brightness(0.5);
-                // width: 0;
-                // height: 0;
-                // border-left: 100px solid transparent;
-                // border-right: 100px solid transparent;
-                // border-bottom: 70px solid var(--maincolor);
-                
-
-                //shape schräg
-                // width: calc((100%/6));
-                // height: 70px;
-                // transform: skew(20deg);
-                // background: red;
-
-                // border-radius: random(10px,15px) 20px 30px 40px/30px;
-                // width: calc((100%/6));
-                // height: 70px;
-                // background: red;
-
-                    // filter: invert(0.5);
-                    // filter: hue-rotate(-30deg);
-                    // background-color: var(--maincolor);
-                    // border-right: 4vw solid var(--maincolor);
-                    // border-left: 2vw solid var(--maincolor);
-                    // mix-blend-mode: difference;
-                    // a {
-                    //     border: 1px solid var(--maincolor);
-                    //     border-radius: 20px;
-                    //     width: fit-content;
-                    //     padding: 2px 4px 0px;
-                    //     background-color: transparent;
-                    //     &.colored {
-                    //         color: var(--maincolor);
-                    //     }
-                    // }   
-                    // .categorylinie {
-                    //     position:absolute;
-                    //     border-top: 1px solid var(--maincolor);
-                    //     width: 19.75%;
-                    //     height: 100%;
-                    //     transform: rotate(18deg);
-                    //     transform-origin: 0% 0%;
-                    // }
                 }
             }
         }
@@ -207,16 +110,14 @@
             color: var(--maincolor);
             z-index: 5;
             position: relative;
-
             //verlauf zweier farben 
             //background: linear-gradient(to left, red, white);
 
-            
             .titel {
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
-                width: 60vw;
+                width: 60%;
                 margin-bottom: 3px;
             }
             .forschungsfeldwrapper {
@@ -288,26 +189,8 @@
                         }
                     }
                 }
-                .categorydivwrapper {
-                    .categorydiv {
-                        &.fill{
-                            //background-color: var(--maincolor);
-                            // border-right: 10px solid var(--secondcolor);
-                            // border-left: 10px solid var(--secondcolor);
-                            // border-top: 1px solid var(--secondcolor);
-                            // border-bottom: 1px solid var(--secondcolor);
-                            //border: 1px solid var(--secondcolor);
-                            // background-color: transparent;
-                            // mix-blend-mode: normal;
-                            // .categorylinie {
-                            //     border-top: 1px solid var(--secondcolor);
-                            // }
-                        }
-                    }
-                }
-            } 
         }
- 
+    }
 
 
 

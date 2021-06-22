@@ -8,13 +8,7 @@ const ListItemPublikation =(props)=>{
     // console.log("was kommt hier rein bei listitempublikation", props)
 if (props) {
 
-    var titlewithunderline = props.title[0].text.split(' ').join('_');
-    let href=`/publikationen` 
-        href+=`/${titlewithunderline}`
-    
-
     let PublikationstypeElement;
-
         if(props.filter) {
         let btn_class;
         var typewithoutunderline = props.type.split('_').join(' ');
@@ -32,6 +26,10 @@ if (props) {
                                     </span>
                                 </div>
         }
+
+    // var titlewithunderline = props.title[0].text.split(' ').join('_');
+    let href=`/publikationen` 
+    href+=`/${props.eprintid}`
 
     return(
         <div className={styles.projektwrapper} key={props.id}>

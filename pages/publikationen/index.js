@@ -12,15 +12,19 @@ import arborAPI from "../../lib/export_arbor_JSON"
 export default function Publikationen(props) {
   let {publicationdata}=props || ""
   publicationdata = arborAPI;
+
+  // console.log("publicationdata unsortiert?",publicationdata);
+  // publicationdata = publicationdata.sort();
+  //fazit, kommt schon nach datum ascd sortiert an
   
 
   if(props) {
   // const {publikationen:{allPublikationens},publicationdata}=props;
   // console.log("allempublikationens",props);
-  // console.log("publicationdata",publicationdata);
+  console.log("publicationdata sortiert?",publicationdata);
   const { t } = useTranslation('common')
 
-  console.log("hier vergleichen", publicationdata)
+  // console.log("hier vergleichen", publicationdata)
  
 //nach Publikationstypen filtern
 function filterBy(data, filterterms) {
@@ -49,8 +53,8 @@ function filterBy(data, filterterms) {
 
   useEffect(() => {
   setFilterdList (filterBy(publicationdata, filter) )
-  console.log("filter", filter)
-  console.log("filterdList", filterdList)
+  // console.log("filter", filter)
+  // console.log("filterdList", filterdList)
   },[filter])
 
 

@@ -1,0 +1,9 @@
+.buttonlink {
+    border: 1px solid var(--maincolor);
+    border-radius: 20px;
+    padding: 4px 4px 0px;
+    &:hover {
+        color: var(--secondcolor);
+        background-color: var(--maincolor);
+    }
+}

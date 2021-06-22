@@ -1,7 +1,7 @@
 import styles from './menu.module.scss'
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next'
-import Linkneu from './Linkneu'
+import SiteLink from './SiteLink'
 
 const NavMenu = (props)=> {
   const { t } = useTranslation('common')
@@ -23,12 +23,12 @@ const NavMenu = (props)=> {
         </div>
         {
           <div className={styles.menucontent}>
-                <Linkneu href={'/'} sitetitle={'NEWS'}></Linkneu>
-                <Linkneu href={'/projekte'} sitetitle={'PROJEKTE'}></Linkneu>
-                <Linkneu href={'/editorial'} sitetitle={'EDITORIAL'}></Linkneu>
-                <Linkneu href={'/team'} sitetitle={'TEAM'}></Linkneu>
-                <Linkneu href={'/publikationen'} sitetitle={'PUBLIKATIONEN'}></Linkneu>
-                <Linkneu href={'/veranstaltungen'} sitetitle={'VERANSTALTUNGEN'}></Linkneu>
+                <SiteLink href={'/'} sitetitle={'NEWS'}></SiteLink>
+                <SiteLink href={'/projekte'} sitetitle={'PROJEKTE'}></SiteLink>
+                <SiteLink href={'/team'} sitetitle={'TEAM'}></SiteLink>
+                <SiteLink href={'/publikationen'} sitetitle={'PUBLIKATIONEN'}></SiteLink>
+                <SiteLink href={'/veranstaltungen'} sitetitle={'VERANSTALTUNGEN'}></SiteLink>
+                <SiteLink href={'/editorial'} sitetitle={'EDITORIAL'}></SiteLink>
           </div>
         }
       </div>

@@ -137,7 +137,15 @@ if(filter) {
               onClick={handleOnClick}
               >
               {/* &#9786;*/}
-              &#128269;
+              {/* &#128269; */}
+              <svg xmlns="http://www.w3.org/2000/svg" 
+              width="1.1em" height="1.1em" 
+              viewBox="0 0 87.9 86">
+                <g>
+                  <circle cx="31.7" cy="31.7" r="27.9"/>
+                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
+                </g>
+              </svg>
             </span>
         </div>
 

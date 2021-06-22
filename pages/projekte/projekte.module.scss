@@ -1,57 +1,4 @@
-.filterfeldwrapper {
-    user-select: none;
-    border-bottom: 1px solid var(--maincolor);
-    //color: var(--maincolor);
-    font-size: var(--fontsizesmall);
-    line-height: var(--lineheightnormal);
-    text-transform: uppercase;
-    background-color: var(--secondcolor);
-
-    .filterauflistung {
-        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
-        span {
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                width: fit-content;
-                padding: 2px 4px 0px;
-                color: var(--maincolor);
-                background-color: transparent;
-                margin-right: 20px;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                }
-            }
-        }
-        .forschungsfeldaktiv {
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--maincolor);
-            }
-        }
-    }
-    
-    .deaktivieren{
-        margin: var(--paddingtop) var(--padding) 0px;
-        cursor: pointer;
-        a {
-        color: var(--maincolor);
-        background-color: var(--secondcolor);
-        //border-style: dotted;
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        width: fit-content;
-        padding: 2px 4px 0px;
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-        }
-        }
-    }
-}
+@import "../../components/Filter/filterelement.module.scss";
 
 .projektlistwrapper {
     color: var(--maincolor);
@@ -68,80 +15,19 @@
             pointer-events: none;
             position: absolute;
             z-index: 2;
-           //background-color: transparent;
-            // mix-blend-mode: difference;
-            // background-blend-mode: difference;
-            // filter: invert(1);
             .categorydiv {
                 height: 70px;
                 margin-top: -0.5px;
                 width: calc(100%/6);
-                // border-right: 1px solid var(--secondcolor);
-                // color: transparent;
-                //padding: 5px var(--padding) 2.5px var(--padding);
-                // font-size: var(--fontsizesmall);
-                // line-height: var(--lineheightnormal);
-                // text-transform: uppercase;
                 &:last-child {
                     border-right: none;
                 }
                 &.fill {
-                // border-radius: 100px;
-                // border: 1px solid var(--maincolor);
-
-
-                // background-color: var(--secondcolor);
-                // filter: brightness(40%);
-                // background-color: hsla(var(--maincolor), .1);;
-                // background-color: lighten($secondcolor, 10%);
-                
-                // border-right: 10px solid var(--maincolor);
-                // border-left: 10px solid var(--maincolor);
-
-                    //triangle
-                // filter: brightness(0.5);
                 width: 0;
                 height: 0;
                 border-left: 100px solid transparent;
                 border-right: 100px solid transparent;
                 border-bottom: 70px solid var(--maincolor);
-                
-
-                //shape schräg
-                // width: calc((100%/6));
-                // height: 70px;
-                // transform: skew(20deg);
-                // background: red;
-
-                // border-radius: random(10px,15px) 20px 30px 40px/30px;
-                // width: calc((100%/6));
-                // height: 70px;
-                // background: red;
-
-                    // filter: invert(0.5);
-                    // filter: hue-rotate(-30deg);
-                    // background-color: var(--maincolor);
-                    // border-right: 4vw solid var(--maincolor);
-                    // border-left: 2vw solid var(--maincolor);
-                    // mix-blend-mode: difference;
-                    // a {
-                    //     border: 1px solid var(--maincolor);
-                    //     border-radius: 20px;
-                    //     width: fit-content;
-                    //     padding: 2px 4px 0px;
-                    //     background-color: transparent;
-                    //     &.colored {
-                    //         color: var(--maincolor);
-                    //     }
-                    // }   
-                    // .categorylinie {
-                    //     position:absolute;
-                    //     border-top: 1px solid var(--maincolor);
-                    //     width: 19.75%;
-                    //     height: 100%;
-                    //     transform: rotate(18deg);
-                    //     transform-origin: 0% 0%;
-                    // }
                 }
             }
         }
@@ -232,13 +118,18 @@
     display: flex;
     flex-grow: 2;
     .suchemoji{
-        font-size: calc(var(--fontsizenormal)*1);
-        line-height: calc(var(--lineheightnormal)*1.25);
-        user-select: none;
+        // font-size: calc(var(--fontsizenormal)*1);
+        // line-height: calc(var(--lineheightnormal)*1.25);
+        // user-select: none;
         margin-left: var(--padding);
-        -webkit-text-stroke: 1px solid blue;
-        -webkit-text-fill-color: none;
-        color: yellow;
+        margin-top: 2px;
+        // -webkit-text-stroke: 1px solid blue;
+        // -webkit-text-fill-color: none;
+        // color: yellow;
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
     }
     .inputfeld {
         display: none;

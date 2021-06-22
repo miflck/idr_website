@@ -1,10 +1,11 @@
 import Layout from "../../components/Layout/layout"
 import { request, VERANSTALTUNGEINZEL } from "../../lib/datocms";
-import { StructuredText } from "react-datocms";
 import styles from './veranstaltungen.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../components/Container/container'
+import TextElement from "../../components/TextElement/TextElement";
+import Link from 'next/link'
 
 export default function Veranstaltungseinzelansicht (props) {
   const {data:{veranstaltung:{
@@ -36,16 +37,27 @@ export default function Veranstaltungseinzelansicht (props) {
                                 <div className={styles.untertitel}>{untertitel}</div>
                                 <div className={styles.organisation}>{organisation}</div>
                             </div>
-                            <div className={styles.beschreibung}>
-                              <StructuredText data={beschreibung.value}/>
-                            </div>
+                            <TextElement {...beschreibung}></TextElement>
+
+                            {/* Projekt Forschungsfelder tags */}
+                            <div>Forschungsfelder</div>
                             {forschungsfeld.map((forschungsfeld) => {
-                                return (
-                                <div key={forschungsfeld.titel} className={styles.forschungsfeld}>
-                                  <a>{forschungsfeld.titel}</a>
-                                </div>
-                                )
-                              })}
+                              let href=`/editorial`
+                              // console.log("feld id ",forschungsfeld)
+                              if(forschungsfeld.slug!=""){
+                                  href+=`#${forschungsfeld.slug}`
+                              }
+                              return (
+                                <Link href={href} key={forschungsfeld.slug}>
+                                  <a className={styles.forschungsfeld}> 
+                                     {/* wenn nicht auf editorial seite verlinken, dann
+                                     hier übergeben, dass es den filter anwählt auf der projektseite
+                                     onClick={() => props.addMoreItem(forschungsfeld.titel)} */}
+                                    {forschungsfeld.titel} <br></br> 
+                                  </a>
+                                </Link>
+                              )
+                            })}
                           </Container>
                        </div>
         </div>

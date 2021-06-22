@@ -1,18 +1,16 @@
 import Layout from "../../components/Layout/layout"
-import { request, PROJEKTEINZEL,ALLPROJEKTE } from "../../lib/datocms";
-import { StructuredText } from "react-datocms";
+import { request, PROJEKTEINZEL, ALLPROJEKTE } from "../../lib/datocms";
 import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
 import TextElement from '../../components/TextElement/TextElement'
+import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
 export default function Projekteinzelansicht (props) {
-
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common') 
 // console.log("props", props)
-// falls params oder slug nicht ankommen, zu leeren strings ändern mit zeile 9
   const {data:{projekt:{
     titel,
     id,
@@ -27,20 +25,18 @@ export default function Projekteinzelansicht (props) {
     enddatum
     }=""}=""}=props || ""
 
-    console.log("projektinhalte", props)
-
     if(props.data) {
       let MitarbeitendenElement;
                 if(mitarbeit != ""){
                   MitarbeitendenElement= <>
-                    <div>Mitarbeit</div>
+                    <div className={styles.titel}>Mitarbeit</div>
                       {mitarbeit.map((mitarbeiterin) => {
                         let href=`/team`
                         if(mitarbeiterin.slug!=""){
                             href+=`/${mitarbeiterin.slug}`
                         }
                        return (
-                            <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
+                        <ButtonLink {...mitarbeiterin} href={href}/>
                           )})}
                     </>
                 }else{
@@ -48,18 +44,19 @@ export default function Projekteinzelansicht (props) {
                 }
         let VerantwortungElement;
                 if(verantwortung != ""){
-                  VerantwortungElement= <>
-                    <div>Verantwortung</div>
+                  VerantwortungElement= 
+                  <>
+                    <div className={styles.titel}>Verantwortung</div>
                     {verantwortung.map((verantwortung) => {
                       let href=`/team`
                       if(verantwortung.slug!=""){
                           href+=`/${verantwortung.slug}`
                       }
-                        return (
-                        <Link href={href} key={verantwortung.id}><a>{verantwortung.name}</a></Link>
-                        )
-                      })}
-                    </>
+                      return (
+                        <ButtonLink {...verantwortung} href={href}/>
+                      )
+                    })}
+                  </>
                 }else{
                   VerantwortungElement= <> </>
                 }
@@ -72,119 +69,103 @@ export default function Projekteinzelansicht (props) {
           year: 'numeric'
         });
 
-
         let background_style;
         let colors=[];
-
 
         forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
         })
-        
-
-
         background_style={
             background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-          }
-
-          let background_style_small={
+        }
+        let background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
-          }
+        }
 
-
-    
   return (
-   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        <div className={styles.einzelwrapper} style={background_style}>
-          <Container>
+  <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+    <div className={styles.einzelwrapper} style={background_style}>
+      <Container>
         <div className={styles.titel}>
           {titel}
         </div>
         <div className={styles.modulareinhalte}>
-            {projektinhalte != null &&
+          {projektinhalte != null &&
             projektinhalte.map((block) => {
-              // console.log(block)
-                return (
-                // index ist eigentlich nur zur not, es kann dann immer noch mehrer mit demselben key geben. besser wäre wohl die ID des elementes aus dato
-
-              <div className={styles.textblock} key={block.id}>
+            return (
+              <div key={block.id}>
                 {
                 block._modelApiKey === 'text' &&
-                  // <StructuredText data={block.text.value}></StructuredText>
-                  <TextElement></TextElement>
+                  <TextElement {...block.text}></TextElement>
                 }
                 {
                   block._modelApiKey === 'einzelbild' &&
-                  <img src={block.image.url}/>
+                  <img src={block.einzelbild.url}/>
                 }
                 {
                   block._modelApiKey === 'pdf' &&
-                  <Link href={block.pdf.url}><a>{block.titel}</a></Link>
+                  <ButtonLink {...block} href={block.pdf.url}/>
                 }
               </div>
-              )})
-            }
+            )})
+          }
         </div>
             
         <div className={styles.listenwrapper}> 
-          {/* 
-          Leitung  
-          - ev ein Component daraus machen? weil leitung, verantwortung,mitarbeit, Finanzierung etc immer dasselbe element?
-          ja vielleicht :), vielleicht auch nur kosmetik? ich weiss es nicht :) 
-          - die a mit Link ersetzen… gemacht
-          */}
-          <div>Zeitraum</div>
-          {startzeitraum} – {endzeitraum}
 
-          {/* Projekt Forschungsfelder tags */}
-          <div>Forschungsfelder</div>
-          {forschungsfeld.map((forschungsfeld) => {
-            let href=`/editorial`
-            console.log("feld id ",forschungsfeld)
-            if(forschungsfeld.slug!=""){
-                href+=`#${forschungsfeld.slug}`
-            }
-            return (
-              <Link href={href} key={forschungsfeld.slug}>
-                <a 
-                //wenn nicht auf editorial seite verlinken, dann
-                // hier übergeben, dass es den filter anwählt auf der projektseite
-                // onClick={() => props.addMoreItem(forschungsfeld.titel)}
-                  className={styles.forschungsfeld}> 
-                  {forschungsfeld.titel} <br></br>
-                </a>
-              </Link>
-            )
-          })}
-          
-          
-          <div>Leitung</div>
-              {leitung.map((leitung) => {
-                // console.log("leitung", leitung)
-                  let href=`/team`
-                  if(leitung.slug!=""){
-                      href+=`/${leitung.slug}`
-                  }
-                  return (
-                  <Link href={href} key={leitung.id}><a>{leitung.name}</a></Link>
-                  )
-                })}
-          
-          {/* Verantwortung  */}
-            {VerantwortungElement}
-          
-          {/* Mitarbeit, falls welche da  */}
-            {MitarbeitendenElement}
-
-          <div>Kooperationen</div>
-              <StructuredText data={kooperationen.value} />
-          
-          <div>Finanzierung</div>
-          <StructuredText data={finanzierung.value} />
+          <div>
+            <div className={styles.titel}>Zeitraum</div>
+            {startzeitraum} – {endzeitraum}
           </div>
-        </Container>
-      </div>
-   </Layout>
+
+          <div>
+            <div className={styles.titel}>Forschungsfelder</div>
+            {forschungsfeld.map((forschungsfeld) => {
+              let href=`/editorial`
+              if(forschungsfeld.slug!=""){
+                  href+=`#${forschungsfeld.slug}`
+              }
+              return (
+                <ButtonLink {...forschungsfeld} href={href}/>
+              )
+            })}
+          </div>
+
+          <div>
+          <div className={styles.titel}>Leitung</div>
+            {leitung.map((leitung) => {
+              let href=`/team`
+              if(leitung.slug!=""){
+                href+=`/${leitung.slug}`
+              }
+              return (
+                <ButtonLink {...leitung} href={href}/>
+              )
+            })}
+          </div>
+          
+          <div>
+            {VerantwortungElement}
+          </div>
+
+          <div>
+          {MitarbeitendenElement}
+          </div>
+
+          <div>
+            <div className={styles.titel}>Kooperationen</div>
+            <TextElement {...kooperationen}/>
+          </div>
+
+          <div>
+            <div className={styles.titel}>Finanzierung</div>
+            <TextElement {...finanzierung}/>
+          </div>
+          
+        </div>
+      </Container>
+    </div>
+  </Layout>
   )
 }
 else{
@@ -195,10 +176,7 @@ else{
 }
 }
 
-
 export async function getStaticProps({params, locale}) {
-
-  // console.log("+++++++++++++++++++++++",locale)
     const data = await request({
         query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });
@@ -209,7 +187,7 @@ export async function getStaticProps({params, locale}) {
         params,
         locale,
         ...await serverSideTranslations(locale, ['common']),
-      }, // will be passed to the page component as props
+      },
     }
   }
 
