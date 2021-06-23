@@ -1,8 +1,6 @@
 import Layout from "../../components/Layout/layout"
-import styles from '../slug.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Link from 'next/link'
 import Container from "../../components/Container/container";
 import arborAPI from "../../lib/export_arbor_JSON"
 import { useRouter } from 'next/router'
@@ -14,106 +12,59 @@ import Book from "../../components/Publicationtype/Book"
 import ConferenceItem from "../../components/Publicationtype/ConferenceItem"
 import MagazineArticle from "../../components/Publicationtype/MagazineArticle"
 import Other from "../../components/Publicationtype/Other"
-// import Report from "../../components/Publicationtype/Report"
-// import Software from "../../components/Publicationtype/Software"
-// import Thesis from "../../components/Publicationtype/Thesis"
-
-// import {
-//     article, 
-//     audio_visual, 
-//     book_section, 
-//     book,
-//     conference_item,
-//     magazine_article,
-//     other,
-//     // report,
-//     // software,
-//     // thesis
-//     } from "../../components/Publicationtype"
-
+import Report from "../../components/Publicationtype/Report"
+import Software from "../../components/Publicationtype/Software"
+import Thesis from "../../components/Publicationtype/Thesis"
 
 export default function Publikationseinzelansicht (props) {
   const { t } = useTranslation('common')
   let {publicationdata}=props || ""
   publicationdata = arborAPI;
 
-  // userid aus ref rauslesen
   const router = useRouter()
   console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
   
-  // wenn ich hier ersetze durch router.query.slug gehts nicht mehr, also in der konsole, weiter zum article bin ich nicht gekommen aber habe jeweils in der publi liste auf article gefiltert und dann die oberste genommen, das ist swiss style englisch, das hat diese 14575 als eprintid
-    var data = publicationdata.filter(v => v.eprintid.toString() === router.query.slug )[0];
+  var data = publicationdata.filter(v => v.eprintid.toString() === router.query.slug )[0];
 
-    // -> das [0] ist weil filter ein array zurück gibt. bei uns aber mit nur einem element. 
-    // damit wir dann nicht immer ein array haben nehmen wir nun einfach das ereste element
-
-
-
-    // console.log('publicationdata', publicationdata);
-    // console.log('userid',data.userid);
-    console.log('data nach filter der publicationdata', data)
-
- 
+  // -> das [0] ist weil filter ein array zurück gibt. bei uns aber mit nur einem element. 
+  // damit wir dann nicht immer ein array haben nehmen wir nun einfach das ereste element
+  
+  // console.log('publicationdata', publicationdata);
+  // console.log('userid',data.userid);
+  // console.log('data nach filter der publicationdata', data)
 
 
 
-    //   let MitarbeitendenElement;
-    //             if(mitarbeit != null){
-    //               MitarbeitendenElement= <>
-    //                 <div>Mitarbeit</div>
-    //                   {mitarbeit.map((mitarbeiterin) => {
-    //                     let href=`/team`
-    //                     if(mitarbeiterin.slug!=""){
-    //                         href+=`/${mitarbeiterin.slug}`
-    //                     }
-    //                    return (
-    //                         <Link href={href} key={mitarbeiterin.id}><a>{mitarbeiterin.name}<br></br></a></Link>
-    //                       )
-    //                     })}
-    //                 </>
-    //             }else{
-    //               MitarbeitendenElement= <> </>
-    //             }
-
-
-    /* hier switchen für article etc. */
-    /* json filtern durch userid */
-
-const element = (data) => { 
-  console.log("switch",data)
-  // data ist ein array of objects vermutlich weil filter ein array zurück gibt. 
-  // deshalb data[0].type
-  //-> hab ich unterdessen oben im filter schon korrigert…
+const element = (data) => {
    switch (data.type) {
           case ('article'):
               return <Article {...data} />;
 
           case ('audio_visual'):
-              return <AudioVisual {...publikation} />;
+              return <AudioVisual {...data} />;
+          case ('book'):
+              return <Book {...data} />;
           
           case ('book_section'):
-              return <BookSection {...publikation}  />;
-          
-          case ('book'):
-              return <Book {...publikation} />;
+              return <BookSection {...data}  />;
 
           case ('conference_item'):
-              return <ConferenceItem {...publikation} />;
+              return <ConferenceItem {...data} />;
           
           case ('magazine_article'):
-              return <MagazineArticle {...publikation} />;
+              return <MagazineArticle {...data} />;
         
           case ('other'):
-              return <Other {...publikation} />;
+              return <Other {...data} />;
         
-          // case ('report'):
-          //     return <Report {...publikation} />;
+          case ('report'):
+              return <Report {...data} />;
 
-          // case ('software'):
-          //     return <Software {...publikation} />;
+          case ('software'):
+              return <Software {...data} />;
 
-          // case ('thesis'):
-          //     return <Thesis {...publikation} />;
+          case ('thesis'):
+              return <Thesis {...data} />;
 
           default:
               return null;
@@ -122,9 +73,7 @@ const element = (data) => {
   if(data) {
     return (
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-          <Container>
-          hallo <br></br>
-          {router.query.slug}
+        <Container>
           {element(data)}
         </Container>
     </Layout>
@@ -133,7 +82,7 @@ const element = (data) => {
     else{
       return (
         <>
-        no data
+        no data yet
         </>
       )
     }

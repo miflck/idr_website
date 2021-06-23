@@ -1,0 +1,18 @@
+.wrapper {
+    padding: var(--padding); 
+    margin-bottom: var(--padding);
+    color: var(--maincolor);
+
+    .title {
+        text-transform: uppercase;
+        font-size: var(--fontsizenormal);
+        line-height: var(--lineheightnormal);
+        margin-bottom: var(--padding);
+    }
+    .subwrapper {
+        margin-bottom: var(--padding);
+        .subtitle {
+            text-transform: uppercase;
+        }
+    }
+}
