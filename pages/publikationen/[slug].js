@@ -40,10 +40,10 @@ export default function Publikationseinzelansicht (props) {
   // userid aus ref rauslesen
   const router = useRouter()
 if(props) {
-  console.log("router.query.slug",router.query.slug);
+  console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
   
   // wenn ich hier ersetze durch router.query.slug gehts nicht mehr, also in der konsole, weiter zum article bin ich nicht gekommen aber habe jeweils in der publi liste auf article gefiltert und dann die oberste genommen, das ist swiss style englisch, das hat diese 14575 als eprintid
-    var data = publicationdata.filter(v => v.eprintid === 14575 );
+    var data = publicationdata.filter(v => v.eprintid.toString() === router.query.slug )[0];
     // console.log('publicationdata', publicationdata);
     // console.log('userid',data.userid);
     console.log('data nach filter der publicationdata', data)
@@ -75,7 +75,9 @@ if(props) {
     /* json filtern durch userid */
 
 const element = (data) => { 
-  // console.log('data im slug',data)
+  // data ist ein array of objects vermutlich weil filter ein array zurück gibt. 
+  // deshalb data[0].type
+ // console.log('data im element',data[0].type)
   switch (data.type) {
           case ('article'):
               return <Article {...data} />;
@@ -118,10 +120,7 @@ const element = (data) => {
         <Container>
         hallo <br></br>
         {router.query.slug}
-
             {element(data)}
-
-
       </Container>
    </Layout>
   )
@@ -136,8 +135,9 @@ else{
   } 
 
 export async function getStaticProps({locale}) {
-      const res = await fetch(`https://arbor.bfh.ch/cgi/search/advanced/export_arbor_JSON.js?screen=Search&_action_export=1&output=JSON&exp=0%7C1%7C-date%2Fcreators_name%2Ftitle%7Carchive%7C-%7Cdivisions%3Adivisions%3AANY%3AEQ%3ABFH-OE--IN-0005%7C-%7Ceprint_status%3Aeprint_status%3AANY%3AEQ%3Aarchive%7Cmetadata_visibility%3Ametadata_visibility%3AANY%3AEQ%3Ashow&n=&cache=117839`)
-      const publicationdata = await res.json()
+    //  const res = await fetch(`https://arbor.bfh.ch/cgi/search/advanced/export_arbor_JSON.js?screen=Search&_action_export=1&output=JSON&exp=0%7C1%7C-date%2Fcreators_name%2Ftitle%7Carchive%7C-%7Cdivisions%3Adivisions%3AANY%3AEQ%3ABFH-OE--IN-0005%7C-%7Ceprint_status%3Aeprint_status%3AANY%3AEQ%3Aarchive%7Cmetadata_visibility%3Ametadata_visibility%3AANY%3AEQ%3Ashow&n=&cache=117839`)
+      //const publicationdata = await res.json()
+      const publicationdata=""
   return {
     props: {
       publicationdata,

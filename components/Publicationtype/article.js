@@ -1,7 +1,7 @@
 import React from 'react';
-// import styles from './publicationtype.module.scss';
+ import styles from './publicationtype.module.scss';
 
-const Article = ({ data }) => {
+const Article = (data) => {
 console.log("data im article",data)
 
     const date = new Date(data.date).toLocaleString([], {
