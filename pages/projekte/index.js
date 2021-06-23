@@ -1,6 +1,5 @@
 import { request, PROJEKTE } from "../../lib/datocms";
 import Layout from '../../components/Layout/layout'
-import ListWrapper from '../../components/List/listWrapper'
 import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -23,7 +22,7 @@ export default function Projekte(props) {
   const globalState = useContext(AppContext);
   const { dispatch } = globalState;
 
-  console.log("----- GLOBAL STATE", globalState,dispatch)
+  // console.log("----- GLOBAL STATE", globalState,dispatch)
 
 	const handleShowGradient = (val) => {
     dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
@@ -44,15 +43,15 @@ function filterBy(data, filterterms) {
 
 const [filter, setFilter] = useState([])
 const addMoreItem = (item) => {
-const copyfilter = [...filter]
-var index = copyfilter.indexOf(item);
-if (index !== -1) {
-  copyfilter.splice(index, 1);
-  setFilter([...copyfilter])
-}
-else{
-  setFilter([...filter, item])
-}
+  const copyfilter = [...filter]
+  var index = copyfilter.indexOf(item);
+  if (index !== -1) {
+    copyfilter.splice(index, 1);
+    setFilter([...copyfilter])
+  }
+  else{
+    setFilter([...filter, item])
+  }
 }
 
 const [filterdList, setFilterdList] = useState([])
@@ -136,11 +135,8 @@ if(filter) {
               className={styles.suchemoji} 
               onClick={handleOnClick}
               >
-              {/* &#9786;*/}
-              {/* &#128269; */}
-              <svg xmlns="http://www.w3.org/2000/svg" 
-              width="1.1em" height="1.1em" 
-              viewBox="0 0 87.9 86">
+             
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
                 <g>
                   <circle cx="31.7" cy="31.7" r="27.9"/>
                   <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
@@ -151,14 +147,13 @@ if(filter) {
 
        {FilterElement}
 
-            <ListWrapper>
-                {filterdList.map((projekt) => {
-                  return(
-                    <ListItemProjekt {...projekt} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} key={projekt.id}/>
-                  )
-                })
-                }
-            </ListWrapper>
+       <div className={styles.listwrapper}>
+          {filterdList.map((projekt) => {
+            return(
+              <ListItemProjekt {...projekt} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} key={projekt.id}/>
+            )
+          })}
+        </div>
       </Layout>
   )
 }

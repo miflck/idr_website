@@ -7,13 +7,36 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import TextElement from '../components/TextElement/TextElement'
 import ButtonLink from '../components/ButtonLink/ButtonLink'
+import React, { useState, useEffect,useContext } from 'react'
 
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
+  const {editorialtexte:{allProjekts}}=props;
+  console.log("props", props)
   const { t } = useTranslation('common')
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
             {allEditorials.map((editorial) => {
+
+            // function filterBy(data, filterterms) {
+            //   return data.filter((obj) => {
+            //     //kann sein: every für && und some für || ? 
+            //     return filterterms.every((term)=>{
+            //       return obj.forschungsfeld.some((feld)=>{
+            //         return feld.titel.toString().includes(term);
+            //       })
+            //     })   
+            //   })
+            // }
+            // const [filter, setFilter] = useState([])
+
+            // const [filterdList, setFilterdList] = useState([])
+
+            // useEffect(() => {
+            // setFilterdList (filterBy(allProjekts, editorial.forschungsfeld.id) )
+            // },[filter])
+
+            // var projektliste = editorial.filter(v => v.forschungsfeld.id.toString() === editorial.forschungsfeld.id );
               return(
                 <div className={styles.editorialwrapper} key={editorial.id}>
                   <Container>
@@ -43,7 +66,7 @@ const Editorial =(props)=>{
                                 })}
                     
                         <div>Projekte</div>
-                            {editorial.projekte.map((projekt, index) => {
+                            {/* {editorial.projekte.map((projekt, index) => {
                                 let href=`/projekte`
                                 if(projekt.slug!=""){
                                     href+=`/${projekt.slug}`
@@ -51,7 +74,8 @@ const Editorial =(props)=>{
                                 return (
                                   <ButtonLink {...projekt} href={href}/>
                                 )
-                            })}
+                            })} */}
+
                         
                     </div>
                     </Container>

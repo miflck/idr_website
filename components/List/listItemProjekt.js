@@ -7,8 +7,6 @@ import Link from 'next/link'
 import Container from '../../components/Container/container'
 
 const ListItemProjekt =(props)=>{
-
-
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
@@ -16,11 +14,9 @@ const ListItemProjekt =(props)=>{
 
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
-                // month: 'long', 
                 year: 'numeric'
                 });
     const startdatum = new Date(props.startdatum).toLocaleString([], {
-                // month: 'long', 
                 year: 'numeric'
                 });
                 
@@ -86,25 +82,19 @@ const ListItemProjekt =(props)=>{
               }
         }
 
-
           let background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
           }
-        //
 
     return (
-            <div className={styles.projektwrapper} key={props.id} >
+            <div className={styles.wrapper} key={props.id} >
                 <Container>
-                    <div className={styles.projektcontent} style={background_style}>
-                        {/* Projekt Enddatum */}
+                    <div className={styles.content} style={background_style}>
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
-                        {/* was ist hier genau los? */}
-                        <Link href={href} activeClassName={styles.activelink}>
-                            <a>
-                                <div className={styles.titel}>
-                                    {props.titel}
-                                </div>
-                            </a>          
+                        <Link href={href}>
+                            <div className={styles.titel}>
+                                <a>{props.titel}  </a>  
+                            </div>
                         </Link>
                         {ForschungsfeldElement}
                     </div>

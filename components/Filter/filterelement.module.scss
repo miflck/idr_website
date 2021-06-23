@@ -52,3 +52,38 @@
         }
     }
 }
+
+
+
+
+
+.suchfeldwrapper {
+    position: fixed;
+    top: calc(var(--padding)/1.5);
+    right: calc(var(--padding)*4);
+    z-index: 150;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 2;
+    .suchemoji{
+        font-size: calc(var(--fontsizenormal)*1);
+        line-height: calc(var(--lineheightnormal)*1.25);
+        user-select: none;
+        margin-left: var(--padding);
+    }
+    .inputfeld {
+        display: none;
+    }
+    &.open {
+        .inputfeld {
+            display: block;
+            height: 1.1em;
+            font-family: "Sang";
+            color: var(--maincolor);
+            background-color: var(--secondcolor);
+            border: 1px solid var(--maincolor);
+            font-size: var(--fontsizesmall);
+            line-height: var(--lineheightnormal);
+        }
+    }
+}

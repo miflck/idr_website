@@ -1,6 +1,4 @@
-// import { request, PUBLIKATIONEN } from "../../lib/datocms";
 import Layout from "../../components/Layout/layout"
-import ListWrapper from '../../components/List/listWrapper'
 import ListItemPublikation from "../../components/List/listItemPublikation";
 import styles from './publikationen.module.scss'
 import Container from "../../components/Container/container";
@@ -13,26 +11,15 @@ export default function Publikationen(props) {
   let {publicationdata}=props || ""
   publicationdata = arborAPI;
 
-  // console.log("publicationdata unsortiert?",publicationdata);
-  // publicationdata = publicationdata.sort();
-  //fazit, kommt schon nach datum ascd sortiert an
-  
-
   if(props) {
-  // const {publikationen:{allPublikationens},publicationdata}=props;
-  // console.log("allempublikationens",props);
-  //console.log("publicationdata sortiert?",publicationdata);
   const { t } = useTranslation('common')
 
-  // console.log("hier vergleichen", publicationdata)
- 
 //nach Publikationstypen filtern
 function filterBy(data, filterterms) {
   return data.filter((obj) => {
     //kann sein: every für && und some für || ? 
     return filterterms.every((term)=>{
       return obj.type.toString().includes(term);
-      // return obj.type.toString().equals(type, term);
     })   
   })
 }
@@ -53,8 +40,6 @@ function filterBy(data, filterterms) {
 
   useEffect(() => {
   setFilterdList (filterBy(publicationdata, filter) )
-  // console.log("filter", filter)
-  // console.log("filterdList", filterdList)
   },[filter])
 
 
@@ -77,7 +62,6 @@ function filterBy(data, filterterms) {
                       <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
                       <div className={styles.filterauflistung}>
                         {publicationTypes.map((publicationtype) =>{
-                          // console.log("forschungsfeldeblabla", publicationtype.type)
                           let btn_class;
                           var typewithoutunderline = publicationtype.split('_').join(' ');
                           if(filter.includes(publicationtype)) {
@@ -106,14 +90,13 @@ function filterBy(data, filterterms) {
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
          {FilterElement}
 
-          <ListWrapper>
+          <div className={styles.listwrapper}>
                   {filterdList.map((publikation) => {
-                    // console.log("props publikation weitergeben von index", publikation)
                     return (
                       <ListItemPublikation {...publikation} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} key={publikation.id}/>
                     )})
                         }
-          </ListWrapper>
+          </div>
       </Layout>
   )
 }

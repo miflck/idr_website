@@ -1,11 +1,8 @@
-import styles from './listpublikationen.module.scss'
+import styles from './list.module.scss'
 import Link from 'next/link'
 import Container from '../Container/container'
-import { printIntrospectionSchema } from 'graphql'
 
 const ListItemPublikation =(props)=>{
-    // console.log("Publikation ",props.title[0].text)
-    // console.log("was kommt hier rein bei listitempublikation", props)
 if (props) {
 
     let PublikationstypeElement;
@@ -27,19 +24,25 @@ if (props) {
                                 </div>
         }
 
-    // var titlewithunderline = props.title[0].text.split(' ').join('_');
     let href=`/publikationen` 
     href+=`/${props.eprintid}`
 
+    const date = new Date(props.date).toLocaleString([], {
+        // month: 'long', 
+        year: 'numeric'
+        });
     return(
-        <div className={styles.projektwrapper} key={props.id}>
+        <div className={styles.wrapper} key={props.id}>
             <Container>
+                <div className={styles.content}>
+                <div className={styles.datum}>{date}</div>
                 <Link href={href}>
                     <div className={styles.titel}>
                         <a>{props.title[0].text}</a>
                     </div>
                 </Link>
                 {PublikationstypeElement}
+                </div>
             </Container>
         </div>
     )
