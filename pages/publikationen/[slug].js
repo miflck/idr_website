@@ -39,11 +39,16 @@ export default function Publikationseinzelansicht (props) {
 
   // userid aus ref rauslesen
   const router = useRouter()
-if(props) {
   console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
   
   // wenn ich hier ersetze durch router.query.slug gehts nicht mehr, also in der konsole, weiter zum article bin ich nicht gekommen aber habe jeweils in der publi liste auf article gefiltert und dann die oberste genommen, das ist swiss style englisch, das hat diese 14575 als eprintid
     var data = publicationdata.filter(v => v.eprintid.toString() === router.query.slug )[0];
+
+    // -> das [0] ist weil filter ein array zurück gibt. bei uns aber mit nur einem element. 
+    // damit wir dann nicht immer ein array haben nehmen wir nun einfach das ereste element
+
+
+
     // console.log('publicationdata', publicationdata);
     // console.log('userid',data.userid);
     console.log('data nach filter der publicationdata', data)
@@ -75,10 +80,11 @@ if(props) {
     /* json filtern durch userid */
 
 const element = (data) => { 
+  console.log("switch",data)
   // data ist ein array of objects vermutlich weil filter ein array zurück gibt. 
   // deshalb data[0].type
- // console.log('data im element',data[0].type)
-  switch (data.type) {
+  //-> hab ich unterdessen oben im filter schon korrigert…
+   switch (data.type) {
           case ('article'):
               return <Article {...data} />;
 
@@ -113,25 +119,24 @@ const element = (data) => {
               return null;
         }
       }
-
-    
-  return (
-   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        <Container>
-        hallo <br></br>
-        {router.query.slug}
-            {element(data)}
-      </Container>
-   </Layout>
-  )
-
-}
-else{
+  if(data) {
     return (
-      <>
-      </>
+    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+          <Container>
+          hallo <br></br>
+          {router.query.slug}
+          {element(data)}
+        </Container>
+    </Layout>
     )
   }
+    else{
+      return (
+        <>
+        no data
+        </>
+      )
+    }
   } 
 
 export async function getStaticProps({locale}) {

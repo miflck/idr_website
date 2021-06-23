@@ -21,10 +21,10 @@ ciao
         <div className={styles.titel}>
             <a>{data.title[0].text}</a>
         </div>
-{/* schon vorher durch array mapen, um es in ein element mit titel und value weiterzugeben? */}
+{/* schon vorher durch array mapen, um es in ein element mit titel und value weiterzugeben? 
         
         <div className={styles.contributors}>
-            {publikation.contributors.map((contributor) => {
+            {contributors.map((contributor) => {
                     return (
                       <>
                           {contributor.name.map((name)=> {
@@ -40,7 +40,7 @@ ciao
             }
         </div>
         <div className={styles.creators}>
-            {publikation.creators.map((creator) => {
+            {creators.map((creator) => {
                     return (
                       <>
                           {creator.name.map((name)=> {
@@ -55,13 +55,13 @@ ciao
                     )})
             }
         </div>
-
+*/}
         <div className={styles.date}>
             {date}
         </div>
 
         <div className={styles.language}>
-            {publikation.language}
+            {data.language}
         </div>
 
 	</div>
