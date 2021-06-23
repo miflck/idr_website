@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout/layout'
 import { request, MENSCHEINZEL } from "../../lib/datocms";
-import styles from '../slug.module.scss'
+import styles from './team.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
@@ -9,8 +9,8 @@ import TextElement from '../../components/TextElement/TextElement'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
 export default function Menscheinzelansicht (props) {
-
   const { t } = useTranslation('common')
+  console.log("props vergleich team", props)
   const {data:{menschen:{
     name,
     id,
@@ -20,87 +20,95 @@ export default function Menscheinzelansicht (props) {
     lebenslauf,
     email,
     website,
-    projekte,
     publikationsliste
     }=""}=""}=props || ""
-
-    console.log("props team slug",props)
+    
+  const {data:{allProjekts}=""}=props || ""
     if(props.data) { 
+
+        console.log("props team slug", props)
+       function filterBy(data, filterterm) {
+          return data.filter((obj) => {
+              return obj.mitarbeit.some((feld)=> {
+                return feld.name.includes(filterterm);
+              })
+          })
+        }
+        const filterdProjectlist = filterBy(allProjekts, name)
+        // console.log("props team slug", filterdProjectlist)
+
                 let PDFElement;
-                if(publikationsliste != null && publikationsliste.url != null){
-                    PDFElement= <div className={styles.pdf}>
-                      <Link href={publikationsliste.url}><a>Publikationsliste</a></Link>
-                      {/* <ButtonLink {...publikationsliste} href={publikationsliste.url}/> */}
-                      </div> 
-                }else{
-                    PDFElement= <> </>
+                if(publikationsliste[0] != null && publikationsliste[0].pdf.url != null){
+                    PDFElement= 
+                    <div className={styles.subwrapper}>
+                        <ButtonLink {...publikationsliste[0]} href={publikationsliste[0].pdf.url}/>
+                    </div> 
                 }
                 let EmailElement;
                 if(email != ""){
                   EmailElement= <div><Link href={`mailto:,${email}`}><a className={styles.email}>{email}</a></Link></div>
-                }else{
-                  EmailElement= <> </>
                 }
                 let WebsiteElement;
                 if(website != ""){
-                  WebsiteElement= <div><Link href={website} target="_blank"><a className={styles.website}>{website}</a></Link></div>
-                }else{
-                  WebsiteElement= <> </>
+                  WebsiteElement= 
+                  <div>
+                    <Link href={website} target="_blank">
+                      <a className={styles.website}>
+                        {website}
+                      </a>
+                    </Link>
+                  </div>
                 }
     
       return (
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-          <div className={styles.einzelwrapper}>
+          <div className={styles.slugwrapper}>
           <Container>
             <div className={styles.titel}>
               {name}
             </div>
 
-            {/* Portrait Bild */}
+
             <img 
               className={styles.portrait}
               src={portrait.url} 
               alt={portrait.alt} 
              />
           
-            <div className={styles.links}>
+            <div className={styles.subwrapper}>
                 {EmailElement}
                 {WebsiteElement}
             </div>
           
-            <div className={styles.text}>
+            <div className={styles.subwrapper}>
+              <div className={styles.subtitel}>Lebenslauf</div>
               <TextElement {...lebenslauf}></TextElement>
             </div>
 
-              <div className={styles.projektliste}>
-                  {/* Projektliste <br></br> */}
-                  {projekte.map((projekt) => {
-                    // console.log("liste", projekt)
+            <div className={styles.subwrapper}>
+                  <div className={styles.subtitel}>Projekte</div>
+                  {filterdProjectlist.map((projekt) => {
                     let href=`/projekte`
                     if(projekt.slug!=""){
                         href+=`/${projekt.slug}`
                     }
                     return (
-                      <div key={projekt.id} className={styles.projekt}> 
-                          <Link href={href}>
-                            <a>
-                              {projekt.titel}
-                            </a>
-                          </Link>
-                      </div>
+                        <ButtonLink {...projekt} href={href}/>
                     )
                   })}
-              </div>
+            </div>
 
-              {forschungsfeld.map((forschungsfeld) => {
-                return (
-                <div key={forschungsfeld.titel} className={styles.projekt}>
-                  <a>{forschungsfeld.titel}</a>
-                </div>
-                )
-              })}
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Tätigkeitsfelder </div>
+                {forschungsfeld.map((forschungsfeld) => {
+                  return (
+                  <div key={forschungsfeld.titel} className={styles.projekt}>
+                    <a>{forschungsfeld.titel}</a>
+                  </div>
+                  )
+                })}
+            </div>
 
-              {/* Publikaitonsliste, falls vorhanden */}
               {PDFElement}
            </Container>
         </div>
@@ -125,6 +133,7 @@ export async function getStaticProps({params, locale}) {
       props: {
         data,   
         params,
+        locale,
         ...await serverSideTranslations(locale, ['common']),
       }, // will be passed to the page component as props
     }

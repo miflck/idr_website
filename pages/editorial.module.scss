@@ -1,3 +1,4 @@
+@import "../components/Filter/filterelement.module.scss";
 .editorialwrapper {
     padding: var(--padding); 
     border-bottom: 1px solid var(--maincolor);
@@ -8,8 +9,6 @@
         line-height: var(--lineheightnormal);
     }
     .text {
-        // columns: var(--columnwidth) auto;
-        // column-gap: var(--columngap);
         margin-bottom: var(--padding);
         p {
             margin: 0;
@@ -20,20 +19,9 @@
             text-transform: uppercase;
             margin-top: var(--padding);
         }
-       
         p {
             margin: 0;
             margin-bottom: var(--padding);
         }
     }
-    a {
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        padding: 4px 4px 0px;
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-        }
-    }
-
 }

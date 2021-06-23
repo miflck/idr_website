@@ -1,4 +1,4 @@
-.einzelwrapper {
+.slugwrapper {
     padding: var(--padding); 
     margin-bottom: var(--padding);
     color: var(--maincolor);
@@ -6,10 +6,15 @@
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
-        margin-bottom: calc(var(--padding) / 2);
+        margin-top: var(--padding) ;
+        margin-left: calc(var(--padding) * 5);
+        margin-bottom: calc(var(--padding) * 5);
     }
-    .modulareinhalte {
-        width: 100%;
+    .subwrapper {
+        margin-bottom: var(--padding);
+        .subtitel {
+            text-transform: uppercase;
+        }
     }
     .portrait {
         margin-bottom: var(--padding);
@@ -18,27 +23,56 @@
         filter: grayscale(1);
         display: block;
     }
-    .image {
-        margin-bottom: var(--padding);
-        width: auto;
-        display: block;
+
+
+    .subtitel {
+        text-transform: uppercase;
     }
-    .links {
-        margin-bottom: var(--padding);
-        display: block;
-    }
-    .info{
-        p {
-            margin: 0;
+    .modulareinhalte {
+        width: 100%;
+        div {
+            p {
+                margin-bottom: var(--padding);
+            }
+        }
+        img {
+            margin: calc(var(--padding) * 5) 0;
+            width: 100%;
+            display: block;
         }
     }
-    //personenn auflistungen
     .listenwrapper{
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
-        .titel {
-            text-transform: uppercase;
-            margin-top: var(--padding);
+        columns: 2 auto;
+        div {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            .subtitel {
+                text-transform: uppercase;
+                margin-top: var(--padding);
+            }
         }
+    }
+
+
+    .speztitel {
+        text-transform: uppercase;
+        font-size: var(--fontsizenormal);
+        line-height: var(--lineheightnormal);
+        margin-top: var(--padding) ;
+        // margin-left: calc(var(--padding) * 5);
+    }
+    .referentIn {
+        // margin-left: calc(var(--padding) * 5);
+        margin-bottom: calc(var(--padding) * 5);
+    }
+    .zentriert {
+        align-content: center;
+        text-align:center;
+        margin: var(--padding);
+        padding: var(--padding);
+        border-radius: 100px;
+        margin-bottom: calc(var(--padding) * 5);
     }
 }

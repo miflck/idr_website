@@ -46,6 +46,34 @@ const Veranstaltungen =(props)=>{
     },[filter])
 
 
+    // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+    function searchInput(data, inputvalue) {
+      return data.filter((obj) => {
+          return Object.keys(obj).some((key)=>{
+          if(Array.isArray(obj[key])){
+            return obj[key].some((entry)=>{
+              return Object.keys(entry).some((kkey=>{
+                return entry[kkey].toString().includes(inputvalue);
+              }))
+            })
+          }
+          else{
+            return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
+          }
+        })
+        }
+      )
+      }
+      
+      const [search, setSearch] = useState('')
+      useEffect(() => {
+      setFilterdList(searchInput(allVeranstaltungs,search));
+      },[search])
+      const [open,setSearchbarOpen] = useState(false)
+      const handleOnClick=(open)=>{
+          setSearchbarOpen(open => !open)
+      }
+
     let FilterElement;
     if(filter) {
       FilterElement =  <div className={styles.filterfeldwrapper} >
@@ -77,6 +105,23 @@ const Veranstaltungen =(props)=>{
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         
+        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
+            <input 
+              className={styles.inputfeld}
+              type="text" 
+              placeholder="Suche" 
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span className={styles.suchemoji} onClick={handleOnClick}> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
+                <g>
+                  <circle cx="31.7" cy="31.7" r="27.9"/>
+                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
+                </g>
+              </svg>
+            </span>
+        </div>
+
         {FilterElement}
         
         <div className={styles.veranstaltungswrapper} >
@@ -109,29 +154,21 @@ const Veranstaltungen =(props)=>{
                           })}
                       </div>
                   }
-                const datum = new Date(veranstaltung.datum).toLocaleString([], {
+                const date = new Date(veranstaltung.datum).toLocaleString([], {
                 year: 'numeric', month: 'numeric', day: 'numeric',
                 hour: '2-digit', minute: '2-digit'});
+                
                     return(
-                    <Link href={href}>
-                      <div className={styles.veranstaltungslink}>
-                        <div className={styles.veranstaltungscontent} key={veranstaltung.id}>
-                              <Container>
-                              <div className={styles.title}>{veranstaltung.titel}</div>
-                              <div className={styles.referentIn}>{veranstaltung.referentIn}</div>
-                              <div className={styles.zentriert}>
-                                  <div className={styles.datum}>{datum} Uhr</div>
-                                  <div className={styles.untertitel}>{veranstaltung.untertitel}</div>
-                                  <div className={styles.organisation}>{veranstaltung.organisation}</div>
-                              </div>
-                              <div className={styles.beschreibung}>
-                                <TextElement {...veranstaltung.beschreibung}></TextElement>
-                              </div>
+                      <div className={styles.veranstaltungscontent} key={veranstaltung.id}>
+                          <Container>
+                              <div className={styles.datum}>{date} Uhr</div>
+                              <Link href={href}>
+                                <div className={styles.title}>{veranstaltung.titel}</div>
+                              </Link>
+                              <div className={styles.title}>{veranstaltung.untertitel}</div>
                               {ForschungsfeldElement}
-                              </Container>
+                          </Container>
                         </div>
-                       </div>
-                    </Link>
                     )
             })}
         </div>

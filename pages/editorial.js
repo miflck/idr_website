@@ -2,42 +2,138 @@ import { request,EDITORIALTEXTE } from "../lib/datocms";
 import styles from './editorial.module.scss'
 import Layout from '../components/Layout/layout'
 import Container from '../components/Container/container'
-import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import TextElement from '../components/TextElement/TextElement'
 import ButtonLink from '../components/ButtonLink/ButtonLink'
-import React, { useState, useEffect,useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
   const {editorialtexte:{allProjekts}}=props;
-  console.log("props", props)
+  const {editorialtexte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
-    return(
+
+  function filterByForschungsfeld(data, filterterm) {
+    return data.filter((obj) => {
+        return obj.forschungsfeld.some((feld)=> {
+          return feld.id.includes(filterterm);
+        })
+    })
+  }
+
+    //nach Forschungsfelder filtern
+    function filterBy(data, filterterms) {
+      return data.filter((obj) => {
+        //kann sein: every für && und some für || ? 
+        return filterterms.every((term)=>{
+          return obj.forschungsfeld.some((feld)=>{
+            return feld.titel.toString().includes(term);
+          })
+        })   
+      })
+    }
+
+    const [filter, setFilter] = useState([])
+    const addMoreItem = (item) => {
+      const copyfilter = [...filter]
+      var index = copyfilter.indexOf(item);
+      if (index !== -1) {
+        copyfilter.splice(index, 1);
+        setFilter([...copyfilter])
+      }
+      else {
+        setFilter([...filter, item])
+      }
+    }
+
+    const [filterdList, setFilterdList] = useState([])
+
+    useEffect(() => {
+      setFilterdList (filterBy(allEditorials, filter) )
+    },[filter])
+
+    let FilterElement;
+    if(filter) {
+      FilterElement =  <div className={styles.filterfeldwrapper} >
+                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
+                        <div className={styles.filterauflistung}>
+                          {allForschungsfelders.map((forschungsfeld) =>{
+                            let btn_class;
+                            if(filter.includes(forschungsfeld.titel)) {
+                              btn_class = styles.forschungsfeldaktiv
+                            }
+                            else {
+                              btn_class = styles.forschungsfeld
+                            }
+                            return(
+                              <span className={btn_class}>
+                                <a 
+                                onClick={() => addMoreItem(forschungsfeld.titel)}
+                                key={forschungsfeld.titel}
+                                > 
+                                  {forschungsfeld.titel} 
+                              </a>
+                              </span>
+                            )})}
+                        </div>
+                        </div>
+    }
+
+  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+  function searchInput(data, inputvalue) {
+    return data.filter((obj) => {
+        return Object.keys(obj).some((key)=>{
+        if(Array.isArray(obj[key])){
+          return obj[key].some((entry)=>{
+            return Object.keys(entry).some((kkey=>{
+              return entry[kkey].toString().includes(inputvalue);
+            }))
+          })
+        }
+        else{
+          return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
+        }
+      })
+      }
+    )
+    }
+    const [search, setSearch] = useState('')
+    useEffect(() => {
+    setFilterdList(searchInput(allEditorials,search));
+    },[search])
+    const [open,setSearchbarOpen] = useState(false)
+    const handleOnClick=(open)=>{
+        setSearchbarOpen(open => !open)
+    }
+
+    return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-            {allEditorials.map((editorial) => {
+        
+        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
+            <input 
+              className={styles.inputfeld}
+              type="text" 
+              placeholder="Suche" 
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span className={styles.suchemoji} onClick={handleOnClick}> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
+                <g>
+                  <circle cx="31.7" cy="31.7" r="27.9"/>
+                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
+                </g>
+              </svg>
+            </span>
+        </div>
 
-            // function filterBy(data, filterterms) {
-            //   return data.filter((obj) => {
-            //     //kann sein: every für && und some für || ? 
-            //     return filterterms.every((term)=>{
-            //       return obj.forschungsfeld.some((feld)=>{
-            //         return feld.titel.toString().includes(term);
-            //       })
-            //     })   
-            //   })
-            // }
-            // const [filter, setFilter] = useState([])
+        {FilterElement}
 
-            // const [filterdList, setFilterdList] = useState([])
+        {filterdList.map((editorial) => {
 
-            // useEffect(() => {
-            // setFilterdList (filterBy(allProjekts, editorial.forschungsfeld.id) )
-            // },[filter])
-
-            // var projektliste = editorial.filter(v => v.forschungsfeld.id.toString() === editorial.forschungsfeld.id );
-              return(
+          const filterdProjectlist = filterByForschungsfeld(allProjekts, editorial.forschungsfeld[0].id)
+              
+          return(
                 <div className={styles.editorialwrapper} key={editorial.id}>
                   <Container>
                         {editorial.forschungsfeld.map((forschungsfeld) => {
@@ -66,22 +162,22 @@ const Editorial =(props)=>{
                                 })}
                     
                         <div>Projekte</div>
-                            {/* {editorial.projekte.map((projekt, index) => {
-                                let href=`/projekte`
-                                if(projekt.slug!=""){
-                                    href+=`/${projekt.slug}`
-                                }
-                                return (
-                                  <ButtonLink {...projekt} href={href}/>
-                                )
-                            })} */}
-
-                        
+                        {filterdProjectlist.map((projekt) => {
+                          console.log("projekt slug?", projekt)
+                          let href=`/projekte`
+                          if(projekt.slug!=""){
+                              href+=`/${projekt.slug}`
+                          }
+                          return (
+                              <ButtonLink {...projekt} href={href}/>
+                          )
+                        })}
                     </div>
+                    
                     </Container>
                 </div>
               )
-            })}  
+            })}
       </Layout>
     )
 }
@@ -100,6 +196,6 @@ export async function getStaticProps({locale}) {
       props: {
         editorialtexte,   
         ...await serverSideTranslations(locale, ['common']),
-      }, // will be passed to the page component as props
+      },
     }
   }

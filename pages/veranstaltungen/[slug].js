@@ -5,7 +5,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../components/Container/container'
 import TextElement from "../../components/TextElement/TextElement";
-import Link from 'next/link'
+import ButtonLink from "../../components/ButtonLink/ButtonLink";
+
 
 export default function Veranstaltungseinzelansicht (props) {
   const {data:{veranstaltung:{
@@ -18,7 +19,7 @@ export default function Veranstaltungseinzelansicht (props) {
     beschreibung,
     forschungsfeld
   }=""}=""}=props || ""
-    // console.log("veranstaltungsprops",veranstaltung);
+  
     const { t } = useTranslation('common')
 
     const date = new Date(datum).toLocaleString([], {
@@ -27,39 +28,40 @@ export default function Veranstaltungseinzelansicht (props) {
       if(props.data) {
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        <div className={styles.veranstaltungswrapper} >
-                       <div className={styles.veranstaltungscontent} key={id}>
-                         <Container>
-                            <div className={styles.title}>{titel}</div>
-                            <div className={styles.referentIn}>{referentIn}</div>
-                            <div className={styles.zentriert}>
-                                <div className={styles.datum}>{date} Uhr</div>
-                                <div className={styles.untertitel}>{untertitel}</div>
-                                <div className={styles.organisation}>{organisation}</div>
-                            </div>
-                            <TextElement {...beschreibung}></TextElement>
+        <div className={styles.slugwrapper} >
+          {/* <div className={styles.veranstaltungscontent} key={id}> */}
+            <Container>
+              <div className={styles.speztitel}>
+                {titel}
+              </div>
+              <div className={styles.referentIn}>
+                {referentIn}
+              </div>
 
-                            {/* Projekt Forschungsfelder tags */}
-                            <div>Forschungsfelder</div>
-                            {forschungsfeld.map((forschungsfeld) => {
-                              let href=`/editorial`
-                              // console.log("feld id ",forschungsfeld)
-                              if(forschungsfeld.slug!=""){
-                                  href+=`#${forschungsfeld.slug}`
-                              }
-                              return (
-                                <Link href={href} key={forschungsfeld.slug}>
-                                  <a className={styles.forschungsfeld}> 
-                                     {/* wenn nicht auf editorial seite verlinken, dann
-                                     hier übergeben, dass es den filter anwählt auf der projektseite
-                                     onClick={() => props.addMoreItem(forschungsfeld.titel)} */}
-                                    {forschungsfeld.titel} <br></br> 
-                                  </a>
-                                </Link>
-                              )
-                            })}
-                          </Container>
-                       </div>
+              <div className={styles.zentriert}>
+                <div className={styles.datum}>{date} Uhr</div>
+                <div className={styles.untertitel}>{untertitel}</div>
+                <div className={styles.organisation}>{organisation}</div>
+              </div>
+
+              <div className={styles.subwrapper}>
+                <TextElement {...beschreibung}/>
+              </div>
+
+              <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Forschungsfelder</div>
+                {forschungsfeld.map((forschungsfeld) => {
+                  let href=`/editorial`
+                  if(forschungsfeld.slug!=""){
+                  href+=`#${forschungsfeld.slug}`
+                  }
+                  return (
+                    <ButtonLink {...forschungsfeld} href={href}/>
+                  )
+                })}
+              </div>
+            </Container>
+          {/* </div> */}
         </div>
       </Layout>
   )

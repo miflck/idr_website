@@ -1,16 +1,15 @@
 import Layout from "../../components/Layout/layout"
 import { request, PROJEKTEINZEL, ALLPROJEKTE } from "../../lib/datocms";
-import styles from '../slug.module.scss'
+import styles from './projekte.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Link from 'next/link'
 import Container from '../../components/Container/container'
 import TextElement from '../../components/TextElement/TextElement'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common') 
-// console.log("props", props)
+console.log("props vergleich projekt", props)
   const {data:{projekt:{
     titel,
     id,
@@ -29,7 +28,7 @@ export default function Projekteinzelansicht (props) {
       let MitarbeitendenElement;
                 if(mitarbeit != ""){
                   MitarbeitendenElement= <>
-                    <div className={styles.titel}>Mitarbeit</div>
+                    <div className={styles.subtitel}>Mitarbeit</div>
                       {mitarbeit.map((mitarbeiterin) => {
                         let href=`/team`
                         if(mitarbeiterin.slug!=""){
@@ -46,7 +45,7 @@ export default function Projekteinzelansicht (props) {
                 if(verantwortung != ""){
                   VerantwortungElement= 
                   <>
-                    <div className={styles.titel}>Verantwortung</div>
+                    <div className={styles.subtitel}>Verantwortung</div>
                     {verantwortung.map((verantwortung) => {
                       let href=`/team`
                       if(verantwortung.slug!=""){
@@ -84,7 +83,7 @@ export default function Projekteinzelansicht (props) {
 
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-    <div className={styles.einzelwrapper} style={background_style}>
+    <div className={styles.slugwrapper} style={background_style}>
       <Container>
         <div className={styles.titel}>
           {titel}
@@ -114,12 +113,12 @@ export default function Projekteinzelansicht (props) {
         <div className={styles.listenwrapper}> 
 
           <div>
-            <div className={styles.titel}>Zeitraum</div>
+            <div className={styles.subtitel}>Zeitraum</div>
             {startzeitraum} – {endzeitraum}
           </div>
 
           <div>
-            <div className={styles.titel}>Forschungsfelder</div>
+            <div className={styles.subtitel}>Forschungsfelder</div>
             {forschungsfeld.map((forschungsfeld) => {
               let href=`/editorial`
               if(forschungsfeld.slug!=""){
@@ -132,7 +131,7 @@ export default function Projekteinzelansicht (props) {
           </div>
 
           <div>
-          <div className={styles.titel}>Leitung</div>
+          <div className={styles.subtitel}>Leitung</div>
             {leitung.map((leitung) => {
               let href=`/team`
               if(leitung.slug!=""){
@@ -153,12 +152,12 @@ export default function Projekteinzelansicht (props) {
           </div>
 
           <div>
-            <div className={styles.titel}>Kooperationen</div>
+            <div className={styles.subtitel}>Kooperationen</div>
             <TextElement {...kooperationen}/>
           </div>
 
           <div>
-            <div className={styles.titel}>Finanzierung</div>
+            <div className={styles.subtitel}>Finanzierung</div>
             <TextElement {...finanzierung}/>
           </div>
           

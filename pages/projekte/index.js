@@ -34,7 +34,6 @@ function filterBy(data, filterterms) {
     //kann sein: every für && und some für || ? 
     return filterterms.every((term)=>{
       return obj.forschungsfeld.some((feld)=>{
-        // console.log("feld",feld.titel,term,fesld.titel.toString().includes(term))
         return feld.titel.toString().includes(term);
       })
     })   
@@ -125,17 +124,13 @@ if(filter) {
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor}  colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
-           <input 
+            <input 
               className={styles.inputfeld}
               type="text" 
               placeholder="Suche" 
               onChange={(e) => setSearch(e.target.value)}
             />
-            <span 
-              className={styles.suchemoji} 
-              onClick={handleOnClick}
-              >
-             
+            <span className={styles.suchemoji} onClick={handleOnClick}> 
               <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
                 <g>
                   <circle cx="31.7" cy="31.7" r="27.9"/>

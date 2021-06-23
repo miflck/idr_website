@@ -4,12 +4,15 @@
     z-index: 51;
     user-select: none;
     .menubutton {
+        cursor: pointer;
         position: fixed;
         right: var(--padding);
-        top: -1px;
-        font-size: calc(var(--fontsizenormal)*1.5);
-        color: var(--maincolor);
-        cursor: pointer;
+        top: calc(var(--padding)/1.5);
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+        user-select: none;
         span:last-child{
             display: none;
         }

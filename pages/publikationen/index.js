@@ -56,6 +56,37 @@ function filterBy(data, filterterms) {
   // console.log("Type List ",typeList)
   const publicationTypes = Object.keys(typeList);
 
+
+
+  //geht noch nicht, andere Strukturen, mag nicht mehr
+// Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+  // function searchInput(data, inputvalue) {
+  //   return data.filter((obj) => {
+  //       return Object.keys(obj).some((key)=>{
+  //       if(Array.isArray(obj[key])){
+  //         return obj[key].some((entry)=>{
+  //           return Object.keys(entry).some((kkey=>{
+  //             return entry[kkey].toString().includes(inputvalue);
+  //           }))
+  //         })
+  //       }
+  //       else{
+  //         return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
+  //       }
+  //     })
+  //     }
+  //   )
+  // }
+  // const [search, setSearch] = useState('')
+  // useEffect(() => {
+  // setFilterdList(searchInput(publicationdata,search));
+  // },[search])
+  const [open,setSearchbarOpen] = useState(false)
+  const handleOnClick=(open)=>{
+      setSearchbarOpen(open => !open)
+  }
+
+
   let FilterElement;
   if(filter) {
     FilterElement =  <div className={styles.filterfeldwrapper} >
@@ -88,7 +119,24 @@ function filterBy(data, filterterms) {
 
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-         {FilterElement}
+         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
+            <input 
+              className={styles.inputfeld}
+              type="text" 
+              placeholder="Suche" 
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span className={styles.suchemoji} onClick={handleOnClick}> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
+                <g>
+                  <circle cx="31.7" cy="31.7" r="27.9"/>
+                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
+                </g>
+              </svg>
+            </span>
+        </div>
+        
+        {FilterElement}
 
           <div className={styles.listwrapper}>
                   {filterdList.map((publikation) => {

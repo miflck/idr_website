@@ -1,5 +1,6 @@
 @import "../../styles/breakpoints.scss";
 @import "../../components/Filter/filterelement.module.scss";
+@import "../slug.module.scss";
 
 @mixin desktop {
     @media (min-width: $breakpointSmall) {

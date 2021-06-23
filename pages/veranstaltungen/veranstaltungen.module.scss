@@ -1,15 +1,21 @@
 @import "../../components/Filter/filterelement.module.scss";
+@import "../slug.module.scss";
 
+// index
 .veranstaltungswrapper{
     color: var(--maincolor);
-    .veranstaltungslink {
+    // .veranstaltungslink {
         .veranstaltungscontent {
         border-bottom: 1px solid var(--maincolor);
-        cursor: pointer;
+        .datum {
+            font-size: var(--fontsizesmall);
+            line-height: var(--lineheightsmall);
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
         &:hover {
             background-color: var(--maincolor);
             color: var(--secondcolor);
-        
             .forschungsfeldwrapper {
                 .forschungsfeld {
                     a {
@@ -30,7 +36,7 @@
     &:last-child {
         border-bottom: 0px solid var(--maincolor);
     }
-    }
+    // }
     .veranstaltungscontent {
         padding: var(--padding); 
         font-size: var(--fontsizehalf);
@@ -39,6 +45,7 @@
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
+            cursor: pointer;
         }
         .forschungsfeld {
             a {

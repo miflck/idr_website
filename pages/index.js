@@ -7,7 +7,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 
 export default function Home(props) {
-  // const {news:{news}}=props;
   const {news:{news:{links}}}=props;
   console.log("homeprops", links);
   const { t } = useTranslation('common')
@@ -18,7 +17,6 @@ export default function Home(props) {
         
       <div className={styles.allekacheln}>
         {links.map((beitrag) => {
-          // console.log("beitrag", beitrag)
           let hrefprojekte=`/projekte`
           if(beitrag._modelApiKey === 'projekt') {
             hrefprojekte+=`/${beitrag.slug}`
@@ -26,10 +24,6 @@ export default function Home(props) {
           let hrefveranstaltungen=`/veranstaltungen`
           if(beitrag._modelApiKey === 'veranstaltung') {
             hrefveranstaltungen+=`/${beitrag.slug}`
-          }
-          let hrefpublikationen=`/publikationen`
-          if(beitrag._modelApiKey === 'publikationen') {
-            hrefpublikationen+=`/${beitrag.slug}`
           }
 
           const date = new Date(beitrag.datum).toLocaleString([], {
@@ -61,7 +55,7 @@ export default function Home(props) {
                         </div>
                       </Link>
                     }
-                    {
+                    {/* {
                       beitrag._modelApiKey === 'publikationen' &&
                       <Link href={hrefpublikationen}>
                         <div className={styles.kachel}>
@@ -79,7 +73,7 @@ export default function Home(props) {
                        
                         </div>
                       </Link>
-                    }
+                    } */}
                 </div>
               )
               })}
