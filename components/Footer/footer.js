@@ -40,7 +40,7 @@ const Footer=(props)=>{
             
             {LanguageButtons}
 
-            <div className={[styles.buttonsmaincolor, (openmain ? styles.open : [])].join(' ')} >
+            {/* <div className={[styles.buttonsmaincolor, (openmain ? styles.open : [])].join(' ')} >
                 <a onClick={handleOnClickMain} >xx</a>
                 <ChromePicker className={styles.farbauswahlmaincolor}
                 color={props.colorHexCode}
@@ -54,7 +54,7 @@ const Footer=(props)=>{
                 color={props.colorHexCodeSecond}
                 onChange={e => props.setSecondColor(e.hex) }
                 />
-            </div>
+            </div> */}
 
         </div>
     )

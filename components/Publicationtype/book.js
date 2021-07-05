@@ -7,46 +7,46 @@ const Book = (data) => {
 // console.log("data im book",data.abstract[0].text)
 
   return (
-	<div className={styles.wrapper}>
+	<div className={styles.slugwrapper}>
 
-        <div className={styles.title}>
+        <div className={styles.titel}>
             <a>{data.title[0].text}</a>
         </div>
+        <div className={styles.columnwrapper}>  
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Abstract</div>
+                {data.abstract[0].text}
+            </div>
 
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Abstract</div>
-            {data.abstract[0].text}
-        </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Book Type</div>
+                {data.book_type}
+            </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>ISBN</div>
+                {data.isbn}
+            </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Pages</div>
+                {data.pages}
+            </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Publisher</div>
+                {data.publisher}
+            </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Serie</div>
+                {data.series}
+            </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Link</div>
+                <Link href={data.related_url[0].url}>
+                    {data.related_url[0].url}
+                </Link>
+            </div>
 
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Book Type</div>
-            {data.book_type}
+            <All {...data}/>
         </div>
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>ISBN</div>
-            {data.isbn}
-        </div>
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Pages</div>
-            {data.pages}
-        </div>
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Publisher</div>
-            {data.publisher}
-        </div>
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Serie</div>
-            {data.series}
-        </div>
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Link</div>
-            <Link href={data.related_url[0].url}>
-                {data.related_url[0].url}
-            </Link>
-        </div>
-
-        <All {...data}/>
-
 	</div>
   );
 };

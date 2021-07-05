@@ -1,9 +1,14 @@
 .buttonlink {
-    border: 1px solid var(--maincolor);
-    border-radius: 20px;
-    padding: 4px 4px 0px;
+    // border: 1px solid var(--maincolor);
+    // border-radius: 20px;
+    // padding: 4px 4px 0px;
+
+    font-family: "SangItalic";
+
+    // text-decoration: underline;
     &:hover {
-        color: var(--secondcolor);
-        background-color: var(--maincolor);
+        // color: var(--secondcolor);
+        // background-color: var(--maincolor);
+        margin-left: var(--padding);
     }
 }

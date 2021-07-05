@@ -107,6 +107,7 @@ const Editorial =(props)=>{
         setSearchbarOpen(open => !open)
     }
 
+
     return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         
@@ -132,9 +133,23 @@ const Editorial =(props)=>{
         {filterdList.map((editorial) => {
 
           const filterdProjectlist = filterByForschungsfeld(allProjekts, editorial.forschungsfeld[0].id)
-              
+
+          
+          let background_style;
+          let background_style_small;
+          let colors=[];
+          editorial.forschungsfeld.map((forschungsfeld) => {
+            colors.push(forschungsfeld.colour.hex)
+          })
+          background_style={
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+          }
+          background_style_small={
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+          }
+
           return(
-                <div className={styles.editorialwrapper} key={editorial.id}>
+                <div className={styles.editorialwrapper} key={editorial.id} style={background_style}>
                   <Container>
                         {editorial.forschungsfeld.map((forschungsfeld) => {
                             return (

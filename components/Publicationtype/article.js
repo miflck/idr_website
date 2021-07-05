@@ -6,20 +6,21 @@ const Article = (data) => {
 // console.log("data im article",data)
 
   return (
-	<div className={styles.wrapper}>
+	<div className={styles.slugwrapper}>
 
-        <div className={styles.title}>
+        <div className={styles.titel}>
             <a>{data.title[0].text}</a>
         </div>
 
-        {/* speziell article */}
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Article Type</div>
-            {data.article_type}
+        <div className={styles.columnwrapper}>  
+          {/* speziell article */}
+          <div className={styles.subwrapper}>
+              <div className={styles.subtitel}>Article Type</div>
+              {data.article_type}
+          </div>
+
+          <All {...data}/>
         </div>
-
-        <All {...data}/>
-
 	</div>
   );
 };

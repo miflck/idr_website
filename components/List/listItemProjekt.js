@@ -65,12 +65,10 @@ const ListItemProjekt =(props)=>{
             </div>
         }
 
-        let background_style={
-        };
+        let background_style={};
+        let background_style_small={}; 
 
         let colors=[];
-
-
         props.forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
         })
@@ -80,16 +78,19 @@ const ListItemProjekt =(props)=>{
             background_style={
                 background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
               }
-        }
+   
 
-          let background_style_small={
+         background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
           }
+        }
 
     return (
-            <div className={styles.wrapper} key={props.id} >
+            <div className={styles.wrapper} key={props.id} style={background_style_small}>
                 <Container>
-                    <div className={styles.content} style={background_style}>
+                    <div className={styles.content} 
+                        // style={background_style}
+                        >
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
                         <Link href={href}>
                             <div className={styles.titel}>

@@ -25,10 +25,25 @@ export default function Veranstaltungseinzelansicht (props) {
     const date = new Date(datum).toLocaleString([], {
       year: 'numeric', month: 'numeric', day: 'numeric',
       hour: '2-digit', minute: '2-digit'});
+
       if(props.data) {
+
+        let background_style;
+        let colors=[];
+
+        forschungsfeld.map((forschungsfeld) => {
+        colors.push(forschungsfeld.colour.hex)
+        })
+        background_style={
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+        }
+        let background_style_small={
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+        }
+
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        <div className={styles.slugwrapper} >
+        <div className={styles.slugwrapper} style={background_style}>
           {/* <div className={styles.veranstaltungscontent} key={id}> */}
             <Container>
               <div className={styles.speztitel}>

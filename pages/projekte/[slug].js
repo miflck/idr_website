@@ -59,6 +59,8 @@ console.log("props vergleich projekt", props)
                 }else{
                   VerantwortungElement= <> </>
                 }
+
+
         const startzeitraum = new Date(startdatum).toLocaleString([], {
             month: 'long', 
             year: 'numeric'
@@ -68,9 +70,10 @@ console.log("props vergleich projekt", props)
           year: 'numeric'
         });
 
+        
         let background_style;
         let colors=[];
-
+ 
         forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
         })

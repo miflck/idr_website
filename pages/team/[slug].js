@@ -26,7 +26,7 @@ export default function Menscheinzelansicht (props) {
   const {data:{allProjekts}=""}=props || ""
     if(props.data) { 
 
-        console.log("props team slug", props)
+        // console.log("props team slug", props)
        function filterBy(data, filterterm) {
           return data.filter((obj) => {
               return obj.mitarbeit.some((feld)=> {
@@ -59,10 +59,58 @@ export default function Menscheinzelansicht (props) {
                     </Link>
                   </div>
                 }
+
+                let LebenslaufElement;
+                if(lebenslauf[0] != null) {
+                  console.log(lebenslauf)
+                  LebenslaufElement=
+                    <div className={styles.subwrapper}>
+                      <div className={styles.subtitel}>Lebenslauf</div>
+                      <TextElement {...lebenslauf[0].text}></TextElement>
+                    </div>
+                }
+
+                let ProjekteElement;
+                if(filterdProjectlist.length != 0) {
+                  // console.log("filterdProjectlist",filterdProjectlist)
+                  ProjekteElement=
+                  <div className={styles.subwrapper}>
+                        <div className={styles.subtitel}>Projekte</div>
+                        {filterdProjectlist.map((projekt) => {
+                          let href=`/projekte`
+                          if(projekt.slug!=""){
+                              href+=`/${projekt.slug}`
+                          }
+                          return (
+                              <ButtonLink {...projekt} href={href}/>
+                          )
+                        })}
+                  </div>
+                }
+
+        let background_style;
+        let colors=[]; 
+        forschungsfeld.map((forschungsfeld) => {
+          // console.log("farbe hats oder nicht", forschungsfeld.titel)
+          if(forschungsfeld.titel === "ForscherInnen") {
+          } else if (forschungsfeld.titel === "Leitung und Büro") {
+          }
+          else{
+             colors.push(forschungsfeld.colour.hex)
+          }
+        })
+        background_style={
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+        }
+        let background_style_small={
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+        }
+      
     
-      return (
+  return (
+
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-          <div className={styles.slugwrapper}>
+          <div className={styles.slugwrapper} style={background_style}>
           <Container>
             <div className={styles.titel}>
               {name}
@@ -79,31 +127,18 @@ export default function Menscheinzelansicht (props) {
                 {EmailElement}
                 {WebsiteElement}
             </div>
-          
-            <div className={styles.subwrapper}>
-              <div className={styles.subtitel}>Lebenslauf</div>
-              <TextElement {...lebenslauf}></TextElement>
-            </div>
+        
+
+            {LebenslaufElement}
+
+            {ProjekteElement}
 
             <div className={styles.subwrapper}>
-                  <div className={styles.subtitel}>Projekte</div>
-                  {filterdProjectlist.map((projekt) => {
-                    let href=`/projekte`
-                    if(projekt.slug!=""){
-                        href+=`/${projekt.slug}`
-                    }
-                    return (
-                        <ButtonLink {...projekt} href={href}/>
-                    )
-                  })}
-            </div>
-
-            <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Tätigkeitsfelder </div>
+                <div className={styles.subtitel}>Tätigkeitsfelder im IDR</div>
                 {forschungsfeld.map((forschungsfeld) => {
                   return (
                   <div key={forschungsfeld.titel} className={styles.projekt}>
-                    <a>{forschungsfeld.titel}</a>
+                    {forschungsfeld.titel}
                   </div>
                   )
                 })}

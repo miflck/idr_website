@@ -6,40 +6,41 @@ const Report = (data) => {
 // console.log("data im Report",data)
 
   return (
-	<div className={styles.wrapper}>
+	<div className={styles.slugwrapper}>
 
-        <div className={styles.title}>
+        <div className={styles.titel}>
             <a>{data.title[0].text}</a>
         </div>
 
-        {/* speziell article */}
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Report Type</div>
-            {data.report_type}
-        </div>
+        <div className={styles.columnwrapper}>  
+            {/* speziell article */}
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Report Type</div>
+                {data.report_type}
+            </div>
 
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Series</div>
-            {data.series}
-        </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Series</div>
+                {data.series}
+            </div>
 
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>ISBN</div>
-            {data.isbn}
-        </div>
-       
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Verlag</div>
-            {data.publisher}
-        </div>
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>ISBN</div>
+                {data.isbn}
+            </div>
         
-        <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Ort</div>
-            {data.place_of_pub}
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Verlag</div>
+                {data.publisher}
+            </div>
+            
+            <div className={styles.subwrapper}>
+                <div className={styles.subtitel}>Ort</div>
+                {data.place_of_pub}
+            </div>
+
+            <All {...data}/>
         </div>
-
-        <All {...data}/>
-
 	</div>
   );
 };

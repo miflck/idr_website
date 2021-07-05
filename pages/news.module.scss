@@ -28,7 +28,7 @@
         width: 100%;
       }
       .kachel {
-        padding: calc(var(--padding) / 2);
+        // padding: calc(var(--padding) / 2);
         border: 1px solid var(--maincolor);
         cursor: pointer;
         display: flex;
@@ -39,21 +39,26 @@
         .text {
           flex-grow: 2;
           .uebertitel {
+            padding: calc(var(--padding) / 2) calc(var(--padding) / 2) 0 calc(var(--padding) / 2);
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
+            border-bottom: solid 1px var(--maincolor);
           }
           .titel {
+            padding: calc(var(--padding) / 2) calc(var(--padding) / 2) 0 calc(var(--padding) / 2);
             font-size: var(--fontsizehalf);
             line-height: var(--lineheighthalf);
+            text-transform: uppercase;
           }
           .date {
-            border: solid 1px var(--maincolor);
-            border-radius: 20px;
-            width: fit-content;
-            padding: 2px 6px 0px 6px;
-            font-size: var(--fontsizehalf);
-            line-height: var(--lineheighthalf);
+            padding: 0 calc(var(--padding) / 2);
+            // border: solid 1px var(--maincolor);
+            // border-radius: 20px;
+            // width: fit-content;
+            // padding: 2px 6px 0px 6px;
+            // font-size: var(--fontsizehalf);
+            // line-height: var(--lineheighthalf);
           }
         }
         .bild {
@@ -73,8 +78,8 @@
       &:hover {
         background-color: var(--maincolor);
         color: var(--secondcolor);
-        .date {
-          border: solid 1px var(--secondcolor);
+        .uebertitel {
+          border-bottom: solid 1px var(--secondcolor);
         }
       }
     }

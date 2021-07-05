@@ -1,18 +1,29 @@
 import { request,VERANSTALTUNGEN } from "../../lib/datocms"
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './veranstaltungen.module.scss'
 import Layout from '../../components/Layout/layout'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import TextElement from "../../components/TextElement/TextElement"
+
+
+import { AppContext,ACTIONS } from '../../context/state';
 
 const Veranstaltungen =(props)=>{
   const {veranstaltungen:{allVeranstaltungs}}=props;
   const {veranstaltungen:{allForschungsfelders}}=props;
     // console.log("props",props);
     const { t } = useTranslation('common')
+
+    // context
+  const globalState = useContext(AppContext);
+  const { dispatch } = globalState;
+  const {state}=globalState
+
+  const handleShowGradient = (val) => {
+    dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
+	};
 
     //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
@@ -76,7 +87,7 @@ const Veranstaltungen =(props)=>{
 
     let FilterElement;
     if(filter) {
-      FilterElement =  <div className={styles.filterfeldwrapper} >
+      FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(true)} onMouseLeave={ ()=>handleShowGradient(false)}>
                         <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
                         <div className={styles.filterauflistung}>
                           {allForschungsfelders.map((forschungsfeld) =>{
@@ -101,6 +112,7 @@ const Veranstaltungen =(props)=>{
                         </div>
     }
 
+    
 
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -157,9 +169,26 @@ const Veranstaltungen =(props)=>{
                 const date = new Date(veranstaltung.datum).toLocaleString([], {
                 year: 'numeric', month: 'numeric', day: 'numeric',
                 hour: '2-digit', minute: '2-digit'});
+
+                let background_style={};
+                let background_style_small={}; 
+
+                let colors=[];
+                veranstaltung.forschungsfeld.map((forschungsfeld) => {
+                  colors.push(forschungsfeld.colour.hex)
+                })
+                    
+                if(state.showGradient){
+                    background_style={
+                    background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+                    }
+                    background_style_small={
+                    background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+                    }
+                }
                 
                     return(
-                      <div className={styles.veranstaltungscontent} key={veranstaltung.id}>
+                      <div className={styles.veranstaltungscontent} key={veranstaltung.id} style={background_style_small}>
                           <Container>
                               <div className={styles.datum}>{date} Uhr</div>
                               <Link href={href}>

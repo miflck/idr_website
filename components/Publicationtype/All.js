@@ -21,12 +21,12 @@ const All = (data) => {
       <>
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Type</div>
+            <div className={styles.subtitel}>Type</div>
             {typewithoutunderline}
         </div>
       
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Mitwirkende</div>
+            <div className={styles.subtitel}>Mitwirkende</div>
            {data.contributors.map((contributor) => {
             //    console.log(contributor.name.family)
                 return (
@@ -38,7 +38,7 @@ const All = (data) => {
             }
         </div>
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Autorenschaft</div>
+            <div className={styles.subtitel}>Autorenschaft</div>
             {data.creators.map((creator) => {
                 return (
                     <div className={styles.name}>
@@ -50,22 +50,22 @@ const All = (data) => {
         </div>
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Erstellungsdatum</div>
+            <div className={styles.subtitel}>Erstellungsdatum</div>
             {date}
         </div>
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Letzte Änderungen</div>
+            <div className={styles.subtitel}>Letzte Änderungen</div>
             {lastmod}
         </div>
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>Sprache</div>
+            <div className={styles.subtitel}>Sprache</div>
             {data.language}
         </div>
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitle}>URI</div>
+            <div className={styles.subtitel}>URI</div>
             <Link href={data.uri}>
                 {data.uri}
             </Link>

@@ -20,6 +20,8 @@ html {
 
     --columnwidth: 1;
     --columngap: 50px;
+     
+    --imagewidth: 100%;
   }
 
 
@@ -30,12 +32,15 @@ html {
 }
 
 @media (min-width: $breakpointMedium) {
-  
+  html {
+    --imagewidth: 50%;
+  }
 }
 
 @media (min-width: $breakpointLarge) {
   html {
     --columnwidth: 3;
+    --imagewidth: 75%;
   } 
 }
 
