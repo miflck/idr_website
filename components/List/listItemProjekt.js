@@ -2,6 +2,7 @@ import React, {useEffect, useContext } from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
 
 
+
 import styles from './list.module.scss'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
@@ -65,28 +66,47 @@ const ListItemProjekt =(props)=>{
             </div>
         }
 
-        let background_style={};
-        let background_style_small={}; 
+    
 
         let colors=[];
         props.forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
         })
+
+        let background_style={
+            background: `linear-gradient(to right,"white"})`,
+            animation:`${styles.fadeOut} 2s ease`
+        };
+
+        let background_style_small={
+            background: `linear-gradient(to right,"white"})`,
+            animation:`${styles.fadeOut} 1.5s ease`
+        }; 
+
         
 
         if(state.showGradient){
             background_style={
                 background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+                //transition: 'background 1s ease'
+                opacity:1,
+                animation:` ${styles.fadeIn} 1s ease`
               }
    
 
          background_style_small={
-            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
+            opacity:1,
+
+            animation:`${styles.fadeIn} 1.5s ease`
+
           }
         }
 
     return (
-            <div className={styles.wrapper} key={props.id} style={background_style_small}>
+            <div className={styles.wrapper} key={props.id}>
+                <div className={styles.backgroundwrapper} style={background_style_small}></div>
+
                 <Container>
                     <div className={styles.content} 
                         // style={background_style}

@@ -1,10 +1,40 @@
 @import '../Filter/filterelement.module.scss';
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+
 .wrapper {
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
         border-bottom: 1px solid var(--maincolor);
+        position: relative;
+
+
+        .backgroundwrapper{
+            position: absolute;
+            width: 100%;
+            height:100%;
+            opacity: 0;   
+        }
+
         .content {
             padding: var(--paddingtop) var(--padding) var(--paddingbottom);
             color: var(--maincolor);
