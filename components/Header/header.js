@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 const Header=(props)=>{
     const router = useRouter()
-    console.log("router", router.pathname)
+    // console.log("router", router.pathname)
     if(router.asPath === "/") {
         var seite = "NEWS"
     } else if (router.pathname === "/editorial"){

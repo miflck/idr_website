@@ -116,9 +116,8 @@ const ListItemProjekt =(props)=>{
         }
 
     return (
-            <div className={styles.wrapper} key={props.id}>
+            <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>props.handleShowGradient(true)} onMouseLeave={ ()=>props.handleShowGradient(false)}>
                 <div className={styles.backgroundwrapper} style={background_style_small}></div>
-
                 <Container>
                     <div className={styles.content} 
                         // style={background_style}

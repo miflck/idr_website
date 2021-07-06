@@ -31,13 +31,13 @@
         // padding: calc(var(--padding) / 2);
         border: 1px solid var(--maincolor);
         cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        @include desktop {
-          flex-direction: row;
-        }
+        // display: flex;
+        // flex-direction: column;
+        // @include desktop {
+        //   flex-direction: row;
+        // }
         .text {
-          flex-grow: 2;
+          // flex-grow: 2;
           .uebertitel {
             padding: calc(var(--padding) / 2) calc(var(--padding) / 2) 0 calc(var(--padding) / 2);
             text-transform: uppercase;
@@ -51,28 +51,38 @@
             line-height: var(--lineheighthalf);
             text-transform: uppercase;
           }
+          p {
+            margin: 0;
+            padding: calc(var(--padding) / 2);
+            display: block;
+          }
+          .weblink {
+            padding: calc(var(--padding) / 2);
+            font-family: "SangItalic";
+            &:hover {
+              margin-left: 5px;
+            }
+          }
           .date {
             padding: 0 calc(var(--padding) / 2);
-            // border: solid 1px var(--maincolor);
-            // border-radius: 20px;
-            // width: fit-content;
-            // padding: 2px 6px 0px 6px;
-            // font-size: var(--fontsizehalf);
-            // line-height: var(--lineheighthalf);
           }
         }
         .bild {
-          flex-grow: 1;
-          align-self: flex-start;
-          @include desktop {
-          align-self: flex-end;
-          }
+          // flex-grow: 1;
+          // align-self: flex-start;
+          // @include desktop {
+          // align-self: flex-end;
+          // }
+          padding: calc(var(--padding) / 2);
+          
           .image {
-            height: 15vh;
+            border: solid 1px var(--maincolor);
+            // height: 15vh;
+            width: 100%;
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
             display: block;
-            float: right;
+            // float: right;
           }
         }
       &:hover {

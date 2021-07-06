@@ -5,9 +5,10 @@ import Layout from '../components/Layout/layout'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
+import { StructuredText } from "react-datocms"
 
 export default function Home(props) {
-  const {news:{news:{links}}}=props;
+  const {newsseite:{newsseite:{links}}}=props;
   console.log("homeprops", links);
   const { t } = useTranslation('common')
 
@@ -30,6 +31,7 @@ export default function Home(props) {
             year: 'numeric', month: 'numeric', day: 'numeric',
             hour: '2-digit', minute: '2-digit'});
 
+            console.log("_modelApiKey", beitrag._modelApiKey)
               return(
                 <div className={styles.kachelwrapper} key={beitrag.id}>
                     {
@@ -55,25 +57,26 @@ export default function Home(props) {
                         </div>
                       </Link>
                     }
-                    {/* {
-                      beitrag._modelApiKey === 'publikationen' &&
-                      <Link href={hrefpublikationen}>
+                    {
+                      beitrag._modelApiKey === 'news' &&
+                      <Link href={beitrag.weblink}>
                         <div className={styles.kachel}>
                             <div className={styles.text}>
-                              <div className={styles.uebertitel}>Publikation</div>
+                              <div className={styles.uebertitel}>News</div>
                               <div className={styles.titel}>{beitrag.titel}</div>
+                              <StructuredText data={beitrag.text.value}/>
+                              <div className={styles.weblink}>{beitrag.weblink}</div>
                             </div>
                             <div className={styles.bild}>
                               <img
                                   className={styles.image}
-                                  src={beitrag.bild.url} 
-                                  alt={beitrag.bild.alt} 
+                                  src={beitrag.image.url}
                                 />
                             </div>
-                       
+                            
                         </div>
                       </Link>
-                    } */}
+                    }
                 </div>
               )
               })}
@@ -86,13 +89,13 @@ export default function Home(props) {
 
 
 export async function getStaticProps({locale}) {
-  const news = await request({
+  const newsseite = await request({
     query: NEWS, variables: {locale:locale},
   });
 
   return {
     props: {
-      news,
+      newsseite,
       ...await serverSideTranslations(locale, ['common']),
     },
   }

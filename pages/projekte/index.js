@@ -122,7 +122,11 @@ if(filter) {
 
 
   return (
-      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor}  colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+      <Layout setMainColor={props.setMainColor} 
+              setSecondColor={props.setSecondColor}  
+              colorHexCode={props.colorHexCode} 
+              colorHexCodeSecond={props.colorHexCodeSecond}
+      >
         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
             <input 
               className={styles.inputfeld}
@@ -145,7 +149,8 @@ if(filter) {
        <div className={styles.listwrapper}>
           {filterdList.map((projekt) => {
             return(
-              <ListItemProjekt {...projekt} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} key={projekt.id}/>
+              <ListItemProjekt {...projekt} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
+              handleShowGradient={handleShowGradient} key={projekt.id}/>
             )
           })}
         </div>
