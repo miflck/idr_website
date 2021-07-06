@@ -26,6 +26,23 @@ const ListItemProjekt =(props)=>{
             href+=`/${props.slug}`
         }
 
+
+        let colors=[];
+        props.forschungsfeld.map((forschungsfeld) => {
+        colors.push(forschungsfeld.colour.hex)
+        })
+
+        let background_style={
+            background: `linear-gradient(to right,"white"})`,
+            animation:`${styles.fadeOut} 0.5s ease`
+        };
+
+        let background_style_small={
+            background: `linear-gradient(to right,"white"})`,
+            animation:`${styles.fadeOut} 0.5s ease`,
+        }; 
+
+
         let ForschungsfeldElement;
         if(props.filter) {
             ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
@@ -41,6 +58,14 @@ const ListItemProjekt =(props)=>{
                     //   }
                     //   const root = document.documentElement;
                     //  root?.style.setProperty('--maincolor', `${forschungsfeld.colour.hex}`);
+
+                    background_style_small={
+                        background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
+                        opacity:1,
+            
+                        animation:`${styles.fadeIn} 0.2s ease`
+            
+                      }
                     }
                     else {
                       btn_class = styles.forschungsfeld
@@ -68,20 +93,7 @@ const ListItemProjekt =(props)=>{
 
     
 
-        let colors=[];
-        props.forschungsfeld.map((forschungsfeld) => {
-        colors.push(forschungsfeld.colour.hex)
-        })
 
-        let background_style={
-            background: `linear-gradient(to right,"white"})`,
-            animation:`${styles.fadeOut} 2s ease`
-        };
-
-        let background_style_small={
-            background: `linear-gradient(to right,"white"})`,
-            animation:`${styles.fadeOut} 1.5s ease`
-        }; 
 
         
 
@@ -90,7 +102,7 @@ const ListItemProjekt =(props)=>{
                 background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
                 //transition: 'background 1s ease'
                 opacity:1,
-                animation:` ${styles.fadeIn} 1s ease`
+                animation:` ${styles.fadeIn} 0.5s ease`
               }
    
 
@@ -98,7 +110,7 @@ const ListItemProjekt =(props)=>{
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
             opacity:1,
 
-            animation:`${styles.fadeIn} 1.5s ease`
+            animation:`${styles.fadeIn} 0.5s ease`
 
           }
         }
