@@ -1,4 +1,4 @@
-import React, {useEffect, useContext } from 'react';
+import React, {useEffect, useContext,useState} from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
 
 
@@ -13,6 +13,12 @@ const ListItemProjekt =(props)=>{
     const {dispatch}=globalState
 
 
+const [showHoverGradient,setHoverGradient]=useState();
+
+	const handleShowGradient = (val) => {
+
+
+    };
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
                 year: 'numeric'
@@ -97,7 +103,7 @@ const ListItemProjekt =(props)=>{
 
         
 
-        if(state.showGradient){
+        if(state.showGradient || showHoverGradient){
             background_style={
                 background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
                 //transition: 'background 1s ease'
@@ -115,8 +121,11 @@ const ListItemProjekt =(props)=>{
           }
         }
 
+
+
+
     return (
-            <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>props.handleShowGradient(true)} onMouseLeave={ ()=>props.handleShowGradient(false)}>
+            <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}>
                 <div className={styles.backgroundwrapper} style={background_style_small}></div>
                 <Container>
                     <div className={styles.content} 
