@@ -13,17 +13,18 @@ export default function Publikationen(props) {
   let {publicationdata}=props || ""
   publicationdata = arborAPI;
 
+
+
+
+
   if(props) {
   const { t } = useTranslation('common')
 
 
   const router = useRouter()
   // console.log("roter nach type", router.asPath.split(/=/)[1])
-   var deliveredfilter = router.asPath.split(/=/)[1]
-  console.log("deliveredfilter", deliveredfilter)
-
-
-
+  var deliveredfilter = router.asPath.split(/=/)[1]
+  const [filter, setFilter] = useState([deliveredfilter || ""])
 
 
 //nach Publikationstypen filtern
@@ -31,18 +32,12 @@ function filterBy(data, filterterms) {
   return data.filter((obj) => {
     //kann sein: every für && und some für || ? 
     return filterterms.every((term)=>{
-      return obj.type.toString().includes(term);
+      return obj.type.toString()===term;
     })   
   })
 }
 
-  const [filter, setFilter] = useState([])
   
-  //filter vom router mitgeben
-  useEffect(() => {
-    setFilter([...filter, deliveredfilter])
-  },[filter])
-
 
   const addMoreItem = (item) => {
     const copyfilter = [...filter]
@@ -60,8 +55,9 @@ function filterBy(data, filterterms) {
 
   const [filterdList, setFilterdList] = useState([])
 
+
   useEffect(() => {
-  setFilterdList(filterBy(publicationdata, filter) )
+    setFilterdList(filterBy(publicationdata, filter) )
   },[filter])
 
   
@@ -83,27 +79,38 @@ function filterBy(data, filterterms) {
 
   //geht noch nicht, andere Strukturen, mag nicht mehr
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  // function searchInput(data, inputvalue) {
-  //   return data.filter((obj) => {
-  //       return Object.keys(obj).some((key)=>{
-  //       if(Array.isArray(obj[key])){
-  //         return obj[key].some((entry)=>{
-  //           return Object.keys(entry).some((kkey=>{
-  //             return entry[kkey].toString().includes(inputvalue);
-  //           }))
-  //         })
-  //       }
-  //       else{
-  //         return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
-  //       }
-  //     })
-  //     }
-  //   )
-  // }
-  // const [search, setSearch] = useState('')
-  // useEffect(() => {
-  // setFilterdList(searchInput(publicationdata,search));
-  // },[search])
+  function searchInput(data, inputvalue) {
+    console.log("search", data)
+    return data.filter((obj) => {
+      console.log("Object.keys(obj)",Object.keys(obj))
+
+        return Object.keys(obj).some((key)=>{
+          console.log("obj key",obj[key])
+
+        
+        // array
+          if(Array.isArray(obj[key])){
+
+          return obj[key].some((entry)=>{
+            return Object.keys(entry).some((kkey=>{
+              return entry[kkey].toString().includes(inputvalue);
+            }))
+          })
+        }
+
+
+
+        else{
+          return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
+        }
+      })
+      }
+    )
+  }
+  const [search, setSearch] = useState('')
+  useEffect(() => {
+  setFilterdList(searchInput(publicationdata,search));
+  },[search])
   const [open,setSearchbarOpen] = useState(false)
   const handleOnClick=(open)=>{
       setSearchbarOpen(open => !open)
