@@ -178,7 +178,7 @@ const Editorial =(props)=>{
                     
                         <div>Projekte</div>
                         {filterdProjectlist.map((projekt) => {
-                          console.log("projekt slug?", projekt)
+                          // console.log("projekt slug?", projekt)
                           let href=`/projekte`
                           if(projekt.slug!=""){
                               href+=`/${projekt.slug}`

@@ -6,10 +6,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../components/Container/container'
 import TextElement from '../../components/TextElement/TextElement'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
+import FilterLink from '../../components/FilterLink/FilterLink'
 
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common') 
-console.log("props vergleich projekt", props)
+// console.log("props vergleich projekt", props)
   const {data:{projekt:{
     titel,
     id,
@@ -123,12 +124,13 @@ console.log("props vergleich projekt", props)
           <div>
             <div className={styles.subtitel}>Forschungsfelder</div>
             {forschungsfeld.map((forschungsfeld) => {
-              let href=`/editorial`
-              if(forschungsfeld.slug!=""){
-                  href+=`#${forschungsfeld.slug}`
-              }
+              // let href=`/editorial`
+              // if(forschungsfeld.slug!=""){
+              //     href+=`#${forschungsfeld.slug}`
+              // }
               return (
-                <ButtonLink {...forschungsfeld} href={href}/>
+                // <ButtonLink {...forschungsfeld} href={href}/>
+                <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${forschungsfeld.titel}` } }}/>
               )
             })}
           </div>

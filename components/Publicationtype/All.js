@@ -1,28 +1,30 @@
 import React from 'react';
 import styles from './publicationtype.module.scss';
 import Link from 'next/link'
+import FilterLink from '../FilterLink/FilterLink';
 
 const All = (data) => {
 
-    const date = new Date(data.date).toLocaleString([], {
-        day: 'numeric',
-        month: 'long', 
-        year: 'numeric'
-        });
-    const lastmod = new Date(data.lastmod).toLocaleString([], {
-        day: 'numeric',
-        month: 'long', 
-        year: 'numeric'
-        });
+    // const date = new Date(data.date).toLocaleString([], {
+    //     day: 'numeric',
+    //     month: 'long', 
+    //     year: 'numeric'
+    //     });
+    // const lastmod = new Date(data.lastmod).toLocaleString([], {
+    //     day: 'numeric',
+    //     month: 'long', 
+    //     year: 'numeric'
+    //     });
 
     var typewithoutunderline = data.type.split('_').join(' ');
+    
 
   return (
       <>
 
         <div className={styles.subwrapper}>
             <div className={styles.subtitel}>Type</div>
-            {typewithoutunderline}
+            <FilterLink props={typewithoutunderline} href={{ pathname: '/publikationen', query: { keyword: `${data.type}` } }}/>
         </div>
       
         <div className={styles.subwrapper}>
@@ -49,15 +51,15 @@ const All = (data) => {
             }
         </div>
 
-        <div className={styles.subwrapper}>
+        {/* <div className={styles.subwrapper}>
             <div className={styles.subtitel}>Erstellungsdatum</div>
             {date}
-        </div>
+        </div> */}
 
-        <div className={styles.subwrapper}>
+        {/* <div className={styles.subwrapper}>
             <div className={styles.subtitel}>Letzte Änderungen</div>
             {lastmod}
-        </div>
+        </div> */}
 
         <div className={styles.subwrapper}>
             <div className={styles.subtitel}>Sprache</div>

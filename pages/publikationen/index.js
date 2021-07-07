@@ -6,6 +6,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect } from 'react'
 import arborAPI from "../../lib/export_arbor_JSON"
+import { useRouter } from 'next/router'
+
 
 export default function Publikationen(props) {
   let {publicationdata}=props || ""
@@ -13,6 +15,16 @@ export default function Publikationen(props) {
 
   if(props) {
   const { t } = useTranslation('common')
+
+
+  const router = useRouter()
+  // console.log("roter nach type", router.asPath.split(/=/)[1])
+   var deliveredfilter = router.asPath.split(/=/)[1]
+  console.log("deliveredfilter", deliveredfilter)
+
+
+
+
 
 //nach Publikationstypen filtern
 function filterBy(data, filterterms) {
@@ -23,25 +35,36 @@ function filterBy(data, filterterms) {
     })   
   })
 }
+
   const [filter, setFilter] = useState([])
+  
+  //filter vom router mitgeben
+  useEffect(() => {
+    setFilter([...filter, deliveredfilter])
+  },[filter])
+
+
   const addMoreItem = (item) => {
-  const copyfilter = [...filter]
-  var index = copyfilter.indexOf(item);
-  if (index !== -1) {
-    copyfilter.splice(index, 1);
-    setFilter([...copyfilter])
+    const copyfilter = [...filter]
+    var index = copyfilter.indexOf(item);
+    if (index !== -1) {
+      copyfilter.splice(index, 1);
+      setFilter([...copyfilter])
+    }
+    else{
+      setFilter([...filter, item])
+    }
   }
-  else{
-    setFilter([...filter, item])
-  }
-  }
+
+ 
 
   const [filterdList, setFilterdList] = useState([])
 
   useEffect(() => {
-  setFilterdList (filterBy(publicationdata, filter) )
+  setFilterdList(filterBy(publicationdata, filter) )
   },[filter])
 
+  
 
   function groupByFlat(objectArray, property) {
     return objectArray.reduce(function (acc, obj) {
