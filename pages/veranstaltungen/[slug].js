@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../components/Container/container'
 import TextElement from "../../components/TextElement/TextElement";
-import ButtonLink from "../../components/ButtonLink/ButtonLink";
+import FilterLink from "../../components/FilterLink/FilterLink";
 
 
 export default function Veranstaltungseinzelansicht (props) {
@@ -15,7 +15,7 @@ export default function Veranstaltungseinzelansicht (props) {
     datum,
     referentIn,
     untertitel,
-    organisation,
+    text,
     beschreibung,
     forschungsfeld
   }=""}=""}=props || ""
@@ -56,7 +56,10 @@ export default function Veranstaltungseinzelansicht (props) {
               <div className={styles.zentriert}>
                 <div className={styles.datum}>{date} Uhr</div>
                 <div className={styles.untertitel}>{untertitel}</div>
-                <div className={styles.organisation}>{organisation}</div>
+                
+                <div className={styles.organisation}>
+                  <TextElement {...text}/>
+                </div>
               </div>
 
               <div className={styles.subwrapper}>
@@ -64,14 +67,11 @@ export default function Veranstaltungseinzelansicht (props) {
               </div>
 
               <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Forschungsfelder</div>
+                <div className={styles.subtitel}>Forschungsfeld</div>
                 {forschungsfeld.map((forschungsfeld) => {
-                  let href=`/editorial`
-                  if(forschungsfeld.slug!=""){
-                  href+=`#${forschungsfeld.slug}`
-                  }
+                var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
                   return (
-                    <ButtonLink {...forschungsfeld} href={href}/>
+                    <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
                   )
                 })}
               </div>

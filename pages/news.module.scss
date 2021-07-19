@@ -1,4 +1,5 @@
 @import "../styles/breakpoints.scss";
+@import "../components/Filter/filterelement.module.scss";
 // @import "../styles/globals.scss";
 
 @mixin desktop {
@@ -37,7 +38,7 @@
         //   flex-direction: row;
         // }
         .text {
-          // flex-grow: 2;
+          // flex-grow: 2; 
           .uebertitel {
             padding: calc(var(--padding) / 2) calc(var(--padding) / 2) 0 calc(var(--padding) / 2);
             text-transform: uppercase;
@@ -66,6 +67,46 @@
           .date {
             padding: 0 calc(var(--padding) / 2);
           }
+          .forschungsfeldwrapper {
+            margin: 0 calc(var(--padding) / 2) calc(var(--padding) / 2);
+            font-size: var(--fontsizesmall);
+            line-height: var(--lineheightnormal);
+            text-transform: uppercase;
+            cursor: pointer;
+            .forschungsfeld {
+                a {
+                    border: 1px solid var(--maincolor);
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    color: var(--maincolor);
+                    background-color: transparent;
+                    margin-right: 20px;
+                    font-family: "Sang";
+                    &:hover {
+                        color: var(--maincolor);
+                        background-color: var(--secondcolor);
+                        cursor: pointer;
+                    }
+                }
+            }
+            .forschungsfeldaktiv {
+                a {
+                    border-radius: 20px;
+                    width: fit-content;
+                    padding: 2px 4px 0px;
+                    background-color: var(--maincolor);
+                    color: var(--secondcolor);
+                    border: 1px solid var(--maincolor);
+                    margin-right: 20px;
+                    cursor: pointer;
+                    font-family: "Sang";
+                }
+            }
+            .forschungsfeld:nth-child(2) {
+                margin-left: 20px;
+            }
+          }
         }
         .bild {
           // flex-grow: 1;
@@ -91,6 +132,21 @@
         .uebertitel {
           border-bottom: solid 1px var(--secondcolor);
         }
+        .forschungsfeldwrapper {
+          .forschungsfeld {
+              a {
+                  border: 1px solid var(--secondcolor);
+                  color: var(--secondcolor);
+              }
+          }
+          .forschungsfeldaktiv {
+              a {
+                  background-color: var(--secondcolor);
+                  color: var(--maincolor);
+                  border: 1px solid var(--secondcolor);
+              }
+          }
+      }
       }
     }
    } 

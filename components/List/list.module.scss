@@ -27,7 +27,6 @@
         border-bottom: 1px solid var(--maincolor);
         position: relative;
 
-
         .backgroundwrapper{
             position: absolute;
             width: 100%;
@@ -62,6 +61,7 @@
                         color: var(--maincolor);
                         background-color: transparent;
                         margin-right: 20px;
+                        font-family: "Sang";
                         &:hover {
                             color: var(--maincolor);
                             background-color: var(--secondcolor);
@@ -79,6 +79,7 @@
                         border: 1px solid var(--maincolor);
                         margin-right: 20px;
                         cursor: pointer;
+                        font-family: "Sang";
                     }
                 }
                 .forschungsfeld:nth-child(2) {

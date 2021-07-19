@@ -1,8 +1,5 @@
 import React, {useEffect, useContext,useState} from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
-
-
-
 import styles from './list.module.scss'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
@@ -13,11 +10,8 @@ const ListItemProjekt =(props)=>{
     const {dispatch}=globalState
 
 
-const [showHoverGradient,setHoverGradient]=useState();
-
+    const [showHoverGradient,setHoverGradient]=useState();
 	const handleShowGradient = (val) => {
-
-
     };
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
@@ -68,9 +62,7 @@ const [showHoverGradient,setHoverGradient]=useState();
                     background_style_small={
                         background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
                         opacity:1,
-            
                         animation:`${styles.fadeIn} 0.2s ease`
-            
                       }
                     }
                     else {
@@ -97,44 +89,30 @@ const [showHoverGradient,setHoverGradient]=useState();
             </div>
         }
 
-    
-
-
-
-        
-
         if(state.showGradient || showHoverGradient){
             background_style={
                 background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-                //transition: 'background 1s ease'
                 opacity:1,
                 animation:` ${styles.fadeIn} 0.5s ease`
               }
    
-
          background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
             opacity:1,
-
             animation:`${styles.fadeIn} 0.5s ease`
-
           }
         }
-
-
 
 
     return (
             <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}>
                 <div className={styles.backgroundwrapper} style={background_style_small}></div>
                 <Container>
-                    <div className={styles.content} 
-                        // style={background_style}
-                        >
+                    <div className={styles.content}>
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
                         <Link href={href}>
                             <div className={styles.titel}>
-                                <a>{props.titel}  </a>  
+                                {props.titel}
                             </div>
                         </Link>
                         {ForschungsfeldElement}

@@ -15,7 +15,7 @@
 @font-face {
   font-family: "SangItalic";
   font-weight: normal;
-  font-style: italic;
+  font-style: normal;
   src: url("../assets/SangBleuKingdom-RegularItalic.otf") format("opentype");
 }
 
@@ -30,21 +30,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  font-family: "SangItalic";
+  color: var(--maincolor);
 }
 
-h2 {
-  font-size: var(--fontsizenormal);
-  line-height: var(--lineheightnormal);
-  font-family: "Sang";
-  font-weight: normal;
-  color: var(--maincolor);
-  text-transform: uppercase;
-  margin: 0;
-  padding: var(--padding);
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--maincolor);
-  user-select: none;
-}
 
 /* Firefox  */
 * {

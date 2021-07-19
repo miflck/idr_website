@@ -29,7 +29,7 @@ export default function Projekteinzelansicht (props) {
       let MitarbeitendenElement;
                 if(mitarbeit != ""){
                   MitarbeitendenElement= <>
-                    <div className={styles.subtitel}>Mitarbeit</div>
+                    <div className={styles.subtitel}>{t("Mitarbeit")}</div>
                       {mitarbeit.map((mitarbeiterin) => {
                         let href=`/team`
                         if(mitarbeiterin.slug!=""){
@@ -46,7 +46,7 @@ export default function Projekteinzelansicht (props) {
                 if(verantwortung != ""){
                   VerantwortungElement= 
                   <>
-                    <div className={styles.subtitel}>Verantwortung</div>
+                    <div className={styles.subtitel}>{t("Verantwortung")}</div>
                     {verantwortung.map((verantwortung) => {
                       let href=`/team`
                       if(verantwortung.slug!=""){
@@ -117,26 +117,26 @@ export default function Projekteinzelansicht (props) {
         <div className={styles.listenwrapper}> 
 
           <div>
-            <div className={styles.subtitel}>Zeitraum</div>
+            <div className={styles.subtitel}>
+              {t("Zeitraum")}
+              </div>
             {startzeitraum} – {endzeitraum}
           </div>
 
           <div>
-            <div className={styles.subtitel}>Forschungsfelder</div>
+            <div className={styles.subtitel}>
+              {t("Forschungsfelder")}
+              </div>
             {forschungsfeld.map((forschungsfeld) => {
-              // let href=`/editorial`
-              // if(forschungsfeld.slug!=""){
-              //     href+=`#${forschungsfeld.slug}`
-              // }
+              var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
               return (
-                // <ButtonLink {...forschungsfeld} href={href}/>
-                <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${forschungsfeld.titel}` } }}/>
+                <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
               )
             })}
           </div>
 
           <div>
-          <div className={styles.subtitel}>Leitung</div>
+          <div className={styles.subtitel}>{t("Leitung")}</div>
             {leitung.map((leitung) => {
               let href=`/team`
               if(leitung.slug!=""){
@@ -157,12 +157,12 @@ export default function Projekteinzelansicht (props) {
           </div>
 
           <div>
-            <div className={styles.subtitel}>Kooperationen</div>
+            <div className={styles.subtitel}>{t("Kooperationen")}</div>
             <TextElement {...kooperationen}/>
           </div>
 
           <div>
-            <div className={styles.subtitel}>Finanzierung</div>
+            <div className={styles.subtitel}>{t("Finanzierung")}</div>
             <TextElement {...finanzierung}/>
           </div>
           

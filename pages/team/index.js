@@ -102,7 +102,7 @@ const Team =(props)=>{
     let FilterElement;
     if(filter) {
       FilterElement =  <div className={styles.filterfeldwrapper} >
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
+                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
                         <div className={styles.filterauflistung}>
                           {allForschungsfelders.map((forschungsfeld) =>{
                             let btn_class;
@@ -178,7 +178,6 @@ const Team =(props)=>{
                     if(mensch.slug!=""){
                         href+=`/${mensch.slug}`
                     }
-
                     let ForschungsfeldElement;
                   if(filter) {
                       ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
@@ -197,7 +196,7 @@ const Team =(props)=>{
                                       key={forschungsfeld.id}
                                       > 
                                         {forschungsfeld.titel} 
-                                      </a>
+                                      </a><br></br>
                                   </span>
                               )
                           })}
@@ -214,7 +213,7 @@ const Team =(props)=>{
                               alt={mensch.portrait.alt} 
                             />
                             <div className={styles.name}>
-                                <a>{mensch.name}</a>
+                                {mensch.name}
                             </div>
                           </span>
                           </Link>

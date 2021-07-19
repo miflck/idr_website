@@ -53,7 +53,7 @@
             border-radius: 20px;
             color: var(--maincolor);
             padding: 4px 6px 0px;
-            
+            font-family: "Sang";
             &:hover {
                 background-color: var(--maincolor);
                 color: var(--secondcolor);
@@ -86,6 +86,7 @@
                     color: var(--maincolor);
                     background-color: transparent;
                     margin-right: 20px;
+                    font-family: "Sang";
                     &:hover {
                         color: var(--maincolor) !important;
                         background-color: var(--secondcolor);
@@ -103,6 +104,7 @@
                     border: 1px solid var(--maincolor);
                     margin-right: 20px;
                     cursor: pointer;
+                    font-family: "Sang";
                 }
             }
             .forschungsfeld:nth-child(2) {

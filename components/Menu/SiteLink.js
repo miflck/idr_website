@@ -9,7 +9,7 @@ const SiteLink = ({href, sitetitle}) => {
       return (
         <Link href={href}>
           <div className={[styles.menusitelinks, (router.asPath === href ? styles.aktiv : [])].join(' ')}>
-            <a>{sitetitle}</a>
+            {sitetitle}
           </div>
         </Link>
       )

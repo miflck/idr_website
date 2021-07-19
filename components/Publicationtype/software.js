@@ -10,7 +10,7 @@ const Software = (data) => {
 	<div className={styles.slugwrapper}>
 
         <div className={styles.titel}>
-            <a>{data.title[0].text}</a>
+            {data.title[0].text}
         </div>
 
         <div className={styles.columnwrapper}>  

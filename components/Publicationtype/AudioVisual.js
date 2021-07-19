@@ -10,17 +10,17 @@ const AudioVisual = (data) => {
 	<div className={styles.slugwrapper}>
 
         <div className={styles.titel}>
-            <a>{data.title[0].text}</a>
+            {data.title[0].text}
         </div>
         
         <div className={styles.columnwrapper}>  
           {/* speziell AudioVisual */}
           <div className={styles.subwrapper}>
-              <div className={styles.subtitel}>Audio Visual Type</div>
+              <div className={styles.subtitel}> {/* {t("AudioVisualType")}*/} Audio Visual Type</div>
               {data.audio_visual_type}
           </div>
           <div className={styles.subwrapper}>
-              <div className={styles.subtitel}>Link</div>
+              <div className={styles.subtitel}> {/* {t("Link")}*/} Link</div>
               <Link href={data.official_url}>
                   {data.official_url}
               </Link>

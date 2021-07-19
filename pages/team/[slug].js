@@ -7,10 +7,11 @@ import Link from 'next/link'
 import Container from '../../components/Container/container'
 import TextElement from '../../components/TextElement/TextElement'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
+import FilterLink from '../../components/FilterLink/FilterLink'
 
 export default function Menscheinzelansicht (props) {
   const { t } = useTranslation('common')
-  console.log("props vergleich team", props)
+  // console.log("props vergleich team", props)
   const {data:{menschen:{
     name,
     id,
@@ -18,6 +19,7 @@ export default function Menscheinzelansicht (props) {
     forschungsfeld,
     portrait,
     lebenslauf,
+    bfhprofil,
     email,
     website,
     publikationsliste
@@ -59,23 +61,34 @@ export default function Menscheinzelansicht (props) {
                     </Link>
                   </div>
                 }
-
-                let LebenslaufElement;
-                if(lebenslauf[0] != null) {
-                  console.log(lebenslauf)
-                  LebenslaufElement=
-                    <div className={styles.subwrapper}>
-                      <div className={styles.subtitel}>Lebenslauf</div>
-                      <TextElement {...lebenslauf[0].text}></TextElement>
-                    </div>
+                let BFHProfilElement;
+                if(bfhprofil != ""){
+                  BFHProfilElement= 
+                  <div>
+                    <Link href={bfhprofil} target="_blank">
+                      <a className={styles.bfhprofil}>
+                      {t("BFHProfil")}
+                      </a>
+                    </Link>
+                  </div>
                 }
+
+                // let LebenslaufElement;
+                // if(lebenslauf[0] != null) {
+                //   console.log(lebenslauf)
+                //   LebenslaufElement=
+                //     <div className={styles.subwrapper}>
+                //       <div className={styles.subtitel}>Lebenslauf</div>
+                //       <TextElement {...lebenslauf[0].text}></TextElement>
+                //     </div>
+                // }
 
                 let ProjekteElement;
                 if(filterdProjectlist.length != 0) {
                   // console.log("filterdProjectlist",filterdProjectlist)
                   ProjekteElement=
                   <div className={styles.subwrapper}>
-                        <div className={styles.subtitel}>Projekte</div>
+                        <div className={styles.subtitel}>{t("Projekte")}</div>
                         {filterdProjectlist.map((projekt) => {
                           let href=`/projekte`
                           if(projekt.slug!=""){
@@ -127,20 +140,34 @@ export default function Menscheinzelansicht (props) {
                 {EmailElement}
                 {WebsiteElement}
             </div>
+
+            <div className={styles.subwrapper}>
+                {BFHProfilElement}
+            </div>
+           
         
 
-            {LebenslaufElement}
+            {/* {LebenslaufElement} */}
 
             {ProjekteElement}
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Tätigkeitsfelder im IDR</div>
+                <div className={styles.subtitel}>{t("Forschungsfelder")}</div>
                 {forschungsfeld.map((forschungsfeld) => {
+                  console.log("forschungsfeld",forschungsfeld)
+                  if(forschungsfeld.titel === "ForscherInnen") {
+                  } else if (forschungsfeld.titel === "Leitung und Büro") {
+                  }else{
+                     var forschungsfeldlink = forschungsfeld.titel
+                     var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
+                  
                   return (
                   <div key={forschungsfeld.titel} className={styles.projekt}>
-                    {forschungsfeld.titel}
+                    {/* {forschungsfeldlink} */}
+                    <FilterLink props={forschungsfeldlink} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
                   </div>
                   )
+                  }
                 })}
             </div>
 

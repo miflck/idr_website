@@ -17,6 +17,7 @@
                 color: var(--maincolor);
                 background-color: transparent;
                 margin-right: 20px;
+                font-family: "Sang";
                 &:hover {
                     color: var(--secondcolor);
                     background-color: var(--maincolor);
@@ -29,6 +30,7 @@
                 background-color: var(--maincolor);
                 color: var(--secondcolor);
                 border: 1px solid var(--maincolor);
+                font-family: "Sang";
             }
         }
     }
@@ -44,6 +46,7 @@
         border-radius: 20px;
         width: fit-content;
         padding: 2px 4px 0px;
+        font-family: "Sang";
         &:hover {
             // color: var(--maincolor);
             // background-color: var(--secondcolor);

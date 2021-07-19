@@ -4,23 +4,24 @@ import All from './All'
 import Link from 'next/link'
 
 const ConferenceItem = (data) => {
-// console.log("data im ConferenceItem",data)
+console.log("data im ConferenceItem",data)
 
-    const eventdate = new Date(data.event_dates).toLocaleString([], {
-        day: 'numeric',
-        month: 'long', 
-        year: 'numeric'
-        });
+    // hier ist das datum als string angegeben
+    // const eventdate = new Date(data.event_dates).toLocaleString([], {
+    //     day: 'numeric',
+    //     month: 'long', 
+    //     year: 'numeric'
+    //     });
   return (
 	<div className={styles.slugwrapper}>
 
         <div className={styles.titel}>
-            <a>{data.title[0].text}</a>
+            {data.title[0].text}
         </div>
         <div className={styles.columnwrapper}>  
             {/* speziell ConferenceItem */}
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Conference Item Type</div>
+                <div className={styles.subtitel}>{/* {t("BookType")}*/} hier weitermachenConference Item Type</div>
                 {data.conference_type}
             </div>
 
@@ -31,7 +32,7 @@ const ConferenceItem = (data) => {
 
             <div className={styles.subwrapper}>
                 <div className={styles.subtitel}>Event Dates</div>
-                {eventdate}
+                {data.event_dates}
             </div>
 
             <div className={styles.subwrapper}>

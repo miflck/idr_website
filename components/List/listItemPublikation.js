@@ -38,7 +38,7 @@ if (props) {
                 <div className={styles.datum}>{date}</div>
                 <Link href={href}>
                     <div className={styles.titel}>
-                        <a>{props.title[0].text}</a>
+                        {props.title[0].text}
                     </div>
                 </Link>
                 {PublikationstypeElement}

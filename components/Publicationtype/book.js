@@ -10,7 +10,7 @@ const Book = (data) => {
 	<div className={styles.slugwrapper}>
 
         <div className={styles.titel}>
-            <a>{data.title[0].text}</a>
+            {data.title[0].text}
         </div>
         <div className={styles.columnwrapper}>  
             <div className={styles.subwrapper}>
@@ -19,7 +19,7 @@ const Book = (data) => {
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Book Type</div>
+                <div className={styles.subtitel}>{/* {t("BookType")}*/} Book Type</div>
                 {data.book_type}
             </div>
             <div className={styles.subwrapper}>
@@ -27,19 +27,19 @@ const Book = (data) => {
                 {data.isbn}
             </div>
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Pages</div>
+                <div className={styles.subtitel}>{/* {t("Seiten")}*/}Seiten</div>
                 {data.pages}
             </div>
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Publisher</div>
+                <div className={styles.subtitel}>{/* {t("Herausgeber")}*/}Herausgeber</div>
                 {data.publisher}
             </div>
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Serie</div>
+                <div className={styles.subtitel}>{/* {t("Serie")}*/}Serie</div>
                 {data.series}
             </div>
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Link</div>
+                <div className={styles.subtitel}>{/* {t("Link")}*/}Link</div>
                 <Link href={data.related_url[0].url}>
                     {data.related_url[0].url}
                 </Link>

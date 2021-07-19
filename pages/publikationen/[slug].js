@@ -22,7 +22,7 @@ export default function Publikationseinzelansicht (props) {
   publicationdata = arborAPI;
 
   const router = useRouter()
-  console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
+  // console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
   
   var data = publicationdata.filter(v => v.eprintid.toString() === router.query.slug )[0];
 

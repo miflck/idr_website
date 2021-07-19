@@ -39,7 +39,7 @@
             font-size: var(--fontsizesmall);
             line-height: var(--lineheightnormal);
             text-transform: uppercase;
-            .forschungsfeld {
+            .forschungsfeld { 
                 a {
                     cursor: pointer;
                     border: 1px solid var(--maincolor);
@@ -49,6 +49,7 @@
                     color: var(--maincolor);
                     background-color: transparent;
                     margin-right: 20px;
+                    font-family: "Sang";
                     &:hover {
                         color: var(--maincolor) !important;
                         background-color: var(--secondcolor);
@@ -65,6 +66,7 @@
                     border: 1px solid var(--maincolor);
                     margin-right: 20px;
                     cursor: pointer;
+                    font-family: "Sang";
                 }
             }
         }
@@ -91,5 +93,4 @@
     }
         columns: var(--columnwidth) 0;
         column-gap: 0px;
-        break-inside: avoid;
 }

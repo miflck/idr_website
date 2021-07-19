@@ -8,11 +8,23 @@ import TextElement from '../components/TextElement/TextElement'
 import ButtonLink from '../components/ButtonLink/ButtonLink'
 import React, { useState, useEffect } from 'react'
 
+import { useRouter } from 'next/router'
+
 const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
   const {editorialtexte:{allProjekts}}=props;
   const {editorialtexte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
+
+  const router = useRouter()
+  // console.log("roter nach type", router.asPath.split(/=/)[1])
+  if(router.asPath.includes("keyword")){
+    var routerfilter = router.asPath.split(/=/)[1]
+    var deliveredfilter = routerfilter.split('-').join(' ')
+    // console.log("deliveredfilter", deliveredfilter)
+  } 
+
+  const [filter, setFilter] = useState([deliveredfilter || ""])
 
   function filterByForschungsfeld(data, filterterm) {
     return data.filter((obj) => {
@@ -34,7 +46,6 @@ const Editorial =(props)=>{
       })
     }
 
-    const [filter, setFilter] = useState([])
     const addMoreItem = (item) => {
       const copyfilter = [...filter]
       var index = copyfilter.indexOf(item);
@@ -51,14 +62,16 @@ const Editorial =(props)=>{
 
     useEffect(() => {
       setFilterdList (filterBy(allEditorials, filter) )
+      console.log("filter", filter)
     },[filter])
 
     let FilterElement;
     if(filter) {
       FilterElement =  <div className={styles.filterfeldwrapper} >
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
+                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deatkivieren")}</a> </div>
                         <div className={styles.filterauflistung}>
                           {allForschungsfelders.map((forschungsfeld) =>{
+
                             let btn_class;
                             if(filter.includes(forschungsfeld.titel)) {
                               btn_class = styles.forschungsfeldaktiv
@@ -134,7 +147,6 @@ const Editorial =(props)=>{
 
           const filterdProjectlist = filterByForschungsfeld(allProjekts, editorial.forschungsfeld[0].id)
 
-          
           let background_style;
           let background_style_small;
           let colors=[];
@@ -165,7 +177,7 @@ const Editorial =(props)=>{
                     </div>
 
                     <div className={styles.listenwrapper}> 
-                        <div>Koordinator*in</div>
+                        <div>{t("Koord")}</div>
                             {editorial.menschen.map((koordinatorin) => {
                                 let href=`/team`
                                 if(koordinatorin.slug!=""){
@@ -176,7 +188,7 @@ const Editorial =(props)=>{
                                 )
                                 })}
                     
-                        <div>Projekte</div>
+                        <div>{t("Projekte")}</div>
                         {filterdProjectlist.map((projekt) => {
                           // console.log("projekt slug?", projekt)
                           let href=`/projekte`

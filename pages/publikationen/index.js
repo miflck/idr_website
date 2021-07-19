@@ -15,9 +15,6 @@ export default function Publikationen(props) {
 
   let filterfields=["contributors","creators"]
 
-
-
-
   if(props) {
   const { t } = useTranslation('common')
 
@@ -64,6 +61,7 @@ function filterBy(data, filterterms) {
   useEffect(() => {
     console.log("use effect filter",filter)
     setFilterdList(filterBy(publicationdata, filter) )
+    console.log("filter publi index", filter)
   },[filter])
 
   
@@ -140,7 +138,7 @@ function filterBy(data, filterterms) {
   let FilterElement;
   if(filter) {
     FilterElement =  <div className={styles.filterfeldwrapper} >
-                      <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
+                      <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
                       <div className={styles.filterauflistung}>
                         {publicationTypes.map((publicationtype) =>{
                           let btn_class;
