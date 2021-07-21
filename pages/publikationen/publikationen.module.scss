@@ -12,3 +12,13 @@
     z-index: 51;
     background-color: var(--secondcolor);
 }
+
+.listwrapper {
+    .wrapper {
+        .container {
+            &:hover {
+                background-color: var(--maincolor) !important;
+            }
+        }
+    }
+}

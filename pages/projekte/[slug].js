@@ -63,12 +63,14 @@ export default function Projekteinzelansicht (props) {
 
 
         const startzeitraum = new Date(startdatum).toLocaleString([], {
+            // undefined,
             month: 'long', 
             year: 'numeric'
-            });
+        });
         const endzeitraum = new Date(enddatum).toLocaleString([], {
-          month: 'long', 
-          year: 'numeric'
+            // undefined,
+            month: 'long', 
+            year: 'numeric'
         });
 
         

@@ -103,15 +103,17 @@ export default function Menscheinzelansicht (props) {
 
         let background_style;
         let colors=[]; 
-        forschungsfeld.map((forschungsfeld) => {
-          // console.log("farbe hats oder nicht", forschungsfeld.titel)
-          if(forschungsfeld.titel === "ForscherInnen") {
-          } else if (forschungsfeld.titel === "Leitung und Büro") {
-          }
-          else{
-             colors.push(forschungsfeld.colour.hex)
-          }
-        })
+        if(forschungsfeld.length != 0) {
+          forschungsfeld.map((forschungsfeld) => {
+            // console.log("farbe hats oder nicht", forschungsfeld.titel)
+            if(forschungsfeld.titel === "ForscherInnen") {
+            } else if (forschungsfeld.titel === "Leitung und Büro") {
+            }
+            else{
+              colors.push(forschungsfeld.colour.hex)
+            }
+          })
+        }
         background_style={
             background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
         }
@@ -129,7 +131,6 @@ export default function Menscheinzelansicht (props) {
               {name}
             </div>
 
-
             <img 
               className={styles.portrait}
               src={portrait.url} 
@@ -144,8 +145,6 @@ export default function Menscheinzelansicht (props) {
             <div className={styles.subwrapper}>
                 {BFHProfilElement}
             </div>
-           
-        
 
             {/* {LebenslaufElement} */}
 

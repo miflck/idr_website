@@ -94,6 +94,7 @@
             }
         }
         &:hover {
+            //muss für publikationsliste eingeschaltet sein und für projektliste ausgeschaltet sein....
             background-color: var(--maincolor);
             .content {
                 color: var(--secondcolor);

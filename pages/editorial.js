@@ -68,7 +68,7 @@ const Editorial =(props)=>{
     let FilterElement;
     if(filter) {
       FilterElement =  <div className={styles.filterfeldwrapper} >
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deatkivieren")}</a> </div>
+                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")}</a> </div>
                         <div className={styles.filterauflistung}>
                           {allForschungsfelders.map((forschungsfeld) =>{
 

@@ -195,7 +195,7 @@ if(filter) {
                             <Link href={hrefveranstaltungen}>
                               <div className={styles.titel}>{beitrag.titel}</div>
                             </Link>
-                            <div className={styles.date}>{date} Uhr</div>
+                            <div className={styles.date}>{date} {t("Uhr")}</div>
                             {ForschungsfeldElement}
                           </div>
                         </div>

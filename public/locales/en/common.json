@@ -29,5 +29,6 @@
   "Herausgeber":"Publisher",
   "Buchtitel":"Booktitle",
   "Verlag":"Publisher",
-  "Ort":"Location"
+  "Ort":"Location",
+  "Uhr":" "
 }
