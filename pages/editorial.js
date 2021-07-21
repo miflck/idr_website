@@ -21,22 +21,28 @@ const Editorial =(props)=>{
   const router = useRouter()
   let deliveredkeyword;
   let deliveredfilter;
-  if(router.query.keyword != "undefined"){
-    console.log("keyword", router.query.keyword)
+  if(router.query.keyword){
+    // console.log("keyword", router.query.keyword)
     deliveredkeyword = router.query.keyword;
-    // deliveredfilter = deliveredkeyword.split("-").join(" ");
+    // router.asPath.split(/=/)[1]
+    deliveredfilter = deliveredkeyword.split("-").join(" ");
     console.log("deliveredfilter", deliveredfilter)
-    console.log("keyword als filterinput", deliveredkeyword)
+    // console.log("keyword als filterinput", deliveredkeyword.split("-").join(" "))
   }
 
   // const [filter, setFilter] = useState([deliveredfilter || ""])
-    // console.log("filter am anfang mit keyword als input", filter)
+  // console.log("filter am anfang mit keyword als input", filter)
 
     // ternary expression = if else shorthand
   let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
   const [filter, setFilter] = useState(initState)
+  console.log("filter am anfang mit keyword als input", filter)
   
-  
+  //ohne – sondern mit Leerschlag wählt es den Filter in der Auswahl an, aber funktionert nicht in der filterd List
+  // const [filter, setFilter] = useState(["Knowledge Visualization"])
+  //mit - wählts oben bei der auswahl nichts an
+  // const [filter, setFilter] = useState(["Knowledge-Visualization"])
+
     //Projekte zu Forschungsfeld dazufiltern
   function filterByForschungsfeld(data, filterterm) {
     return data.filter((obj) => {
@@ -71,11 +77,11 @@ const Editorial =(props)=>{
     }
 
     const [filterdList, setFilterdList] = useState([])
-    console.log("Filterd List im Editroal", filterdList)
+    console.log("Filterd List am Anfang nimmmts den scheiss filter nicht", filterdList)
 
     useEffect(() => {
       setFilterdList (filterBy(allEditorials, filter) )
-      console.log("filter wirkli - hier lösts nichts aus am anfang", filter)
+      console.log("filter wirkli - hier lösts nichts aus am anfang, doch hier lösts was aus aber die filterd list ist immer noch alle 6", filter)
     },[filter])
 
     let FilterElement;
