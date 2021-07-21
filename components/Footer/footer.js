@@ -25,14 +25,16 @@ const Footer=(props)=>{
                             </Link>
                             <Link href={router.asPath} locale="en">
                                      <a className={styles.activelanguage}>en</a>
-                             </Link></>
+                             </Link>
+                          </>
     } else {
         LanguageButtons = <><Link href={router.asPath} locale="de">
                                     <a className={styles.activelanguage}>de</a>
                             </Link>
                             <Link href={router.asPath} locale="en">
                                      <a >en</a>
-                             </Link></>
+                             </Link>
+                          </>
     }
    
     return(
@@ -55,6 +57,11 @@ const Footer=(props)=>{
                 onChange={e => props.setSecondColor(e.hex) }
                 />
             </div> */}
+            
+                <Link href="/impressum">
+                <div className={styles.impressum}>Impressum   </div>
+                </Link>
+         
 
         </div>
     )

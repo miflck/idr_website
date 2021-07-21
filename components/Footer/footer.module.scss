@@ -34,54 +34,60 @@
         }
     }
 
-    .buttonsmaincolor {
-            cursor: pointer;
-            // position: absolute;
-            float: right;
-            position: relative;
-            a {
-                background-color: var(--maincolor);
-                color: var(--maincolor);
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-            .farbauswahlmaincolor {
-                display: none;
-            }
-            &.open {
-                .farbauswahlmaincolor {
-                    display: block;
-                }
-            }
-        }
+    .impressum {
+        cursor: pointer;
+        position: absolute;
+        float: right;
+        position: relative;
+    }
+    // .buttonsmaincolor {
+    //         cursor: pointer;
+    //         // position: absolute;
+    //         float: right;
+    //         position: relative;
+    //         a {
+    //             background-color: var(--maincolor);
+    //             color: var(--maincolor);
+    //             -webkit-touch-callout: none;
+    //             -webkit-user-select: none;
+    //             -khtml-user-select: none;
+    //             -moz-user-select: none;
+    //             -ms-user-select: none;
+    //             user-select: none;
+    //         }
+    //         .farbauswahlmaincolor {
+    //             display: none;
+    //         }
+    //         &.open {
+    //             .farbauswahlmaincolor {
+    //                 display: block;
+    //             }
+    //         }
+    //     }
 
-        .buttonssecondcolor {
-            cursor: pointer;
-            float: right;
-            position: relative;
-                a {
-                    background-color: var(--secondcolor);
-                    color: var(--secondcolor);
-                    -webkit-touch-callout: none;
-                    -webkit-user-select: none;
-                    -khtml-user-select: none;
-                    -moz-user-select: none;
-                    -ms-user-select: none;
-                    user-select: none;
-                }
-                .farbauswahlsecondcolor {
-                    display: none;
-                }
-                &.open {
-                    .farbauswahlsecondcolor {
-                        display: block;
-                    }
-                }
-            }
+    //     .buttonssecondcolor {
+    //         cursor: pointer;
+    //         float: right;
+    //         position: relative;
+    //             a {
+    //                 background-color: var(--secondcolor);
+    //                 color: var(--secondcolor);
+    //                 -webkit-touch-callout: none;
+    //                 -webkit-user-select: none;
+    //                 -khtml-user-select: none;
+    //                 -moz-user-select: none;
+    //                 -ms-user-select: none;
+    //                 user-select: none;
+    //             }
+    //             .farbauswahlsecondcolor {
+    //                 display: none;
+    //             }
+    //             &.open {
+    //                 .farbauswahlsecondcolor {
+    //                     display: block;
+    //                 }
+    //             }
+    //         }
         
 
         

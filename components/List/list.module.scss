@@ -31,7 +31,10 @@
             position: absolute;
             width: 100%;
             height:100%;
-            opacity: 0;   
+            opacity: 0;  
+            &:hover {
+                background-color: var(--maincolor);
+            } 
         }
 
         .content {
@@ -94,8 +97,6 @@
             }
         }
         &:hover {
-            //muss für publikationsliste eingeschaltet sein und für projektliste ausgeschaltet sein....
-            background-color: var(--maincolor);
             .content {
                 color: var(--secondcolor);
             }
