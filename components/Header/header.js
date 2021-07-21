@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 const Header=(props)=>{
     const router = useRouter()
-    console.log("router", router)
+    // console.log("router", router)
     if(router.pathname === "/") {
         var seitentitel = "NEWS";
-        console.log("Seite", seite)
+        // console.log("Seite", seite)
     } else if (router.pathname === "/editorial"){
         var seite = router.pathname.split('/');
         var seitentitel = seite[1]

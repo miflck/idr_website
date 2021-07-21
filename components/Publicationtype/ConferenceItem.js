@@ -12,6 +12,7 @@ console.log("data im ConferenceItem",data)
     //     month: 'long', 
     //     year: 'numeric'
     //     });
+    
   return (
 	<div className={styles.slugwrapper}>
 
@@ -21,27 +22,27 @@ console.log("data im ConferenceItem",data)
         <div className={styles.columnwrapper}>  
             {/* speziell ConferenceItem */}
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("BookType")}*/} hier weitermachenConference Item Type</div>
+                <div className={styles.subtitel}>{/* {t("ConferenceItemType")} */} Conference Item Type</div>
                 {data.conference_type}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Event Title</div>
+                <div className={styles.subtitel}>{/* {t("Veranstaltungstitel")} */}Veranstaltungstitel</div>
                 {data.event_title}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Event Dates</div>
+                <div className={styles.subtitel}>{/* {t("Veranstaltungsdaten")} */}Veranstaltungsdaten</div>
                 {data.event_dates}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Event Location</div>
+                <div className={styles.subtitel}>{/* {t("Veranstaltungsort")} */}Veranstaltungsort</div>
                 {data.event_location}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Link</div>
+                <div className={styles.subtitel}>{/* {t("Link")} */}Link</div>
                 <Link href={data.official_url}>
                     {data.official_url}
                 </Link>

@@ -25,7 +25,7 @@ const BookSection = (data) => {
             </div>
         
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("Verlag")}*/} Verlag</div>
+                <div className={styles.subtitel}>{/* {t("Herausgeber")}*/} Herausgeber</div>
                 {data.publisher}
             </div>
             <div className={styles.subwrapper}>

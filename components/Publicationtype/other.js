@@ -16,19 +16,19 @@ console.log("data im other itemissues",data.item_issues)
 
         <div className={styles.columnwrapper}>  
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Abstract</div>
+                <div className={styles.subtitel}>{/* {t("Zusammenfassung")} */}Zusammenfassung</div>
                 {data.abstract[0].text}
             </div>
 
             {/* speziell Other */}
             
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Collection Title</div>
+                <div className={styles.subtitel}>{/* {t("TitelSammlung")} */}Titel der Sammlung</div>
                 {data.collection_title}
             </div>
             
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Link</div>
+                <div className={styles.subtitel}>{/* {t("Link")} */}Link</div>
                 <Link href={data.official_url}>
                     {data.official_url}
                 </Link>

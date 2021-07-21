@@ -88,7 +88,7 @@ const Veranstaltungen =(props)=>{
     let FilterElement;
     if(filter) {
       FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(true)} onMouseLeave={ ()=>handleShowGradient(false)}>
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > alle Filter deaktivieren </a> </div>
+                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
                         <div className={styles.filterauflistung}>
                           {allForschungsfelders.map((forschungsfeld) =>{
                             let btn_class;
@@ -190,7 +190,7 @@ const Veranstaltungen =(props)=>{
                     return(
                       <div className={styles.veranstaltungscontent} key={veranstaltung.id} style={background_style_small}>
                           <Container>
-                              <div className={styles.datum}>{date} Uhr</div>
+                              <div className={styles.datum}>{date} {t("Uhr")}</div>
                               <Link href={href}>
                                 <div className={styles.title}>{veranstaltung.titel}</div>
                               </Link>

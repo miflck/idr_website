@@ -7,9 +7,10 @@ import Container from '../../components/Container/container'
 import TextElement from '../../components/TextElement/TextElement'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 import FilterLink from '../../components/FilterLink/FilterLink'
+import { useRouter } from 'next/router'
 
 export default function Projekteinzelansicht (props) {
-  const { t } = useTranslation('common') 
+  const { t } = useTranslation('common')
 // console.log("props vergleich projekt", props)
   const {data:{projekt:{
     titel,
@@ -24,6 +25,8 @@ export default function Projekteinzelansicht (props) {
     startdatum,
     enddatum
     }=""}=""}=props || ""
+
+    const router = useRouter()
 
     if(props.data) {
       let MitarbeitendenElement;
@@ -61,17 +64,9 @@ export default function Projekteinzelansicht (props) {
                   VerantwortungElement= <> </>
                 }
 
-
-        const startzeitraum = new Date(startdatum).toLocaleString([], {
-            // undefined,
-            month: 'long', 
-            year: 'numeric'
-        });
-        const endzeitraum = new Date(enddatum).toLocaleString([], {
-            // undefined,
-            month: 'long', 
-            year: 'numeric'
-        });
+        var options = { year: 'numeric', month: 'long'};
+        const startzeitraum = new Date(startdatum).toLocaleDateString(router.locale, options);
+        const endzeitraum = new Date(enddatum).toLocaleDateString(router.locale, options);
 
         
         let background_style;
@@ -131,10 +126,11 @@ export default function Projekteinzelansicht (props) {
               </div>
             {forschungsfeld.map((forschungsfeld) => {
               var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
+              console.log("filter mitgeben forschungsfeld", filtermitgeben)
               return (
                 <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
               )
-            })}
+            })} 
           </div>
 
           <div>

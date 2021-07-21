@@ -1,9 +1,9 @@
 import Layout from "../../components/Layout/layout"
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from "../../components/Container/container";
 import arborAPI from "../../lib/export_arbor_JSON"
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Article from "../../components/Publicationtype/Article"
 import AudioVisual from "../../components/Publicationtype/AudioVisual"
@@ -17,7 +17,7 @@ import Software from "../../components/Publicationtype/Software"
 import Thesis from "../../components/Publicationtype/Thesis"
 
 export default function Publikationseinzelansicht (props) {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common') 
   let {publicationdata}=props || ""
   publicationdata = arborAPI;
 
@@ -28,10 +28,7 @@ export default function Publikationseinzelansicht (props) {
 
   // -> das [0] ist weil filter ein array zurück gibt. bei uns aber mit nur einem element. 
   // damit wir dann nicht immer ein array haben nehmen wir nun einfach das ereste element
-  
-  // console.log('publicationdata', publicationdata);
-  // console.log('userid',data.userid);
-  // console.log('data nach filter der publicationdata', data)
+
 
 
 
@@ -95,6 +92,7 @@ export async function getStaticProps({locale}) {
   return {
     props: {
       publicationdata,
+      locale,
       ...await serverSideTranslations(locale, ['common']),
     },
   }

@@ -16,27 +16,27 @@ console.log("data im MagazineArticle itemissues",data.item_issues)
 
         <div className={styles.columnwrapper}>  
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Abstract</div>
+                <div className={styles.subtitel}>{/* {t("Zusammenfassung")} */}Zusammenfassung</div>
                 {data.abstract[0].text}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Publication</div>
+                <div className={styles.subtitel}>{/* {t("Publikation")} */}Publikation</div>
                 {data.publication}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Publisher</div>
+                <div className={styles.subtitel}>{/* {t("Herausgeber")} */}Herausgeber</div>
                 {data.publisher}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Pages</div>
+                <div className={styles.subtitel}>{/* {t("Seiten")} */}Seiten</div>
                 {data.pages}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Pagerange</div>
+                <div className={styles.subtitel}>{/* {t("Seitenumfang")} */}Seitenumfang</div>
                 {data.pagerange}
             </div>
 

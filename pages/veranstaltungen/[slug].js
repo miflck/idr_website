@@ -44,7 +44,6 @@ export default function Veranstaltungseinzelansicht (props) {
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         <div className={styles.slugwrapper} style={background_style}>
-          {/* <div className={styles.veranstaltungscontent} key={id}> */}
             <Container>
               <div className={styles.speztitel}>
                 {titel}
@@ -54,7 +53,7 @@ export default function Veranstaltungseinzelansicht (props) {
               </div>
 
               <div className={styles.zentriert}>
-                <div className={styles.datum}>{date} Uhr</div>
+                <div className={styles.datum}>{date} {t("Uhr")}</div>
                 <div className={styles.untertitel}>{untertitel}</div>
                 
                 <div className={styles.organisation}>
@@ -67,7 +66,7 @@ export default function Veranstaltungseinzelansicht (props) {
               </div>
 
               <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Forschungsfeld</div>
+                <div className={styles.subtitel}>{t("Forschungsfelder")}</div>
                 {forschungsfeld.map((forschungsfeld) => {
                 var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
                   return (
@@ -76,7 +75,6 @@ export default function Veranstaltungseinzelansicht (props) {
                 })}
               </div>
             </Container>
-          {/* </div> */}
         </div>
       </Layout>
   )

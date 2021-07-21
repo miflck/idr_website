@@ -14,18 +14,30 @@ const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
   const {editorialtexte:{allProjekts}}=props;
   const {editorialtexte:{allForschungsfelders}}=props;
+
   const { t } = useTranslation('common')
 
+ 
   const router = useRouter()
-  // console.log("roter nach type", router.asPath.split(/=/)[1])
-  if(router.asPath.includes("keyword")){
-    var routerfilter = router.asPath.split(/=/)[1]
-    var deliveredfilter = routerfilter.split('-').join(' ')
-    // console.log("deliveredfilter", deliveredfilter)
-  } 
+  let deliveredkeyword;
+  let deliveredfilter;
+  if(router.query.keyword != "undefined"){
+    console.log("keyword", router.query.keyword)
+    deliveredkeyword = router.query.keyword;
+    // deliveredfilter = deliveredkeyword.split("-").join(" ");
+    console.log("deliveredfilter", deliveredfilter)
+    console.log("keyword als filterinput", deliveredkeyword)
+  }
 
-  const [filter, setFilter] = useState([deliveredfilter || ""])
+  // const [filter, setFilter] = useState([deliveredfilter || ""])
+    // console.log("filter am anfang mit keyword als input", filter)
 
+    // ternary expression = if else shorthand
+  let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
+  const [filter, setFilter] = useState(initState)
+  
+  
+    //Projekte zu Forschungsfeld dazufiltern
   function filterByForschungsfeld(data, filterterm) {
     return data.filter((obj) => {
         return obj.forschungsfeld.some((feld)=> {
@@ -59,10 +71,11 @@ const Editorial =(props)=>{
     }
 
     const [filterdList, setFilterdList] = useState([])
+    console.log("Filterd List im Editroal", filterdList)
 
     useEffect(() => {
       setFilterdList (filterBy(allEditorials, filter) )
-      console.log("filter", filter)
+      console.log("filter wirkli - hier lösts nichts aus am anfang", filter)
     },[filter])
 
     let FilterElement;

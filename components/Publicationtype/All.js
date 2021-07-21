@@ -15,12 +15,12 @@ const All = (data) => {
     var typewithoutunderline = data.type.split('_').join(' ');
 
     // const { t } = useTranslation('common')
-
+ 
   return (
       <>
         <div className={styles.subwrapper}>
             <div className={styles.subtitel}>
-                {/* {t("Type")} */}Type
+                {/* {t("Type")} */} Type
             </div>
             <FilterLink props={typewithoutunderline} href={{ pathname: '/publikationen', query: { keyword: `${data.type}` } }}/>
         </div>

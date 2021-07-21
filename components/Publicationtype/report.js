@@ -15,12 +15,12 @@ const Report = (data) => {
         <div className={styles.columnwrapper}>  
             {/* speziell article */}
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Report Type</div>
+                <div className={styles.subtitel}>{/* {t("ReportType")} */}Report Type</div>
                 {data.report_type}
             </div>
 
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Series</div>
+                <div className={styles.subtitel}>{/* {t("Serie")} */}Serie</div>
                 {data.series}
             </div>
 
@@ -30,12 +30,12 @@ const Report = (data) => {
             </div>
         
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Verlag</div>
+                <div className={styles.subtitel}>{/* {t("Herausgeber")} */}Herausgeber*in</div>
                 {data.publisher}
             </div>
             
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>Ort</div>
+                <div className={styles.subtitel}>{/* {t("Ort")} */}Ort</div>
                 {data.place_of_pub}
             </div>
 

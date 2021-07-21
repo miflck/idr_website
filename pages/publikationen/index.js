@@ -23,7 +23,7 @@ export default function Publikationen(props) {
   // console.log("roter nach type", router.asPath.split(/=/)[1])
   //var deliveredfilter = router.asPath.split(/=/)[1]
 
-  let deliveredfilter=router.query.keyword;
+  let deliveredfilter=router.query.keyword; 
 
   // ternary expression = if else shorthand
   let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
