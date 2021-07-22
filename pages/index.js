@@ -1,5 +1,4 @@
 import { request, NEWS } from "../lib/datocms";
-// import styles from '../styles/Home.module.scss'
 import styles from './news.module.scss'
 import Layout from '../components/Layout/layout'
 import { useTranslation } from 'next-i18next'
@@ -7,8 +6,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import TextElement from '../components/TextElement/TextElement'
 import React, { useState, useEffect,useContext } from 'react'
+import ForschungsfeldElement from '../components/ForschungsfeldElement/ForschungsfeldElement'
 
 import { AppContext,ACTIONS } from '../context/state';
+import FilterElement from "../components/FilterElement/FilterElement";
 
 export default function Home(props) {
   const {newsseite:{newsseite:{links}}}=props;
@@ -54,37 +55,37 @@ useEffect(() => {
 setFilterdList (filterBy(links, filter) )
 },[filter])
 
-let FilterElement;
-if(filter) {
-  FilterElement =  <div className={styles.filterfeldwrapper}>
-                    <div className={styles.deaktivieren}> <a onClick={() => setFilter([])}> {t("Deaktivieren")} </a> </div>
-                    <div className={styles.filterauflistung}>
-                      {allForschungsfelders.map((forschungsfeld) =>{
-                        let btn_class;
-                        if(filter.includes(forschungsfeld.titel)) {
-                          btn_class = styles.forschungsfeldaktiv
-                        }
-                        else {
-                          btn_class = styles.forschungsfeld
-                        }
-                        return(
-                          <span className={btn_class}>
-                            <a 
-                            onClick={() => addMoreItem(forschungsfeld.titel)}
-                            key={forschungsfeld.titel}
-                            > 
-                              {forschungsfeld.titel} 
-                          </a>
-                          </span>
-                        )})}
-                    </div>
-                    </div>
-}
+// let FilterElement;
+// if(filter) {
+//   FilterElement =  <div className={styles.filterfeldwrapper}>
+//                     <div className={styles.deaktivieren}> <a onClick={() => setFilter([])}> {t("Deaktivieren")} </a> </div>
+//                     <div className={styles.filterauflistung}>
+//                       {allForschungsfelders.map((forschungsfeld) =>{
+//                         let btn_class;
+//                         if(filter.includes(forschungsfeld.titel)) {
+//                           btn_class = styles.forschungsfeldaktiv
+//                         }
+//                         else {
+//                           btn_class = styles.forschungsfeld
+//                         }
+//                         return(
+//                           <span className={btn_class}>
+//                             <a 
+//                             onClick={() => addMoreItem(forschungsfeld.titel)}
+//                             key={forschungsfeld.titel}
+//                             > 
+//                               {forschungsfeld.titel} 
+//                           </a>
+//                           </span>
+//                         )})}
+//                     </div>
+//                     </div>
+// }
 
   return (
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
       
-      {FilterElement}
+      <FilterElement props={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
 
       <main className={styles.container}>
       <div className={styles.allekacheln}>
@@ -134,40 +135,6 @@ if(filter) {
             };
 
 
-            let ForschungsfeldElement;
-            if (beitrag.forschungsfeld != null) {
-              ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
-                                          {beitrag.forschungsfeld.map((forschungsfeld) => {
-                                            let btn_class;
-                                            // console.log("filter zeile 140",filter)
-                                            if(filter.includes(forschungsfeld.titel)) {
-                                              btn_class = styles.forschungsfeldaktiv
-                                              background_style_small={
-                                                background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
-                                                opacity:1,
-                                                animation:`${styles.fadeIn} 0.2s ease`
-                                              }
-                                            }
-                                            else {
-                                              btn_class = styles.forschungsfeld
-                                            }
-                                            return (
-                                                <span 
-                                                className={btn_class}
-                                                // className={styles.forschungsfeld}
-                                                >
-                                                    <a
-                                                    onClick={() => addMoreItem(forschungsfeld.titel)}
-                                                    key={forschungsfeld.id}
-                                                    > 
-                                                      {forschungsfeld.titel} 
-                                                    </a>
-                                                </span>
-                                            )
-                                          })}
-                                      </div>
-            }
-
 
               return(
                 <div className={styles.kachelwrapper} key={beitrag.id}>
@@ -181,8 +148,9 @@ if(filter) {
                             <div className={styles.titel}>{beitrag.titel}</div>
                           </Link>
                           <TextElement {...beitrag.newstext}/>
-                         {ForschungsfeldElement}
-
+                          <div className={styles.element}>
+                              <ForschungsfeldElement {...beitrag} filter={filter} addMoreItem={addMoreItem}/>
+                          </div>
                         </div>
                       </div>
                     }
@@ -196,7 +164,9 @@ if(filter) {
                               <div className={styles.titel}>{beitrag.titel}</div>
                             </Link>
                             <div className={styles.date}>{date} {t("Uhr")}</div>
-                            {ForschungsfeldElement}
+                            <div className={styles.element}>
+                              <ForschungsfeldElement {...beitrag} filter={filter} addMoreItem={addMoreItem}/>
+                            </div>
                           </div>
                         </div>
                     }
@@ -210,9 +180,11 @@ if(filter) {
                               </Link>
                               <TextElement {...beitrag.text}/>
                               <Link href={beitrag.weblink}>
-                                <div className={styles.weblink}>{t("Publilink")}</div>
+                                <a className={styles.weblink}>{t("Publilink")}</a>
                               </Link>
-                              {ForschungsfeldElement}
+                              <div className={styles.element}>
+                                <ForschungsfeldElement {...beitrag} filter={filter} addMoreItem={addMoreItem}/>
+                              </div>
                             </div> 
                             {ImageElement}
                         </div>

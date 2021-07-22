@@ -13,7 +13,8 @@
                 border: 1px solid var(--maincolor);
                 border-radius: 20px;
                 width: fit-content;
-                padding: 2px 4px 0px;
+                //zwischenraum von wort und border
+                padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
                 color: var(--maincolor);
                 background-color: transparent;
                 margin-right: 20px;
@@ -22,6 +23,8 @@
                     color: var(--secondcolor);
                     background-color: var(--maincolor);
                     cursor: pointer;
+                    margin-left: 0;
+                    animation: none;
                 }
             }
         }
@@ -39,19 +42,18 @@
         margin: var(--paddingtop) var(--padding) 0px;
         cursor: pointer;
         a {
-        color: var(--secondcolor);
-        background-color: var(--maincolor);
-        //border-style: dotted;
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        width: fit-content;
-        padding: 2px 4px 0px;
-        font-family: "Sang";
-        &:hover {
-            // color: var(--maincolor);
-            // background-color: var(--secondcolor);
-            // border: 1px solid var(--secondcolor);
-        }
+            color: var(--secondcolor);
+            background-color: var(--maincolor);
+            //border-style: dotted;
+            border: 1px solid var(--maincolor);
+            border-radius: 20px;
+            width: fit-content;
+            padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
+            font-family: "Sang";
+            &:hover {
+                margin-left: 0;
+                animation: none;
+            }
         }
     }
 }

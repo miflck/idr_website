@@ -31,6 +31,8 @@
         &:hover {
             color: var(--secondcolor);
             background-color: var(--maincolor);
+            margin-left: 0;
+            animation: none;
         }
     }
 

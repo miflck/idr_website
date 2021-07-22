@@ -54,8 +54,8 @@ export default function Menscheinzelansicht (props) {
                 if(website != ""){
                   WebsiteElement= 
                   <div>
-                    <Link href={website} target="_blank">
-                      <a className={styles.website}>
+                    <Link href={website}>
+                      <a className={styles.website} target="_blank">
                         {website}
                       </a>
                     </Link>
@@ -65,9 +65,9 @@ export default function Menscheinzelansicht (props) {
                 if(bfhprofil != ""){
                   BFHProfilElement= 
                   <div>
-                    <Link href={bfhprofil} target="_blank">
-                      <a className={styles.bfhprofil}>
-                      {t("BFHProfil")}
+                    <Link href={bfhprofil}>
+                      <a className={styles.bfhprofil} target="_blank">
+                        {t("BFHProfil")}
                       </a>
                     </Link>
                   </div>

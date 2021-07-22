@@ -5,16 +5,22 @@ import FilterLink from '../FilterLink/FilterLink';
 import { useTranslation } from 'next-i18next'
 
 const All = (data) => {
-    // const date = new Date(data.date).toLocaleString([], {
-    //     day: 'numeric',
-    //     month: 'long', 
-    //     year: 'numeric'
-    //     });
+    const { t } = useTranslation('common')
 
     var typewithoutunderline = data.type.split('_').join(' ');
 
-     const { t } = useTranslation('common')
- 
+    let SprachElement;
+    if(data.language === "en") {
+        SprachElement = <div>{t("Englisch")}</div>
+    }
+    else if (data.language === "de") {
+        SprachElement = <div>{t("Deutsch")}</div>
+    }
+    else if (data.language === "deu") {
+        SprachElement = <div>{t("Deutschumgang")}</div>
+    }
+   
+
   return (
       <>
         <div className={styles.subwrapper}>
@@ -25,7 +31,7 @@ const All = (data) => {
         </div>
       
         <div className={styles.subwrapper}>
-            <div className={styles.subtitel}>{/* {t("Mitwirkende")} */}Mitwirkende</div>
+            <div className={styles.subtitel}>{t("Mitwirkende")}</div>
             {data.contributors.map((contributor) => {
             //    console.log(contributor.name.family)
                 return (
@@ -59,14 +65,14 @@ const All = (data) => {
         </div> */}
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitel}>{/* {t("Sprache")} */}Sprache</div>
-            {data.language}
+            <div className={styles.subtitel}>{t("Sprache")}</div>
+            {SprachElement}
         </div>
 
         <div className={styles.subwrapper}>
-            <div className={styles.subtitel}>{/* {t("Repository")} */}Publication in Repository</div>
+            <div className={styles.subtitel}>{t("Repository")}</div>
             <Link href={data.uri}>
-                {data.uri}
+                <a target="_blank">{data.uri}</a>
             </Link>
         </div>
     </>
@@ -76,7 +82,6 @@ export default All;
 
 
 export async function getStaticProps({locale}) {
-  
     return {
       props: {
         ...await serverSideTranslations(locale, ['common']),

@@ -18,7 +18,13 @@
         margin: 0;
         user-select: none;
         a {
-        font-family: "Sang";
+            font-family: "Sang";
+            color: var(--maincolor); 
+        &:hover {
+            color: var(--maincolor); 
+            margin-left: 0;
+            animation: none;
+        }
         }
     }
 }

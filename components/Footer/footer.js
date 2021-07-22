@@ -59,7 +59,7 @@ const Footer=(props)=>{
             </div> */}
             
                 <Link href="/impressum">
-                <div className={styles.impressum}>Impressum   </div>
+                    <div className={styles.impressum}>Impressum</div>
                 </Link>
          
 

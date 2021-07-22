@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './publicationtype.module.scss';
 import All from './All'
+import { useTranslation } from 'next-i18next'
 
 const Article = (data) => {
-// console.log("data im article",data)
+  const { t } = useTranslation('common')
 
   return (
 	<div className={styles.slugwrapper}>
@@ -15,7 +16,7 @@ const Article = (data) => {
         <div className={styles.columnwrapper}>  
           {/* speziell article */}
           <div className={styles.subwrapper}>
-              <div className={styles.subtitel}> {/* {t("ArticleType")}*/} Article Type</div>
+              <div className={styles.subtitel}>{t("ArticleType")}</div>
               {data.article_type}
           </div>
 
@@ -25,3 +26,11 @@ const Article = (data) => {
   );
 };
 export default Article;
+
+export async function getStaticProps({locale}) {
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ['common']),
+    },
+  }
+}

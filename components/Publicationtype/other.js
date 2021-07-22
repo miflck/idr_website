@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './publicationtype.module.scss';
 import All from './All'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 const Other = (data) => {
-console.log("data im other documents",data.documents)
-console.log("data im other itemissues",data.item_issues)
+    const { t } = useTranslation('common')
 
   return (
 	<div className={styles.slugwrapper}>
@@ -16,21 +16,21 @@ console.log("data im other itemissues",data.item_issues)
 
         <div className={styles.columnwrapper}>  
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("Zusammenfassung")} */}Zusammenfassung</div>
+                <div className={styles.subtitel}>{t("Zusammenfassung")}</div>
                 {data.abstract[0].text}
             </div>
 
             {/* speziell Other */}
             
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("TitelSammlung")} */}Titel der Sammlung</div>
+                <div className={styles.subtitel}>{t("TitelSammlung")}</div>
                 {data.collection_title}
             </div>
             
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("Link")} */}Link</div>
+                <div className={styles.subtitel}>{t("Link")}</div>
                 <Link href={data.official_url}>
-                    {data.official_url}
+                  <a target="_blank">{data.official_url}</a>
                 </Link>
             </div>
 
@@ -40,3 +40,11 @@ console.log("data im other itemissues",data.item_issues)
   );
 };
 export default Other;
+
+export async function getStaticProps({locale}) {
+    return {
+      props: {
+        ...await serverSideTranslations(locale, ['common']),
+      },
+    }
+  }

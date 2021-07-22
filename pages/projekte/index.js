@@ -3,9 +3,9 @@ import Layout from '../../components/Layout/layout'
 import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { useState, useEffect,useContext } from 'react'
 import styles from './projekte.module.scss'
-
+import FilterElement from '../../components/FilterElement/FilterElement'
+import React, { useState, useEffect,useContext } from 'react'
 import { AppContext,ACTIONS } from '../../context/state';
 
 
@@ -88,34 +88,6 @@ setColor(black => !black)
 }
 
 
-let FilterElement;
-if(filter) {
-  FilterElement =  <div className={styles.filterfeldwrapper}  onMouseEnter={ ()=>handleShowGradient(true)} onMouseLeave={ ()=>handleShowGradient(false)} >
-                    <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
-                    <div className={styles.filterauflistung}>
-                      {allForschungsfelders.map((forschungsfeld) =>{
-                        let btn_class;
-                        if(filter.includes(forschungsfeld.titel)) {
-                          btn_class = styles.forschungsfeldaktiv
-                        }
-                        else {
-                          btn_class = styles.forschungsfeld
-                        }
-                        return(
-                          <span className={btn_class}>
-                            <a 
-                            onClick={() => addMoreItem(forschungsfeld.titel)}
-                            key={forschungsfeld.titel}
-                            > 
-                              {forschungsfeld.titel} 
-                          </a>
-                          </span>
-                        )})}
-                    </div>
-                    </div>
-}
-
-
   return (
       <Layout setMainColor={props.setMainColor} 
               setSecondColor={props.setSecondColor}  
@@ -139,7 +111,7 @@ if(filter) {
             </span>
         </div>
 
-       {FilterElement}
+       <FilterElement props={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
 
        <div className={styles.listwrapper}>
           {filterdList.map((projekt) => {

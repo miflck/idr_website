@@ -7,6 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect } from 'react'
 import arborAPI from "../../lib/export_arbor_JSON"
 import { useRouter } from 'next/router'
+// import FilterElement from "../../components/FilterElement/FilterElement";
 
 
 export default function Publikationen(props) {
@@ -134,7 +135,7 @@ function filterBy(data, filterterms) {
       setSearchbarOpen(open => !open)
   }
 
-
+//hier stehen lassen, da es ein loop weniger ist, um an die typetitles zu kommen und so ists einfacher als nochmals mit if() blabla
   let FilterElement;
   if(filter) {
     FilterElement =  <div className={styles.filterfeldwrapper} >
@@ -185,6 +186,7 @@ function filterBy(data, filterterms) {
         </div>
         
         {FilterElement}
+        {/* <FilterElement props={publicationTypes} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/> */}
 
           <div className={styles.listwrapper}>
                   {filterdList.map((publikation) => {

@@ -22,8 +22,22 @@ html {
     --columngap: 50px;
      
     --imagewidth: 100%;
+
+    //abstand forschungsfeldwort und border, in safari soll top 0px sein und in firefox 2
+    //top
+    --filterpadding1: 2px;
+    //horizontal
+    --filterpadding2: 4px;
+    //bottom
+    --filterpadding3: 0px;
   }
 
+ 
+@media (min-resolution:.001dpcm) {
+    .safari10 { 
+        --filterpadding1: 0px;
+    }
+}
 
 @media (min-width: $breakpointSmall) {
   html {

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Container from '../Container/container'
 import { AppContext, ACTIONS } from '../../context/state';
 import React, {useEffect, useContext,useState} from 'react';
+import ForschungsfeldElement from '../ForschungsfeldElement/ForschungsfeldElement'
 
 const ListItemPublikation =(props)=>{
 if (props) {
@@ -15,25 +16,7 @@ if (props) {
     const [showHoverGradient,setHoverGradient]=useState();
 	const handleShowGradient = (val) => {
     };
-
-    let PublikationstypeElement;
-        if(props.filter) {
-        let btn_class;
-        var typewithoutunderline = props.type.split('_').join(' ');
-        if(props.filter.includes(props.type)) {
-            btn_class = styles.forschungsfeldaktiv
-            }
-        else {
-            btn_class = styles.forschungsfeld
-            }
-        PublikationstypeElement = <div className={styles.forschungsfeldwrapper}>
-                                    <span className={btn_class} >
-                                        <a onClick={() => props.addMoreItem(props.type)}> 
-                                            {typewithoutunderline} 
-                                        </a>
-                                    </span>
-                                </div>
-        }
+    
 
     let href=`/publikationen` 
     href+=`/${props.eprintid}`
@@ -64,7 +47,7 @@ if (props) {
                         {props.title[0].text}
                     </div>
                 </Link>
-                {PublikationstypeElement}
+                <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>
                 </div>
             </Container>
         </div>

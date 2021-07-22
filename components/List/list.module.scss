@@ -1,4 +1,5 @@
-@import '../Filter/filterelement.module.scss';
+@import '../FilterElement/filterelement.module.scss';
+@import '../ForschungsfeldElement/forschungsfeldelement.module.scss';
 
 @keyframes fadeIn {
     0% {
@@ -17,8 +18,6 @@
         opacity: 0;
     }
 }
-
-
 
 .wrapper {
         color: var(--maincolor);
@@ -50,45 +49,7 @@
                 margin-bottom: 3px;
                 cursor: pointer;
             }
-            .forschungsfeldwrapper {
-                font-size: var(--fontsizesmall);
-                line-height: var(--lineheightnormal);
-                text-transform: uppercase;
-                cursor: pointer;
-                .forschungsfeld {
-                    a {
-                        border: 1px solid var(--maincolor);
-                        border-radius: 20px;
-                        width: fit-content;
-                        padding: 2px 4px 0px;
-                        color: var(--maincolor);
-                        background-color: transparent;
-                        margin-right: 20px;
-                        font-family: "Sang";
-                        &:hover {
-                            color: var(--maincolor);
-                            background-color: var(--secondcolor);
-                            cursor: pointer;
-                        }
-                    }
-                }
-                .forschungsfeldaktiv {
-                    a {
-                        border-radius: 20px;
-                        width: fit-content;
-                        padding: 2px 4px 0px;
-                        background-color: var(--maincolor);
-                        color: var(--secondcolor);
-                        border: 1px solid var(--maincolor);
-                        margin-right: 20px;
-                        cursor: pointer;
-                        font-family: "Sang";
-                    }
-                }
-                .forschungsfeld:nth-child(2) {
-                    margin-left: 20px;
-                }
-            }
+            
             .datum {
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightsmall);
@@ -99,21 +60,6 @@
         &:hover {
             .content {
                 color: var(--secondcolor);
-            }
-            .forschungsfeldwrapper {
-                .forschungsfeld {
-                    a {
-                        border: 1px solid var(--secondcolor);
-                        color: var(--secondcolor);
-                    }
-                }
-                .forschungsfeldaktiv {
-                    a {
-                        background-color: var(--secondcolor);
-                        color: var(--maincolor);
-                        border: 1px solid var(--secondcolor);
-                    }
-                }
             }
         }
     }

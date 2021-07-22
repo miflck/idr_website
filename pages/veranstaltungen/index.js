@@ -3,12 +3,15 @@ import React, { useState, useEffect, useContext } from 'react'
 import styles from './veranstaltungen.module.scss'
 import Layout from '../../components/Layout/layout'
 import Link from 'next/link'
+import FilterLink from '../../components/FilterLink/FilterLink'
 import Container from '../../components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import ForschungsfeldElement from '../../components/ForschungsfeldElement/ForschungsfeldElement'
 
 
 import { AppContext,ACTIONS } from '../../context/state';
+import FilterElement from "../../components/FilterElement/FilterElement"
 
 const Veranstaltungen =(props)=>{
   const {veranstaltungen:{allVeranstaltungs}}=props;
@@ -85,35 +88,6 @@ const Veranstaltungen =(props)=>{
           setSearchbarOpen(open => !open)
       }
 
-    let FilterElement;
-    if(filter) {
-      FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(true)} onMouseLeave={ ()=>handleShowGradient(false)}>
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
-                        <div className={styles.filterauflistung}>
-                          {allForschungsfelders.map((forschungsfeld) =>{
-                            let btn_class;
-                            if(filter.includes(forschungsfeld.titel)) {
-                              btn_class = styles.forschungsfeldaktiv
-                            }
-                            else {
-                              btn_class = styles.forschungsfeld
-                            }
-                            return(
-                              <span className={btn_class}>
-                                <a 
-                                onClick={() => addMoreItem(forschungsfeld.titel)}
-                                key={forschungsfeld.titel}
-                                > 
-                                  {forschungsfeld.titel} 
-                              </a>
-                              </span>
-                            )})}
-                        </div>
-                        </div>
-    }
-
-    
-
     return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         
@@ -134,7 +108,8 @@ const Veranstaltungen =(props)=>{
             </span>
         </div>
 
-        {FilterElement}
+        
+        <FilterElement props={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
         
         <div className={styles.veranstaltungswrapper} >
             {filterdList.map((veranstaltung) => {
@@ -142,30 +117,7 @@ const Veranstaltungen =(props)=>{
               if(veranstaltung.slug!=""){
                   href+=`/${veranstaltung.slug}`
               }
-              let ForschungsfeldElement;
-                  if(filter) {
-                      ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
-                          {veranstaltung.forschungsfeld.map((forschungsfeld) => {
-                              let btn_class;
-                              if(filter.includes(forschungsfeld.titel)) {
-                                btn_class = styles.forschungsfeldaktiv
-                              }
-                              else {
-                                btn_class = styles.forschungsfeld
-                              }
-                              return (
-                                  <span className={btn_class}>
-                                      <a
-                                        onClick={() => addMoreItem(forschungsfeld.titel)}
-                                        key={forschungsfeld.id}
-                                      >
-                                        {forschungsfeld.titel} 
-                                      </a>
-                                  </span>
-                              )
-                          })}
-                      </div>
-                  }
+              
                 const date = new Date(veranstaltung.datum).toLocaleString([], {
                 year: 'numeric', month: 'numeric', day: 'numeric',
                 hour: '2-digit', minute: '2-digit'});
@@ -195,7 +147,9 @@ const Veranstaltungen =(props)=>{
                                 <div className={styles.title}>{veranstaltung.titel}</div>
                               </Link>
                               <div className={styles.title}>{veranstaltung.untertitel}</div>
-                              {ForschungsfeldElement}
+
+                              <ForschungsfeldElement {...veranstaltung} filter={filter} addMoreItem={addMoreItem} />
+                          
                           </Container>
                         </div>
                     )

@@ -1,14 +1,5 @@
 .textelement {
     p { 
         margin: 0;
-        a {
-            // border-bottom: 1px solid var(--maincolor);
-            font-family: "SangItalic";
-            &:hover {
-                // color: var(--secondcolor);
-                // border-bottom: 1px solid var(--secondcolor);
-                margin-left: var(--padding);
-            }
-        }
     }
 }

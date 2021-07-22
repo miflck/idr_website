@@ -46,5 +46,8 @@
   "Keywords":"Keywords",
   "Institution":"Institution",
   "Abteilung":"Department",
-  "ThesisType":"Thesis Type"
+  "ThesisType":"Thesis Type",
+  "Englisch":"English",
+  "Deutsch":"German",
+  "Deutschumgang":"German colloquial"
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './publicationtype.module.scss';
 import All from './All'
-import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 const BookSection = (data) => {
-// console.log("data im book",data)
+    const { t } = useTranslation('common')
 
   return (
 	<div className={styles.slugwrapper}>
@@ -16,20 +16,20 @@ const BookSection = (data) => {
         <div className={styles.columnwrapper}>  
             {/* speziell BookSection */}
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}> {/* {t("Buchtitel")}*/} Buchtitel</div>
+                <div className={styles.subtitel}>{t("Buchtitel")}</div>
                 {data.book_title}
             </div>
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("BookType")}*/} Book Type</div>
+                <div className={styles.subtitel}>{t("BookType")}</div>
                 {data.book_section_type}
             </div>
         
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("Herausgeber")}*/} Herausgeber</div>
+                <div className={styles.subtitel}>{t("Herausgeber")}</div>
                 {data.publisher}
             </div>
             <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{/* {t("Ort")}*/} Ort</div>
+                <div className={styles.subtitel}>{t("Ort")}</div>
                 {data.place_of_pub}
             </div>
             
@@ -39,3 +39,11 @@ const BookSection = (data) => {
   );
 };
 export default BookSection;
+
+export async function getStaticProps({locale}) {
+    return {
+      props: {
+        ...await serverSideTranslations(locale, ['common']),
+      },
+    }
+  }

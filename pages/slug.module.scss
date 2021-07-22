@@ -14,12 +14,12 @@
     }
     .subwrapper {
         margin-bottom: calc(var(--padding)*3);
-        a {
-            font-family: "SangItalic";
-            &:hover {
-                margin-left: var(--padding);
-            }
-        }
+        // a {
+        //     font-family: "SangItalic";
+        //     &:hover {
+        //         margin-left: var(--padding);
+        //     }
+        // }
         .subtitel {
             text-transform: uppercase;
         }

@@ -15,8 +15,8 @@
     "Publilink":"Link zur Website",
     "Koord":"Koordinator*in",
     "BFHProfil":"Profil auf BFH Website",
-    "Type":"Type",
-    "Repository":"Publication in Repository",
+    "Type":"Dokumententyp",
+    "Repository":"Publikation im Repository",
     "Sprache":"Sprache",
     "Autorenschaft":"Autorenschaft",
     "Mitwirkende":"Mitwirkende",
@@ -46,5 +46,8 @@
     "Keywords":"Schlüsselwörter",
     "Institution":"Institution",
     "Abteilung":"Abteilung",
-    "ThesisType":"Thesis Type"
+    "ThesisType":"Thesis Type",
+    "Englisch":"Englisch",
+    "Deutsch":"Deutsch",
+    "Deutschumgang":"Deutsch Umgangssprachlich"
 }

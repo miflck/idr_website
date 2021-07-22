@@ -4,15 +4,23 @@ import Layout from '../../components/Layout/layout'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { useState, useEffect } from 'react'
-import FilterElement from "../../components/Filter/FilterElement";
-
+import React, { useState, useEffect, useContext } from 'react'
+import FilterElement from "../../components/FilterElement/FilterElement";
+import ForschungsfeldElement from "../../components/ForschungsfeldElement/ForschungsfeldElement";
+import { AppContext,ACTIONS } from '../../context/state';
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
   const {menschen:{allForschungsfelders}}=props;
   const {menschen:{allFunktions}}=props;
     const { t } = useTranslation('common')
+
+    // context
+    const globalState = useContext(AppContext);
+    const {state}=globalState
+    const {dispatch}=globalState
+    const [showHoverGradient,setHoverGradient]=useState();
+	  const handleShowGradient = (val) => { };
 
     // console.log("forschungfeld in team", props);
 
@@ -33,12 +41,6 @@ const Team =(props)=>{
 //   })}
 
 
- 
-// VON HIER BIS -------------------------------------------------------
-
-
-
-
 //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
       return data.filter((obj) => {
@@ -53,23 +55,22 @@ const Team =(props)=>{
 
     const [filter, setFilter] = useState([])
     const addMoreItem = (item) => {
-    const copyfilter = [...filter]
-    var index = copyfilter.indexOf(item);
-    if (index !== -1) {
-      copyfilter.splice(index, 1);
-      setFilter([...copyfilter])
-    }
-    else{
-      setFilter([...filter, item])
-    }
+      const copyfilter = [...filter]
+      var index = copyfilter.indexOf(item);
+      if (index !== -1) {
+        copyfilter.splice(index, 1);
+        setFilter([...copyfilter])
+      }
+      else{
+        setFilter([...filter, item])
+      }
     }
 
     const [filterdList, setFilterdList] = useState([])
 
     useEffect(() => {
-    setFilterdList (filterBy(allMenschens, filter) )
+      setFilterdList (filterBy(allMenschens, filter) )
     },[filter])
-
 
     // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
     function searchInput(data, inputvalue) {
@@ -99,57 +100,19 @@ const Team =(props)=>{
           setSearchbarOpen(open => !open)
       }
 
-    let FilterElement;
-    if(filter) {
-      FilterElement =  <div className={styles.filterfeldwrapper} >
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
-                        <div className={styles.filterauflistung}>
-                          {allForschungsfelders.map((forschungsfeld) =>{
-                            let btn_class;
-                            if(filter.includes(forschungsfeld.titel)) {
-                              btn_class = styles.forschungsfeldaktiv
-                            }
-                            else {
-                              btn_class = styles.forschungsfeld
-                            }
-                            return(
-                              <span className={btn_class}>
-                                <a 
-                                onClick={() => addMoreItem(forschungsfeld.titel)}
-                                key={forschungsfeld.titel}
-                                > 
-                                  {forschungsfeld.titel} 
-                              </a>
-                              </span>
-                            )})}
-                            {allFunktions.map((funktion) =>{
-                                let btn_class;
-                                if(filter.includes(funktion.titel)) {
-                                  btn_class = styles.forschungsfeldaktiv
-                                }
-                                else {
-                                  btn_class = styles.forschungsfeld
-                                }
-                                return(
-                                  <span className={btn_class}>
-                                    <a 
-                                    onClick={() => addMoreItem(funktion.titel)}
-                                    key={funktion.titel}
-                                    > 
-                                      {funktion.titel} 
-                                  </a>
-                                  </span>
-                            )})}
-                        </div>
-                        </div>
-    }
-
-// BIS HIER DRUCH FILTERELEMENT.JS ERSETZEN?-------------------------------------------------------
+      let neueListe=[];
+      allForschungsfelders.map((forschungsfeld) => {
+        neueListe.push(forschungsfeld)
+      })
+      allFunktions.map((forschungsfeld) => {
+        neueListe.push(forschungsfeld)
+      })
+      // console.log("liste", neueListe)
+  
+      
 
       return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        
-        {/* auch als component mit weitergeben der props, gleiches problem wie beim filter? */}
         
         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
             <input 
@@ -168,43 +131,49 @@ const Team =(props)=>{
             </span>
         </div>
 
-           {FilterElement}
+           <FilterElement props={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
 
            <div className={styles.teamcontainer}>
-           {/* <div className={styles.funktionstitle}>Leitung und Büro</div> */}
-            {/*  <div className={styles.teamkachelwrapper}> */}
                 {filterdList.map((mensch) => {
                     let href=`/team`
                     if(mensch.slug!=""){
                         href+=`/${mensch.slug}`
                     }
-                    let ForschungsfeldElement;
-                  if(filter) {
-                      ForschungsfeldElement = <div className={styles.forschungsfeldwrapper}>
-                          {mensch.forschungsfeld.map((forschungsfeld) => {
-                              let btn_class;
-                              if(filter.includes(forschungsfeld.titel)) {
-                                btn_class = styles.forschungsfeldaktiv
-                              }
-                              else {
-                                btn_class = styles.forschungsfeld
-                              }
-                              return (
-                                  <span className={btn_class}>
-                                      <a
-                                      onClick={() => addMoreItem(forschungsfeld.titel)}
-                                      key={forschungsfeld.id}
-                                      > 
-                                        {forschungsfeld.titel} 
-                                      </a><br></br>
-                                  </span>
-                              )
-                          })}
-                      </div>
-                  }
 
+                    // let colors=[];
+                    // mensch.forschungsfeld.map((forschungsfeld) => {
+                    // colors.push(forschungsfeld.colour.hex)
+                    // })
+
+                    // let background_style={
+                    //     background: `linear-gradient(to right,"white"})`,
+                    //     animation:`${styles.fadeOut} 0.5s ease`
+                    // };
+
+                    // let background_style_small={
+                    //     background: `linear-gradient(to right,"white"})`,
+                    //     animation:`${styles.fadeOut} 0.5s ease`,
+                    // }; 
+
+                    // if(state.showGradient || showHoverGradient){
+                    //     background_style={
+                    //         background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+                    //         opacity:1,
+                    //         animation:` ${styles.fadeIn} 0.5s ease`
+                    //       }
+              
+                    // background_style_small={
+                    //     background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
+                    //     opacity:1,
+                    //     animation:`${styles.fadeIn} 0.5s ease`
+                    //   }
+                    // }
+                  
                     return(
-                      <div key={mensch.id} className={styles.menschwrapper}>
+                      <div key={mensch.id} className={styles.menschwrapper} 
+                      // style={background_style_small}  finde es hier bitzli ugly, du so?
+                      // onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
+                      >
                         <Link href={href}>
                           <span>
                             <img 
@@ -216,38 +185,11 @@ const Team =(props)=>{
                                 {mensch.name}
                             </div>
                           </span>
-                          </Link>
-                          {ForschungsfeldElement}
+                        </Link>
+                        <ForschungsfeldElement {...mensch} filter={filter} addMoreItem={addMoreItem} showHoverGradient={showHoverGradient}/>
                       </div>
                 
                     )})}
-            {/* </div> */}
-
-            {/* <div className={styles.funktionstitle}>Forscher*innen</div> */}
-           {/*  <div className={styles.teamkachelwrapper}> */}
-                {/* {groupedPeople.ForscherInnen.map((mensch) => {
-                  let href=`/team`
-                  if(mensch.slug!=""){
-                  href+=`/${mensch.slug}`
-                  }
-                return(
-                  <Link href={href}>
-                  <div key={mensch.id} className={styles.menschwrapper}>
-                    <img 
-                    className={styles.portrait}
-                    src={mensch.portrait.url} 
-                    alt={mensch.portrait.alt} 
-                    />
-                    <div className={styles.name}>
-                        <a>{mensch.name}</a>
-                    </div>
-                  </div>
-                  </Link>
-                )
-                })} */}
-            {/* </div> */}
-
-
           </div>
       </Layout>
     )
