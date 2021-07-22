@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './publicationtype.module.scss';
 import Link from 'next/link'
 import FilterLink from '../FilterLink/FilterLink';
-// import { useTranslation } from 'next-i18next'
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 const All = (data) => {
     // const date = new Date(data.date).toLocaleString([], {
@@ -14,13 +13,13 @@ const All = (data) => {
 
     var typewithoutunderline = data.type.split('_').join(' ');
 
-    // const { t } = useTranslation('common')
+     const { t } = useTranslation('common')
  
   return (
       <>
         <div className={styles.subwrapper}>
             <div className={styles.subtitel}>
-                {/* {t("Type")} */} Type
+                 {t("Type")} 
             </div>
             <FilterLink props={typewithoutunderline} href={{ pathname: '/publikationen', query: { keyword: `${data.type}` } }}/>
         </div>
@@ -38,7 +37,7 @@ const All = (data) => {
             }
         </div>
         <div className={styles.subwrapper}>
-            <div className={styles.subtitel}>{/* {t("Autorenschaft")} */}Autorenschaft</div>
+            <div className={styles.subtitel}>{t("Autorenschaft")}</div>
             {data.creators.map((creator) => {
                 return (
                     <div className={styles.name}>
@@ -74,3 +73,13 @@ const All = (data) => {
   );
 };
 export default All;
+
+
+export async function getStaticProps({locale}) {
+  
+    return {
+      props: {
+        ...await serverSideTranslations(locale, ['common']),
+      },
+    }
+  }
