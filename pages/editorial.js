@@ -26,7 +26,7 @@ const Editorial =(props)=>{
     deliveredkeyword = router.query.keyword;
     // router.asPath.split(/=/)[1]
     deliveredfilter = deliveredkeyword.split("-").join(" ");
-    console.log("deliveredfilter", deliveredfilter)
+    console.log("delivered filter", deliveredfilter)
     // console.log("keyword als filterinput", deliveredkeyword.split("-").join(" "))
   }
 
@@ -36,7 +36,12 @@ const Editorial =(props)=>{
     // ternary expression = if else shorthand
   let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
   const [filter, setFilter] = useState(initState)
-  console.log("filter am anfang mit keyword als input", filter)
+  const [filterdList, setFilterdList] = useState(allEditorials)
+  const [search, setSearch] = useState('')
+
+
+  //setFilterdList (filter.length>0?filterBy(allEditorials, filter):allEditorials ) // filter if any filter is set, else show all 
+
   
   //ohne – sondern mit Leerschlag wählt es den Filter in der Auswahl an, aber funktionert nicht in der filterd List
   // const [filter, setFilter] = useState(["Knowledge Visualization"])
@@ -54,14 +59,17 @@ const Editorial =(props)=>{
 
     //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
+      console.log("--- filter by", data,filterterms)
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
         return filterterms.every((term)=>{
           return obj.forschungsfeld.some((feld)=>{
+            console.log(term)
             return feld.titel.toString().includes(term);
           })
         })   
       })
+    
     }
 
     const addMoreItem = (item) => {
@@ -76,16 +84,32 @@ const Editorial =(props)=>{
       }
     }
 
-    const [filterdList, setFilterdList] = useState([])
-    console.log("Filterd List am Anfang nimmmts den scheiss filter nicht", filterdList)
 
     useEffect(() => {
-      setFilterdList (filterBy(allEditorials, filter) )
-      console.log("filter wirkli - hier lösts nichts aus am anfang, doch hier lösts was aus aber die filterd list ist immer noch alle 6", filter)
+      console.log("**** useEffect filter",filter,filter.length, filterdList)
+     // setFilterdList (filter.length>0?filterBy(allEditorials, filter):allEditorials ) // filter if any filter is set, else show all 
+      setFilterdList (filterBy(allEditorials, filter) ) // filter if any filter is set, else show all 
+      console.log("## result",filterBy(allEditorials, filter))
     },[filter])
+
+    /*
+    This was for debuggin
+    useEffect(() => {
+      console.log("++++++++ useEffect filterdList",filter, filterdList)
+    },[filterdList])
+    */
+
+    // This got called on init -> overwrote filter
+    useEffect(() => {
+      if(search){
+        // skip initial render as then it deletes filtered list from deliverd filter
+        setFilterdList(searchInput(allEditorials,search));
+      }
+    },[search])
 
     let FilterElement;
     if(filter) {
+      console.log("Filter",filter)
       FilterElement =  <div className={styles.filterfeldwrapper} >
                         <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")}</a> </div>
                         <div className={styles.filterauflistung}>
@@ -130,10 +154,7 @@ const Editorial =(props)=>{
       }
     )
     }
-    const [search, setSearch] = useState('')
-    useEffect(() => {
-    setFilterdList(searchInput(allEditorials,search));
-    },[search])
+
     const [open,setSearchbarOpen] = useState(false)
     const handleOnClick=(open)=>{
         setSearchbarOpen(open => !open)
