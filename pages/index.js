@@ -9,7 +9,7 @@ import React, { useState, useEffect,useContext } from 'react'
 import ForschungsfeldElement from '../components/ForschungsfeldElement/ForschungsfeldElement'
 
 import { AppContext,ACTIONS } from '../context/state';
-import FilterElement from "../components/FilterElement/FilterElement";
+import FilterElement from "../components/FilterElement/filterElement";
 
 export default function Home(props) {
   const {newsseite:{newsseite:{links}}}=props;

@@ -4,7 +4,7 @@ import ListItemProjekt from '../../components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import styles from './projekte.module.scss'
-import FilterElement from '../../components/FilterElement/FilterElement'
+import FilterElement from '../../components/FilterElement/filterElement'
 import React, { useState, useEffect,useContext } from 'react'
 import { AppContext,ACTIONS } from '../../context/state';
 

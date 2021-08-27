@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect, useContext } from 'react'
-import FilterElement from "../../components/FilterElement/FilterElement";
+import FilterElement from "../../components/FilterElement/filterElement";
 import ForschungsfeldElement from "../../components/ForschungsfeldElement/ForschungsfeldElement";
 import { AppContext,ACTIONS } from '../../context/state';
 

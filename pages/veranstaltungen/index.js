@@ -10,7 +10,7 @@ import ForschungsfeldElement from '../../components/ForschungsfeldElement/Forsch
 
 
 import { AppContext,ACTIONS } from '../../context/state';
-import FilterElement from "../../components/FilterElement/FilterElement"
+import FilterElement from "../../components/FilterElement/filterElement"
 
 const Veranstaltungen =(props)=>{
   const {veranstaltungen:{allVeranstaltungs}}=props;

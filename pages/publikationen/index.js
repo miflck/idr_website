@@ -7,7 +7,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect } from 'react'
 import arborAPI from "../../lib/export_arbor_JSON"
 import { useRouter } from 'next/router'
-// import FilterElement from "../../components/FilterElement/FilterElement";
 
 
 export default function Publikationen(props) {
