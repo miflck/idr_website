@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Container from '../Container/container'
 import { AppContext, ACTIONS } from '../../context/state';
 import React, {useEffect, useContext,useState} from 'react';
-import ForschungsfeldElement from '../ForschungsfeldElement/ForschungsfeldElement'
+import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement'
 
 const ListItemPublikation =(props)=>{
 if (props) {

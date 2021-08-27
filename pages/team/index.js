@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect, useContext } from 'react'
 import FilterElement from "../../components/FilterElement/filterElement";
-import ForschungsfeldElement from "../../components/ForschungsfeldElement/ForschungsfeldElement";
+import ForschungsfeldElement from "../../components/ForschungsfeldElement/forschungsfeldElement";
 import { AppContext,ACTIONS } from '../../context/state';
 
 const Team =(props)=>{

@@ -4,9 +4,9 @@ import Layout from '../components/Layout/layout'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
-import TextElement from '../components/TextElement/TextElement'
+import TextElement from '../components/TextElement/textElement'
 import React, { useState, useEffect,useContext } from 'react'
-import ForschungsfeldElement from '../components/ForschungsfeldElement/ForschungsfeldElement'
+import ForschungsfeldElement from '../components/ForschungsfeldElement/forschungsfeldElement'
 
 import { AppContext,ACTIONS } from '../context/state';
 import FilterElement from "../components/FilterElement/filterElement";

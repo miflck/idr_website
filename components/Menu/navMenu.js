@@ -1,7 +1,7 @@
 import styles from './menu.module.scss'
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next'
-import SiteLink from './SiteLink'
+import SiteLink from './siteLink'
 
 const NavMenu = (props)=> {
   const { t } = useTranslation('common')

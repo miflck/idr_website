@@ -3,7 +3,7 @@ import { AppContext, ACTIONS } from '../../context/state';
 import styles from './list.module.scss'
 import Link from 'next/link'
 import Container from '../../components/Container/container'
-import ForschungsfeldElement from '../ForschungsfeldElement/ForschungsfeldElement';
+import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
 
 const ListItemProjekt =(props)=>{
     const globalState = useContext(AppContext);
