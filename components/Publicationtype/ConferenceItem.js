@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './publicationtype.module.scss';
-import All from './All'
+import All from './all'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 

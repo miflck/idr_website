@@ -5,16 +5,16 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Article from "../../components/Publicationtype/Article"
-import AudioVisual from "../../components/Publicationtype/AudioVisual"
-import BookSection from "../../components/Publicationtype/BookSection"
-import Book from "../../components/Publicationtype/Book"
-import ConferenceItem from "../../components/Publicationtype/ConferenceItem"
-import MagazineArticle from "../../components/Publicationtype/MagazineArticle"
-import Other from "../../components/Publicationtype/Other"
-import Report from "../../components/Publicationtype/Report"
-import Software from "../../components/Publicationtype/Software"
-import Thesis from "../../components/Publicationtype/Thesis"
+import Article from "../../components/Publicationtype/article"
+import AudioVisual from "../../components/Publicationtype/audioVisual"
+import BookSection from "../../components/Publicationtype/bookSection"
+import Book from "../../components/Publicationtype/book"
+import ConferenceItem from "../../components/Publicationtype/conferenceItem"
+import MagazineArticle from "../../components/Publicationtype/magazineArticle"
+import Other from "../../components/Publicationtype/other"
+import Report from "../../components/Publicationtype/report"
+import Software from "../../components/Publicationtype/software"
+import Thesis from "../../components/Publicationtype/thesis"
 
 export default function Publikationseinzelansicht (props) {
   const { t } = useTranslation('common') 
