@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './publicationtype.module.scss';
-import All from './all'
+import All from './All'
 import { useTranslation } from 'next-i18next'
 
 const Article = (data) => {
