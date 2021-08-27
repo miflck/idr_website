@@ -6,9 +6,7 @@ import Link from 'next/link'
 import Container from '../../components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import ForschungsfeldElement from '../../components/ForschungsfeldElement/ForschungsfeldElement'
-
-
+import ForschungsfeldElement from '../../components/ForschungsfeldElement/forschungsfeldElement'
 import { AppContext,ACTIONS } from '../../context/state';
 import FilterElement from "../../components/FilterElement/filterElement"
 
