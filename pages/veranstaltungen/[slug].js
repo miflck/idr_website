@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../components/Container/container'
 import TextElement from "../../components/TextElement/TextElement";
-import FilterLink from "../../components/FilterLink/FilterLink";
+import FilterLink from "../../components/FilterLink/filterLink";
 
 
 export default function Veranstaltungseinzelansicht (props) {

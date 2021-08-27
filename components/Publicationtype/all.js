@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './publicationtype.module.scss';
 import Link from 'next/link'
-import FilterLink from '../FilterLink/FilterLink';
+import FilterLink from '../FilterLink/filterLink';
 import { useTranslation } from 'next-i18next'
 
 const All = (data) => {

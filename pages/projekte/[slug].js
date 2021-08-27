@@ -5,8 +5,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../components/Container/container'
 import TextElement from '../../components/TextElement/TextElement'
-import ButtonLink from '../../components/ButtonLink/ButtonLink'
-import FilterLink from '../../components/FilterLink/FilterLink'
+import ButtonLink from '../../components/ButtonLink/buttonLink'
+import FilterLink from '../../components/FilterLink/filterLink'
 import { useRouter } from 'next/router'
 
 export default function Projekteinzelansicht (props) {
