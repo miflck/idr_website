@@ -1,10 +1,10 @@
 import { request, PROJEKTE } from "../../lib/datocms";
-import Layout from '../../components/Layout/layout'
-import ListItemProjekt from '../../components/List/listItemProjekt'
+import Layout from '../../Components/Layout/layout'
+import ListItemProjekt from '../../Components/List/listItemProjekt'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import styles from './projekte.module.scss'
-import FilterElement from '../../components/FilterElement/filterElement'
+import FilterElement from '../../Components/FilterElement/filterElement'
 import React, { useState, useEffect,useContext } from 'react'
 import { AppContext,ACTIONS } from '../../context/state';
 

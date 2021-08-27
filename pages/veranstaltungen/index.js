@@ -1,14 +1,14 @@
 import { request,VERANSTALTUNGEN } from "../../lib/datocms"
 import React, { useState, useEffect, useContext } from 'react'
 import styles from './veranstaltungen.module.scss'
-import Layout from '../../components/Layout/layout'
+import Layout from '../../Components/Layout/layout'
 import Link from 'next/link'
-import Container from '../../components/Container/container'
+import Container from '../../Components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import ForschungsfeldElement from '../../components/ForschungsfeldElement/forschungsfeldElement'
+import ForschungsfeldElement from '../../Components/ForschungsfeldElement/forschungsfeldElement'
 import { AppContext,ACTIONS } from '../../context/state';
-import FilterElement from "../../components/FilterElement/filterElement"
+import FilterElement from "../../Components/FilterElement/filterElement"
 
 const Veranstaltungen =(props)=>{
   const {veranstaltungen:{allVeranstaltungs}}=props;

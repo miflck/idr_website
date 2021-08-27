@@ -1,7 +1,7 @@
-import Layout from "../../components/Layout/layout"
-import ListItemPublikation from "../../components/List/listItemPublikation";
+import Layout from "../../Components/Layout/layout"
+import ListItemPublikation from "../../Components/List/listItemPublikation";
 import styles from './publikationen.module.scss'
-import Container from "../../components/Container/container";
+import Container from "../../Components/Container/container";
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect } from 'react'

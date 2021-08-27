@@ -1,12 +1,12 @@
-import Layout from '../../components/Layout/layout'
+import Layout from '../../Components/Layout/layout'
 import { request, MENSCHEINZEL } from "../../lib/datocms";
 import styles from './team.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
-import Container from '../../components/Container/container'
-import ButtonLink from '../../components/ButtonLink/buttonLink'
-import FilterLink from '../../components/FilterLink/filterLink'
+import Container from '../../Components/Container/container'
+import ButtonLink from '../../Components/ButtonLink/buttonLink'
+import FilterLink from '../../Components/FilterLink/filterLink'
 
 export default function Menscheinzelansicht (props) {
   const { t } = useTranslation('common')

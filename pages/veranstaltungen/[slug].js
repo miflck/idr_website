@@ -1,11 +1,11 @@
-import Layout from "../../components/Layout/layout"
+import Layout from "../../Components/Layout/layout"
 import { request, VERANSTALTUNGEINZEL } from "../../lib/datocms";
 import styles from './veranstaltungen.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Container from '../../components/Container/container'
-import TextElement from "../../components/TextElement/textElement";
-import FilterLink from "../../components/FilterLink/filterLink";
+import Container from '../../Components/Container/container'
+import TextElement from "../../Components/TextElement/textElement";
+import FilterLink from "../../Components/FilterLink/filterLink";
 
 
 export default function Veranstaltungseinzelansicht (props) {

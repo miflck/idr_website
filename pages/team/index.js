@@ -1,12 +1,12 @@
 import { request,MENSCHEN } from "../../lib/datocms";
 import styles from './team.module.scss'
-import Layout from '../../components/Layout/layout'
+import Layout from '../../Components/Layout/layout'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect, useContext } from 'react'
-import FilterElement from "../../components/FilterElement/filterElement";
-import ForschungsfeldElement from "../../components/ForschungsfeldElement/forschungsfeldElement";
+import FilterElement from "../../Components/FilterElement/filterElement";
+import ForschungsfeldElement from "../../Components/ForschungsfeldElement/forschungsfeldElement";
 import { AppContext,ACTIONS } from '../../context/state';
 
 const Team =(props)=>{

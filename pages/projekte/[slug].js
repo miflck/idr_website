@@ -1,12 +1,12 @@
-import Layout from "../../components/Layout/layout"
+import Layout from "../../Components/Layout/layout"
 import { request, PROJEKTEINZEL, ALLPROJEKTE } from "../../lib/datocms";
 import styles from './projekte.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Container from '../../components/Container/container'
-import TextElement from '../../components/TextElement/textElement'
-import ButtonLink from '../../components/ButtonLink/buttonLink'
-import FilterLink from '../../components/FilterLink/filterLink'
+import Container from '../../Components/Container/container'
+import TextElement from '../../Components/TextElement/textElement'
+import ButtonLink from '../../Components/ButtonLink/buttonLink'
+import FilterLink from '../../Components/FilterLink/filterLink'
 import { useRouter } from 'next/router'
 
 export default function Projekteinzelansicht (props) {

@@ -1,15 +1,15 @@
 import { request, NEWS } from "../lib/datocms";
 import styles from './news.module.scss'
-import Layout from '../components/Layout/layout'
+import Layout from '../Components/Layout/layout'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
-import TextElement from '../components/TextElement/textElement'
+import TextElement from '../Components/TextElement/textElement'
 import React, { useState, useEffect,useContext } from 'react'
-import ForschungsfeldElement from '../components/ForschungsfeldElement/forschungsfeldElement'
+import ForschungsfeldElement from '../Components/ForschungsfeldElement/forschungsfeldElement'
 
 import { AppContext,ACTIONS } from '../context/state';
-import FilterElement from "../components/FilterElement/filterElement";
+import FilterElement from "../Components/FilterElement/filterElement";
 
 export default function Home(props) {
   const {newsseite:{newsseite:{links}}}=props;

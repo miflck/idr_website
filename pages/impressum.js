@@ -1,11 +1,11 @@
 // import { request,EDITORIALTEXTE } from "../lib/datocms";
 import styles from './impressum.module.scss'
-import Layout from '../components/Layout/layout'
-import Container from '../components/Container/container'
+import Layout from '../Components/Layout/layout'
+import Container from '../Components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import TextElement from '../components/TextElement/textElement'
-import ButtonLink from '../components/ButtonLink/buttonLink'
+import TextElement from '../Components/TextElement/textElement'
+import ButtonLink from '../Components/ButtonLink/buttonLink'
 import React, { useState, useEffect } from 'react'
 
 

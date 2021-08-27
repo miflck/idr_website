@@ -1,20 +1,20 @@
-import Layout from "../../components/Layout/layout"
-import Container from "../../components/Container/container";
+import Layout from "../../Components/Layout/layout"
+import Container from "../../Components/Container/container";
 import arborAPI from "../../lib/export_arbor_JSON"
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Article from "../../components/Publicationtype/article"
-import AudioVisual from "../../components/Publicationtype/audioVisual"
-import BookSection from "../../components/Publicationtype/bookSection"
-import Book from "../../components/Publicationtype/book"
-import ConferenceItem from "../../components/Publicationtype/conferenceItem"
-import MagazineArticle from "../../components/Publicationtype/magazineArticle"
-import Other from "../../components/Publicationtype/other"
-import Report from "../../components/Publicationtype/report"
-import Software from "../../components/Publicationtype/software"
-import Thesis from "../../components/Publicationtype/thesis"
+import Article from "../../Components/Publicationtype/article"
+import AudioVisual from "../../Components/Publicationtype/audioVisual"
+import BookSection from "../../Components/Publicationtype/bookSection"
+import Book from "../../Components/Publicationtype/book"
+import ConferenceItem from "../../Components/Publicationtype/conferenceItem"
+import MagazineArticle from "../../Components/Publicationtype/magazineArticle"
+import Other from "../../Components/Publicationtype/other"
+import Report from "../../Components/Publicationtype/report"
+import Software from "../../Components/Publicationtype/software"
+import Thesis from "../../Components/Publicationtype/thesis"
 
 export default function Publikationseinzelansicht (props) {
   const { t } = useTranslation('common') 
