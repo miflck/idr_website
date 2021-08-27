@@ -5,7 +5,7 @@ import Container from '../components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import TextElement from '../components/TextElement/TextElement'
-import ButtonLink from '../components/ButtonLink/ButtonLink'
+import ButtonLink from '../components/ButtonLink/buttonLink'
 import React, { useState, useEffect } from 'react'
 
 import { useRouter } from 'next/router'
