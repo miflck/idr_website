@@ -1,0 +1,62 @@
+.forschungsfeldwrapper {
+    font-size: var(--fontsizesmall);
+    line-height: var(--lineheightnormal);
+    text-transform: uppercase;
+    cursor: pointer;
+    .forschungsfeld {
+        a {
+            border: 1px solid var(--maincolor);
+            border-radius: 20px;
+            width: fit-content;
+            padding: 2px 4px 0px;
+            color: var(--maincolor);
+            background-color: transparent;
+            margin-right: 20px;
+            font-family: "Sang";
+            &:hover {
+                color: var(--maincolor);
+                background-color: var(--secondcolor);
+                cursor: pointer;
+                margin-left: 0;
+                animation: none;
+            }
+        }
+    }
+    .forschungsfeldaktiv {
+        a {
+            border-radius: 20px;
+            width: fit-content;
+            padding: 2px 4px 0px;
+            background-color: var(--maincolor);
+            color: var(--secondcolor);
+            border: 1px solid var(--maincolor);
+            margin-right: 20px;
+            cursor: pointer;
+            font-family: "Sang";
+        }
+    }
+    .forschungsfeld:nth-child(2) {
+        margin-left: 20px;
+    }
+    &:hover {
+        // color: var(--secondcolor);
+        .forschungsfeld {
+            a {
+                border: 1px solid var(--secondcolor);
+                color: var(--secondcolor);
+                &:hover {
+                    color: var(--maincolor) !important;
+                }
+            }
+        }
+        .forschungsfeldaktiv {
+            a {
+                background-color: var(--secondcolor);
+                color: var(--maincolor) !important;
+                border: 1px solid var(--secondcolor);
+                margin-left: 0;
+                animation: none;
+            }
+        }
+    }
+}

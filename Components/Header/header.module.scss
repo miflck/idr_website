@@ -1,0 +1,30 @@
+.headercontainer {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--secondcolor);
+    // .seitentitel {
+    //     position: absolute;
+    //     left: 45%;
+    // }
+    .headertitle {
+        padding: var(--padding);
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--maincolor);
+        font-size: var(--fontsizenormal);
+        text-transform: uppercase;
+        line-height: var(--lineheightnormal);
+        color: var(--maincolor); 
+        margin: 0;
+        user-select: none;
+        a {
+            font-family: "Sang";
+            color: var(--maincolor); 
+        &:hover {
+            color: var(--maincolor); 
+            margin-left: 0;
+            animation: none;
+        }
+        }
+    }
+}

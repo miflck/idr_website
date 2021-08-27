@@ -1,0 +1,13 @@
+.filterlink {
+    text-transform: uppercase;
+    font-size: var(--fontsizesmall);
+    line-height: var(--lineheightnormal);
+    border: 1px solid var(--maincolor);
+    border-radius: 20px;
+    padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
+    cursor: pointer;
+    &:hover {
+        color: var(--secondcolor);
+        background-color: var(--maincolor);
+    }
+}

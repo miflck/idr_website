@@ -1,0 +1,98 @@
+.footerwrapper {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: calc(var(--padding)/2);
+    background-color: var(--secondcolor);
+    border-top: 1px solid var(--maincolor);
+    font-size: var(--fontsizesmall);
+    line-height: var(--lineheighsmall);
+    text-transform: uppercase;
+    color: var(--maincolor);
+    z-index: 1000;
+    a {
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        padding: 2px 4px 0px;
+        margin-right: var(--padding);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: "Sang";
+        color: var(--maincolor);
+        &.activelanguage {
+            background: var(--maincolor);
+            color: var(--secondcolor);
+        }
+        &:hover {
+            color: var(--secondcolor);
+            background-color: var(--maincolor);
+            margin-left: 0;
+            animation: none;
+        }
+    }
+
+    .impressum {
+        cursor: pointer;
+        position: absolute;
+        float: right;
+        position: relative;
+    }
+    // .buttonsmaincolor {
+    //         cursor: pointer;
+    //         // position: absolute;
+    //         float: right;
+    //         position: relative;
+    //         a {
+    //             background-color: var(--maincolor);
+    //             color: var(--maincolor);
+    //             -webkit-touch-callout: none;
+    //             -webkit-user-select: none;
+    //             -khtml-user-select: none;
+    //             -moz-user-select: none;
+    //             -ms-user-select: none;
+    //             user-select: none;
+    //         }
+    //         .farbauswahlmaincolor {
+    //             display: none;
+    //         }
+    //         &.open {
+    //             .farbauswahlmaincolor {
+    //                 display: block;
+    //             }
+    //         }
+    //     }
+
+    //     .buttonssecondcolor {
+    //         cursor: pointer;
+    //         float: right;
+    //         position: relative;
+    //             a {
+    //                 background-color: var(--secondcolor);
+    //                 color: var(--secondcolor);
+    //                 -webkit-touch-callout: none;
+    //                 -webkit-user-select: none;
+    //                 -khtml-user-select: none;
+    //                 -moz-user-select: none;
+    //                 -ms-user-select: none;
+    //                 user-select: none;
+    //             }
+    //             .farbauswahlsecondcolor {
+    //                 display: none;
+    //             }
+    //             &.open {
+    //                 .farbauswahlsecondcolor {
+    //                     display: block;
+    //                 }
+    //             }
+    //         }
+        
+
+        
+        
+    
+}
