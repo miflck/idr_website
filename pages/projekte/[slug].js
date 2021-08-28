@@ -182,7 +182,6 @@ export async function getStaticProps({params, locale}) {
     const data = await request({
         query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });
-
     return {
       props: {
         data,   
@@ -190,6 +189,7 @@ export async function getStaticProps({params, locale}) {
         locale,
         ...await serverSideTranslations(locale, ['common']),
       },
+      revalidate: 60,
     }
   }
 
