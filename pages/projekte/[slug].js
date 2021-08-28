@@ -207,8 +207,19 @@ export async function getStaticPaths({locales}) {
     }, 
     locale})
 
+
+
+  paths.push({ 
+    params: { 
+      slug:"geldschein-zur-visuellen-rhetorik-des-geldes"
+    }, 
+    locale})
+
   })
   
+
+
+ 
   // Irgendwie so würde man wohl die pfade finden
   /*
   const data = await request({
