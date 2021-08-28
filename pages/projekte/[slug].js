@@ -199,15 +199,15 @@ export async function getStaticProps({params, locale}) {
 export async function getStaticPaths({locales}) {
   const paths = [] 
   
-  /*locales.forEach((locale, i) => {
+  locales.forEach((locale, i) => {
 
   paths.push({ 
     params: { 
-      slug:"mikafi-intelligentes-kaffeeroesten-zuhause"
+      slug:"mikafiintelligenteskaffeeroestenzuhause"
     }, 
     locale})
 
-  })*/
+  })
   
   // Irgendwie so würde man wohl die pfade finden
   /*
@@ -229,6 +229,6 @@ export async function getStaticPaths({locales}) {
   }
   )*/
     return {
-        paths, fallback: true 
+        paths, fallback: false 
     }
 }
