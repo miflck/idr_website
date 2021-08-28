@@ -198,7 +198,15 @@ export async function getStaticProps({params, locale}) {
 //-> nicht ganz, die brachen wir, falls wir auf dem server prerendern wollen. also statische seiten generieren, damit die maschine weiss, welche seiten zu generieren sind glaubs
 export async function getStaticPaths({locales}) {
   const paths = [] 
+  locales.forEach((locale, i) => {
 
+  paths.push({ 
+    params: { 
+      slug:"mikafi-intelligentes-kaffeeroesten-zuhause"
+    }, 
+    locale})
+  })
+  
   // Irgendwie so würde man wohl die pfade finden
   /*
   const data = await request({
