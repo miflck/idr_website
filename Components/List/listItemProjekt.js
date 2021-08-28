@@ -63,7 +63,7 @@ const ListItemProjekt =(props)=>{
                 <Container>
                     <div className={styles.content}>
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
-                        <Link href={href}>
+                        <Link href={href}  as={href}>
                             <div className={styles.titel}>
                                 {props.titel}
                             </div>
