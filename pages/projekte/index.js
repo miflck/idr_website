@@ -10,7 +10,7 @@ import { AppContext,ACTIONS } from '../../context/state';
 
 
 export default function Projekte(props) {
-  // console.log("Props from Projekte",props)
+   console.log("Props from Projekte",props)
   const {projekte:{allProjekts}}=props;
   const {projekte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
