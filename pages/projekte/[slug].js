@@ -28,6 +28,7 @@ export default function Projekteinzelansicht (props) {
 
     const router = useRouter()
     if(router.isFallback){
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Fallback")
       return <div>Loading…</div>
     }
 
@@ -185,6 +186,9 @@ export async function getStaticProps({params, locale}) {
     const data = await request({
         query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });
+
+      console.log("Generating", params)
+
     return {
       props: {
         data,   
@@ -200,9 +204,10 @@ export async function getStaticProps({params, locale}) {
 //-> nicht ganz, die brachen wir, falls wir auf dem server prerendern wollen. also statische seiten generieren, damit die maschine weiss, welche seiten zu generieren sind glaubs
 export async function getStaticPaths({locales}) {
   const paths = [] 
-  
+  /*
   locales.forEach((locale, i) => {
 
+  
   paths.push({ 
     params: { 
       slug:"mikafiintelligenteskaffeeroestenzuhause"
@@ -218,7 +223,7 @@ export async function getStaticPaths({locales}) {
     locale})
 
   })
-  
+  */
 
 
  
@@ -242,6 +247,6 @@ export async function getStaticPaths({locales}) {
   }
   )*/
     return {
-        paths, fallback: 'blocking'
+      paths: [], fallback: true
     }
 }
