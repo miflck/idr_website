@@ -183,11 +183,13 @@ else{
 }
 
 export async function getStaticProps({params, locale}) {
+
+  console.log("*****************", params)
+
     const data = await request({
         query: PROJEKTEINZEL,variables: { slug:params.slug, locale:locale},
       });
 
-      console.log("Generating", params)
 
     return {
       props: {
@@ -203,7 +205,7 @@ export async function getStaticProps({params, locale}) {
 // die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
 //-> nicht ganz, die brachen wir, falls wir auf dem server prerendern wollen. also statische seiten generieren, damit die maschine weiss, welche seiten zu generieren sind glaubs
 export async function getStaticPaths({locales}) {
-  const paths = [] 
+ // const paths = [] 
   /*
   locales.forEach((locale, i) => {
 
