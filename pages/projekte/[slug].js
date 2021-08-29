@@ -27,6 +27,9 @@ export default function Projekteinzelansicht (props) {
     }=""}=""}=props || ""
 
     const router = useRouter()
+    if(router.isFallback){
+      return <div>Loading…</div>
+    }
 
     if(props.data) {
       let MitarbeitendenElement;
