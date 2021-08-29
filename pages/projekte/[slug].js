@@ -1,5 +1,5 @@
 import Layout from "../../Components/Layout/layout"
-import { request, PROJEKTEINZEL, ALLPROJEKTE } from "../../lib/datocms";
+import { request, PROJEKTEINZEL, ALLPROJEKTE,PROJEKTE } from "../../lib/datocms";
 import styles from './projekte.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -205,27 +205,21 @@ export async function getStaticProps({params, locale}) {
 // die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
 //-> nicht ganz, die brachen wir, falls wir auf dem server prerendern wollen. also statische seiten generieren, damit die maschine weiss, welche seiten zu generieren sind glaubs
 export async function getStaticPaths({locales}) {
- // const paths = [] 
-  /*
-  locales.forEach((locale, i) => {
-
+ const paths = [] 
   
-  paths.push({ 
-    params: { 
-      slug:"mikafiintelligenteskaffeeroestenzuhause"
-    }, 
-    locale})
-
-
-
-  paths.push({ 
-    params: { 
-      slug:"geldschein-zur-visuellen-rhetorik-des-geldes"
-    }, 
-    locale})
-
+ const projekte = await request({
+  query: ALLPROJEKTE,
+});
+  locales.forEach((locale, i) => {
+    projekte.allProjekts.forEach((projekt, j) => {
+      paths.push({ 
+        params: { 
+          slug:projekt.slug
+        }, 
+        locale})
+    })
   })
-  */
+  
 
 
  
@@ -249,6 +243,6 @@ export async function getStaticPaths({locales}) {
   }
   )*/
     return {
-      paths: [], fallback: true
+      paths, fallback: false
     }
 }
