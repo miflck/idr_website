@@ -6,7 +6,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect, useContext } from 'react'
 import FilterElement from "../../Components/FilterElement/filterElement";
-import ForschungsfeldElement from "../../Components/ForschungsfeldElement/forschungsfeldElement";
+// import ForschungsfeldElement from "../../Components/ForschungsfeldElement/forschungsfeldElement";
+import ListItemTeam from "../../Components/List/listItemTeam"
 import { AppContext,ACTIONS } from '../../context/state';
 
 const Team =(props)=>{
@@ -135,61 +136,11 @@ const Team =(props)=>{
 
            <div className={styles.teamcontainer}>
                 {filterdList.map((mensch) => {
-                    let href=`/team`
-                    if(mensch.slug!=""){
-                        href+=`/${mensch.slug}`
-                    }
-
-                    // let colors=[];
-                    // mensch.forschungsfeld.map((forschungsfeld) => {
-                    // colors.push(forschungsfeld.colour.hex)
-                    // })
-
-                    // let background_style={
-                    //     background: `linear-gradient(to right,"white"})`,
-                    //     animation:`${styles.fadeOut} 0.5s ease`
-                    // };
-
-                    // let background_style_small={
-                    //     background: `linear-gradient(to right,"white"})`,
-                    //     animation:`${styles.fadeOut} 0.5s ease`,
-                    // }; 
-
-                    // if(state.showGradient || showHoverGradient){
-                    //     background_style={
-                    //         background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-                    //         opacity:1,
-                    //         animation:` ${styles.fadeIn} 0.5s ease`
-                    //       }
-              
-                    // background_style_small={
-                    //     background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
-                    //     opacity:1,
-                    //     animation:`${styles.fadeIn} 0.5s ease`
-                    //   }
-                    // }
-                  
                     return(
-                      <div key={mensch.id} className={styles.menschwrapper} 
-                      // style={background_style_small}  finde es hier bitzli ugly, du so?
-                      // onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
-                      >
-                        <Link href={href}>
-                          <span>
-                            <img 
-                              className={styles.portrait}
-                              src={mensch.portrait.url} 
-                              alt={mensch.portrait.alt} 
-                            />
-                            <div className={styles.name}>
-                                {mensch.name}
-                            </div>
-                          </span>
-                        </Link>
-                        <ForschungsfeldElement {...mensch} filter={filter} addMoreItem={addMoreItem} showHoverGradient={showHoverGradient}/>
-                      </div>
-                
-                    )})}
+                      <ListItemTeam {...mensch} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
+                      handleShowGradient={handleShowGradient} key={mensch.name}/>
+                    )
+                })}
           </div>
       </Layout>
     )

@@ -43,8 +43,7 @@ export default function ForschungsfeldElement (props) {
             }
         }
 
-
-    }else {
+    } else {
         let colors=[];
             props.forschungsfeld.map((forschungsfeld) => {
                 colors.push(forschungsfeld.colour.hex)

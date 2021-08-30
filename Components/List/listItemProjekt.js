@@ -10,7 +10,6 @@ const ListItemProjekt =(props)=>{
     const {state}=globalState
     const {dispatch}=globalState
 
-
     const [showHoverGradient,setHoverGradient]=useState();
 	const handleShowGradient = (val) => { };
 

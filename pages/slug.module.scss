@@ -1,4 +1,13 @@
+.hintergrund {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    // border: blue 1px solid;
+}
 .slugwrapper {
+    z-index: 1;
+    position: relative;
     min-height: inherit;
     padding: var(--padding); 
     margin-bottom: var(--padding);

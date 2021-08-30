@@ -2,13 +2,14 @@ import { request,VERANSTALTUNGEN } from "../../lib/datocms"
 import React, { useState, useEffect, useContext } from 'react'
 import styles from './veranstaltungen.module.scss'
 import Layout from '../../Components/Layout/layout'
-import Link from 'next/link'
-import Container from '../../Components/Container/container'
+// import Link from 'next/link'
+// import Container from '../../Components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import ForschungsfeldElement from '../../Components/ForschungsfeldElement/forschungsfeldElement'
+// import ForschungsfeldElement from '../../Components/ForschungsfeldElement/forschungsfeldElement'
 import { AppContext,ACTIONS } from '../../context/state';
 import FilterElement from "../../Components/FilterElement/filterElement"
+import ListItemVeranstaltung from "../../Components/List/listItemVeranstaltung"
 
 const Veranstaltungen =(props)=>{
   const {veranstaltungen:{allVeranstaltungs}}=props;
@@ -110,45 +111,10 @@ const Veranstaltungen =(props)=>{
         
         <div className={styles.veranstaltungswrapper} >
             {filterdList.map((veranstaltung) => {
-              let href=`/veranstaltungen`
-              if(veranstaltung.slug!=""){
-                  href+=`/${veranstaltung.slug}`
-              }
               
-                const date = new Date(veranstaltung.datum).toLocaleString([], {
-                year: 'numeric', month: 'numeric', day: 'numeric',
-                hour: '2-digit', minute: '2-digit'});
-
-                let background_style={};
-                let background_style_small={}; 
-
-                let colors=[];
-                veranstaltung.forschungsfeld.map((forschungsfeld) => {
-                  colors.push(forschungsfeld.colour.hex)
-                })
-                    
-                if(state.showGradient){
-                    background_style={
-                    background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-                    }
-                    background_style_small={
-                    background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
-                    }
-                }
-                
                     return(
-                      <div className={styles.veranstaltungscontent} key={veranstaltung.id} style={background_style_small}>
-                          <Container>
-                              <div className={styles.datum}>{date} {t("Uhr")}</div>
-                              <Link href={href}>
-                                <div className={styles.title}>{veranstaltung.titel}</div>
-                              </Link>
-                              <div className={styles.title}>{veranstaltung.untertitel}</div>
-
-                              <ForschungsfeldElement {...veranstaltung} filter={filter} addMoreItem={addMoreItem} />
-                          
-                          </Container>
-                        </div>
+                      <ListItemVeranstaltung {...veranstaltung} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
+                      handleShowGradient={handleShowGradient} key={veranstaltung.id}/>
                     )
             })}
         </div>

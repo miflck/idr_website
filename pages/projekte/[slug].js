@@ -88,7 +88,10 @@ export default function Projekteinzelansicht (props) {
 
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-    <div className={styles.slugwrapper} style={background_style}>
+    
+    <div className={styles.hintergrund} style={background_style}></div>
+    
+    <div className={styles.slugwrapper}>
       <Container>
         <div className={styles.titel}>
           {titel}

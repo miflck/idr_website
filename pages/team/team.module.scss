@@ -2,6 +2,25 @@
 @import "../../Components/FilterElement/filterelement.module.scss";
 @import "../slug.module.scss";
 
+// @keyframes fadeIn {
+//     0% {
+//         opacity: 0;
+//     }
+//     to {
+//         opacity: 1;
+//     }
+//   }
+  
+//   @keyframes fadeOut {
+//     0% {
+//         opacity: 1;
+//     }
+//     to {
+//         opacity: 0;
+//     }
+//   }
+
+
 @mixin desktop {
     @media (min-width: $breakpointSmall) {
       @content
@@ -11,14 +30,15 @@
 .teamcontainer {
     .menschwrapper {
         break-inside: avoid;
-        display:inline-table;
-        width: 100%;
+        display: inline-table;
+        width: calc(100% / var(--columnwidth));
         color: var(--maincolor);
         padding: var(--padding);
         outline: 1px solid var(--maincolor);
         background-color: var(--secondcolor);
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
+        min-height: 356px;
         .portrait {
             margin-bottom: var(--padding);
             display: block;
@@ -79,6 +99,7 @@
 
         &:hover{
             background-color: var(--maincolor);
+            outline: 1px solid var(--maincolor);
             color: var(--secondcolor);
             .forschungsfeldwrapper {
                 .forschungsfeld {
@@ -101,6 +122,6 @@
             }
         }
     }
-        columns: var(--columnwidth) 0;
-        column-gap: 0px;
+        // columns: var(--columnwidth) 0;
+        // column-gap: 0px;
 }
