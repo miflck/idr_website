@@ -1,5 +1,5 @@
 import Layout from '../../Components/Layout/layout'
-import { request, MENSCHEINZEL } from "../../lib/datocms";
+import { request, MENSCHEINZEL,ALLMENSCHEN } from "../../lib/datocms";
 import styles from './team.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -200,9 +200,24 @@ export async function getStaticProps({params, locale}) {
   }
 
 // die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
-export async function getStaticPaths() {
+export async function getStaticPaths({locales}) {
     const paths = []
+
+    const m = await request({
+      query: ALLMENSCHEN,
+    });
+    
+      locales.forEach((locale, i) => {
+        m.allMenschens.forEach((mensch, j) => {
+          paths.push({ 
+            params: { 
+              slug:mensch.slug
+            }, 
+            locale})
+        })
+      })
+
     return {
-        paths, fallback: true 
+        paths, fallback: false 
     }
 }

@@ -22,6 +22,9 @@ export default function Publikationseinzelansicht (props) {
   publicationdata = arborAPI;
 
   const router = useRouter()
+  if(router.isFallback){
+    return <div>Loading…</div>
+  }
   // console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
   
   var data = publicationdata.filter(v => v.eprintid.toString() === router.query.slug )[0];

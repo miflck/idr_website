@@ -1,5 +1,5 @@
 import Layout from "../../Components/Layout/layout"
-import { request, VERANSTALTUNGEINZEL } from "../../lib/datocms";
+import { request, VERANSTALTUNGEINZEL,ALLVERANSTALTUNGEN } from "../../lib/datocms";
 import styles from './veranstaltungen.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -7,6 +7,7 @@ import Container from '../../Components/Container/container'
 import TextElement from "../../Components/TextElement/textElement";
 import FilterLink from "../../Components/FilterLink/filterLink";
 
+import { useRouter } from 'next/router'
 
 export default function Veranstaltungseinzelansicht (props) {
   const {data:{veranstaltung:{
@@ -21,6 +22,13 @@ export default function Veranstaltungseinzelansicht (props) {
   }=""}=""}=props || ""
   
     const { t } = useTranslation('common')
+
+    const router = useRouter()
+    if(router.isFallback){
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Fallback")
+      return <div>Loading…</div>
+    }
+
 
     const date = new Date(datum).toLocaleString([], {
       year: 'numeric', month: 'numeric', day: 'numeric',
@@ -104,9 +112,25 @@ export async function getStaticProps({params, locale}) {
   }
 
 // die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
-export async function getStaticPaths() {
+export async function getStaticPaths({locales}) {
     const paths = []
-    return {
-        paths, fallback: true 
-    }
+    const v = await request({
+      query: ALLVERANSTALTUNGEN,
+    });
+
+    console.log("v",v)
+    
+      locales.forEach((locale, i) => {
+        v.allVeranstaltungs.forEach((veranstaltung, j) => {
+          paths.push({ 
+            params: { 
+              slug:veranstaltung.slug
+            }, 
+            locale})
+        })
+      })
+      return {
+        paths, fallback: true
+      }
+
 }
