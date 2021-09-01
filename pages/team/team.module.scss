@@ -69,7 +69,7 @@
                     color: var(--maincolor);
                     background-color: transparent;
                     margin-right: 20px;
-                    font-family: "Sang";
+                   // font-family: "Sang";
                     &:hover {
                         color: var(--maincolor) !important;
                         background-color: var(--secondcolor);
@@ -88,7 +88,7 @@
                     border: 1px solid var(--maincolor);
                     margin-right: 20px;
                     cursor: pointer;
-                    font-family: "Sang";
+                   // font-family: "Sang";
                     &:hover {
                         margin-left: 0;
                         animation: none;

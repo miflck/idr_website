@@ -6,18 +6,21 @@
   }
 }
 
+
+@font-face {
+  font-family: "Sang";
+  font-weight: normal;
+  font-style: italic, oblique;
+  src: url("../assets/SangBleuKingdom-RegularItalic.otf") format("opentype");
+}
+
 @font-face {
   font-family: "Sang";
   font-weight: normal;
   font-style: normal;
   src: url("../assets/SangBleuKingdom-Regular.otf") format("opentype");
 }
-@font-face {
-  font-family: "SangItalic";
-  font-weight: normal;
-  font-style: normal;
-  src: url("../assets/SangBleuKingdom-RegularItalic.otf") format("opentype");
-}
+
 
 html,
 body {
@@ -35,7 +38,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  font-family: "SangItalic";
+  font-style: italic;
   color: var(--maincolor);
   &:hover {
     animation: smoothslidein 0.3s forwards;

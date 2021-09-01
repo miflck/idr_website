@@ -18,7 +18,8 @@
                 color: var(--maincolor);
                 background-color: transparent;
                 margin-right: 20px;
-                font-family: "Sang";
+                //font-family: "Sang";
+                font-style: normal;
                 &:hover {
                     color: var(--secondcolor);
                     background-color: var(--maincolor);
@@ -33,7 +34,8 @@
                 background-color: var(--maincolor);
                 color: var(--secondcolor);
                 border: 1px solid var(--maincolor);
-                font-family: "Sang";
+                //font-family: "Sang";
+                font-style: normal;
             }
         }
     }
@@ -49,7 +51,7 @@
             border-radius: 20px;
             width: fit-content;
             padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
-            font-family: "Sang";
+           // font-family: "Sang";
             &:hover {
                 margin-left: 0;
                 animation: none;
@@ -83,7 +85,7 @@
         .inputfeld {
             display: block;
             height: 1.25em;
-            font-family: "Sang";
+            //font-family: "Sang";
             color: var(--maincolor);
             background-color: var(--secondcolor);
             border: 1px solid var(--maincolor);

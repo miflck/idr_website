@@ -3,7 +3,10 @@
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     cursor: pointer;
+    border: solid thin aqua;
     .forschungsfeld {
+        border: solid thin green;
+
         a {
             border: 1px solid var(--maincolor);
             border-radius: 20px;
@@ -12,7 +15,6 @@
             color: var(--maincolor);
             background-color: transparent;
             margin-right: 20px;
-            font-family: "Sang";
             &:hover {
                 color: var(--maincolor);
                 background-color: var(--secondcolor);
@@ -32,7 +34,8 @@
             border: 1px solid var(--maincolor);
             margin-right: 20px;
             cursor: pointer;
-            font-family: "Sang";
+            //font-family: "Sang";
+            font-style: normal;
         }
     }
     .forschungsfeld:nth-child(2) {
