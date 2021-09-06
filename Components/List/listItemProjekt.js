@@ -41,7 +41,7 @@ const ListItemProjekt =(props)=>{
             animation:`${styles.fadeOut} 0.5s ease`,
         }; 
 
-        if(state.showGradient || showHoverGradient){
+        if(state.showGradient || showHoverGradient || props.filter.length > 0){
             background_style={
                 background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
                 opacity:1,

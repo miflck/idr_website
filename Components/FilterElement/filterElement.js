@@ -26,28 +26,37 @@ export default function FilterElement (props) {
                              filtertitel = forschungsfeld.titel;
                            }
 
-                          let btn_class;
-                          if(props.filter.includes(filtertitel)) {
-                            btn_class = styles.forschungsfeldaktiv
-                          }
-                          else {
-                            btn_class = styles.forschungsfeld
-                          }
-
-                          
-                          let background_style_small;
-                          // if(props.showHoverGradient) {
+                           let background_style_small;
+                          /*if(props.showHoverGradient) {
+                            
                             background_style_small = {
                             // background: `linear-gradient(to right, ${forschungsfeld.colour.hex}, white)`,
                             background: `${forschungsfeld.colour.hex}`,
                             opacity: 1,
                             // animation: `${styles.fadeIn} 0.5s ease`
                             }
-                          // } else {
-                          //   background_style_small ={
-                          //     background: 'white',
-                          //   }
-                          // }
+                          } else {
+                            background_style_small ={
+                              background: 'white',
+                            }
+                          }*/
+
+                          let btn_class;
+                          if(props.filter.includes(filtertitel)) {
+                            btn_class = styles.forschungsfeldaktiv
+
+                            background_style_small = {
+                             background: `${forschungsfeld.colour.hex}`,
+                              opacity: 1,
+                              // animation: `${styles.fadeIn} 0.5s ease`
+                              }
+                          }
+                          else {
+                            btn_class = styles.forschungsfeld
+                          }
+
+                          
+                          
                          
                           return(
                             <span className={btn_class}>
