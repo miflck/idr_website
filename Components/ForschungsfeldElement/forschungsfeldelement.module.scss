@@ -3,10 +3,13 @@
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     cursor: pointer;
-    border: solid thin aqua;
-    .forschungsfeld {
-        border: solid thin green;
+    // border: solid thin aqua;
+    // width: max-content;
+    break-inside: auto;
 
+    .forschungsfeld {
+        // border: solid thin green;
+        margin-right: 20px;
         a {
             border: 1px solid var(--maincolor);
             border-radius: 20px;
@@ -14,7 +17,7 @@
             padding: 2px 4px 0px;
             color: var(--maincolor);
             background-color: transparent;
-            margin-right: 20px;
+            font-style: normal;
             &:hover {
                 color: var(--maincolor);
                 background-color: var(--secondcolor);
@@ -26,6 +29,7 @@
     }
     .forschungsfeldaktiv {
         a {
+            font-style: normal;
             border-radius: 20px;
             width: fit-content;
             padding: 2px 4px 0px;

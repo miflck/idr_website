@@ -27,7 +27,7 @@ const ListItemTeam =(props)=>{
             animation:`${styles.fadeOut} 0.5s ease`,
         }; 
 
-        if(state.showGradient || showHoverGradient){
+        if(state.showGradient || showHoverGradient || props.filter.length > 0){
          background_style_small={
             background: `linear-gradient(to right, ${colors[1]}, ${colors[0] || "white"})`,
             opacity:1,

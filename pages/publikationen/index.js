@@ -7,6 +7,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState, useEffect } from 'react'
 import arborAPI from "../../lib/export_arbor_JSON"
 import { useRouter } from 'next/router'
+import FilterElement from "../../Components/FilterElement/filterElement";
+import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 
 
 export default function Publikationen(props) {
@@ -59,9 +61,9 @@ function filterBy(data, filterterms) {
 
 
   useEffect(() => {
-    console.log("use effect filter",filter)
+    // console.log("use effect filter",filter)
     setFilterdList(filterBy(publicationdata, filter) )
-    console.log("filter publi index", filter)
+    // console.log("filter publi index", filter)
   },[filter])
 
   
@@ -82,7 +84,8 @@ function filterBy(data, filterterms) {
 
   /*
 
-  //geht noch nicht, andere Strukturen, mag nicht mehr
+  //geht noch nicht, andere Strukturen, andere Loops
+  aber component ist schon mal drin zu SuchFeldElement
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
   function searchInput(data, inputvalue,filterfields) {
     console.log("search", data)
@@ -129,63 +132,20 @@ function filterBy(data, filterterms) {
   setFilterdList(searchInput(publicationdata,search,filterfields));
   },[search])
   */
-  const [open,setSearchbarOpen] = useState(false)
-  const handleOnClick=(open)=>{
-      setSearchbarOpen(open => !open)
-  }
 
-//hier stehen lassen, da es ein loop weniger ist, um an die typetitles zu kommen und so ists einfacher als nochmals mit if() blabla
-  let FilterElement;
-  if(filter) {
-    FilterElement =  <div className={styles.filterfeldwrapper} >
-                      <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")} </a> </div>
-                      <div className={styles.filterauflistung}>
-                        {publicationTypes.map((publicationtype) =>{
-                          let btn_class;
-                          var typewithoutunderline = publicationtype.split('_').join(' ');
-                          if(filter.includes(publicationtype)) {
-                            btn_class = styles.forschungsfeldaktiv
-                          }
-                          else {
-                            btn_class = styles.forschungsfeld
-                          }
-                          return(
-                            <span className={btn_class}>
-                              <a 
-                              onClick={() => addMoreItem(publicationtype)}
-                              key={publicationtype.type}
-                              >
-                                {typewithoutunderline} 
-                            </a>
-                            </span>
-                          )})
-                          }
-                      </div>
-                      </div>
-  }
+
+  let neueListe=[];
+  publicationTypes.map((publicationtype) => {
+      neueListe.push(publicationtype)
+  })
 
 
   return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-         <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
-            <input 
-              className={styles.inputfeld}
-              type="text" 
-              placeholder="Suche" 
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <span className={styles.suchemoji} onClick={handleOnClick}> 
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
-                <g>
-                  <circle cx="31.7" cy="31.7" r="27.9"/>
-                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
-                </g>
-              </svg>
-            </span>
-        </div>
-        
-        {FilterElement}
-        {/* <FilterElement props={publicationTypes} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/> */}
+         
+        {/* <SuchFeldElement setSearch={setSearch}/> */}
+       
+        <FilterElement filterarray={neueListe} filter={filter} setFilter={setFilter} addMoreItem={addMoreItem}/>
 
           <div className={styles.listwrapper}>
                   {filterdList.map((publikation) => {

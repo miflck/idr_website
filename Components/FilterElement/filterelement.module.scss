@@ -44,6 +44,7 @@
         margin: var(--paddingtop) var(--padding) 0px;
         cursor: pointer;
         a {
+            font-style: normal;
             color: var(--secondcolor);
             background-color: var(--maincolor);
             //border-style: dotted;
@@ -56,41 +57,6 @@
                 margin-left: 0;
                 animation: none;
             }
-        }
-    }
-}
-
-
-
-.suchfeldwrapper {
-    position: fixed;
-    top: calc(var(--padding)/1.5);
-    right: calc(var(--padding)*2.5);
-    z-index: 150;
-    cursor: pointer;
-    display: flex;
-    flex-grow: 2;
-    .suchemoji{
-        fill: none;
-        stroke: #000;
-        stroke-miterlimit: 10;
-        stroke-width: 7.5px;
-        user-select: none;
-        margin:  0 var(--padding);
-    }
-    .inputfeld {
-        display: none;
-    }
-    &.open {
-        .inputfeld {
-            display: block;
-            height: 1.25em;
-            //font-family: "Sang";
-            color: var(--maincolor);
-            background-color: var(--secondcolor);
-            border: 1px solid var(--maincolor);
-            font-size: var(--fontsizehalf);
-            line-height: var(--lineheighthalf);
         }
     }
 }

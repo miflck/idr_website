@@ -38,7 +38,7 @@ const ListItemVeranstaltung = (props) => {
         animation: `${styles.fadeOut} 0.5s ease`,
     };
 
-    if (state.showGradient || showHoverGradient) {
+    if (state.showGradient || showHoverGradient || props.filter.length > 0) {
         background_style_small = {
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
             opacity: 1,
@@ -59,7 +59,7 @@ const ListItemVeranstaltung = (props) => {
                 <Link href={href}>
                     <div className={styles.title}>{props.titel}</div>
                 </Link>
-                <div className={styles.title}>{props.untertitel}</div>
+                <div className={styles.referentIn}>{props.referentIn}</div>
 
                 <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient} />
 

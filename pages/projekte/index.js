@@ -7,6 +7,7 @@ import styles from './projekte.module.scss'
 import FilterElement from '../../Components/FilterElement/filterElement'
 import React, { useState, useEffect,useContext } from 'react'
 import { AppContext,ACTIONS } from '../../context/state';
+import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 
 
 export default function Projekte(props) {
@@ -77,10 +78,6 @@ const [search, setSearch] = useState('')
 useEffect(() => {
 setFilterdList(searchInput(allProjekts,search));
 },[search])
-const [open,setSearchbarOpen] = useState(false)
-const handleOnClick=(open)=>{
-    setSearchbarOpen(open => !open)
-}
 
 const [black, setColor] = useState(true)
 const changeColor=(black)=> {
@@ -94,24 +91,10 @@ setColor(black => !black)
               colorHexCode={props.colorHexCode} 
               colorHexCodeSecond={props.colorHexCodeSecond}
       >
-        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
-            <input 
-              className={styles.inputfeld}
-              type="text" 
-              placeholder="Suche" 
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <span className={styles.suchemoji} onClick={handleOnClick}> 
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
-                <g>
-                  <circle cx="31.7" cy="31.7" r="27.9"/>
-                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
-                </g>
-              </svg>
-            </span>
-        </div>
+       
+        <SuchFeldElement setSearch={setSearch}/>
 
-       <FilterElement props={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
+       <FilterElement filterarray={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter} />
 
        <div className={styles.listwrapper}>
           {filterdList.map((projekt) => {

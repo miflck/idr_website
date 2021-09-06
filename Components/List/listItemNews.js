@@ -53,7 +53,7 @@ const ListItemNews = (props) => {
         animation: `${styles.fadeOut} 0.5s ease`,
     };
 
-    if (state.showGradient || showHoverGradient) {
+    if (state.showGradient || showHoverGradient || props.filter.length > 0) {
         background_style_small = {
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
             opacity: 1,

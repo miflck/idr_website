@@ -1,4 +1,17 @@
 @import "../Components/FilterElement/filterelement.module.scss";
+
+.editorialintro {
+    padding: var(--padding);
+    border-bottom: 1px solid var(--maincolor);
+    color: var(--maincolor);
+    .titel {
+        text-transform: uppercase;
+        font-size: var(--fontsizenormal);
+        line-height: var(--lineheightnormal);
+        margin-bottom: var(--padding);
+    }
+}
+
 .editorialwrapper {
     padding: var(--padding); 
     border-bottom: 1px solid var(--maincolor);

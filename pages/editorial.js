@@ -1,12 +1,14 @@
-import { request,EDITORIALTEXTE } from "../lib/datocms";
+import { request,EDITORIALTEXTE, EDITORIALINTRO } from "../lib/datocms";
 import styles from './editorial.module.scss'
 import Layout from '../Components/Layout/layout'
 import Container from '../Components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import TextElement from '../Components/TextElement/textElement'
+import FilterElement from '../Components/FilterElement/filterElement'
 import ButtonLink from '../Components/ButtonLink/buttonLink'
 import React, { useState, useEffect } from 'react'
+import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
 
 import { useRouter } from 'next/router'
 
@@ -14,6 +16,7 @@ const Editorial =(props)=>{
   const {editorialtexte:{allEditorials}}=props;
   const {editorialtexte:{allProjekts}}=props;
   const {editorialtexte:{allForschungsfelders}}=props;
+  const {editorialintro}=props;
 
   const { t } = useTranslation('common')
 
@@ -26,7 +29,7 @@ const Editorial =(props)=>{
     deliveredkeyword = router.query.keyword;
     // router.asPath.split(/=/)[1]
     deliveredfilter = deliveredkeyword.split("-").join(" ");
-    console.log("delivered filter", deliveredfilter)
+    // console.log("delivered filter", deliveredfilter)
     // console.log("keyword als filterinput", deliveredkeyword.split("-").join(" "))
   }
 
@@ -59,12 +62,12 @@ const Editorial =(props)=>{
 
     //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
-      console.log("--- filter by", data,filterterms)
+      // console.log("--- filter by", data,filterterms)
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
         return filterterms.every((term)=>{
           return obj.forschungsfeld.some((feld)=>{
-            console.log(term)
+            // console.log(term)
             return feld.titel.toString().includes(term);
           })
         })   
@@ -86,10 +89,10 @@ const Editorial =(props)=>{
 
 
     useEffect(() => {
-      console.log("**** useEffect filter",filter,filter.length, filterdList)
+      // console.log("**** useEffect filter",filter,filter.length, filterdList)
      // setFilterdList (filter.length>0?filterBy(allEditorials, filter):allEditorials ) // filter if any filter is set, else show all 
       setFilterdList (filterBy(allEditorials, filter) ) // filter if any filter is set, else show all 
-      console.log("## result",filterBy(allEditorials, filter))
+      // console.log("## result",filterBy(allEditorials, filter))
     },[filter])
 
     /*
@@ -107,34 +110,6 @@ const Editorial =(props)=>{
       }
     },[search])
 
-    let FilterElement;
-    if(filter) {
-      console.log("Filter",filter)
-      FilterElement =  <div className={styles.filterfeldwrapper} >
-                        <div className={styles.deaktivieren}> <a onClick={() => setFilter([])} > {t("Deaktivieren")}</a> </div>
-                        <div className={styles.filterauflistung}>
-                          {allForschungsfelders.map((forschungsfeld) =>{
-
-                            let btn_class;
-                            if(filter.includes(forschungsfeld.titel)) {
-                              btn_class = styles.forschungsfeldaktiv
-                            }
-                            else {
-                              btn_class = styles.forschungsfeld
-                            }
-                            return(
-                              <span className={btn_class}>
-                                <a 
-                                onClick={() => addMoreItem(forschungsfeld.titel)}
-                                key={forschungsfeld.titel}
-                                > 
-                                  {forschungsfeld.titel} 
-                              </a>
-                              </span>
-                            )})}
-                        </div>
-                        </div>
-    }
 
   // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
   function searchInput(data, inputvalue) {
@@ -155,36 +130,31 @@ const Editorial =(props)=>{
     )
     }
 
-    const [open,setSearchbarOpen] = useState(false)
-    const handleOnClick=(open)=>{
-        setSearchbarOpen(open => !open)
-    }
 
 
     return (
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         
-        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
-            <input 
-              className={styles.inputfeld}
-              type="text" 
-              placeholder="Suche" 
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <span className={styles.suchemoji} onClick={handleOnClick}> 
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
-                <g>
-                  <circle cx="31.7" cy="31.7" r="27.9"/>
-                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
-                </g>
-              </svg>
-            </span>
-        </div>
+        <SuchFeldElement setSearch={setSearch}/>
 
-        {FilterElement}
+        <FilterElement filterarray={allForschungsfelders} filter={filter} setFilter={setFilter} addMoreItem={addMoreItem}/>
+        
+        
+        <div className={styles.editorialintro}>
+          <Container>
+            <div className={styles.titel}> 
+              {editorialintro.editorialeinfHrungstext.titel} 
+            </div>
+            <div className={styles.text}> 
+              <TextElement {...editorialintro.editorialeinfHrungstext.text}/>
+            </div>
+          </Container>
+        </div>
+       
+        
 
         {filterdList.map((editorial) => {
-
+           
           const filterdProjectlist = filterByForschungsfeld(allProjekts, editorial.forschungsfeld[0].id)
 
           let background_style;
@@ -203,6 +173,7 @@ const Editorial =(props)=>{
           return(
                 <div className={styles.editorialwrapper} key={editorial.id} style={background_style}>
                   <Container>
+
                         {editorial.forschungsfeld.map((forschungsfeld) => {
                             return (
                                 <div className={styles.titel} key={forschungsfeld.id} id={forschungsfeld.slug}>{forschungsfeld.titel} </div>
@@ -256,12 +227,16 @@ const Editorial =(props)=>{
 // de mit default alng ersetzten falls die nicht de ist
 export async function getStaticProps({locale}) {
     const editorialtexte = await request({
-        query: EDITORIALTEXTE,  variables: {locale:locale},
-      });
+      query: EDITORIALTEXTE,  variables: {locale:locale},
+    });
+    const editorialintro = await request({
+      query: EDITORIALINTRO,  variables: {locale:locale},
+    });
 
     return {
       props: {
         editorialtexte,   
+        editorialintro,
         ...await serverSideTranslations(locale, ['common']),
       },
     }

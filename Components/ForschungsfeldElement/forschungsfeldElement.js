@@ -11,7 +11,7 @@ export default function ForschungsfeldElement (props) {
             if(props.filter) {
                 let hover_class = { color: 'var(--maincolor)' };
                 let btn_class;
-                if(props.filter.includes(types)) {
+                if(props.filter.includes(props.type)) {
                     btn_class = styles.forschungsfeldaktiv
                     hover_class = {
                         color:'var(--secondcolor)'

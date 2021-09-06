@@ -9,6 +9,7 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 // import ForschungsfeldElement from "../../Components/ForschungsfeldElement/forschungsfeldElement";
 import ListItemTeam from "../../Components/List/listItemTeam"
 import { AppContext,ACTIONS } from '../../context/state';
+import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
@@ -96,10 +97,7 @@ const Team =(props)=>{
       useEffect(() => {
       setFilterdList(searchInput(allMenschens,search));
       },[search])
-      const [open,setSearchbarOpen] = useState(false)
-      const handleOnClick=(open)=>{
-          setSearchbarOpen(open => !open)
-      }
+      
 
       let neueListe=[];
       allForschungsfelders.map((forschungsfeld) => {
@@ -108,31 +106,13 @@ const Team =(props)=>{
       allFunktions.map((forschungsfeld) => {
         neueListe.push(forschungsfeld)
       })
-      // console.log("liste", neueListe)
   
-      
-
       return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         
-        <div className={[styles.suchfeldwrapper, (open ? styles.open : [])].join(' ')}>
-            <input 
-              className={styles.inputfeld}
-              type="text" 
-              placeholder="Suche" 
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <span className={styles.suchemoji} onClick={handleOnClick}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
-                <g>
-                  <circle cx="31.7" cy="31.7" r="27.9"/>
-                  <line x1="52.3" y1="50.4" x2="85.3" y2="83.3"/>
-                </g>
-              </svg>
-            </span>
-        </div>
+          <SuchFeldElement setSearch={setSearch}/>
 
-           <FilterElement props={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
+           <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
 
            <div className={styles.teamcontainer}>
                 {filterdList.map((mensch) => {
