@@ -54,7 +54,7 @@ const ListItemVeranstaltung = (props) => {
         <div className={styles.veranstaltungscontent} style={background_style_small} key={props.id} style={background_style_small} onMouseEnter={() => setHoverGradient(true)} onMouseLeave={() => setHoverGradient(false)}>
             <Container>
                 <div className={styles.datum}>{date} Uhr
-                {/* {t("Uhr")} */}
+                    {/* {t("Uhr")} */}
                 </div>
                 <Link href={href}>
                     <div className={styles.title}>{props.titel}</div>

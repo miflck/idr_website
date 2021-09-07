@@ -44,16 +44,16 @@
             .titel {
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
-                line-height: var(--lineheightnormal);
+                line-height: calc(var(--lineheightnormal) * 1.25);
                 // width: 60%;
-                margin-bottom: 3px;
+                margin-bottom: var(--paddingabsatzbottom);
                 cursor: pointer;
             }
             
             .datum {
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightsmall);
-                margin-bottom: 3px;
+                margin-bottom: var(--paddingabsatzbottom);
                 text-transform: uppercase;
             }
         }

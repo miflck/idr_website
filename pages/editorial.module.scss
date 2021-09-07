@@ -1,7 +1,7 @@
 @import "../Components/FilterElement/filterelement.module.scss";
 
 .editorialintro {
-    padding: var(--padding);
+    padding: calc(var(--padding) * 2);
     border-bottom: 1px solid var(--maincolor);
     color: var(--maincolor);
     .titel {
@@ -9,21 +9,24 @@
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
         margin-bottom: var(--padding);
+        // margin-left: calc(var(--padding)*5);
     }
 }
 
 .editorialwrapper {
-    padding: var(--padding); 
+    padding: calc(var(--padding) * 3); 
     border-bottom: 1px solid var(--maincolor);
     color: var(--maincolor);
     .titel {
         text-transform: uppercase;
         font-size: var(--fontsizenormal);
         line-height: var(--lineheightnormal);
-        margin-bottom: var(--padding);
+        margin-bottom: calc(var(--padding) * 5);
+        margin-top: calc(var(--padding) * 1.25);
+        margin-left: calc(var(--padding)*5);
     }
     .text {
-        margin-bottom: var(--padding);
+        margin-bottom: calc(var(--padding) * 3);
         p {
             margin: 0;
         }
@@ -31,11 +34,11 @@
     .listenwrapper{
         div {
             text-transform: uppercase;
-            margin-top: var(--padding);
+            margin-top: calc(var(--padding) * 2);
         }
         p {
             margin: 0;
-            margin-bottom: var(--padding);
+            margin-bottom: calc(var(--padding) * 2);
         }
     }
 }

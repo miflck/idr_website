@@ -63,7 +63,7 @@ export default function Menscheinzelansicht (props) {
                 let BFHProfilElement;
                 if(bfhprofil != ""){
                   BFHProfilElement= 
-                  <div>
+                  <div className={styles.bfhprofil}>
                     <Link href={bfhprofil}>
                       <a className={styles.bfhprofil} target="_blank">
                         {t("BFHProfil")}
@@ -71,16 +71,6 @@ export default function Menscheinzelansicht (props) {
                     </Link>
                   </div>
                 }
-
-                // let LebenslaufElement;
-                // if(lebenslauf[0] != null) {
-                //   console.log(lebenslauf)
-                //   LebenslaufElement=
-                //     <div className={styles.subwrapper}>
-                //       <div className={styles.subtitel}>Lebenslauf</div>
-                //       <TextElement {...lebenslauf[0].text}></TextElement>
-                //     </div>
-                // }
 
                 let ProjekteElement;
                 if(filterdProjectlist.length != 0) {
@@ -142,13 +132,9 @@ export default function Menscheinzelansicht (props) {
             <div className={styles.subwrapper}>
                 {EmailElement}
                 {WebsiteElement}
-            </div>
-
-            <div className={styles.subwrapper}>
+                <br></br>
                 {BFHProfilElement}
             </div>
-
-            {/* {LebenslaufElement} */}
 
             {ProjekteElement}
 

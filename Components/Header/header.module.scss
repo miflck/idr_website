@@ -9,7 +9,8 @@
     // }
     .headertitle {
         padding: var(--padding);
-        padding-bottom: 5px;
+        padding-top: var(--paddingtop);
+        padding-bottom: var(--paddingbottom);
         border-bottom: 1px solid var(--maincolor);
         font-size: var(--fontsizenormal);
         text-transform: uppercase;

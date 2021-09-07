@@ -54,10 +54,16 @@ const ListItemNews = (props) => {
     };
 
     if (state.showGradient || showHoverGradient || props.filter.length > 0) {
-        background_style_small = {
-            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
-            opacity: 1,
-            animation: `${styles.fadeIn} 0.5s ease`
+        if(colors.length > 0) {
+            background_style_small = {
+                background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
+                opacity: 1,
+                animation: `${styles.fadeIn} 0.5s ease`
+            }
+        } else {
+            background_style_small = {
+                background: 'black'
+            }
         }
     } else {
         background_style_small={
@@ -108,7 +114,8 @@ const ListItemNews = (props) => {
             {
                 props._modelApiKey === 'news' &&
                 <div className={styles.kachel} 
-                    // style={background_style_small} hat nicht immer ein Forschungsfeld dran bis jetzt, deshalb ausgeschaltet und es wechselt einfach ins schwarze
+                    style={background_style_small} 
+                    // hat nicht immer ein Forschungsfeld dran bis jetzt, deshalb ausgeschaltet und es wechselt einfach ins schwarze
                     >
                     <div className={styles.text}>
                         <div className={styles.uebertitel}>

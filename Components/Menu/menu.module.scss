@@ -7,7 +7,7 @@
         cursor: pointer;
         position: fixed;
         right: var(--padding);
-        top: calc(var(--padding)/1.5);
+        top: var(--paddingtop);
         fill: none;
         stroke: #000;
         stroke-miterlimit: 10;
@@ -38,7 +38,7 @@
                 text-transform: uppercase;
                 font-size: var(--fontsizenormal);
                 line-height: var(--lineheightnormal);
-                padding: var(--padding) var(--padding) 5px var(--padding);
+                padding: var(--paddingtop) var(--padding) var(--paddingbottom) var(--padding);
                 border-bottom: 1px solid var(--secondcolor);
                 &:hover {
                     color: var(--maincolor);
@@ -49,11 +49,6 @@
                     color: var(--maincolor);
                     background-color: var(--secondcolor);
                     border-bottom: 1px solid var(--maincolor);
-                    // a {
-                    // border: solid 1px var(--secondcolor);
-                    // border-radius: 20px;
-                    // padding: 4px 6px 0px 6px;
-                    // }
                 }
             }
         }

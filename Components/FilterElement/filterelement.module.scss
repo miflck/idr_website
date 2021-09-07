@@ -7,7 +7,7 @@
     background-color: var(--secondcolor);
 
     .filterauflistung {
-        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
+        padding: var(--paddingbottom) var(--padding) calc(var(--paddingbottom)*1.5);
         span {
             a {
                 border: 1px solid var(--maincolor);

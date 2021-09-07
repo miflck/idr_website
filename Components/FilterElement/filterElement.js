@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useTranslation } from 'next-i18next'
 
 export default function FilterElement (props) {
-    console.log("props Filter Element component", props)
+    // console.log("props Filter Element component", props)
     const { t } = useTranslation('common')
 
     
@@ -18,7 +18,7 @@ export default function FilterElement (props) {
                            let filtertitel;
                            let filtertitelohneunderline;
                            if(forschungsfeld.titel == null) {
-                             console.log("hier publitypes", forschungsfeld)
+                            //  console.log("hier publitypes", forschungsfeld)
                              filtertitelohneunderline = forschungsfeld.split('_').join(' ');
                              filtertitel = forschungsfeld;
                            } else {
@@ -44,12 +44,13 @@ export default function FilterElement (props) {
                           let btn_class;
                           if(props.filter.includes(filtertitel)) {
                             btn_class = styles.forschungsfeldaktiv
-
-                            background_style_small = {
-                             background: `${forschungsfeld.colour.hex}`,
-                              opacity: 1,
-                              // animation: `${styles.fadeIn} 0.5s ease`
-                              }
+                            if (filtertitel.coulour != null) {
+                              background_style_small = {
+                              background: `${forschungsfeld.colour.hex}`,
+                                opacity: 1,
+                                // animation: `${styles.fadeIn} 0.5s ease`
+                                }
+                            }
                           }
                           else {
                             btn_class = styles.forschungsfeld

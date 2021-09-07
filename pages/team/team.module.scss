@@ -2,25 +2,6 @@
 @import "../../Components/FilterElement/filterelement.module.scss";
 @import "../slug.module.scss";
 
-// @keyframes fadeIn {
-//     0% {
-//         opacity: 0;
-//     }
-//     to {
-//         opacity: 1;
-//     }
-//   }
-  
-//   @keyframes fadeOut {
-//     0% {
-//         opacity: 1;
-//     }
-//     to {
-//         opacity: 0;
-//     }
-//   }
-
-
 @mixin desktop {
     @media (min-width: $breakpointSmall) {
       @content
@@ -38,7 +19,8 @@
         background-color: var(--secondcolor);
         font-size: var(--fontsizehalf);
         line-height: var(--lineheighthalf);
-        min-height: 356px;
+        min-height: 390px;
+        max-height: 390px;
         .portrait {
             margin-bottom: var(--padding);
             display: block;
@@ -52,74 +34,11 @@
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
             cursor: pointer;
+            padding-bottom: var(--paddingbottom);
         }
-        
-        .forschungsfeldwrapper {
-            padding-top: var(--paddingbottom); 
-            font-size: var(--fontsizesmall);
-            line-height: var(--lineheightnormal);
-            text-transform: uppercase;
-            .forschungsfeld { 
-                a {
-                    cursor: pointer;
-                    border: 1px solid var(--maincolor);
-                    border-radius: 20px;
-                    width: fit-content;
-                    padding: 2px 4px 0px;
-                    color: var(--maincolor);
-                    background-color: transparent;
-                    margin-right: 20px;
-                   // font-family: "Sang";
-                    &:hover {
-                        color: var(--maincolor) !important;
-                        background-color: var(--secondcolor);
-                        margin-left: 0;
-                        animation: none;
-                    }
-                }
-            }
-            .forschungsfeldaktiv {
-                a {
-                    border-radius: 20px;
-                    width: fit-content;
-                    padding: 2px 4px 0px;
-                    background-color: var(--maincolor);
-                    color: var(--secondcolor);
-                    border: 1px solid var(--maincolor);
-                    margin-right: 20px;
-                    cursor: pointer;
-                   // font-family: "Sang";
-                    &:hover {
-                        margin-left: 0;
-                        animation: none;
-                    }
-                }
-            }
-        }
-
         &:hover{
-            background-color: var(--maincolor);
             outline: 1px solid var(--maincolor);
             color: var(--secondcolor);
-            .forschungsfeldwrapper {
-                .forschungsfeld {
-                    a {
-                    border: 1px solid var(--secondcolor);
-                    color: var(--secondcolor);
-                    margin-left: 0;
-                    animation: none;
-                    }
-                }
-                .forschungsfeldaktiv {
-                    a {
-                        background-color: var(--secondcolor);
-                        color: var(--maincolor);
-                        border: 1px solid var(--secondcolor);
-                        margin-left: 0;
-                        animation: none;
-                    }
-                }
-            }
         }
     }
         // columns: var(--columnwidth) 0;

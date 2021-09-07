@@ -93,10 +93,9 @@ const Veranstaltungen =(props)=>{
         
         <div className={styles.veranstaltungswrapper} >
             {filterdList.map((veranstaltung) => {
-              
                     return(
-                      <ListItemVeranstaltung {...veranstaltung} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
-                      handleShowGradient={handleShowGradient} key={veranstaltung.id}/>
+                        <ListItemVeranstaltung {...veranstaltung} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
+                            handleShowGradient={handleShowGradient} key={veranstaltung.id}/>
                     )
             })}
         </div>
