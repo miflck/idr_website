@@ -34,11 +34,11 @@ export default function ForschungsfeldElement (props) {
                     }
                 }
                 Forschungsfelder = <div className={styles.forschungsfeldwrapper}>
-                                        <span className={btn_class} >
+                                        <div className={btn_class} >
                                             <a style={hover_class} onClick={() => props.addMoreItem(props.type)}> 
                                                 {types} 
                                             </a>
-                                        </span>
+                                        </div>
                                     </div>
             }
         }
@@ -89,14 +89,14 @@ export default function ForschungsfeldElement (props) {
                                             }
                                         }
                                         return (
-                                             <span className={btn_class}>
+                                             <div className={btn_class}>
                                                 <a 
                                                 onClick={() => props.addMoreItem(forschungsfeld.titel)}
                                                 key={forschungsfeld.titel} style={hover_class}
                                                 > 
-                                                {forschungsfeld.titel} 
+                                                {forschungsfeld.titel}
                                             </a>
-                                            </span>
+                                            </div>
                                         )
                                     })}
                                 </div>

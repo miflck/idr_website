@@ -3,12 +3,11 @@
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     cursor: pointer;
-    // border: solid thin aqua;
-    // width: max-content;
     break-inside: auto;
-
+    display: flex;
+    flex-wrap: wrap;
     .forschungsfeld {
-        // border: solid thin green;
+        // flex-basis: 100%;
         margin-right: 20px;
         a {
             border: 1px solid var(--maincolor);
@@ -43,7 +42,7 @@
         }
     }
     .forschungsfeld:nth-child(2) {
-        margin-left: 20px;
+        // margin-left: 20px;
     }
     &:hover {
         // color: var(--secondcolor);

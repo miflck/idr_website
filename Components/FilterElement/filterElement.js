@@ -44,7 +44,7 @@ export default function FilterElement (props) {
                           let btn_class;
                           if(props.filter.includes(filtertitel)) {
                             btn_class = styles.forschungsfeldaktiv
-                            if (filtertitel.coulour != null) {
+                            if (forschungsfeld.colour.hex != null) {
                               background_style_small = {
                               background: `${forschungsfeld.colour.hex}`,
                                 opacity: 1,
