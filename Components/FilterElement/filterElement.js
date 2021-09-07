@@ -48,6 +48,7 @@ export default function FilterElement (props) {
                               background_style_small = {
                               background: `${forschungsfeld.colour.hex}`,
                                 opacity: 1,
+                                border: `1px solid ${forschungsfeld.colour.hex}`
                                 // animation: `${styles.fadeIn} 0.5s ease`
                                 }
                             }
