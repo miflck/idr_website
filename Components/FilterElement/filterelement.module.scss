@@ -7,17 +7,25 @@
     background-color: var(--secondcolor);
 
     .filterauflistung {
+        display: flex;
+        flex-wrap: wrap;
+
         padding: var(--paddingbottom) var(--padding) calc(var(--paddingbottom)*1.5);
-        span {
+        div {
+            margin-right: 1rem;//20px;
+            
+            // Müssten wir nicht eher den wrapper stylen? also das div, statt das a? 
+            // das macht das ganze padding und die zeilenhöhe etwas komisch zum bedienen
             a {
                 border: 1px solid var(--maincolor);
                 border-radius: 20px;
                 width: fit-content;
                 //zwischenraum von wort und border
-                padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
+             //   padding:  calc(var(--filterpadding1)*1.5)  calc(var(--filterpadding2)*3) calc(var(--filterpadding3)*5);
+                padding:  0.25rem  1.25rem 0.01rem ;
+
                 color: var(--maincolor);
                 background-color: transparent;
-                margin-right: 20px;
                 //font-family: "Sang";
                 font-style: normal;
                 &:hover {

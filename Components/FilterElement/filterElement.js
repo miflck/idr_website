@@ -97,7 +97,7 @@ export default function FilterElement (props) {
                           
                          
                           return(
-                            <span className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
+                            <div className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
                               <a 
                                 style={background_style_small}
                                 onClick={() => props.addMoreItem(filtertitel)}
@@ -105,7 +105,7 @@ export default function FilterElement (props) {
                               > 
                                 {filtertitelohneunderline} 
                               </a>
-                            </span>
+                            </div>
                           )})}
                       </div>
                       </div>
