@@ -1,13 +1,17 @@
 import styles from './filterelement.module.scss'
 import React, { useState, useEffect, useContext } from 'react'
 import { useTranslation } from 'next-i18next'
+import { AppContext, ACTIONS } from '../../context/state';
 
 export default function FilterElement (props) {
     // console.log("props Filter Element component", props)
     const { t } = useTranslation('common')
 
+    const globalState = useContext(AppContext);
+    const {state}=globalState
+    const { dispatch } = globalState;
     
-
+    console.log(state)
   let FilterElement;
   if(props.filter) {
     FilterElement =  <div className={styles.filterfeldwrapper} >
@@ -46,13 +50,26 @@ export default function FilterElement (props) {
                             btn_class = styles.forschungsfeldaktiv
                             if (forschungsfeld.colour.hex != null) {
                               background_style_small = {
-                              background: `${forschungsfeld.colour.hex}`,
+                                background: `${forschungsfeld.colour.hex}`,
                                 opacity: 1,
                                 border: `1px solid ${forschungsfeld.colour.hex}`
                                 // animation: `${styles.fadeIn} 0.5s ease`
                                 }
                             }
                           }
+                          // schauen, ob der button in den HoveredElements ist
+                          else if (state.hoveredElements.some(e => e.titel === filtertitel)) {
+                            /* vendors contains the element we're looking for */
+                            background_style_small = {
+                             // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
+                             //color:` ${forschungsfeld.colour.hex}`,
+                             color:'var(--secondcolor)',
+                              background:`${forschungsfeld.colour.hex}`,
+                              opacity: 1,
+                              border: `1px solid ${forschungsfeld.colour.hex}`,
+                              }
+                          }
+
                           else {
                             btn_class = styles.forschungsfeld
                           }

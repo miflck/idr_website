@@ -9,9 +9,20 @@ const ListItemProjekt =(props)=>{
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
+   // console.log(state)
+
+    const handleHover = (isHover) => {
+        console.log("isHover",isHover)
+        if(isHover){
+            dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: props.forschungsfeld } })
+            setHoverGradient(true)
+        }else{
+            dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element: props.forschungsfeld } })
+            setHoverGradient(false)
+        }
+    };
 
     const [showHoverGradient,setHoverGradient]=useState();
-	const handleShowGradient = (val) => { };
 
      const enddatum = new Date(props.enddatum).toLocaleString([], {
                 year: 'numeric'
@@ -54,10 +65,13 @@ const ListItemProjekt =(props)=>{
             animation:`${styles.fadeIn} 0.5s ease`
           }
         }
+            {/*<div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}>*/}
 
 
     return (
-            <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}>
+            <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>handleHover(true)} onMouseLeave={ ()=>handleHover(false)}>
+
+             
                 <div className={styles.backgroundwrapper} style={background_style_small}></div>
                 <Container>
                     <div className={styles.content}>

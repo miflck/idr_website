@@ -1,10 +1,33 @@
 import styles from './forschungsfeldelement.module.scss'
+import React, {useContext,useState} from 'react';
+import { AppContext, ACTIONS } from '../../context/state';
 
 export default function ForschungsfeldElement (props) {
     // console.log("props ForschungsfeldElement", props)
+    const globalState = useContext(AppContext);
+    const {state}=globalState
+    const { dispatch } = globalState;
+    const handleHover = (isHover,title) => {
+        if(isHover){
+           // dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: title } })
+        }else{
+           // dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element: title } })
+        }
+    };
+
+
+
 
     let Forschungsfelder;
     
+
+
+
+
+
+
+    // type ist für Publikationen. warum? ev weil fehlende farbe vom Forschungsfeld?
+    // ev ist das alles noch zu wenig abtrahiert?
     if(props.type) {
         var types = props.type.split('_').join(' ');
         if (types != null) {
@@ -44,6 +67,7 @@ export default function ForschungsfeldElement (props) {
         }
 
     } else {
+        // wenn der "Button" ein Forschungsfeld ist
         let colors=[];
             props.forschungsfeld.map((forschungsfeld) => {
                 colors.push(forschungsfeld.colour.hex)
@@ -91,6 +115,8 @@ export default function ForschungsfeldElement (props) {
                                         return (
                                              <div className={btn_class}>
                                                 <a 
+                                                onMouseEnter={ ()=>handleHover(true,forschungsfeld.titel)} 
+                                                onMouseLeave={ ()=>handleHover(false,forschungsfeld.titel)}
                                                 onClick={() => props.addMoreItem(forschungsfeld.titel)}
                                                 key={forschungsfeld.titel} style={hover_class}
                                                 > 
