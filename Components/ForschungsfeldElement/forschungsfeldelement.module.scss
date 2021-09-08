@@ -8,12 +8,16 @@
     flex-wrap: wrap;
     .forschungsfeld {
         // flex-basis: 100%;
-        margin-right: 20px;
+        //margin-right: 20px;
+        margin-right: 1rem;//20px;
+
         a {
             border: 1px solid var(--maincolor);
             border-radius: 20px;
             width: fit-content;
-            padding: 2px 4px 0px;
+          //  padding: 2px 4px 0px;
+            padding:  0.25rem  0.5rem 0.01rem ;
+
             color: var(--maincolor);
             background-color: transparent;
             font-style: normal;

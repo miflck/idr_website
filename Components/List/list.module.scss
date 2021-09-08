@@ -37,25 +37,33 @@
         }
 
         .content {
-            padding: var(--paddingtop) var(--padding) var(--paddingbottom);
+           // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
+            padding: 1.25rem 1.25rem 1rem;
+
+            --padding: 20px;
+            --paddingbottom: 10px;
+            --paddingtop: 15px;
+
             color: var(--maincolor);
             z-index: 5;
             position: relative;
-            .titel {
-                text-transform: uppercase;
-                font-size: var(--fontsizenormal);
-                line-height: calc(var(--lineheightnormal) * 1.25);
-                // width: 60%;
-                margin-bottom: var(--paddingabsatzbottom);
-                cursor: pointer;
-            }
-            
             .datum {
+
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightsmall);
                 margin-bottom: var(--paddingabsatzbottom);
                 text-transform: uppercase;
             }
+            .titel {
+                //text-transform: uppercase;
+                font-size: calc(var(--fontsizenormal)*1.09);
+                line-height: calc(var(--lineheightnormal));
+                // width: 60%;
+                margin-bottom: var(--paddingabsatzbottom);
+                cursor: pointer;
+            }
+            
+
         }
         &:hover {
             .content {
