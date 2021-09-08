@@ -10,11 +10,18 @@ export default function FilterElement (props) {
     const globalState = useContext(AppContext);
     const {state}=globalState
     const { dispatch } = globalState;
+    const handleShowGradient = (val) => {
+      dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
+    };
+  
     
     console.log(state)
   let FilterElement;
   if(props.filter) {
-    FilterElement =  <div className={styles.filterfeldwrapper} >
+
+
+
+    FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(false)} onMouseLeave={ ()=>handleShowGradient(false)}>
                       <div className={styles.deaktivieren}> <a onClick={() => props.setFilter([])} > {t("Deaktivieren")}  </a> </div>
                       <div className={styles.filterauflistung}>
                         {props.filterarray.map((forschungsfeld) =>{
