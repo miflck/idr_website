@@ -79,8 +79,10 @@ export default function FilterElement (props) {
                               background_style_small = {
                               // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
                               //color:` ${forschungsfeld.colour.hex}`,
-                                color:'var(--secondcolor)',
-                                background:`${forschungsfeld.colour.hex}`,
+                                color:'var(--maincolor)',
+                               // background:`${forschungsfeld.colour.hex}`,
+                                background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+
                                 opacity: 1,
                                 border: `1px solid ${forschungsfeld.colour.hex}`,
                                 }

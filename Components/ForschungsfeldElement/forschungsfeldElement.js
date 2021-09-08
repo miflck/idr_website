@@ -92,7 +92,7 @@ export default function ForschungsfeldElement (props) {
 
                                         let hover_class = { 
                                             color: 'var(--maincolor)',
-                                            transition:` all 0.5s ease`
+                                            transition:` all 0.2s ease`
  
                                         };
                                         let btn_class;
@@ -106,20 +106,22 @@ export default function ForschungsfeldElement (props) {
                                                     color: 'var(--maincolor)',
                                                     border: '1px solid var(--secondcolor)',
                                                     background: 'var(--secondcolor)',
-                                                    transition:` all 0.5s ease`
+                                                    transition:` all 0.2s ease`
                                                 }
                                             }
                                         }
 
-                                        else if(intersection.length>0){
+                                        else if(intersection.length>0 &! props.showHoverGradient){
                                             btn_class = styles.forschungsfeld
 
                                             hover_class = {
-                                                color:'var(--secondcolor)',
-                                                background:`${forschungsfeld.colour.hex}`,
+                                                color:'var(--maincolor)',
+                                               // background:`${forschungsfeld.colour.hex}`,
+                                                background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+
                                                 opacity: 1,
                                                 border: `1px solid ${forschungsfeld.colour.hex}`,
-                                                transition:` all 0.5s ease`
+                                                transition:` all 0.2s ease`
                                             }
 
                                         }
@@ -129,7 +131,7 @@ export default function ForschungsfeldElement (props) {
                                                 hover_class = {
                                                     color: 'var(--secondcolor)',
                                                     border: '1px solid var(--secondcolor)',
-                                                    transition:` all 0.5s ease`
+                                                    transition:` all 0.2s ease`
 
                                                 }
                                             }
