@@ -9,7 +9,7 @@ const ListItemProjekt =(props)=>{
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
-   // console.log(state)
+   console.log(state)
 
     const handleHover = (isHover) => {
         console.log("isHover",isHover)
@@ -52,17 +52,29 @@ const ListItemProjekt =(props)=>{
             animation:`${styles.fadeOut} 0.5s ease`,
         }; 
 
-        if(state.showGradient || showHoverGradient || props.filter.length > 0){
+
+  /*      else if (state.hoveredElements.some(e => e.titel === filtertitel)) {
+        }
+*/
+
+//let intersection = state.hoveredElements.filter(x => props.forschungsfeld.includes(x));
+
+        const intersection = state.hoveredElements.filter(item1 => props.forschungsfeld.some(item2 => item1.titel.normalize()===item2.titel.normalize()))
+
+
+
+        if(state.showGradient || showHoverGradient || props.filter.length > 0 ){
             background_style={
-                background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+                background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
                 opacity:1,
                 animation:` ${styles.fadeIn} 0.5s ease`
               }
    
          background_style_small={
-            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+
             opacity:1,
-            animation:`${styles.fadeIn} 0.5s ease`
+            animation:`${styles.fadeIn} 0.5s ease`, 
           }
         }
             {/*<div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}>*/}
@@ -70,9 +82,7 @@ const ListItemProjekt =(props)=>{
 
     return (
             <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>handleHover(true)} onMouseLeave={ ()=>handleHover(false)}>
-
-             
-                <div className={styles.backgroundwrapper} style={background_style_small}></div>
+                <div className={styles.backgroundwrapper} style={background_style}></div>
                 <Container>
                     <div className={styles.content}>
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>

@@ -13,6 +13,14 @@ export default function FilterElement (props) {
     const handleShowGradient = (val) => {
       dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
     };
+
+    const handleHover = (isHover,forschungsfeld) => {
+      if(isHover){
+          dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [forschungsfeld] } })
+      }else{
+          dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[forschungsfeld] } })
+      }
+  };
   
     
     console.log(state)
@@ -60,21 +68,23 @@ export default function FilterElement (props) {
                                 background: `${forschungsfeld.colour.hex}`,
                                 opacity: 1,
                                 border: `1px solid ${forschungsfeld.colour.hex}`
-                                // animation: `${styles.fadeIn} 0.5s ease`
                                 }
                             }
                           }
                           // schauen, ob der button in den HoveredElements ist
                           else if (state.hoveredElements.some(e => e.titel === filtertitel)) {
-                            /* vendors contains the element we're looking for */
-                            background_style_small = {
-                             // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
-                             //color:` ${forschungsfeld.colour.hex}`,
-                             color:'var(--secondcolor)',
-                              background:`${forschungsfeld.colour.hex}`,
-                              opacity: 1,
-                              border: `1px solid ${forschungsfeld.colour.hex}`,
-                              }
+                            if (forschungsfeld.colour != null) {
+                              // Team funktionen haben keine farbe
+
+                              background_style_small = {
+                              // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
+                              //color:` ${forschungsfeld.colour.hex}`,
+                                color:'var(--secondcolor)',
+                                background:`${forschungsfeld.colour.hex}`,
+                                opacity: 1,
+                                border: `1px solid ${forschungsfeld.colour.hex}`,
+                                }
+                            }
                           }
 
                           else {
@@ -85,7 +95,7 @@ export default function FilterElement (props) {
                           
                          
                           return(
-                            <span className={btn_class}>
+                            <span className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
                               <a 
                                 style={background_style_small}
                                 onClick={() => props.addMoreItem(filtertitel)}

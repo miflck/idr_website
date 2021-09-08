@@ -88,7 +88,13 @@ export default function ForschungsfeldElement (props) {
     if (props.forschungsfeld != null) {
         Forschungsfelder = <div className={styles.forschungsfeldwrapper}>
                                     {props.forschungsfeld.map((forschungsfeld) => {
-                                        let hover_class = { color: 'var(--maincolor)' };
+        const intersection = state.hoveredElements.filter(item1 => item1.titel.normalize()===forschungsfeld.titel.normalize())
+
+                                        let hover_class = { 
+                                            color: 'var(--maincolor)',
+                                            transition:` all 0.5s ease`
+ 
+                                        };
                                         let btn_class;
                                         if(props.filter.includes(forschungsfeld.titel)) {
                                             btn_class = styles.forschungsfeldaktiv
@@ -99,16 +105,32 @@ export default function ForschungsfeldElement (props) {
                                                 hover_class = {
                                                     color: 'var(--maincolor)',
                                                     border: '1px solid var(--secondcolor)',
-                                                    background: 'var(--secondcolor)'
+                                                    background: 'var(--secondcolor)',
+                                                    transition:` all 0.5s ease`
                                                 }
                                             }
+                                        }
+
+                                        else if(intersection.length>0){
+                                            btn_class = styles.forschungsfeld
+
+                                            hover_class = {
+                                                color:'var(--secondcolor)',
+                                                background:`${forschungsfeld.colour.hex}`,
+                                                opacity: 1,
+                                                border: `1px solid ${forschungsfeld.colour.hex}`,
+                                                transition:` all 0.5s ease`
+                                            }
+
                                         }
                                         else {
                                             btn_class = styles.forschungsfeld
                                             if(props.showHoverGradient){
                                                 hover_class = {
                                                     color: 'var(--secondcolor)',
-                                                    border: '1px solid var(--secondcolor)'
+                                                    border: '1px solid var(--secondcolor)',
+                                                    transition:` all 0.5s ease`
+
                                                 }
                                             }
                                         }
