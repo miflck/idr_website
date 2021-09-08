@@ -23,7 +23,7 @@
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
-        border-bottom: 1px solid var(--maincolor);
+        border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
         position: relative;
 
         .backgroundwrapper{
@@ -48,6 +48,8 @@
             z-index: 5;
             position: relative;
             .datum {
+      //  border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
+        width: fit-content;
 
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightsmall);
@@ -55,7 +57,7 @@
                 text-transform: uppercase;
             }
             .titel {
-                //text-transform: uppercase;
+                text-transform: uppercase;
                 font-size: calc(var(--fontsizenormal)*1.09);
                 line-height: calc(var(--lineheightnormal));
                 // width: 60%;
