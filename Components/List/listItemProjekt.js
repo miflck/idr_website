@@ -44,7 +44,7 @@ const ListItemProjekt =(props)=>{
 
         let background_style={
             background: `linear-gradient(to right,"white"})`,
-            animation:`${styles.fadeOut} 0.5s ease`
+            animation:`${styles.fadeOut} .9s ease`
         };
 
         let background_style_small={
@@ -70,7 +70,7 @@ const ListItemProjekt =(props)=>{
                 animation:` ${styles.fadeIn} 0.5s ease`
               }
    
-         background_style_small={
+            background_style_small={
             background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
 
             opacity:1,

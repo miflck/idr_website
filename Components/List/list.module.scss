@@ -23,7 +23,7 @@
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
-        border-top: 1px solid var(--lightgrey);//var(--maincolor);
+       // border-top: 1px solid var(--lightgrey);//var(--maincolor);
         position: relative;
         .backgroundwrapper{
             position: absolute;
@@ -72,7 +72,7 @@
 
         }
         &:hover {
-                border-top: 1px solid var(--maincolor);//var(--maincolor);
+               // border-top: 1px solid var(--maincolor);//var(--maincolor);
 
          
                 .content {

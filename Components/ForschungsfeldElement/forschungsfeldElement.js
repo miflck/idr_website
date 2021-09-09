@@ -92,8 +92,7 @@ export default function ForschungsfeldElement (props) {
 
                                         let hover_class = { 
                                             color: 'var(--maincolor)',
-                                            transition:` all 0.2s ease`
- 
+
                                         };
                                         let btn_class;
                                         if(props.filter.includes(forschungsfeld.titel)) {
@@ -106,7 +105,6 @@ export default function ForschungsfeldElement (props) {
                                                     color: 'var(--maincolor)',
                                                     border: '1px solid var(--secondcolor)',
                                                     background: 'var(--secondcolor)',
-                                                    transition:` all 0.2s ease`
                                                 }
                                             }
                                         }
@@ -123,7 +121,9 @@ export default function ForschungsfeldElement (props) {
                                                 border: `1px solid ${forschungsfeld.colour.hex}`,
                                               //  border: `1px solid var(--lightgrey)`,
 
-                                                transition:` all 0.2s ease`
+                                                //transition:` all 0.2s ease`
+                                                //animation:`${styles.fadeIn} .9s ease`
+
                                             }
 
                                         }

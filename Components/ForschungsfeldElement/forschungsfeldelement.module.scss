@@ -1,3 +1,22 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
 .forschungsfeldwrapper {
     font-size: var(--fontsizesmall);
     line-height: var(--lineheightnormal);
