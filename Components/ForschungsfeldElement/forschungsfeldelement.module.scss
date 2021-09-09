@@ -6,14 +6,16 @@
     break-inside: auto;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 0.5rem;
+
     .forschungsfeld {
         // flex-basis: 100%;
         //margin-right: 20px;
-        margin-right: 1rem;//20px;
+        margin-right: 0.5rem;//20px;
 
         a {
-            border: 1px solid var(--maincolor);
-            border-radius: 20px;
+            border: 1px solid var(--lightgrey);
+            border-radius: 10px;
             width: fit-content;
           //  padding: 2px 4px 0px;
             padding:  0.25rem  0.5rem 0.01rem ;

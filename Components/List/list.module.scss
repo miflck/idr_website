@@ -23,9 +23,8 @@
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
-        border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
+        border-top: 1px solid var(--lightgrey);//var(--maincolor);
         position: relative;
-
         .backgroundwrapper{
             position: absolute;
             width: 100%;
@@ -37,12 +36,13 @@
         }
 
         .content {
-           // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
-            padding: 1.25rem 1.25rem 1rem;
+            padding:0.75rem;
 
-            --padding: 20px;
-            --paddingbottom: 10px;
-            --paddingtop: 15px;
+           // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
+           // padding: 1rem 1.25rem 1rem;
+
+           // border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
+
 
             color: var(--maincolor);
             z-index: 5;
@@ -55,22 +55,34 @@
                 line-height: var(--lineheightsmall);
                 margin-bottom: var(--paddingabsatzbottom);
                 text-transform: uppercase;
+                font-weight: bold;
             }
             .titel {
-                text-transform: uppercase;
-                font-size: calc(var(--fontsizenormal)*1.09);
+               // font-weight: bold;
+                //text-transform: uppercase;
+                font-size: calc(var(--fontsizenormal));
                 line-height: calc(var(--lineheightnormal));
                 // width: 60%;
-                margin-bottom: calc(var(--paddingabsatzbottom)*2);
+                padding-bottom: calc(var(--paddingabsatzbottom)*1);
                 cursor: pointer;
+                //color:#333;
+                border-bottom: solid thin black;
             }
             
 
         }
         &:hover {
-            .content {
-                color: var(--secondcolor);
-            }
+                border-top: 1px solid var(--maincolor);//var(--maincolor);
+
+         
+                .content {
+                    color: var(--secondcolor);
+                    .titel{
+                        border-bottom: solid thin white;
+
+                    }
+                }
+            
         }
     }
 
