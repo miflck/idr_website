@@ -61,7 +61,7 @@
                 font-size: calc(var(--fontsizenormal)*1.09);
                 line-height: calc(var(--lineheightnormal));
                 // width: 60%;
-                margin-bottom: var(--paddingabsatzbottom);
+                margin-bottom: calc(var(--paddingabsatzbottom)*2);
                 cursor: pointer;
             }
             

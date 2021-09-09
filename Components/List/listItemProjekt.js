@@ -63,7 +63,7 @@ const ListItemProjekt =(props)=>{
 
 
 
-        if(state.showGradient || showHoverGradient || props.filter.length > 0 ){
+        if(state.showGradient || showHoverGradient || props.filter.length > 0 || intersection.lenght > 0){
             background_style={
                 background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
                 opacity:1,
