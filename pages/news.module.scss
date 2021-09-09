@@ -37,10 +37,10 @@
     
     // @include desktop {
       columns: var(--columnwidth) auto;
-      // column-fill: auto;
       // width: 33%;
     // }
    .kachelwrapper {
+    grid-column: 1;
       width: 100%;
       height: fit-content;
       padding-top: var(--padding);
