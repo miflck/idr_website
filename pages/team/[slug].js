@@ -17,7 +17,6 @@ export default function Menscheinzelansicht (props) {
     slug,
     forschungsfeld,
     portrait,
-    lebenslauf,
     bfhprofil,
     email,
     website,
@@ -72,15 +71,6 @@ export default function Menscheinzelansicht (props) {
                   </div>
                 }
 
-                // let LebenslaufElement;
-                // if(lebenslauf[0] != null) {
-                //   console.log(lebenslauf)
-                //   LebenslaufElement=
-                //     <div className={styles.subwrapper}>
-                //       <div className={styles.subtitel}>Lebenslauf</div>
-                //       <TextElement {...lebenslauf[0].text}></TextElement>
-                //     </div>
-                // }
 
                 let ProjekteElement;
                 if(filterdProjectlist.length != 0) {
@@ -148,7 +138,6 @@ export default function Menscheinzelansicht (props) {
                 {BFHProfilElement}
             </div>
 
-            {/* {LebenslaufElement} */}
 
             {ProjekteElement}
 
