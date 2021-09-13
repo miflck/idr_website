@@ -17,7 +17,6 @@ export default function Menscheinzelansicht (props) {
     slug,
     forschungsfeld,
     portrait,
-    lebenslauf,
     bfhprofil,
     email,
     website,
