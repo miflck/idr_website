@@ -115,9 +115,9 @@ export default function ForschungsfeldElement (props) {
                                             btn_class = styles.forschungsfeld
 
                                             hover_class = {
-                                                color:'var(--maincolor)',
-                                               // background:`${forschungsfeld.colour.hex}`,
-                                                background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                                                color:'var(--secondcolor)',
+                                               background:`${forschungsfeld.colour.hex}`,
+                                                // background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
 
                                                 opacity: 1,
                                                 border: `1px solid ${forschungsfeld.colour.hex}`,
