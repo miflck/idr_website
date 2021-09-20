@@ -59,11 +59,13 @@ const ListItemProjekt =(props)=>{
 
 //let intersection = state.hoveredElements.filter(x => props.forschungsfeld.includes(x));
 
-        const intersection = state.hoveredElements.filter(item1 => props.forschungsfeld.some(item2 => item1.titel.normalize()===item2.titel.normalize()))
+      //  const intersection = state.hoveredElements.filter(item1 => props.forschungsfeld.some(item2 => item1.titel.normalize()===item2.titel.normalize()))
 
 
 
-        if(state.showGradient || showHoverGradient || props.filter.length > 0 || intersection.lenght > 0){
+        //if(state.showGradient || showHoverGradient || props.filter.length > 0 || intersection.lenght > 0){
+        if(state.showGradient || showHoverGradient || props.filter.length > 0 ){
+
             background_style={
                 background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
                 opacity:1,

@@ -2,9 +2,10 @@ import styles from './filterelement.module.scss'
 import React, { useState, useEffect, useContext } from 'react'
 import { useTranslation } from 'next-i18next'
 import { AppContext, ACTIONS } from '../../context/state';
+import Button from '../Button'
 
 export default function FilterElement (props) {
-    // console.log("props Filter Element component", props)
+     console.log("props Filter Element component", props)
     const { t } = useTranslation('common')
 
     const globalState = useContext(AppContext);
@@ -34,8 +35,12 @@ export default function FilterElement (props) {
                       <div className={styles.filterauflistung}>
                         {props.filterarray.map((forschungsfeld) =>{
 
+                          let filterId=forschungsfeld.id;
                            let filtertitel;
                            let filtertitelohneunderline;
+
+                          let filter_id=forschungsfeld.id;
+
                            if(forschungsfeld.titel == null) {
                             //  console.log("hier publitypes", forschungsfeld)
                              filtertitelohneunderline = forschungsfeld.split('_').join(' ');
@@ -61,7 +66,9 @@ export default function FilterElement (props) {
                           }*/
 
                           let btn_class;
-                          if(props.filter.includes(filtertitel)) {
+                          //if(props.filter.includes(filtertitel)) {
+                            if(props.filter.includes(filtertitel)) {
+
                             btn_class = styles.forschungsfeldaktiv
                             if (forschungsfeld.colour.hex != null) {
                               background_style_small = {
@@ -98,18 +105,22 @@ export default function FilterElement (props) {
                           
                          
                           return(
-                            <div className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
+                            <>
+                            <Button payload={forschungsfeld}  style={background_style_small} addMoreItem={props.addMoreItem} />
+                            {/*<div className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
                               <a 
                                 style={background_style_small}
-                                onClick={() => props.addMoreItem(filtertitel)}
+                                onClick={() => props.addMoreItem(filterId)}
                                 key={filtertitel}
                               > 
                                 {filtertitelohneunderline} 
                               </a>
-                            </div>
+                          </div>*/}
+                            </>
                           )})}
                       </div>
                       </div>
+
   }
 
   return (

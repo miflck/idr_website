@@ -1,6 +1,7 @@
 import styles from './forschungsfeldelement.module.scss'
 import React, {useContext,useState} from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
+import Button from '../Button'
 
 export default function ForschungsfeldElement (props) {
     // console.log("props ForschungsfeldElement", props)
@@ -88,7 +89,7 @@ export default function ForschungsfeldElement (props) {
     if (props.forschungsfeld != null) {
         Forschungsfelder = <div className={styles.forschungsfeldwrapper}>
                                     {props.forschungsfeld.map((forschungsfeld) => {
-        const intersection = state.hoveredElements.filter(item1 => item1.titel.normalize()===forschungsfeld.titel.normalize())
+                                        const intersection = state.hoveredElements.filter(item1 => item1.id===forschungsfeld.id)
 
                                         let hover_class = { 
                                             color: 'var(--maincolor)',
@@ -108,7 +109,8 @@ export default function ForschungsfeldElement (props) {
                                                 }
                                             }
                                         }
-
+                                        
+                                        
                                         else if(intersection.length>0 &! props.showHoverGradient){
                                             btn_class = styles.forschungsfeld
 
@@ -118,10 +120,9 @@ export default function ForschungsfeldElement (props) {
                                                 background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
 
                                                 opacity: 1,
-                                             //   border: `1px solid ${forschungsfeld.colour.hex}`,
-                                             border:'1px solid white',
+                                             // border: `1px solid ${forschungsfeld.colour.hex}`,
+                                                border:'1px solid white',
                                               //  border: `1px solid var(--lightgrey)`,
-
                                                 //transition:` all 0.2s ease`
                                                 //animation:`${styles.fadeIn} .9s ease`
 
@@ -140,7 +141,9 @@ export default function ForschungsfeldElement (props) {
                                             }
                                         }
                                         return (
-                                             <div className={btn_class}>
+                                            <>
+                                            <Button payload={forschungsfeld}  style={hover_class} addMoreItem={props.addMoreItem} />
+                                             {/*<div className={btn_class}>
                                                 <a 
                                                 onMouseEnter={ ()=>handleHover(true,forschungsfeld.titel)} 
                                                 onMouseLeave={ ()=>handleHover(false,forschungsfeld.titel)}
@@ -148,8 +151,9 @@ export default function ForschungsfeldElement (props) {
                                                 key={forschungsfeld.titel} style={hover_class}
                                                 > 
                                                 {forschungsfeld.titel}
-                                            </a>
-                                            </div>
+                                                </a>
+                                        </div>*/}
+                                            </>
                                         )
                                     })}
                                 </div>

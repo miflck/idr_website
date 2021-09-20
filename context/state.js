@@ -32,14 +32,19 @@ const StateProvider = ( { children } ) => {
       break;  
 
       case ACTIONS.ADD_HOVER_ELEMENT:
+        console.log("payload from hover",action.payload.element)
+
         return {
           ...state,
           hoveredElements: state.hoveredElements.concat(action.payload.element)
         }// do something with the action
       break;  
       case ACTIONS.REMOVE_HOVER_ELEMENT:
+        console.log("payload from remove",action.payload.element,state.hoveredElements)
+
         return {
-          ...state,hoveredElements:state.hoveredElements.filter(element => {
+          ...state,
+          hoveredElements:state.hoveredElements.filter(element => {
             action.payload.element.map(e=>{
               return(
               e.id !==element.id

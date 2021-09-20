@@ -30,7 +30,7 @@ function filterBy(data, filterterms) {
     //kann sein: every für && und some für || ? 
     return filterterms.every((term)=>{
       return obj.forschungsfeld.some((feld)=>{
-        return feld.titel.toString().includes(term);
+        return feld.id.toString().includes(term);
       })
     })   
   })
@@ -52,6 +52,7 @@ const addMoreItem = (item) => {
 const [filterdList, setFilterdList] = useState([])
 
 useEffect(() => {
+  console.log("FILTER   ",filter)
 setFilterdList (filterBy(allProjekts, filter) )
 },[filter])
 
