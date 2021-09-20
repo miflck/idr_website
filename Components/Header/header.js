@@ -26,8 +26,6 @@ const Header=(props)=>{
             <Head>
             <title>IDR</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <meta http-equiv="Content-Security-Policy"
-      content="default-src 'self'; vitals.vercel-insights.com;"></meta>
             </Head>
             <link rel="icon" href="../favicon.ico"/>
             <div className={styles.headertitle}><Link href="/">HKB — Institute of Design Research</Link> <span className={styles.seitentitel}> — {seitentitel}</span></div>
