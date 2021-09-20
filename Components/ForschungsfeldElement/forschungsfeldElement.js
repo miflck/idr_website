@@ -118,7 +118,8 @@ export default function ForschungsfeldElement (props) {
                                                 background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
 
                                                 opacity: 1,
-                                                border: `1px solid ${forschungsfeld.colour.hex}`,
+                                             //   border: `1px solid ${forschungsfeld.colour.hex}`,
+                                             border:'1px solid white',
                                               //  border: `1px solid var(--lightgrey)`,
 
                                                 //transition:` all 0.2s ease`

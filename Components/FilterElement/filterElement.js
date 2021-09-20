@@ -84,7 +84,8 @@ export default function FilterElement (props) {
                                 background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
 
                                 opacity: 1,
-                                border: `1px solid ${forschungsfeld.colour.hex}`,
+                                //border: `1px solid ${forschungsfeld.colour.hex}`,
+                                border:'1px solid white',
                                 }
                             }
                           }
