@@ -8,11 +8,11 @@ export default function ForschungsfeldElement (props) {
     const globalState = useContext(AppContext);
     const {state}=globalState
     const { dispatch } = globalState;
-    const handleHover = (isHover,title) => {
+    const handleHover = (isHover,id) => {
         if(isHover){
-           // dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: title } })
+          //  dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
         }else{
-           // dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element: title } })
+          //  dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
         }
     };
 
@@ -89,7 +89,7 @@ export default function ForschungsfeldElement (props) {
     if (props.forschungsfeld != null) {
         Forschungsfelder = <div className={styles.forschungsfeldwrapper}>
                                     {props.forschungsfeld.map((forschungsfeld) => {
-                                        const intersection = state.hoveredElements.filter(item1 => item1.id===forschungsfeld.id)
+                                        const intersection = state.hoveredElements.filter(item1 => item1===forschungsfeld.id)
 
                                         let hover_class = { 
                                             color: 'var(--maincolor)',
@@ -142,7 +142,16 @@ export default function ForschungsfeldElement (props) {
                                         }
                                         return (
                                             <>
-                                            <Button payload={forschungsfeld}  style={hover_class} addMoreItem={props.addMoreItem} />
+
+                           
+                                            <Button 
+                                                title={forschungsfeld.titel}  
+                                                id={forschungsfeld.id}
+                                                style={hover_class} 
+                                                handleClick={props.addMoreItem} 
+                                                handleHover={handleHover}
+
+                                                />
                                              {/*<div className={btn_class}>
                                                 <a 
                                                 onMouseEnter={ ()=>handleHover(true,forschungsfeld.titel)} 

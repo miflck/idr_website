@@ -11,26 +11,22 @@ export default function FilterElement (props) {
     const globalState = useContext(AppContext);
     const {state}=globalState
     const { dispatch } = globalState;
+
     const handleShowGradient = (val) => {
       dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
     };
 
-    const handleHover = (isHover,forschungsfeld) => {
+    const handleHover = (isHover,element) => {
       if(isHover){
-          dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [forschungsfeld] } })
+          dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [element] } })
       }else{
-          dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[forschungsfeld] } })
+          dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[element] } })
       }
-  };
+    };
   
-    
-    console.log(state)
-  let FilterElement;
-  if(props.filter) {
-
-
-
-    FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(false)} onMouseLeave={ ()=>handleShowGradient(false)}>
+    let FilterElement;
+    if(props.filter) {
+      FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(false)} onMouseLeave={ ()=>handleShowGradient(false)}>
                       <div className={styles.deaktivieren}> <a onClick={() => props.setFilter([])} > {t("Deaktivieren")}  </a> </div>
                       <div className={styles.filterauflistung}>
                         {props.filterarray.map((forschungsfeld) =>{
@@ -79,7 +75,7 @@ export default function FilterElement (props) {
                             }
                           }
                           // schauen, ob der button in den HoveredElements ist
-                          else if (state.hoveredElements.some(e => e.titel === filtertitel)) {
+                          else if (state.hoveredElements.some(e => e === forschungsfeld.id)) {
                             if (forschungsfeld.colour != null) {
                               // Team funktionen haben keine farbe
 
@@ -106,7 +102,13 @@ export default function FilterElement (props) {
                          
                           return(
                             <>
-                            <Button payload={forschungsfeld}  style={background_style_small} addMoreItem={props.addMoreItem} />
+                            <Button 
+                              title={forschungsfeld.titel}
+                              id={forschungsfeld.id}  
+                              style={background_style_small} 
+                              handleClick={props.addMoreItem} 
+                              handleHover={handleHover}
+                              />
                             {/*<div className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
                               <a 
                                 style={background_style_small}

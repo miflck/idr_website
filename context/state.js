@@ -6,7 +6,9 @@ const initialState = {
  // scrollposition:0,
  // footercolor:'rgba(232,232,232,0.5)',
   showGradient:false,
-  hoveredElements:[]
+  hoveredElements:[],
+  hoveredFilters:[]
+
 };
 
 const AppContext = createContext(initialState);
@@ -18,7 +20,9 @@ const { Provider } = AppContext;
   //CHANGE_FOOTERCOLOR:'set footer',
     SHOW_GRADIENT:'show gradient',
     ADD_HOVER_ELEMENT:'add hover element',
-    REMOVE_HOVER_ELEMENT:'remove hover element'
+    REMOVE_HOVER_ELEMENT:'remove hover element',
+    ADD_HOVER_FILTER:'add hover filter',
+    REMOVE_HOVER_FILTER:'remove hover filter'
 
 }
 
@@ -32,19 +36,36 @@ const StateProvider = ( { children } ) => {
       break;  
 
       case ACTIONS.ADD_HOVER_ELEMENT:
-        console.log("payload from hover",action.payload.element)
-
         return {
           ...state,
           hoveredElements: state.hoveredElements.concat(action.payload.element)
         }// do something with the action
       break;  
-      case ACTIONS.REMOVE_HOVER_ELEMENT:
-        console.log("payload from remove",action.payload.element,state.hoveredElements)
 
+      case ACTIONS.REMOVE_HOVER_ELEMENT:
         return {
           ...state,
           hoveredElements:state.hoveredElements.filter(element => {
+            action.payload.element.map(e=>{
+              return(
+              e.id !==element.id
+              )
+            })
+          })
+        }// do something with the action
+      break;  
+
+      case ACTIONS.ADD_HOVER_FILTER:
+        return {
+          ...state,
+          hoveredFilters: state.hoveredFilters.concat(action.payload.element)
+        }// do something with the action
+      break;  
+
+      case ACTIONS.REMOVE_HOVER_FILTER:
+        return {
+          ...state,
+          hoveredFilters:state.hoveredFilters.filter(element => {
             action.payload.element.map(e=>{
               return(
               e.id !==element.id

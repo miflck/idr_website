@@ -9,15 +9,19 @@ const ListItemProjekt =(props)=>{
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
-   console.log(state)
+
+    // get array of Ids of Forschungsfelder for handleHover
+    const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
+        acc.push(it.id);
+        return acc;
+      }, []);
 
     const handleHover = (isHover) => {
-        console.log("isHover",isHover)
         if(isHover){
-            dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: props.forschungsfeld } })
+            dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: researchFieldIdArray} })
             setHoverGradient(true)
         }else{
-            dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element: props.forschungsfeld } })
+            dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element: researchFieldIdArray } })
             setHoverGradient(false)
         }
     };
@@ -83,7 +87,16 @@ const ListItemProjekt =(props)=>{
 
 
     return (
-            <div className={styles.wrapper} key={props.id} onMouseEnter={ ()=>handleHover(true)} onMouseLeave={ ()=>handleHover(false)}>
+            <div className={styles.wrapper} 
+                key={props.id} 
+                onMouseEnter={ ()=>handleHover(true)} 
+                onTouchStart={ ()=>handleHover(true)}  
+                onMouseLeave={ ()=>handleHover(false)}
+                onTouchEnd={ ()=>handleHover(false)}
+                onTouchCancel={ ()=>handleHover(false)}
+
+                >
+
                 <div className={styles.backgroundwrapper} style={background_style}></div>
                 <Container>
                     <div className={styles.content}>
