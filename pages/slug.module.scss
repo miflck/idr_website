@@ -26,10 +26,17 @@
 }
 
 
-.hintergrund_title {
-    //position: fixed;
+.gradientOpacity{
+    height:2rem;
+   position: absolute;
+   z-index: -1;
+
+}
+
+.hintergrund_2 {
    // height: 20vh;
-    //width: 100vw;
+    width: 100vw;
+    height:2rem;
     z-index: 0;
     opacity: 0;
     animation: fadein 500ms ;    // border: blue 1px solid;
@@ -42,7 +49,6 @@
     z-index: 1;
     position: relative;
     min-height: inherit;
-    padding: var(--padding); 
     margin-bottom: var(--padding);
     color: var(--maincolor);
     // height: 100%;
@@ -76,7 +82,7 @@
     }
     .modulareinhalte {
         width: 100%;
-        margin-bottom: calc(var(--padding) * 5);
+        //margin-bottom: calc(var(--padding) * 5);
         div {
             p {
                 margin-bottom: calc(var(--padding) * 2);

@@ -81,11 +81,18 @@ export default function Projekteinzelansicht (props) {
         colors.push(forschungsfeld.colour.hex)
         })
         background_style_small={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`
+          background: `linear-gradient(to right top , ${colors[0]}, ${colors[1] || "white"},)`
         }
          background_style={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
         }
+
+        let background_op={
+          background:`linear-gradient(to bottom, rgba(255,255,255,0) 10%,
+          rgba(255,255,255,1))`
+        };
+
+
 
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -93,6 +100,9 @@ export default function Projekteinzelansicht (props) {
     <div className={styles.hintergrund} style={background_style}></div>
 
     <div className={styles.slugwrapper}>
+    <div className={styles.gradientOpacity} style={background_style} >
+    <div className={styles.hintergrund_2} style={background_op}></div>
+    </div>
       <Container>
         <div className={styles.titel}>
           <h1>{titel}</h1>
@@ -118,7 +128,11 @@ export default function Projekteinzelansicht (props) {
             )})
           }
         </div>
-            
+        </Container>
+        <div className={styles.hintergrund_2} style={background_style_small}></div>
+
+        <Container>
+
         <div className={styles.listenwrapper}> 
 
           <div>
@@ -174,6 +188,7 @@ export default function Projekteinzelansicht (props) {
           
         </div>
       </Container>
+
     </div>
   </Layout>
   )
