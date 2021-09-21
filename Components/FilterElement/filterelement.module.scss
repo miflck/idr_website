@@ -1,3 +1,6 @@
+@import "../.././styles/breakpoints.scss";
+
+
 .filterfeldwrapper {
     user-select: none;
   //  border-bottom: 1px solid var(--maincolor);
@@ -6,9 +9,15 @@
     text-transform: uppercase;
     background-color: var(--secondcolor);
 
+background-color: rgba(255,255,255,0.8);
+
+position: sticky;
+z-index: 100;
+top:0rem;
+
     .filterauflistung {
         display: flex;
-        justify-content: center;
+         justify-content: center;
 
        flex-wrap: wrap;
 
@@ -70,3 +79,25 @@
         }
     }
 }
+
+
+
+@media (min-width: $breakpointSmall) {
+    .filterfeldwrapper {
+        border:solid thin green;
+        position: sticky;
+        top:3rem;
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+
+  }
+  
+  @media (min-width: $breakpointLarge) {
+
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+
+  }

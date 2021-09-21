@@ -130,9 +130,9 @@ export default function FilterElement (props) {
   }
 
   return (
-    <div>
+    <>
       {FilterElement}
-    </div>
+    </>
 
   )
         
