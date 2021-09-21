@@ -39,14 +39,12 @@
     .headercontainer {
         position:sticky;
         top:0;
-        border:solid thin red;
     }
   }
   
   @media (min-width: $breakpointMedium) {
     .headercontainer {
         position:sticky;
-        border:solid thin blue;
 
     }
 

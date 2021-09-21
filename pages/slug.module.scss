@@ -1,9 +1,42 @@
+@import ".././styles/breakpoints.scss";
+
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
 .hintergrund {
     position: fixed;
     height: 100vh;
     width: 100vw;
     z-index: 0;
-    // border: blue 1px solid;
+    opacity: 1;
+    animation: fadeout 500ms ;    // border: blue 1px solid;
+    animation-delay: 700ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+
+}
+
+
+.hintergrund_title {
+    //position: fixed;
+   // height: 20vh;
+    //width: 100vw;
+    z-index: 0;
+    opacity: 0;
+    animation: fadein 500ms ;    // border: blue 1px solid;
+     animation-delay: 700ms;
+     animation-fill-mode: forwards;
+     animation-timing-function: ease-in-out;
+
 }
 .slugwrapper {
     z-index: 1;
@@ -14,13 +47,14 @@
     color: var(--maincolor);
     // height: 100%;
     .titel {
-        text-transform: uppercase;
-        font-size: var(--fontsizenormal);
-        line-height: calc(var(--lineheightnormal) * 1.5);
-        margin-top: calc(var(--padding) * 3);
-        margin-left: calc(var(--padding) * 5);
-        margin-bottom: calc(var(--padding) * 5);
+       // text-transform: uppercase;
+        //font-size: var(--fontsizenormal);
+        //line-height: calc(var(--lineheightnormal) * 1.5);
+        padding-top: calc(var(--padding) * 3);
+        padding-left: calc(var(--padding) * 1);
+        padding-bottom: calc(var(--padding) * 5);
     }
+
     .subwrapper {
         margin-bottom: calc(var(--padding)*2.5);
         .subtitel {
@@ -96,3 +130,24 @@
         margin-bottom: calc(var(--padding) * 5);
     }
 }
+
+
+@media (min-width: $breakpointSmall) {
+    .slugwrapper {
+        .titel{
+            padding-left: calc(var(--padding) * 5);
+        }
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+   
+  }
+  
+  @media (min-width: $breakpointLarge) {
+    
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+   
+  }

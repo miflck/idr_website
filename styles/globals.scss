@@ -36,6 +36,14 @@ body {
   100% {margin-left: var(--padding);}
 }
 
+h1{
+  padding:0;
+  margin:0;
+  font-size: var(--fontsizetitle);
+  line-height: var(--lineheighttitle);
+  font-weight: normal;
+}
+
 a {
   color: inherit;
   text-decoration: none;

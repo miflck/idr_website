@@ -74,15 +74,16 @@ export default function Projekteinzelansicht (props) {
 
         
         let background_style;
+        let background_style_small;
         let colors=[];
  
         forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
         })
-        background_style={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+        background_style_small={
+            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`
         }
-        let background_style_small={
+         background_style={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
         }
 
@@ -90,11 +91,11 @@ export default function Projekteinzelansicht (props) {
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
     
     <div className={styles.hintergrund} style={background_style}></div>
-    
+
     <div className={styles.slugwrapper}>
       <Container>
         <div className={styles.titel}>
-          {titel}
+          <h1>{titel}</h1>
         </div>
         <div className={styles.modulareinhalte}>
           {projektinhalte != null &&

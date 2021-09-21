@@ -16,8 +16,8 @@ html {
     --lineheighsmall: calc(var(--lineheightnormal)/1.5);
     --fontsizehalf: calc(var(--fontsizenormal)-2);
     --lineheighthalf: calc(var(--lineheightnormal)-5);
-    --fontsizetitle: calc(var(--fontsizenormal)*2);
-    --lineheighttitle: calc(var(--lineheightnormal)*2);
+    --fontsizetitle: calc(var(--fontsizenormal)*1.1);
+    --lineheighttitle: calc(var(--lineheightnormal)*1.1);
 
     --columnwidth: 1;
     --columngap: 50px;
