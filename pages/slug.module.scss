@@ -31,11 +31,12 @@
     width: 100vw;
 
    position: sticky;
-   top:0px;
+   top:0;
    z-index: 1;
 }
 
 .hintergrund_2 {
+
     width: 100vw;
     height:100%;
     z-index: 0;
@@ -46,6 +47,7 @@
      animation-timing-function: ease-in-out;
 }
 .slugwrapper {
+    margin-top: -10rem;
     z-index: 100;
     position: relative;
     min-height: inherit;
