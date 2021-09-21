@@ -9,18 +9,20 @@
     text-transform: uppercase;
     background-color: var(--secondcolor);
 
-background-color: rgba(255,255,255,0.8);
+background-color: rgba(255,255,255,0.85);
 
 position: sticky;
 z-index: 100;
 top:0rem;
+padding-block-end: 0.4rem;
+border-bottom:solid thin black;
 
     .filterauflistung {
         display: flex;
 
        flex-wrap: wrap;
 
-        padding: 0 var(--padding);
+        //padding: 0 var(--padding);
         div {
             margin-right: 1rem;//20px;
             

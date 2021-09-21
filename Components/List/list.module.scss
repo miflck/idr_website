@@ -33,7 +33,11 @@
         }
 
         .content {
-            padding:1rem;//0.75rem;
+
+            padding-block-start: 1.25rem;
+
+            padding-block-end: 1.25rem;
+            //padding:1rem 0;//0.75rem;
            // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
            // padding: 1rem 1.25rem 1rem;
 
