@@ -88,8 +88,9 @@ export default function Projekteinzelansicht (props) {
         }
 
         let background_op={
-          background:`linear-gradient(to bottom, rgba(255,255,255,0) 10%,
-          rgba(255,255,255,1))`
+          background:`radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
+                      linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`
+                      
         };
 
 
@@ -100,8 +101,8 @@ export default function Projekteinzelansicht (props) {
     <div className={styles.hintergrund} style={background_style}></div>
 
     <div className={styles.slugwrapper}>
-    <div className={styles.gradientOpacity} style={background_style} >
-    <div className={styles.hintergrund_2} style={background_op}></div>
+    <div className={styles.gradientOpacity} style={background_style}>
+      <div className={styles.hintergrund_2} style={background_op}></div>
     </div>
       <Container>
         <div className={styles.titel}>
