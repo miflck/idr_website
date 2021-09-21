@@ -136,8 +136,8 @@ export default function ForschungsfeldElement (props) {
                                             if(props.showHoverGradient){
                                                 hover_class = {
                                                     color: 'var(--secondcolor)',
-                                                //    border: '1px solid var(--secondcolor)',
-                                                    transition:` all 0.2s ease`
+                                                   border: '1px solid var(--secondcolor)',
+                                                   // transition:` all 0.2s ease`
 
                                                 }
                                             }

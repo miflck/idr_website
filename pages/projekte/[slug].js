@@ -84,7 +84,7 @@ export default function Projekteinzelansicht (props) {
           background: `linear-gradient(to right top , ${colors[0]}, ${colors[1] || "white"},)`
         }
          background_style={
-            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
         }
 
         let background_op={
@@ -93,17 +93,33 @@ export default function Projekteinzelansicht (props) {
                       
         };
 
+        let radial={
+          background:`radial-gradient(ellipse 90% 100% at top left,${colors[0]},transparent),
+                      radial-gradient(ellipse 90% 100% at top right,${colors[1] || "white"},transparent),
+                      radial-gradient(circle at bottom, "red",transparent)`
+
+                      
+        };
+
+        let radial_2={
+          background:`
+          radial-gradient(ellipse 80% 100% at top left,${colors[0]},transparent),
+          radial-gradient(ellipse 80% 100% at top right,${colors[1] || "white"},transparent),
+          radial-gradient(circle farthest-side , #ffffff,transparent);`,
+
+        };
+
 
 
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
     
     <div className={styles.hintergrund} style={background_style}></div>
-
-    <div className={styles.slugwrapper}>
     <div className={styles.gradientOpacity} style={background_style}>
-      <div className={styles.hintergrund_2} style={background_op}></div>
-    </div>
+     <div className={styles.hintergrund_2} style={background_op}></div>
+         </div>
+    <div className={styles.slugwrapper}>
+
       <Container>
         <div className={styles.titel}>
           <h1>{titel}</h1>

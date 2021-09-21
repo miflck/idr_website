@@ -16,7 +16,7 @@
     position: fixed;
     height: 100vh;
     width: 100vw;
-    z-index: 0;
+    z-index: 10;
     opacity: 1;
     animation: fadeout 500ms ;    // border: blue 1px solid;
     animation-delay: 200ms;
@@ -28,24 +28,24 @@
 
 .gradientOpacity{
     height: 10rem;
+    width: 100vw;
+
    position: fixed;
-   z-index: -1;
-
-
+   z-index: 1;
 }
 
 .hintergrund_2 {
     width: 100vw;
     height:100%;
     z-index: 0;
-    opacity: 0;
-    animation: fadein 500ms ;    // border: blue 1px solid;
+    opacity: 1;
+   // animation: fadein 500ms ;    // border: blue 1px solid;
      animation-delay: 200ms;
      animation-fill-mode: forwards;
      animation-timing-function: ease-in-out;
 }
 .slugwrapper {
-    z-index: 1;
+    z-index: 100;
     position: relative;
     min-height: inherit;
     margin-bottom: var(--padding);

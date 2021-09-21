@@ -1,5 +1,5 @@
-@import '../FilterElement/filterelement.module.scss';
-@import '../ForschungsfeldElement/forschungsfeldelement.module.scss';
+//@import '../FilterElement/filterelement.module.scss';
+//@import '../ForschungsfeldElement/forschungsfeldelement.module.scss';
 
 @keyframes fadeIn {
     0% {
@@ -23,30 +23,25 @@
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
-       // border-top: 1px solid var(--lightgrey);//var(--maincolor);
         position: relative;
-        .backgroundwrapper{
+
+        .gradientContainer{
             position: absolute;
             width: 100%;
             height:100%;
             opacity: 0;  
-            &:hover {
-                background-color: var(--maincolor);
-            } 
         }
 
         .content {
             padding:1rem;//0.75rem;
-
            // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
            // padding: 1rem 1.25rem 1rem;
 
            // border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
-
-
             color: var(--maincolor);
             z-index: 5;
             position: relative;
+            
             .datum {
       //  border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
                 width: fit-content;
@@ -72,18 +67,13 @@
             
 
         }
-        &:hover {
-               // border-top: 1px solid var(--maincolor);//var(--maincolor);
-
-         
+        &.highlight {
                 .content {
-                    color: var(--secondcolor);
+                    color:var(--secondcolor);
                     .titel{
                         border-bottom: solid thin white;
-
                     }
                 }
-            
         }
     }
 
