@@ -18,10 +18,10 @@ const ListItemProjekt =(props)=>{
 
     const handleHover = (isHover) => {
         if(isHover){
-            dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: researchFieldIdArray} })
+            dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: researchFieldIdArray} })
             setHoverGradient(true)
         }else{
-            dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element: researchFieldIdArray } })
+            dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element: researchFieldIdArray } })
             setHoverGradient(false)
         }
     };

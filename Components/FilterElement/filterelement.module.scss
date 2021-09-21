@@ -1,5 +1,4 @@
 .filterfeldwrapper {
-    border:solid thin red;
     user-select: none;
   //  border-bottom: 1px solid var(--maincolor);
     font-size: var(--fontsizesmall);
@@ -8,13 +7,12 @@
     background-color: var(--secondcolor);
 
     .filterauflistung {
-        border:solid thin green;
         display: flex;
-       // justify-content: center;
+        justify-content: center;
 
        flex-wrap: wrap;
 
-        padding: var(--paddingbottom) var(--padding) calc(var(--paddingbottom)*1.5);
+        padding: 0 var(--padding);
         div {
             margin-right: 1rem;//20px;
             

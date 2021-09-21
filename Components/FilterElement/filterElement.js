@@ -19,15 +19,19 @@ export default function FilterElement (props) {
     const handleHover = (isHover,element) => {
       if(isHover){
           dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [element] } })
+          dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: [element] } })
+
       }else{
           dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[element] } })
+          dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element:[element] } })
+
       }
     };
   
     let FilterElement;
     if(props.filter) {
       FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(false)} onMouseLeave={ ()=>handleShowGradient(false)}>
-                      <div className={styles.deaktivieren}> <a onClick={() => props.setFilter([])} > {t("Deaktivieren")}  </a> </div>
+                      {/*<div className={styles.deaktivieren}> <a onClick={() => props.setFilter([])} > {t("Deaktivieren")}  </a> </div>*/}
                       <div className={styles.filterauflistung}>
                         {props.filterarray.map((forschungsfeld) =>{
 
@@ -75,7 +79,7 @@ export default function FilterElement (props) {
                             }
                           }
                           // schauen, ob der button in den HoveredElements ist
-                          else if (state.hoveredElements.some(e => e === forschungsfeld.id)) {
+                          else if (state.hoveredFilters.some(e => e === forschungsfeld.id)) {
                             if (forschungsfeld.colour != null) {
                               // Team funktionen haben keine farbe
 

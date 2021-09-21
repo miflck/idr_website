@@ -121,7 +121,7 @@ export default function ForschungsfeldElement (props) {
 
                                                 opacity: 1,
                                               //border: `1px solid ${forschungsfeld.colour.hex}`,
-                                                border:'none',
+                                               // border:'none',
                                               //  border: `1px solid var(--lightgrey)`,
                                                 //transition:` all 0.2s ease`
                                                 //animation:`${styles.fadeIn} .9s ease`

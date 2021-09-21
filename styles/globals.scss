@@ -48,12 +48,15 @@ a {
 
 
 /* Firefox  */
+
+/*
 * {
   box-sizing: border-box;
   scrollbar-width: auto;
   scrollbar-color: var(--maincolor) var(--secondcolor);
 }
  /* Chrome, Edge, und Safari  */
+ /*
 *::-webkit-scrollbar {
   width: 12px;
   border: 1px var(--maincolor) solid;
@@ -67,4 +70,4 @@ a {
 }
 *::-webkit-scrollbar-corner{
   background: var(--maincolor);
-}
+}*/
