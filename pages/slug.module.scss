@@ -141,7 +141,13 @@
 
 
 @media (min-width: $breakpointSmall) {
+    .gradientOpacity{
+        position:fixed;
+        top:inherit;
+    }
     .slugwrapper {
+        margin-top: 0rem;
+
         .titel{
             padding-left: calc(var(--padding) * 5);
         }
