@@ -70,7 +70,7 @@ export default function FilterElement (props) {
                               background_style_small = {
                                 background: `${forschungsfeld.colour.hex}`,
                                 opacity: 1,
-                                border: `1px solid ${forschungsfeld.colour.hex}`
+                            //    border: `1px solid ${forschungsfeld.colour.hex}`
                                 }
                             }
                           }
@@ -88,7 +88,7 @@ export default function FilterElement (props) {
 
                                 opacity: 1,
                                 //border: `1px solid ${forschungsfeld.colour.hex}`,
-                                border:'1px solid white',
+                              //  border:'1px solid white',
                                 }
                             }
                           }

@@ -104,7 +104,7 @@ export default function ForschungsfeldElement (props) {
                                             if(props.showHoverGradient){
                                                 hover_class = {
                                                     color: 'var(--maincolor)',
-                                                    border: '1px solid var(--secondcolor)',
+                                                    //border: '1px solid var(--secondcolor)',
                                                     background: 'var(--secondcolor)',
                                                 }
                                             }
@@ -116,15 +116,17 @@ export default function ForschungsfeldElement (props) {
 
                                             hover_class = {
                                                 color:'var(--maincolor)',
-                                               // background:`${forschungsfeld.colour.hex}`,
+                                                //background:`${forschungsfeld.colour.hex}`,
                                                 background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
 
                                                 opacity: 1,
-                                             // border: `1px solid ${forschungsfeld.colour.hex}`,
-                                                border:'1px solid white',
+                                              //border: `1px solid ${forschungsfeld.colour.hex}`,
+                                                border:'none',
                                               //  border: `1px solid var(--lightgrey)`,
                                                 //transition:` all 0.2s ease`
                                                 //animation:`${styles.fadeIn} .9s ease`
+                                               // boxShadow: `3px 3px 5px ${forschungsfeld.colour.hex}`
+
 
                                             }
 
@@ -134,7 +136,7 @@ export default function ForschungsfeldElement (props) {
                                             if(props.showHoverGradient){
                                                 hover_class = {
                                                     color: 'var(--secondcolor)',
-                                                    border: '1px solid var(--secondcolor)',
+                                                //    border: '1px solid var(--secondcolor)',
                                                     transition:` all 0.2s ease`
 
                                                 }

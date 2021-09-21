@@ -36,7 +36,7 @@
         }
 
         .content {
-            padding:0.75rem;
+            padding:1rem;//0.75rem;
 
            // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
            // padding: 1rem 1.25rem 1rem;
@@ -49,11 +49,12 @@
             position: relative;
             .datum {
       //  border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
-        width: fit-content;
-
+                width: fit-content;
                 font-size: var(--fontsizesmall);
                 line-height: var(--lineheightsmall);
-                margin-bottom: var(--paddingabsatzbottom);
+                //margin-bottom: var(--paddingabsatzbottom);
+                margin-bottom: calc(var(--paddingabsatzbottom)* 0);
+
                 text-transform: uppercase;
                 font-weight: bold;
             }
@@ -63,7 +64,7 @@
                 font-size: calc(var(--fontsizenormal));
                 line-height: calc(var(--lineheightnormal));
                 // width: 60%;
-                padding-bottom: calc(var(--paddingabsatzbottom)*1);
+                padding-bottom: calc(var(--paddingabsatzbottom)*0.6);
                 cursor: pointer;
                 //color:#333;
                 border-bottom: solid thin black;

@@ -4,14 +4,20 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  background-color: transparent;
+  background-color:transparent;
   border:solid thin var(--maincolor);
-  border-radius: 10px;
+  border-radius: 5px;
   //font-family: "Sang", Times, serif;
+    margin-block-start:0.5rem;
+    margin-inline-end: 0.25rem;
+    padding:0.1rem 0.25rem;
+    font-size: 0.6875rem;
+   // border-style: hidden double dashed;
 
+   // box-shadow: 1px 1px 3px silver;
 
   &:hover {
-    color: var(--maincolor);
+    color: var(--maincolor);    
     background-color: var(--secondcolor);
     }
 
