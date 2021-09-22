@@ -4,10 +4,15 @@ import styles from './projekte.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../Components/Container/container'
-import TextElement from '../../Components/TextElement/textElement'
+import TextElement from '../../Components/ModularContent/TextElement'
+import ImageElement from "../../Components/ModularContent/ImageElement";
 import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
 import { useRouter } from 'next/router'
+
+import { Title } from "../../Components/Composition";
+import { ServiceElement } from "../../Components/Composition";
+import McWrapper from "../../Components/ModularContent/McWrapper";
 
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common')
@@ -21,10 +26,14 @@ export default function Projekteinzelansicht (props) {
     kooperationen,
     finanzierung,
     projektinhalte,
+    serviceBlocks,
     forschungsfeld,
     startdatum,
     enddatum
-    }=""}=""}=props || ""
+  }=""}=""}=props || ""
+
+
+console.log("serviceBlocks",serviceBlocks)
 
     const router = useRouter()
     if(router.isFallback){
@@ -49,6 +58,8 @@ export default function Projekteinzelansicht (props) {
                 }else{
                   MitarbeitendenElement= <> </>
                 }
+
+
         let VerantwortungElement;
                 if(verantwortung != ""){
                   VerantwortungElement= 
@@ -114,20 +125,23 @@ export default function Projekteinzelansicht (props) {
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
     
+    {/* Hintergrund ganze seite */}
     <div className={styles.hintergrund} style={background_style}></div>
-    <div className={styles.gradientOpacity} style={background_style}>
-     <div className={styles.hintergrund_2} style={background_op}></div>
-         </div>
-    <div className={styles.slugwrapper}>
 
+    {/* Hintergrund fade */}
+    <div className={styles.gradientOpacity} style={background_style}>
+      <div className={styles.hintergrund_2} style={background_op}></div>
+    </div>
+
+    <div className={styles.slugwrapper}>
       <Container>
-        <div className={styles.titel}>
-          <h1>{titel}</h1>
-        </div>
+        <Title title={titel}/>
+
         <div className={styles.modulareinhalte}>
           {projektinhalte != null &&
             projektinhalte.map((block) => {
             return (
+              <McWrapper>
               <div key={block.id}>
                 {
                 block._modelApiKey === 'text' &&
@@ -135,46 +149,41 @@ export default function Projekteinzelansicht (props) {
                 }
                 {
                   block._modelApiKey === 'einzelbild' &&
-                  <img src={block.einzelbild.url}/>
+                  <ImageElement src={block.einzelbild.url} />
                 }
                 {
                   block._modelApiKey === 'pdf' &&
                   <ButtonLink {...block} href={block.pdf.url}/>
                 }
               </div>
+              </McWrapper>
             )})
           }
         </div>
         </Container>
-        <div className={styles.hintergrund_2} style={background_style_small}></div>
 
         <Container>
 
         <div className={styles.listenwrapper}> 
+        <ServiceElement title=  {t("Zeitraum")}>
+          {startzeitraum} – {endzeitraum}
+        </ServiceElement>
 
-          <div>
-            <div className={styles.subtitel}>
-              {t("Zeitraum")}
-              </div>
-            {startzeitraum} – {endzeitraum}
-          </div>
+        <ServiceElement title=  {t("Forschungsfelder")}>
+          {forschungsfeld.map((forschungsfeld) => {
+            var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
+            return (
+              <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
+            )
+          })}        
+        </ServiceElement>
 
-          <div>
-            <div className={styles.subtitel}>
-              {t("Forschungsfelder")}
-              </div>
-            {forschungsfeld.map((forschungsfeld) => {
-              var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
-              console.log("filter mitgeben forschungsfeld", filtermitgeben)
-              return (
-                <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
-              )
-            })} 
-          </div>
 
-          <div>
-          <div className={styles.subtitel}>{t("Leitung")}</div>
-            {leitung.map((leitung) => {
+
+
+
+        <ServiceElement title=  {t("Leitung")}>
+        {leitung.map((leitung) => {
               let href=`/team`
               if(leitung.slug!=""){
                 href+=`/${leitung.slug}`
@@ -183,25 +192,63 @@ export default function Projekteinzelansicht (props) {
                 <ButtonLink {...leitung} href={href}/>
               )
             })}
-          </div>
+        </ServiceElement>
+
+
+          {verantwortung != "" &&
+            <ServiceElement title= {t("Verantwortung")}>
+            {verantwortung.map((e) => {
+                let href=`/team`
+                if(e.slug!=""){
+                    href+=`/${e.slug}`
+                }
+                return (
+                  <ButtonLink {...e} href={href}/>
+                )
+              })}
+            </ServiceElement>
+          }
+
+        {mitarbeit != "" &&
+            <ServiceElement title= {t("Mitarbeit")}>
+            {mitarbeit.map((e) => {
+                let href=`/team`
+                if(e.slug!=""){
+                    href+=`/${e.slug}`
+                }
+                return (
+                  <ButtonLink {...e} href={href}/>
+                )
+              })}
+            </ServiceElement>
+          }
+
+{serviceBlocks != null &&
+            serviceBlocks.map((block) => {
+              return(
+                <ServiceElement key={block.key} title=  {block.title}>
+                   {block.persons.map((person) => {
+                     let href=`/team`
+                     if(person.slug!=""){
+                         href+=`/${person.slug}`
+                     }
+                     return (
+                       <ButtonLink {...person} href={href}/>
+                     )
+                   })
+                  }
+              </ServiceElement>
+              )
+            })
+        }
           
-          <div>
-            {VerantwortungElement}
-          </div>
+        <ServiceElement title=  {t("Kooperationen")}>
+          <TextElement {...kooperationen}/>
+        </ServiceElement>
 
-          <div>
-          {MitarbeitendenElement}
-          </div>
-
-          <div>
-            <div className={styles.subtitel}>{t("Kooperationen")}</div>
-            <TextElement {...kooperationen}/>
-          </div>
-
-          <div>
-            <div className={styles.subtitel}>{t("Finanzierung")}</div>
-            <TextElement {...finanzierung}/>
-          </div>
+        <ServiceElement title=  {t("Finanzierung")}>
+          <TextElement {...finanzierung}/>
+        </ServiceElement>
           
         </div>
       </Container>

@@ -3,7 +3,7 @@ import { AppContext, ACTIONS } from '../../context/state';
 import styles from '../../pages/news.module.scss'
 import Link from 'next/link'
 // import Container from '../../Components/Container/container'
-import TextElement from '../TextElement/textElement'
+import TextElement from '../ModularContent/TextElement'
 import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
 
 const ListItemNews = (props) => {

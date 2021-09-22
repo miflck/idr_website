@@ -8,6 +8,11 @@ import Container from '../../Components/Container/container'
 import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
 
+import { Title } from "../../Components/Composition";
+import TextElement from '../../Components/ModularContent/TextElement'
+import ImageElement from "../../Components/ModularContent/ImageElement";
+
+
 export default function Menscheinzelansicht (props) {
   const { t } = useTranslation('common')
   // console.log("props vergleich team", props)
@@ -119,9 +124,9 @@ export default function Menscheinzelansicht (props) {
         
           <div className={styles.slugwrapper}>
           <Container>
-            <div className={styles.titel}>
-              {name}
-            </div>
+          <Title title={name}/>
+          <ImageElement src={portrait.url}  alt={portrait.alt} />
+
 
             <img 
               className={styles.portrait}

@@ -44,6 +44,16 @@ h1{
   font-weight: normal;
 }
 
+
+h2{
+  padding:0;
+  margin:0;
+  font-size: var(--fontsizenormal);
+  line-height: var(--lineheighnormal);
+  font-weight: normal;
+//padding-inline-start: 2rem;
+}
+
 a {
   color: inherit;
   text-decoration: none;

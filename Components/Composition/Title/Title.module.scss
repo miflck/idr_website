@@ -1,0 +1,27 @@
+@import "../../.././styles/breakpoints.scss";
+
+
+.root {
+    padding-top: calc(var(--padding) * 3);
+    padding-left: calc(var(--padding) * 1);
+    padding-bottom: calc(var(--padding) * 5);
+}
+
+
+@media (min-width: $breakpointSmall) {
+        .root{
+            padding-left: calc(var(--padding) * 5);
+        }    
+  }
+  
+  @media (min-width: $breakpointMedium) {
+   
+  }
+  
+  @media (min-width: $breakpointLarge) {
+    
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+   
+  }

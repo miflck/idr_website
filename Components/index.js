@@ -1,7 +1,11 @@
 /* PLOP_INJECT_IMPORT */
-import Button from './Button';
+import ServiceElement from './ServiceElement';
+import Title from './Title';
+import ModularContentTest from './ModularContentTest';
 
 export {
   /* PLOP_INJECT_EXPORT */
-	Button,
+	ServiceElement,
+	Title,
+	ModularContentTest,
 }
