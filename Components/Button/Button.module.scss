@@ -11,7 +11,7 @@
     margin-block-start:0.25rem;
     margin-inline-end: 0.25rem;
     padding:0.1rem 0.25rem;
-    font-size: 0.6875rem;
+    font-size: var(--fontsizesmall);// 0.6875rem;
    // border-style: hidden double dashed;
 
    // box-shadow: 1px 1px 3px silver;
@@ -25,6 +25,9 @@
     color: var(--secondcolor);
     background-color: var(--maincolor);
    } 
+
+
+
 
 }
 

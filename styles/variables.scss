@@ -12,12 +12,14 @@ html {
 
 
 
-    --fontsizesmall: calc(var(--fontsizenormal)/1.5);
-    --lineheighsmall: calc(var(--lineheightnormal)/1.5);
+    --fontsizesmall: calc(var(--fontsizenormal)*0.6);
+    --lineheighsmall: calc(var(--lineheightnormal)*0.7);
+    
     --fontsizehalf: calc(var(--fontsizenormal)-2);
     --lineheighthalf: calc(var(--lineheightnormal)-5);
-    --fontsizetitle: calc(var(--fontsizenormal)*1.1);
-    --lineheighttitle: calc(var(--lineheightnormal)*1.1);
+
+    --fontsizetitle: calc(var(--fontsizenormal)*1.5);
+    --lineheighttitle: calc(var(--lineheightnormal)*1.5);
 
     --columnwidth: 1;
     --columngap: 50px;

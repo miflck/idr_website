@@ -1,5 +1,8 @@
 //@import '../FilterElement/filterelement.module.scss';
 //@import '../ForschungsfeldElement/forschungsfeldelement.module.scss';
+@import "../.././styles/breakpoints.scss";
+
+
 
 @keyframes fadeIn {
     0% {
@@ -19,11 +22,16 @@
     }
 }
 
+
+
+
+
 .wrapper {
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
         position: relative;
+   //     border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
 
         .gradientContainer{
             position: absolute;
@@ -32,7 +40,11 @@
             opacity: 0;  
         }
 
+
         .content {
+            position: relative;
+
+
 
             padding-block-start: 1.25rem;
 
@@ -41,7 +53,6 @@
            // padding: var(--paddingtop) var(--padding) var(--paddingbottom);
            // padding: 1rem 1.25rem 1rem;
 
-           // border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
             color: var(--maincolor);
             z-index: 5;
             position: relative;
@@ -49,7 +60,7 @@
             .datum {
       //  border-bottom: 1px solid var(--lightgrey);//var(--maincolor);
                 width: fit-content;
-                font-size: var(--fontsizesmall);
+                font-size: calc(var(--fontsizesmall));
                 line-height: var(--lineheightsmall);
                 //margin-bottom: var(--paddingabsatzbottom);
                 margin-bottom: calc(var(--paddingabsatzbottom)* 0);
@@ -60,13 +71,14 @@
             .titel {
                // font-weight: bold;
                 //text-transform: uppercase;
-                font-size: calc(var(--fontsizenormal));
-                line-height: calc(var(--lineheightnormal));
+                font-size: calc(var(--fontsizenormal)*1);
+                line-height: calc(var(--lineheightnormal)*1);
                 // width: 60%;
                 padding-bottom: calc(var(--paddingabsatzbottom)*0.6);
                 cursor: pointer;
                 //color:#333;
                 border-bottom: solid thin black;
+                
             }
             
 
@@ -81,4 +93,28 @@
         }
     }
 
+
+    @media (min-width: $breakpointSmall) {
+        .wrapper {
+        .content {
+    
+        .titel {    
+            
+            font-size: calc(var(--fontsizenormal)*1.2);
+            line-height: calc(var(--lineheightnormal)*1.2);
+        }
+    }}
+    }
+    
+    @media (min-width: $breakpointMedium) {
+     
+    }
+    
+    @media (min-width: $breakpointLarge) {
+      
+    }
+    
+    @media (min-width: $breakpointXLarge) {
+     
+    }
 

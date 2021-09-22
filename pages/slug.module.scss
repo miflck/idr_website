@@ -53,6 +53,8 @@
 }
 
 .serviceWrapper{
+    margin-top: 5rem;
+
     position: relative;
     columns: 1;
     z-index: 100;
@@ -117,16 +119,18 @@
 
 @media (min-width: $breakpointSmall) {
     .serviceWrapper{
-        position: relative;
+        margin-top: 10rem;
         columns: 2;
-        z-index: 100;
     }
-    .gradientOpacity{
-        position:fixed;
-        top:inherit;
+    .gradient_opacity{
+        position:sticky;
+        top:0;
+        height: 20rem;
+
     }
     .slugwrapper {
-        margin-top: 0rem;
+        //margin-top: 0rem;
+        margin-top: -10rem;
 
         .titel{
             padding-left: calc(var(--padding) * 5);

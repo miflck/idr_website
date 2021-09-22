@@ -8,11 +8,18 @@ import TextElement from '../../Components/Composition/TextElement'
 import ImageElement from "../../Components/Composition/ImageElement";
 import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
+
+import router, { useRouter } from 'next/router'
+import Button from "../../Components/Button/Button";
 
 import { Title } from "../../Components/Composition";
 import { ServiceElement } from "../../Components/Composition";
 import McWrapper from "../../Components/Composition/McWrapper/McWrapper";
+
+
+
+
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common')
 // console.log("props vergleich projekt", props)
@@ -37,6 +44,24 @@ export default function Projekteinzelansicht (props) {
       return <div>Loading…</div>
     }
 
+    const handleHover = (isHover,id) => {
+      if(isHover){
+        //  dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
+      }else{
+        //  dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
+      }
+  };
+
+  const handleClick = (id) => {
+    let f=forschungsfeld.filter((e) => e.id===id)
+    var filtermitgeben = `${f[0].titel}`.split(" ").join("-");
+    router.push({
+      pathname: '/editorial', 
+      query: { keyword: `${filtermitgeben}` }
+    })
+};
+
+
     if(props.data) {
 
         var options = { year: 'numeric', month: 'long'};
@@ -59,6 +84,9 @@ export default function Projekteinzelansicht (props) {
                       linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`
                       
         };
+
+
+
 
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -119,8 +147,25 @@ export default function Projekteinzelansicht (props) {
         <ServiceElement title=  {t("Forschungsfelder")}>
           {forschungsfeld.map((forschungsfeld) => {
             var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
+
+            let hover_class = {
+              color:'var(--maincolor)',
+              background: 'var(--secondcolor)',//`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+              opacity: 1,
+            }
             return (
-              <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
+<>
+              {/*<FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>*/}
+
+                <Button 
+                title={forschungsfeld.titel}  
+                id={forschungsfeld.id}
+                style={hover_class} 
+                handleClick={handleClick} 
+                handleHover={handleHover}
+                />
+                </>
+
             )
           })}        
         </ServiceElement>

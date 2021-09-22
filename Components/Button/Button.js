@@ -4,6 +4,7 @@ import styles from './Button.module.scss';
 const Button = props => {
   let {style,title,id,handleHover,handleClick}=props;
   return (
+
     <button className = {` ${styles.root} `}
         onMouseEnter={ ()=>handleHover(true,id)} 
         onMouseLeave={ ()=>handleHover(false,id)}
@@ -14,6 +15,7 @@ const Button = props => {
         key={id} 
         style={style}
       >
+
         {title}
     </button>
   );

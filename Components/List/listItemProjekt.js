@@ -83,7 +83,9 @@ const ListItemProjekt =(props)=>{
                 onTouchCancel={ ()=>handleHover(false)}
                 >
                 <div className={styles.gradientContainer} style={background_style}></div>
+
                 <Container>
+
                     <div className={styles.content}>
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
                         <Link href={href}  as={href}>
