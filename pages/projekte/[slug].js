@@ -33,67 +33,24 @@ export default function Projekteinzelansicht (props) {
   }=""}=""}=props || ""
 
 
-console.log("serviceBlocks",serviceBlocks)
-
     const router = useRouter()
     if(router.isFallback){
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Fallback")
       return <div>Loading…</div>
     }
 
     if(props.data) {
-      let MitarbeitendenElement;
-                if(mitarbeit != ""){
-                  MitarbeitendenElement= <>
-                    <div className={styles.subtitel}>{t("Mitarbeit")}</div>
-                      {mitarbeit.map((mitarbeiterin) => {
-                        let href=`/team`
-                        if(mitarbeiterin.slug!=""){
-                            href+=`/${mitarbeiterin.slug}`
-                        }
-                       return (
-                        <ButtonLink {...mitarbeiterin} href={href}/>
-                          )})}
-                    </>
-                }else{
-                  MitarbeitendenElement= <> </>
-                }
-
-
-        let VerantwortungElement;
-                if(verantwortung != ""){
-                  VerantwortungElement= 
-                  <>
-                    <div className={styles.subtitel}>{t("Verantwortung")}</div>
-                    {verantwortung.map((verantwortung) => {
-                      let href=`/team`
-                      if(verantwortung.slug!=""){
-                          href+=`/${verantwortung.slug}`
-                      }
-                      return (
-                        <ButtonLink {...verantwortung} href={href}/>
-                      )
-                    })}
-                  </>
-                }else{
-                  VerantwortungElement= <> </>
-                }
 
         var options = { year: 'numeric', month: 'long'};
         const startzeitraum = new Date(startdatum).toLocaleDateString(router.locale, options);
         const endzeitraum = new Date(enddatum).toLocaleDateString(router.locale, options);
 
-        
         let background_style;
-        let background_style_small;
         let colors=[];
  
         forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
         })
-        background_style_small={
-          background: `linear-gradient(to right top , ${colors[0]}, ${colors[1] || "white"},)`
-        }
+       
          background_style={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
         }
@@ -103,24 +60,6 @@ console.log("serviceBlocks",serviceBlocks)
                       linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`
                       
         };
-
-        let radial={
-          background:`radial-gradient(ellipse 90% 100% at top left,${colors[0]},transparent),
-                      radial-gradient(ellipse 90% 100% at top right,${colors[1] || "white"},transparent),
-                      radial-gradient(circle at bottom, "red",transparent)`
-
-                      
-        };
-
-        let radial_2={
-          background:`
-          radial-gradient(ellipse 80% 100% at top left,${colors[0]},transparent),
-          radial-gradient(ellipse 80% 100% at top right,${colors[1] || "white"},transparent),
-          radial-gradient(circle farthest-side , #ffffff,transparent);`,
-
-        };
-
-
 
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
@@ -161,10 +100,13 @@ console.log("serviceBlocks",serviceBlocks)
           }
         </div>
         </Container>
+<hr/>
+
+
 
         <Container>
-
         <div className={styles.listenwrapper}> 
+
         <ServiceElement title=  {t("Zeitraum")}>
           {startzeitraum} – {endzeitraum}
         </ServiceElement>
@@ -177,10 +119,6 @@ console.log("serviceBlocks",serviceBlocks)
             )
           })}        
         </ServiceElement>
-
-
-
-
 
         <ServiceElement title=  {t("Leitung")}>
         {leitung.map((leitung) => {
@@ -195,19 +133,19 @@ console.log("serviceBlocks",serviceBlocks)
         </ServiceElement>
 
 
-          {verantwortung != "" &&
-            <ServiceElement title= {t("Verantwortung")}>
-            {verantwortung.map((e) => {
-                let href=`/team`
-                if(e.slug!=""){
-                    href+=`/${e.slug}`
-                }
-                return (
-                  <ButtonLink {...e} href={href}/>
-                )
-              })}
-            </ServiceElement>
-          }
+        {verantwortung != "" &&
+          <ServiceElement title= {t("Verantwortung")}>
+          {verantwortung.map((e) => {
+              let href=`/team`
+              if(e.slug!=""){
+                  href+=`/${e.slug}`
+              }
+              return (
+                <ButtonLink {...e} href={href}/>
+              )
+            })}
+          </ServiceElement>
+        }
 
         {mitarbeit != "" &&
             <ServiceElement title= {t("Mitarbeit")}>
@@ -223,7 +161,7 @@ console.log("serviceBlocks",serviceBlocks)
             </ServiceElement>
           }
 
-{serviceBlocks != null &&
+      {serviceBlocks != null &&
             serviceBlocks.map((block) => {
               return(
                 <ServiceElement key={block.key} title=  {block.title}>
@@ -237,7 +175,18 @@ console.log("serviceBlocks",serviceBlocks)
                      )
                    })
                   }
-              </ServiceElement>
+                <TextElement {...block.text}/>
+                {block.projects.map((p) => {
+                     let href=`/projekte`
+                     if(p.slug!=""){
+                         href+=`/${p.slug}`
+                     }
+                     return (
+                       <ButtonLink {...p} href={href}/>
+                     )
+                   })
+                  }
+                </ServiceElement>
               )
             })
         }

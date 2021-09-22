@@ -1,8 +1,16 @@
 .root {
-  border:solid thin red;
+  p { 
+    margin: 0;
+   // padding-bottom: calc(var(--padding));
+    margin-bottom: calc(var(--padding));
+  }
+  h2{
+    text-decoration: underline;
+  }
 }
 
 .mcWrapper{
    // padding-bottom: calc(var(--padding));
     margin-bottom: calc(var(--padding));
+
 }
