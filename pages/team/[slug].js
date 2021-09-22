@@ -9,8 +9,8 @@ import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
 
 import { Title } from "../../Components/Composition";
-import TextElement from '../../Components/ModularContent/TextElement'
-import ImageElement from "../../Components/ModularContent/ImageElement";
+import TextElement from '../../Components/Composition/TextElement'
+import ImageElement from "../../Components/Composition/ImageElement";
 
 
 export default function Menscheinzelansicht (props) {

@@ -1,2 +1,5 @@
 export {default as Title} from './Title'
 export {default as ServiceElement} from './ServiceElement'
+export {default as TextElement} from './TextElement'
+export {default as ImageElement} from './ImageElement'
+export {default as MCWrapper} from './McWrapper'

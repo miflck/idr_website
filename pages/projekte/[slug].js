@@ -4,16 +4,15 @@ import styles from './projekte.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../Components/Container/container'
-import TextElement from '../../Components/ModularContent/TextElement'
-import ImageElement from "../../Components/ModularContent/ImageElement";
+import TextElement from '../../Components/Composition/TextElement'
+import ImageElement from "../../Components/Composition/ImageElement";
 import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
 import { useRouter } from 'next/router'
 
 import { Title } from "../../Components/Composition";
 import { ServiceElement } from "../../Components/Composition";
-import McWrapper from "../../Components/ModularContent/McWrapper";
-
+import McWrapper from "../../Components/Composition/McWrapper/McWrapper";
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common')
 // console.log("props vergleich projekt", props)
@@ -65,47 +64,53 @@ export default function Projekteinzelansicht (props) {
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
     
     {/* Hintergrund ganze seite */}
-    <div className={styles.hintergrund} style={background_style}></div>
+    <div className={styles.background} style={background_style}></div>
 
     {/* Hintergrund fade */}
-    <div className={styles.gradientOpacity} style={background_style}>
-      <div className={styles.hintergrund_2} style={background_op}></div>
-    </div>
+    <div className={styles.stickywrapper}>
 
-    <div className={styles.slugwrapper}>
-      <Container>
-        <Title title={titel}/>
+      <div className={styles.gradient_opacity} style={background_style}>
+        <div className={styles.background_small} style={background_op}></div>
+      </div>
 
-        <div className={styles.modulareinhalte}>
-          {projektinhalte != null &&
+      <div className={styles.slugwrapper}>
+        <Container>
+          <Title title={titel}/>
+          <div className={styles.modulareinhalte}>
+            {projektinhalte != null &&
             projektinhalte.map((block) => {
             return (
-              <McWrapper>
-              <div key={block.id}>
-                {
-                block._modelApiKey === 'text' &&
-                  <TextElement {...block.text}></TextElement>
-                }
-                {
-                  block._modelApiKey === 'einzelbild' &&
-                  <ImageElement src={block.einzelbild.url} />
-                }
-                {
-                  block._modelApiKey === 'pdf' &&
-                  <ButtonLink {...block} href={block.pdf.url}/>
-                }
-              </div>
-              </McWrapper>
+            <McWrapper>
+            <div key={block.id}>
+            {
+            block._modelApiKey === 'text' &&
+              <TextElement {...block.text}></TextElement>
+            }
+            {
+              block._modelApiKey === 'einzelbild' &&
+              <ImageElement src={block.einzelbild.url} />
+            }
+            {
+              block._modelApiKey === 'pdf' &&
+              <ButtonLink {...block} href={block.pdf.url}/>
+            }
+            </div>
+            </McWrapper>
             )})
-          }
-        </div>
+            }
+          </div>
         </Container>
-<hr/>
+      </div>
+    </div>
 
-
+    {/* Hintergrund fade 
+    <div className={styles.gradient_opacity_line} style={background_style}>
+      <div className={styles.background_small} style={background_op}></div>
+    </div>
+*/}
 
         <Container>
-        <div className={styles.listenwrapper}> 
+        <div className={styles.serviceWrapper}> 
 
         <ServiceElement title=  {t("Zeitraum")}>
           {startzeitraum} – {endzeitraum}
@@ -202,7 +207,6 @@ export default function Projekteinzelansicht (props) {
         </div>
       </Container>
 
-    </div>
   </Layout>
   )
 }
