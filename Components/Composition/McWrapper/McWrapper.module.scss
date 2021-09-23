@@ -1,6 +1,10 @@
 .root {
-  max-width: 700px;
+  border-top: solid thin black;
+  padding-top: calc(var(--padding));
+  ;
+  //max-width: 700px;
   p { 
+    max-width: 700px;
     margin: 0;
    // padding-bottom: calc(var(--padding));
     margin-bottom: calc(var(--padding));

@@ -38,9 +38,7 @@ export default function FilterElement (props) {
                           let filterId=forschungsfeld.id;
                            let filtertitel;
                            let filtertitelohneunderline;
-
-                          let filter_id=forschungsfeld.id;
-
+                           
                            if(forschungsfeld.titel == null) {
                             //  console.log("hier publitypes", forschungsfeld)
                              filtertitelohneunderline = forschungsfeld.split('_').join(' ');
@@ -105,24 +103,15 @@ export default function FilterElement (props) {
                           
                          
                           return(
-                            <>
                             <Button 
                               title={forschungsfeld.titel}
                               id={forschungsfeld.id}  
                               style={background_style_small} 
                               handleClick={props.addMoreItem} 
                               handleHover={handleHover}
+                              key={forschungsfeld.id}
                               />
-                            {/*<div className={btn_class} onMouseEnter={ ()=>handleHover(true,forschungsfeld)} onMouseLeave={ ()=>handleHover(false,forschungsfeld)}>
-                              <a 
-                                style={background_style_small}
-                                onClick={() => props.addMoreItem(filterId)}
-                                key={filtertitel}
-                              > 
-                                {filtertitelohneunderline} 
-                              </a>
-                          </div>*/}
-                            </>
+      
                           )})}
                       </div>
                       </div>

@@ -93,7 +93,7 @@ const ListItemProjekt =(props)=>{
                                 {props.titel}
                             </div>
                         </Link>
-                        <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>    
+                        <ForschungsfeldElement  {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>    
                     </div>
                 </Container>
             </div>

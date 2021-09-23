@@ -54,10 +54,16 @@
 
 .serviceWrapper{
     margin-top: 5rem;
+    padding-top: calc(var(--padding));
+
+    border-top:solid thin black;
 
     position: relative;
     columns: 1;
     z-index: 100;
+
+   // margin-inline-start:2rem;
+   // margin-inline-end: 2rem;
 }
 
 .slugwrapper {
@@ -121,6 +127,9 @@
     .serviceWrapper{
         margin-top: 10rem;
         columns: 2;
+
+        margin-inline-start:0rem;
+        margin-inline-end: 0rem;
     }
     .gradient_opacity{
         position:sticky;

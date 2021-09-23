@@ -109,20 +109,18 @@ export default function Projekteinzelansicht (props) {
             projektinhalte.map((block) => {
             return (
             <McWrapper>
-            <div key={block.id}>
             {
             block._modelApiKey === 'text' &&
-              <TextElement {...block.text}></TextElement>
+              <TextElement key={block.id} {...block.text}></TextElement>
             }
             {
               block._modelApiKey === 'einzelbild' &&
-              <ImageElement src={block.einzelbild.url} />
+              <ImageElement key={block.id} src={block.einzelbild.url} />
             }
             {
               block._modelApiKey === 'pdf' &&
-              <ButtonLink {...block} href={block.pdf.url}/>
+              <ButtonLink key={block.id}{...block} href={block.pdf.url}/>
             }
-            </div>
             </McWrapper>
             )})
             }

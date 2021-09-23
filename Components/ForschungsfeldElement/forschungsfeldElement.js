@@ -16,20 +16,10 @@ export default function ForschungsfeldElement (props) {
         }
     };
 
-
-
-
     let Forschungsfelder;
-    
-
-
-
-
-
-
     // type ist für Publikationen. warum? ev weil fehlende farbe vom Forschungsfeld?
     // ev ist das alles noch zu wenig abtrahiert?
-    if(props.type) {
+    /*if(props.type) {
         var types = props.type.split('_').join(' ');
         if (types != null) {
             if(props.filter) {
@@ -67,23 +57,8 @@ export default function ForschungsfeldElement (props) {
             }
         }
 
-    } else {
-        // wenn der "Button" ein Forschungsfeld ist
-        let colors=[];
-            props.forschungsfeld.map((forschungsfeld) => {
-                colors.push(forschungsfeld.colour.hex)
-            })
-
-            let background_style={
-                background: `linear-gradient(to right,"white"})`,
-                animation:`${styles.fadeOut} 0.5s ease`
-            };
-
-            let background_style_small={
-                background: `linear-gradient(to right,"white"})`,
-                animation:`${styles.fadeOut} 0.5s ease`,
-            };
-
+    } else {*/
+       
             
 
     if (props.forschungsfeld != null) {
@@ -126,8 +101,6 @@ export default function ForschungsfeldElement (props) {
                                                 //transition:` all 0.2s ease`
                                                 //animation:`${styles.fadeIn} .9s ease`
                                                // boxShadow: `3px 3px 5px ${forschungsfeld.colour.hex}`
-
-
                                             }
 
                                         }
@@ -143,28 +116,14 @@ export default function ForschungsfeldElement (props) {
                                             }
                                         }
                                         return (
-                                            <>
-
-                           
                                             <Button 
+                                                key={forschungsfeld.id}
                                                 title={forschungsfeld.titel}  
                                                 id={forschungsfeld.id}
                                                 style={hover_class} 
                                                 handleClick={props.addMoreItem} 
                                                 handleHover={handleHover}
-
                                                 />
-                                             {/*<div className={btn_class}>
-                                                <a 
-                                                onMouseEnter={ ()=>handleHover(true,forschungsfeld.titel)} 
-                                                onMouseLeave={ ()=>handleHover(false,forschungsfeld.titel)}
-                                                onClick={() => props.addMoreItem(forschungsfeld.titel)}
-                                                key={forschungsfeld.titel} style={hover_class}
-                                                > 
-                                                {forschungsfeld.titel}
-                                                </a>
-                                        </div>*/}
-                                            </>
                                         )
                                     })}
                                 </div>
@@ -173,7 +132,9 @@ export default function ForschungsfeldElement (props) {
     else {
         Forschungsfelder = <></>
     }
-}
+ 
+
+
     return (
         <div>
             {Forschungsfelder}

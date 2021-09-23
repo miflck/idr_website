@@ -1,7 +1,7 @@
 @import "../../.././styles/breakpoints.scss";
 
 .root {
-  margin-bottom: 2rem;
+  margin-block-end: 1.25rem;
   break-inside: avoid-column;
     h2{
       text-decoration: underline;
@@ -11,6 +11,7 @@
 
 @media (min-width: $breakpointSmall) {
     .root {
+      margin-block-end: 2rem;
     }
 
   }
