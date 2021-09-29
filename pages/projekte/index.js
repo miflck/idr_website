@@ -19,7 +19,13 @@ export default function Projekte(props) {
 
   // context
   const globalState = useContext(AppContext);
+  const {state}=globalState
   const { dispatch } = globalState;
+
+
+  const [showGradient,setShowGradient]=useState(false);
+
+
 	const handleShowGradient = (val) => {
     dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
 	};
@@ -36,25 +42,20 @@ function filterBy(data, filterterms) {
   })
 }
 
-const [filter, setFilter] = useState([])
-const addMoreItem = (item) => {
-  const copyfilter = [...filter]
-  var index = copyfilter.indexOf(item);
-  if (index !== -1) {
-    copyfilter.splice(index, 1);
-    setFilter([...copyfilter])
-  }
-  else{
-    setFilter([...filter, item])
-  }
-}
 
 const [filterdList, setFilterdList] = useState([])
-
+// on change active filters
 useEffect(() => {
-  console.log("FILTER   ",filter)
-setFilterdList (filterBy(allProjekts, filter) )
-},[filter])
+  //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+  setFilterdList (filterBy(allProjekts, state.activeFilters) )
+  if(state.activeFilters.length>0){
+    setShowGradient(true)
+  }else{
+    setShowGradient(false)
+  }
+},[state.activeFilters])
+
+
 
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
 function searchInput(data, inputvalue) {
@@ -80,11 +81,6 @@ useEffect(() => {
 setFilterdList(searchInput(allProjekts,search));
 },[search])
 
-const [black, setColor] = useState(true)
-const changeColor=(black)=> {
-setColor(black => !black)
-}
-
 
 
 
@@ -95,15 +91,16 @@ setColor(black => !black)
               colorHexCodeSecond={props.colorHexCodeSecond}
       >
        
-        <SuchFeldElement setSearch={setSearch}/>
-
-       <FilterElement filterarray={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter} />
+      <SuchFeldElement setSearch={setSearch}/>
+      <FilterElement filterarray={allForschungsfelders} />
 
        <div className={styles.listwrapper}>
           {filterdList.map((projekt) => {
             return(
-              <ListItemProjekt {...projekt} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
-              handleShowGradient={handleShowGradient} key={projekt.id}/>
+              <ListItemProjekt {...projekt}
+              key={projekt.id}
+              showGradient={showGradient}
+              />
             )
           })}
         </div>

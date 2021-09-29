@@ -27,9 +27,17 @@ export default function FilterElement (props) {
 
       }
     };
+
+    const handleClick = (bool,id) => {
+        if(state.activeFilters.some(e => e === id)) {
+          dispatch({ type: ACTIONS.REMOVE_ACTIVE_FILTER, payload: { element: [id] } })
+        }else{
+          dispatch({ type: ACTIONS.ADD_ACTIVE_FILTER, payload: { element: [id] } })
+        }
+    };
   
     let FilterElement;
-    if(props.filter) {
+    if(state.activeFilters) {
       FilterElement =  <div className={styles.filterfeldwrapper} onMouseEnter={ ()=>handleShowGradient(false)} onMouseLeave={ ()=>handleShowGradient(false)}>
                       {/*<div className={styles.deaktivieren}> <a onClick={() => props.setFilter([])} > {t("Deaktivieren")}  </a> </div>*/}
                       <div className={styles.filterauflistung}>
@@ -64,8 +72,7 @@ export default function FilterElement (props) {
                           }*/
 
                           let btn_class;
-                          //if(props.filter.includes(filtertitel)) {
-                            if(props.filter.includes(filtertitel)) {
+                            if(state.activeFilters.includes(filtertitel)) {
 
                             btn_class = styles.forschungsfeldaktiv
                             if (forschungsfeld.colour.hex != null) {
@@ -80,7 +87,6 @@ export default function FilterElement (props) {
                           else if (state.hoveredFilters.some(e => e === forschungsfeld.id)) {
                             if (forschungsfeld.colour != null) {
                               // Team funktionen haben keine farbe
-
                               background_style_small = {
                               // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
                               //color:` ${forschungsfeld.colour.hex}`,
@@ -91,6 +97,19 @@ export default function FilterElement (props) {
                                 opacity: 1,
                                 //border: `1px solid ${forschungsfeld.colour.hex}`,
                               //  border:'1px solid white',
+                                }
+                            }
+                          }
+
+
+                          if(state.activeFilters.some(e => e === forschungsfeld.id)) {
+
+                            btn_class = styles.forschungsfeldaktiv
+                            if (forschungsfeld.colour.hex != null) {
+                              background_style_small = {
+                                background: `${forschungsfeld.colour.hex}`,
+                                opacity: 1,
+                            //    border: `1px solid ${forschungsfeld.colour.hex}`
                                 }
                             }
                           }
@@ -107,7 +126,7 @@ export default function FilterElement (props) {
                               title={forschungsfeld.titel}
                               id={forschungsfeld.id}  
                               style={background_style_small} 
-                              handleClick={props.addMoreItem} 
+                              handleClick={handleClick} 
                               handleHover={handleHover}
                               key={forschungsfeld.id}
                               />

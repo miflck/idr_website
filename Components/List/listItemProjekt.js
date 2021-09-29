@@ -56,8 +56,6 @@ const ListItemProjekt =(props)=>{
 
       let background_style=getGradientBackgroundStyle(gradient_normal,animationOut,0)
 
-
-
      const enddatum = new Date(props.enddatum).toLocaleString([], {
                 year: 'numeric'
                 });
@@ -68,7 +66,13 @@ const ListItemProjekt =(props)=>{
 
       //  const intersection = state.hoveredElements.filter(item1 => props.forschungsfeld.some(item2 => item1.titel.normalize()===item2.titel.normalize()))
         //if(state.showGradient || showHoverGradient || props.filter.length > 0 || intersection.lenght > 0){
-        if(state.showGradient || showHoverGradient || props.filter.length > 0 ){
+            // not sure if listItem should check state.activeFilters or the parent component?
+       
+       //     if(state.showGradient || showHoverGradient || state.activeFilters.length > 0 ){
+            //background_style=getGradientBackgroundStyle(gradient_highlight,animationIn,1)
+       // }
+
+        if(props.showGradient || showHoverGradient){
             background_style=getGradientBackgroundStyle(gradient_highlight,animationIn,1)
         }
 
@@ -85,7 +89,6 @@ const ListItemProjekt =(props)=>{
                 <div className={styles.gradientContainer} style={background_style}></div>
 
                 <Container>
-
                     <div className={styles.content}>
                         <div className={styles.datum}>{startdatum} – {enddatum}</div>
                         <Link href={href}  as={href}>
@@ -93,7 +96,7 @@ const ListItemProjekt =(props)=>{
                                 {props.titel}
                             </div>
                         </Link>
-                        <ForschungsfeldElement  {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>    
+                        <ForschungsfeldElement  {...props} showHoverGradient={showHoverGradient}/>    
                     </div>
                 </Container>
             </div>

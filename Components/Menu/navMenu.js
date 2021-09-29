@@ -29,12 +29,17 @@ const NavMenu = (props)=> {
         </div>
         {
           <div className={styles.menucontent}>
-                <SiteLink href={'/'} sitetitle={'NEWS'}></SiteLink>
                 <SiteLink href={'/projekte/'} sitetitle={'PROJEKTE'}></SiteLink>
+                
+               {
+               
+               /*
+                               <SiteLink href={'/'} sitetitle={'NEWS'}></SiteLink>
                 <SiteLink href={'/team/'} sitetitle={'TEAM'}></SiteLink>
-                <SiteLink href={'/publikationen/'} sitetitle={'PUBLIKATIONEN'}></SiteLink>
+
+               <SiteLink href={'/publikationen/'} sitetitle={'PUBLIKATIONEN'}></SiteLink>
                 <SiteLink href={'/veranstaltungen/'} sitetitle={'VERANSTALTUNGEN'}></SiteLink>
-                <SiteLink href={'/editorial/'} sitetitle={'EDITORIAL'}></SiteLink>
+                <SiteLink href={'/editorial/'} sitetitle={'EDITORIAL'}></SiteLink> */}
           </div>
         }
       </div>

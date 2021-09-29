@@ -11,7 +11,7 @@ const Button = props => {
         onTouchStart={ ()=>handleHover(true,id)}  
         onTouchEnd={ ()=>handleHover(false,id)}
         onTouchCancel={ ()=>handleHover(false,id)}
-        onClick={() => handleClick(id)}
+        onClick={() => handleClick(true,id)}
         key={id} 
         style={style}
       >
