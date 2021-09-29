@@ -15,9 +15,9 @@ export default function ForschungsfeldElement (props) {
     const handleHover = (isHover,id) => {
         console.log("isHover",isHover)
         if(isHover){
-            dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
+         //   dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
         }else{
-            dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
+         //    dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
         }
     };
 
