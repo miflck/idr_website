@@ -5,7 +5,6 @@ import { AppContext, ACTIONS } from '../../context/state';
 import Button from '../Button'
 
 export default function FilterElement (props) {
-     console.log("props Filter Element component", props)
     const { t } = useTranslation('common')
 
     const globalState = useContext(AppContext);

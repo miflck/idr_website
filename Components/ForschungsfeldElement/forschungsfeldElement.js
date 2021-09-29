@@ -86,7 +86,7 @@ export default function ForschungsfeldElement (props) {
                                             color: 'var(--maincolor)',
                                           //  color: "#FF0000",
                                             //border: '1px solid var(--secondcolor)',
-                                            background: "none",
+                                           // background: "none",
                                         
                                         };
 
@@ -95,7 +95,7 @@ export default function ForschungsfeldElement (props) {
                                                 color: 'var(--secondcolor)',
                                               //  color: "#FF0000",
                                                 border: '1px solid var(--secondcolor)',
-                                                background: "none",
+                                             //   background: "none",
                                             
                                             };
                                         }

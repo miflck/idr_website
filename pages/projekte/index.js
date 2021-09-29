@@ -11,7 +11,6 @@ import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 
 
 export default function Projekte(props) {
-   console.log("Props from Projekte",props)
   const {projekte:{allProjekts}}=props;
   const {projekte:{allForschungsfelders}}=props;
   const { t } = useTranslation('common')
