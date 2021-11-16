@@ -13,6 +13,8 @@ import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 export default function Projekte(props) {
   const {projekte:{allProjekts}}=props;
   const {projekte:{allForschungsfelders}}=props;
+  console.log("allForschungsfelders",allForschungsfelders)
+
   const { t } = useTranslation('common')
 
 
@@ -32,8 +34,11 @@ export default function Projekte(props) {
 //nach Forschungsfelder filtern
 function filterBy(data, filterterms) {
   return data.filter((obj) => {
+    console.log("filterterms",filterterms)
+
     //kann sein: every für && und some für || ? 
     return filterterms.every((term)=>{
+
       return obj.forschungsfeld.some((feld)=>{
         return feld.id.toString().includes(term);
       })

@@ -1,8 +1,9 @@
 import React, {useEffect, useContext,useState} from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
-import styles from '../../pages/team/team.module.scss'
+import styles from './list.module.scss'
 import Link from 'next/link'
 import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
+import Tile from '../Tile/Tile';
 
 const ListItemTeam =(props)=>{
     const globalState = useContext(AppContext);
@@ -10,6 +11,17 @@ const ListItemTeam =(props)=>{
     const {dispatch}=globalState
 
     const [showHoverGradient,setHoverGradient]=useState();
+
+    const handleHover = (isHover) => {
+      if(isHover){
+          dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: researchFieldIdArray} })
+          setHoverGradient(true)
+      }else{
+          dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element: researchFieldIdArray } })
+          setHoverGradient(false)
+      }
+  };
+
 	const handleShowGradient = (val) => { };
                 
         let href=`/team`
@@ -22,6 +34,40 @@ const ListItemTeam =(props)=>{
         colors.push(forschungsfeld.colour.hex)
         })
 
+
+   // get array of Ids of tags for handleHover
+   const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
+    acc.push(it.id);
+    return acc;
+  }, []);
+
+              // get Array of colors from all tags
+      const colorArray = props.forschungsfeld.reduce((acc, it) => {
+        acc.push(it.colour.hex);
+        return acc;
+      }, []);
+
+           // factory for gradient background style 
+           const getGradientBackgroundStyle=(gradient,anim,opac)=>{
+            return {
+              background: gradient,
+              opacity:opac,
+              animation:anim,
+            }
+        }
+        const gradient_highlight=  `linear-gradient(to right, ${colorArray[0]}, ${colorArray[1] || "white"})`;
+        console.log(gradient_highlight)
+        const gradient_normal=`linear-gradient(to right,"white"})`;
+        const animationOut=`${styles.fadeOut} .9s ease`;
+        const animationIn=` ${styles.fadeIn} 0.5s ease`;
+
+        let background_style=getGradientBackgroundStyle(gradient_highlight,animationOut,0)
+
+        if(props.showGradient || showHoverGradient){
+          background_style=getGradientBackgroundStyle(gradient_highlight,animationIn,1)
+      }
+
+        /*
         let background_style_small={
             background: `linear-gradient(to right,"white"})`,
             animation:`${styles.fadeOut} 0.5s ease`,
@@ -38,13 +84,24 @@ const ListItemTeam =(props)=>{
                 background: 'white'
             }
         }
-
+*/
 
     return (
-        <div key={props.name} className={styles.menschwrapper} 
-          style={background_style_small}  
-          onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
+      <Tile>
+      <div className={` ${styles.wrapper} ${showHoverGradient ? styles.highlight : ""}`} 
+      key={props.id} 
+          onMouseEnter={ ()=>handleHover(true)} 
+          onTouchStart={ ()=>handleHover(true)}  
+          onMouseLeave={ ()=>handleHover(false)}
+          onTouchEnd={ ()=>handleHover(false)}
+          onTouchCancel={ ()=>handleHover(false)}
+
+          //onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
         >
+
+          <div className={styles.gradientContainer} style={background_style}></div>
+          <div className={`${styles.menschwrapper}`} >
+
           <Link href={href}>
             <span>
               <img 
@@ -58,7 +115,11 @@ const ListItemTeam =(props)=>{
             </span>
           </Link>
           <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>
+          </div>
+
         </div>
+
+        </Tile>
     )
 }
 

@@ -94,6 +94,56 @@
     }
 
 
+    .portrait {
+        margin-bottom: var(--padding);
+        display: block;
+        width: 100%;
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
+        cursor: pointer;
+    } 
+    
+    .menschwrapper{
+border:solid thin red;
+//margin: calc(var(--padding)/2);
+//padding: calc(var(--padding)/2);
+
+}
+/*
+    .menschwrapper {
+        break-inside: avoid;
+        display: inline-table;
+        width: calc(100% / var(--columnwidth));
+        color: var(--maincolor);
+        padding: var(--padding);
+        outline: 1px solid var(--maincolor);
+        background-color: var(--secondcolor);
+        font-size: var(--fontsizehalf);
+        line-height: var(--lineheighthalf);
+        min-height: 390px;
+        max-height: 390px;
+        .portrait {
+            margin-bottom: var(--padding);
+            display: block;
+            width: 100%;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+            cursor: pointer;
+        } 
+        .name {
+            text-transform: uppercase;
+            font-size: var(--fontsizenormal);
+            line-height: var(--lineheightnormal);
+            cursor: pointer;
+            padding-bottom: var(--paddingbottom);
+        }
+        &:hover{
+            outline: 1px solid var(--maincolor);
+            color: var(--secondcolor);
+        }
+    }
+
+*/
     @media (min-width: $breakpointSmall) {
         .wrapper {
         .content {
