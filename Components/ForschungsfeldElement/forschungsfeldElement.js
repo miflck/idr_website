@@ -9,7 +9,7 @@ export default function ForschungsfeldElement (props) {
     const {state}=globalState
     const { dispatch } = globalState;
 
-    const {showGradient,showHoverGradient}=props;
+    const {showGradient,showHoverGradient,mainColor, secondColor}=props;
 
 
     const handleHover = (isHover,id) => {
@@ -83,7 +83,7 @@ export default function ForschungsfeldElement (props) {
                                         const intersection = state.hoveredElements.filter(item1 => item1===forschungsfeld.id)
                               
                                         let button_style = { 
-                                            color: 'var(--maincolor)',
+                                            color: mainColor,//'var(--maincolor)',
                                           //  color: "#FF0000",
                                             //border: '1px solid var(--secondcolor)',
                                            // background: "none",
@@ -92,9 +92,9 @@ export default function ForschungsfeldElement (props) {
 
                                         if(showHoverGradient){
                                             button_style = { 
-                                                color: 'var(--secondcolor)',
+                                                color: secondColor,//'var(--secondcolor)',
                                               //  color: "#FF0000",
-                                                border: '1px solid var(--secondcolor)',
+                                                border: `1px solid ${secondColor}`,
                                              //   background: "none",
                                             
                                             };
@@ -105,7 +105,7 @@ export default function ForschungsfeldElement (props) {
                                         if(state.hoveredElements.includes(forschungsfeld.id)) {
                                             console.log("hover",showGradient)
                                             button_style = {
-                                                color:'var(--maincolor)',
+                                                color:mainColor,
                                               //  background:`${forschungsfeld.colour.hex}`,
                                                 background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
                                                 opacity: 1,
@@ -115,8 +115,8 @@ export default function ForschungsfeldElement (props) {
                                             }
                                             if(showGradient){
                                                 button_style = { 
-                                                    color: 'var(--secondcolor)',
-                                                    border: '1px solid var(--secondcolor)',
+                                                    color: secondColor,
+                                                    border: `1px solid ${secondColor}`,
                                                 }
                                             }
 
@@ -134,8 +134,9 @@ export default function ForschungsfeldElement (props) {
                                         if(state.activeFilters.includes(forschungsfeld.id)) {                                           
                                            // if(showGradient){
                                                 button_style = { 
-                                                    color: 'var(--secondcolor)',
-                                                    border: '1px solid var(--secondcolor)',
+                                                    color: secondColor,
+                                                    border: `1px solid ${secondColor}`,
+                                        
                                                 }
 
                                                
@@ -236,4 +237,14 @@ export default function ForschungsfeldElement (props) {
         </div>
     )
     
+  }
+
+  ForschungsfeldElement.defaultProps = {
+
+    showGradient:false,
+   showHoverGradient:false,
+   mainColor:"var(--maincolor)", 
+   secondColor:"var(--secondcolor)"
+
+   
   }

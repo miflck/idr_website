@@ -46,6 +46,9 @@ const ListItemTeam =(props)=>{
         acc.push(it.colour.hex);
         return acc;
       }, []);
+console.log("colorarray",colorArray,props.forschungsfeld)
+
+      colorArray[0]="#000000"
 
            // factory for gradient background style 
            const getGradientBackgroundStyle=(gradient,anim,opac)=>{
@@ -55,9 +58,9 @@ const ListItemTeam =(props)=>{
               animation:anim,
             }
         }
-        const gradient_highlight=  `linear-gradient(to right, ${colorArray[0]}, ${colorArray[1] || "white"})`;
-        console.log(gradient_highlight)
-        const gradient_normal=`linear-gradient(to right,"white"})`;
+        const gradient_highlight=  `linear-gradient(to right, ${colorArray[0] }, ${colorArray[1] || "black"})`;
+
+        const gradient_normal=`linear-gradient(to right,"black"})`;
         const animationOut=`${styles.fadeOut} .9s ease`;
         const animationIn=` ${styles.fadeIn} 0.5s ease`;
 
@@ -99,7 +102,7 @@ const ListItemTeam =(props)=>{
           //onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
         >
 
-          <div className={styles.gradientContainer} style={background_style}></div>
+          <div className={styles.gradientContainertile} style={background_style}></div>
           <div className={`${styles.menschwrapper}`} >
 
           <Link href={href}>
@@ -114,7 +117,7 @@ const ListItemTeam =(props)=>{
               </div>
             </span>
           </Link>
-          <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>
+          <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}  secondColor="#000000"/>
           </div>
 
         </div>

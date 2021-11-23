@@ -101,12 +101,28 @@
         -webkit-filter: grayscale(1);
         filter: grayscale(1);
         cursor: pointer;
+        position: relative;
+        
+
+
     } 
     
     .menschwrapper{
-border:solid thin red;
+        padding: 1rem;
+//border:solid thin red;
+position: relative;
 //margin: calc(var(--padding)/2);
 //padding: calc(var(--padding)/2);
+
+}
+
+.gradientContainertile{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    opacity: 0;  
+    z-index: 5;
+    mix-blend-mode:overlay;
 
 }
 /*
