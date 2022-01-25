@@ -1,11 +1,20 @@
 import React, {useEffect, useContext,useState} from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
 import styles from './list.module.scss'
+
 import Link from 'next/link'
 import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
 import Tile from '../Tile/Tile';
 
+import GradientContainer from '../GradientContainer/GradientContainer';
+
+import { getColorArray, getGradientBackgroundStyle,makeGradient } from '../../lib';
+import { ImageElement } from '../Composition';
+
+
 const ListItemTeam =(props)=>{
+
+  console.log("------------ List Item Team Props ", props )
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
@@ -29,65 +38,34 @@ const ListItemTeam =(props)=>{
             href+=`/${props.slug}`
         }
 
-        let colors=[];
-        props.forschungsfeld.map((forschungsfeld) => {
-        colors.push(forschungsfeld.colour.hex)
-        })
-
-
-   // get array of Ids of tags for handleHover
-   const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
-    acc.push(it.id);
-    return acc;
-  }, []);
-
-              // get Array of colors from all tags
-      const colorArray = props.forschungsfeld.reduce((acc, it) => {
-        acc.push(it.colour.hex);
+      // get array of Ids of tags for handleHover
+      const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
+        acc.push(it.id);
         return acc;
       }, []);
-console.log("colorarray",colorArray,props.forschungsfeld)
 
-      colorArray[0]="#000000"
+      // get Array of colors from all tags
+      const colorArray=getColorArray(props.forschungsfeld);
+      console.log(colorArray)
+      const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
 
-           // factory for gradient background style 
-           const getGradientBackgroundStyle=(gradient,anim,opac)=>{
-            return {
-              background: gradient,
-              opacity:opac,
-              animation:anim,
-            }
-        }
-        const gradient_highlight=  `linear-gradient(to right, ${colorArray[0] }, ${colorArray[1] || "black"})`;
+      const animationOut=`${styles.fadeOut} .9s ease`;
+      const animationIn=` ${styles.fadeIn} 0.5s ease`;
 
-        const gradient_normal=`linear-gradient(to right,"black"})`;
-        const animationOut=`${styles.fadeOut} .9s ease`;
-        const animationIn=` ${styles.fadeIn} 0.5s ease`;
-
-        let background_style=getGradientBackgroundStyle(gradient_highlight,animationOut,0)
-
-        if(props.showGradient || showHoverGradient){
+      let background_style=getGradientBackgroundStyle(gradient_highlight,animationOut,0)
+      if(props.showGradient || showHoverGradient){
           background_style=getGradientBackgroundStyle(gradient_highlight,animationIn,1)
       }
 
-        /*
-        let background_style_small={
-            background: `linear-gradient(to right,"white"})`,
-            animation:`${styles.fadeOut} 0.5s ease`,
-        }; 
 
-        if(state.showGradient || showHoverGradient || props.filter.length > 0){
-         background_style_small={
-            background: `linear-gradient(to right, ${colors[1]}, ${colors[0] || "white"})`,
-            opacity:1,
-            animation:`${styles.fadeIn} 0.5s ease`
-          }
-        } else {
-            background_style_small={
-                background: 'white'
-            }
-        }
-*/
+      const gradient_test=makeGradient(colorArray[1]+"80","rgba(255,255,255,0)","to bottom");
+      let background_style_test=getGradientBackgroundStyle(gradient_test,animationOut,0)
+      if(props.showGradient || showHoverGradient){
+        background_style_test=getGradientBackgroundStyle(gradient_test,animationIn,1)
+       // background_style_test["mix-blend-mode"]="multiply"
+
+      }
+    
 
     return (
       <Tile>
@@ -102,24 +80,37 @@ console.log("colorarray",colorArray,props.forschungsfeld)
           //onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
         >
 
-          <div className={styles.gradientContainertile} style={background_style}></div>
+
+          <GradientContainer backgroundStyle={background_style}> 
+
           <div className={`${styles.menschwrapper}`} >
 
           <Link href={href}>
             <span>
+              <div className={styles.portraitWrapper}>
+              <GradientContainer backgroundStyle={background_style_test}> 
+              <ImageElement src={props.portrait.url}  alt={props.portrait.alt} ></ImageElement>
+              </GradientContainer>
+              </div>
+                {/* 
               <img 
-                className={styles.portrait}
+                src={props.portrait.url}
                 src={props.portrait.url} 
                 alt={props.portrait.alt} 
               />
+*/}
               <div className={styles.name}>
                   {props.name}
               </div>
+
             </span>
           </Link>
-          <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}  secondColor="#000000"/>
-          </div>
 
+          <ForschungsfeldElement  {...props} showHoverGradient={showHoverGradient}/>    
+
+
+          </div>
+          </GradientContainer>
         </div>
 
         </Tile>

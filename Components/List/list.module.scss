@@ -83,7 +83,12 @@
             
 
         }
+
+        
         &.highlight {
+            .menschwrapper{
+                color:var(--secondcolor);
+            }
                 .content {
                     color:var(--secondcolor);
                     .titel{
@@ -94,18 +99,21 @@
     }
 
 
-    .portrait {
+    .portraitWrapper {
         margin-bottom: var(--padding);
         display: block;
         width: 100%;
-        -webkit-filter: grayscale(1);
-        filter: grayscale(1);
+        //-webkit-filter: grayscale(1);
+      //  filter: grayscale(1);
         cursor: pointer;
         position: relative;
-        
-
-
     } 
+
+
+    .name{
+        position: relative;
+        z-index: 10;
+    }
     
     .menschwrapper{
         padding: 1rem;
@@ -121,8 +129,8 @@ position: relative;
     width: 100%;
     height:100%;
     opacity: 0;  
-    z-index: 5;
-    mix-blend-mode:overlay;
+    //z-index: 5;
+    //mix-blend-mode:overlay;
 
 }
 /*
@@ -162,10 +170,8 @@ position: relative;
 */
     @media (min-width: $breakpointSmall) {
         .wrapper {
-        .content {
-    
+        .content {    
         .titel {    
-            
             font-size: calc(var(--fontsizenormal)*1.2);
             line-height: calc(var(--lineheightnormal)*1.2);
         }
