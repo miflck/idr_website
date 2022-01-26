@@ -5,7 +5,7 @@ import styles from './McWrapper.module.scss';
 const McWrapper = props => {
  const {children}=props;
   return (
-    <div className={`${styles.root} ${styles.mcWrapper}`}>
+    <div className={`${styles.root}`}>
           {children}
     </div>
   );

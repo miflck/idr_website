@@ -122,8 +122,10 @@ export default function Projekteinzelansicht (props) {
               <ButtonLink key={block.id}{...block} href={block.pdf.url}/>
             }
             </McWrapper>
-            )})
+           )})
             }
+
+            
           </div>
         </Container>
       </div>
@@ -137,6 +139,7 @@ export default function Projekteinzelansicht (props) {
 
         <Container>
         <div className={styles.serviceWrapper}> 
+        
 
         <ServiceElement title=  {t("Zeitraum")}>
           {startzeitraum} – {endzeitraum}

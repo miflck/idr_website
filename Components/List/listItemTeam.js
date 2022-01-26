@@ -11,6 +11,8 @@ import GradientContainer from '../GradientContainer/GradientContainer';
 import { getColorArray, getGradientBackgroundStyle,makeGradient } from '../../lib';
 import { ImageElement } from '../Composition';
 
+import { ElementTitle } from '../Composition';
+
 
 const ListItemTeam =(props)=>{
 
@@ -99,9 +101,11 @@ const ListItemTeam =(props)=>{
                 alt={props.portrait.alt} 
               />
 */}
-              <div className={styles.name}>
+   
+
+              <ElementTitle highlight={showHoverGradient}>
                   {props.name}
-              </div>
+              </ElementTitle>
 
             </span>
           </Link>

@@ -3,8 +3,8 @@
 html {
     //-> hier in rem definieren?
     // -> 1rem =16px
-    --padding: 20px;
-    --paddingbottom: 10px;
+    --padding: 1.25rem;
+    --paddingbottom: 0.625rem;
     --paddingtop: 15px;
     --paddingabsatzbottom: 0.25rem;//5px;
     --fontsizenormal: 18px;
@@ -35,7 +35,7 @@ html {
     --filterpadding3: 0px;
 
 
-    --lightgrey:rgb(120,120,120)
+    --lightgrey:rgb(120,120,120);
 
   }
 

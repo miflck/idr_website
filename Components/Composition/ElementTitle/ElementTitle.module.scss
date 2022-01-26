@@ -1,0 +1,40 @@
+@import "../../.././styles/breakpoints.scss";
+
+
+.root {
+        position: relative;
+        z-index: 10;
+        font-size: calc(var(--fontsizenormal)*1);
+        line-height: calc(var(--lineheightnormal)*1);
+        padding-bottom: calc(var(--paddingabsatzbottom)*0.6);
+        cursor: pointer;
+        border-bottom: solid thin var(--maincolor);
+    &.highlight {
+        border-bottom: solid thin var(--secondcolor);
+
+    }
+}       
+
+
+
+
+
+@media (min-width: $breakpointSmall) {
+    .root{
+            font-size: calc(var(--fontsizenormal)*1.2);
+            line-height: calc(var(--lineheightnormal)*1.2);
+        
+    }    
+}
+
+@media (min-width: $breakpointMedium) {
+
+}
+
+@media (min-width: $breakpointLarge) {
+
+}
+
+@media (min-width: $breakpointXLarge) {
+
+}

@@ -11,41 +11,4 @@
 .teamcontainer {
     display: flex; /* or inline-flex */
     flex-flow: row wrap;
-
-    /*
-    .menschwrapper {
-        break-inside: avoid;
-        display: inline-table;
-        width: calc(100% / var(--columnwidth));
-        color: var(--maincolor);
-        padding: var(--padding);
-        outline: 1px solid var(--maincolor);
-        background-color: var(--secondcolor);
-        font-size: var(--fontsizehalf);
-        line-height: var(--lineheighthalf);
-        min-height: 390px;
-        max-height: 390px;
-        .portrait {
-            margin-bottom: var(--padding);
-            display: block;
-            width: 100%;
-            -webkit-filter: grayscale(1);
-            filter: grayscale(1);
-            cursor: pointer;
-        } 
-        .name {
-            text-transform: uppercase;
-            font-size: var(--fontsizenormal);
-            line-height: var(--lineheightnormal);
-            cursor: pointer;
-            padding-bottom: var(--paddingbottom);
-        }
-        &:hover{
-            outline: 1px solid var(--maincolor);
-            color: var(--secondcolor);
-        }
-    }
-        // columns: var(--columnwidth) 0;
-        // column-gap: 0px;
-        */
 }
