@@ -1,7 +1,10 @@
+@import "../.././styles/breakpoints.scss";
+
+
 .headercontainer {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
+    //top: 0;
+    z-index: 1000;
     background-color: var(--secondcolor);
     // .seitentitel {
     //     position: absolute;
@@ -9,7 +12,8 @@
     // }
     .headertitle {
         padding: var(--padding);
-        padding-bottom: 5px;
+        padding-top: var(--paddingtop);
+        padding-bottom: var(--paddingbottom);
         border-bottom: 1px solid var(--maincolor);
         font-size: var(--fontsizenormal);
         text-transform: uppercase;
@@ -18,7 +22,7 @@
         margin: 0;
         user-select: none;
         a {
-            font-family: "Sang";
+           font-style: normal;
             color: var(--maincolor); 
         &:hover {
             color: var(--maincolor); 
@@ -28,3 +32,28 @@
         }
     }
 }
+
+
+
+@media (min-width: $breakpointSmall) {
+    .headercontainer {
+        position:sticky;
+        top:0;
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+    .headercontainer {
+        position:sticky;
+
+    }
+
+  }
+  
+  @media (min-width: $breakpointLarge) {
+
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+
+  }

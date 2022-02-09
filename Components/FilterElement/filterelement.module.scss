@@ -1,24 +1,46 @@
+@import "../.././styles/breakpoints.scss";
+
+
 .filterfeldwrapper {
     user-select: none;
-    border-bottom: 1px solid var(--maincolor);
+  //  border-bottom: 1px solid var(--maincolor);
     font-size: var(--fontsizesmall);
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     background-color: var(--secondcolor);
 
+background-color: rgba(255,255,255,0.85);
+
+position: sticky;
+z-index: 100;
+top:0rem;
+padding-block-start: 0.5rem;//var(--paddingabsatzbottom);
+padding-block-end: 0.5rem;//var(--paddingabsatzbottom);
+border-bottom:solid thin var(--maincolor);
+
     .filterauflistung {
-        padding: var(--paddingtop) var(--padding) var(--paddingbottom);
-        span {
+        display: flex;
+
+       flex-wrap: wrap;
+
+        //padding: 0 var(--padding);
+        div {
+            margin-right: 1rem;//20px;
+            
+            // Müssten wir nicht eher den wrapper stylen? also das div, statt das a? 
+            // das macht das ganze padding und die zeilenhöhe etwas komisch zum bedienen
             a {
                 border: 1px solid var(--maincolor);
                 border-radius: 20px;
                 width: fit-content;
                 //zwischenraum von wort und border
-                padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
+             //   padding:  calc(var(--filterpadding1)*1.5)  calc(var(--filterpadding2)*3) calc(var(--filterpadding3)*5);
+                padding:  0.25rem  0.5rem 0.01rem ;
+
                 color: var(--maincolor);
                 background-color: transparent;
-                margin-right: 20px;
-                font-family: "Sang";
+                //font-family: "Sang";
+                font-style: normal;
                 &:hover {
                     color: var(--secondcolor);
                     background-color: var(--maincolor);
@@ -33,7 +55,8 @@
                 background-color: var(--maincolor);
                 color: var(--secondcolor);
                 border: 1px solid var(--maincolor);
-                font-family: "Sang";
+                //font-family: "Sang";
+                font-style: normal;
             }
         }
     }
@@ -42,6 +65,7 @@
         margin: var(--paddingtop) var(--padding) 0px;
         cursor: pointer;
         a {
+            font-style: normal;
             color: var(--secondcolor);
             background-color: var(--maincolor);
             //border-style: dotted;
@@ -49,7 +73,7 @@
             border-radius: 20px;
             width: fit-content;
             padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
-            font-family: "Sang";
+           // font-family: "Sang";
             &:hover {
                 margin-left: 0;
                 animation: none;
@@ -60,35 +84,25 @@
 
 
 
-.suchfeldwrapper {
-    position: fixed;
-    top: calc(var(--padding)/1.5);
-    right: calc(var(--padding)*2.5);
-    z-index: 150;
-    cursor: pointer;
-    display: flex;
-    flex-grow: 2;
-    .suchemoji{
-        fill: none;
-        stroke: #000;
-        stroke-miterlimit: 10;
-        stroke-width: 7.5px;
-        user-select: none;
-        margin:  0 var(--padding);
-    }
-    .inputfeld {
-        display: none;
-    }
-    &.open {
-        .inputfeld {
-            display: block;
-            height: 1.25em;
-            font-family: "Sang";
-            color: var(--maincolor);
-            background-color: var(--secondcolor);
-            border: 1px solid var(--maincolor);
-            font-size: var(--fontsizehalf);
-            line-height: var(--lineheighthalf);
+@media (min-width: $breakpointSmall) {
+    .filterfeldwrapper {
+        position: sticky;
+        top:3rem;
+        .filterauflistung{
+            justify-content: center;
+
         }
     }
-}
+  }
+  
+  @media (min-width: $breakpointMedium) {
+
+  }
+  
+  @media (min-width: $breakpointLarge) {
+
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+
+  }

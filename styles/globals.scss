@@ -6,17 +6,43 @@
   }
 }
 
+
+@font-face {
+  font-family: "Sang";
+  font-weight: normal;
+  font-style: italic, oblique;
+  src: url("../assets/SangBleuKingdom-RegularItalic.otf") format("opentype");
+}
+
 @font-face {
   font-family: "Sang";
   font-weight: normal;
   font-style: normal;
   src: url("../assets/SangBleuKingdom-Regular.otf") format("opentype");
 }
+
 @font-face {
-  font-family: "SangItalic";
-  font-weight: normal;
+  font-family: 'Alpina';
+  src: url('../public/GT-Alpina-Medium-Trial.woff2');
+  font-weight: 500;
   font-style: normal;
-  src: url("../assets/SangBleuKingdom-RegularItalic.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alpina';
+  src: url('../public/GT-Alpina-Regular-Trial.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alpina';
+  src: url('../public/GT-Alpina-Standard-Regular-Italic.woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
 html,
@@ -25,6 +51,8 @@ body {
   margin: 0;
   font-family: "Sang", Times, serif;
   background-color: var(--secondcolor);
+  font-weight: 400;
+  -webkit-font-smoothing:subpixel-antialiased;
 }
 
 @keyframes smoothslidein {
@@ -32,24 +60,50 @@ body {
   100% {margin-left: var(--padding);}
 }
 
+h1{
+  padding:0;
+  margin:0;
+  font-size: var(--fontsizetitle);
+  line-height: var(--lineheighttitle);
+  font-weight: normal;
+}
+
+
+h2{
+  padding:0;
+  margin:0;
+  font-size: calc(var(--fontsizenormal)*1.1);
+  line-height: var(--lineheighnormal);
+  font-weight: normal;
+//padding-inline-start: 2rem;
+}
+
+p{
+  line-height:1.57rem;
+}
+
 a {
+
   color: inherit;
   text-decoration: none;
-  font-family: "SangItalic";
+  font-style: italic;
   color: var(--maincolor);
   &:hover {
-    animation: smoothslidein 0.3s forwards;
+    animation: smoothslidein 0.2s forwards;
   }
 }
 
 
 /* Firefox  */
+
+/*
 * {
   box-sizing: border-box;
   scrollbar-width: auto;
   scrollbar-color: var(--maincolor) var(--secondcolor);
 }
  /* Chrome, Edge, und Safari  */
+ /*
 *::-webkit-scrollbar {
   width: 12px;
   border: 1px var(--maincolor) solid;
@@ -63,4 +117,4 @@ a {
 }
 *::-webkit-scrollbar-corner{
   background: var(--maincolor);
-}
+}*/

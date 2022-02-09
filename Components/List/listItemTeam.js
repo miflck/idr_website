@@ -1,15 +1,38 @@
 import React, {useEffect, useContext,useState} from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
-import styles from '../../pages/team/team.module.scss'
+import styles from './list.module.scss'
+
 import Link from 'next/link'
 import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
+import Tile from '../Tile/Tile';
+
+import GradientContainer from '../GradientContainer/GradientContainer';
+
+import { getColorArray, getGradientBackgroundStyle,makeGradient } from '../../lib';
+import { ImageElement } from '../Composition';
+
+import { ElementTitle } from '../Composition';
+
 
 const ListItemTeam =(props)=>{
+
+  console.log("------------ List Item Team Props ", props )
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
 
     const [showHoverGradient,setHoverGradient]=useState();
+
+    const handleHover = (isHover) => {
+      if(isHover){
+          dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: researchFieldIdArray} })
+          setHoverGradient(true)
+      }else{
+          dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element: researchFieldIdArray } })
+          setHoverGradient(false)
+      }
+  };
+
 	const handleShowGradient = (val) => { };
                 
         let href=`/team`
@@ -17,48 +40,84 @@ const ListItemTeam =(props)=>{
             href+=`/${props.slug}`
         }
 
-        let colors=[];
-        props.forschungsfeld.map((forschungsfeld) => {
-        colors.push(forschungsfeld.colour.hex)
-        })
+      // get array of Ids of tags for handleHover
+      const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
+        acc.push(it.id);
+        return acc;
+      }, []);
 
-        let background_style_small={
-            background: `linear-gradient(to right,"white"})`,
-            animation:`${styles.fadeOut} 0.5s ease`,
-        }; 
+      // get Array of colors from all tags
+      const colorArray=getColorArray(props.forschungsfeld);
+      console.log(colorArray)
+      const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
 
-        if(state.showGradient || showHoverGradient){
-         background_style_small={
-            background: `linear-gradient(to right, ${colors[1]}, ${colors[0] || "white"})`,
-            opacity:1,
-            animation:`${styles.fadeIn} 0.5s ease`
-          }
-        } else {
-            background_style_small={
-                background: 'white'
-            }
-        }
+      const animationOut=`${styles.fadeOut} .9s ease`;
+      const animationIn=` ${styles.fadeIn} 0.5s ease`;
 
+      let background_style=getGradientBackgroundStyle(gradient_highlight,animationOut,0)
+      if(props.showGradient || showHoverGradient){
+          background_style=getGradientBackgroundStyle(gradient_highlight,animationIn,1)
+      }
+
+
+      const gradient_test=makeGradient(colorArray[1]+"80","rgba(255,255,255,0)","to bottom");
+      let background_style_test=getGradientBackgroundStyle(gradient_test,animationOut,0)
+      if(props.showGradient || showHoverGradient){
+        background_style_test=getGradientBackgroundStyle(gradient_test,animationIn,1)
+       // background_style_test["mix-blend-mode"]="multiply"
+
+      }
+    
 
     return (
-        <div key={props.name} className={styles.menschwrapper} 
-          style={background_style_small}  
-          onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
+      <Tile>
+      <div className={` ${styles.wrapper} ${showHoverGradient ? styles.highlight : ""}`} 
+      key={props.id} 
+          onMouseEnter={ ()=>handleHover(true)} 
+          onTouchStart={ ()=>handleHover(true)}  
+          onMouseLeave={ ()=>handleHover(false)}
+          onTouchEnd={ ()=>handleHover(false)}
+          onTouchCancel={ ()=>handleHover(false)}
+
+          //onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
         >
+
+
+          <GradientContainer backgroundStyle={background_style}> 
+
+          <div className={`${styles.menschwrapper}`} >
+
           <Link href={href}>
             <span>
+              <div className={styles.portraitWrapper}>
+              <GradientContainer backgroundStyle={background_style_test}> 
+              <ImageElement src={props.portrait.url}  alt={props.portrait.alt} ></ImageElement>
+              </GradientContainer>
+              </div>
+                {/* 
               <img 
-                className={styles.portrait}
+                src={props.portrait.url}
                 src={props.portrait.url} 
                 alt={props.portrait.alt} 
               />
-              <div className={styles.name}>
+*/}
+   
+
+              <ElementTitle highlight={showHoverGradient}>
                   {props.name}
-              </div>
+              </ElementTitle>
+
             </span>
           </Link>
-          <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient}/>
+
+          <ForschungsfeldElement  {...props} showHoverGradient={showHoverGradient}/>    
+
+
+          </div>
+          </GradientContainer>
         </div>
+
+        </Tile>
     )
 }
 

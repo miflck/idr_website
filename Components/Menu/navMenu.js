@@ -16,26 +16,30 @@ const NavMenu = (props)=> {
         <div className={styles.menubutton} onClick={handleOnClick} >
           <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
-                <g>
-                  <line className="a" x1="44" x2="44" y2="86"/>
-                  <line className="a" x1="1" y1="43" x2="86.9" y2="43"/>
-                </g>
+                  <line className="a" x1="1" y1="10" x2="100" y2="10"/>
+                  <line className="a" x1="1" y1="43" x2="100" y2="43"/>
+                  <line className="a" x1="1" y1="76" x2="100" y2="76"/>
               </svg>
           </span>
           <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em"  viewBox="0 0 87.9 86">
-                  <line className="a" x1="1" y1="43" x2="86.9" y2="43"/>
+                  <line className="a" x1="1" y1="43" x2="100" y2="43"/>
               </svg>
           </span>
         </div>
         {
           <div className={styles.menucontent}>
-                <SiteLink href={'/'} sitetitle={'NEWS'}></SiteLink>
-                <SiteLink href={'/projekte'} sitetitle={'PROJEKTE'}></SiteLink>
-                <SiteLink href={'/team'} sitetitle={'TEAM'}></SiteLink>
-                <SiteLink href={'/publikationen'} sitetitle={'PUBLIKATIONEN'}></SiteLink>
-                <SiteLink href={'/veranstaltungen'} sitetitle={'VERANSTALTUNGEN'}></SiteLink>
-                <SiteLink href={'/editorial'} sitetitle={'EDITORIAL'}></SiteLink>
+                <SiteLink href={'/projekte/'} sitetitle={'PROJEKTE'}></SiteLink>
+                
+               
+               
+              
+                               <SiteLink href={'/'} sitetitle={'NEWS'}></SiteLink>
+                <SiteLink href={'/team/'} sitetitle={'TEAM'}></SiteLink>
+
+               <SiteLink href={'/publikationen/'} sitetitle={'PUBLIKATIONEN'}></SiteLink>
+                <SiteLink href={'/veranstaltungen/'} sitetitle={'VERANSTALTUNGEN'}></SiteLink>
+                <SiteLink href={'/editorial/'} sitetitle={'EDITORIAL'}></SiteLink> 
           </div>
         }
       </div>

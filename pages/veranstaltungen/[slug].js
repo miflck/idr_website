@@ -4,7 +4,7 @@ import styles from './veranstaltungen.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Container from '../../Components/Container/container'
-import TextElement from "../../Components/TextElement/textElement";
+import TextElement from "../../Components/Composition/TextElement";
 import FilterLink from "../../Components/FilterLink/filterLink";
 
 import { useRouter } from 'next/router'

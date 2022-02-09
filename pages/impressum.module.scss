@@ -1,0 +1,25 @@
+.impressumwrapper {
+    z-index: 1;
+    position: relative;
+    min-height: inherit;
+    padding: var(--padding); 
+    margin-bottom: var(--padding);
+    color: var(--maincolor);
+    .titel {
+        text-transform: uppercase;
+        font-size: var(--fontsizenormal);
+        line-height: calc(var(--lineheightnormal) * 1.5);
+        margin-top: calc(var(--padding) * 3);
+        margin-left: calc(var(--padding) * 5);
+        margin-bottom: calc(var(--padding) * 5);
+    }
+    .subwrapper {
+        .subtitel {
+            text-transform: uppercase;
+            margin-bottom: var(--paddingabsatzbottom);
+        }
+        .subtext {
+            margin-bottom: calc(var(--padding)*2);
+        }
+    }
+}

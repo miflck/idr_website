@@ -38,7 +38,7 @@ const ListItemVeranstaltung = (props) => {
         animation: `${styles.fadeOut} 0.5s ease`,
     };
 
-    if (state.showGradient || showHoverGradient) {
+    if (state.showGradient || showHoverGradient || props.filter.length > 0) {
         background_style_small = {
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
             opacity: 1,
@@ -54,12 +54,12 @@ const ListItemVeranstaltung = (props) => {
         <div className={styles.veranstaltungscontent} style={background_style_small} key={props.id} style={background_style_small} onMouseEnter={() => setHoverGradient(true)} onMouseLeave={() => setHoverGradient(false)}>
             <Container>
                 <div className={styles.datum}>{date} Uhr
-                {/* {t("Uhr")} */}
+                    {/* {t("Uhr")} */}
                 </div>
                 <Link href={href}>
                     <div className={styles.title}>{props.titel}</div>
                 </Link>
-                <div className={styles.title}>{props.untertitel}</div>
+                <div className={styles.referentIn}>{props.referentIn}</div>
 
                 <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient} />
 

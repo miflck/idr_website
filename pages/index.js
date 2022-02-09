@@ -7,6 +7,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AppContext, ACTIONS } from '../context/state';
 import FilterElement from "../Components/FilterElement/filterElement";
 import ListItemNews from "../Components/List/listItemNews";
+import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
 
 export default function Home(props) {
   const { newsseite: { newsseite: { links } } } = props;
@@ -52,10 +53,36 @@ export default function Home(props) {
     setFilterdList(filterBy(links, filter))
   }, [filter])
 
+  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel, News etc funktioniert noch nicht, Loops sind falsch
+function searchInput(data, inputvalue) {
+  return data.filter((obj) => {
+      return Object.keys(obj).some((key)=>{
+      if(Array.isArray(obj[key])){
+        return obj[key].some((entry)=>{
+          return Object.keys(entry).some((kkey=>{
+            return entry[kkey].toString().includes(inputvalue);
+          }))
+        })
+      }
+      else{
+        return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
+      }
+    })
+    }
+  )
+  }
+
+  const [search, setSearch] = useState('')
+  useEffect(() => {
+    setFilterdList(searchInput(links,search));
+  },[search])
+
   return (
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
 
-      <FilterElement props={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter} />
+      <SuchFeldElement setSearch={setSearch}/>
+
+      <FilterElement filterarray={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
 
       <main className={styles.container}>
         <div className={styles.allekacheln}>

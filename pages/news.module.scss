@@ -31,16 +31,16 @@
     position: absolute;
     padding: 0 var(--padding);
     margin: 0;
-    padding-bottom: calc(var(--padding) * 3);
+    padding-bottom: calc(var(--paddingbottom)*5);
     user-select: none;
     color: var(--maincolor);
     
     // @include desktop {
       columns: var(--columnwidth) auto;
-      // column-fill: auto;
       // width: 33%;
     // }
    .kachelwrapper {
+    grid-column: 1;
       width: 100%;
       height: fit-content;
       padding-top: var(--padding);
@@ -53,7 +53,7 @@
         // padding: calc(var(--padding) / 2);
         border: 1px solid var(--maincolor);
         cursor: pointer;
-        min-height: 300px;
+        // min-height: 300px;
         max-height: fit-content;
         // display: flex;
         // flex-direction: column;
@@ -63,34 +63,35 @@
         .text {
           // flex-grow: 2; 
           .uebertitel {
-            padding: calc(var(--padding) / 2) calc(var(--padding) / 2) 0 calc(var(--padding) / 2);
+            padding: var(--paddingtop) var(--paddingtop) var(--paddingbottom);
             text-transform: uppercase;
             font-size: var(--fontsizenormal);
             line-height: var(--lineheightnormal);
             border-bottom: solid 1px var(--maincolor);
           }
           .titel {
-            padding: calc(var(--padding) / 2) calc(var(--padding) / 2) 0 calc(var(--padding) / 2);
-            font-size: var(--fontsizehalf);
-            line-height: var(--lineheighthalf);
+            padding: var(--paddingbottom) var(--paddingtop);
+            font-size: var(--fontsizenormal);
+            line-height: calc(var(--lineheightnormal)*1.25);
             text-transform: uppercase;
           }
           p {
             margin: 0;
-            padding: calc(var(--padding) / 2);
+            padding: 0 var(--paddingtop);
+            padding-bottom: var(--paddingbottom);
             display: block;
           }
           .weblink {
-            padding: calc(var(--padding) / 2);
+            padding: var(--paddingtop);
           }
           .date {
-            padding: 0 calc(var(--padding) / 2);
+            padding: 0 var(--paddingtop);
           }
           .referentIn {
-            padding: 0 calc(var(--padding) / 2);
+            padding: 0 var(--paddingtop);
           }
           .element {
-            padding: 0 calc(var(--padding) / 2) calc(var(--padding) / 2);
+            padding: 0 var(--paddingtop) var(--paddingtop);
           }
         }
         .bild {
@@ -114,15 +115,17 @@
       }
       &:hover {
         .kachel {
-        background-color: var(--maincolor);
-        color: var(--secondcolor);
-        .uebertitel {
-          border-bottom: solid 1px var(--secondcolor);
-        }
-        .weblink {
+          background-color: var(--maincolor);
           color: var(--secondcolor);
+          .uebertitel {
+            // background-color: var(--secondcolor);
+            // color: var(--maincolor);
+            border-bottom: solid 1px var(--secondcolor);
+          }
+          .weblink {
+            color: var(--secondcolor);
+          }
         }
       }
-    }
-   } 
+    } 
   }
