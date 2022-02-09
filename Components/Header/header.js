@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const Header=(props)=>{
+    
     const router = useRouter()
     // console.log("router", router)
     if(router.pathname === "/") {
