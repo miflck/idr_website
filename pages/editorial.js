@@ -164,7 +164,9 @@ const Editorial =(props)=>{
             colors.push(forschungsfeld.colour.hex)
           })
           background_style={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+//            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+            background: `linear-gradient(to bottom, ${colors[0]+"DD"},white, white)`,
+
           }
           background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`

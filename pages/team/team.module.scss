@@ -11,4 +11,6 @@
 .teamcontainer {
     display: flex; /* or inline-flex */
     flex-flow: row wrap;
+    margin-bottom: calc(var(--padding) * 3);
+
 }

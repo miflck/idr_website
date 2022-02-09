@@ -15,10 +15,10 @@ import Button from "../../Components/Button/Button";
 
 import { Title } from "../../Components/Composition";
 import { ServiceElement } from "../../Components/Composition";
-import McWrapper from "../../Components/Composition/McWrapper/McWrapper";
+import ModularContentWrapper from "../../Components/Composition/ModularContentWrapper/ModularContentWrapper";
 
-
-
+import { BackgroundGradientFadeOut } from "../../Components";
+import { GradientFadeIn } from "../../Components";
 
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common')
@@ -91,38 +91,43 @@ export default function Projekteinzelansicht (props) {
   return (
   <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
     
-    {/* Hintergrund ganze seite */}
+    {/* Hintergrund ganze seite 
     <div className={styles.background} style={background_style}></div>
+    */}
+    <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
 
-    {/* Hintergrund fade */}
+ 
     <div className={styles.stickywrapper}>
 
+    <GradientFadeIn backgroundStyle={background_style} backgroundOpacity={background_op}></GradientFadeIn>
+
+   {/* Hintergrund fade 
       <div className={styles.gradient_opacity} style={background_style}>
         <div className={styles.background_small} style={background_op}></div>
       </div>
-
+*/}
       <div className={styles.slugwrapper}>
         <Container>
           <Title title={titel}/>
           <div className={styles.modulareinhalte}>
             {projektinhalte != null &&
             projektinhalte.map((block) => {
-            return (
-            <McWrapper>
-            {
-            block._modelApiKey === 'text' &&
-              <TextElement key={block.id} {...block.text}></TextElement>
-            }
-            {
-              block._modelApiKey === 'einzelbild' &&
-              <ImageElement key={block.id} src={block.einzelbild.url} />
-            }
-            {
-              block._modelApiKey === 'pdf' &&
-              <ButtonLink key={block.id}{...block} href={block.pdf.url}/>
-            }
-            </McWrapper>
-           )})
+              return (
+                <ModularContentWrapper>
+                {
+                block._modelApiKey === 'text' &&
+                  <TextElement key={block.id} {...block.text}></TextElement>
+                }
+                {
+                  block._modelApiKey === 'einzelbild' &&
+                  <ImageElement key={block.id} src={block.einzelbild.url} />
+                }
+                {
+                  block._modelApiKey === 'pdf' &&
+                  <ButtonLink key={block.id}{...block} href={block.pdf.url}/>
+                }
+                </ModularContentWrapper>
+            )})
             }
 
             

@@ -11,6 +11,10 @@ import ListItemTeam from "../../Components/List/listItemTeam"
 import { AppContext,ACTIONS } from '../../context/state';
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import Container from "../../Components/Container/container";
+import { ElementTitle } from "../../Components/Composition";
+
+import { SpacedWrapper } from "../../Components/Composition";
+import { ModularContentWrapper } from "../../Components/Composition";
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
@@ -32,9 +36,9 @@ const Team =(props)=>{
 
 //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
-      console.log(data)
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
+        
         return filterterms.every((term)=>{
           return obj.forschungsfeld.some((feld)=>{
           return feld.id.toString().includes(term);
@@ -63,7 +67,7 @@ const Team =(props)=>{
     },[filter])
 
 */
-    const [filterdList, setFilterdList] = useState([])
+  const [filterdList, setFilterdList] = useState([])
 // on change active filters
 useEffect(() => {
   //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
@@ -121,19 +125,38 @@ useEffect(() => {
        
            <div className={styles.teamcontainer}>
                 {filterdList.map((mensch) => {
-                    return(
+                    if(mensch.aktiv){
+                      return(
                     
-                      <ListItemTeam {...mensch}               
-                      showGradient={showGradient}
-                      //setFilter={setFilter} 
-                      //filter={filter} 
-                      //addMoreItem={addMoreItem} 
-                      //handleShowGradient={handleShowGradient} 
-                      key={mensch.name}/>
-                    )
+                        <ListItemTeam {...mensch}               
+                        showGradient={showGradient}
+                        //setFilter={setFilter} 
+                        //filter={filter} 
+                        //addMoreItem={addMoreItem} 
+                        //handleShowGradient={handleShowGradient} 
+                        key={mensch.name}/>
+                      )
+                    }
+             
                 })}
           </div>
-         
+
+            <Container>
+              <SpacedWrapper>
+                <ModularContentWrapper>
+                <h2>Ehemalige:</h2>
+                {filterdList.map((mensch) => {
+                    if(!mensch.aktiv){
+                      return(
+                        <div>
+                          {mensch.name}
+                        </div>
+                      )
+                    }
+                })}
+                </ModularContentWrapper>            
+              </SpacedWrapper>
+            </Container>
       </Layout>
     )
 }

@@ -1,0 +1,39 @@
+@import "../.././styles/breakpoints.scss";
+
+.root {
+    height: 10rem;
+    width: 100vw;
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+.background_small{
+    width: 100vw;
+    height:100%;
+    opacity: 1;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@media (min-width: $breakpointSmall) {
+
+    .root{
+        position:sticky;
+        top:0;
+        height: 20rem;
+
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+   
+  }
+  
+  @media (min-width: $breakpointLarge) {
+    
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+   
+  }
