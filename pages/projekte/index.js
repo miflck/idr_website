@@ -11,15 +11,22 @@ import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 
 
 export default function Projekte(props) {
-   console.log("Props from Projekte",props)
   const {projekte:{allProjekts}}=props;
   const {projekte:{allForschungsfelders}}=props;
+  console.log("allForschungsfelders",allForschungsfelders)
+
   const { t } = useTranslation('common')
 
 
   // context
   const globalState = useContext(AppContext);
+  const {state}=globalState
   const { dispatch } = globalState;
+
+
+  const [showGradient,setShowGradient]=useState(false);
+
+
 	const handleShowGradient = (val) => {
     dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
 	};
@@ -27,33 +34,32 @@ export default function Projekte(props) {
 //nach Forschungsfelder filtern
 function filterBy(data, filterterms) {
   return data.filter((obj) => {
+    console.log("filterterms",filterterms)
+
     //kann sein: every für && und some für || ? 
     return filterterms.every((term)=>{
+
       return obj.forschungsfeld.some((feld)=>{
-        return feld.titel.toString().includes(term);
+        return feld.id.toString().includes(term);
       })
     })   
   })
 }
 
-const [filter, setFilter] = useState([])
-const addMoreItem = (item) => {
-  const copyfilter = [...filter]
-  var index = copyfilter.indexOf(item);
-  if (index !== -1) {
-    copyfilter.splice(index, 1);
-    setFilter([...copyfilter])
-  }
-  else{
-    setFilter([...filter, item])
-  }
-}
 
 const [filterdList, setFilterdList] = useState([])
-
+// on change active filters
 useEffect(() => {
-setFilterdList (filterBy(allProjekts, filter) )
-},[filter])
+  //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+  setFilterdList (filterBy(allProjekts, state.activeFilters) )
+  if(state.activeFilters.length>0){
+    setShowGradient(true)
+  }else{
+    setShowGradient(false)
+  }
+},[state.activeFilters])
+
+
 
 // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
 function searchInput(data, inputvalue) {
@@ -79,11 +85,6 @@ useEffect(() => {
 setFilterdList(searchInput(allProjekts,search));
 },[search])
 
-const [black, setColor] = useState(true)
-const changeColor=(black)=> {
-setColor(black => !black)
-}
-
 
 
 
@@ -94,15 +95,16 @@ setColor(black => !black)
               colorHexCodeSecond={props.colorHexCodeSecond}
       >
        
-        <SuchFeldElement setSearch={setSearch}/>
-
-       <FilterElement filterarray={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter} />
+      <SuchFeldElement setSearch={setSearch}/>
+      <FilterElement filterarray={allForschungsfelders} />
 
        <div className={styles.listwrapper}>
           {filterdList.map((projekt) => {
             return(
-              <ListItemProjekt {...projekt} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
-              handleShowGradient={handleShowGradient} key={projekt.id}/>
+              <ListItemProjekt {...projekt}
+              key={projekt.id}
+              showGradient={showGradient}
+              />
             )
           })}
         </div>

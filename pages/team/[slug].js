@@ -1,16 +1,35 @@
-import Layout from '../../Components/Layout/layout'
-import { request, MENSCHEINZEL,ALLMENSCHEN } from "../../lib/datocms";
-import styles from './team.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
+
+import { request, MENSCHEINZEL,ALLMENSCHEN } from "../../lib/datocms";
+import styles from './team.module.scss'
+
+
+import Layout from '../../Components/Layout/layout'
+
+
 import Container from '../../Components/Container/container'
 import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
+import { Title } from "../../Components/Composition";
+import ImageElement from "../../Components/Composition/ImageElement";
+import { ModularContentWrapper } from '../../Components/Composition';
+import { SpacedWrapper } from '../../Components/Composition';
+import { GradientContainer } from '../../Components';
+import { BackgroundGradientFadeOut } from '../../Components';
+import { GradientFadeIn } from '../../Components';
+
+
 
 export default function Menscheinzelansicht (props) {
+
+  const router = useRouter()
+
+
   const { t } = useTranslation('common')
-  // console.log("props vergleich team", props)
+   console.log("props  team einzeln", props)
   const {data:{menschen:{
     name,
     id,
@@ -20,13 +39,12 @@ export default function Menscheinzelansicht (props) {
     bfhprofil,
     email,
     website,
-    publikationsliste
     }=""}=""}=props || ""
+
+
     
   const {data:{allProjekts}=""}=props || ""
     if(props.data) { 
-
-        // console.log("props team slug", props)
        function filterBy(data, filterterm) {
           return data.filter((obj) => {
               return obj.mitarbeit.some((feld)=> {
@@ -34,16 +52,10 @@ export default function Menscheinzelansicht (props) {
               })
           })
         }
-        const filterdProjectlist = filterBy(allProjekts, name)
-        // console.log("props team slug", filterdProjectlist)
 
-                let PDFElement;
-                if(publikationsliste[0] != null && publikationsliste[0].pdf.url != null){
-                    PDFElement= 
-                    <div className={styles.subwrapper}>
-                        <ButtonLink {...publikationsliste[0]} href={publikationsliste[0].pdf.url}/>
-                    </div> 
-                }
+        const filterdProjectlist = filterBy(allProjekts, name)
+
+
                 let EmailElement;
                 if(email != ""){
                   EmailElement= <div><Link href={`mailto:,${email}`}><a className={styles.email}>{email}</a></Link></div>
@@ -103,31 +115,49 @@ export default function Menscheinzelansicht (props) {
           })
         }
         background_style={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+          background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
         }
         let background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
         }
+
+        let background_op={
+          background:`radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
+                      linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`
+                      
+        };
       
     
   return (
 
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        
-        <div className={styles.hintergrund} style={background_style}></div>
-        
-          <div className={styles.slugwrapper}>
-          <Container>
-            <div className={styles.titel}>
-              {name}
-            </div>
+                
+          {/* Hintergrund ganze seite */}
+          <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
 
-            <img 
-              className={styles.portrait}
-              src={portrait.url} 
-              alt={portrait.alt} 
-             />
-          
+
+       
+        <div className={styles.stickywrapper}>
+        <GradientFadeIn backgroundStyle={background_style} backgroundOpacity={background_op}></GradientFadeIn>
+
+           {/* Hintergrund fade  
+          <div className={styles.gradient_opacity} style={background_style}>
+            <div className={styles.background_small} style={background_op}></div>
+          </div>        
+       */}
+
+          <div className={styles.slugwrapper}>
+           <span onClick={() => router.back()}>Click here to go back</span>
+
+          <Container>
+          <Title title={name}/>
+          <ModularContentWrapper>
+          <ImageElement src={portrait.url}  alt={portrait.alt} />
+
+          </ModularContentWrapper>
+
+
+                <ModularContentWrapper>
             <div className={styles.subwrapper}>
                 {EmailElement}
                 {WebsiteElement}
@@ -136,7 +166,6 @@ export default function Menscheinzelansicht (props) {
             </div>
 
             {ProjekteElement}
-
             <div className={styles.subwrapper}>
                 <div className={styles.subtitel}>{t("Forschungsfelder")}</div>
                 {forschungsfeld.map((forschungsfeld) => {
@@ -156,10 +185,11 @@ export default function Menscheinzelansicht (props) {
                   }
                 })}
             </div>
-
-              {PDFElement}
+            </ModularContentWrapper>
            </Container>
         </div>
+        </div>
+
     </Layout>
     )
   }

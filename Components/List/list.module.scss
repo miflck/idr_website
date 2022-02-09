@@ -1,5 +1,8 @@
-@import '../FilterElement/filterelement.module.scss';
-@import '../ForschungsfeldElement/forschungsfeldelement.module.scss';
+//@import '../FilterElement/filterelement.module.scss';
+//@import '../ForschungsfeldElement/forschungsfeldelement.module.scss';
+@import "../.././styles/breakpoints.scss";
+
+
 
 @keyframes fadeIn {
     0% {
@@ -19,49 +22,145 @@
     }
 }
 
+
+
+
+
 .wrapper {
         color: var(--maincolor);
         user-select: none;
         margin-bottom: 0px;
-        border-bottom: 1px solid var(--maincolor);
         position: relative;
 
-        .backgroundwrapper{
+        .gradientContainer{
             position: absolute;
             width: 100%;
             height:100%;
             opacity: 0;  
-            &:hover {
-                background-color: var(--maincolor);
-            } 
         }
 
+
         .content {
-            padding: var(--paddingtop) var(--padding) var(--paddingbottom);
+            position: relative;
+            padding-block-start: 1.25rem;
+            padding-block-end: 1.25rem;
             color: var(--maincolor);
             z-index: 5;
-            position: relative;
-            .titel {
-                text-transform: uppercase;
-                font-size: var(--fontsizenormal);
-                line-height: calc(var(--lineheightnormal) * 1.25);
-                // width: 60%;
-                margin-bottom: var(--paddingabsatzbottom);
-                cursor: pointer;
-            }
             
             .datum {
-                font-size: var(--fontsizesmall);
+                width: fit-content;
+                font-size: calc(var(--fontsizesmall));
                 line-height: var(--lineheightsmall);
-                margin-bottom: var(--paddingabsatzbottom);
+                margin-bottom: calc(var(--paddingabsatzbottom)* 0);
+
                 text-transform: uppercase;
+                font-weight: bold;
             }
+            .titel {
+               // font-weight: bold;
+                //text-transform: uppercase;
+                font-size: calc(var(--fontsizenormal)*1);
+                line-height: calc(var(--lineheightnormal)*1);
+                // width: 60%;
+                padding-bottom: calc(var(--paddingabsatzbottom)*0.6);
+                cursor: pointer;
+                //color:#333;
+                border-bottom: solid thin var(--maincolor);
+
+                
+            }
+            
+
         }
-        &:hover {
-            .content {
-                color: var(--secondcolor);
+
+        
+        &.highlight {
+            .menschwrapper{
+                color:var(--secondcolor);
+                .name{
+                    border-bottom: solid thin var(--secondcolor);
+                }
             }
+                .content {
+                    color:var(--secondcolor);
+                    .titel{
+                        border-bottom: solid thin var(--secondcolor);
+                    }
+                }
         }
     }
 
+
+    .portraitWrapper {
+        margin-bottom: var(--padding);
+        margin-bottom: calc(var(--paddingabsatzbottom)*2);
+
+        display: block;
+        width: 100%;
+        //-webkit-filter: grayscale(1);
+      //  filter: grayscale(1);
+        cursor: pointer;
+        position: relative;
+    } 
+
+
+    .name{
+        position: relative;
+        z-index: 10;
+               // font-weight: bold;
+                //text-transform: uppercase;
+                font-size: calc(var(--fontsizenormal)*1);
+                line-height: calc(var(--lineheightnormal)*1);
+                // width: 60%;
+                padding-bottom: calc(var(--paddingabsatzbottom)*0.6);
+                cursor: pointer;
+                //color:#333;
+                border-bottom: solid thin black;
+
+    }
+    
+    .menschwrapper{
+        position: relative;
+        padding: 1.25rem;
+    }
+
+.gradientContainertile{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    opacity: 0;  
+    //z-index: 5;
+    //mix-blend-mode:overlay;
+
+}
+
+    @media (min-width: $breakpointSmall) {
+        .wrapper {
+            .content {    
+                .titel {    
+                    font-size: calc(var(--fontsizenormal)*1.2);
+                    line-height: calc(var(--lineheightnormal)*1.2);
+                }
+            }
+        }
+
+
+        .name{
+            font-size: calc(var(--fontsizenormal)*1.2);
+            line-height: calc(var(--lineheightnormal)*1.2);
+    
+        }
+    }
+    
+    @media (min-width: $breakpointMedium) {
+     
+    }
+    
+    @media (min-width: $breakpointLarge) {
+      
+    }
+    
+    @media (min-width: $breakpointXLarge) {
+     
+    }
 

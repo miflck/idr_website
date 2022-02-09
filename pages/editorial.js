@@ -4,7 +4,7 @@ import Layout from '../Components/Layout/layout'
 import Container from '../Components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import TextElement from '../Components/TextElement/textElement'
+import TextElement from "../Components/Composition/TextElement";
 import FilterElement from '../Components/FilterElement/filterElement'
 import ButtonLink from '../Components/ButtonLink/buttonLink'
 import React, { useState, useEffect } from 'react'
@@ -164,7 +164,9 @@ const Editorial =(props)=>{
             colors.push(forschungsfeld.colour.hex)
           })
           background_style={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+//            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
+            background: `linear-gradient(to bottom, ${colors[0]+"DD"},white, white)`,
+
           }
           background_style_small={
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`

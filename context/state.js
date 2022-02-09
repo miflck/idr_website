@@ -6,7 +6,11 @@ const initialState = {
  // scrollposition:0,
  // footercolor:'rgba(232,232,232,0.5)',
   showGradient:false,
-  hoveredElements:[]
+  hoveredElements:[],
+  hoveredFilters:[],
+  activeFilters:[]
+
+
 };
 
 const AppContext = createContext(initialState);
@@ -17,12 +21,20 @@ const { Provider } = AppContext;
   //SET_SCROLLPOS:'set scrollposition',
   //CHANGE_FOOTERCOLOR:'set footer',
     SHOW_GRADIENT:'show gradient',
+    
     ADD_HOVER_ELEMENT:'add hover element',
-    REMOVE_HOVER_ELEMENT:'remove hover element'
+    REMOVE_HOVER_ELEMENT:'remove hover element',
+  
+    ADD_HOVER_FILTER:'add hover filter',
+    REMOVE_HOVER_FILTER:'remove hover filter',
+
+    ADD_ACTIVE_FILTER:'add active filter',
+    REMOVE_ACTIVE_FILTER:'remove active filter'
 
 }
 
 const StateProvider = ( { children } ) => {
+  let res=[];
   const [state, dispatch] = useReducer((state, action) => {
     switch(action.type) {
       case ACTIONS.SHOW_GRADIENT:
@@ -37,15 +49,45 @@ const StateProvider = ( { children } ) => {
           hoveredElements: state.hoveredElements.concat(action.payload.element)
         }// do something with the action
       break;  
+
       case ACTIONS.REMOVE_HOVER_ELEMENT:
+        res = state.hoveredElements.filter(item => !action.payload.element.includes(item));
+
         return {
-          ...state,hoveredElements:state.hoveredElements.filter(element => {
-            action.payload.element.map(e=>{
-              return(
-              e.id !==element.id
-              )
-            })
-          })
+          ...state,
+          hoveredElements:res
+        }// do something with the action
+      break;  
+
+      case ACTIONS.ADD_HOVER_FILTER:
+        return {
+          ...state,
+          hoveredFilters: state.hoveredFilters.concat(action.payload.element)
+        }// do something with the action
+      break;  
+
+      case ACTIONS.REMOVE_HOVER_FILTER:
+         res = state.hoveredFilters.filter(item => !action.payload.element.includes(item));
+
+        return {
+          ...state,
+          hoveredFilters:res
+        }// do something with the action
+      break;  
+
+
+      case ACTIONS.ADD_ACTIVE_FILTER:
+        return {
+          ...state,
+          activeFilters: state.activeFilters.concat(action.payload.element)
+        }// do something with the action
+      break;  
+
+      case ACTIONS.REMOVE_ACTIVE_FILTER:
+         res = state.activeFilters.filter(item => !action.payload.element.includes(item));
+        return {
+          ...state,
+          activeFilters:res
         }// do something with the action
       break;  
      

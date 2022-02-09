@@ -1,23 +1,24 @@
 @import "./breakpoints.scss";
 
 html {
-    //-> hier ev in em oder rem definieren?
+    //-> hier in rem definieren?
     // -> 1rem =16px
-    --padding: 20px;
-    --paddingbottom: 10px;
+    --padding: 1.25rem;
+    --paddingbottom: 0.625rem;
     --paddingtop: 15px;
-    --paddingabsatzbottom: 5px;
+
+    --paddingabsatzbottom: 0.25rem;//5px;
+    
     --fontsizenormal: 18px;
     --lineheightnormal: 21px;
-
-
-
-    --fontsizesmall: calc(var(--fontsizenormal)/1.5);
-    --lineheighsmall: calc(var(--lineheightnormal)/1.5);
+    --fontsizesmall: calc(var(--fontsizenormal)*0.6);
+    --lineheighsmall: calc(var(--lineheightnormal)*0.7);
+    
     --fontsizehalf: calc(var(--fontsizenormal)-2);
     --lineheighthalf: calc(var(--lineheightnormal)-5);
-    --fontsizetitle: calc(var(--fontsizenormal)*2);
-    --lineheighttitle: calc(var(--lineheightnormal)*2);
+
+    --fontsizetitle: calc(var(--fontsizenormal)*1.5);
+    --lineheighttitle: calc(var(--lineheightnormal)*1.5);
 
     --columnwidth: 1;
     --columngap: 50px;
@@ -31,6 +32,10 @@ html {
     --filterpadding2: 4px;
     //bottom
     --filterpadding3: 0px;
+
+
+    --lightgrey:rgb(120,120,120);
+
   }
 
  

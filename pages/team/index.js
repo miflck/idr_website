@@ -10,10 +10,16 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 import ListItemTeam from "../../Components/List/listItemTeam"
 import { AppContext,ACTIONS } from '../../context/state';
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
+import Container from "../../Components/Container/container";
+import { ElementTitle } from "../../Components/Composition";
+
+import { SpacedWrapper } from "../../Components/Composition";
+import { ModularContentWrapper } from "../../Components/Composition";
 
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
   const {menschen:{allForschungsfelders}}=props;
+  console.log("allForschungsfelders",allForschungsfelders)
   const {menschen:{allFunktions}}=props;
     const { t } = useTranslation('common')
 
@@ -21,35 +27,21 @@ const Team =(props)=>{
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
-    const [showHoverGradient,setHoverGradient]=useState();
-	  const handleShowGradient = (val) => { };
+    const [showGradient,setShowGradient]=useState(false);
 
-    // console.log("forschungfeld in team", props);
-
-    //GROUP BY FUNKTION DURCH FILTER FUNKTION + FORSCHUNGSFELDER ERSETZT
-// function groupBy(objectArray, property, key) {
-//   return objectArray.reduce(function (acc, obj) {
-//     var innerObject = obj[property];
-//     if(!acc[innerObject[key]]) {
-//       acc[innerObject[key]] = [];
-//     }
-//     acc[innerObject[key]].push(obj);
-//     return acc;
-//   }, {});
-// }
-// var groupedPeople = groupBy(allMenschens, 'funktion','titel');
-// for (const [key, value] of Object.entries(groupedPeople)) {
-//   value.map((mensch)=>{
-//   })}
-
+    const handleShowGradient = (val) => {
+      dispatch({ type: ACTIONS.SHOW_GRADIENT, payload:{showGradient:val} }) 
+    };
+    
 
 //nach Forschungsfelder filtern
     function filterBy(data, filterterms) {
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
+        
         return filterterms.every((term)=>{
           return obj.forschungsfeld.some((feld)=>{
-          return feld.titel.toString().includes(term);
+          return feld.id.toString().includes(term);
           })
         })   
       })
@@ -68,11 +60,25 @@ const Team =(props)=>{
       }
     }
 
-    const [filterdList, setFilterdList] = useState([])
+   /* const [filterdList, setFilterdList] = useState([])
 
     useEffect(() => {
       setFilterdList (filterBy(allMenschens, filter) )
     },[filter])
+
+*/
+  const [filterdList, setFilterdList] = useState([])
+// on change active filters
+useEffect(() => {
+  //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+  setFilterdList (filterBy(allMenschens, state.activeFilters) )
+  if(state.activeFilters.length>0){
+    setShowGradient(true)
+  }else{
+    setShowGradient(false)
+  }
+},[state.activeFilters])
+
 
     // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
     function searchInput(data, inputvalue) {
@@ -98,7 +104,7 @@ const Team =(props)=>{
       setFilterdList(searchInput(allMenschens,search));
       },[search])
       
-
+/*
       let neueListe=[];
       allForschungsfelders.map((forschungsfeld) => {
         neueListe.push(forschungsfeld)
@@ -106,22 +112,51 @@ const Team =(props)=>{
       allFunktions.map((forschungsfeld) => {
         neueListe.push(forschungsfeld)
       })
-  
+  */
       return(
       <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
         
           <SuchFeldElement setSearch={setSearch}/>
 
-           <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
+          {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}
+           <FilterElement filterarray={allForschungsfelders} />
 
+
+       
            <div className={styles.teamcontainer}>
                 {filterdList.map((mensch) => {
-                    return(
-                      <ListItemTeam {...mensch} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
-                      handleShowGradient={handleShowGradient} key={mensch.name}/>
-                    )
+                    if(mensch.aktiv){
+                      return(
+                    
+                        <ListItemTeam {...mensch}               
+                        showGradient={showGradient}
+                        //setFilter={setFilter} 
+                        //filter={filter} 
+                        //addMoreItem={addMoreItem} 
+                        //handleShowGradient={handleShowGradient} 
+                        key={mensch.name}/>
+                      )
+                    }
+             
                 })}
           </div>
+
+            <Container>
+              <SpacedWrapper>
+                <ModularContentWrapper>
+                <h2>Ehemalige:</h2>
+                {filterdList.map((mensch) => {
+                    if(!mensch.aktiv){
+                      return(
+                        <div>
+                          {mensch.name}
+                        </div>
+                      )
+                    }
+                })}
+                </ModularContentWrapper>            
+              </SpacedWrapper>
+            </Container>
       </Layout>
     )
 }

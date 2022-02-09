@@ -4,7 +4,7 @@ import Layout from '../Components/Layout/layout'
 import Container from '../Components/Container/container'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import TextElement from '../Components/TextElement/textElement'
+import TextElement from "../Components/Composition/TextElement";
 import React, { useState, useEffect } from 'react'
 
 

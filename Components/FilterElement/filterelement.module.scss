@@ -1,16 +1,29 @@
+@import "../.././styles/breakpoints.scss";
+
+
 .filterfeldwrapper {
     user-select: none;
-    border-bottom: 1px solid var(--maincolor);
+  //  border-bottom: 1px solid var(--maincolor);
     font-size: var(--fontsizesmall);
     line-height: var(--lineheightnormal);
     text-transform: uppercase;
     background-color: var(--secondcolor);
 
+background-color: rgba(255,255,255,0.85);
+
+position: sticky;
+z-index: 100;
+top:0rem;
+padding-block-start: 0.5rem;//var(--paddingabsatzbottom);
+padding-block-end: 0.5rem;//var(--paddingabsatzbottom);
+border-bottom:solid thin var(--maincolor);
+
     .filterauflistung {
         display: flex;
-        flex-wrap: wrap;
 
-        padding: var(--paddingbottom) var(--padding) calc(var(--paddingbottom)*1.5);
+       flex-wrap: wrap;
+
+        //padding: 0 var(--padding);
         div {
             margin-right: 1rem;//20px;
             
@@ -21,8 +34,8 @@
                 border-radius: 20px;
                 width: fit-content;
                 //zwischenraum von wort und border
-                padding:  var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
-             //   padding:  0.25rem  1.25rem 0.01rem ;
+             //   padding:  calc(var(--filterpadding1)*1.5)  calc(var(--filterpadding2)*3) calc(var(--filterpadding3)*5);
+                padding:  0.25rem  0.5rem 0.01rem ;
 
                 color: var(--maincolor);
                 background-color: transparent;
@@ -68,3 +81,28 @@
         }
     }
 }
+
+
+
+@media (min-width: $breakpointSmall) {
+    .filterfeldwrapper {
+        position: sticky;
+        top:3rem;
+        .filterauflistung{
+            justify-content: center;
+
+        }
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+
+  }
+  
+  @media (min-width: $breakpointLarge) {
+
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+
+  }

@@ -1,0 +1,40 @@
+@import "../.././styles/breakpoints.scss";
+
+
+.root {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@media (min-width: $breakpointSmall) {
+    .root {
+        width: calc( (100% / 2));
+
+
+    }
+  }
+  
+  @media (min-width: $breakpointMedium) {
+    .root {
+        width: calc( (100% / 3)  );
+
+
+    }
+  }
+  
+  @media (min-width: $breakpointLarge) {
+    .root {
+        width: calc( (100% / 3)  );
+
+
+    }
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+    .root {
+        width: calc( (100% / 4) );
+
+    }
+  }

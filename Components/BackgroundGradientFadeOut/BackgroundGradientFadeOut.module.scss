@@ -1,0 +1,28 @@
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+
+
+
+
+.root {
+    border:solid thin red;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    opacity: 1;
+    animation: fadeout 500ms ;    // border: blue 1px solid;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
