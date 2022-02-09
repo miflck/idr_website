@@ -1,17 +1,20 @@
-import Layout from '../../Components/Layout/layout'
-import { request, MENSCHEINZEL,ALLMENSCHEN } from "../../lib/datocms";
-import styles from './team.module.scss'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
+
+import { request, MENSCHEINZEL,ALLMENSCHEN } from "../../lib/datocms";
+import styles from './team.module.scss'
+
+
+import Layout from '../../Components/Layout/layout'
+
+
 import Container from '../../Components/Container/container'
 import ButtonLink from '../../Components/ButtonLink/buttonLink'
 import FilterLink from '../../Components/FilterLink/filterLink'
-
 import { Title } from "../../Components/Composition";
-import TextElement from '../../Components/Composition/TextElement'
 import ImageElement from "../../Components/Composition/ImageElement";
-
 import { ModularContentWrapper } from '../../Components/Composition';
 import { SpacedWrapper } from '../../Components/Composition';
 import { GradientContainer } from '../../Components';
@@ -21,6 +24,9 @@ import { GradientFadeIn } from '../../Components';
 
 
 export default function Menscheinzelansicht (props) {
+
+  const router = useRouter()
+
 
   const { t } = useTranslation('common')
    console.log("props  team einzeln", props)
@@ -142,10 +148,13 @@ export default function Menscheinzelansicht (props) {
        */}
 
           <div className={styles.slugwrapper}>
+           <span onClick={() => router.back()}>Click here to go back</span>
+
           <Container>
           <Title title={name}/>
           <ModularContentWrapper>
           <ImageElement src={portrait.url}  alt={portrait.alt} />
+
           </ModularContentWrapper>
 
 
