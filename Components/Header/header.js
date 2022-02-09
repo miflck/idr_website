@@ -6,6 +6,7 @@ import Head from 'next/head'
 
 
 const Header=(props)=>{
+    
     const router = useRouter()
     // console.log("router", router)
     if(router.pathname === "/") {
