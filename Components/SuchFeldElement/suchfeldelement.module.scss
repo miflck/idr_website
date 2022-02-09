@@ -1,72 +1,33 @@
 .suchfeldwrapper {
+    position: fixed;
+    top: calc(var(--padding)/1.5);
+    right: calc(var(--padding)*2.5);
     z-index: 150;
     cursor: pointer;
     display: flex;
     flex-grow: 2;
-    margin-left: var(--padding);
-    margin-top: var(--padding);
-    user-select: none;
-    .suchbutton {
-        border: 1px solid var(--maincolor);
-        text-transform: uppercase;
-        font-size: var(--fontsizesmall);
-        line-height: var(--lineheightsmall);
-        padding: 1px 6px 0px;
-        border-radius: 20px;
-        width: fit-content;
-        color: var(--maincolor);
-        background-color: transparent;
-        font-style: normal;
-        .suchemoji{
-            fill: none;
-            stroke: var(--maincolor);
-            stroke-miterlimit: 10;
-            stroke-width: 7.5px;
-            user-select: none;
-            margin-right: 5px;
-        }
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-            cursor: pointer;
-            .suchemoji {
-                stroke:var(--secondcolor);
-                cursor: pointer;
-            }
-        }
-        &.aktiv {
-            border: 1px solid var(--secondcolor);
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-            .suchemoji {
-                stroke:var(--secondcolor);
-                cursor: pointer;
-            }
-       }
+    .suchemoji{
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+        user-select: none;
+        margin:  0 var(--padding);
     }
     .inputfeld {
         display: none;
     }
     &.open {
-        &.aktiv {
-            border: 1px solid var(--secondcolor);
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-            .suchemoji {
-                stroke:var(--secondcolor);
-                cursor: pointer;
-            }
-       }
         .inputfeld {
             display: block;
-            border: none;
-            border-bottom: 1px solid var(--maincolor);
-            margin-left: var(--paddingbottom);
+            height: 1.25em;
             font-family: "Sang";
-            &:focus {
-                border: 1px solid var(--maincolor);
-                outline: none;
-            }
+            color: var(--maincolor);
+            background-color: var(--secondcolor);
+            border: 1px solid var(--maincolor);
+            font-size: var(--fontsizehalf);
+            line-height: var(--lineheighthalf);
+            
         }
     }
 }
