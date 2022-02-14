@@ -129,8 +129,6 @@ console.log("kooperationen",kooperationen)
 
                 {
                   block._modelApiKey === 'galerie' &&
-
-                 
                   <Gallery data={block.galerie}></Gallery>      
                   }
 
@@ -163,6 +161,7 @@ console.log("kooperationen",kooperationen)
           {startzeitraum} – {endzeitraum}
         </ServiceElement>
 
+{/* 
         <ServiceElement title=  {t("Forschungsfelder")}>
           {forschungsfeld.map((forschungsfeld) => {
             var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
@@ -173,10 +172,9 @@ console.log("kooperationen",kooperationen)
               opacity: 1,
             }
             return (
-<>
-              {/*<FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>*/}
 
-                <Button 
+
+        <Button 
                 title={forschungsfeld.titel}  
                 id={forschungsfeld.id}
                 style={hover_class} 
@@ -188,7 +186,7 @@ console.log("kooperationen",kooperationen)
             )
           })}        
         </ServiceElement>
-
+*/}
         <ServiceElement title=  {t("Leitung")}>
         {leitung.map((leitung) => {
               let href=`/team`
@@ -238,15 +236,29 @@ console.log("kooperationen",kooperationen)
           }
 
       
-          {kooperationen.value!="" &&
+        {kooperationen!="" &&
           
         <ServiceElement title=  {t("Kooperationen")}>
-          <TextElement {...kooperationen}/>
+           {kooperationen.map((e) => {
+                  return (
+                    <div key={e.id}>{e.title}</div>
+                  )
+              })}
         </ServiceElement>
       }
-        <ServiceElement title=  {t("Finanzierung")}>
-          <TextElement {...finanzierung}/>
-        </ServiceElement>
+
+      {finanzierung!="" &&
+                
+                <ServiceElement title=  {t("Finanzierung")}>
+                  {finanzierung.map((e) => {
+                          return (
+                            <div key={e.id}>{e.title}</div>
+                          )
+                      })}
+                </ServiceElement>
+              }
+
+
 
         {serviceBlocks != null &&
             serviceBlocks.map((block) => {

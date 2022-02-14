@@ -151,11 +151,13 @@ export default function Menscheinzelansicht (props) {
 
           <Container>
           <Title title={name}/>
+
+        {portrait !== null &&
           <ModularContentWrapper>
           <ImageElement src={portrait.url}  alt={portrait.alt} />
 
           </ModularContentWrapper>
-
+    }
 
                 <ModularContentWrapper>
             <div className={styles.subwrapper}>
