@@ -20,6 +20,8 @@ import ModularContentWrapper from "../../Components/Composition/ModularContentWr
 import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
 
+import { Gallery } from "../../Components";
+
 export default function Projekteinzelansicht (props) {
   const { t } = useTranslation('common')
 // console.log("props vergleich projekt", props)
@@ -125,14 +127,11 @@ console.log("kooperationen",kooperationen)
                   <ImageElement key={block.id} src={block.einzelbild.url} />
                 }
 
-{
+                {
                   block._modelApiKey === 'galerie' &&
-                  block.galerie.map((element)=>{
-                    console.log(element)
-                    return(
-                    <ImageElement key={element.id} src={element.url} />
-                    )
-                  })                
+
+                 
+                  <Gallery data={block.galerie}></Gallery>      
                   }
 
 
