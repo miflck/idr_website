@@ -61,6 +61,8 @@ export default function Projekteinzelansicht (props) {
     })
 };
 
+console.log("kooperationen",kooperationen)
+
 
     if(props.data) {
 
@@ -122,6 +124,18 @@ export default function Projekteinzelansicht (props) {
                   block._modelApiKey === 'einzelbild' &&
                   <ImageElement key={block.id} src={block.einzelbild.url} />
                 }
+
+{
+                  block._modelApiKey === 'galerie' &&
+                  block.galerie.map((element)=>{
+                    console.log(element)
+                    return(
+                    <ImageElement key={element.id} src={element.url} />
+                    )
+                  })                
+                  }
+
+
                 {
                   block._modelApiKey === 'pdf' &&
                   <ButtonLink key={block.id}{...block} href={block.pdf.url}/>
@@ -206,18 +220,36 @@ export default function Projekteinzelansicht (props) {
         {mitarbeit != "" &&
             <ServiceElement title= {t("Mitarbeit")}>
             {mitarbeit.map((e) => {
+              console.log("mitarbeit",e.name)
                 let href=`/team`
                 if(e.slug!=""){
                     href+=`/${e.slug}`
                 }
+                if(e.aktiv&! e.extern){
                 return (
                   <ButtonLink {...e} href={href}/>
                 )
+                }else{
+                  return (
+                    <div>{e.name}</div>
+                  )
+                }
               })}
             </ServiceElement>
           }
 
-      {serviceBlocks != null &&
+      
+          {kooperationen.value!="" &&
+          
+        <ServiceElement title=  {t("Kooperationen")}>
+          <TextElement {...kooperationen}/>
+        </ServiceElement>
+      }
+        <ServiceElement title=  {t("Finanzierung")}>
+          <TextElement {...finanzierung}/>
+        </ServiceElement>
+
+        {serviceBlocks != null &&
             serviceBlocks.map((block) => {
               return(
                 <ServiceElement key={block.key} title=  {block.title}>
@@ -246,14 +278,6 @@ export default function Projekteinzelansicht (props) {
               )
             })
         }
-          
-        <ServiceElement title=  {t("Kooperationen")}>
-          <TextElement {...kooperationen}/>
-        </ServiceElement>
-
-        <ServiceElement title=  {t("Finanzierung")}>
-          <TextElement {...finanzierung}/>
-        </ServiceElement>
           
         </div>
       </Container>

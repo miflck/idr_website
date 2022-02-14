@@ -125,7 +125,7 @@ useEffect(() => {
        
            <div className={styles.teamcontainer}>
                 {filterdList.map((mensch) => {
-                    if(mensch.aktiv){
+                    if(mensch.aktiv &&! mensch.extern){
                       return(
                     
                         <ListItemTeam {...mensch}               

@@ -12,6 +12,31 @@
 
     }
 
+    a{
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: #333333;
+      font-style: italic;
+      &:hover {
+        animation: none;
+        color:#333333;
+      }
+      /* &:after {
+        position:relative;
+//top: 0.15em;
+        display:inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0;
+        margin-right: 0;
+        padding-left:0.2em;
+        content:url('../../../assets/linkicon.svg');
+
+    }*/
+
+
+    }
+
     
 
 }
