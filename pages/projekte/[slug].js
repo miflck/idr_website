@@ -1,3 +1,5 @@
+import React, {useEffect, useContext,useState} from 'react';
+import { AppContext,ACTIONS } from '../../context/state';
 import Layout from "../../Components/Layout/layout"
 import { request, PROJEKTEINZEL, ALLPROJEKTE,PROJEKTE } from "../../lib/datocms";
 import styles from './projekte.module.scss'
@@ -41,6 +43,11 @@ export default function Projekteinzelansicht (props) {
   }=""}=""}=props || ""
 
 
+  const globalState = useContext(AppContext);
+  const {state}=globalState
+  const {dispatch}=globalState
+
+console.log("PAge props",props)
     const router = useRouter()
     if(router.isFallback){
       return <div>Loading…</div>
@@ -54,16 +61,33 @@ export default function Projekteinzelansicht (props) {
       }
   };
 
-  const handleClick = (id) => {
+  /*
+  const handleClick = (bool,id) => {
+    console.log(id)
     let f=forschungsfeld.filter((e) => e.id===id)
+    console.log("Klick auf Forschungsfeld",f)
     var filtermitgeben = `${f[0].titel}`.split(" ").join("-");
     router.push({
       pathname: '/editorial', 
       query: { keyword: `${filtermitgeben}` }
     })
+};*/
+
+
+const handleClick = (bool,id) => {
+  if(state.activeFilters.some(e => e === id)) {
+    dispatch({ type: ACTIONS.REMOVE_ACTIVE_FILTER, payload: { element: [id] } })
+  }else{
+    dispatch({ type: ACTIONS.ADD_ACTIVE_FILTER, payload: { element: [id] } })
+  }
+
+  router.push({
+    pathname: '/editorial', 
+    //query: { keyword: `${filtermitgeben}` }
+  })
 };
 
-console.log("kooperationen",kooperationen)
+
 
 
     if(props.data) {
@@ -161,10 +185,9 @@ console.log("kooperationen",kooperationen)
           {startzeitraum} – {endzeitraum}
         </ServiceElement>
 
-{/* 
+
         <ServiceElement title=  {t("Forschungsfelder")}>
           {forschungsfeld.map((forschungsfeld) => {
-            var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
 
             let hover_class = {
               color:'var(--maincolor)',
@@ -174,19 +197,19 @@ console.log("kooperationen",kooperationen)
             return (
 
 
-        <Button 
+        <Button                                                 
+                key={forschungsfeld.id}
                 title={forschungsfeld.titel}  
                 id={forschungsfeld.id}
                 style={hover_class} 
                 handleClick={handleClick} 
                 handleHover={handleHover}
                 />
-                </>
 
             )
           })}        
         </ServiceElement>
-*/}
+
         <ServiceElement title=  {t("Leitung")}>
         {leitung.map((leitung) => {
               let href=`/team`

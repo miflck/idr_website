@@ -1,4 +1,5 @@
-import { request,EDITORIALTEXTE, EDITORIALINTRO } from "../lib/datocms";
+import React, {useEffect, useContext,useState} from 'react';
+import {request,EDITORIALTEXTE, EDITORIALINTRO } from "../lib/datocms";
 import styles from './editorial.module.scss'
 import Layout from '../Components/Layout/layout'
 import Container from '../Components/Container/container'
@@ -7,16 +8,40 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import TextElement from "../Components/Composition/TextElement";
 import FilterElement from '../Components/FilterElement/filterElement'
 import ButtonLink from '../Components/ButtonLink/buttonLink'
-import React, { useState, useEffect } from 'react'
 import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
+import { AppContext,ACTIONS } from "../context/state";
 
 import { useRouter } from 'next/router'
 
 const Editorial =(props)=>{
-  const {editorialtexte:{allEditorials}}=props;
-  const {editorialtexte:{allProjekts}}=props;
-  const {editorialtexte:{allForschungsfelders}}=props;
+
+  const {editorialtexte:{
+    allEditorials,
+    allProjekts,
+    allForschungsfelders
+  }}=props;
+
   const {editorialintro}=props;
+
+  const globalState = useContext(AppContext);
+  const {state}=globalState
+  const {dispatch}=globalState
+
+  const [showHoverGradient,setHoverGradient]=useState();
+
+    const handleHover = (isHover) => {
+        if(isHover){
+            dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: researchFieldIdArray} })
+            setHoverGradient(true)
+        }else{
+            dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element: researchFieldIdArray } })
+            setHoverGradient(false)
+        }
+    };
+
+
+
+  
 
   const { t } = useTranslation('common')
 
@@ -60,20 +85,20 @@ const Editorial =(props)=>{
     })
   }
 
-    //nach Forschungsfelder filtern
-    function filterBy(data, filterterms) {
-      // console.log("--- filter by", data,filterterms)
-      return data.filter((obj) => {
-        //kann sein: every für && und some für || ? 
-        return filterterms.every((term)=>{
-          return obj.forschungsfeld.some((feld)=>{
-            // console.log(term)
-            return feld.titel.toString().includes(term);
-          })
-        })   
+ //nach Forschungsfelder filtern
+function filterBy(data, filterterms) {
+  return data.filter((obj) => {
+    console.log("filterterms",filterterms)
+
+    //kann sein: every für && und some für || ? 
+    return filterterms.every((term)=>{
+
+      return obj.forschungsfeld.some((feld)=>{
+        return feld.id.toString().includes(term);
       })
-    
-    }
+    })   
+  })
+}
 
     const addMoreItem = (item) => {
       const copyfilter = [...filter]
@@ -91,9 +116,9 @@ const Editorial =(props)=>{
     useEffect(() => {
       // console.log("**** useEffect filter",filter,filter.length, filterdList)
      // setFilterdList (filter.length>0?filterBy(allEditorials, filter):allEditorials ) // filter if any filter is set, else show all 
-      setFilterdList (filterBy(allEditorials, filter) ) // filter if any filter is set, else show all 
+      setFilterdList (filterBy(allEditorials, state.activeFilters) ) // filter if any filter is set, else show all 
       // console.log("## result",filterBy(allEditorials, filter))
-    },[filter])
+    },[state.activeFilters])
 
     /*
     This was for debuggin
@@ -133,11 +158,15 @@ const Editorial =(props)=>{
 
 
     return (
-      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-        
+      <Layout setMainColor={props.setMainColor} 
+              setSecondColor={props.setSecondColor}  
+              colorHexCode={props.colorHexCode} 
+              colorHexCodeSecond={props.colorHexCodeSecond}
+      >        
         <SuchFeldElement setSearch={setSearch}/>
+        <FilterElement filterarray={allForschungsfelders} />
 
-        <FilterElement filterarray={allForschungsfelders} filter={filter} setFilter={setFilter} addMoreItem={addMoreItem}/>
+       {/* <FilterElement filterarray={allForschungsfelders} filter={filter} setFilter={setFilter} addMoreItem={addMoreItem}/> */}
         
         
         <div className={styles.editorialintro}>
