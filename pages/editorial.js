@@ -11,8 +11,6 @@ import ButtonLink from '../Components/ButtonLink/buttonLink'
 import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
 import { AppContext,ACTIONS } from "../context/state";
 
-import { useRouter } from 'next/router'
-
 const Editorial =(props)=>{
 
   const {editorialtexte:{
@@ -27,54 +25,9 @@ const Editorial =(props)=>{
   const {state}=globalState
   const {dispatch}=globalState
 
-  const [showHoverGradient,setHoverGradient]=useState();
-
-    const handleHover = (isHover) => {
-        if(isHover){
-            dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: researchFieldIdArray} })
-            setHoverGradient(true)
-        }else{
-            dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element: researchFieldIdArray } })
-            setHoverGradient(false)
-        }
-    };
-
-
-
-  
-
   const { t } = useTranslation('common')
 
- 
-  const router = useRouter()
-  let deliveredkeyword;
-  let deliveredfilter;
-  if(router.query.keyword){
-    // console.log("keyword", router.query.keyword)
-    deliveredkeyword = router.query.keyword;
-    // router.asPath.split(/=/)[1]
-    deliveredfilter = deliveredkeyword.split("-").join(" ");
-    // console.log("delivered filter", deliveredfilter)
-    // console.log("keyword als filterinput", deliveredkeyword.split("-").join(" "))
-  }
-
-  // const [filter, setFilter] = useState([deliveredfilter || ""])
-  // console.log("filter am anfang mit keyword als input", filter)
-
-    // ternary expression = if else shorthand
-  let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
-  const [filter, setFilter] = useState(initState)
   const [filterdList, setFilterdList] = useState(allEditorials)
-  const [search, setSearch] = useState('')
-
-
-  //setFilterdList (filter.length>0?filterBy(allEditorials, filter):allEditorials ) // filter if any filter is set, else show all 
-
-  
-  //ohne – sondern mit Leerschlag wählt es den Filter in der Auswahl an, aber funktionert nicht in der filterd List
-  // const [filter, setFilter] = useState(["Knowledge Visualization"])
-  //mit - wählts oben bei der auswahl nichts an
-  // const [filter, setFilter] = useState(["Knowledge-Visualization"])
 
     //Projekte zu Forschungsfeld dazufiltern
   function filterByForschungsfeld(data, filterterm) {
@@ -85,55 +38,26 @@ const Editorial =(props)=>{
     })
   }
 
- //nach Forschungsfelder filtern
+//nach Forschungsfelder filtern
 function filterBy(data, filterterms) {
   return data.filter((obj) => {
-    console.log("filterterms",filterterms)
-
-    //kann sein: every für && und some für || ? 
-    return filterterms.every((term)=>{
-
-      return obj.forschungsfeld.some((feld)=>{
-        return feld.id.toString().includes(term);
-      })
-    })   
+    // check if filter is active or show all
+    if(filterterms.length>0){
+      //kann sein: every für && und some für || ? 
+      return filterterms.some((term)=>{
+        return obj.forschungsfeld.some((feld)=>{
+          return feld.id.toString().includes(term);
+        })
+      })   
+    } else{
+      return true
+    }
   })
 }
 
-    const addMoreItem = (item) => {
-      const copyfilter = [...filter]
-      var index = copyfilter.indexOf(item);
-      if (index !== -1) {
-        copyfilter.splice(index, 1);
-        setFilter([...copyfilter])
-      }
-      else {
-        setFilter([...filter, item])
-      }
-    }
-
-
     useEffect(() => {
-      // console.log("**** useEffect filter",filter,filter.length, filterdList)
-     // setFilterdList (filter.length>0?filterBy(allEditorials, filter):allEditorials ) // filter if any filter is set, else show all 
       setFilterdList (filterBy(allEditorials, state.activeFilters) ) // filter if any filter is set, else show all 
-      // console.log("## result",filterBy(allEditorials, filter))
     },[state.activeFilters])
-
-    /*
-    This was for debuggin
-    useEffect(() => {
-      console.log("++++++++ useEffect filterdList",filter, filterdList)
-    },[filterdList])
-    */
-
-    // This got called on init -> overwrote filter
-    useEffect(() => {
-      if(search){
-        // skip initial render as then it deletes filtered list from deliverd filter
-        setFilterdList(searchInput(allEditorials,search));
-      }
-    },[search])
 
 
   // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
@@ -155,6 +79,12 @@ function filterBy(data, filterterms) {
     )
     }
 
+    const [search, setSearch] = useState('')
+    useEffect(() => {
+      if(search){
+        setFilterdList(searchInput(allEditorials,search));
+      }
+    },[search])
 
 
     return (
@@ -165,8 +95,6 @@ function filterBy(data, filterterms) {
       >        
         <SuchFeldElement setSearch={setSearch}/>
         <FilterElement filterarray={allForschungsfelders} />
-
-       {/* <FilterElement filterarray={allForschungsfelders} filter={filter} setFilter={setFilter} addMoreItem={addMoreItem}/> */}
         
         
         <div className={styles.editorialintro}>
@@ -201,6 +129,12 @@ function filterBy(data, filterterms) {
             background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
           }
 
+
+
+
+
+
+          
           return(
                 <div className={styles.editorialwrapper} key={editorial.id} style={background_style}>
                   <Container>
