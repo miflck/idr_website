@@ -17,7 +17,6 @@ import { ElementTitle } from '../Composition';
 
 const ListItemTeam =(props)=>{
 
-  console.log("------------ List Item Team hello ", props )
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState

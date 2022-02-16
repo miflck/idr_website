@@ -34,6 +34,9 @@ export default function FilterElement (props) {
           dispatch({ type: ACTIONS.ADD_ACTIVE_FILTER, payload: { element: [id] } })
         }
     };
+
+    console.log(state)
+
   
     let FilterElement;
     if(state.activeFilters) {

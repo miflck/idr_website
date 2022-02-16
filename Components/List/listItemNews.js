@@ -18,7 +18,6 @@ import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElemen
 const ListItemNews = (props) => {
     const {id,title,forschungsfelder,image,text}=props;
 
-    console.log("list item news props",props)
     const globalState = useContext(AppContext);
     const { state } = globalState
     const { dispatch } = globalState
@@ -69,7 +68,7 @@ const ListItemNews = (props) => {
    }
    //colorArray[1]="#FF0000";
     if(colorArray.length<2){
-     colorArray[1]="#000000";
+     colorArray[1]=colorArray[0];//"#000000";
     }
 
     const gradient_highlight=makeGradientFromArray(colorArray,"to right");
@@ -141,7 +140,6 @@ const ListItemNews = (props) => {
             {image && 
             <div className={styles.portraitWrapper}>
               <GradientContainer backgroundStyle={background_style_image}>
-              { console.log("hey",image.url)}
               <ImageElement src={image.url}  alt={image.alt} ></ImageElement>
               </GradientContainer>
               </div> 

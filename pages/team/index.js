@@ -11,7 +11,6 @@ import ListItemTeam from "../../Components/List/listItemTeam"
 import { AppContext,ACTIONS } from '../../context/state';
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import Container from "../../Components/Container/container";
-import { ElementTitle } from "../../Components/Composition";
 
 import { SpacedWrapper } from "../../Components/Composition";
 import { ModularContentWrapper } from "../../Components/Composition";
@@ -20,7 +19,7 @@ const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
   const {menschen:{allForschungsfelders}}=props;
   const {menschen:{allFunktions}}=props;
-  
+
     const { t } = useTranslation('common')
 
     // context
@@ -38,7 +37,6 @@ const Team =(props)=>{
     function filterBy(data, filterterms) {
       return data.filter((obj) => {
         //kann sein: every für && und some für || ? 
-        
         return filterterms.every((term)=>{
           return obj.forschungsfeld.some((feld)=>{
           return feld.id.toString().includes(term);
@@ -48,6 +46,7 @@ const Team =(props)=>{
     }
 
     const [filter, setFilter] = useState([])
+    
     const addMoreItem = (item) => {
       const copyfilter = [...filter]
       var index = copyfilter.indexOf(item);
@@ -121,7 +120,6 @@ useEffect(() => {
           {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}
            <FilterElement filterarray={allForschungsfelders} />
 
-
        
            <div className={styles.teamcontainer}>
                 {filterdList.map((mensch) => {
@@ -130,10 +128,6 @@ useEffect(() => {
                     
                         <ListItemTeam {...mensch}               
                         showGradient={showGradient}
-                        //setFilter={setFilter} 
-                        //filter={filter} 
-                        //addMoreItem={addMoreItem} 
-                        //handleShowGradient={handleShowGradient} 
                         key={mensch.name}/>
                       )
                     }

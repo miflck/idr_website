@@ -4,7 +4,6 @@ import { AppContext, ACTIONS } from '../../context/state';
 import Button from '../Button'
 
 export default function ForschungsfeldElement (props) {
-     console.log("props ForschungsfeldElement", props)
     const globalState = useContext(AppContext);
     const {state}=globalState
     const { dispatch } = globalState;

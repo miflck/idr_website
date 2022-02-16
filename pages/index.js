@@ -15,8 +15,6 @@ export default function Home(props) {
   const { news: { allNews:siteData } } = props;
   const { news: { allForschungsfelders } } = props;
 
-  console.log("NEWS Props",siteData,allForschungsfelders)
-
   // console.log("homeprops", links);
   const { t } = useTranslation('common')
 
@@ -24,7 +22,6 @@ export default function Home(props) {
   const globalState = useContext(AppContext);
   const { dispatch } = globalState;
   const {state}=globalState
-
 
   const [showGradient,setShowGradient]=useState(false);
 
@@ -38,13 +35,14 @@ export default function Home(props) {
       //kann sein: every für && und some für || ? 
       return filterterms.every((term) => {
         return obj.forschungsfeld.some((feld) => {
-          return feld.titel.toString().includes(term);
+          return feld.id.toString().includes(term);
         })
       })
     })
   }
 
   const [filter, setFilter] = useState([])
+
   const addMoreItem = (item) => {
     const copyfilter = [...filter]
     var index = copyfilter.indexOf(item);
@@ -60,6 +58,7 @@ export default function Home(props) {
   const [filterdList, setFilterdList] = useState([])
 
   useEffect(() => {
+    console.log("active filter",state.activeFilters,siteData)
     setFilterdList(filterBy(siteData, state.activeFilters))
     if(state.activeFilters.length>0){
       setShowGradient(true)
@@ -103,10 +102,8 @@ function searchInput(data, inputvalue) {
         <TileGrid>
           
           {filterdList.map((beitrag) => {
-            console.log("beitrag",beitrag)
             return (
               <Tile>
-
                 <ListItemNews
                         id={beitrag.id}
                         title={beitrag.title}   
@@ -114,10 +111,6 @@ function searchInput(data, inputvalue) {
                         text={beitrag.text}
                         forschungsfelder={beitrag.forschungsfeld}         
                         showGradient={showGradient}
-                        //setFilter={setFilter} 
-                        //filter={filter} 
-                        //addMoreItem={addMoreItem} 
-                        //handleShowGradient={handleShowGradient} 
                         key={beitrag.id}/>
             </Tile>
             )

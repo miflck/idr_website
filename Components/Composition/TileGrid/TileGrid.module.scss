@@ -4,6 +4,11 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: calc(var(--padding) * 3);
+    padding-left: calc(var(--padding));
+    padding-right: calc(var(--padding));
+    padding-top: calc(var(--padding));
+
+
 }
 
 @media (min-width: $breakpointSmall) {
