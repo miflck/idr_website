@@ -19,8 +19,8 @@ import { ModularContentWrapper } from "../../Components/Composition";
 const Team =(props)=>{
   const {menschen:{allMenschens}}=props;
   const {menschen:{allForschungsfelders}}=props;
-  console.log("allForschungsfelders",allForschungsfelders)
   const {menschen:{allFunktions}}=props;
+  
     const { t } = useTranslation('common')
 
     // context

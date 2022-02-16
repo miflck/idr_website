@@ -4,7 +4,7 @@ import { AppContext, ACTIONS } from '../../context/state';
 import Button from '../Button'
 
 export default function ForschungsfeldElement (props) {
-    // console.log("props ForschungsfeldElement", props)
+     console.log("props ForschungsfeldElement", props)
     const globalState = useContext(AppContext);
     const {state}=globalState
     const { dispatch } = globalState;
@@ -32,50 +32,6 @@ export default function ForschungsfeldElement (props) {
   
 
     let Forschungsfelder;
-    // type ist für Publikationen. warum? ev weil fehlende farbe vom Forschungsfeld?
-    // ev ist das alles noch zu wenig abtrahiert?
-    /*if(props.type) {
-        var types = props.type.split('_').join(' ');
-        if (types != null) {
-            if(props.filter) {
-                let button_style = { color: 'var(--maincolor)' };
-                let btn_class;
-                if(props.filter.includes(props.type)) {
-                    btn_class = styles.forschungsfeldaktiv
-                    button_style = {
-                        color:'var(--secondcolor)'
-                    }
-                    if(props.showHoverGradient){
-                        button_style = {
-                            color: 'var(--maincolor)',
-                            border: '1px solid var(--secondcolor)',
-                            background: 'var(--secondcolor)'
-                        }
-                    }
-                }
-                else {
-                    btn_class = styles.forschungsfeld
-                    if(props.showHoverGradient){
-                        button_style = {
-                            color: 'var(--secondcolor)',
-                            border: '1px solid var(--secondcolor)'
-                        }
-                    }
-                }
-                Forschungsfelder = <div className={styles.forschungsfeldwrapper}>
-                                        <div className={btn_class} >
-                                            <a style={button_style} onClick={() => props.addMoreItem(props.type)}> 
-                                                {types} 
-                                            </a>
-                                        </div>
-                                    </div>
-            }
-        }
-
-    } else {*/
-       
-            
-
     if (props.forschungsfeld != null) {
         Forschungsfelder = <div className={styles.forschungsfeldwrapper}>
                                     {props.forschungsfeld.map((forschungsfeld) => {

@@ -1,12 +1,24 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { AppContext, ACTIONS } from '../../context/state';
-import styles from '../../pages/news.module.scss'
+import styles from './list.module.scss'
 import Link from 'next/link'
+
+import Tile from '../Tile/Tile';
+import { GradientContainer } from '..';
+import { getColorArray, getGradientBackgroundStyle,makeGradient } from '../../lib';
+import { makeGradientFromArray } from '../../lib/helpers';
+import { ElementTitle } from '../Composition';
+
+import { ImageElement } from '../Composition';
+
 // import Container from '../../Components/Container/container'
 import TextElement from '../Composition/TextElement';
 import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
 
 const ListItemNews = (props) => {
+    const {id,title,forschungsfelder,image,text}=props;
+
+    console.log("list item news props",props)
     const globalState = useContext(AppContext);
     const { state } = globalState
     const { dispatch } = globalState
@@ -28,21 +40,58 @@ const ListItemNews = (props) => {
         hour: '2-digit', minute: '2-digit'
     });
 
-    // console.log("_modelApiKey", props._modelApiKey)
-    let ImageElement;
-    if (props.image != null) {
-        ImageElement = <div className={styles.bild}>
-            <img
-                className={styles.image}
-                src={props.image.url}
-            />
-        </div>
+    
+
+
+    const handleHover = (isHover) => {
+        if(isHover){
+            dispatch({ type: ACTIONS.ADD_HOVER_FILTER, payload: { element: researchFieldIdArray} })
+            setHoverGradient(true)
+        }else{
+            dispatch({ type: ACTIONS.REMOVE_HOVER_FILTER, payload: { element: researchFieldIdArray } })
+            setHoverGradient(false)
+        }
+    };
+  
+
+
+ // get array of Ids of tags for handleHover
+ const researchFieldIdArray = forschungsfelder.reduce((acc, it) => {
+    acc.push(it.id);
+    return acc;
+  }, []);
+
+   // get Array of colors from all tags
+   const colorArray=getColorArray(forschungsfelder);
+   //  const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
+   if(colorArray.length<1){
+    colorArray[0]="#000000";
+   }
+   //colorArray[1]="#FF0000";
+    if(colorArray.length<2){
+     colorArray[1]="#000000";
     }
-    else {
-        ImageElement = <></>
+
+    const gradient_highlight=makeGradientFromArray(colorArray,"to right");
+    const animationOut=`${styles.fadeOut} .9s ease`;
+    const animationIn=` ${styles.fadeIn} 0.5s ease`;
+
+    let background_style=getGradientBackgroundStyle(gradient_highlight,animationOut,0)
+    if(props.showGradient || showHoverGradient){
+        background_style=getGradientBackgroundStyle(gradient_highlight,animationIn,1)
     }
 
 
+
+    const gradient_image=makeGradient(colorArray[0]+"80","rgba(255,255,255,0)","to bottom");
+    let background_style_image=getGradientBackgroundStyle(gradient_image,animationOut,0)
+    if(props.showGradient || showHoverGradient){
+        background_style_image=getGradientBackgroundStyle(gradient_image,animationIn,1)
+     // background_style_test["mix-blend-mode"]="multiply"
+
+    }
+
+/*
     let colors = [];
     props.forschungsfeld.map((forschungsfeld) => {
         colors.push(forschungsfeld.colour.hex)
@@ -70,74 +119,48 @@ const ListItemNews = (props) => {
             background: 'white'
         }
     }
-
+*/
+    
     return (
-        <div className={styles.kachelwrapper} key={props.id} onMouseEnter={() => setHoverGradient(true)} onMouseLeave={() => setHoverGradient(false)}>
-            {
-                props._modelApiKey === 'projekt' &&
+        <>
 
-                <div className={styles.kachel} style={background_style_small}>
-                    <div className={styles.text}>
-                        <div className={styles.uebertitel}>
-                            {/* {t("Projekt")} */}Projekt
-                        </div>
-                        <Link href={hrefprojekte}>
-                            <div className={styles.titel}>{props.titel}</div>
-                        </Link>
-                        <TextElement {...props.newstext} />
-                        <div className={styles.element}>
-                            <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient} />
-                        </div>
-                    </div>
-                </div>
-            }
-            {
-                props._modelApiKey === 'veranstaltung' &&
-                <div className={styles.kachel} style={background_style_small}>
-                    <div className={styles.text}>
-                        <div className={styles.uebertitel}>
-                            {/* {t("Veranstaltung")} */}Veranstaltung
-                        </div>
-                        <Link href={hrefveranstaltungen}>
-                            <div className={styles.titel}>{props.titel}</div>
-                        </Link>
-                        <div className={styles.date}>{date} Uhr
-                            {/* {t("Uhr")} */}
-                        </div>
-                        <div className={styles.referentIn}>{props.referentIn}</div>
-                        <div className={styles.element}>
-                            <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient} />
-                        </div>
-                    </div>
-                </div>
-            }
-            {
-                props._modelApiKey === 'news' &&
-                <div className={styles.kachel} 
-                    style={background_style_small} 
-                    // hat nicht immer ein Forschungsfeld dran bis jetzt, deshalb ausgeschaltet und es wechselt einfach ins schwarze
-                    >
-                    <div className={styles.text}>
-                        <div className={styles.uebertitel}>
-                            {/* {t("News")} */}News
-                        </div>
-                        <Link href={props.weblink}>
-                            <div className={styles.titel}>{props.titel}</div>
-                        </Link>
-                        <TextElement {...props.text} />
-                        <Link href={props.weblink}>
-                            <a className={styles.weblink}>
-                                {/* {t("Publilink")} */}Publikationslink
-                            </a>
-                        </Link>
-                        <div className={styles.element}>
-                            <ForschungsfeldElement {...props} filter={props.filter} addMoreItem={props.addMoreItem} showHoverGradient={showHoverGradient} />
-                        </div>
-                    </div>
-                    {ImageElement}
-                </div>
-            }
+        <div className={` ${styles.wrapper} ${showHoverGradient ? styles.highlight : ""}`} 
+        key={props.id} 
+          onMouseEnter={ ()=>handleHover(true)} 
+          onTouchStart={ ()=>handleHover(true)}  
+          onMouseLeave={ ()=>handleHover(false)}
+          onTouchEnd={ ()=>handleHover(false)}
+          onTouchCancel={ ()=>handleHover(false)}
+
+          //onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
+        >
+        
+        <GradientContainer backgroundStyle={background_style}> 
+        <div className={`${styles.menschwrapper}`} >
+
+            {image && 
+            <div className={styles.portraitWrapper}>
+              <GradientContainer backgroundStyle={background_style_image}>
+              { console.log("hey",image.url)}
+              <ImageElement src={image.url}  alt={image.alt} ></ImageElement>
+              </GradientContainer>
+              </div> 
+             }
+            <ElementTitle highlight={showHoverGradient}>
+                  {title}           
+              </ElementTitle>
+              <TextElement key={text.id} {...text}>
+                
+              </TextElement>
+          
+           
+            <ForschungsfeldElement  forschungsfeld={forschungsfelder} showHoverGradient={showHoverGradient}/>    
+    
+            </div>
+            </GradientContainer>
+
         </div>
+        </>
     )
 }
 

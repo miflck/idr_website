@@ -140,6 +140,7 @@ const handleClick = (bool,id) => {
           <div className={styles.modulareinhalte}>
             {projektinhalte != null &&
             projektinhalte.map((block) => {
+              console.log("block",block)
               return (
                 <ModularContentWrapper>
                 {

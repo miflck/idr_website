@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import TileGrid from './Composition/TileGrid';
 import Gallery from './Composition/Gallery';
 import GradientFadeIn from './GradientFadeIn';
 import BackgroundGradientFadeOut from './BackgroundGradientFadeOut';
@@ -15,6 +16,7 @@ import { ElementTitle } from './Composition';
 
 export {
   /* PLOP_INJECT_EXPORT */
+	TileGrid,
 	Gallery,
 	GradientFadeIn,
 	BackgroundGradientFadeOut,

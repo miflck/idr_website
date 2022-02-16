@@ -1,4 +1,4 @@
-import { request, NEWS } from "../lib/datocms";
+import { request, ALLNEWS } from "../lib/datocms";
 import styles from './news.module.scss'
 import Layout from '../Components/Layout/layout'
 import { useTranslation } from 'next-i18next'
@@ -8,16 +8,26 @@ import { AppContext, ACTIONS } from '../context/state';
 import FilterElement from "../Components/FilterElement/filterElement";
 import ListItemNews from "../Components/List/listItemNews";
 import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
+import TileGrid from "../Components/Composition/TileGrid/TileGrid";
+import { Tile } from "../Components";
 
 export default function Home(props) {
-  const { newsseite: { newsseite: { links } } } = props;
-  const { newsseite: { allForschungsfelders } } = props;
+  const { news: { allNews:siteData } } = props;
+  const { news: { allForschungsfelders } } = props;
+
+  console.log("NEWS Props",siteData,allForschungsfelders)
+
   // console.log("homeprops", links);
   const { t } = useTranslation('common')
 
   // context
   const globalState = useContext(AppContext);
   const { dispatch } = globalState;
+  const {state}=globalState
+
+
+  const [showGradient,setShowGradient]=useState(false);
+
   const handleShowGradient = (val) => {
     dispatch({ type: ACTIONS.SHOW_GRADIENT, payload: { showGradient: val } })
   };
@@ -50,8 +60,13 @@ export default function Home(props) {
   const [filterdList, setFilterdList] = useState([])
 
   useEffect(() => {
-    setFilterdList(filterBy(links, filter))
-  }, [filter])
+    setFilterdList(filterBy(siteData, state.activeFilters))
+    if(state.activeFilters.length>0){
+      setShowGradient(true)
+    }else{
+      setShowGradient(false)
+    }
+  }, [state.activeFilters])
 
   // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel, News etc funktioniert noch nicht, Loops sind falsch
 function searchInput(data, inputvalue) {
@@ -74,40 +89,57 @@ function searchInput(data, inputvalue) {
 
   const [search, setSearch] = useState('')
   useEffect(() => {
-    setFilterdList(searchInput(links,search));
+    setFilterdList(searchInput(siteData,search));
   },[search])
 
   return (
+
     <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
 
       <SuchFeldElement setSearch={setSearch}/>
 
-      <FilterElement filterarray={allForschungsfelders} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>
+      <FilterElement filterarray={allForschungsfelders} />
 
-      <main className={styles.container}>
-        <div className={styles.allekacheln}>
+        <TileGrid>
+          
           {filterdList.map((beitrag) => {
+            console.log("beitrag",beitrag)
             return (
-              <ListItemNews {...beitrag} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} 
-              handleShowGradient={handleShowGradient} key={beitrag.id}/>
-            )
-          })}
-        </div>
+              <Tile>
 
-      </main>
+                <ListItemNews
+                        id={beitrag.id}
+                        title={beitrag.title}   
+                        image={beitrag.image}   
+                        text={beitrag.text}
+                        forschungsfelder={beitrag.forschungsfeld}         
+                        showGradient={showGradient}
+                        //setFilter={setFilter} 
+                        //filter={filter} 
+                        //addMoreItem={addMoreItem} 
+                        //handleShowGradient={handleShowGradient} 
+                        key={beitrag.id}/>
+            </Tile>
+            )
+          }
+            )
+          }
+          </TileGrid>
+
     </Layout>
+    
   )
 }
 
 
 export async function getStaticProps({ locale }) {
-  const newsseite = await request({
-    query: NEWS, variables: { locale: locale },
+  const news = await request({
+    query: ALLNEWS, variables: { locale: locale },
   });
 
   return {
     props: {
-      newsseite,
+      news,
       ...await serverSideTranslations(locale, ['common']),
     },
   }

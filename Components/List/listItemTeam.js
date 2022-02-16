@@ -9,6 +9,7 @@ import Tile from '../Tile/Tile';
 import GradientContainer from '../GradientContainer/GradientContainer';
 
 import { getColorArray, getGradientBackgroundStyle,makeGradient } from '../../lib';
+import { makeGradientFromArray } from '../../lib/helpers';
 import { ImageElement } from '../Composition';
 
 import { ElementTitle } from '../Composition';
@@ -16,7 +17,7 @@ import { ElementTitle } from '../Composition';
 
 const ListItemTeam =(props)=>{
 
-  console.log("------------ List Item Team Props ", props )
+  console.log("------------ List Item Team hello ", props )
     const globalState = useContext(AppContext);
     const {state}=globalState
     const {dispatch}=globalState
@@ -48,8 +49,19 @@ const ListItemTeam =(props)=>{
 
       // get Array of colors from all tags
       const colorArray=getColorArray(props.forschungsfeld);
-      console.log(colorArray)
-      const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
+    //  const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
+    //colorArray[1]="#FF0000";
+     if(colorArray.length<2){
+      colorArray[1]="#FFFFFF";
+     }
+
+
+
+
+     // const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
+      const gradient_highlight=makeGradientFromArray(colorArray,"to right");
+
+      
 
       const animationOut=`${styles.fadeOut} .9s ease`;
       const animationIn=` ${styles.fadeIn} 0.5s ease`;
@@ -60,7 +72,7 @@ const ListItemTeam =(props)=>{
       }
 
 
-      const gradient_test=makeGradient(colorArray[1]+"80","rgba(255,255,255,0)","to bottom");
+      const gradient_test=makeGradient(colorArray[0]+"80","rgba(255,255,255,0)","to bottom");
       let background_style_test=getGradientBackgroundStyle(gradient_test,animationOut,0)
       if(props.showGradient || showHoverGradient){
         background_style_test=getGradientBackgroundStyle(gradient_test,animationIn,1)
@@ -68,6 +80,7 @@ const ListItemTeam =(props)=>{
 
       }
     
+      // props.forschungsfeld = [...props.funktion, ...props.forschungsfeld];
 
     return (
       <Tile>

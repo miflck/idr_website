@@ -11,6 +11,10 @@ import ButtonLink from '../Components/ButtonLink/buttonLink'
 import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
 import { AppContext,ACTIONS } from "../context/state";
 
+import { BackgroundGradientFadeOut } from '../Components';
+import { GradientFadeIn } from '../Components';
+
+
 const Editorial =(props)=>{
 
   const {editorialtexte:{
@@ -134,7 +138,7 @@ function filterBy(data, filterterms) {
 
 
 
-          
+
           return(
                 <div className={styles.editorialwrapper} key={editorial.id} style={background_style}>
                   <Container>

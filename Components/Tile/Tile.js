@@ -5,7 +5,9 @@ import styles from './Tile.module.scss';
 const Tile = ({ children }) => {
 
   return  <div className={`${styles.root}`}>
+    <div className={`${styles.content}`}>
             {children}
+            </div>
           </div>
 };
 
