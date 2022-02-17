@@ -16,7 +16,7 @@ import TextElement from '../Composition/TextElement';
 import ForschungsfeldElement from '../ForschungsfeldElement/forschungsfeldElement';
 
 const ListItemNews = (props) => {
-    const {id,title,forschungsfelder,image,text}=props;
+    const {id,title,forschungsfelder,image,text,link}=props;
 
     const globalState = useContext(AppContext);
     const { state } = globalState
@@ -25,15 +25,18 @@ const ListItemNews = (props) => {
     const [showHoverGradient, setHoverGradient] = useState();
     const handleShowGradient = (val) => { };
 
-    let hrefprojekte = `/projekte`
-    if (props._modelApiKey === 'projekt') {
-        hrefprojekte += `/${props.slug}`
-    }
-    let hrefveranstaltungen = `/veranstaltungen`
+
+let hrefInternalLink="";
+
+    if(link){
+    if (link._modelApiKey === 'projekt') {
+        hrefInternalLink += `/projekte/${link.slug}`
+    }}
+   /* let hrefveranstaltungen = `/veranstaltungen`
     if (props._modelApiKey === 'veranstaltung') {
         hrefveranstaltungen += `/${props.slug}`
     }
-
+*/
     const date = new Date(props.datum).toLocaleString([], {
         year: 'numeric', month: 'numeric', day: 'numeric',
         hour: '2-digit', minute: '2-digit'
@@ -133,7 +136,6 @@ const ListItemNews = (props) => {
 
           //onMouseEnter={ ()=>setHoverGradient(true)} onMouseLeave={ ()=>setHoverGradient(false)}
         >
-        
         <GradientContainer backgroundStyle={background_style}> 
         <div className={`${styles.menschwrapper}`} >
 
@@ -147,16 +149,15 @@ const ListItemNews = (props) => {
             <ElementTitle highlight={showHoverGradient}>
                   {title}           
               </ElementTitle>
-              <TextElement key={text.id} {...text}>
-                
-              </TextElement>
-          
+              <TextElement key={text.id} {...text}></TextElement>
+                {link &&
+                    <Link href={hrefInternalLink}>{link.titel}</Link>
+                }
            
             <ForschungsfeldElement  forschungsfeld={forschungsfelder} showHoverGradient={showHoverGradient}/>    
     
             </div>
             </GradientContainer>
-
         </div>
         </>
     )

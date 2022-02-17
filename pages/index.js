@@ -109,6 +109,7 @@ function searchInput(data, inputvalue) {
                         title={beitrag.title}   
                         image={beitrag.image}   
                         text={beitrag.text}
+                        link={beitrag.internerLink}
                         forschungsfelder={beitrag.forschungsfeld}         
                         showGradient={showGradient}
                         key={beitrag.id}/>

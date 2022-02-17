@@ -87,9 +87,10 @@ a {
   color: inherit;
   text-decoration: none;
   font-style: italic;
-  color: var(--maincolor);
+  //color: var(--maincolor);
   &:hover {
-    animation: smoothslidein 0.2s forwards;
+    //animation: smoothslidein 0.2s forwards;
+    text-decoration: underline;
   }
 }
 

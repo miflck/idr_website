@@ -11,7 +11,7 @@ import GradientContainer from '../GradientContainer/GradientContainer';
 import { getColorArray, getGradientBackgroundStyle,makeGradient } from '../../lib';
 import { makeGradientFromArray } from '../../lib/helpers';
 import { ImageElement } from '../Composition';
-
+import { ResponsiveImage } from '../Composition';
 import { ElementTitle } from '../Composition';
 
 
@@ -75,12 +75,14 @@ const ListItemTeam =(props)=>{
       let background_style_test=getGradientBackgroundStyle(gradient_test,animationOut,0)
       if(props.showGradient || showHoverGradient){
         background_style_test=getGradientBackgroundStyle(gradient_test,animationIn,1)
+
        // background_style_test["mix-blend-mode"]="multiply"
+        background_style_test["z-index"]="100"
 
       }
     
       // props.forschungsfeld = [...props.funktion, ...props.forschungsfeld];
-
+console.log("portrait",props.portrait)
     return (
       <Tile>
       <div className={` ${styles.wrapper} ${showHoverGradient ? styles.highlight : ""}`} 
@@ -102,8 +104,10 @@ const ListItemTeam =(props)=>{
           <Link href={href}>
             <span>
               <div className={styles.portraitWrapper}>
-              <GradientContainer backgroundStyle={background_style_test}> 
-              <ImageElement src={props.portrait.url}  alt={props.portrait.alt} ></ImageElement>
+              <GradientContainer style={{zIndex:100}} backgroundStyle={background_style_test}> 
+             {/**  <ImageElement src={props.portrait.url}  alt={props.portrait.alt} focalPoint={props.portrait.focalPoint} responsiveImage={props.portrait.responsiveImage}></ImageElement>*/}
+              <ResponsiveImage responsiveImage={props.portrait.responsiveImage}></ResponsiveImage>
+
               </GradientContainer>
               </div>
                 {/* 

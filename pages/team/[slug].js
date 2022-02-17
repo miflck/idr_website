@@ -20,6 +20,7 @@ import { SpacedWrapper } from '../../Components/Composition';
 import { GradientContainer } from '../../Components';
 import { BackgroundGradientFadeOut } from '../../Components';
 import { GradientFadeIn } from '../../Components';
+import { ResponsiveImage } from '../../Components';
 
 
 
@@ -154,7 +155,9 @@ export default function Menscheinzelansicht (props) {
 
         {portrait !== null &&
           <ModularContentWrapper>
-          <ImageElement src={portrait.url}  alt={portrait.alt} />
+            <ResponsiveImage responsiveImage={portrait.responsiveImage}></ResponsiveImage>
+            {/** <ImageElement src={portrait.url}  alt={portrait.alt} focalPoint={portrait.focalPoint} ></ImageElement>*/}
+
 
           </ModularContentWrapper>
     }
@@ -175,6 +178,7 @@ export default function Menscheinzelansicht (props) {
                   if(forschungsfeld.titel === "ForscherInnen") {
                   } else if (forschungsfeld.titel === "Leitung und Büro") {
                   }else{
+                    
                      var forschungsfeldlink = forschungsfeld.titel
                      var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
                   
