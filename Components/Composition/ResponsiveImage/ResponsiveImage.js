@@ -8,7 +8,9 @@ const ResponsiveImage = props => {
 
   return (
     <div className={styles.root}>
-    <Image data={responsiveImage}/>
+    <Image data={responsiveImage}
+    fadeInDuration="50"
+    />
     </div>
   );
 };
