@@ -22,6 +22,8 @@ const Team =(props)=>{
 
     const { t } = useTranslation('common')
 
+    console.log("team",props)
+
     // context
     const globalState = useContext(AppContext);
     const {state}=globalState
