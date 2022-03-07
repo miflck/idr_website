@@ -1,27 +1,43 @@
 .textelement {
+  p {
+    margin: 0;
+    //  padding-bottom: calc(var(--padding));
+    // margin-bottom: calc(var(--padding));
+  }
 
-    p { 
-        margin: 0;
-      //  padding-bottom: calc(var(--padding));
-       // margin-bottom: calc(var(--padding));
-    }
+  h2 {
+    //  border-bottom:solid thin black;
+    margin-bottom: calc(var(--padding) / 2);
+  }
 
-    h2{
-      //  border-bottom:solid thin black;
-        margin-bottom: calc(var(--padding)/2);
+  h3 {
+    text-decoration: underline;
+    font-weight: normal;
+  }
 
-    }
-
-    a{
-      color: inherit;
-      text-decoration: underline;
-      text-decoration-color: #333333;
-      font-style: italic;
-      &:hover {
-        animation: none;
-        color:#333333;
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    li {
+      &::before {
+        content: "\2192";
+        position: absolute;
+        margin-left: -20px;
       }
-      /* &:after {
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #333333;
+    font-style: italic;
+    &:hover {
+      animation: none;
+      color: #333333;
+    }
+    /* &:after {
         position:relative;
 //top: 0.15em;
         display:inline-block;
@@ -33,10 +49,5 @@
         content:url('../../../assets/linkicon.svg');
 
     }*/
-
-
-    }
-
-    
-
+  }
 }

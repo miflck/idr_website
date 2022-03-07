@@ -1,38 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Gallery.module.scss';
-import { ImageElement } from '..'
-import { Carousel } from 'react-responsive-carousel';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./Gallery.module.scss";
+import { ImageElement } from "..";
+import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const Gallery = props => {
-  const {data}=props;
- 
+const Gallery = (props) => {
+  const { data } = props;
 
   return (
     <div className={styles.root}>
-       <Carousel>
-    {data.map((element)=>{
-      console.log(element)
-      return(
-        <div>
-          
-       {/* <ImageElement key={element.id} src={element.url} />*/}
+      <Carousel>
+        {data.map((element) => {
+          console.log(element);
+          return (
+            <div>
+              <ImageElement
+                key={element.id}
+                src={element.url}
+                title={element.title}
+                alt={element.alt}
+              />
 
-        <img src={element.url} alt="image1"/>
-
-        </div>
-      )
-    })}
-</Carousel>
-</div>
+              {/* <img src={element.url} alt="image1" />*/}
+            </div>
+          );
+        })}
+      </Carousel>
+    </div>
   );
 };
 
-Gallery.defaultProps = {
-
-};
+Gallery.defaultProps = {};
 
 export default Gallery;
-
-
