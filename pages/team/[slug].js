@@ -217,15 +217,18 @@ export default function Menscheinzelansicht(props) {
       </Layout>
     );
   } else {
-    return <></>;
+    return <div>No data</div>;
   }
 }
 
 export async function getStaticProps({ params, locale }) {
-  const data = await request({
-    query: MENSCHEINZEL,
-    variables: { slug: params.slug, locale: locale },
-  });
+  let data = null;
+  try {
+    data = await request({
+      query: MENSCHEINZEL,
+      variables: { slug: params.slug, locale: locale },
+    });
+  } catch (err) {}
 
   return {
     props: {
