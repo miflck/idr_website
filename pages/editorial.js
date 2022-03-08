@@ -14,7 +14,9 @@ import { ServiceElement } from "../Components/Composition";
 
 import { BackgroundGradientFadeOut } from "../Components";
 import { GradientFadeIn } from "../Components";
+import { TextContainer } from "../Components";
 
+import { Title } from "../Components/Composition";
 const Editorial = (props) => {
   const {
     editorialtexte: { allEditorials, allProjekts, allForschungsfelders },
@@ -97,14 +99,15 @@ const Editorial = (props) => {
       <SuchFeldElement setSearch={setSearch} />
       <FilterElement filterarray={allForschungsfelders} />
 
-      <div className={styles.editorialintro}>
+      <div className={styles.editorialwrapper}>
         <Container>
-          <div className={styles.titel}>
-            {editorialintro.editorialeinfHrungstext.titel}
-          </div>
-          <div className={styles.text}>
-            <TextElement {...editorialintro.editorialeinfHrungstext.text} />
-          </div>
+          <Title title={editorialintro.editorialeinfHrungstext.titel} />
+          <TextContainer>
+            <div className={styles.text}>
+              <TextElement {...editorialintro.editorialeinfHrungstext.text} />
+            </div>
+            <ServiceElement></ServiceElement>
+          </TextContainer>
         </Container>
       </div>
 
@@ -141,47 +144,42 @@ const Editorial = (props) => {
             <Container>
               {editorial.forschungsfeld.map((forschungsfeld) => {
                 return (
-                  <div
-                    className={styles.titel}
-                    key={forschungsfeld.id}
-                    id={forschungsfeld.slug}
-                  >
-                    {forschungsfeld.titel}{" "}
-                  </div>
+                  <Title key={forschungsfeld.id} title={forschungsfeld.titel} />
                 );
               })}
-              <div className={styles.text}>
-                {editorial.beitraege.map((beitrag) => {
-                  return (
-                    <TextElement
-                      key={beitrag.id}
-                      {...beitrag.text}
-                    ></TextElement>
-                  );
-                })}
-              </div>
-              <div className={styles.serviceWrapper}>
-                <ServiceElement title={t("Koord")}>
-                  {editorial.menschen.map((koordinatorin) => {
-                    let href = `/team`;
-                    if (koordinatorin.slug != "") {
-                      href += `/${koordinatorin.slug}`;
-                    }
-                    return <ButtonLink {...koordinatorin} href={href} />;
-                  })}{" "}
-                </ServiceElement>
+              <TextContainer>
+                <div className={styles.text}>
+                  {editorial.beitraege.map((beitrag) => {
+                    return (
+                      <TextElement
+                        key={beitrag.id}
+                        {...beitrag.text}
+                      ></TextElement>
+                    );
+                  })}
+                </div>
+                <div className={styles.serviceWrapper}>
+                  <ServiceElement title={t("Koord")}>
+                    {editorial.menschen.map((koordinatorin) => {
+                      let href = `/team`;
+                      if (koordinatorin.slug != "") {
+                        href += `/${koordinatorin.slug}`;
+                      }
+                      return <ButtonLink {...koordinatorin} href={href} />;
+                    })}{" "}
+                  </ServiceElement>
 
-                <ServiceElement title={t("Projekte")}>
-                  {filterdProjectlist.map((projekt) => {
-                    let href = `/projekte`;
-                    if (projekt.slug != "") {
-                      href += `/${projekt.slug}`;
-                    }
-                    return <ButtonLink {...projekt} href={href} />;
-                  })}{" "}
-                </ServiceElement>
-              </div>
-              {/* *
+                  <ServiceElement title={t("Projekte")}>
+                    {filterdProjectlist.map((projekt) => {
+                      let href = `/projekte`;
+                      if (projekt.slug != "") {
+                        href += `/${projekt.slug}`;
+                      }
+                      return <ButtonLink {...projekt} href={href} />;
+                    })}{" "}
+                  </ServiceElement>
+                </div>
+                {/* *
               <div className={styles.listenwrapper}>
                 <div>{t("Koord")}</div>
                 {editorial.menschen.map((koordinatorin) => {
@@ -203,6 +201,7 @@ const Editorial = (props) => {
                 })}
               </div>
               */}
+              </TextContainer>
             </Container>
           </div>
         );

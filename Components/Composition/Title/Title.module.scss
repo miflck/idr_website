@@ -1,38 +1,30 @@
 @import "../../.././styles/breakpoints.scss";
 
-
 .root {
-    margin-top: calc(var(--padding) * 3);
- //   padding-left: calc(var(--padding) * 1);
-    margin-bottom: calc(var(--padding) * 3);
-    h1{
-       // border-bottom:solid thin black;
-    }
+  // margin-top: calc(var(--padding) * 3);
+  //   padding-left: calc(var(--padding) * 1);
+  margin-bottom: calc(var(--padding) * 3);
+  h1 {
+    // border-bottom:solid thin black;
+  }
 }
 
-
 @media (min-width: $breakpointSmall) {
-        .root{
-            margin-top: 0;
-            //margin-top: calc(var(--padding) * 3);
+  .root {
+    margin-top: 0;
+    //margin-top: calc(var(--padding) * 3);
 
+    //    padding-left: calc(var(--padding) * 5);
+    margin-bottom: 6.25rem;
+    //   margin-bottom: calc(var(--padding) * 3);
+  }
+}
 
-        //    padding-left: calc(var(--padding) * 5);
-            margin-bottom: 6.25rem;
-         //   margin-bottom: calc(var(--padding) * 3);
+@media (min-width: $breakpointMedium) {
+}
 
+@media (min-width: $breakpointLarge) {
+}
 
-        }    
-  }
-  
-  @media (min-width: $breakpointMedium) {
-   
-  }
-  
-  @media (min-width: $breakpointLarge) {
-    
-  }
-  
-  @media (min-width: $breakpointXLarge) {
-   
-  }
+@media (min-width: $breakpointXLarge) {
+}
