@@ -1,11 +1,24 @@
 .root {
   position: fixed;
-  top: 4rem;
+  bottom: 4rem;
+  width: 4rem;
+  height: 4rem;
   z-index: 50;
+  right: 2rem;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 50%;
+  z-index: 500;
+  border: solid thin black;
+  text-align: center;
+
   &::before {
     content: "\2190";
     position: absolute;
-    margin-left: -20px;
+    margin-top: 2rem;
+    text-align: center;
+
+    margin-left: -1rem;
   }
   &:hover {
     cursor: pointer;
