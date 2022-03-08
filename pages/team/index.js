@@ -133,7 +133,6 @@ const Team = (props) => {
       <div className={styles.teamcontainer}>
         {filterdList.map((mensch) => {
           if (mensch.aktiv && !mensch.extern) {
-            console.log("mensch--------------", mensch);
             return (
               <ListItemTeam
                 {...mensch}

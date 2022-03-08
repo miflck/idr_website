@@ -126,7 +126,7 @@ const ListItemTeam = (props) => {
                 <div className={styles.portraitWrapper}>
                   <GradientContainer
                     style={{ zIndex: 100 }}
-                    backgroundStyle={background_style_test}
+                    // backgroundStyle={background_style_test}
                   >
                     {/**  <ImageElement src={props.portrait.url}  alt={props.portrait.alt} focalPoint={props.portrait.focalPoint} responsiveImage={props.portrait.responsiveImage}></ImageElement>*/}
                     <ResponsiveImage
