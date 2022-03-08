@@ -141,6 +141,9 @@ export default function Menscheinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
+        <Container>
+          <Backbutton />
+        </Container>
         {/* Hintergrund ganze seite */}
         <BackgroundGradientFadeOut
           backgroundStyle={background_style}
@@ -157,7 +160,6 @@ export default function Menscheinzelansicht(props) {
             <div className={styles.background_small} style={background_op}></div>
           </div>        
        */}
-          <Backbutton />
 
           <div className={styles.slugwrapper}>
             <Container>
