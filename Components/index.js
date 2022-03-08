@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import Backbutton from './Backbutton';
 import ResponsiveImage from './Composition/ResponsiveImage';
 import TileGrid from './Composition/TileGrid';
 import Gallery from './Composition/Gallery';
@@ -17,6 +18,7 @@ import { ElementTitle } from './Composition';
 
 export {
   /* PLOP_INJECT_EXPORT */
+	Backbutton,
 	ResponsiveImage,
 	TileGrid,
 	Gallery,

@@ -1,0 +1,14 @@
+.root {
+  position: fixed;
+  top: 4rem;
+  z-index: 50;
+  left: 10rem;
+  &::before {
+    content: "\2190";
+    position: absolute;
+    margin-left: -20px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

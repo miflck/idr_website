@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -19,6 +20,7 @@ import { GradientContainer } from "../../Components";
 import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
 import { ResponsiveImage } from "../../Components";
+import { Backbutton } from "../../Components";
 
 export default function Menscheinzelansicht(props) {
   const router = useRouter();
@@ -155,10 +157,9 @@ export default function Menscheinzelansicht(props) {
             <div className={styles.background_small} style={background_op}></div>
           </div>        
        */}
+          <Backbutton />
 
           <div className={styles.slugwrapper}>
-            <span onClick={() => router.back()}>Click here to go back</span>
-
             <Container>
               <Title title={name} />
 
@@ -217,11 +218,13 @@ export default function Menscheinzelansicht(props) {
       </Layout>
     );
   } else {
-    return <div>No data</div>;
+    return <div>No datac</div>;
   }
 }
 
 export async function getStaticProps({ params, locale }) {
+  console.log("*****************", params);
+
   let data = null;
   try {
     data = await request({
@@ -261,6 +264,6 @@ export async function getStaticPaths({ locales }) {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
