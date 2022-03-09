@@ -1,1 +1,2 @@
-export { default } from "./publications";
+export { default } from "./hello.js";
+export { default } from "./publikationen";
