@@ -108,11 +108,12 @@ const Team = (props) => {
     });
   }
 
-  const [search, setSearch] = useState("");
-  /*useEffect(() => {
-    console.log("search effect", state.activeFilters);
-    setFilterdList(searchInput(allMenschens, search));
-  }, [search]);*/
+  const [search, setSearch] = useState({});
+  useEffect(() => {
+    // dont perform on first render…
+    const isEmpty = Object.keys(search).length === 0;
+    if (!isEmpty) setFilterdList(searchInput(allMenschens, search));
+  }, [search]);
 
   /*
       let neueListe=[];
