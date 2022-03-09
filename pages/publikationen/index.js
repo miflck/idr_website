@@ -24,7 +24,7 @@ export default function Publikationen(props) {
   const [showGradient, setShowGradient] = useState(false);
 
   const fetchPublications = async () => {
-    const response = await fetch("/api/publications");
+    const response = await fetch("/api/publikationen");
     const data = await response.json();
     setPublicationData(data);
     setFilterdList(data);
