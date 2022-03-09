@@ -52,8 +52,6 @@ const Team = (props) => {
     });
   }
 
-  const [filter, setFilter] = useState([]);
-
   const addMoreItem = (item) => {
     const copyfilter = [...filter];
     var index = copyfilter.indexOf(item);
@@ -65,17 +63,11 @@ const Team = (props) => {
     }
   };
 
-  /* const [filterdList, setFilterdList] = useState([])
-
-    useEffect(() => {
-      setFilterdList (filterBy(allMenschens, filter) )
-    },[filter])
-
-*/
   const [filterdList, setFilterdList] = useState([]);
+
   // on change active filters
   useEffect(() => {
-    //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+    console.log("FILTER FROM CONTEXT  ", state.activeFilters);
     setFilterdList(filterBy(allMenschens, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
@@ -83,6 +75,18 @@ const Team = (props) => {
       setShowGradient(false);
     }
   }, [state.activeFilters]);
+
+  // on change active filters
+  useEffect(() => {
+    console.log("use Effect from Team", state.activeFilters);
+    //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+    setFilterdList(filterBy(allMenschens, state.activeFilters));
+    if (state.activeFilters.length > 0) {
+      setShowGradient(true);
+    } else {
+      setShowGradient(false);
+    }
+  }, []);
 
   // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
   function searchInput(data, inputvalue) {
@@ -105,9 +109,10 @@ const Team = (props) => {
   }
 
   const [search, setSearch] = useState("");
-  useEffect(() => {
+  /*useEffect(() => {
+    console.log("search effect", state.activeFilters);
     setFilterdList(searchInput(allMenschens, search));
-  }, [search]);
+  }, [search]);*/
 
   /*
       let neueListe=[];

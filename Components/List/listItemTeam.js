@@ -19,7 +19,6 @@ import { ResponsiveImage } from "../Composition";
 import { ElementTitle } from "../Composition";
 
 const ListItemTeam = (props) => {
-  console.log("team list itme", props.id);
   const globalState = useContext(AppContext);
   const { state } = globalState;
   const { dispatch } = globalState;
@@ -104,7 +103,6 @@ const ListItemTeam = (props) => {
   }
 
   // props.forschungsfeld = [...props.funktion, ...props.forschungsfeld];
-  console.log("portrait", props.portrait);
   return (
     <Tile key={props.id} id={props.id}>
       <div
