@@ -24,17 +24,10 @@ export default function Publikationen(props) {
   const [showGradient, setShowGradient] = useState(false);
 
   const fetchPublications = async () => {
-    //const response = await fetch("/api/publikationen");
-    const response = await fetch(
-      "https://arbor.bfh.ch/cgi/search/advanced/export_arbor_JSON.js?screen=Search&_action_export=1&output=JSON&exp=0%7C1%7C-date%2Fcreators_name%2Ftitle%7Carchive%7C-%7Cdivisions%3Adivisions%3AANY%3AEQ%3ABFH-OE--IN-0005%7C-%7Ceprint_status%3Aeprint_status%3AANY%3AEQ%3Aarchive%7Cmetadata_visibility%3Ametadata_visibility%3AANY%3AEQ%3Ashow&n=&cache=117839",
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch("/api/publikationen");
+    /*const response = await fetch(
+      "https://arbor.bfh.ch/cgi/search/advanced?screen=Search&_action_search=Search&eprintid=&date=&title_merge=ALL&title=&contributors_name_merge=ALL&contributors_name=&contributors_orcid=&editors_name_merge=ALL&editors_name=&publication_merge=ALL&publication=&abbrev_publication_merge=ALL&abbrev_publication=&publisher_merge=ALL&publisher=&event_title_merge=ALL&event_title=&event_location_merge=ALL&event_location=&issn=&isbn=&book_title_merge=ALL&book_title=&abstract_merge=ALL&abstract=&keywords_merge=ALL&keywords=&note_merge=ALL&note=&divisions_merge=ANY&divisions=BFH-OE--RU-0043&grad_school_merge=ANY&org_units_id_merge=ANY&org_units_id_match=IN&refereed=EITHER&doc_content_merge=ANY&doc_license_merge=ANY&doc_format_merge=ANY&doi_name=&id_fs=&doi=&pubmed_id=&wos_id=&satisfyall=ALL&order=-date%2Fcreators_name%2Ftitle"
+    );*/
 
     const data = await response.json();
     setPublicationData(data);
@@ -202,6 +195,9 @@ export default function Publikationen(props) {
   useEffect(() => {
     setFilterdList(searchInput(publicationData, search));
   }, [search]);
+
+  console.log("list", filterdList);
+
   return (
     <Layout
       setMainColor={props.setMainColor}
@@ -216,6 +212,7 @@ export default function Publikationen(props) {
 
       <div className={styles.listwrapper}>
         {filterdList.map((publikation) => {
+          console.log(publikation);
           return (
             <ListItemPublikation
               {...publikation}

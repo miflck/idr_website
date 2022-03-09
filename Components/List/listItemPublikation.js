@@ -8,7 +8,7 @@ import { PublicationFilter } from "../../lib/helpers";
 
 const ListItemPublikation = (props) => {
   if (props) {
-    //console.log("publi props", props);
+    console.log("publi props", props);
     const globalState = useContext(AppContext);
     const { state } = globalState;
     const { dispatch } = globalState;
