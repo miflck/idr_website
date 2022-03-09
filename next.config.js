@@ -1,9 +1,9 @@
-const { i18n } = require('./next-i18next.config')
+const { i18n } = require("./next-i18next.config");
 
 module.exports = {
-   trailingSlash: true,
+  trailingSlash: true,
   i18n,
-  async redirects() {
+  /*async redirects() {
     return [
       {
         source: '/',
@@ -11,8 +11,8 @@ module.exports = {
         permanent: true,
       },
     ]
-  },
+  },*/
   images: {
-    domains: ['www.datocms-assets.com'],
+    domains: ["www.datocms-assets.com"],
   },
-}
+};
