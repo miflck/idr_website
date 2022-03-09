@@ -1,88 +1,92 @@
-import Layout from "../../Components/Layout/layout"
+import Layout from "../../Components/Layout/layout";
 import ListItemPublikation from "../../Components/List/listItemPublikation";
-import styles from './publikationen.module.scss'
+import styles from "./publikationen.module.scss";
 import Container from "../../Components/Container/container";
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { useState, useEffect } from 'react'
-import arborAPI from "../../lib/export_arbor_JSON"
-import { useRouter } from 'next/router'
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React, { useState, useEffect, useContext } from "react";
+import arborAPI from "../../lib/export_arbor_JSON";
+import { useRouter } from "next/router";
 import FilterElement from "../../Components/FilterElement/filterElement";
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
-
+import { AppContext, ACTIONS } from "../../context/state";
+import { PublicationFilter } from "../../lib/helpers";
 
 export default function Publikationen(props) {
-  let {publicationdata}=props || ""
+  let { publicationdata } = props || "";
   publicationdata = arborAPI;
 
-  let filterfields=["contributors","creators"]
+  console.log(PublicationFilter, publicationdata);
 
-  if(props) {
-  const { t } = useTranslation('common')
+  let filterfields = ["contributors", "creators"];
 
+  // context
+  const globalState = useContext(AppContext);
+  const { state } = globalState;
+  const { dispatch } = globalState;
 
-  const router = useRouter()
-  // console.log("roter nach type", router.asPath.split(/=/)[1])
-  //var deliveredfilter = router.asPath.split(/=/)[1]
+  if (props) {
+    const { t } = useTranslation("common");
 
-  let deliveredfilter=router.query.keyword; 
+    const router = useRouter();
+    // console.log("roter nach type", router.asPath.split(/=/)[1])
+    //var deliveredfilter = router.asPath.split(/=/)[1]
 
-  // ternary expression = if else shorthand
-  let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
-  const [filter, setFilter] = useState(initState)
+    let deliveredfilter = router.query.keyword;
 
-//nach Publikationstypen filtern
-function filterBy(data, filterterms) {
-  return data.filter((obj) => {
-    //kann sein: every für && und some für || ? 
-    return filterterms.every((term)=>{
-      return obj.type.toString()===term;
-    })   
-  })
-}
+    // ternary expression = if else shorthand
+    let initState =
+      typeof deliveredfilter === "undefined" || !deliveredfilter
+        ? []
+        : new Array(deliveredfilter);
+    const [filter, setFilter] = useState(initState);
 
-  
-
-  const addMoreItem = (item) => {
-    const copyfilter = [...filter]
-    var index = copyfilter.indexOf(item);
-    if (index !== -1) {
-      copyfilter.splice(index, 1);
-      setFilter([...copyfilter])
+    //nach Publikationstypen filtern
+    function filterBy(data, filterterms) {
+      return data.filter((obj) => {
+        //kann sein: every für && und some für || ?
+        return filterterms.every((term) => {
+          let filter = PublicationFilter.find((o) => o.id === term);
+          return obj.type.toString() === filter.term;
+        });
+      });
     }
-    else{
-      setFilter([...filter, item])
-    }
-  }
 
- 
-
-  const [filterdList, setFilterdList] = useState([])
-
-
-  useEffect(() => {
-    // console.log("use effect filter",filter)
-    setFilterdList(filterBy(publicationdata, filter) )
-    // console.log("filter publi index", filter)
-  },[filter])
-
-  
-
-  function groupByFlat(objectArray, property) {
-    return objectArray.reduce(function (acc, obj) {
-      if(!acc[obj[property]]) {
-        acc[obj[property]] = [];
+    const addMoreItem = (item) => {
+      const copyfilter = [...filter];
+      var index = copyfilter.indexOf(item);
+      if (index !== -1) {
+        copyfilter.splice(index, 1);
+        setFilter([...copyfilter]);
+      } else {
+        setFilter([...filter, item]);
       }
-      acc[obj[property]].push(obj);
-      return acc;
-    }, {});
-  }
-  let typeList=groupByFlat(publicationdata,'type')
-  // console.log("Type List ",typeList)
-  const publicationTypes = Object.keys(typeList);
+    };
 
+    const [filterdList, setFilterdList] = useState([]);
 
-  /*
+    useEffect(() => {
+      console.log("----------------ACTIVE--------------", state.activeFilters);
+      // console.log("use effect filter",filter)
+      setFilterdList(filterBy(publicationdata, state.activeFilters));
+      // console.log("filter publi index", filter)
+    }, [state.activeFilters]);
+
+    function groupByFlat(objectArray, property) {
+      return objectArray.reduce(function (acc, obj) {
+        if (!acc[obj[property]]) {
+          acc[obj[property]] = [];
+        }
+        acc[obj[property]].push(obj);
+        return acc;
+      }, {});
+    }
+    let typeList = groupByFlat(publicationdata, "type");
+    console.log("Type List ", typeList);
+    const publicationTypes = Object.keys(typeList);
+    console.log("publicationTypes ", publicationTypes);
+
+    /*
 
   //geht noch nicht, andere Strukturen, andere Loops
   aber component ist schon mal drin zu SuchFeldElement
@@ -117,7 +121,7 @@ function filterBy(data, filterterms) {
         }
 
 */
-/*
+    /*
 
         else{
           return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
@@ -133,56 +137,97 @@ function filterBy(data, filterterms) {
   },[search])
   */
 
+    // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+    function searchInput(data, inputvalue) {
+      return data.filter((obj) => {
+        return Object.keys(obj).some((key) => {
+          if (Array.isArray(obj[key])) {
+            return obj[key].some((entry) => {
+              return Object.keys(entry).some((kkey) => {
+                return entry[kkey].toString().includes(inputvalue);
+              });
+            });
+          } else {
+            return obj[key]
+              .toString()
+              .toLowerCase()
+              .includes(inputvalue.toLowerCase());
+          }
+        });
+      });
+    }
 
-  let neueListe=[];
-  publicationTypes.map((publicationtype) => {
-      neueListe.push(publicationtype)
-  })
+    const makeUppercase = (sentence) => {
+      let words = sentence.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+      }
+      return words.join(" ");
+    };
 
+    let neueListe = [];
+    publicationTypes.map((publicationtype, i) => {
+      const type = {
+        titel: makeUppercase(publicationtype.split("_").join(" ")),
+        id: i,
+        colour: { hex: "#FF0000" },
+      };
+      neueListe.push(type);
+    });
 
-  return (
-      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-         
+    const [search, setSearch] = useState("");
+    useEffect(() => {
+      setFilterdList(searchInput(publicationdata, search));
+    }, [search]);
+
+    return (
+      <Layout
+        setMainColor={props.setMainColor}
+        setSecondColor={props.setSecondColor}
+        colorHexCode={props.colorHexCode}
+        colorHexCodeSecond={props.colorHexCodeSecond}
+      >
+        <SuchFeldElement setSearch={setSearch} />
+        <FilterElement filterarray={PublicationFilter} />
+
         {/* <SuchFeldElement setSearch={setSearch}/> */}
-       
-        <FilterElement filterarray={neueListe} filter={filter} setFilter={setFilter} addMoreItem={addMoreItem}/>
 
-          <div className={styles.listwrapper}>
-                  {filterdList.map((publikation) => {
-                    return (
-                      <ListItemPublikation {...publikation} setFilter={setFilter} filter={filter} addMoreItem={addMoreItem} key={publikation.id}/>
-                    )})
-                        }
-          </div>
+        <div className={styles.listwrapper}>
+          {filterdList.map((publikation) => {
+            return (
+              <ListItemPublikation
+                {...publikation}
+                setFilter={setFilter}
+                filter={filter}
+                addMoreItem={addMoreItem}
+                key={publikation.id}
+              />
+            );
+          })}
+        </div>
       </Layout>
-  )
+    );
+  } else {
+    return <></>;
+  }
 }
 
-else{
-  return (
-    <>
-    </>
-  )
-}
-}
+export async function getStaticProps({ locale }) {
+  // const publikationen = await request({
+  //     query: PUBLIKATIONEN, variables: {locale:locale},
+  //   });
 
-
-export async function getStaticProps({locale}) {
-    // const publikationen = await request({
-    //     query: PUBLIKATIONEN, variables: {locale:locale},
-    //   });
-
-      //const res = await fetch(`https://arbor.bfh.ch/cgi/search/advanced/export_arbor_JSON.js?screen=Search&_action_export=1&output=JSON&exp=0%7C1%7C-date%2Fcreators_name%2Ftitle%7Carchive%7C-%7Cdivisions%3Adivisions%3AANY%3AEQ%3ABFH-OE--IN-0005%7C-%7Ceprint_status%3Aeprint_status%3AANY%3AEQ%3Aarchive%7Cmetadata_visibility%3Ametadata_visibility%3AANY%3AEQ%3Ashow&n=&cache=117839`)
-      //const publicationdata = await res.json()
-      const publicationdata=""
+  //const res = await fetch(`https://arbor.bfh.ch/cgi/search/advanced/export_arbor_JSON.js?screen=Search&_action_export=1&output=JSON&exp=0%7C1%7C-date%2Fcreators_name%2Ftitle%7Carchive%7C-%7Cdivisions%3Adivisions%3AANY%3AEQ%3ABFH-OE--IN-0005%7C-%7Ceprint_status%3Aeprint_status%3AANY%3AEQ%3Aarchive%7Cmetadata_visibility%3Ametadata_visibility%3AANY%3AEQ%3Ashow&n=&cache=117839`)
+  //const publicationdata = await res.json()
+  const publicationdata = "";
 
   return {
     props: {
-      // publikationen, 
-      publicationdata,  
-      ...await serverSideTranslations(locale, ['common']),
+      // publikationen,
+      publicationdata,
+      ...(await serverSideTranslations(locale, ["common"])),
     }, // will be passed to the page component as props
-  }
+  };
 }
 
 // export async function getStaticPaths() {
