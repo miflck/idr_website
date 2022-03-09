@@ -5,7 +5,7 @@ import Container from "../../Components/Container/container";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState, useEffect, useContext } from "react";
-import arborAPI from "../../lib/export_arbor_JSON";
+import data from "../../lib/export_arbor_JSON";
 import { useRouter } from "next/router";
 import FilterElement from "../../Components/FilterElement/filterElement";
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
@@ -13,11 +13,6 @@ import { AppContext, ACTIONS } from "../../context/state";
 import { PublicationFilter } from "../../lib/helpers";
 
 export default function Publikationen(props) {
-  let { publicationdata } = props || "";
-  publicationdata = arborAPI;
-
-  console.log(PublicationFilter, publicationdata);
-
   let filterfields = ["contributors", "creators"];
 
   // context
@@ -25,68 +20,85 @@ export default function Publikationen(props) {
   const { state } = globalState;
   const { dispatch } = globalState;
 
-  if (props) {
-    const { t } = useTranslation("common");
+  const [publicationData, setPublicationData] = useState([]);
+  const [showGradient, setShowGradient] = useState(false);
 
-    const router = useRouter();
-    // console.log("roter nach type", router.asPath.split(/=/)[1])
-    //var deliveredfilter = router.asPath.split(/=/)[1]
+  const fetchPublications = async () => {
+    const response = await fetch("/api/publications");
+    const data = await response.json();
+    setPublicationData(data);
+    setFilterdList(data);
+  };
 
-    let deliveredfilter = router.query.keyword;
+  useEffect(() => {
+    fetchPublications();
+  }, []);
 
-    // ternary expression = if else shorthand
-    let initState =
-      typeof deliveredfilter === "undefined" || !deliveredfilter
-        ? []
-        : new Array(deliveredfilter);
-    const [filter, setFilter] = useState(initState);
+  const { t } = useTranslation("common");
 
-    //nach Publikationstypen filtern
-    function filterBy(data, filterterms) {
-      return data.filter((obj) => {
-        //kann sein: every für && und some für || ?
-        return filterterms.every((term) => {
-          let filter = PublicationFilter.find((o) => o.id === term);
-          return obj.type.toString() === filter.term;
-        });
+  const router = useRouter();
+  // console.log("roter nach type", router.asPath.split(/=/)[1])
+  //var deliveredfilter = router.asPath.split(/=/)[1]
+
+  let deliveredfilter = router.query.keyword;
+
+  // ternary expression = if else shorthand
+  let initState =
+    typeof deliveredfilter === "undefined" || !deliveredfilter
+      ? []
+      : new Array(deliveredfilter);
+  const [filter, setFilter] = useState(initState);
+
+  //nach Publikationstypen filtern
+  function filterBy(data, filterterms) {
+    return data.filter((obj) => {
+      //kann sein: every für && und some für || ?
+      return filterterms.every((term) => {
+        let filter = PublicationFilter.find((o) => o.id === term);
+        return obj.type.toString() === filter.term;
       });
-    }
+    });
+  }
 
-    const addMoreItem = (item) => {
-      const copyfilter = [...filter];
-      var index = copyfilter.indexOf(item);
-      if (index !== -1) {
-        copyfilter.splice(index, 1);
-        setFilter([...copyfilter]);
-      } else {
-        setFilter([...filter, item]);
+  const addMoreItem = (item) => {
+    const copyfilter = [...filter];
+    var index = copyfilter.indexOf(item);
+    if (index !== -1) {
+      copyfilter.splice(index, 1);
+      setFilter([...copyfilter]);
+    } else {
+      setFilter([...filter, item]);
+    }
+  };
+
+  const [filterdList, setFilterdList] = useState([]);
+
+  useEffect(() => {
+    setFilterdList(filterBy(publicationData, state.activeFilters));
+    if (state.activeFilters.length > 0) {
+      setShowGradient(true);
+    } else {
+      setShowGradient(false);
+    }
+  }, [state.activeFilters]);
+
+  function groupByFlat(objectArray, property) {
+    return objectArray.reduce(function (acc, obj) {
+      if (!acc[obj[property]]) {
+        acc[obj[property]] = [];
       }
-    };
+      acc[obj[property]].push(obj);
+      return acc;
+    }, {});
+  }
 
-    const [filterdList, setFilterdList] = useState([]);
+  // currently not used
+  let typeList = groupByFlat(publicationData, "type");
+  //console.log("Type List ", typeList);
+  const publicationTypes = Object.keys(typeList);
+  //console.log("publicationTypes ", publicationTypes);
 
-    useEffect(() => {
-      console.log("----------------ACTIVE--------------", state.activeFilters);
-      // console.log("use effect filter",filter)
-      setFilterdList(filterBy(publicationdata, state.activeFilters));
-      // console.log("filter publi index", filter)
-    }, [state.activeFilters]);
-
-    function groupByFlat(objectArray, property) {
-      return objectArray.reduce(function (acc, obj) {
-        if (!acc[obj[property]]) {
-          acc[obj[property]] = [];
-        }
-        acc[obj[property]].push(obj);
-        return acc;
-      }, {});
-    }
-    let typeList = groupByFlat(publicationdata, "type");
-    console.log("Type List ", typeList);
-    const publicationTypes = Object.keys(typeList);
-    console.log("publicationTypes ", publicationTypes);
-
-    /*
+  /*
 
   //geht noch nicht, andere Strukturen, andere Loops
   aber component ist schon mal drin zu SuchFeldElement
@@ -121,7 +133,7 @@ export default function Publikationen(props) {
         }
 
 */
-    /*
+  /*
 
         else{
           return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
@@ -137,79 +149,73 @@ export default function Publikationen(props) {
   },[search])
   */
 
-    // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-    function searchInput(data, inputvalue) {
-      return data.filter((obj) => {
-        return Object.keys(obj).some((key) => {
-          if (Array.isArray(obj[key])) {
-            return obj[key].some((entry) => {
-              return Object.keys(entry).some((kkey) => {
-                return entry[kkey].toString().includes(inputvalue);
-              });
+  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+  function searchInput(data, inputvalue) {
+    return data.filter((obj) => {
+      return Object.keys(obj).some((key) => {
+        if (Array.isArray(obj[key])) {
+          return obj[key].some((entry) => {
+            return Object.keys(entry).some((kkey) => {
+              return entry[kkey].toString().includes(inputvalue);
             });
-          } else {
-            return obj[key]
-              .toString()
-              .toLowerCase()
-              .includes(inputvalue.toLowerCase());
-          }
-        });
+          });
+        } else {
+          return obj[key]
+            .toString()
+            .toLowerCase()
+            .includes(inputvalue.toLowerCase());
+        }
       });
-    }
-
-    const makeUppercase = (sentence) => {
-      let words = sentence.split(" ");
-      for (let i = 0; i < words.length; i++) {
-        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-      }
-      return words.join(" ");
-    };
-
-    let neueListe = [];
-    publicationTypes.map((publicationtype, i) => {
-      const type = {
-        titel: makeUppercase(publicationtype.split("_").join(" ")),
-        id: i,
-        colour: { hex: "#FF0000" },
-      };
-      neueListe.push(type);
     });
-
-    const [search, setSearch] = useState("");
-    useEffect(() => {
-      setFilterdList(searchInput(publicationdata, search));
-    }, [search]);
-
-    return (
-      <Layout
-        setMainColor={props.setMainColor}
-        setSecondColor={props.setSecondColor}
-        colorHexCode={props.colorHexCode}
-        colorHexCodeSecond={props.colorHexCodeSecond}
-      >
-        <SuchFeldElement setSearch={setSearch} />
-        <FilterElement filterarray={PublicationFilter} />
-
-        {/* <SuchFeldElement setSearch={setSearch}/> */}
-
-        <div className={styles.listwrapper}>
-          {filterdList.map((publikation) => {
-            return (
-              <ListItemPublikation
-                {...publikation}
-                setFilter={setFilter}
-                filter={filter}
-                addMoreItem={addMoreItem}
-                key={publikation.id}
-              />
-            );
-          })}
-        </div>
-      </Layout>
-    );
-  } else {
-    return <></>;
   }
+
+  const makeUppercase = (sentence) => {
+    let words = sentence.split(" ");
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    return words.join(" ");
+  };
+
+  let neueListe = [];
+  publicationTypes.map((publicationtype, i) => {
+    const type = {
+      titel: makeUppercase(publicationtype.split("_").join(" ")),
+      id: i,
+      colour: { hex: "#FF0000" },
+    };
+    neueListe.push(type);
+  });
+
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    setFilterdList(searchInput(publicationData, search));
+  }, [search]);
+  return (
+    <Layout
+      setMainColor={props.setMainColor}
+      setSecondColor={props.setSecondColor}
+      colorHexCode={props.colorHexCode}
+      colorHexCodeSecond={props.colorHexCodeSecond}
+    >
+      <SuchFeldElement setSearch={setSearch} />
+      <FilterElement filterarray={PublicationFilter} />
+
+      {/* <SuchFeldElement setSearch={setSearch}/> */}
+
+      <div className={styles.listwrapper}>
+        {filterdList.map((publikation) => {
+          return (
+            <ListItemPublikation
+              {...publikation}
+              showGradient={showGradient}
+              key={publikation.id}
+            />
+          );
+        })}
+      </div>
+    </Layout>
+  );
 }
 
 export async function getStaticProps({ locale }) {

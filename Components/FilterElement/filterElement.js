@@ -48,8 +48,6 @@ export default function FilterElement(props) {
     }
   };
 
-  console.log(state);
-
   let FilterElement;
   if (state.activeFilters) {
     FilterElement = (

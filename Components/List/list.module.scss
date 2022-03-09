@@ -20,6 +20,14 @@
   }
 }
 
+.listLinkBlank {
+  color: inherit;
+  font-style: normal;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .wrapper {
   color: var(--maincolor);
   user-select: none;
