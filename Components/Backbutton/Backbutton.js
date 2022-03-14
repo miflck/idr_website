@@ -7,8 +7,8 @@ const Backbutton = (props) => {
   const router = useRouter();
 
   return (
-    <div className={styles.root}>
-      <div onClick={() => router.back()}>Zurück</div>
+    <div onClick={() => router.back()} className={styles.root}>
+      <div className={styles.center}>&#8592;</div>
     </div>
   );
 };

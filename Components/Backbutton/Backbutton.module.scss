@@ -6,12 +6,15 @@
   z-index: 50;
   right: 2rem;
   background-color: #ffffff;
-  padding: 20px;
+  //  padding: 20px;
   border-radius: 50%;
   z-index: 500;
-  border: solid thin black;
+  border: solid 2px black;
   text-align: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*
   &::before {
     content: "\2190";
     position: absolute;
@@ -19,8 +22,12 @@
     text-align: center;
 
     margin-left: -1rem;
-  }
+  }*/
   &:hover {
     cursor: pointer;
+  }
+
+  .center {
+    margin: auto;
   }
 }

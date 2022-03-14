@@ -19,6 +19,7 @@ import Link from "next/link";
 
 import router, { useRouter } from "next/router";
 import Button from "../../Components/Button/Button";
+import { Backbutton } from "../../Components";
 
 import { Title } from "../../Components/Composition";
 import { ServiceElement } from "../../Components/Composition";
@@ -133,6 +134,9 @@ export default function Projekteinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
+        <Container>
+          <Backbutton />
+        </Container>
         {/* Hintergrund ganze seite 
     <div className={styles.background} style={background_style}></div>
     */}
@@ -313,8 +317,6 @@ export default function Projekteinzelansicht(props) {
 }
 
 export async function getStaticProps({ params, locale }) {
-  console.log("*****************", params, locale);
-
   const data = await request({
     query: PROJEKTEINZEL,
     variables: { slug: params.slug, locale: locale },
@@ -338,6 +340,8 @@ export async function getStaticPaths({ locales }) {
   const projekte = await request({
     query: ALLPROJEKTE,
   });
+  // hier bei über 100 ein problem! irgend was rekursives bauen?
+  console.log("ooooooooooooooo", projekte._allProjektsMeta.count);
   locales.forEach((locale, i) => {
     projekte.allProjekts.forEach((projekt, j) => {
       paths.push({

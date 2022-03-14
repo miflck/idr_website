@@ -8,6 +8,8 @@ import { request, MENSCHEINZEL, ALLMENSCHEN } from "../../lib/datocms";
 import styles from "./team.module.scss";
 
 import Layout from "../../Components/Layout/layout";
+import React, { useEffect, useContext, useState } from "react";
+import { AppContext, ACTIONS } from "../../context/state";
 
 import Container from "../../Components/Container/container";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
@@ -21,9 +23,14 @@ import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
 import { ResponsiveImage } from "../../Components";
 import { Backbutton } from "../../Components";
-
+import { ServiceElement } from "../../Components/Composition";
+import Button from "../../Components/Button/Button";
 export default function Menscheinzelansicht(props) {
   const router = useRouter();
+
+  const globalState = useContext(AppContext);
+  const { state } = globalState;
+  const { dispatch } = globalState;
 
   const { t } = useTranslation("common");
   console.log("props  team einzeln", props);
@@ -54,6 +61,33 @@ export default function Menscheinzelansicht(props) {
 
     const filterdProjectlist = filterBy(allProjekts, name);
 
+    const handleHover = (isHover, id) => {
+      if (isHover) {
+        //  dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
+      } else {
+        //  dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
+      }
+    };
+
+    const handleClick = (bool, id) => {
+      if (state.activeFilters.some((e) => e === id)) {
+        dispatch({
+          type: ACTIONS.REMOVE_ACTIVE_FILTER,
+          payload: { element: [id] },
+        });
+      } else {
+        dispatch({
+          type: ACTIONS.ADD_ACTIVE_FILTER,
+          payload: { element: [id] },
+        });
+      }
+
+      router.push({
+        pathname: "/editorial",
+        //query: { keyword: `${filtermitgeben}` }
+      });
+    };
+
     let EmailElement;
     if (email != "") {
       EmailElement = (
@@ -82,7 +116,7 @@ export default function Menscheinzelansicht(props) {
         <div className={styles.bfhprofil}>
           <Link href={bfhprofil}>
             <a className={styles.bfhprofil} target="_blank">
-              {t("BFHProfil")}
+              {name}
             </a>
           </Link>
         </div>
@@ -94,7 +128,6 @@ export default function Menscheinzelansicht(props) {
       // console.log("filterdProjectlist",filterdProjectlist)
       ProjekteElement = (
         <div className={styles.subwrapper}>
-          <div className={styles.subtitel}>{t("Projekte")}</div>
           {filterdProjectlist.map((projekt) => {
             let href = `/projekte`;
             if (projekt.slug != "") {
@@ -175,43 +208,39 @@ export default function Menscheinzelansicht(props) {
               )}
 
               <ModularContentWrapper>
-                <div className={styles.subwrapper}>
+                <ServiceElement title={t("Kontakt")}>
                   {EmailElement}
-                  {WebsiteElement}
-                  <br></br>
+                  {WebsiteElement}{" "}
+                </ServiceElement>
+
+                <ServiceElement title={t("BFHProfil")}>
                   {BFHProfilElement}
-                </div>
+                </ServiceElement>
 
-                {ProjekteElement}
+                <ServiceElement title={t("Projekte")}>
+                  {ProjekteElement}
+                </ServiceElement>
+
                 <div className={styles.subwrapper}>
-                  <div className={styles.subtitel}>{t("Forschungsfelder")}</div>
-                  {forschungsfeld.map((forschungsfeld) => {
-                    console.log("forschungsfeld", forschungsfeld);
-                    if (forschungsfeld.titel === "ForscherInnen") {
-                    } else if (forschungsfeld.titel === "Leitung und Büro") {
-                    } else {
-                      var forschungsfeldlink = forschungsfeld.titel;
-                      var filtermitgeben = `${forschungsfeld.titel}`
-                        .split(" ")
-                        .join("-");
-
+                  <ServiceElement title={t("Forschungsfelder")}>
+                    {forschungsfeld.map((forschungsfeld) => {
+                      let hover_class = {
+                        color: "var(--maincolor)",
+                        background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                        opacity: 1,
+                      };
                       return (
-                        <div
-                          key={forschungsfeld.titel}
-                          className={styles.projekt}
-                        >
-                          {/* {forschungsfeldlink} */}
-                          <FilterLink
-                            props={forschungsfeldlink}
-                            href={{
-                              pathname: "/editorial",
-                              query: { keyword: `${filtermitgeben}` },
-                            }}
-                          />
-                        </div>
+                        <Button
+                          key={forschungsfeld.id}
+                          title={forschungsfeld.titel}
+                          id={forschungsfeld.id}
+                          style={hover_class}
+                          handleClick={handleClick}
+                          handleHover={handleHover}
+                        />
                       );
-                    }
-                  })}
+                    })}
+                  </ServiceElement>
                 </div>
               </ModularContentWrapper>
             </Container>

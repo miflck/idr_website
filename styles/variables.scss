@@ -1,54 +1,51 @@
 @import "./breakpoints.scss";
 
 html {
-    //-> hier in rem definieren?
-    // -> 1rem =16px
-    --padding: 1.25rem;
-    --paddingbottom: 0.625rem;
-    --paddingtop: 15px;
+  //-> hier in rem definieren?
+  // -> 1rem =16px
+  --padding: 1.25rem;
+  --paddingbottom: 0.625rem;
+  --paddingtop: 15px;
 
-    --paddingabsatzbottom: 0.25rem;//5px;
-    
-    --fontsizenormal: 18px;
-    --lineheightnormal: 21px;
-    --fontsizesmall: calc(var(--fontsizenormal)*0.6);
-    --lineheighsmall: calc(var(--lineheightnormal)*0.7);
-    
-    --fontsizehalf: calc(var(--fontsizenormal)-2);
-    --lineheighthalf: calc(var(--lineheightnormal)-5);
+  --paddingabsatzbottom: 0.25rem; //5px;
 
-    --fontsizetitle: calc(var(--fontsizenormal)*1.5);
-    --lineheighttitle: calc(var(--lineheightnormal)*1.5);
+  --fontsizenormal: 18px;
+  --lineheightnormal: 21px;
+  --fontsizesmall: calc(var(--fontsizenormal) * 0.6);
+  --lineheighsmall: calc(var(--lineheightnormal) * 0.7);
 
-    --columnwidth: 1;
-    --columngap: 50px;
-     
-    --imagewidth: 100%;
+  --fontsizehalf: calc(var(--fontsizenormal) * 0.7);
+  --lineheighthalf: calc(var(--lineheightnormal)-5);
 
-    //abstand forschungsfeldwort und border, in safari soll top 0px sein und in firefox 2
-    //top
-    --filterpadding1: 2px;
-    //horizontal
-    --filterpadding2: 4px;
-    //bottom
-    --filterpadding3: 0px;
+  --fontsizetitle: calc(var(--fontsizenormal) * 1.5);
+  --lineheighttitle: calc(var(--lineheightnormal) * 1.5);
 
+  --columnwidth: 1;
+  --columngap: 50px;
 
-    --lightgrey:rgb(120,120,120);
+  --imagewidth: 100%;
 
+  //abstand forschungsfeldwort und border, in safari soll top 0px sein und in firefox 2
+  //top
+  --filterpadding1: 2px;
+  //horizontal
+  --filterpadding2: 4px;
+  //bottom
+  --filterpadding3: 0px;
+
+  --lightgrey: rgb(120, 120, 120);
+}
+
+@media (min-resolution: 0.001dpcm) {
+  .safari10 {
+    --filterpadding1: 0px;
   }
-
- 
-@media (min-resolution:.001dpcm) {
-    .safari10 { 
-        --filterpadding1: 0px;
-    }
 }
 
 @media (min-width: $breakpointSmall) {
   html {
     --columnwidth: 2;
-  } 
+  }
 }
 
 @media (min-width: $breakpointMedium) {
@@ -61,9 +58,8 @@ html {
   html {
     --columnwidth: 3;
     --imagewidth: 75%;
-  } 
+  }
 }
 
 @media (min-width: $breakpointXLarge) {
-
 }
