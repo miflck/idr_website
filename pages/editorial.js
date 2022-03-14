@@ -30,6 +30,14 @@ const Editorial = (props) => {
 
   const { t } = useTranslation("common");
 
+  const removeAllHoverFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_HOVER_FILTER });
+  };
+
+  useEffect(() => {
+    removeAllHoverFilter();
+  }, []);
+
   const [filterdList, setFilterdList] = useState(allEditorials);
 
   //Projekte zu Forschungsfeld dazufiltern

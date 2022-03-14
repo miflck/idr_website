@@ -31,6 +31,10 @@ export default function Projekte(props) {
     dispatch({ type: ACTIONS.SHOW_GRADIENT, payload: { showGradient: val } });
   };
 
+  const removeAllHoverFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_HOVER_FILTER });
+  };
+
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
     return data.filter((obj) => {

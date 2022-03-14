@@ -29,6 +29,7 @@ const ACTIONS = {
 
   ADD_HOVER_FILTER: "add hover filter",
   REMOVE_HOVER_FILTER: "remove hover filter",
+  REMOVE_ALL_HOVER_FILTER: "remove all hover filter",
 
   ADD_ACTIVE_FILTER: "add active filter",
   REMOVE_ACTIVE_FILTER: "remove active filter",
@@ -74,10 +75,16 @@ const StateProvider = ({ children }) => {
         res = state.hoveredFilters.filter(
           (item) => !action.payload.element.includes(item)
         );
-
         return {
           ...state,
           hoveredFilters: res,
+        }; // do something with the action
+        break;
+
+      case ACTIONS.REMOVE_ALL_HOVER_FILTER:
+        return {
+          ...state,
+          hoveredFilters: [],
         }; // do something with the action
         break;
 

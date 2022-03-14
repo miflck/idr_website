@@ -202,11 +202,13 @@ const Team = (props) => {
         <SpacedWrapper>
           <ModularContentWrapper>
             <h2>Ehemalige:</h2>
-            {filterdList.map((mensch) => {
-              if (!mensch.aktiv) {
-                return <div key={mensch.id}>{mensch.name}</div>;
-              }
-            })}
+            <div className={styles.ehemalige}>
+              {filterdList.map((mensch) => {
+                if (!mensch.aktiv) {
+                  return <div key={mensch.id}>{mensch.name}</div>;
+                }
+              })}
+            </div>
           </ModularContentWrapper>
         </SpacedWrapper>
       </Container>

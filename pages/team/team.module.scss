@@ -3,14 +3,35 @@
 @import "../slug.module.scss";
 
 @mixin desktop {
-    @media (min-width: $breakpointSmall) {
-      @content
-    }
+  @media (min-width: $breakpointSmall) {
+    @content;
+  }
 }
 
 .teamcontainer {
-    display: flex; /* or inline-flex */
-    flex-flow: row wrap;
-    margin-bottom: calc(var(--padding) * 3);
+  display: flex; /* or inline-flex */
+  flex-flow: row wrap;
+  margin-bottom: calc(var(--padding) * 3);
+}
 
+.ehemalige {
+  columns: 2;
+}
+
+@media (min-width: $breakpointSmall) {
+}
+
+@media (min-width: $breakpointMedium) {
+  .ehemalige {
+    columns: 3;
+  }
+}
+
+@media (min-width: $breakpointLarge) {
+  .ehemalige {
+    columns: 4;
+  }
+}
+
+@media (min-width: $breakpointXLarge) {
 }
