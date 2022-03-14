@@ -151,7 +151,7 @@ const ListItemTeam = (props) => {
             </Link>
 
             <ForschungsfeldElement
-              {...props}
+              forschungsfeld={props.forschungsfeld.concat(props.funktion)}
               showHoverGradient={showHoverGradient}
             />
           </div>

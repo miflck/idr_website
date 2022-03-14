@@ -26,6 +26,8 @@ const Team = (props) => {
     menschen: { allFunktions },
   } = props;
 
+  const allFilter = allForschungsfelders.concat(allFunktions);
+
   const { t } = useTranslation("common");
 
   console.log("team", props);
@@ -52,6 +54,25 @@ const Team = (props) => {
     });
   }
 
+  //nach Felder filtern, ||
+  function filterByKeys(data, filterterms, keys) {
+    if (filterterms.length == 0) return data; // am anfang ohne filterdata
+    return data.filter((obj) => {
+      //kann sein: every für && und some für || ?
+      return filterterms.some((term) => {
+        return keys.some((key) => {
+          return obj[key].some((feld) => {
+            return feld.id.toString().includes(term);
+          });
+        });
+      });
+    });
+  }
+
+  const getIntersection = (arrays) => {
+    return arrays.reduce((a, b) => a.filter((c) => b.includes(c)));
+  };
+
   const addMoreItem = (item) => {
     const copyfilter = [...filter];
     var index = copyfilter.indexOf(item);
@@ -68,7 +89,29 @@ const Team = (props) => {
   // on change active filters
   useEffect(() => {
     console.log("FILTER FROM CONTEXT  ", state.activeFilters);
-    setFilterdList(filterBy(allMenschens, state.activeFilters));
+    let filterdForschungsfelder = filterByKeys(
+      allMenschens,
+      state.activeFilters,
+      ["forschungsfeld"]
+    );
+    let filterdFunktionen = filterByKeys(allMenschens, state.activeFilters, [
+      "funktion",
+    ]);
+
+    let result;
+
+    if (filterdForschungsfelder.length > 0 && filterdFunktionen.length > 0) {
+      result = getIntersection([filterdForschungsfelder, filterdFunktionen]);
+    } else {
+      result =
+        filterdForschungsfelder.length < filterdFunktionen.length
+          ? filterdFunktionen
+          : filterdForschungsfelder;
+    }
+
+    console.log(filterdForschungsfelder, filterdFunktionen, result);
+
+    setFilterdList(result);
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
@@ -80,7 +123,12 @@ const Team = (props) => {
   useEffect(() => {
     console.log("use Effect from Team", state.activeFilters);
     //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
-    setFilterdList(filterBy(allMenschens, state.activeFilters));
+    setFilterdList(
+      filterByKeys(allMenschens, state.activeFilters, [
+        "forschungsfeld",
+        "funktion",
+      ])
+    );
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
@@ -134,7 +182,7 @@ const Team = (props) => {
       <SuchFeldElement setSearch={setSearch} />
 
       {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}
-      <FilterElement filterarray={allForschungsfelders} />
+      <FilterElement filterarray={allFilter} />
 
       <div className={styles.teamcontainer}>
         {filterdList.map((mensch) => {
