@@ -159,7 +159,7 @@ export default function Projekteinzelansicht(props) {
                   projektinhalte.map((block) => {
                     console.log("block", block);
                     return (
-                      <ModularContentWrapper>
+                      <ModularContentWrapper key={block.id}>
                         {block._modelApiKey === "text" && (
                           <TextElement
                             key={block.id}
@@ -232,7 +232,7 @@ export default function Projekteinzelansicht(props) {
                 if (leitung.slug != "") {
                   href += `/${leitung.slug}`;
                 }
-                return <ButtonLink {...leitung} href={href} />;
+                return <ButtonLink key={leitung.id} {...leitung} href={href} />;
               })}
             </ServiceElement>
 
@@ -243,7 +243,7 @@ export default function Projekteinzelansicht(props) {
                   if (e.slug != "") {
                     href += `/${e.slug}`;
                   }
-                  return <ButtonLink {...e} href={href} />;
+                  return <ButtonLink key={e.id} {...e} href={href} />;
                 })}
               </ServiceElement>
             )}
@@ -257,9 +257,9 @@ export default function Projekteinzelansicht(props) {
                     href += `/${e.slug}`;
                   }
                   if (e.aktiv & !e.extern) {
-                    return <ButtonLink {...e} href={href} />;
+                    return <ButtonLink key={e.id} {...e} href={href} />;
                   } else {
-                    return <div>{e.name}</div>;
+                    return <div key={e.id}>{e.name}</div>;
                   }
                 })}
               </ServiceElement>
@@ -313,13 +313,13 @@ export default function Projekteinzelansicht(props) {
 }
 
 export async function getStaticProps({ params, locale }) {
-  console.log("*****************", params);
+  console.log("*****************", params, locale);
 
   const data = await request({
     query: PROJEKTEINZEL,
     variables: { slug: params.slug, locale: locale },
   });
-
+  locale = "de";
   return {
     props: {
       data,
