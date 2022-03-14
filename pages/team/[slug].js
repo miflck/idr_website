@@ -247,6 +247,7 @@ export async function getStaticProps({ params, locale }) {
 
 // die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
 export async function getStaticPaths({ locales }) {
+  console.log("+++++++++++++++++ locales", locales);
   const paths = [];
 
   const m = await request({
