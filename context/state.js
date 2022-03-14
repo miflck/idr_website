@@ -33,6 +33,7 @@ const ACTIONS = {
 
   ADD_ACTIVE_FILTER: "add active filter",
   REMOVE_ACTIVE_FILTER: "remove active filter",
+  REMOVE_ALL_ACTIVE_FILTER: "remove all active filter",
 };
 
 const StateProvider = ({ children }) => {
@@ -103,6 +104,13 @@ const StateProvider = ({ children }) => {
           ...state,
           activeFilters: res,
         }; // do something with the action
+        break;
+
+      case ACTIONS.REMOVE_ALL_ACTIVE_FILTER:
+        return {
+          ...state,
+          activeFilters: [],
+        };
         break;
 
       case ACTIONS.SET_DATA:

@@ -33,9 +33,13 @@ const Editorial = (props) => {
   const removeAllHoverFilter = () => {
     dispatch({ type: ACTIONS.REMOVE_ALL_HOVER_FILTER });
   };
+  const removeAllActiveFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_ACTIVE_FILTER });
+  };
 
   useEffect(() => {
     removeAllHoverFilter();
+    //removeAllActiveFilter();
   }, []);
 
   const [filterdList, setFilterdList] = useState(allEditorials);
