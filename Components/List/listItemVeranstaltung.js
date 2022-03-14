@@ -114,11 +114,12 @@ const ListItemVeranstaltung = (props) => {
         <Container>
           <div className={styles.content}>
             <div className={styles.datum}>{date} Uhr</div>
+
             <Link href={href} as={href}>
-              <>
+              <div className={styles.linkwrapper}>
                 <div className={styles.titel}>{props.titel}</div>
                 <div className={styles.referentIn}>{props.referentIn}</div>
-              </>
+              </div>
             </Link>
             <ForschungsfeldElement
               {...props}
