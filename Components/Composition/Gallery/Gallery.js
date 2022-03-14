@@ -10,7 +10,7 @@ const Gallery = (props) => {
 
   return (
     <div className={styles.root}>
-      <Carousel>
+      <Carousel showThumbs={false}>
         {data.map((element) => {
           console.log(element);
           return (

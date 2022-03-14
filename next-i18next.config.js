@@ -6,4 +6,5 @@ module.exports = {
     debug: true,
     lowerCaseLng: true,
   },
+  react: { useSuspense: false }, //this line
 };
