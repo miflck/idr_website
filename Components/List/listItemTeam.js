@@ -127,9 +127,13 @@ const ListItemTeam = (props) => {
                     // backgroundStyle={background_style_test}
                   >
                     {/**  <ImageElement src={props.portrait.url}  alt={props.portrait.alt} focalPoint={props.portrait.focalPoint} responsiveImage={props.portrait.responsiveImage}></ImageElement>*/}
-                    <ResponsiveImage
-                      responsiveImage={props.portrait.responsiveImage}
-                    ></ResponsiveImage>
+                    {/**Check if portrait even exists */}
+                    {typeof props.portrait === "object" &&
+                      props.portrait !== null && (
+                        <ResponsiveImage
+                          responsiveImage={props.portrait.responsiveImage}
+                        ></ResponsiveImage>
+                      )}
                   </GradientContainer>
                 </div>
                 {/* 
