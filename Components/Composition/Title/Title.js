@@ -1,17 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Title.module.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./Title.module.scss";
 
-const Title = ({title}) => {
+const Title = ({ title, subtitle, toptitle }) => {
   return (
     <div className={styles.root}>
-         <h1>{title}</h1>
+      {toptitle != "" && <h2>{toptitle}</h2>}
+
+      <h1>{title}</h1>
+      {subtitle != "" && <h2>{subtitle}</h2>}
     </div>
   );
 };
 
-Title.defaultProps = {
-
-};
+Title.defaultProps = {};
 
 export default Title;

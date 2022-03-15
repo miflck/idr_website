@@ -1,137 +1,287 @@
-import Layout from "../../Components/Layout/layout"
-import { request, VERANSTALTUNGEINZEL,ALLVERANSTALTUNGEN } from "../../lib/datocms";
-import styles from './veranstaltungen.module.scss'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Container from '../../Components/Container/container'
-import TextElement from "../../Components/Composition/TextElement";
+import React, { useEffect, useContext, useState } from "react";
+import { AppContext, ACTIONS } from "../../context/state";
+
+import Layout from "../../Components/Layout/layout";
+import {
+  request,
+  VERANSTALTUNGEINZEL,
+  ALLVERANSTALTUNGEN,
+} from "../../lib/datocms";
+import styles from "./veranstaltungen.module.scss";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Container from "../../Components/Container/container";
 import FilterLink from "../../Components/FilterLink/filterLink";
+import { Backbutton } from "../../Components";
 
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
-export default function Veranstaltungseinzelansicht (props) {
-  const {data:{veranstaltung:{
-    titel,
-    id,
-    datum,
-    referentIn,
-    untertitel,
-    text,
-    beschreibung,
-    forschungsfeld
-  }=""}=""}=props || ""
-  
-    const { t } = useTranslation('common')
+import { BackgroundGradientFadeOut } from "../../Components";
+import { GradientFadeIn } from "../../Components";
 
-    const router = useRouter()
-    if(router.isFallback){
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Fallback")
-      return <div>Loading…</div>
-    }
+import Button from "../../Components/Button/Button";
+import { Title } from "../../Components/Composition";
+import { ModularContentWrapper } from "../../Components/Composition";
+import { ServiceElement } from "../../Components/Composition";
 
+import TextElement from "../../Components/Composition/TextElement";
+import ImageElement from "../../Components/Composition/ImageElement";
+import { Gallery } from "../../Components";
 
-    const date = new Date(datum).toLocaleString([], {
-      year: 'numeric', month: 'numeric', day: 'numeric',
-      hour: '2-digit', minute: '2-digit'});
+export default function Veranstaltungseinzelansicht(props) {
+  const {
+    data: {
+      veranstaltung: {
+        titel,
+        id,
+        datum,
+        referentIn,
+        untertitel,
+        modularcontent,
+        text,
+        beschreibung,
+        forschungsfeld,
+      } = "",
+    } = "",
+  } = props || "";
 
-      if(props.data) {
+  const globalState = useContext(AppContext);
+  const { state } = globalState;
+  const { dispatch } = globalState;
 
-        let background_style;
-        let colors=[];
+  const { t } = useTranslation("common");
 
-        forschungsfeld.map((forschungsfeld) => {
-        colors.push(forschungsfeld.colour.hex)
-        })
-        background_style={
-            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-        }
-        let background_style_small={
-            background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`
-        }
-
-    return(
-      <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-         <div className={styles.hintergrund} style={background_style}></div>
-         <div className={styles.slugwrapper}>
-            <Container>
-              <div className={styles.speztitel}>
-                {titel}
-              </div>
-              <div className={styles.referentIn}>
-                {referentIn}
-              </div>
-
-              <div className={styles.zentriert}>
-                <div className={styles.datum}>{date} {t("Uhr")}</div>
-                <div className={styles.untertitel}>{untertitel}</div>
-                
-                <div className={styles.organisation}>
-                  <TextElement {...text}/>
-                </div>
-              </div>
-
-              <div className={styles.subwrapper}>
-                <TextElement {...beschreibung}/>
-              </div>
-
-              <div className={styles.subwrapper}>
-                <div className={styles.subtitel}>{t("Forschungsfelder")}</div>
-                {forschungsfeld.map((forschungsfeld) => {
-                var filtermitgeben = `${forschungsfeld.titel}`.split(" ").join("-");
-                  return (
-                    <FilterLink props={forschungsfeld.titel} href={{ pathname: '/editorial', query: { keyword: `${filtermitgeben}` } }}/>
-                  )
-                })}
-              </div>
-            </Container>
-        </div>
-      </Layout>
-  )
-    }
-    else{
-      return (
-        <>
-        </>
-      )
-    }
-}
-
-
-
-export async function getStaticProps({params, locale}) {
-    const data = await request({
-        query: VERANSTALTUNGEINZEL,variables: { slug:params.slug, locale:locale},
-      });
-
-    return {
-      props: {
-        data,   
-        params,
-        ...await serverSideTranslations(locale, ['common']),
-      }, // will be passed to the page component as props
-    }
+  const router = useRouter();
+  if (router.isFallback) {
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Fallback");
+    return <div>Loading…</div>;
   }
 
-// die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
-export async function getStaticPaths({locales}) {
-    const paths = []
-    const v = await request({
-      query: ALLVERANSTALTUNGEN,
+  const handleHover = (isHover, id) => {
+    if (isHover) {
+      //  dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
+    } else {
+      //  dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
+    }
+  };
+  const handleClick = (bool, id) => {
+    if (state.activeFilters.some((e) => e === id)) {
+      dispatch({
+        type: ACTIONS.REMOVE_ACTIVE_FILTER,
+        payload: { element: [id] },
+      });
+    } else {
+      dispatch({ type: ACTIONS.ADD_ACTIVE_FILTER, payload: { element: [id] } });
+    }
+
+    //router.push({
+    //pathname: "/editorial",
+    //query: { keyword: `${filtermitgeben}` }
+    //});
+    router.push({
+      pathname: "/editorial",
+      //query: { keyword: `${filtermitgeben}` },
+    });
+  };
+
+  if (props.data) {
+    const date = new Date(datum).toLocaleString([], {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
 
-    console.log("v",v)
-    
-      locales.forEach((locale, i) => {
-        v.allVeranstaltungs.forEach((veranstaltung, j) => {
-          paths.push({ 
-            params: { 
-              slug:veranstaltung.slug
-            }, 
-            locale})
-        })
-      })
-      return {
-        paths, fallback: true
-      }
+    let background_style;
+    let colors = [];
 
+    forschungsfeld.map((forschungsfeld) => {
+      colors.push(forschungsfeld.colour.hex);
+    });
+
+    background_style = {
+      background: `linear-gradient(to right, ${colors[0]}, ${
+        colors[1] || "white"
+      })`,
+    };
+    let background_op = {
+      background: `radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
+                      linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`,
+    };
+
+    return (
+      <Layout
+        setMainColor={props.setMainColor}
+        setSecondColor={props.setSecondColor}
+        colorHexCode={props.colorHexCode}
+        colorHexCodeSecond={props.colorHexCodeSecond}
+      >
+        <Container>
+          <Backbutton />
+        </Container>
+        <BackgroundGradientFadeOut
+          backgroundStyle={background_style}
+        ></BackgroundGradientFadeOut>
+
+        <div className={styles.stickywrapper}>
+          <GradientFadeIn
+            backgroundStyle={background_style}
+            backgroundOpacity={background_op}
+          ></GradientFadeIn>
+          <div className={styles.slugwrapper}>
+            <Container>
+              <Title title={titel} subtitle={untertitel} toptitle={date} />
+
+              <div className={styles.modulareinhalte}>
+                {modularcontent != null &&
+                  modularcontent.map((block) => {
+                    console.log("block", block);
+                    return (
+                      <ModularContentWrapper key={block.id}>
+                        {block._modelApiKey === "text" && (
+                          <TextElement
+                            key={block.id}
+                            {...block.text}
+                          ></TextElement>
+                        )}
+                        {block._modelApiKey === "einzelbild" && (
+                          <ImageElement
+                            key={block.einzelbild.id}
+                            src={block.einzelbild.url}
+                            title={block.einzelbild.title}
+                            alt={block.einzelbild.alt}
+                          />
+                        )}
+
+                        {block._modelApiKey === "galerie" && (
+                          <Gallery data={block.galerie}></Gallery>
+                        )}
+
+                        {block._modelApiKey === "pdf" && (
+                          <ButtonLink
+                            key={block.id}
+                            {...block}
+                            href={block.pdf.url}
+                          />
+                        )}
+                      </ModularContentWrapper>
+                    );
+                  })}
+              </div>
+            </Container>
+          </div>
+        </div>
+
+        <Container>
+          <div className={styles.serviceWrapper}>
+            <ServiceElement title={t("Zeit")}>{date}</ServiceElement>
+
+            <ServiceElement title={t("ReferentIn")}>
+              {referentIn}
+            </ServiceElement>
+
+            <ServiceElement title={t("Forschungsfelder")}>
+              {forschungsfeld.map((forschungsfeld) => {
+                let hover_class = {
+                  color: "var(--maincolor)",
+                  background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                  opacity: 1,
+                };
+                return (
+                  <Button
+                    key={forschungsfeld.id}
+                    title={forschungsfeld.titel}
+                    id={forschungsfeld.id}
+                    style={hover_class}
+                    handleClick={handleClick}
+                    handleHover={handleHover}
+                  />
+                );
+              })}
+            </ServiceElement>
+          </div>
+        </Container>
+
+        <Container>
+          <div className={styles.zentriert}>
+            <div className={styles.datum}>
+              {date} {t("Uhr")}
+            </div>
+            <div className={styles.untertitel}>{untertitel}</div>
+
+            <div className={styles.organisation}>
+              <TextElement {...text} />
+            </div>
+          </div>
+
+          <div className={styles.subwrapper}>
+            <TextElement {...beschreibung} />
+          </div>
+        </Container>
+      </Layout>
+    );
+  } else {
+    return <></>;
+  }
+}
+
+export async function getStaticProps({ params, locale }) {
+  const data = await request({
+    query: VERANSTALTUNGEINZEL,
+    variables: { slug: params.slug, locale: locale },
+  });
+
+  return {
+    props: {
+      data,
+      params,
+      ...(await serverSideTranslations(locale, ["common"])),
+    }, // will be passed to the page component as props
+  };
+}
+
+// die brauchen wir, um zu verhindern, dass es alle möglichen seiten rendert, sondern nur die, die wie brauchen
+export async function getStaticPaths({ locales }) {
+  const paths = [];
+  const v = await request({
+    query: ALLVERANSTALTUNGEN,
+  });
+
+  console.log("v", v);
+
+  locales.forEach((locale, i) => {
+    v.allVeranstaltungs.forEach((veranstaltung, j) => {
+      paths.push({
+        params: {
+          slug: veranstaltung.slug,
+        },
+        locale,
+      });
+    });
+  });
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+{
+  /* <div className={styles.subwrapper}>
+            <div className={styles.subtitel}>{t("Forschungsfelder")}</div>
+            {forschungsfeld.map((forschungsfeld) => {
+              var filtermitgeben = `${forschungsfeld.titel}`
+                .split(" ")
+                .join("-");
+              return (
+              <FilterLink
+                  props={forschungsfeld.titel}
+                  href={{
+                    pathname: "/editorial",
+                    query: { keyword: `${filtermitgeben}` },
+                  }}
+                />
+              );
+            })}
+          </div> */
 }

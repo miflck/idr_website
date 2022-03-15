@@ -150,11 +150,6 @@ export default function Projekteinzelansicht(props) {
             backgroundOpacity={background_op}
           ></GradientFadeIn>
 
-          {/* Hintergrund fade 
-      <div className={styles.gradient_opacity} style={background_style}>
-        <div className={styles.background_small} style={background_op}></div>
-      </div>
-*/}
           <div className={styles.slugwrapper}>
             <Container>
               <Title title={titel} />
