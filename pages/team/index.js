@@ -204,7 +204,7 @@ const Team = (props) => {
             <h2>Ehemalige:</h2>
             <div className={styles.ehemalige}>
               {filterdList.map((mensch) => {
-                if (!mensch.aktiv) {
+                if (!mensch.aktiv && !mensch.extern) {
                   return <div key={mensch.id}>{mensch.name}</div>;
                 }
               })}
