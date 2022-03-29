@@ -197,12 +197,13 @@ export default function Menscheinzelansicht(props) {
           <div className={styles.slugwrapper}>
             <Container>
               <Title title={name} />
-
               {portrait !== null && (
                 <ModularContentWrapper>
-                  <ResponsiveImage
-                    responsiveImage={portrait.responsiveImage}
-                  ></ResponsiveImage>
+                  <div className={styles.portrait}>
+                    <ResponsiveImage
+                      responsiveImage={portrait.responsiveImage}
+                    ></ResponsiveImage>
+                  </div>
                   {/** <ImageElement src={portrait.url}  alt={portrait.alt} focalPoint={portrait.focalPoint} ></ImageElement>*/}
                 </ModularContentWrapper>
               )}

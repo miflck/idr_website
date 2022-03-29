@@ -18,12 +18,24 @@
   columns: 2;
 }
 
+.columns {
+  columns: 1;
+}
+
+.portrait {
+  width: 100%;
+}
+
 @media (min-width: $breakpointSmall) {
 }
 
 @media (min-width: $breakpointMedium) {
   .ehemalige {
     columns: 3;
+  }
+
+  .portrait {
+    width: 50%;
   }
 }
 
