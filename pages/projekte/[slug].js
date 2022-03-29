@@ -178,7 +178,7 @@ export default function Projekteinzelansicht(props) {
                           <Gallery data={block.galerie}></Gallery>
                         )}
 
-                        {block._modelApiKey === "pdf" && (
+                        {block._modelApiKey === "pdf" && block.pdf != null && (
                           <ButtonLink
                             key={block.id}
                             {...block}
