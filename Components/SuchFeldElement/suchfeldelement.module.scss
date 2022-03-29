@@ -1,33 +1,38 @@
 .suchfeldwrapper {
-    position: fixed;
-    top: calc(var(--padding)/1.5);
-    right: calc(var(--padding)*2.5);
-    z-index: 150;
-    cursor: pointer;
-    display: flex;
-    flex-grow: 2;
-    .suchemoji{
-        fill: none;
-        stroke: #000;
-        stroke-miterlimit: 10;
-        stroke-width: 7.5px;
-        user-select: none;
-        margin:  0 var(--padding);
-    }
+  // position: fixed;
+  // top: calc(var(--padding)/1.5);
+  //right: calc(var(--padding)*2.5);
+
+  z-index: 150;
+
+  padding-block-start: 0.5rem; //var(--paddingabsatzbottom);
+  padding-block-end: 0.5rem; //var(--paddingabsatzbottom);
+  border-bottom: solid thin var(--maincolor);
+
+  cursor: pointer;
+  display: flex;
+  flex-grow: 2;
+  .suchemoji {
+    fill: none;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 7.5px;
+    user-select: none;
+    margin: 0 var(--padding);
+  }
+  .inputfeld {
+    // display: none;
+  }
+  &.open {
     .inputfeld {
-        display: none;
+      display: block;
+      height: 1.25em;
+      font-family: "Sang";
+      color: var(--maincolor);
+      background-color: var(--secondcolor);
+      border: 1px solid var(--maincolor);
+      font-size: var(--fontsizehalf);
+      line-height: var(--lineheighthalf);
     }
-    &.open {
-        .inputfeld {
-            display: block;
-            height: 1.25em;
-            font-family: "Sang";
-            color: var(--maincolor);
-            background-color: var(--secondcolor);
-            border: 1px solid var(--maincolor);
-            font-size: var(--fontsizehalf);
-            line-height: var(--lineheighthalf);
-            
-        }
-    }
+  }
 }

@@ -8,8 +8,12 @@
   background-color: #ffffff;
   //  padding: 20px;
   border-radius: 50%;
+
+  box-shadow: 0 0 1px 1px black;
+  overflow: hidden;
+
   z-index: 500;
-  border: solid 2px black;
+  border: solid 1px black;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -28,6 +32,6 @@
   }
 
   .center {
-    margin: auto;
+    //margin: auto;
   }
 }

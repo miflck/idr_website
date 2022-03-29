@@ -10,6 +10,7 @@ const initialState = {
   hoveredFilters: [],
   activeFilters: [],
   publicationData: [],
+  searchTerms: [],
 };
 
 const AppContext = createContext(initialState);
@@ -34,6 +35,8 @@ const ACTIONS = {
   ADD_ACTIVE_FILTER: "add active filter",
   REMOVE_ACTIVE_FILTER: "remove active filter",
   REMOVE_ALL_ACTIVE_FILTER: "remove all active filter",
+  ADD_SEARCHTERM: "add searchterm",
+  REMOVE_SEARCHTERM: "remove searchterm",
 };
 
 const StateProvider = ({ children }) => {
@@ -117,6 +120,22 @@ const StateProvider = ({ children }) => {
         return {
           ...state,
           publicationData: action.payload.element,
+        }; // do something with the action
+        break;
+
+      case ACTIONS.ADD_SEARCHTERM:
+        return {
+          ...state,
+          searchTerms: state.searchTerms.concat(action.payload.element),
+        }; // do something with the action
+        break;
+
+      case ACTIONS.REMOVE_SEARCHTERM:
+        return {
+          ...state,
+          searchTerms: state.searchTerms.filter(
+            (item) => item !== action.payload.element
+          ),
         }; // do something with the action
         break;
 

@@ -1,0 +1,66 @@
+.root {
+  display: inline-flex;
+  height: 4rem;
+  width: 18rem;
+  position: fixed;
+  z-index: 100;
+  right: 0rem;
+  top: 6rem;
+  gap: 12px;
+
+  transition: all 0.5s ease-in-out;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 2.5rem 0 0 2.5rem;
+  transform: translateX(13rem);
+  &.active {
+    transform: translateX(0%);
+    .inputfield {
+      opacity: 1;
+    }
+  }
+}
+
+.lupe_wrapper {
+  flex: 0 0 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 4rem;
+  border: solid 1px black;
+  box-shadow: 0 0 1px 1px black;
+
+  z-index: 150;
+  background-color: white;
+  font-size: var(--fontsizenormal);
+  line-height: var(--lineheightnormal);
+}
+
+.lupe {
+  &.active {
+    color: blue;
+  }
+}
+
+.slidein {
+  background-color: white;
+
+  flex: 1 0 0;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.inputfield {
+  //margin-left: 1rem;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: black;
+  font-size: var(--fontsizenormal);
+  line-height: var(--lineheightnormal);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}

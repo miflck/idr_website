@@ -8,6 +8,8 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
+import Lupe from "../../Components/Lupe/Lupe";
+import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
 export default function Projekte(props) {
   const {
@@ -50,6 +52,7 @@ export default function Projekte(props) {
   // on change active filters
   useEffect(() => {
     //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+
     setFilterdList(filterBy(allProjekts, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
@@ -69,6 +72,7 @@ export default function Projekte(props) {
             });
           });
         } else {
+          console.log("in ", inputvalue);
           return obj[key]
             .toString()
             .toLowerCase()
@@ -78,12 +82,54 @@ export default function Projekte(props) {
     });
   }
 
+  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+  function searchInputArray(data, searchKeyArray) {
+    return data.filter((obj) => {
+      // some für oder, every für und
+      return searchKeyArray.every(function (searchKey) {
+        return Object.keys(obj).some((key) => {
+          if (Array.isArray(obj[key])) {
+            return obj[key].some((entry) => {
+              return Object.keys(entry).some((kkey) => {
+                return entry[kkey].toString().includes(searchKey);
+              });
+            });
+          } else {
+            return obj[key]
+              .toString()
+              .toLowerCase()
+              .includes(searchKey.toLowerCase());
+          }
+        });
+      });
+    });
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log("klicked enter", e.target.value);
+
+      dispatch({
+        type: ACTIONS.ADD_SEARCHTERM,
+        payload: { element: e.currentTarget.value },
+      });
+    }
+  };
+
   const [search, setSearch] = useState("");
   useEffect(() => {
     // dont perform on first render…
     const isEmpty = Object.keys(search).length === 0;
-    if (!isEmpty) setFilterdList(searchInput(allProjekts, search));
+    //  if (!isEmpty) setFilterdList(searchInput(allProjekts, search));
   }, [search]);
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    const isEmpty = Object.keys(state.searchTerms).length === 0;
+
+    // if (!isEmpty)
+    setFilterdList(searchInputArray(allProjekts, state.searchTerms));
+  }, [state.searchTerms]);
 
   return (
     <Layout
@@ -92,8 +138,11 @@ export default function Projekte(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <SuchFeldElement setSearch={setSearch} />
+      <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown}></Lupe>
       <FilterElement filterarray={allForschungsfelders} />
+      {state.searchTerms.map((term, index) => {
+        return <SearchTerm key={index} term={term}></SearchTerm>;
+      })}
 
       <div className={styles.listwrapper}>
         {filterdList.map((projekt) => {

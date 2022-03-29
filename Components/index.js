@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+import SearchTerm from './SearchTerm';
+import Lupe from './Lupe';
 import Backbutton from "./Backbutton";
 import ResponsiveImage from "./Composition/ResponsiveImage";
 import TileGrid from "./Composition/TileGrid";
@@ -16,6 +18,8 @@ import { ElementTitle } from "./Composition";
 import { TextContainer } from "./Composition";
 export {
   /* PLOP_INJECT_EXPORT */
+	SearchTerm,
+	Lupe,
   TextContainer,
   Backbutton,
   ResponsiveImage,
