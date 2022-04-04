@@ -1,0 +1,35 @@
+@import "../.././styles/breakpoints.scss";
+
+.root {
+  background-color: rgba(255, 255, 255, 0.85);
+  position: sticky;
+  z-index: 100;
+  top: 0rem;
+  padding-block-start: 0.5rem; //var(--paddingabsatzbottom);
+  padding-block-end: 0.5rem; //var(--paddingabsatzbottom);
+  border-bottom: solid thin var(--maincolor);
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: $breakpointSmall) {
+  .root {
+    position: sticky;
+    top: 3rem;
+    .inner {
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: $breakpointMedium) {
+}
+
+@media (min-width: $breakpointLarge) {
+}
+
+@media (min-width: $breakpointXLarge) {
+}

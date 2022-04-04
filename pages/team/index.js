@@ -14,6 +14,10 @@ import Container from "../../Components/Container/container";
 
 import { SpacedWrapper } from "../../Components/Composition";
 import { ModularContentWrapper } from "../../Components/Composition";
+import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
+import Lupe from "../../Components/Lupe/Lupe";
+import { searchInputArray } from "../../lib/helpers";
+import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
 const Team = (props) => {
   const {
@@ -156,11 +160,30 @@ const Team = (props) => {
     });
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log("klicked enter", e.target.value);
+
+      dispatch({
+        type: ACTIONS.ADD_SEARCHTERM,
+        payload: { element: e.currentTarget.value },
+      });
+    }
+  };
+
+  useEffect(() => {
+    console.log("state Search terms", state.searchTerms);
+    const isEmpty = Object.keys(state.searchTerms).length === 0;
+
+    // if (!isEmpty)
+    setFilterdList(searchInputArray(allMenschens, state.searchTerms));
+  }, [state.searchTerms]);
+
   const [search, setSearch] = useState({});
   useEffect(() => {
     // dont perform on first render…
     const isEmpty = Object.keys(search).length === 0;
-    if (!isEmpty) setFilterdList(searchInput(allMenschens, search));
+    // if (!isEmpty) setFilterdList(searchInput(allMenschens, search));
   }, [search]);
 
   /*
@@ -179,10 +202,17 @@ const Team = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <SuchFeldElement setSearch={setSearch} />
+      <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown}></Lupe>
+
+      <FilterWrapper>
+        <FilterElement filterarray={allFilter} />
+        {state.searchTerms.map((term, index) => {
+          return <SearchTerm key={index} term={term}></SearchTerm>;
+        })}
+      </FilterWrapper>
 
       {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}
-      <FilterElement filterarray={allFilter} />
+      {/** <FilterElement filterarray={allFilter} /> */}
 
       <div className={styles.teamcontainer}>
         {filterdList.map((mensch) => {
@@ -201,7 +231,8 @@ const Team = (props) => {
       <Container>
         <SpacedWrapper>
           <ModularContentWrapper>
-            <h2>Ehemalige:</h2>
+            <h2>{t("Ehemalige und Gastforscherinnen")}</h2>
+            <br></br>
             <div className={styles.ehemalige}>
               {filterdList.map((mensch) => {
                 if (!mensch.aktiv && !mensch.extern) {

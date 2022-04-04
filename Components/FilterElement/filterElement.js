@@ -50,101 +50,62 @@ export default function FilterElement(props) {
 
   let FilterElement;
   if (state.activeFilters) {
-    FilterElement = (
-      <div
-        className={styles.filterfeldwrapper}
-        onMouseEnter={() => handleShowGradient(false)}
-        onMouseLeave={() => handleShowGradient(false)}
-      >
-        {/*<div className={styles.deaktivieren}> <a onClick={() => props.setFilter([])} > {t("Deaktivieren")}  </a> </div>*/}
-        <div className={styles.filterauflistung}>
-          {props.filterarray.map((forschungsfeld) => {
-            let filterId = forschungsfeld.id;
-            let filtertitel;
-            let filtertitelohneunderline;
+    FilterElement = props.filterarray.map((forschungsfeld) => {
+      let background_style_small;
 
-            if (forschungsfeld.titel == null) {
-              //  console.log("hier publitypes", forschungsfeld)
-              //filtertitelohneunderline = forschungsfeld.split("_").join(" ");
-              //filtertitel = forschungsfeld;
-            } else {
-              filtertitelohneunderline = forschungsfeld.titel;
-              filtertitel = forschungsfeld.titel;
-            }
+      let btn_class;
+      if (state.activeFilters.includes(forschungsfeld.titel)) {
+        btn_class = styles.forschungsfeldaktiv;
+        if (forschungsfeld.colour.hex != null) {
+          background_style_small = {
+            background: `${forschungsfeld.colour.hex}`,
+            opacity: 1,
+            //    border: `1px solid ${forschungsfeld.colour.hex}`
+          };
+        }
+      }
+      // schauen, ob der button in den HoveredElements ist
+      else if (state.hoveredFilters.some((e) => e === forschungsfeld.id)) {
+        if (forschungsfeld.colour != null) {
+          // Team funktionen haben keine farbe
+          background_style_small = {
+            // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
+            //color:` ${forschungsfeld.colour.hex}`,
+            color: "var(--maincolor)",
+            // background:`${forschungsfeld.colour.hex}`,
+            background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
 
-            let background_style_small;
-            /*if(props.showHoverGradient) {
-                            
-                            background_style_small = {
-                            // background: `linear-gradient(to right, ${forschungsfeld.colour.hex}, white)`,
-                            background: `${forschungsfeld.colour.hex}`,
-                            opacity: 1,
-                            // animation: `${styles.fadeIn} 0.5s ease`
-                            }
-                          } else {
-                            background_style_small ={
-                              background: 'white',
-                            }
-                          }*/
+            opacity: 1,
+            //border: `1px solid ${forschungsfeld.colour.hex}`,
+            //  border:'1px solid white',
+          };
+        }
+      }
 
-            let btn_class;
-            if (state.activeFilters.includes(filtertitel)) {
-              btn_class = styles.forschungsfeldaktiv;
-              if (forschungsfeld.colour.hex != null) {
-                background_style_small = {
-                  background: `${forschungsfeld.colour.hex}`,
-                  opacity: 1,
-                  //    border: `1px solid ${forschungsfeld.colour.hex}`
-                };
-              }
-            }
-            // schauen, ob der button in den HoveredElements ist
-            else if (
-              state.hoveredFilters.some((e) => e === forschungsfeld.id)
-            ) {
-              if (forschungsfeld.colour != null) {
-                // Team funktionen haben keine farbe
-                background_style_small = {
-                  // background:`rgba( ${forschungsfeld.colour.red},${forschungsfeld.colour.green},${forschungsfeld.colour.blue},0.1)`,
-                  //color:` ${forschungsfeld.colour.hex}`,
-                  color: "var(--maincolor)",
-                  // background:`${forschungsfeld.colour.hex}`,
-                  background: `linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+      if (state.activeFilters.some((e) => e === forschungsfeld.id)) {
+        btn_class = styles.forschungsfeldaktiv;
+        if (forschungsfeld.colour.hex != null) {
+          background_style_small = {
+            background: `${forschungsfeld.colour.hex}`,
+            opacity: 1,
+            //    border: `1px solid ${forschungsfeld.colour.hex}`
+          };
+        }
+      } else {
+        btn_class = styles.forschungsfeld;
+      }
 
-                  opacity: 1,
-                  //border: `1px solid ${forschungsfeld.colour.hex}`,
-                  //  border:'1px solid white',
-                };
-              }
-            }
-
-            if (state.activeFilters.some((e) => e === forschungsfeld.id)) {
-              btn_class = styles.forschungsfeldaktiv;
-              if (forschungsfeld.colour.hex != null) {
-                background_style_small = {
-                  background: `${forschungsfeld.colour.hex}`,
-                  opacity: 1,
-                  //    border: `1px solid ${forschungsfeld.colour.hex}`
-                };
-              }
-            } else {
-              btn_class = styles.forschungsfeld;
-            }
-
-            return (
-              <Button
-                title={forschungsfeld.titel}
-                id={forschungsfeld.id}
-                style={background_style_small}
-                handleClick={handleClick}
-                handleHover={handleHover}
-                key={forschungsfeld.id}
-              />
-            );
-          })}
-        </div>
-      </div>
-    );
+      return (
+        <Button
+          title={forschungsfeld.titel}
+          id={forschungsfeld.id}
+          style={background_style_small}
+          handleClick={handleClick}
+          handleHover={handleHover}
+          key={forschungsfeld.id}
+        />
+      );
+    });
   }
 
   return <>{FilterElement}</>;

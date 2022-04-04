@@ -11,18 +11,15 @@ const SearchTerm = (props) => {
   const { dispatch } = globalState;
 
   const handleClick = (term) => {
-    console.log("handle click", term);
     dispatch({
       type: ACTIONS.REMOVE_SEARCHTERM,
       payload: { element: term },
     });
   };
   return (
-    <div key={key} className={styles.root}>
-      <button>
-        {term} <div onClick={() => handleClick(term)}>x</div>
-      </button>
-    </div>
+    <button key={key} className={styles.root} onClick={() => handleClick(term)}>
+      {term} <span onClick={() => handleClick(term)}>x</span>
+    </button>
   );
 };
 

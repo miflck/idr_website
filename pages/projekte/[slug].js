@@ -127,6 +127,22 @@ export default function Projekteinzelansicht(props) {
                       linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`,
     };
 
+    /*
+    verantwortung.map((e) => {
+      console.log("------------e", e);
+
+      if (e.organisation != null) {
+        console.log("------------e.organisation", e.organisation.title);
+
+        const doubled = e.organisation.reduce((total, amount) => {
+          // total.push(amount * 2);
+
+          console.log("------------total", amount);
+          return total;
+        }, []);
+      } else return "";
+    });
+*/
     return (
       <Layout
         setMainColor={props.setMainColor}
@@ -226,12 +242,26 @@ export default function Projekteinzelansicht(props) {
             </ServiceElement>
 
             <ServiceElement title={t("Leitung")}>
-              {leitung.map((leitung) => {
+              {leitung.map((e) => {
+                console.log("leitung", e);
                 let href = `/team`;
-                if (leitung.slug != "") {
-                  href += `/${leitung.slug}`;
+
+                if (e.slug != "") {
+                  href += `/${e.slug}`;
                 }
-                return <ButtonLink key={leitung.id} {...leitung} href={href} />;
+                let org = "";
+                if (e.organisation != null) {
+                  org = ", " + e.organisation.title;
+                }
+                if (e.aktiv & !e.extern) {
+                  return <ButtonLink key={e.id} {...e} href={href} />;
+                } else {
+                  return (
+                    <div key={e.id}>
+                      {e.name} {org}
+                    </div>
+                  );
+                }
               })}
             </ServiceElement>
 
@@ -239,10 +269,24 @@ export default function Projekteinzelansicht(props) {
               <ServiceElement title={t("Verantwortung")}>
                 {verantwortung.map((e) => {
                   let href = `/team`;
+
+                  let org = "";
+                  if (e.organisation != null) {
+                    org = ", " + e.organisation.title;
+                  }
                   if (e.slug != "") {
                     href += `/${e.slug}`;
                   }
-                  return <ButtonLink key={e.id} {...e} href={href} />;
+                  if (e.aktiv & !e.extern) {
+                    return <ButtonLink key={e.id} {...e} href={href} />;
+                  } else {
+                    return (
+                      <div key={e.id}>
+                        {e.name}
+                        {org}
+                      </div>
+                    );
+                  }
                 })}
               </ServiceElement>
             )}
@@ -252,13 +296,21 @@ export default function Projekteinzelansicht(props) {
                 {mitarbeit.map((e) => {
                   console.log("mitarbeit", e.name);
                   let href = `/team`;
+                  let org = "";
+                  if (e.organisation != null) {
+                    org = ", " + e.organisation.title;
+                  }
                   if (e.slug != "") {
                     href += `/${e.slug}`;
                   }
                   if (e.aktiv & !e.extern) {
                     return <ButtonLink key={e.id} {...e} href={href} />;
                   } else {
-                    return <div key={e.id}>{e.name}</div>;
+                    return (
+                      <div key={e.id}>
+                        {e.name} {org}
+                      </div>
+                    );
                   }
                 })}
               </ServiceElement>

@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import FilterWrapper from './FilterWrapper';
 import SearchTerm from './SearchTerm';
 import Lupe from './Lupe';
 import Backbutton from "./Backbutton";
@@ -18,6 +19,7 @@ import { ElementTitle } from "./Composition";
 import { TextContainer } from "./Composition";
 export {
   /* PLOP_INJECT_EXPORT */
+	FilterWrapper,
 	SearchTerm,
 	Lupe,
   TextContainer,

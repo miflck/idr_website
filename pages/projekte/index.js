@@ -10,6 +10,8 @@ import { AppContext, ACTIONS } from "../../context/state";
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
+import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
+import { searchInputArray } from "../../lib/helpers";
 
 export default function Projekte(props) {
   const {
@@ -82,7 +84,7 @@ export default function Projekte(props) {
     });
   }
 
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
+  /* // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
   function searchInputArray(data, searchKeyArray) {
     return data.filter((obj) => {
       // some für oder, every für und
@@ -103,7 +105,7 @@ export default function Projekte(props) {
         });
       });
     });
-  }
+  }*/
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -139,10 +141,12 @@ export default function Projekte(props) {
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
       <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown}></Lupe>
-      <FilterElement filterarray={allForschungsfelders} />
-      {state.searchTerms.map((term, index) => {
-        return <SearchTerm key={index} term={term}></SearchTerm>;
-      })}
+      <FilterWrapper>
+        <FilterElement filterarray={allForschungsfelders} />
+        {state.searchTerms.map((term, index) => {
+          return <SearchTerm key={index} term={term}></SearchTerm>;
+        })}
+      </FilterWrapper>
 
       <div className={styles.listwrapper}>
         {filterdList.map((projekt) => {

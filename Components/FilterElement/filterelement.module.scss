@@ -1,108 +1,102 @@
 @import "../.././styles/breakpoints.scss";
 
-
 .filterfeldwrapper {
-    user-select: none;
+  /*user-select: none;
   //  border-bottom: 1px solid var(--maincolor);
-    font-size: var(--fontsizesmall);
-    line-height: var(--lineheightnormal);
-    text-transform: uppercase;
-    background-color: var(--secondcolor);
+  font-size: var(--fontsizesmall);
+  line-height: var(--lineheightnormal);
+  text-transform: uppercase;
+  background-color: var(--secondcolor);
 
-background-color: rgba(255,255,255,0.85);
+  background-color: rgba(255, 255, 255, 0.85);
 
-position: sticky;
-z-index: 100;
-top:0rem;
-padding-block-start: 0.5rem;//var(--paddingabsatzbottom);
-padding-block-end: 0.5rem;//var(--paddingabsatzbottom);
-border-bottom:solid thin var(--maincolor);
+  position: sticky;
+  z-index: 100;
+  top: 0rem;
+  padding-block-start: 0.5rem; //var(--paddingabsatzbottom);
+  padding-block-end: 0.5rem; //var(--paddingabsatzbottom);
+  border-bottom: solid thin var(--maincolor);
+  */
+  /*
+  .filterauflistung {
+    display: flex;
 
-    .filterauflistung {
-        display: flex;
+    flex-wrap: wrap;
 
-       flex-wrap: wrap;
+    //padding: 0 var(--padding);
+    div {
+      margin-right: 1rem; //20px;
 
-        //padding: 0 var(--padding);
-        div {
-            margin-right: 1rem;//20px;
-            
-            // Müssten wir nicht eher den wrapper stylen? also das div, statt das a? 
-            // das macht das ganze padding und die zeilenhöhe etwas komisch zum bedienen
-            a {
-                border: 1px solid var(--maincolor);
-                border-radius: 20px;
-                width: fit-content;
-                //zwischenraum von wort und border
-             //   padding:  calc(var(--filterpadding1)*1.5)  calc(var(--filterpadding2)*3) calc(var(--filterpadding3)*5);
-                padding:  0.25rem  0.5rem 0.01rem ;
+      // Müssten wir nicht eher den wrapper stylen? also das div, statt das a?
+      // das macht das ganze padding und die zeilenhöhe etwas komisch zum bedienen
+      a {
+        border: 1px solid var(--maincolor);
+        border-radius: 20px;
+        width: fit-content;
+        //zwischenraum von wort und border
+        //   padding:  calc(var(--filterpadding1)*1.5)  calc(var(--filterpadding2)*3) calc(var(--filterpadding3)*5);
+        padding: 0.25rem 0.5rem 0.01rem;
 
-                color: var(--maincolor);
-                background-color: transparent;
-                //font-family: "Sang";
-                font-style: normal;
-                &:hover {
-                    color: var(--secondcolor);
-                    background-color: var(--maincolor);
-                    cursor: pointer;
-                    margin-left: 0;
-                    animation: none;
-                }
-            }
+        color: var(--maincolor);
+        background-color: transparent;
+        //font-family: "Sang";
+        font-style: normal;
+        &:hover {
+          color: var(--secondcolor);
+          background-color: var(--maincolor);
+          cursor: pointer;
+          margin-left: 0;
+          animation: none;
         }
-        .forschungsfeldaktiv {
-            a {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-                border: 1px solid var(--maincolor);
-                //font-family: "Sang";
-                font-style: normal;
-            }
-        }
+      }
     }
-    
-    .deaktivieren{
-        margin: var(--paddingtop) var(--padding) 0px;
-        cursor: pointer;
-        a {
-            font-style: normal;
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-            //border-style: dotted;
-            border: 1px solid var(--maincolor);
-            border-radius: 20px;
-            width: fit-content;
-            padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
-           // font-family: "Sang";
-            &:hover {
-                margin-left: 0;
-                animation: none;
-            }
-        }
+    .forschungsfeldaktiv {
+      a {
+        background-color: var(--maincolor);
+        color: var(--secondcolor);
+        border: 1px solid var(--maincolor);
+        //font-family: "Sang";
+        font-style: normal;
+      }
     }
+  }
+
+  .deaktivieren {
+    margin: var(--paddingtop) var(--padding) 0px;
+    cursor: pointer;
+    a {
+      font-style: normal;
+      color: var(--secondcolor);
+      background-color: var(--maincolor);
+      //border-style: dotted;
+      border: 1px solid var(--maincolor);
+      border-radius: 20px;
+      width: fit-content;
+      padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
+      // font-family: "Sang";
+      &:hover {
+        margin-left: 0;
+        animation: none;
+      }
+    }
+  }*/
 }
 
-
-
 @media (min-width: $breakpointSmall) {
-    .filterfeldwrapper {
-        position: sticky;
-        top:3rem;
-        .filterauflistung{
-            justify-content: center;
-
-        }
+  /*.filterfeldwrapper {
+    position: sticky;
+    top: 3rem;
+    .filterauflistung {
+      justify-content: center;
     }
-  }
-  
-  @media (min-width: $breakpointMedium) {
+  }*/
+}
 
-  }
-  
-  @media (min-width: $breakpointLarge) {
+@media (min-width: $breakpointMedium) {
+}
 
-  }
-  
-  @media (min-width: $breakpointXLarge) {
+@media (min-width: $breakpointLarge) {
+}
 
-  }
+@media (min-width: $breakpointXLarge) {
+}

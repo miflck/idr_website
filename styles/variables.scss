@@ -11,7 +11,8 @@ html {
 
   --fontsizenormal: 18px;
   --lineheightnormal: 21px;
-  --fontsizesmall: calc(var(--fontsizenormal) * 0.6);
+
+  --fontsizesmall: calc(var(--fontsizenormal) * 0.65);
   --lineheighsmall: calc(var(--lineheightnormal) * 0.7);
 
   --fontsizehalf: calc(var(--fontsizenormal) * 0.7);

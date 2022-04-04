@@ -1,3 +1,5 @@
+@import "../.././styles/breakpoints.scss";
+
 .root {
   display: inline-flex;
   height: 4rem;
@@ -5,7 +7,7 @@
   position: fixed;
   z-index: 100;
   right: 0rem;
-  top: 6rem;
+  top: 9.5rem;
   gap: 12px;
 
   transition: all 0.5s ease-in-out;
@@ -63,4 +65,28 @@
   line-height: var(--lineheightnormal);
   opacity: 0;
   transition: all 0.5s ease-in-out;
+}
+
+@media (min-width: $breakpointSmall) {
+  .root {
+    top: 8.5rem;
+  }
+}
+
+@media (min-width: $breakpointMedium) {
+  .root {
+    top: 8rem;
+  }
+}
+
+@media (min-width: $breakpointLarge) {
+  .root {
+    top: 8rem;
+  }
+}
+
+@media (min-width: $breakpointXLarge) {
+  .root {
+    top: 7rem;
+  }
 }

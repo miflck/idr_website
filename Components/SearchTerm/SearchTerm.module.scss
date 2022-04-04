@@ -1,3 +1,25 @@
 .root {
-  
+  // --backgroundcolor:#ff0000
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: transparent;
+  border: solid thin var(--maincolor);
+  border-radius: 8px;
+  //font-family: "Sang", Times, serif;
+  margin-block-start: 0.25rem;
+  margin-inline-end: 0.25rem;
+  padding: 0.1rem 0.25rem;
+  font-size: var(--fontsizesmall); // 0.6875rem;
+  // border-style: hidden double dashed;
+
+  // box-shadow: 1px 1px 3px silver;
+
+  color: var(--maincolor);
+
+  &:hover {
+    color: var(--secondcolor);
+    background-color: var(--maincolor);
+  }
 }

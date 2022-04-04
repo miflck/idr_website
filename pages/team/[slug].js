@@ -214,7 +214,7 @@ export default function Menscheinzelansicht(props) {
                   {WebsiteElement}{" "}
                 </ServiceElement>
 
-                <ServiceElement title={t("BFHProfil")}>
+                <ServiceElement title={t("Personenprofil")}>
                   {BFHProfilElement}
                 </ServiceElement>
 
