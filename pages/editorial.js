@@ -9,6 +9,12 @@ import TextElement from "../Components/Composition/TextElement";
 import FilterElement from "../Components/FilterElement/filterElement";
 import ButtonLink from "../Components/ButtonLink/buttonLink";
 import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
+
+import { Lupe } from "../Components";
+import { FilterWrapper } from "../Components";
+import { SearchTerm } from "../Components";
+import { searchInputArray } from "../lib/helpers";
+
 import { AppContext, ACTIONS } from "../context/state";
 import { ServiceElement } from "../Components/Composition";
 
@@ -94,6 +100,31 @@ const Editorial = (props) => {
     });
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log("klicked enter", e.target.value);
+      dispatch({
+        type: ACTIONS.ADD_SEARCHTERM,
+        payload: { element: e.currentTarget.value },
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    console.log("submit", e);
+    dispatch({
+      type: ACTIONS.ADD_SEARCHTERM,
+      payload: { element: e },
+    });
+  };
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    const isEmpty = Object.keys(state.searchTerms).length === 0;
+    // if (!isEmpty)
+    setFilterdList(searchInputArray(allEditorials, state.searchTerms));
+  }, [state.searchTerms]);
+
   const [search, setSearch] = useState("");
   useEffect(() => {
     if (search) {
@@ -108,8 +139,17 @@ const Editorial = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <SuchFeldElement setSearch={setSearch} />
-      <FilterElement filterarray={allForschungsfelders} />
+      <FilterWrapper>
+        <FilterElement filterarray={allForschungsfelders} />
+        {state.searchTerms.map((term, index) => {
+          return <SearchTerm key={index} term={term}></SearchTerm>;
+        })}
+        <Lupe
+          setSearch={setSearch}
+          handleKeyDown={handleKeyDown}
+          handleSubmit={handleSubmit}
+        ></Lupe>
+      </FilterWrapper>
 
       <div className={styles.editorialwrapper}>
         <Container>

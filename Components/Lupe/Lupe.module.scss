@@ -1,22 +1,24 @@
 @import "../.././styles/breakpoints.scss";
 
 .root {
-  display: inline-flex;
+  display: flex;
   height: 4rem;
-  width: 18rem;
+  width: 22rem;
   position: fixed;
   z-index: 100;
   right: 0rem;
-  top: 9.5rem;
+  top: 10rem;
   gap: 12px;
+  align-items: center;
 
   transition: all 0.5s ease-in-out;
   padding: 0.5rem;
   background-color: white;
   border-radius: 2.5rem 0 0 2.5rem;
-  transform: translateX(13rem);
+  transform: translateX(17rem);
   &.active {
-    transform: translateX(0%);
+    transform: translateX(0);
+
     .inputfield {
       opacity: 1;
     }
@@ -56,8 +58,20 @@
   align-items: center;
 }
 
+.button {
+  border: solid thin #111111;
+  border-radius: 8px;
+  // box-shadow: 0 0 1px 1px #111111;
+  background-color: #ffffff;
+  font-size: var(--fontsizenormal);
+  flex: 1 1 auto;
+  height: 2rem;
+}
+
 .inputfield {
   //margin-left: 1rem;
+
+  margin-right: 1rem;
   outline: 0;
   border-width: 0 0 1px;
   border-color: black;
@@ -69,24 +83,24 @@
 
 @media (min-width: $breakpointSmall) {
   .root {
-    top: 8.5rem;
+    //@at-root  top: 8.5rem;
   }
 }
 
 @media (min-width: $breakpointMedium) {
   .root {
-    top: 8rem;
+    //  top: 8rem;
   }
 }
 
 @media (min-width: $breakpointLarge) {
   .root {
-    top: 8rem;
+    // top: 8rem;
   }
 }
 
 @media (min-width: $breakpointXLarge) {
   .root {
-    top: 7rem;
+    //  top: 7rem;
   }
 }

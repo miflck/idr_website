@@ -15,6 +15,9 @@ html {
   --fontsizesmall: calc(var(--fontsizenormal) * 0.65);
   --lineheighsmall: calc(var(--lineheightnormal) * 0.7);
 
+  --fontsizebig: calc(var(--fontsizenormal) * 1.2);
+  --lineheightbig: calc(var(--lineheightnormal) * 1.2);
+
   --fontsizehalf: calc(var(--fontsizenormal) * 0.7);
   --lineheighthalf: calc(var(--lineheightnormal)-5);
 

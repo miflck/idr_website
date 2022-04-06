@@ -85,6 +85,13 @@ export default function Home(props) {
     }
   };
 
+  const handleSubmit = (e) => {
+    dispatch({
+      type: ACTIONS.ADD_SEARCHTERM,
+      payload: { element: e.currentTarget.value },
+    });
+  };
+
   // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel, News etc funktioniert noch nicht, Loops sind falsch
   function searchInput(data, inputvalue) {
     return data.filter((obj) => {
@@ -163,7 +170,11 @@ export default function Home(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown}></Lupe>
+      <Lupe
+        setSearch={setSearch}
+        handleSubmit={handleSubmit}
+        handleKeyDown={handleKeyDown}
+      ></Lupe>
       <FilterWrapper>
         <FilterElement filterarray={allForschungsfelders} />
         {state.searchTerms.map((term, index) => {

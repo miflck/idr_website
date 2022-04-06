@@ -3,27 +3,24 @@
 .root {
   margin-block-end: 1.25rem;
   break-inside: avoid-column;
-    h2{
-      text-decoration: underline;
+  h2 {
+    text-decoration: underline;
+  }
+  display: inline-block;
+  width: 100%;
+}
+
+@media (min-width: $breakpointSmall) {
+  .root {
+    margin-block-end: 2rem;
   }
 }
 
+@media (min-width: $breakpointMedium) {
+}
 
-@media (min-width: $breakpointSmall) {
-    .root {
-      margin-block-end: 2rem;
-    }
+@media (min-width: $breakpointLarge) {
+}
 
-  }
-  
-  @media (min-width: $breakpointMedium) {
-   
-  }
-  
-  @media (min-width: $breakpointLarge) {
-    
-  }
-  
-  @media (min-width: $breakpointXLarge) {
-   
-  }
+@media (min-width: $breakpointXLarge) {
+}

@@ -1,59 +1,62 @@
 @import "../.././styles/breakpoints.scss";
 
-
 .headercontainer {
-    position: relative;
-    //top: 0;
-    z-index: 1000;
-    background-color: var(--secondcolor);
-    // .seitentitel {
-    //     position: absolute;
-    //     left: 45%;
-    // }
-    .headertitle {
-        padding: var(--padding);
-        padding-top: var(--paddingtop);
-        padding-bottom: var(--paddingbottom);
-        border-bottom: 1px solid var(--maincolor);
-        font-size: var(--fontsizenormal);
-        text-transform: uppercase;
-        line-height: var(--lineheightnormal);
-        color: var(--maincolor); 
-        margin: 0;
-        user-select: none;
-        a {
-           font-style: normal;
-            color: var(--maincolor); 
-        &:hover {
-            color: var(--maincolor); 
-            margin-left: 0;
-            animation: none;
-        }
-        }
+  position: relative;
+  position: sticky;
+  top: 0;
+
+  //top: 0;
+  z-index: 1000;
+  background-color: var(--secondcolor);
+  // .seitentitel {
+  //     position: absolute;
+  //     left: 45%;
+  // }
+  border-bottom: 1px solid var(--maincolor);
+
+  .headertitle {
+    padding: var(--padding);
+    padding-top: var(--paddingtop);
+    padding-bottom: var(--paddingbottom);
+    font-size: var(--fontsizenormal);
+    text-transform: uppercase;
+    line-height: var(--lineheightnormal);
+    color: var(--maincolor);
+    margin: 0;
+    user-select: none;
+    a {
+      font-style: normal;
+      color: var(--maincolor);
+      &:hover {
+        color: var(--maincolor);
+        margin-left: 0;
+        animation: none;
+      }
     }
+  }
 }
 
-
-
 @media (min-width: $breakpointSmall) {
-    .headercontainer {
-        position:sticky;
-        top:0;
+  .headercontainer {
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media (min-width: $breakpointMedium) {
+  .headercontainer {
+    position: sticky;
+
+    .headertitle {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      font-size: var(--fontsizebig);
     }
   }
-  
-  @media (min-width: $breakpointMedium) {
-    .headercontainer {
-        position:sticky;
+}
 
-    }
+@media (min-width: $breakpointLarge) {
+}
 
-  }
-  
-  @media (min-width: $breakpointLarge) {
-
-  }
-  
-  @media (min-width: $breakpointXLarge) {
-
-  }
+@media (min-width: $breakpointXLarge) {
+}

@@ -1,3 +1,14 @@
+@keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .root {
   // --backgroundcolor:#ff0000
   border: none;
@@ -6,7 +17,7 @@
   display: inline-block;
   background-color: transparent;
   border: solid thin var(--maincolor);
-  border-radius: 8px;
+  //border-radius: 8px;
   //font-family: "Sang", Times, serif;
   margin-block-start: 0.25rem;
   margin-inline-end: 0.25rem;
@@ -17,6 +28,7 @@
   // box-shadow: 1px 1px 3px silver;
 
   color: var(--maincolor);
+  animation: append-animate 0.2s ease-in-out;
 
   &:hover {
     color: var(--secondcolor);

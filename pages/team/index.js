@@ -17,6 +17,7 @@ import { ModularContentWrapper } from "../../Components/Composition";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import Lupe from "../../Components/Lupe/Lupe";
 import { searchInputArray } from "../../lib/helpers";
+import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
 const Team = (props) => {
@@ -147,14 +148,19 @@ const Team = (props) => {
         if (Array.isArray(obj[key])) {
           return obj[key].some((entry) => {
             return Object.keys(entry).some((kkey) => {
-              return entry[kkey].toString().includes(inputvalue);
+              return entry[kkey]
+                .toString()
+                .toLowerCase()
+                .includes(inputvalue.toLowerCase());
             });
           });
         } else {
-          return obj[key]
-            .toString()
-            .toLowerCase()
-            .includes(inputvalue.toLowerCase());
+          if (typeof obj[key] === "string" || obj[key] instanceof String) {
+            return obj[key]
+              .toString()
+              .toLowerCase()
+              .includes(inputvalue.toLowerCase());
+          }
         }
       });
     });
@@ -163,7 +169,6 @@ const Team = (props) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       console.log("klicked enter", e.target.value);
-
       dispatch({
         type: ACTIONS.ADD_SEARCHTERM,
         payload: { element: e.currentTarget.value },
@@ -171,19 +176,25 @@ const Team = (props) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    console.log("submit", e);
+    dispatch({
+      type: ACTIONS.ADD_SEARCHTERM,
+      payload: { element: e },
+    });
+  };
+
   useEffect(() => {
     console.log("state Search terms", state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
-
     // if (!isEmpty)
     setFilterdList(searchInputArray(allMenschens, state.searchTerms));
   }, [state.searchTerms]);
 
-  const [search, setSearch] = useState({});
+  const [search, setSearch] = useState("");
   useEffect(() => {
-    // dont perform on first render…
     const isEmpty = Object.keys(search).length === 0;
-    // if (!isEmpty) setFilterdList(searchInput(allMenschens, search));
+    if (!isEmpty) setFilterdList(searchInput(allMenschens, search));
   }, [search]);
 
   /*
@@ -202,15 +213,25 @@ const Team = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown}></Lupe>
-
       <FilterWrapper>
         <FilterElement filterarray={allFilter} />
-        {state.searchTerms.map((term, index) => {
+        {/*state.searchTerms.map((term, index) => {
           return <SearchTerm key={index} term={term}></SearchTerm>;
-        })}
+        })*/}
+        <Lupe
+          setSearch={setSearch}
+          handleKeyDown={handleKeyDown}
+          handleSubmit={handleSubmit}
+        ></Lupe>
       </FilterWrapper>
 
+      {state.searchTerms.length > 0 && (
+        <SearchTermWrapper>
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+        </SearchTermWrapper>
+      )}
       {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}
       {/** <FilterElement filterarray={allFilter} /> */}
 

@@ -135,15 +135,15 @@
   .wrapper {
     .content {
       .titel {
-        font-size: calc(var(--fontsizenormal) * 1.2);
-        line-height: calc(var(--lineheightnormal) * 1.2);
+        font-size: calc(var(--fontsizebig));
+        line-height: calc(var(--lineheightbig));
       }
     }
   }
 
   .name {
-    font-size: calc(var(--fontsizenormal) * 1.2);
-    line-height: calc(var(--lineheightnormal) * 1.2);
+    font-size: calc(var(--fontsizebig));
+    line-height: calc(var(--fontsizebig));
   }
 }
 

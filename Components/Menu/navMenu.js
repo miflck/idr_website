@@ -11,8 +11,10 @@ const NavMenu = (props) => {
     setMenuOpen((open) => !open);
   };
 
+  const menuopen = open ? styles.open : "";
+
   return (
-    <div className={[styles.menuwrapper, open ? styles.open : []].join(" ")}>
+    <div className={`${styles.menuwrapper} `}>
       <div className={styles.menubutton} onClick={handleOnClick}>
         <span>
           <svg
@@ -38,7 +40,7 @@ const NavMenu = (props) => {
         </span>
       </div>
       {
-        <div className={styles.menucontent}>
+        <div className={`${styles.menucontent} ${menuopen}`}>
           <SiteLink href={"/editorial/"} sitetitle={"ÜBER UNS"}></SiteLink>
           <SiteLink href={"/"} sitetitle={"NEWS"}></SiteLink>
           <SiteLink href={"/projekte/"} sitetitle={"PROJEKTE"}></SiteLink>

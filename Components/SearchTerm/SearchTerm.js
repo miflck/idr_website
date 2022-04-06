@@ -18,7 +18,10 @@ const SearchTerm = (props) => {
   };
   return (
     <button key={key} className={styles.root} onClick={() => handleClick(term)}>
-      {term} <span onClick={() => handleClick(term)}>x</span>
+      {term}{" "}
+      <span className={styles.close} onClick={() => handleClick(term)}>
+        x
+      </span>
     </button>
   );
 };

@@ -1,84 +1,89 @@
 @import ".././styles/breakpoints.scss";
 
-
 @keyframes fadeout {
-    from { opacity: 1; }
-    to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 
 .background {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    z-index: 10;
-    opacity: 1;
-    animation: fadeout 500ms ;    // border: blue 1px solid;
-    animation-delay: 400ms;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  opacity: 1;
+  animation: fadeout 500ms; // border: blue 1px solid;
+  animation-delay: 400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
-.stickywrapper{
+.stickywrapper {
 }
 
-.gradient_opacity{
-    height: 10rem;
-    width: 100vw;
-    position: sticky;
-    top:0;
-    z-index: 1;
+.gradient_opacity {
+  height: 10rem;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.gradient_opacity_line{
-    height: 10rem;
-    width: 100vw;
-   position: sticky;
-   top:0;
-   z-index: 1;
+.gradient_opacity_line {
+  height: 10rem;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .background_small {
-    width: 100vw;
-    height:100%;
-    opacity: 1;
-    animation-delay: 400ms;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
+  width: 100vw;
+  height: 100%;
+  opacity: 1;
+  animation-delay: 400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
-.serviceWrapper{
-    margin-top: 5rem;
-    padding-top: calc(var(--padding));
+.serviceWrapper {
+  margin-top: 5rem;
+  padding-top: calc(var(--padding));
 
-    border-top:solid thin black;
+  border-top: solid thin black;
 
-    position: relative;
-    columns: 1;
-    z-index: 100;
+  position: relative;
+  columns: 1;
+  z-index: 100;
 
-   // margin-inline-start:2rem;
-   // margin-inline-end: 2rem;
+  // margin-inline-start:2rem;
+  // margin-inline-end: 2rem;
 }
 
 .slugwrapper {
-    /*needed on mobile to stick properly on top*/
-//    margin-top: -10rem;
-    margin-top: calc(-1*var(--padding) * 3);
+  /*needed on mobile to stick properly on top*/
+  //    margin-top: -10rem;
+  margin-top: calc(-1 * var(--padding) * 3);
 
-    z-index: 100;
-    position: relative;
-    min-height: inherit;
-    margin-bottom: var(--padding);
-    color: var(--maincolor);
+  z-index: 100;
+  position: relative;
+  min-height: inherit;
+  margin-bottom: var(--padding);
+  color: var(--maincolor);
 
-
-/*
+  /*
     .subwrapper {
         margin-bottom: calc(var(--padding)*2.5);
         .subtitel {
@@ -100,63 +105,62 @@
     }
     */
 
-    
-
-
-    .speztitel {
-        text-transform: uppercase;
-        font-size: var(--fontsizenormal);
-        line-height: var(--lineheightnormal);
-        margin-top: calc(var(--padding) * 3);
-        margin-left: calc(var(--padding) * 5);
-    }
-    .referentIn {
-        margin-left: calc(var(--padding) * 5);
-        margin-bottom: calc(var(--padding) * 5);
-    }
-    .zentriert {
-        align-content: center;
-        text-align:center;
-        margin: var(--padding);
-        padding: var(--padding);
-        border-radius: 100px;
-        margin-bottom: calc(var(--padding) * 5);
-    }
+  .speztitel {
+    text-transform: uppercase;
+    font-size: var(--fontsizenormal);
+    line-height: var(--lineheightnormal);
+    margin-top: calc(var(--padding) * 3);
+    margin-left: calc(var(--padding) * 5);
+  }
+  .referentIn {
+    margin-left: calc(var(--padding) * 5);
+    margin-bottom: calc(var(--padding) * 5);
+  }
+  .zentriert {
+    align-content: center;
+    text-align: center;
+    margin: var(--padding);
+    padding: var(--padding);
+    border-radius: 100px;
+    margin-bottom: calc(var(--padding) * 5);
+  }
 }
 
-
 @media (min-width: $breakpointSmall) {
-    .serviceWrapper{
-        margin-top: 6.5rem;
-        columns: 2;
+  .serviceWrapper {
+    margin-top: 6.5rem;
+    columns: 2;
 
-        margin-inline-start:0rem;
-        margin-inline-end: 0rem;
-    }
-    .gradient_opacity{
-        position:sticky;
-        top:0;
-        height: 20rem;
+    margin-inline-start: 0rem;
+    margin-inline-end: 0rem;
+  }
+  .gradient_opacity {
+    position: sticky;
+    top: 0;
+    height: 20rem;
+  }
+  .slugwrapper {
+    //margin-top: 0rem;
+    margin-top: -10rem;
 
-    }
-    .slugwrapper {
-        //margin-top: 0rem;
-        margin-top: -10rem;
-
-        .titel{
-            padding-left: calc(var(--padding) * 5);
-        }
+    .titel {
+      padding-left: calc(var(--padding) * 5);
     }
   }
-  
-  @media (min-width: $breakpointMedium) {
-   
+}
+
+@media (min-width: $breakpointMedium) {
+}
+
+@media (min-width: $breakpointLarge) {
+  .serviceWrapper {
+    margin-top: 6.5rem;
+    columns: 3;
+
+    margin-inline-start: 0rem;
+    margin-inline-end: 0rem;
   }
-  
-  @media (min-width: $breakpointLarge) {
-    
-  }
-  
-  @media (min-width: $breakpointXLarge) {
-   
-  }
+}
+
+@media (min-width: $breakpointXLarge) {
+}

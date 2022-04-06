@@ -7,7 +7,6 @@ import styles from "./projekte.module.scss";
 import FilterElement from "../../Components/FilterElement/filterElement";
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
-import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
@@ -70,7 +69,10 @@ export default function Projekte(props) {
         if (Array.isArray(obj[key])) {
           return obj[key].some((entry) => {
             return Object.keys(entry).some((kkey) => {
-              return entry[kkey].toString().includes(inputvalue);
+              return entry[kkey]
+                .toString()
+                .toLowerCase()
+                .includes(inputvalue.toLowerCase());
             });
           });
         } else {
@@ -110,7 +112,6 @@ export default function Projekte(props) {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       console.log("klicked enter", e.target.value);
-
       dispatch({
         type: ACTIONS.ADD_SEARCHTERM,
         payload: { element: e.currentTarget.value },
@@ -118,17 +119,25 @@ export default function Projekte(props) {
     }
   };
 
+  const handleSubmit = (e) => {
+    console.log("submit", e);
+    dispatch({
+      type: ACTIONS.ADD_SEARCHTERM,
+      payload: { element: e },
+    });
+  };
+
   const [search, setSearch] = useState("");
   useEffect(() => {
     // dont perform on first render…
     const isEmpty = Object.keys(search).length === 0;
+    setFilterdList(searchInput(allProjekts, search));
     //  if (!isEmpty) setFilterdList(searchInput(allProjekts, search));
   }, [search]);
 
   useEffect(() => {
     console.log(state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
-
     // if (!isEmpty)
     setFilterdList(searchInputArray(allProjekts, state.searchTerms));
   }, [state.searchTerms]);
@@ -140,12 +149,16 @@ export default function Projekte(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown}></Lupe>
       <FilterWrapper>
         <FilterElement filterarray={allForschungsfelders} />
         {state.searchTerms.map((term, index) => {
           return <SearchTerm key={index} term={term}></SearchTerm>;
         })}
+        <Lupe
+          setSearch={setSearch}
+          handleKeyDown={handleKeyDown}
+          handleSubmit={handleSubmit}
+        ></Lupe>
       </FilterWrapper>
 
       <div className={styles.listwrapper}>

@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import SearchTermWrapper from './SearchTermWrapper';
 import FilterWrapper from './FilterWrapper';
 import SearchTerm from './SearchTerm';
 import Lupe from './Lupe';
@@ -19,6 +20,7 @@ import { ElementTitle } from "./Composition";
 import { TextContainer } from "./Composition";
 export {
   /* PLOP_INJECT_EXPORT */
+	SearchTermWrapper,
 	FilterWrapper,
 	SearchTerm,
 	Lupe,
