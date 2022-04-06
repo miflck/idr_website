@@ -35,7 +35,7 @@ const Team = (props) => {
 
   const { t } = useTranslation("common");
 
-  console.log("team", props);
+  console.log("team", allFilter);
 
   // context
   const globalState = useContext(AppContext);
@@ -148,10 +148,15 @@ const Team = (props) => {
         if (Array.isArray(obj[key])) {
           return obj[key].some((entry) => {
             return Object.keys(entry).some((kkey) => {
-              return entry[kkey]
-                .toString()
-                .toLowerCase()
-                .includes(inputvalue.toLowerCase());
+              if (
+                typeof entry[key] === "string" ||
+                entry[key] instanceof String
+              ) {
+                return entry[kkey]
+                  .toString()
+                  .toLowerCase()
+                  .includes(inputvalue.toLowerCase());
+              }
             });
           });
         } else {

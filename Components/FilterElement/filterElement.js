@@ -54,6 +54,13 @@ export default function FilterElement(props) {
       let background_style_small;
 
       let btn_class;
+
+      console.log(forschungsfeld);
+      let secondColor =
+        forschungsfeld.selectedColour != null
+          ? forschungsfeld.selectedColour.hex
+          : "#000000";
+
       if (state.activeFilters.includes(forschungsfeld.titel)) {
         btn_class = styles.forschungsfeldaktiv;
         if (forschungsfeld.colour.hex != null) {
@@ -88,6 +95,8 @@ export default function FilterElement(props) {
           background_style_small = {
             background: `${forschungsfeld.colour.hex}`,
             opacity: 1,
+            color: secondColor,
+
             //    border: `1px solid ${forschungsfeld.colour.hex}`
           };
         }
@@ -103,6 +112,7 @@ export default function FilterElement(props) {
           handleClick={handleClick}
           handleHover={handleHover}
           key={forschungsfeld.id}
+          secondColor={secondColor}
         />
       );
     });
