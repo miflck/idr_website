@@ -33,7 +33,8 @@ export default function Menscheinzelansicht(props) {
   const { dispatch } = globalState;
 
   const { t } = useTranslation("common");
-  console.log("props  team einzeln", props);
+  const { data: { allProjekts } = "" } = props || "";
+
   const {
     data: {
       menschen: {
@@ -49,12 +50,15 @@ export default function Menscheinzelansicht(props) {
     } = "",
   } = props || "";
 
-  const { data: { allProjekts } = "" } = props || "";
   if (props.data) {
     function filterBy(data, filterterm) {
+      let fields = ["leitung", "verantwortung", "mitarbeit"];
       return data.filter((obj) => {
-        return obj.mitarbeit.some((feld) => {
-          return feld.name.includes(filterterm);
+        return fields.some(function (field) {
+          return obj[field].some((feld) => {
+            console.log(feld.name, filterterm);
+            return feld.name.includes(filterterm);
+          });
         });
       });
     }
