@@ -14,6 +14,7 @@ import Lupe from "../Components/Lupe/Lupe";
 import SearchTerm from "../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../Components/FilterWrapper/FilterWrapper";
 import { searchInputArray } from "../lib/helpers";
+
 import { Checkboard } from "react-color/lib/components/common";
 
 export default function Home(props) {

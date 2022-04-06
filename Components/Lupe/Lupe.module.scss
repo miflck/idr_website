@@ -2,20 +2,20 @@
 
 .root {
   display: flex;
-  height: 4rem;
-  width: 22rem;
+  height: 2.7rem;
+  width: 15.5rem;
   position: fixed;
   z-index: 100;
   right: 0rem;
   top: 10rem;
-  gap: 12px;
+  gap: 0.5rem;
   align-items: center;
 
   transition: all 0.5s ease-in-out;
   padding: 0.5rem;
   background-color: white;
   border-radius: 2.5rem 0 0 2.5rem;
-  transform: translateX(17rem);
+  transform: translateX(12rem);
   &.active {
     transform: translateX(0);
 
@@ -26,20 +26,19 @@
 }
 
 .lupe_wrapper {
-  flex: 0 0 4rem;
+  flex: 0 0 3rem;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  height: 4rem;
+  height: 3rem;
   border: solid 1px black;
   box-shadow: 0 0 1px 1px black;
-
   z-index: 150;
   background-color: white;
-  font-size: var(--fontsizenormal);
-  line-height: var(--lineheightnormal);
+  font-size: var(--fontsizesmall);
+  line-height: var(--lineheightsmall);
 }
 
 .lupe {
@@ -50,10 +49,8 @@
 
 .slidein {
   background-color: white;
-
   flex: 1 0 0;
   display: flex;
-
   justify-content: center;
   align-items: center;
 }
@@ -63,20 +60,20 @@
   border-radius: 8px;
   // box-shadow: 0 0 1px 1px #111111;
   background-color: #ffffff;
-  font-size: var(--fontsizenormal);
-  flex: 1 1 auto;
+  font-size: var(--fontsizesmall);
+  flex: 0 0 2rem;
   height: 2rem;
 }
 
 .inputfield {
   //margin-left: 1rem;
 
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   outline: 0;
   border-width: 0 0 1px;
   border-color: black;
-  font-size: var(--fontsizenormal);
-  line-height: var(--lineheightnormal);
+  font-size: var(--fontsizesmall);
+  line-height: var(--lineheightsmall);
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
@@ -89,7 +86,34 @@
 
 @media (min-width: $breakpointMedium) {
   .root {
+    height: 4rem;
+    width: 22rem;
+    right: 0rem;
+    top: 10rem;
+    gap: 12px;
+    transform: translateX(17rem);
+
     //  top: 8rem;
+    .lupe_wrapper {
+      font-size: var(--fontsizenormal);
+      line-height: var(--lineheightnormal);
+      flex: 0 0 4rem;
+      height: 4rem;
+    }
+    .inputfield {
+      margin-right: 1rem;
+      font-size: var(--fontsizenormal);
+      line-height: var(--lineheightnormal);
+    }
+    .button {
+      border: solid thin #111111;
+      border-radius: 8px;
+      // box-shadow: 0 0 1px 1px #111111;
+      background-color: #ffffff;
+      font-size: var(--fontsizenormal);
+      flex: 1 1 auto;
+      height: 2rem;
+    }
   }
 }
 
