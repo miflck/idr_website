@@ -12,6 +12,9 @@ import { AppContext, ACTIONS } from "../../context/state";
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import Container from "../../Components/Container/container";
 
+import Header from "../../Components/Header/header";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+
 import { SpacedWrapper } from "../../Components/Composition";
 import { ModularContentWrapper } from "../../Components/Composition";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
@@ -218,18 +221,20 @@ const Team = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <FilterWrapper>
-        <FilterElement filterarray={allFilter} />
-        {/*state.searchTerms.map((term, index) => {
-          return <SearchTerm key={index} term={term}></SearchTerm>;
-        })*/}
-        <Lupe
-          setSearch={setSearch}
-          handleKeyDown={handleKeyDown}
-          handleSubmit={handleSubmit}
-        ></Lupe>
-      </FilterWrapper>
-
+      <HeaderWrapper>
+        <Header></Header>
+        <FilterWrapper>
+          <FilterElement filterarray={allForschungsfelders} />
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
+        </FilterWrapper>
+      </HeaderWrapper>
       {state.searchTerms.length > 0 && (
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {

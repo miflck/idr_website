@@ -18,6 +18,11 @@ import FilterLink from "../../Components/FilterLink/filterLink";
 import Link from "next/link";
 
 import router, { useRouter } from "next/router";
+
+import Header from "../../Components/Header/header";
+import Footer from "../../Components/Footer/footer";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+
 import Button from "../../Components/Button/Button";
 import { Backbutton } from "../../Components";
 
@@ -150,6 +155,9 @@ export default function Projekteinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
+        <HeaderWrapper>
+          <Header></Header>
+        </HeaderWrapper>
         <Container>
           <Backbutton />
         </Container>
@@ -159,7 +167,6 @@ export default function Projekteinzelansicht(props) {
         <BackgroundGradientFadeOut
           backgroundStyle={background_style}
         ></BackgroundGradientFadeOut>
-
         <div className={styles.stickywrapper}>
           <GradientFadeIn
             backgroundStyle={background_style}
@@ -208,13 +215,11 @@ export default function Projekteinzelansicht(props) {
             </Container>
           </div>
         </div>
-
         {/* Hintergrund fade 
     <div className={styles.gradient_opacity_line} style={background_style}>
       <div className={styles.background_small} style={background_op}></div>
     </div>
 */}
-
         <Container>
           <div className={styles.serviceWrapper}>
             <ServiceElement title={t("Zeitraum")}>

@@ -1,18 +1,17 @@
 @import "../.././styles/breakpoints.scss";
 
-.headercontainer {
+.root {
+  display: block;
   position: relative;
-  position: relative;
-  top: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--maincolor);
+}
 
-  //top: 0;
+.headercontainer {
+  width: 100%;
+
   z-index: 1000;
   background-color: var(--secondcolor);
-  // .seitentitel {
-  //     position: absolute;
-  //     left: 45%;
-  // }
-  border-bottom: 1px solid var(--maincolor);
 
   .headertitle {
     padding: var(--padding);
@@ -38,15 +37,11 @@
 
 @media (min-width: $breakpointSmall) {
   .headercontainer {
-    position: sticky;
-    top: 0;
   }
 }
 
 @media (min-width: $breakpointMedium) {
   .headercontainer {
-    position: sticky;
-
     .headertitle {
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;

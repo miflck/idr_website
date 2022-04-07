@@ -11,6 +11,9 @@ import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import { searchInputArray } from "../../lib/helpers";
+import Header from "../../Components/Header/header";
+import Footer from "../../Components/Footer/footer";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
 export default function Projekte(props) {
   const {
@@ -149,18 +152,20 @@ export default function Projekte(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <FilterWrapper>
-        <FilterElement filterarray={allForschungsfelders} />
-        {state.searchTerms.map((term, index) => {
-          return <SearchTerm key={index} term={term}></SearchTerm>;
-        })}
-        <Lupe
-          setSearch={setSearch}
-          handleKeyDown={handleKeyDown}
-          handleSubmit={handleSubmit}
-        ></Lupe>
-      </FilterWrapper>
-
+      <HeaderWrapper>
+        <Header></Header>
+        <FilterWrapper>
+          <FilterElement filterarray={allForschungsfelders} />
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
+        </FilterWrapper>
+      </HeaderWrapper>
       <div className={styles.listwrapper}>
         {filterdList.map((projekt) => {
           return (

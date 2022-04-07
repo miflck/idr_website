@@ -15,6 +15,9 @@ import { FilterWrapper } from "../Components";
 import { SearchTerm } from "../Components";
 import { searchInputArray } from "../lib/helpers";
 
+import Header from "../Components/Header/header";
+import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+
 import { AppContext, ACTIONS } from "../context/state";
 import { ServiceElement } from "../Components/Composition";
 
@@ -139,17 +142,20 @@ const Editorial = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <FilterWrapper>
-        <FilterElement filterarray={allForschungsfelders} />
-        {state.searchTerms.map((term, index) => {
-          return <SearchTerm key={index} term={term}></SearchTerm>;
-        })}
-        <Lupe
-          setSearch={setSearch}
-          handleKeyDown={handleKeyDown}
-          handleSubmit={handleSubmit}
-        ></Lupe>
-      </FilterWrapper>
+      <HeaderWrapper>
+        <Header></Header>
+        <FilterWrapper>
+          <FilterElement filterarray={allForschungsfelders} />
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
+        </FilterWrapper>
+      </HeaderWrapper>
 
       <div className={styles.editorialwrapper}>
         <Container>

@@ -11,6 +11,11 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import { AppContext, ACTIONS } from "../../context/state";
 import { PublicationFilter } from "../../lib/helpers";
+import Header from "../../Components/Header/header";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import { FilterWrapper } from "../../Components";
+import { Lupe } from "../../Components";
+import { searchInputArray } from "../../lib/helpers";
 
 export default function Publikationen(props) {
   let filterfields = ["contributors", "creators"];
@@ -191,10 +196,35 @@ export default function Publikationen(props) {
     neueListe.push(type);
   });
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log("klicked enter", e.target.value);
+      dispatch({
+        type: ACTIONS.ADD_SEARCHTERM,
+        payload: { element: e.currentTarget.value },
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    console.log("submit", e);
+    dispatch({
+      type: ACTIONS.ADD_SEARCHTERM,
+      payload: { element: e },
+    });
+  };
+
   const [search, setSearch] = useState("");
   useEffect(() => {
     setFilterdList(searchInput(publicationData, search));
   }, [search]);
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    const isEmpty = Object.keys(state.searchTerms).length === 0;
+    // if (!isEmpty)
+    setFilterdList(searchInputArray(publicationData, state.searchTerms));
+  }, [state.searchTerms]);
 
   console.log("list", filterdList);
 
@@ -205,8 +235,20 @@ export default function Publikationen(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <SuchFeldElement setSearch={setSearch} />
-      <FilterElement filterarray={PublicationFilter} />
+      <HeaderWrapper>
+        <Header></Header>
+        <FilterWrapper>
+          <FilterElement filterarray={PublicationFilter} />
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
+        </FilterWrapper>
+      </HeaderWrapper>
 
       {/* <SuchFeldElement setSearch={setSearch}/> */}
 

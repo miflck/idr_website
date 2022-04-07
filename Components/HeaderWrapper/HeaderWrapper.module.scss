@@ -1,0 +1,26 @@
+@import "../.././styles/breakpoints.scss";
+
+.root {
+  //height: 20rem;
+  position: sticky;
+  top: 0rem;
+  z-index: 500;
+
+  .inner {
+    top: 0rem;
+  }
+}
+
+@media (min-width: $breakpointSmall) {
+  .root {
+  }
+}
+
+@media (min-width: $breakpointMedium) {
+}
+
+@media (min-width: $breakpointLarge) {
+}
+
+@media (min-width: $breakpointXLarge) {
+}
