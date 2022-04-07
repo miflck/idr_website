@@ -51,7 +51,9 @@ export default function FilterElement(props) {
   let FilterElement;
   if (state.activeFilters) {
     FilterElement = props.filterarray.map((forschungsfeld) => {
-      let background_style_small;
+      let background_style_small = {
+        color: "#000000",
+      };
 
       let btn_class;
 
