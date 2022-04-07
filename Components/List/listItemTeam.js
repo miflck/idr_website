@@ -23,7 +23,7 @@ const ListItemTeam = (props) => {
   const { state } = globalState;
   const { dispatch } = globalState;
 
-  const [showHoverGradient, setHoverGradient] = useState();
+  const [showHoverGradient, setHoverGradient] = useState(false);
 
   const handleHover = (isHover) => {
     if (isHover) {
@@ -66,16 +66,17 @@ const ListItemTeam = (props) => {
     colorArray[1] = "#FFFFFF";
   }
 
-  console.log(colorArray);
   // const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
   const gradient_highlight = makeGradientFromArray(colorArray, "to right");
+  const gradient_normal = `linear-gradient(to right,"white"})`;
 
   const animationOut = `${styles.fadeOut} .9s ease`;
   const animationIn = ` ${styles.fadeIn} 0.5s ease`;
 
   let background_style = getGradientBackgroundStyle(
     gradient_highlight,
-    animationOut
+    animationOut,
+    0
   );
   if (props.showGradient || showHoverGradient) {
     background_style = getGradientBackgroundStyle(

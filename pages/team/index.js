@@ -117,7 +117,7 @@ const Team = (props) => {
           : filterdForschungsfelder;
     }
 
-    console.log(filterdForschungsfelder, filterdFunktionen, result);
+    console.log(state.activeFilters.length);
 
     setFilterdList(result);
     if (state.activeFilters.length > 0) {
