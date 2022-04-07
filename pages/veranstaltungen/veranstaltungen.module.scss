@@ -2,62 +2,19 @@
 @import "../slug.module.scss";
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
   }
-  
-  @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+  to {
+    opacity: 1;
   }
-  
-// index
-.veranstaltungswrapper{
-    color: var(--maincolor);
-        .veranstaltungscontent {
-            border-bottom: 1px solid var(--maincolor);
-            .datum {
-                font-size: var(--fontsizesmall);
-                line-height: var(--lineheightsmall);
-                margin-bottom: var(--paddingbottom);
-                text-transform: uppercase;
-            }
-            &:hover {
-                background-color: var(--maincolor);
-                color: var(--secondcolor);
-            }
-        }
-        &:last-child {
-            border-bottom: 0px solid var(--maincolor);
-        }
-        .veranstaltungscontent {
-            padding: var(--padding); 
-            font-size: var(--fontsizehalf);
-            line-height: var(--lineheighthalf);
-            .title {
-                text-transform: uppercase;
-                font-size: var(--fontsizenormal);
-                line-height: var(--lineheightnormal);
-                cursor: pointer;
-                // padding-bottom: var(--paddingabsatzbottom);
-            }
-            .referentIn {
-                padding-bottom: var(--paddingbottom);
-            }
-            .zentriert {
-                align-content: center;
-                text-align:center;
-                margin: var(--padding);
-                padding: var(--padding);
-                border-radius: 100px;
-            }
-        }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

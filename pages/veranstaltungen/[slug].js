@@ -16,6 +16,8 @@ import { Backbutton } from "../../Components";
 
 import { useRouter } from "next/router";
 
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import Header from "../../Components/Header/header";
 import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
 
@@ -38,9 +40,9 @@ export default function Veranstaltungseinzelansicht(props) {
         referentIn,
         untertitel,
         modularcontent,
-        text,
-        beschreibung,
+
         forschungsfeld,
+        serviceBlocks,
       } = "",
     } = "",
   } = props || "";
@@ -101,9 +103,9 @@ export default function Veranstaltungseinzelansicht(props) {
     });
 
     background_style = {
-      background: `linear-gradient(to right, ${colors[0]}, ${
-        colors[1] || "white"
-      })`,
+      background: `linear-gradient(to right, ${
+        colors[0] || "var(--maincolor)"
+      }, ${colors[1] || "white"}`,
     };
     let background_op = {
       background: `radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
@@ -117,26 +119,37 @@ export default function Veranstaltungseinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
+        <HeaderWrapper>
+          <Header></Header>
+        </HeaderWrapper>
+
         <Container>
           <Backbutton />
         </Container>
+
         <BackgroundGradientFadeOut
           backgroundStyle={background_style}
         ></BackgroundGradientFadeOut>
-
         <div className={styles.stickywrapper}>
           <GradientFadeIn
             backgroundStyle={background_style}
             backgroundOpacity={background_op}
           ></GradientFadeIn>
+
           <div className={styles.slugwrapper}>
             <Container>
               <Title title={titel} subtitle={untertitel} toptitle={date} />
-
               <div className={styles.modulareinhalte}>
+                {/*<div className={styles.datum}>
+              {date} {t("Uhr")}
+              </div>
+            <div className={styles.untertitel}>{untertitel}</div>
+            */}
+
                 {modularcontent != null &&
                   modularcontent.map((block) => {
                     console.log("block", block);
+
                     return (
                       <ModularContentWrapper key={block.id}>
                         {block._modelApiKey === "text" && (
@@ -176,47 +189,53 @@ export default function Veranstaltungseinzelansicht(props) {
         <Container>
           <div className={styles.serviceWrapper}>
             <ServiceElement title={t("Zeit")}>{date}</ServiceElement>
-
             <ServiceElement title={t("ReferentIn")}>
               {referentIn}
             </ServiceElement>
+            {forschungsfeld.length > 0 && (
+              <ServiceElement title={t("Forschungsfelder")}>
+                {forschungsfeld.map((forschungsfeld) => {
+                  let hover_class = {
+                    color: "var(--maincolor)",
+                    background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                    opacity: 1,
+                  };
+                  return (
+                    <Button
+                      key={forschungsfeld.id}
+                      title={forschungsfeld.titel}
+                      id={forschungsfeld.id}
+                      style={hover_class}
+                      handleClick={handleClick}
+                      handleHover={handleHover}
+                    />
+                  );
+                })}
+              </ServiceElement>
+            )}
 
-            <ServiceElement title={t("Forschungsfelder")}>
-              {forschungsfeld.map((forschungsfeld) => {
-                let hover_class = {
-                  color: "var(--maincolor)",
-                  background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
-                  opacity: 1,
-                };
+            {serviceBlocks != null &&
+              serviceBlocks.map((block) => {
                 return (
-                  <Button
-                    key={forschungsfeld.id}
-                    title={forschungsfeld.titel}
-                    id={forschungsfeld.id}
-                    style={hover_class}
-                    handleClick={handleClick}
-                    handleHover={handleHover}
-                  />
+                  <ServiceElement key={block.key} title={block.title}>
+                    {block.persons.map((person) => {
+                      let href = `/team`;
+                      if (person.slug != "") {
+                        href += `/${person.slug}`;
+                      }
+                      return <ButtonLink {...person} href={href} />;
+                    })}
+                    <TextElement {...block.text} />
+                    {block.projects.map((p) => {
+                      let href = `/projekte`;
+                      if (p.slug != "") {
+                        href += `/${p.slug}`;
+                      }
+                      return <ButtonLink {...p} href={href} />;
+                    })}
+                  </ServiceElement>
                 );
               })}
-            </ServiceElement>
-          </div>
-        </Container>
-
-        <Container>
-          <div className={styles.zentriert}>
-            <div className={styles.datum}>
-              {date} {t("Uhr")}
-            </div>
-            <div className={styles.untertitel}>{untertitel}</div>
-
-            <div className={styles.organisation}>
-              <TextElement {...text} />
-            </div>
-          </div>
-
-          <div className={styles.subwrapper}>
-            <TextElement {...beschreibung} />
           </div>
         </Container>
       </Layout>
