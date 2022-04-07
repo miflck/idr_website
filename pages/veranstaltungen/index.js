@@ -8,13 +8,19 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // import ForschungsfeldElement from '../../Components/ForschungsfeldElement/forschungsfeldElement'
 import { AppContext, ACTIONS } from "../../context/state";
-import { FilterWrapper } from "../../Components";
 import FilterElement from "../../Components/FilterElement/filterElement";
-import { Lupe } from "../../Components";
-import { SearchTerm } from "../../Components";
-import { searchInputArray } from "../../lib/helpers";
 
 import ListItemVeranstaltung from "../../Components/List/listItemVeranstaltung";
+
+import Header from "../../Components/Header/header";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+
+import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
+import Lupe from "../../Components/Lupe/Lupe";
+import { searchInputArray } from "../../lib/helpers";
+import { SearchTermWrapper } from "../../Components";
+import SearchTerm from "../../Components/SearchTerm/SearchTerm";
+
 import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import ListItemProjekt from "../../Components/List/listItemProjekt";
 
@@ -139,17 +145,20 @@ const Veranstaltungen = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <FilterWrapper>
-        <FilterElement filterarray={allForschungsfelders} />
-        {state.searchTerms.map((term, index) => {
-          return <SearchTerm key={index} term={term}></SearchTerm>;
-        })}
-        <Lupe
-          setSearch={setSearch}
-          handleKeyDown={handleKeyDown}
-          handleSubmit={handleSubmit}
-        ></Lupe>
-      </FilterWrapper>
+      <HeaderWrapper>
+        <Header></Header>
+        <FilterWrapper>
+          <FilterElement filterarray={allForschungsfelders} />
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
+        </FilterWrapper>
+      </HeaderWrapper>
 
       <div className={styles.listwrapper}>
         {filterdList.map((veranstaltung) => {

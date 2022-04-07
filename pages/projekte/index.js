@@ -12,7 +12,6 @@ import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import { searchInputArray } from "../../lib/helpers";
 import Header from "../../Components/Header/header";
-import Footer from "../../Components/Footer/footer";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
 export default function Projekte(props) {
@@ -166,6 +165,7 @@ export default function Projekte(props) {
           ></Lupe>
         </FilterWrapper>
       </HeaderWrapper>
+
       <div className={styles.listwrapper}>
         {filterdList.map((projekt) => {
           return (
