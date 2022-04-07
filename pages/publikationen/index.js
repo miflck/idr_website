@@ -15,8 +15,12 @@ import Header from "../../Components/Header/header";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 import { FilterWrapper } from "../../Components";
 import { Lupe } from "../../Components";
-import { searchInputArray } from "../../lib/helpers";
-
+import { SearchTerm } from "../../Components";
+import {
+  searchInput,
+  searchInputArray,
+  getIntersection,
+} from "../../lib/helpers";
 export default function Publikationen(props) {
   let filterfields = ["contributors", "creators"];
 
@@ -69,18 +73,18 @@ export default function Publikationen(props) {
     });
   }
 
-  const addMoreItem = (item) => {
-    const copyfilter = [...filter];
-    var index = copyfilter.indexOf(item);
-    if (index !== -1) {
-      copyfilter.splice(index, 1);
-      setFilter([...copyfilter]);
-    } else {
-      setFilter([...filter, item]);
-    }
-  };
-
   const [filterdList, setFilterdList] = useState([]);
+  const [searchFilterdList, setSearchFilterdList] = useState([]);
+
+  let result;
+  if (filterdList.length > 0 && searchFilterdList.length > 0) {
+    result = getIntersection([filterdList, searchFilterdList]);
+  } else {
+    result =
+      filterdList.length < searchFilterdList.length
+        ? searchFilterdList
+        : filterdList;
+  }
 
   useEffect(() => {
     setFilterdList(filterBy(publicationData, state.activeFilters));
@@ -90,6 +94,18 @@ export default function Publikationen(props) {
       setShowGradient(false);
     }
   }, [state.activeFilters]);
+
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    console.log(search);
+    setSearchFilterdList(searchInput(publicationData, search));
+  }, [search]);
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    const isEmpty = Object.keys(state.searchTerms).length === 0;
+    setSearchFilterdList(searchInputArray(publicationData, state.searchTerms));
+  }, [state.searchTerms]);
 
   function groupByFlat(objectArray, property) {
     return objectArray.reduce(function (acc, obj) {
@@ -158,44 +174,6 @@ export default function Publikationen(props) {
   },[search])
   */
 
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInput(data, inputvalue) {
-    return data.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (Array.isArray(obj[key])) {
-          return obj[key].some((entry) => {
-            return Object.keys(entry).some((kkey) => {
-              return entry[kkey].toString().includes(inputvalue);
-            });
-          });
-        } else {
-          return obj[key]
-            .toString()
-            .toLowerCase()
-            .includes(inputvalue.toLowerCase());
-        }
-      });
-    });
-  }
-
-  const makeUppercase = (sentence) => {
-    let words = sentence.split(" ");
-    for (let i = 0; i < words.length; i++) {
-      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-    }
-    return words.join(" ");
-  };
-
-  let neueListe = [];
-  publicationTypes.map((publicationtype, i) => {
-    const type = {
-      titel: makeUppercase(publicationtype.split("_").join(" ")),
-      id: i,
-      colour: { hex: "#FF0000" },
-    };
-    neueListe.push(type);
-  });
-
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       console.log("klicked enter", e.target.value);
@@ -213,20 +191,6 @@ export default function Publikationen(props) {
       payload: { element: e },
     });
   };
-
-  const [search, setSearch] = useState("");
-  useEffect(() => {
-    setFilterdList(searchInput(publicationData, search));
-  }, [search]);
-
-  useEffect(() => {
-    console.log(state.searchTerms);
-    const isEmpty = Object.keys(state.searchTerms).length === 0;
-    // if (!isEmpty)
-    setFilterdList(searchInputArray(publicationData, state.searchTerms));
-  }, [state.searchTerms]);
-
-  console.log("list", filterdList);
 
   return (
     <Layout
@@ -253,8 +217,7 @@ export default function Publikationen(props) {
       {/* <SuchFeldElement setSearch={setSearch}/> */}
 
       <div className={styles.listwrapper}>
-        {filterdList.map((publikation) => {
-          console.log(publikation);
+        {result.map((publikation) => {
           return (
             <ListItemPublikation
               {...publikation}

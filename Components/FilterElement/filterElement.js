@@ -57,7 +57,6 @@ export default function FilterElement(props) {
 
       let btn_class;
 
-      console.log(forschungsfeld);
       let secondColor =
         forschungsfeld.selectedColour != null
           ? forschungsfeld.selectedColour.hex

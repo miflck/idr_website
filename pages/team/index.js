@@ -19,7 +19,11 @@ import { SpacedWrapper } from "../../Components/Composition";
 import { ModularContentWrapper } from "../../Components/Composition";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import Lupe from "../../Components/Lupe/Lupe";
-import { searchInputArray } from "../../lib/helpers";
+import {
+  searchInput,
+  searchInputArray,
+  getIntersection,
+} from "../../lib/helpers";
 import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
@@ -37,8 +41,6 @@ const Team = (props) => {
   const allFilter = allForschungsfelders.concat(allFunktions);
 
   const { t } = useTranslation("common");
-
-  console.log("team", allFilter);
 
   // context
   const globalState = useContext(AppContext);
@@ -77,48 +79,46 @@ const Team = (props) => {
     });
   }
 
-  const getIntersection = (arrays) => {
-    return arrays.reduce((a, b) => a.filter((c) => b.includes(c)));
-  };
-
-  const addMoreItem = (item) => {
-    const copyfilter = [...filter];
-    var index = copyfilter.indexOf(item);
-    if (index !== -1) {
-      copyfilter.splice(index, 1);
-      setFilter([...copyfilter]);
-    } else {
-      setFilter([...filter, item]);
-    }
-  };
-
   const [filterdList, setFilterdList] = useState([]);
+  const [searchFilterdList, setSearchFilterdList] = useState([]);
+
+  let filterdForschungsfelder = filterByKeys(
+    allMenschens,
+    state.activeFilters,
+    ["forschungsfeld"]
+  );
+  let filterdFunktionen = filterByKeys(allMenschens, state.activeFilters, [
+    "funktion",
+  ]);
+
+  let resultFilter, result;
+
+  if (filterdForschungsfelder.length > 0 && filterdFunktionen.length > 0) {
+    resultFilter = getIntersection([
+      filterdForschungsfelder,
+      filterdFunktionen,
+    ]);
+  } else {
+    resultFilter =
+      filterdForschungsfelder.length < filterdFunktionen.length
+        ? filterdFunktionen
+        : filterdForschungsfelder;
+  }
+
+  console.log("resultFilter", resultFilter);
+  console.log("searchFilterdList", searchFilterdList);
+
+  if (resultFilter.length > 0 && searchFilterdList.length > 0) {
+    result = getIntersection([resultFilter, searchFilterdList]);
+  } else {
+    result =
+      resultFilter.length < searchFilterdList.length
+        ? searchFilterdList
+        : resultFilter;
+  }
 
   // on change active filters
   useEffect(() => {
-    console.log("FILTER FROM CONTEXT  ", state.activeFilters);
-    let filterdForschungsfelder = filterByKeys(
-      allMenschens,
-      state.activeFilters,
-      ["forschungsfeld"]
-    );
-    let filterdFunktionen = filterByKeys(allMenschens, state.activeFilters, [
-      "funktion",
-    ]);
-
-    let result;
-
-    if (filterdForschungsfelder.length > 0 && filterdFunktionen.length > 0) {
-      result = getIntersection([filterdForschungsfelder, filterdFunktionen]);
-    } else {
-      result =
-        filterdForschungsfelder.length < filterdFunktionen.length
-          ? filterdFunktionen
-          : filterdForschungsfelder;
-    }
-
-    console.log(state.activeFilters.length);
-
     setFilterdList(result);
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
@@ -142,37 +142,7 @@ const Team = (props) => {
     } else {
       setShowGradient(false);
     }
-  }, []);
-
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInput(data, inputvalue) {
-    return data.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (Array.isArray(obj[key])) {
-          return obj[key].some((entry) => {
-            return Object.keys(entry).some((kkey) => {
-              if (
-                typeof entry[key] === "string" ||
-                entry[key] instanceof String
-              ) {
-                return entry[kkey]
-                  .toString()
-                  .toLowerCase()
-                  .includes(inputvalue.toLowerCase());
-              }
-            });
-          });
-        } else {
-          if (typeof obj[key] === "string" || obj[key] instanceof String) {
-            return obj[key]
-              .toString()
-              .toLowerCase()
-              .includes(inputvalue.toLowerCase());
-          }
-        }
-      });
-    });
-  }
+  }, [state.activeFilters]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -193,27 +163,17 @@ const Team = (props) => {
   };
 
   useEffect(() => {
-    console.log("state Search terms", state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
     // if (!isEmpty)
-    setFilterdList(searchInputArray(allMenschens, state.searchTerms));
+    setSearchFilterdList(searchInputArray(allMenschens, state.searchTerms));
   }, [state.searchTerms]);
 
   const [search, setSearch] = useState("");
   useEffect(() => {
     const isEmpty = Object.keys(search).length === 0;
-    if (!isEmpty) setFilterdList(searchInput(allMenschens, search));
+    if (!isEmpty) setSearchFilterdList(searchInput(allMenschens, search));
   }, [search]);
 
-  /*
-      let neueListe=[];
-      allForschungsfelders.map((forschungsfeld) => {
-        neueListe.push(forschungsfeld)
-      })
-      allFunktions.map((forschungsfeld) => {
-        neueListe.push(forschungsfeld)
-      })
-  */
   return (
     <Layout
       setMainColor={props.setMainColor}
@@ -240,7 +200,7 @@ const Team = (props) => {
       {/** <FilterElement filterarray={allFilter} /> */}
 
       <div className={styles.teamcontainer}>
-        {filterdList.map((mensch) => {
+        {result.map((mensch) => {
           if (mensch.aktiv && !mensch.extern) {
             return (
               <ListItemTeam

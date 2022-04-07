@@ -10,7 +10,11 @@ import { AppContext, ACTIONS } from "../../context/state";
 import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
-import { searchInputArray } from "../../lib/helpers";
+import {
+  searchInput,
+  searchInputArray,
+  getIntersection,
+} from "../../lib/helpers";
 import Header from "../../Components/Header/header";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
@@ -41,9 +45,10 @@ export default function Projekte(props) {
 
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
+    if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
     return data.filter((obj) => {
       //kann sein: every für && und some für || ?
-      return filterterms.every((term) => {
+      return filterterms.some((term) => {
         return obj.forschungsfeld.some((feld) => {
           return feld.id.toString().includes(term);
         });
@@ -52,68 +57,21 @@ export default function Projekte(props) {
   }
 
   const [filterdList, setFilterdList] = useState([]);
-  // on change active filters
-  useEffect(() => {
-    //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+  const [searchFilterdList, setSearchFilterdList] = useState([]);
 
-    setFilterdList(filterBy(allProjekts, state.activeFilters));
-    if (state.activeFilters.length > 0) {
-      setShowGradient(true);
-    } else {
-      setShowGradient(false);
-    }
-  }, [state.activeFilters]);
-
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInput(data, inputvalue) {
-    return data.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (Array.isArray(obj[key])) {
-          return obj[key].some((entry) => {
-            return Object.keys(entry).some((kkey) => {
-              return entry[kkey]
-                .toString()
-                .toLowerCase()
-                .includes(inputvalue.toLowerCase());
-            });
-          });
-        } else {
-          console.log("in ", inputvalue);
-          return obj[key]
-            .toString()
-            .toLowerCase()
-            .includes(inputvalue.toLowerCase());
-        }
-      });
-    });
+  let result;
+  if (filterdList.length > 0 && searchFilterdList.length > 0) {
+    result = getIntersection([filterdList, searchFilterdList]);
+  } else {
+    result =
+      filterdList.length < searchFilterdList.length
+        ? searchFilterdList
+        : filterdList;
   }
-
-  /* // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInputArray(data, searchKeyArray) {
-    return data.filter((obj) => {
-      // some für oder, every für und
-      return searchKeyArray.every(function (searchKey) {
-        return Object.keys(obj).some((key) => {
-          if (Array.isArray(obj[key])) {
-            return obj[key].some((entry) => {
-              return Object.keys(entry).some((kkey) => {
-                return entry[kkey].toString().includes(searchKey);
-              });
-            });
-          } else {
-            return obj[key]
-              .toString()
-              .toLowerCase()
-              .includes(searchKey.toLowerCase());
-          }
-        });
-      });
-    });
-  }*/
+  console.log("result", result);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("klicked enter", e.target.value);
       dispatch({
         type: ACTIONS.ADD_SEARCHTERM,
         payload: { element: e.currentTarget.value },
@@ -122,26 +80,33 @@ export default function Projekte(props) {
   };
 
   const handleSubmit = (e) => {
-    console.log("submit", e);
     dispatch({
       type: ACTIONS.ADD_SEARCHTERM,
       payload: { element: e },
     });
   };
 
+  // on change active filters
+  useEffect(() => {
+    //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
+    setFilterdList(filterBy(allProjekts, state.activeFilters));
+    if (state.activeFilters.length > 0) {
+      setShowGradient(true);
+    } else {
+      setShowGradient(false);
+    }
+  }, [state.activeFilters]);
+
   const [search, setSearch] = useState("");
   useEffect(() => {
-    // dont perform on first render…
     const isEmpty = Object.keys(search).length === 0;
-    setFilterdList(searchInput(allProjekts, search));
-    //  if (!isEmpty) setFilterdList(searchInput(allProjekts, search));
+    setSearchFilterdList(searchInput(allProjekts, search));
   }, [search]);
 
   useEffect(() => {
     console.log(state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
-    // if (!isEmpty)
-    setFilterdList(searchInputArray(allProjekts, state.searchTerms));
+    setSearchFilterdList(searchInputArray(allProjekts, state.searchTerms));
   }, [state.searchTerms]);
 
   return (
@@ -167,15 +132,18 @@ export default function Projekte(props) {
       </HeaderWrapper>
 
       <div className={styles.listwrapper}>
-        {filterdList.map((projekt) => {
-          return (
-            <ListItemProjekt
-              {...projekt}
-              key={projekt.id}
-              showGradient={showGradient}
-            />
-          );
-        })}
+        {
+          //filterdList.map((projekt) => {
+          result.map((projekt) => {
+            return (
+              <ListItemProjekt
+                {...projekt}
+                key={projekt.id}
+                showGradient={showGradient}
+              />
+            );
+          })
+        }
       </div>
     </Layout>
   );
