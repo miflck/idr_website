@@ -13,10 +13,14 @@
 @media (min-width: $breakpointSmall) {
   .root {
     margin-block-end: 2rem;
+    width: 50%;
   }
 }
 
 @media (min-width: $breakpointMedium) {
+  .root {
+    width: 33%;
+  }
 }
 
 @media (min-width: $breakpointLarge) {

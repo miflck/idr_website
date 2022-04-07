@@ -68,6 +68,10 @@
   columns: 1;
   z-index: 100;
 
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
   // margin-inline-start:2rem;
   // margin-inline-end: 2rem;
 }
@@ -155,7 +159,7 @@
 @media (min-width: $breakpointLarge) {
   .serviceWrapper {
     margin-top: 6.5rem;
-    columns: 3;
+    //columns: 3;
 
     margin-inline-start: 0rem;
     margin-inline-end: 0rem;

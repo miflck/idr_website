@@ -226,26 +226,6 @@ export default function Projekteinzelansicht(props) {
               {startzeitraum} – {endzeitraum}
             </ServiceElement>
 
-            <ServiceElement title={t("Forschungsfelder")}>
-              {forschungsfeld.map((forschungsfeld) => {
-                let hover_class = {
-                  color: "var(--maincolor)",
-                  background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
-                  opacity: 1,
-                };
-                return (
-                  <Button
-                    key={forschungsfeld.id}
-                    title={forschungsfeld.titel}
-                    id={forschungsfeld.id}
-                    style={hover_class}
-                    handleClick={handleClick}
-                    handleHover={handleHover}
-                  />
-                );
-              })}
-            </ServiceElement>
-
             <ServiceElement title={t("Leitung")}>
               {leitung.map((e) => {
                 console.log("leitung", e);
@@ -359,6 +339,26 @@ export default function Projekteinzelansicht(props) {
                   </ServiceElement>
                 );
               })}
+
+            <ServiceElement title={t("Forschungsfelder")}>
+              {forschungsfeld.map((forschungsfeld) => {
+                let hover_class = {
+                  color: "var(--maincolor)",
+                  background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                  opacity: 1,
+                };
+                return (
+                  <Button
+                    key={forschungsfeld.id}
+                    title={forschungsfeld.titel}
+                    id={forschungsfeld.id}
+                    style={hover_class}
+                    handleClick={handleClick}
+                    handleHover={handleHover}
+                  />
+                );
+              })}
+            </ServiceElement>
           </div>
         </Container>
       </Layout>

@@ -29,6 +29,7 @@ import { ServiceElement } from "../../Components/Composition";
 import TextElement from "../../Components/Composition/TextElement";
 import ImageElement from "../../Components/Composition/ImageElement";
 import { Gallery } from "../../Components";
+import ButtonLink from "../../Components/ButtonLink/buttonLink";
 
 export default function Veranstaltungseinzelansicht(props) {
   const {
@@ -192,27 +193,6 @@ export default function Veranstaltungseinzelansicht(props) {
             <ServiceElement title={t("ReferentIn")}>
               {referentIn}
             </ServiceElement>
-            {forschungsfeld.length > 0 && (
-              <ServiceElement title={t("Forschungsfelder")}>
-                {forschungsfeld.map((forschungsfeld) => {
-                  let hover_class = {
-                    color: "var(--maincolor)",
-                    background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
-                    opacity: 1,
-                  };
-                  return (
-                    <Button
-                      key={forschungsfeld.id}
-                      title={forschungsfeld.titel}
-                      id={forschungsfeld.id}
-                      style={hover_class}
-                      handleClick={handleClick}
-                      handleHover={handleHover}
-                    />
-                  );
-                })}
-              </ServiceElement>
-            )}
 
             {serviceBlocks != null &&
               serviceBlocks.map((block) => {
@@ -236,6 +216,28 @@ export default function Veranstaltungseinzelansicht(props) {
                   </ServiceElement>
                 );
               })}
+
+            {forschungsfeld.length > 0 && (
+              <ServiceElement title={t("Forschungsfelder")}>
+                {forschungsfeld.map((forschungsfeld) => {
+                  let hover_class = {
+                    color: "var(--maincolor)",
+                    background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                    opacity: 1,
+                  };
+                  return (
+                    <Button
+                      key={forschungsfeld.id}
+                      title={forschungsfeld.titel}
+                      id={forschungsfeld.id}
+                      style={hover_class}
+                      handleClick={handleClick}
+                      handleHover={handleHover}
+                    />
+                  );
+                })}
+              </ServiceElement>
+            )}
           </div>
         </Container>
       </Layout>
