@@ -65,9 +65,9 @@ const ListItemVeranstaltung = (props) => {
       animation: anim,
     };
   };
-  const gradient_highlight = `linear-gradient(to right, ${colorArray[0]}, ${
-    colorArray[1] || "white"
-  })`;
+  const gradient_highlight = `linear-gradient(to right, ${
+    colorArray[0] || "var(--maincolor)"
+  }, ${colorArray[1] || "white"}`;
   const gradient_normal = `linear-gradient(to right,"white"})`;
   const animationOut = `${styles.fadeOut} .9s ease`;
   const animationIn = ` ${styles.fadeIn} 0.5s ease`;

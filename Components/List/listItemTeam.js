@@ -58,10 +58,15 @@ const ListItemTeam = (props) => {
   const colorArray = getColorArray(props.forschungsfeld);
   //  const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
   //colorArray[1]="#FF0000";
+  if (colorArray.length < 1) {
+    colorArray[0] = "#000000";
+    colorArray[1] = "#000000";
+  }
   if (colorArray.length < 2) {
     colorArray[1] = "#FFFFFF";
   }
 
+  console.log(colorArray);
   // const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
   const gradient_highlight = makeGradientFromArray(colorArray, "to right");
 
@@ -70,8 +75,7 @@ const ListItemTeam = (props) => {
 
   let background_style = getGradientBackgroundStyle(
     gradient_highlight,
-    animationOut,
-    0
+    animationOut
   );
   if (props.showGradient || showHoverGradient) {
     background_style = getGradientBackgroundStyle(

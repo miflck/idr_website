@@ -224,7 +224,7 @@ const Team = (props) => {
       <HeaderWrapper>
         <Header></Header>
         <FilterWrapper>
-          <FilterElement filterarray={allForschungsfelders} />
+          <FilterElement filterarray={allFilter} />
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
