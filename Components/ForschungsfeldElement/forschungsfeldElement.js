@@ -11,7 +11,7 @@ export default function ForschungsfeldElement(props) {
   const { showGradient, showHoverGradient, mainColor, secondColor } = props;
 
   const handleHover = (isHover, id) => {
-    console.log("isHover", isHover);
+    //console.log("isHover", isHover);
     if (isHover) {
       // dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
     } else {
@@ -36,7 +36,6 @@ export default function ForschungsfeldElement(props) {
       <div className={styles.forschungsfeldwrapper}>
         {props.forschungsfeld.map((forschungsfeld) => {
           //  const intersection = state.hoveredElements.filter(item1 => item1===forschungsfeld.id)
-
           let button_style = {
             color: mainColor, //'var(--maincolor)',
             //  color: "#FF0000",
@@ -54,7 +53,6 @@ export default function ForschungsfeldElement(props) {
           }
 
           if (state.hoveredElements.includes(forschungsfeld.id)) {
-            console.log("hover", showGradient);
             button_style = {
               color: mainColor,
               //  background:`${forschungsfeld.colour.hex}`,

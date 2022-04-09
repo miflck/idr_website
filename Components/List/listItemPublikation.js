@@ -4,7 +4,7 @@ import Container from "../Container/container";
 import { AppContext, ACTIONS } from "../../context/state";
 import React, { useEffect, useContext, useState } from "react";
 import ForschungsfeldElement from "../ForschungsfeldElement/forschungsfeldElement";
-import { PublicationFilter } from "../../lib/helpers";
+import { PublicationFilter, getForschungsfeldId } from "../../lib/helpers";
 
 const ListItemPublikation = (props) => {
   if (props) {
@@ -34,7 +34,7 @@ const ListItemPublikation = (props) => {
     filter.push(PublicationFilter.find((o) => o.term === props.type));
 
     // get array of Ids of tags for handleHover
-    const researchFieldIdArray = filter.reduce((acc, it) => {
+    const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
       acc.push(it.id);
       return acc;
     }, []);
@@ -49,7 +49,7 @@ const ListItemPublikation = (props) => {
     });
 
     // get Array of colors from all tags
-    const colorArray = filter.reduce((acc, it) => {
+    const colorArray = props.forschungsfeld.reduce((acc, it) => {
       acc.push(it.colour.hex);
       return acc;
     }, []);
@@ -106,12 +106,14 @@ const ListItemPublikation = (props) => {
             <div className={styles.datum}>{date}</div>
             <Link href={href} as={href}>
               <a className={styles.listLinkBlank} target="_blank">
-                <div className={styles.titel}>{props.title[0].text}</div>
+                <div className={styles.titel}>{props.title}</div>
               </a>
             </Link>
+
             <ForschungsfeldElement
               {...props}
-              forschungsfeld={filter}
+              //forschungsfeld={filter}
+              forschungsfeld={props.forschungsfeld}
               showHoverGradient={showHoverGradient}
             />
           </div>

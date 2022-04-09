@@ -20,9 +20,19 @@ import {
   searchInput,
   searchInputArray,
   getIntersection,
+  searchInputArrayRecursive,
+  getForschungsfeldBFHString,
+  getForschungsfeldId,
 } from "../../lib/helpers";
+
+import { request, ALLFORSCHUNGSFELDER } from "../../lib/datocms";
+
 export default function Publikationen(props) {
   let filterfields = ["contributors", "creators"];
+
+  const {
+    data: { allForschungsfelders },
+  } = props;
 
   // context
   const globalState = useContext(AppContext);
@@ -41,11 +51,17 @@ export default function Publikationen(props) {
     const data = await response.json();
     setPublicationData(data);
     setFilterdList(data);
+    setSearchFilterdList(data);
   };
 
   useEffect(() => {
+    console.log("fetch pub");
     fetchPublications();
   }, []);
+
+  useEffect(() => {
+    console.log("publicationData", publicationData);
+  }, [publicationData]);
 
   const { t } = useTranslation("common");
 
@@ -64,19 +80,38 @@ export default function Publikationen(props) {
 
   //nach Publikationstypen filtern
   function filterBy(data, filterterms) {
+    if (filterterms.length < 1) return publicationData; // wenn kein filter ist gibt some leer zurück
     return data.filter((obj) => {
       //kann sein: every für && und some für || ?
-      return filterterms.every((term) => {
+      return filterterms.some((term) => {
+        console.log(getForschungsfeldBFHString(term));
         let filter = PublicationFilter.find((o) => o.id === term);
-        return obj.type.toString() === filter.term;
+        //return obj.type.toString() === filter.term;
+
+        return obj.divisions.includes(getForschungsfeldBFHString(term));
       });
     });
   }
 
+  /*
+  //nach Forschungsfelder filtern
+  function filterBy(data, filterterms) {
+    if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
+    return data.filter((obj) => {
+      //kann sein: every für && und some für || ?
+      return filterterms.some((term) => {
+        return obj.forschungsfeld.some((feld) => {
+          return feld.id.toString().includes(term);
+        });
+      });
+    });
+  }
+*/
+
   const [filterdList, setFilterdList] = useState([]);
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
-  let result;
+  /*let result;
   if (filterdList.length > 0 && searchFilterdList.length > 0) {
     result = getIntersection([filterdList, searchFilterdList]);
   } else {
@@ -85,6 +120,11 @@ export default function Publikationen(props) {
         ? searchFilterdList
         : filterdList;
   }
+*/
+
+  let result =
+    getIntersection([filterdList, searchFilterdList]) || publicationData;
+  //console.log(filterdList, searchFilterdList, publicationData, result);
 
   useEffect(() => {
     setFilterdList(filterBy(publicationData, state.activeFilters));
@@ -95,16 +135,22 @@ export default function Publikationen(props) {
     }
   }, [state.activeFilters]);
 
-  const [search, setSearch] = useState("");
+  // fields to search
+  let fields = ["event_title", "title", "contributors", "creators"];
+
+  const [search, setSearch] = useState();
   useEffect(() => {
-    console.log(search);
-    setSearchFilterdList(searchInput(publicationData, search));
+    let array = [...state.searchTerms, search];
+    if (array.length < 0) return;
+    setSearchFilterdList(
+      searchInputArrayRecursive(publicationData, array, fields)
+    );
   }, [search]);
 
   useEffect(() => {
-    console.log(state.searchTerms);
-    const isEmpty = Object.keys(state.searchTerms).length === 0;
-    setSearchFilterdList(searchInputArray(publicationData, state.searchTerms));
+    setSearchFilterdList(
+      searchInputArrayRecursive(publicationData, state.searchTerms, fields)
+    );
   }, [state.searchTerms]);
 
   function groupByFlat(objectArray, property) {
@@ -202,7 +248,7 @@ export default function Publikationen(props) {
       <HeaderWrapper>
         <Header></Header>
         <FilterWrapper>
-          <FilterElement filterarray={PublicationFilter} />
+          <FilterElement filterarray={allForschungsfelders} />
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
@@ -218,11 +264,21 @@ export default function Publikationen(props) {
 
       <div className={styles.listwrapper}>
         {result.map((publikation) => {
+          let felder = [];
+          publikation.divisions.map((division) => {
+            if (getForschungsfeldId(division)) {
+              let result = allForschungsfelders.filter((obj) => {
+                return obj.id == getForschungsfeldId(division);
+              });
+              felder.push(...result);
+            }
+          });
           return (
             <ListItemPublikation
               {...publikation}
-              showGradient={showGradient}
+              forschungsfeld={[...felder]}
               key={publikation.id}
+              showGradient={showGradient}
             />
           );
         })}
@@ -232,9 +288,10 @@ export default function Publikationen(props) {
 }
 
 export async function getStaticProps({ locale }) {
-  // const publikationen = await request({
-  //     query: PUBLIKATIONEN, variables: {locale:locale},
-  //   });
+  const data = await request({
+    query: ALLFORSCHUNGSFELDER,
+    variables: { locale: locale },
+  });
 
   //const res = await fetch(`https://arbor.bfh.ch/cgi/search/advanced/export_arbor_JSON.js?screen=Search&_action_export=1&output=JSON&exp=0%7C1%7C-date%2Fcreators_name%2Ftitle%7Carchive%7C-%7Cdivisions%3Adivisions%3AANY%3AEQ%3ABFH-OE--IN-0005%7C-%7Ceprint_status%3Aeprint_status%3AANY%3AEQ%3Aarchive%7Cmetadata_visibility%3Ametadata_visibility%3AANY%3AEQ%3Ashow&n=&cache=117839`)
   //const publicationdata = await res.json()
@@ -242,7 +299,7 @@ export async function getStaticProps({ locale }) {
 
   return {
     props: {
-      // publikationen,
+      data,
       publicationdata,
       ...(await serverSideTranslations(locale, ["common"])),
     }, // will be passed to the page component as props

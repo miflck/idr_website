@@ -14,18 +14,20 @@ import {
   searchInput,
   searchInputArray,
   getIntersection,
+  searchInputArrayRecursive,
 } from "../../lib/helpers";
 import Header from "../../Components/Header/header";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
 export default function Projekte(props) {
   const {
-    projekte: { allProjekts },
+    projekte: { allProjekts: data },
   } = props;
   const {
     projekte: { allForschungsfelders },
   } = props;
 
+  console.log(allForschungsfelders);
   const { t } = useTranslation("common");
 
   // context
@@ -55,20 +57,43 @@ export default function Projekte(props) {
       });
     });
   }
-
   const [filterdList, setFilterdList] = useState([]);
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
-  let result;
-  if (filterdList.length > 0 && searchFilterdList.length > 0) {
-    result = getIntersection([filterdList, searchFilterdList]);
-  } else {
-    result =
-      filterdList.length < searchFilterdList.length
-        ? searchFilterdList
-        : filterdList;
-  }
-  console.log("result", result);
+  // get data after all filters
+  let result = getIntersection([filterdList, searchFilterdList]) || data;
+  console.log(filterdList, searchFilterdList, result);
+
+  // on change active filters
+  useEffect(() => {
+    setFilterdList(filterBy(data, state.activeFilters));
+    if (state.activeFilters.length > 0) {
+      setShowGradient(true);
+    } else {
+      setShowGradient(false);
+    }
+  }, [state.activeFilters]);
+
+  // fields to search
+  let fields = ["titel", "name", "value"];
+
+  const [search, setSearch] = useState("");
+  /*useEffect(() => {
+    let array = [...state.searchTerms, search];
+    setSearchFilterdList(searchInputArrayRecursive(data, array, fields));
+  }, [search]);
+*/
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    setSearchFilterdList(
+      searchInputArrayRecursive(data, state.searchTerms, fields)
+    );
+    console.log(
+      "use effect ",
+      searchInputArrayRecursive(data, state.searchTerms, fields)
+    );
+  }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -85,29 +110,6 @@ export default function Projekte(props) {
       payload: { element: e },
     });
   };
-
-  // on change active filters
-  useEffect(() => {
-    //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
-    setFilterdList(filterBy(allProjekts, state.activeFilters));
-    if (state.activeFilters.length > 0) {
-      setShowGradient(true);
-    } else {
-      setShowGradient(false);
-    }
-  }, [state.activeFilters]);
-
-  const [search, setSearch] = useState("");
-  useEffect(() => {
-    const isEmpty = Object.keys(search).length === 0;
-    setSearchFilterdList(searchInput(allProjekts, search));
-  }, [search]);
-
-  useEffect(() => {
-    console.log(state.searchTerms);
-    const isEmpty = Object.keys(state.searchTerms).length === 0;
-    setSearchFilterdList(searchInputArray(allProjekts, state.searchTerms));
-  }, [state.searchTerms]);
 
   return (
     <Layout

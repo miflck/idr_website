@@ -16,7 +16,11 @@ import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
 import Lupe from "../Components/Lupe/Lupe";
 import SearchTerm from "../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../Components/FilterWrapper/FilterWrapper";
-import { searchInputArray } from "../lib/helpers";
+import {
+  searchInputArrayRecursive,
+  searchRecursive,
+  getIntersection,
+} from "../lib/helpers";
 
 import { Checkboard } from "react-color/lib/components/common";
 
@@ -44,11 +48,14 @@ export default function Home(props) {
 
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
+    if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
+
     return data.filter((obj) => {
       //kann sein: every für && und some für || ?
-      return filterterms.every((term) => {
+      return filterterms.some((term) => {
         return obj.forschungsfeld.some((feld) => {
-          return feld.id.toString().includes(term);
+          //return feld.id.toString().includes(term);
+          return feld.id === term;
         });
       });
     });
@@ -56,22 +63,14 @@ export default function Home(props) {
 
   const [filter, setFilter] = useState([]);
 
-  const addMoreItem = (item) => {
-    const copyfilter = [...filter];
-    var index = copyfilter.indexOf(item);
-    if (index !== -1) {
-      copyfilter.splice(index, 1);
-      setFilter([...copyfilter]);
-    } else {
-      setFilter([...filter, item]);
-    }
-  };
-
   const [filterdList, setFilterdList] = useState([]);
+  const [searchFilterdList, setSearchFilterdList] = useState([]);
+
+  let result = getIntersection([filterdList, searchFilterdList]) || siteData;
 
   useEffect(() => {
-    console.log("active filter", state.activeFilters, siteData);
     setFilterdList(filterBy(siteData, state.activeFilters));
+    console.log(filterBy(siteData, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
@@ -79,9 +78,28 @@ export default function Home(props) {
     }
   }, [state.activeFilters]);
 
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    let array = [...state.searchTerms, search];
+    setSearchFilterdList(
+      searchInputArrayRecursive(siteData, array, ["text", "titel", "value"])
+    );
+  }, [search]);
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    const isEmpty = Object.keys(state.searchTerms).length === 0;
+    setSearchFilterdList(
+      searchInputArrayRecursive(siteData, state.searchTerms, [
+        "text",
+        "titel",
+        "value",
+      ])
+    );
+  }, [state.searchTerms]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("klicked enter", e.target.value);
       dispatch({
         type: ACTIONS.ADD_SEARCHTERM,
         payload: { element: e.currentTarget.value },
@@ -95,77 +113,6 @@ export default function Home(props) {
       payload: { element: e.currentTarget.value },
     });
   };
-
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel, News etc funktioniert noch nicht, Loops sind falsch
-  function searchInput(data, inputvalue) {
-    return data.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (Array.isArray(obj[key])) {
-          return obj[key].some((entry) => {
-            return Object.keys(entry).some((kkey) => {
-              return entry[kkey].toString().includes(inputvalue);
-            });
-          });
-        } else {
-          if (obj[key] != null) {
-            return obj[key]
-              .toString()
-              .toLowerCase()
-              .includes(inputvalue.toLowerCase());
-          }
-        }
-      });
-    });
-  }
-
-  function check(term1, term2) {
-    return term1.toString().toLowerCase().includes(term2.toLowerCase());
-  }
-
-  function traverse(x, term) {
-    if (Array.isArray(x)) {
-      traverseArray(x);
-    } else if (typeof x === "object" && x !== null) {
-      traverseObject(x);
-    } else {
-      if (x != null) {
-        // return check(x, term);
-        //return x.toString().toLowerCase().includes(term.toLowerCase());
-      }
-    }
-  }
-
-  function traverseArray(arr) {
-    arr.forEach(function (x) {
-      traverse(x);
-    });
-  }
-
-  function traverseObject(obj) {
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        traverse(obj[key]);
-      }
-    }
-  }
-
-  const [search, setSearch] = useState("");
-  useEffect(() => {
-    // let c = siteData.filter((data) => {
-    //   console.log("data", traverse(data));
-    // });
-    //console.log("c", traverse(siteData));
-
-    setFilterdList(searchInput(siteData, search));
-  }, [search]);
-
-  useEffect(() => {
-    console.log(state.searchTerms);
-    const isEmpty = Object.keys(state.searchTerms).length === 0;
-
-    // if (!isEmpty)
-    setFilterdList(searchInputArray(siteData, state.searchTerms));
-  }, [state.searchTerms]);
 
   return (
     <Layout
@@ -190,7 +137,7 @@ export default function Home(props) {
       </HeaderWrapper>
 
       <TileGrid>
-        {filterdList.map((beitrag) => {
+        {result.map((beitrag) => {
           return (
             <Tile>
               <ListItemNews
