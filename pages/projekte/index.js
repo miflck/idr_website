@@ -78,11 +78,10 @@ export default function Projekte(props) {
   let fields = ["titel", "name", "value"];
 
   const [search, setSearch] = useState("");
-  /*useEffect(() => {
+  useEffect(() => {
     let array = [...state.searchTerms, search];
     setSearchFilterdList(searchInputArrayRecursive(data, array, fields));
   }, [search]);
-*/
 
   useEffect(() => {
     console.log(state.searchTerms);

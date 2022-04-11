@@ -84,7 +84,6 @@ export default function Publikationen(props) {
     return data.filter((obj) => {
       //kann sein: every für && und some für || ?
       return filterterms.some((term) => {
-        console.log(getForschungsfeldBFHString(term));
         let filter = PublicationFilter.find((o) => o.id === term);
         //return obj.type.toString() === filter.term;
 

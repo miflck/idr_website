@@ -16,16 +16,16 @@ const ListItemPublikation = (props) => {
 
     const handleHover = (isHover) => {
       if (isHover) {
-        dispatch({
+        /*  dispatch({
           type: ACTIONS.ADD_HOVER_FILTER,
           payload: { element: researchFieldIdArray },
-        });
+        });*/
         setHoverGradient(true);
       } else {
-        dispatch({
+        /* dispatch({
           type: ACTIONS.REMOVE_HOVER_FILTER,
           payload: { element: researchFieldIdArray },
-        });
+        });*/
         setHoverGradient(false);
       }
     };
