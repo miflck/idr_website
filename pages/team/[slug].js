@@ -50,6 +50,8 @@ export default function Menscheinzelansicht(props) {
     } = "",
   } = props || "";
 
+  const auswahllength = 10;
+
   if (props.data) {
     function filterBy(data, filterterm) {
       let fields = ["leitung", "verantwortung", "mitarbeit"];
@@ -132,7 +134,7 @@ export default function Menscheinzelansicht(props) {
       // console.log("filterdProjectlist",filterdProjectlist)
       ProjekteElement = (
         <div className={styles.subwrapper}>
-          {filterdProjectlist.map((projekt) => {
+          {filterdProjectlist.slice(0, auswahllength).map((projekt) => {
             let href = `/projekte`;
             if (projekt.slug != "") {
               href += `/${projekt.slug}`;
@@ -213,40 +215,38 @@ export default function Menscheinzelansicht(props) {
               )}
 
               <ModularContentWrapper>
+                <ServiceElement title={t("Personenprofil")}>
+                  {BFHProfilElement}
+                </ServiceElement>
+
                 <ServiceElement title={t("Kontakt")}>
                   {EmailElement}
                   {WebsiteElement}{" "}
                 </ServiceElement>
 
-                <ServiceElement title={t("Personenprofil")}>
-                  {BFHProfilElement}
+                <ServiceElement title={t("Forschungsfelder")}>
+                  {forschungsfeld.map((forschungsfeld) => {
+                    let hover_class = {
+                      color: "var(--maincolor)",
+                      background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
+                      opacity: 1,
+                    };
+                    return (
+                      <Button
+                        key={forschungsfeld.id}
+                        title={forschungsfeld.titel}
+                        id={forschungsfeld.id}
+                        style={hover_class}
+                        handleClick={handleClick}
+                        handleHover={handleHover}
+                      />
+                    );
+                  })}
                 </ServiceElement>
 
-                <ServiceElement title={t("Projekte")}>
+                <ServiceElement title={t("Projekte (Auswahl)")}>
                   {ProjekteElement}
                 </ServiceElement>
-
-                <div className={styles.subwrapper}>
-                  <ServiceElement title={t("Forschungsfelder")}>
-                    {forschungsfeld.map((forschungsfeld) => {
-                      let hover_class = {
-                        color: "var(--maincolor)",
-                        background: "var(--secondcolor)", //`linear-gradient(to right, white, ${forschungsfeld.colour.hex})`,
-                        opacity: 1,
-                      };
-                      return (
-                        <Button
-                          key={forschungsfeld.id}
-                          title={forschungsfeld.titel}
-                          id={forschungsfeld.id}
-                          style={hover_class}
-                          handleClick={handleClick}
-                          handleHover={handleHover}
-                        />
-                      );
-                    })}
-                  </ServiceElement>
-                </div>
               </ModularContentWrapper>
             </Container>
           </div>

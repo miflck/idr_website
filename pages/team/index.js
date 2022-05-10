@@ -39,6 +39,7 @@ const Team = (props) => {
   } = props;
 
   const allFilter = allForschungsfelders.concat(allFunktions);
+  //console.log("allMenschens", allMenschens, sortByLastname(allMenschens));
 
   const { t } = useTranslation("common");
 
@@ -62,6 +63,18 @@ const Team = (props) => {
         });
       });
     });
+  }
+
+  function sortByLastname(arr) {
+    return arr.sort((a, b) => {
+      console.log(a.name, a.name.charCodeAt(a.length - 1));
+      a.name.charCodeAt(a.name.length - 1) -
+        b.name.charCodeAt(b.name.length - 1);
+    });
+  }
+
+  function lastNameSort(a, b) {
+    return a.name.split(" ").pop()[0] > b.name.split(" ").pop()[0];
   }
 
   //nach Felder filtern, ||

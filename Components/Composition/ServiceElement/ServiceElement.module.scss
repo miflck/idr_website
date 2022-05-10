@@ -3,6 +3,8 @@
 .root {
   margin-block-end: 1.25rem;
   break-inside: avoid-column;
+  vertical-align: top;
+
   h2 {
     text-decoration: underline;
   }

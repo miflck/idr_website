@@ -11,7 +11,7 @@ const ResponsiveImage = (props) => {
       <Image
         data={responsiveImage}
         alt={props.alt}
-        fadeInDuration="5"
+        fadeInDuration="1"
         layout="fill"
         objectFit="cover"
       />

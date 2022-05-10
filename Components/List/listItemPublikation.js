@@ -18,7 +18,7 @@ const ListItemPublikation = (props) => {
       if (isHover) {
         /*  dispatch({
           type: ACTIONS.ADD_HOVER_FILTER,
-          payload: { element: researchFieldIdArray },
+          payload: { element: researchFieldIdArray }, 
         });*/
         setHoverGradient(true);
       } else {
