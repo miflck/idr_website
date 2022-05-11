@@ -19,30 +19,56 @@
   font-style: normal;
   src: url("../assets/SangBleuKingdom-Regular.otf") format("opentype");
 }
+/*
+@font-face {
+  font-family: "Sang";
+  font-weight: normal;
+  font-style: italic, oblique;
+  src: url("../assets/SangBleuRepublic-BookItalic-WebTrial.woff");
+}
 
 @font-face {
-  font-family: "Alpina";
-  src: url("../public/GT-Alpina-Medium-Trial.woff2");
-  font-weight: 500;
+  font-family: "Sang";
+  font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  src: url("../assets/SangBleuRepublic-Book-WebTrial.woff");
 }
 
+
 @font-face {
-  font-family: "Alpina";
-  src: url("../public/GT-Alpina-Regular-Trial.woff2");
-  font-weight: 400;
+  font-family: "Sang";
+  font-weight: bold;
   font-style: normal;
-  font-display: swap;
+  src: url("../assets/SangBleuRepublic-Bold-WebTrial.woff");
+}
+*/
+
+/*
+@font-face {
+  font-family: "Sang";
+  font-weight: normal;
+  font-style: italic, oblique;
+  src: url("../assets/SangBleuKingdom-RegularItalic-WebTrial.woff");
+}
+@font-face {
+  font-family: "Sang";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../assets/SangBleuKingdom-Regular-WebTrial.woff");
 }
 
 @font-face {
-  font-family: "Alpina";
-  src: url("../public/GT-Alpina-Standard-Regular-Italic.woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
+  font-family: "Sang";
+  font-weight: bold;
+  font-style: bold;
+  src: url("../assets/SangBleuKingdom-Bold-WebTrial.woff");
 }
+*/
+/*
+*/
+
+
+
 
 html,
 body {
@@ -53,6 +79,12 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: subpixel-antialiased;
 }
+
+html{
+  font-size: var(--fontsizenormal);
+  line-height: var(--lineheighnormal);
+}
+
 
 @keyframes smoothslidein {
   0% {
@@ -81,7 +113,7 @@ h2 {
 }
 
 p {
-  line-height: 1.57rem;
+
 }
 
 a {

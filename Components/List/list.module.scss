@@ -93,8 +93,8 @@
 
   display: block;
   width: 100%;
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
+  //-webkit-filter: grayscale(1);
+  //filter: grayscale(1);
   cursor: pointer;
   position: relative;
   &:hover {
