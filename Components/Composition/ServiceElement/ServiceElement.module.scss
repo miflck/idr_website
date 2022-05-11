@@ -4,6 +4,9 @@
   margin-block-end: 1.25rem;
   break-inside: avoid-column;
   vertical-align: top;
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;   
+       box-sizing: border-box;    
 
   h2 {
     text-decoration: underline;
@@ -22,6 +25,7 @@
 @media (min-width: $breakpointMedium) {
   .root {
     width: 33%;
+   padding-right:1rem;
   }
 }
 

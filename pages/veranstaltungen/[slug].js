@@ -88,13 +88,23 @@ export default function Veranstaltungseinzelansicht(props) {
   };
 
   if (props.data) {
-    const date = new Date(datum).toLocaleString([], {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    const now = new Date();
+    let date;
+    if (new Date(datum) < now) {
+      date = new Date(datum).toLocaleString([], {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    } else {
+      date = new Date(datum).toLocaleString([], {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    }
 
     let background_style;
     let colors = [];
@@ -189,10 +199,9 @@ export default function Veranstaltungseinzelansicht(props) {
 
         <Container>
           <div className={styles.serviceWrapper}>
-            <ServiceElement title={t("Zeit")}>{date}</ServiceElement>
-            <ServiceElement title={t("ReferentIn")}>
-              {referentIn}
-            </ServiceElement>
+            <ServiceElement title={t("Zeit")}>{`${date} ${
+              new Date(datum) < now ? "" : "UHR"
+            }`}</ServiceElement>
 
             {serviceBlocks != null &&
               serviceBlocks.map((block) => {

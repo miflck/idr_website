@@ -11,7 +11,7 @@ const ListItemVeranstaltung = (props) => {
   const globalState = useContext(AppContext);
   const { state } = globalState;
   const { dispatch } = globalState;
-
+  const { datum } = props;
   // const { t } = useTranslation('common')
 
   const [showHoverGradient, setHoverGradient] = useState();
@@ -49,14 +49,24 @@ const ListItemVeranstaltung = (props) => {
     href += `/${props.slug}`;
   }
 
-  const date = new Date(props.datum).toLocaleString([], {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
+  const now = new Date();
+  let date;
+  if (new Date(datum) < now) {
+    date = new Date(datum).toLocaleString([], {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } else {
+    date = new Date(datum).toLocaleString([], {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+  console.log("DAtum", datum, date);
   // factory for gradient background style
   const getGradientBackgroundStyle = (gradient, anim, opac) => {
     return {
@@ -77,13 +87,6 @@ const ListItemVeranstaltung = (props) => {
     animationOut,
     0
   );
-
-  const enddatum = new Date(props.enddatum).toLocaleString([], {
-    year: "numeric",
-  });
-  const startdatum = new Date(props.startdatum).toLocaleString([], {
-    year: "numeric",
-  });
 
   if (props.showGradient || showHoverGradient) {
     background_style = getGradientBackgroundStyle(
@@ -113,7 +116,9 @@ const ListItemVeranstaltung = (props) => {
 
         <Container>
           <div className={styles.content}>
-            <div className={styles.datum}>{date} Uhr</div>
+            <div className={styles.datum}>{`${date} ${
+              new Date(datum) < now ? "" : "UHR"
+            }`}</div>
 
             <Link href={href} as={href}>
               <div className={styles.linkwrapper}>
