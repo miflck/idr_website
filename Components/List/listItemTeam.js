@@ -56,15 +56,21 @@ const ListItemTeam = (props) => {
 
   // get Array of colors from all tags
   const colorArray = getColorArray(props.forschungsfeld);
+  let titleColor = "var(--maincolor)";
   //  const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
   //colorArray[1]="#FF0000";
   if (colorArray.length < 1) {
     colorArray[0] = "#000000";
-    colorArray[1] = "#000000";
+    colorArray[1] = "#FFFFFF";
+    titleColor = "var(--secondcolor)";
   }
   if (colorArray.length < 2) {
     colorArray[1] = "#FFFFFF";
   }
+
+  const gradientStyleColor = props.showGradient
+    ? { color: titleColor }
+    : { color: "inherit" };
 
   // const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
   const gradient_highlight = makeGradientFromArray(colorArray, "to right");
@@ -114,6 +120,8 @@ const ListItemTeam = (props) => {
         className={` ${styles.wrapper} ${
           showHoverGradient ? styles.highlight : ""
         }`}
+        style={gradientStyleColor}
+        //style={`${showHoverGradient ? { color: "white" } : { color: "blue" }}`}
         onMouseEnter={() => handleHover(true)}
         onTouchStart={() => handleHover(true)}
         onMouseLeave={() => handleHover(false)}
