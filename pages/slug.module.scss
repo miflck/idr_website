@@ -109,25 +109,12 @@
     }
     */
 
-  .speztitel {
-    text-transform: uppercase;
-    font-size: var(--fontsizenormal);
-    line-height: var(--lineheightnormal);
-    margin-top: calc(var(--padding) * 3);
-    margin-left: calc(var(--padding) * 5);
-  }
+
   .referentIn {
     margin-left: calc(var(--padding) * 5);
     margin-bottom: calc(var(--padding) * 5);
   }
-  .zentriert {
-    align-content: center;
-    text-align: center;
-    margin: var(--padding);
-    padding: var(--padding);
-    border-radius: 100px;
-    margin-bottom: calc(var(--padding) * 5);
-  }
+
 }
 
 @media (min-width: $breakpointSmall) {
