@@ -78,25 +78,25 @@ const ListItemTeam = (props) => {
     );
   }
 
-  const gradient_test = makeGradient(
+  const gradient_image = makeGradient(
     colorArray[0] + "80",
     "rgba(255,255,255,0)",
     "to bottom"
   );
-  let background_style_test = getGradientBackgroundStyle(
-    gradient_test,
+  let background_style_image = getGradientBackgroundStyle(
+    gradient_image,
     animationOut,
     0
   );
   if (props.showGradient || showHoverGradient) {
-    background_style_test = getGradientBackgroundStyle(
-      gradient_test,
+    background_style_image = getGradientBackgroundStyle(
+      gradient_image,
       animationIn,
       1
     );
 
-    // background_style_test["mix-blend-mode"]="multiply"
-    background_style_test["zIndex"] = "100";
+    background_style_image["mix-blend-mode"] = "multiply";
+    background_style_image["zIndex"] = "100";
   }
 
   // props.forschungsfeld = [...props.funktion, ...props.forschungsfeld];
@@ -123,9 +123,8 @@ const ListItemTeam = (props) => {
                 <div className={styles.portraitWrapper}>
                   <GradientContainer
                     style={{ zIndex: 100 }}
-                    // backgroundStyle={background_style_test}
+                    // backgroundStyle={background_style_image}
                   >
-                    {/**  <ImageElement src={props.portrait.url}  alt={props.portrait.alt} focalPoint={props.portrait.focalPoint} responsiveImage={props.portrait.responsiveImage}></ImageElement>*/}
                     {/**Check if portrait even exists */}
                     {typeof props.portrait === "object" &&
                       props.portrait !== null && (
@@ -135,13 +134,6 @@ const ListItemTeam = (props) => {
                       )}
                   </GradientContainer>
                 </div>
-                {/* 
-              <img 
-                src={props.portrait.url}
-                src={props.portrait.url} 
-                alt={props.portrait.alt} 
-              />
-*/}
 
                 <ElementTitle highlight={showHoverGradient}>
                   {props.name}

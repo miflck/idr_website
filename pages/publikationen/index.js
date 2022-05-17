@@ -92,38 +92,11 @@ export default function Publikationen(props) {
     });
   }
 
-  /*
-  //nach Forschungsfelder filtern
-  function filterBy(data, filterterms) {
-    if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
-    return data.filter((obj) => {
-      //kann sein: every für && und some für || ?
-      return filterterms.some((term) => {
-        return obj.forschungsfeld.some((feld) => {
-          return feld.id.toString().includes(term);
-        });
-      });
-    });
-  }
-*/
-
   const [filterdList, setFilterdList] = useState([]);
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
-  /*let result;
-  if (filterdList.length > 0 && searchFilterdList.length > 0) {
-    result = getIntersection([filterdList, searchFilterdList]);
-  } else {
-    result =
-      filterdList.length < searchFilterdList.length
-        ? searchFilterdList
-        : filterdList;
-  }
-*/
-
   let result =
     getIntersection([filterdList, searchFilterdList]) || publicationData;
-  //console.log(filterdList, searchFilterdList, publicationData, result);
 
   useEffect(() => {
     setFilterdList(filterBy(publicationData, state.activeFilters));

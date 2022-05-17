@@ -12,23 +12,21 @@ import {
 
 const ListItemProjekt = (props) => {
   const globalState = useContext(AppContext);
-  const { state } = globalState;
   const { dispatch } = globalState;
-
   const [showHoverGradient, setHoverGradient] = useState();
 
   const handleHover = (isHover) => {
     if (isHover) {
-      dispatch({
+      /*  dispatch({
         type: ACTIONS.ADD_HOVER_FILTER,
         payload: { element: researchFieldIdArray },
-      });
+      });*/
       setHoverGradient(true);
     } else {
-      dispatch({
+      /* dispatch({
         type: ACTIONS.REMOVE_HOVER_FILTER,
         payload: { element: researchFieldIdArray },
-      });
+      });*/
       setHoverGradient(false);
     }
   };
@@ -51,7 +49,6 @@ const ListItemProjekt = (props) => {
     return acc;
   }, []);
 
-  //const colorArray = getColorArray(props.forschungsfeld);
   const colorArray = getColorArray(props.forschungsfeld);
   const gradient_highlight = makeGradientFromArray(colorArray, "to right");
   const gradient_normal = `linear-gradient(to right,"white"})`;

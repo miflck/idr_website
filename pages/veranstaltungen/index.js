@@ -17,7 +17,11 @@ import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import Lupe from "../../Components/Lupe/Lupe";
-import { searchInputArray } from "../../lib/helpers";
+import {
+  searchInputArray,
+  getIntersection,
+  searchInputArrayRecursive,
+} from "../../lib/helpers";
 import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
@@ -26,11 +30,13 @@ import ListItemProjekt from "../../Components/List/listItemProjekt";
 
 const Veranstaltungen = (props) => {
   const {
-    veranstaltungen: { allVeranstaltungs },
+    veranstaltungen: { allVeranstaltungs: data },
   } = props;
   const {
     veranstaltungen: { allForschungsfelders },
   } = props;
+
+  console.log(data);
   // console.log("props",props);
   const { t } = useTranslation("common");
 
@@ -51,10 +57,10 @@ const Veranstaltungen = (props) => {
 
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
-    console.log("filter by", data, filterterms);
+    if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
     return data.filter((obj) => {
       //kann sein: every für && und some für || ?
-      return filterterms.every((term) => {
+      return filterterms.some((term) => {
         return obj.forschungsfeld.some((feld) => {
           return feld.id.toString().includes(term);
         });
@@ -63,10 +69,12 @@ const Veranstaltungen = (props) => {
   }
 
   const [filterdList, setFilterdList] = useState([]);
+  const [searchFilterdList, setSearchFilterdList] = useState([]);
+  // get data after all filters
+  let result = getIntersection([filterdList, searchFilterdList]) || data;
 
   useEffect(() => {
-    setFilterdList(filterBy(allVeranstaltungs, state.activeFilters));
-    console.log("ACTIVE FILTER", state.activeFilters);
+    setFilterdList(filterBy(data, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
@@ -74,25 +82,19 @@ const Veranstaltungen = (props) => {
     }
   }, [state.activeFilters]);
 
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInput(data, inputvalue) {
-    return data.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (Array.isArray(obj[key])) {
-          return obj[key].some((entry) => {
-            return Object.keys(entry).some((kkey) => {
-              return entry[kkey].toString().includes(inputvalue);
-            });
-          });
-        } else {
-          return obj[key]
-            .toString()
-            .toLowerCase()
-            .includes(inputvalue.toLowerCase());
-        }
-      });
-    });
-  }
+  // fields to search
+  let fields = ["titel", "referentIn", "value"];
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    let array = [...state.searchTerms, search];
+    setSearchFilterdList(searchInputArrayRecursive(data, array, fields));
+  }, [search]);
+
+  useEffect(() => {
+    setSearchFilterdList(
+      searchInputArrayRecursive(data, state.searchTerms, fields)
+    );
+  }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -111,18 +113,6 @@ const Veranstaltungen = (props) => {
       payload: { element: e },
     });
   };
-
-  const [search, setSearch] = useState("");
-  useEffect(() => {
-    const isEmpty = Object.keys(search).length === 0;
-    setFilterdList(searchInput(allVeranstaltungs, search));
-  }, [search]);
-
-  useEffect(() => {
-    const isEmpty = Object.keys(state.searchTerms).length === 0;
-    // if (!isEmpty)
-    setFilterdList(searchInputArray(allVeranstaltungs, state.searchTerms));
-  }, [state.searchTerms]);
 
   return (
     <Layout
@@ -147,7 +137,7 @@ const Veranstaltungen = (props) => {
       </HeaderWrapper>
 
       <div className={styles.listwrapper}>
-        {filterdList.map((veranstaltung) => {
+        {result.map((veranstaltung) => {
           return (
             <ListItemVeranstaltung
               {...veranstaltung}

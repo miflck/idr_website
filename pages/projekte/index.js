@@ -37,10 +37,6 @@ export default function Projekte(props) {
 
   const [showGradient, setShowGradient] = useState(false);
 
-  const handleShowGradient = (val) => {
-    dispatch({ type: ACTIONS.SHOW_GRADIENT, payload: { showGradient: val } });
-  };
-
   const removeAllHoverFilter = () => {
     dispatch({ type: ACTIONS.REMOVE_ALL_HOVER_FILTER });
   };
@@ -70,7 +66,6 @@ export default function Projekte(props) {
 
   // get data after all filters
   let result = getIntersection([filterdList, searchFilterdList]) || data;
-  console.log(filterdList, searchFilterdList, result);
 
   // on change active filters
   useEffect(() => {
@@ -84,7 +79,6 @@ export default function Projekte(props) {
 
   // fields to search
   let fields = ["titel", "name", "value"];
-
   const [search, setSearch] = useState("");
   useEffect(() => {
     let array = [...state.searchTerms, search];

@@ -65,18 +65,6 @@ const Team = (props) => {
     });
   }
 
-  function sortByLastname(arr) {
-    return arr.sort((a, b) => {
-      console.log(a.name, a.name.charCodeAt(a.length - 1));
-      a.name.charCodeAt(a.name.length - 1) -
-        b.name.charCodeAt(b.name.length - 1);
-    });
-  }
-
-  function lastNameSort(a, b) {
-    return a.name.split(" ").pop()[0] > b.name.split(" ").pop()[0];
-  }
-
   //nach Felder filtern, ||
   function filterByKeys(data, filterterms, keys) {
     if (filterterms.length == 0) return data; // am anfang ohne filterdata
@@ -118,9 +106,6 @@ const Team = (props) => {
         : filterdForschungsfelder;
   }
 
-  console.log("resultFilter", resultFilter);
-  console.log("searchFilterdList", searchFilterdList);
-
   if (resultFilter.length > 0 && searchFilterdList.length > 0) {
     result = getIntersection([resultFilter, searchFilterdList]);
   } else {
@@ -142,8 +127,6 @@ const Team = (props) => {
 
   // on change active filters
   useEffect(() => {
-    console.log("use Effect from Team", state.activeFilters);
-    //console.log("FILTER FROM CONTEXT  ",state.activeFilters)
     setFilterdList(
       filterByKeys(allMenschens, state.activeFilters, [
         "forschungsfeld",
