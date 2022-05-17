@@ -6,6 +6,11 @@ import Container from "../../Components/Container/container";
 import ForschungsfeldElement from "../ForschungsfeldElement/forschungsfeldElement";
 // import { useTranslation } from 'next-i18next'
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import {
+  getColorArray,
+  getGradientBackgroundStyle,
+  makeGradientFromArray,
+} from "../../lib";
 
 const ListItemVeranstaltung = (props) => {
   const globalState = useContext(AppContext);
@@ -32,17 +37,6 @@ const ListItemVeranstaltung = (props) => {
       setHoverGradient(false);
     }
   };
-  // get array of Ids of tags for handleHover
-  const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
-    acc.push(it.id);
-    return acc;
-  }, []);
-
-  // get Array of colors from all tags
-  const colorArray = props.forschungsfeld.reduce((acc, it) => {
-    acc.push(it.colour.hex);
-    return acc;
-  }, []);
 
   let href = `/veranstaltungen`;
   if (props.slug != "") {
@@ -66,20 +60,17 @@ const ListItemVeranstaltung = (props) => {
       minute: "2-digit",
     });
   }
-  console.log("DAtum", datum, date);
-  // factory for gradient background style
-  const getGradientBackgroundStyle = (gradient, anim, opac) => {
-    return {
-      background: gradient,
-      opacity: opac,
-      animation: anim,
-    };
-  };
-  const gradient_highlight = `linear-gradient(to right, ${
-    colorArray[0] || "var(--maincolor)"
-  }, ${colorArray[1] || "white"}`;
+
+  // get array of Ids of tags for handleHover
+  const researchFieldIdArray = props.forschungsfeld.reduce((acc, it) => {
+    acc.push(it.id);
+    return acc;
+  }, []);
+
+  const colorArray = getColorArray(props.forschungsfeld);
+  const gradient_highlight = makeGradientFromArray(colorArray, "to right");
   const gradient_normal = `linear-gradient(to right,"white"})`;
-  const animationOut = `${styles.fadeOut} .9s ease`;
+  const animationOut = `${styles.fadeOut} 1.2s ease`;
   const animationIn = ` ${styles.fadeIn} 0.5s ease`;
 
   let background_style = getGradientBackgroundStyle(

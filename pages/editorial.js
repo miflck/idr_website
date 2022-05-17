@@ -48,7 +48,7 @@ const Editorial = (props) => {
 
   useEffect(() => {
     removeAllHoverFilter();
-    //removeAllActiveFilter();
+    removeAllActiveFilter();
   }, []);
 
   const [filterdList, setFilterdList] = useState(allEditorials);

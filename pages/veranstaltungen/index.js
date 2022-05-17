@@ -62,19 +62,6 @@ const Veranstaltungen = (props) => {
     });
   }
 
-  /*
-  const [filter, setFilter] = useState([]);
-  const addMoreItem = (item) => {
-    const copyfilter = [...filter];
-    var index = copyfilter.indexOf(item);
-    if (index !== -1) {
-      copyfilter.splice(index, 1);
-      setFilter([...copyfilter]);
-    } else {
-      setFilter([...filter, item]);
-    }
-  };
-*/
   const [filterdList, setFilterdList] = useState([]);
 
   useEffect(() => {
@@ -132,7 +119,6 @@ const Veranstaltungen = (props) => {
   }, [search]);
 
   useEffect(() => {
-    console.log(state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
     // if (!isEmpty)
     setFilterdList(searchInputArray(allVeranstaltungs, state.searchTerms));

@@ -14,15 +14,12 @@ import {
   makeGradient,
 } from "../../lib";
 import { makeGradientFromArray } from "../../lib/helpers";
-import { ImageElement } from "../Composition";
 import { ResponsiveImage } from "../Composition";
 import { ElementTitle } from "../Composition";
 
 const ListItemTeam = (props) => {
   const globalState = useContext(AppContext);
-  const { state } = globalState;
   const { dispatch } = globalState;
-
   const [showHoverGradient, setHoverGradient] = useState(false);
 
   const handleHover = (isHover) => {
@@ -41,8 +38,6 @@ const ListItemTeam = (props) => {
     }
   };
 
-  const handleShowGradient = (val) => {};
-
   let href = `/team`;
   if (props.slug != "") {
     href += `/${props.slug}`;
@@ -56,27 +51,18 @@ const ListItemTeam = (props) => {
 
   // get Array of colors from all tags
   const colorArray = getColorArray(props.forschungsfeld);
+  // if background is black, name must be white…
   let titleColor = "var(--maincolor)";
-  //  const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
-  //colorArray[1]="#FF0000";
-  if (colorArray.length < 1) {
-    colorArray[0] = "#000000";
-    colorArray[1] = "#FFFFFF";
+  if (colorArray[0] == "var(--maincolor)") {
     titleColor = "var(--secondcolor)";
   }
-  if (colorArray.length < 2) {
-    colorArray[1] = "#FFFFFF";
-  }
-
-  const gradientStyleColor = props.showGradient
+  const actualTitleColor = props.showGradient
     ? { color: titleColor }
     : { color: "inherit" };
 
   // const gradient_highlight=makeGradient(colorArray[0],colorArray[1],"to left");
   const gradient_highlight = makeGradientFromArray(colorArray, "to right");
-  const gradient_normal = `linear-gradient(to right,"white"})`;
-
-  const animationOut = `${styles.fadeOut} .9s ease`;
+  const animationOut = `${styles.fadeOut} 1.2s ease`;
   const animationIn = ` ${styles.fadeIn} 0.5s ease`;
 
   let background_style = getGradientBackgroundStyle(
@@ -120,7 +106,7 @@ const ListItemTeam = (props) => {
         className={` ${styles.wrapper} ${
           showHoverGradient ? styles.highlight : ""
         }`}
-        style={gradientStyleColor}
+        style={actualTitleColor}
         //style={`${showHoverGradient ? { color: "white" } : { color: "blue" }}`}
         onMouseEnter={() => handleHover(true)}
         onTouchStart={() => handleHover(true)}

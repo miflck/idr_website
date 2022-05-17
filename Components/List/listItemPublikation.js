@@ -5,6 +5,11 @@ import { AppContext, ACTIONS } from "../../context/state";
 import React, { useEffect, useContext, useState } from "react";
 import ForschungsfeldElement from "../ForschungsfeldElement/forschungsfeldElement";
 import { PublicationFilter, getForschungsfeldId } from "../../lib/helpers";
+import {
+  getColorArray,
+  getGradientBackgroundStyle,
+  makeGradientFromArray,
+} from "../../lib";
 
 const ListItemPublikation = (props) => {
   if (props) {
@@ -48,30 +53,14 @@ const ListItemPublikation = (props) => {
       year: "numeric",
     });
 
-    // get Array of colors from all tags
-    const colorArray = props.forschungsfeld.reduce((acc, it) => {
-      acc.push(it.colour.hex);
-      return acc;
-    }, []);
+    const colorArray = getColorArray(props.forschungsfeld);
 
-    // factory for gradient background style
-    const getGradientBackgroundStyle = (gradient, anim, opac) => {
-      return {
-        background: gradient,
-        opacity: opac,
-        animation: anim,
-      };
-    };
-
-    const gradient_highlight = `linear-gradient(to right, ${colorArray[0]}, ${
-      colorArray[1] || "white"
-    })`;
-    const gradient_normal = `linear-gradient(to right,"white"})`;
-    const animationOut = `${styles.fadeOut} .9s ease`;
-    const animationIn = ` ${styles.fadeIn} 0.2s ease`;
+    const gradient_highlight = makeGradientFromArray(colorArray, "to right");
+    const animationOut = `${styles.fadeOut} 1.2s ease`;
+    const animationIn = ` ${styles.fadeIn} .5s ease`;
 
     let background_style = getGradientBackgroundStyle(
-      gradient_normal,
+      gradient_highlight,
       animationOut,
       0
     );
