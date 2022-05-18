@@ -39,6 +39,18 @@ export default function Publikationen(props) {
   const { state } = globalState;
   const { dispatch } = globalState;
 
+  const removeAllHoverFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_HOVER_FILTER });
+  };
+  const removeAllActiveFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_ACTIVE_FILTER });
+  };
+
+  useEffect(() => {
+    removeAllHoverFilter();
+    removeAllActiveFilter();
+  }, []);
+
   const [publicationData, setPublicationData] = useState([]);
   const [showGradient, setShowGradient] = useState(false);
 

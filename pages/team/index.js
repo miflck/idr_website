@@ -49,9 +49,17 @@ const Team = (props) => {
   const { dispatch } = globalState;
   const [showGradient, setShowGradient] = useState(false);
 
-  const handleShowGradient = (val) => {
-    dispatch({ type: ACTIONS.SHOW_GRADIENT, payload: { showGradient: val } });
+  const removeAllHoverFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_HOVER_FILTER });
   };
+  const removeAllActiveFilter = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_ACTIVE_FILTER });
+  };
+
+  useEffect(() => {
+    removeAllHoverFilter();
+    removeAllActiveFilter();
+  }, []);
 
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
