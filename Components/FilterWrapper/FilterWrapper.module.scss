@@ -1,5 +1,7 @@
 @import "../.././styles/breakpoints.scss";
 
+
+
 .root {
   top: 0rem;
   background-color: rgba(255, 255, 255, 0.85);
@@ -12,8 +14,10 @@
     padding-block-end: 0.5rem; //var(--paddingabsatzbottom);
     border-bottom: solid thin var(--maincolor);
     height: auto;
+    
     &:empty{
       display: none;
+
     }
 }
 

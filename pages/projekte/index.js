@@ -9,6 +9,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
 import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
+import { SearchTermWrapper } from "../../Components";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import { useRouter } from "next/router";
 
@@ -158,11 +159,11 @@ export default function Projekte(props) {
             handleSubmit={handleSubmit}
           ></Lupe>
         </FilterWrapper>
-        <FilterWrapper>
+        <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
-        </FilterWrapper>
+        </SearchTermWrapper>
       </HeaderWrapper>
 
       <div className={styles.listwrapper}>
