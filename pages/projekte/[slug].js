@@ -61,11 +61,18 @@ export default function Projekteinzelansicht(props) {
   const { state } = globalState;
   const { dispatch } = globalState;
 
-  console.log("PAge props", props);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading…</div>;
   }
+
+  useEffect(() => {
+    console.log("state  slug!--", state, router);
+    dispatch({
+      type: ACTIONS.SET_PATH,
+      payload: { element: router.pathname },
+    });
+  }, []);
 
   const handleHover = (isHover, id) => {
     if (isHover) {

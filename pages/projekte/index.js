@@ -10,6 +10,8 @@ import { AppContext, ACTIONS } from "../../context/state";
 import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
+import { useRouter } from "next/router";
+
 import {
   searchInput,
   searchInputArray,
@@ -27,13 +29,22 @@ export default function Projekte(props) {
     projekte: { allForschungsfelders },
   } = props;
 
-  console.log(allForschungsfelders);
   const { t } = useTranslation("common");
 
   // context
   const globalState = useContext(AppContext);
   const { state } = globalState;
   const { dispatch } = globalState;
+
+  const router = useRouter();
+  useEffect(() => {
+    dispatch({
+      type: ACTIONS.SET_PATH,
+      payload: { element: router.pathname },
+    });
+  }, []);
+
+  console.log("1", router.pathname, state.currentPath, state.previousPath);
 
   const [showGradient, setShowGradient] = useState(false);
 
@@ -43,10 +54,25 @@ export default function Projekte(props) {
   const removeAllActiveFilter = () => {
     dispatch({ type: ACTIONS.REMOVE_ALL_ACTIVE_FILTER });
   };
+  const removeAllSearchterms = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_SEARCHTERM });
+  };
 
   useEffect(() => {
-    removeAllHoverFilter();
-    removeAllActiveFilter();
+    const params = router.pathname.split("/");
+    const prevparams = state.currentPath.split("/");
+    console.log(
+      "2",
+      prevparams.length,
+      router.pathname,
+      state.currentPath,
+      state.previousPath
+    );
+    if (prevparams.length <= 2) {
+      removeAllHoverFilter();
+      removeAllActiveFilter();
+      removeAllSearchterms();
+    }
   }, []);
 
   //nach Forschungsfelder filtern
@@ -124,13 +150,18 @@ export default function Projekte(props) {
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
           {state.searchTerms.map((term, index) => {
-            return <SearchTerm key={index} term={term}></SearchTerm>;
+            //return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
           <Lupe
             setSearch={setSearch}
             handleKeyDown={handleKeyDown}
             handleSubmit={handleSubmit}
           ></Lupe>
+        </FilterWrapper>
+        <FilterWrapper>
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
         </FilterWrapper>
       </HeaderWrapper>
 

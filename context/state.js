@@ -11,6 +11,8 @@ const initialState = {
   activeFilters: [],
   publicationData: [],
   searchTerms: [],
+  previousPath: "",
+  currentPath: "",
 };
 
 const AppContext = createContext(initialState);
@@ -22,7 +24,6 @@ const ACTIONS = {
   //CHANGE_FOOTERCOLOR:'set footer',
 
   SET_DATA: "set data",
-
   SHOW_GRADIENT: "show gradient",
 
   ADD_HOVER_ELEMENT: "add hover element",
@@ -37,6 +38,9 @@ const ACTIONS = {
   REMOVE_ALL_ACTIVE_FILTER: "remove all active filter",
   ADD_SEARCHTERM: "add searchterm",
   REMOVE_SEARCHTERM: "remove searchterm",
+  REMOVE_ALL_SEARCHTERM: "remove all searchterm",
+
+  SET_PATH: "set path",
 };
 
 const StateProvider = ({ children }) => {
@@ -138,6 +142,20 @@ const StateProvider = ({ children }) => {
           ),
         }; // do something with the action
         break;
+
+      case ACTIONS.REMOVE_ALL_SEARCHTERM:
+        return {
+          ...state,
+          searchTerms: [],
+        };
+        break;
+
+      case ACTIONS.SET_PATH:
+        return {
+          ...state,
+          previousPath: state.currentPath,
+          currentPath: action.payload.element,
+        };
 
       default:
         throw new Error();

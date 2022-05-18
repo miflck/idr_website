@@ -55,10 +55,14 @@ const Team = (props) => {
   const removeAllActiveFilter = () => {
     dispatch({ type: ACTIONS.REMOVE_ALL_ACTIVE_FILTER });
   };
+  const removeAllSearchterms = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_SEARCHTERM });
+  };
 
   useEffect(() => {
     removeAllHoverFilter();
     removeAllActiveFilter();
+    removeAllSearchterms();
   }, []);
 
   //nach Forschungsfelder filtern

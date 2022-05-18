@@ -11,7 +11,12 @@
     padding-block-start: 0.5rem; //var(--paddingabsatzbottom);
     padding-block-end: 0.5rem; //var(--paddingabsatzbottom);
     border-bottom: solid thin var(--maincolor);
-  }
+    height: auto;
+    &:empty{
+      display: none;
+    }
+}
+
 }
 
 @media (min-width: $breakpointSmall) {

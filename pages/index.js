@@ -46,10 +46,14 @@ export default function Home(props) {
   const removeAllActiveFilter = () => {
     dispatch({ type: ACTIONS.REMOVE_ALL_ACTIVE_FILTER });
   };
+  const removeAllSearchterms = () => {
+    dispatch({ type: ACTIONS.REMOVE_ALL_SEARCHTERM });
+  };
 
   useEffect(() => {
     removeAllHoverFilter();
     removeAllActiveFilter();
+    removeAllSearchterms();
   }, []);
 
   const [showGradient, setShowGradient] = useState(false);

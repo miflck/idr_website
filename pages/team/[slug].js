@@ -10,6 +10,8 @@ import styles from "./team.module.scss";
 import Layout from "../../Components/Layout/layout";
 import React, { useEffect, useContext, useState } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import Header from "../../Components/Header/header";
 
 import Container from "../../Components/Container/container";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
@@ -180,6 +182,9 @@ export default function Menscheinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
+        <HeaderWrapper>
+          <Header></Header>
+        </HeaderWrapper>
         <Container>
           <Backbutton />
         </Container>
