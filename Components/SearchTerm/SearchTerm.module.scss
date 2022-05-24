@@ -29,9 +29,11 @@
 
   color: var(--maincolor);
   animation: append-animate 0.2s ease-in-out;
+  color: var(--secondcolor);
+  background-color: var(--maincolor);
 
   &:hover {
-    color: var(--secondcolor);
-    background-color: var(--maincolor);
+    color: var(--maincolor);
+    background-color: var(--secondcolor);
   }
 }
