@@ -153,9 +153,9 @@ export default function Projekte(props) {
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
-          {state.searchTerms.map((term, index) => {
+          {/*state.searchTerms.map((term, index) => {
             //return <SearchTerm key={index} term={term}></SearchTerm>;
-          })}
+          })*/}
           <Lupe
             setSearch={setSearch}
             handleKeyDown={handleKeyDown}

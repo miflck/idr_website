@@ -15,6 +15,7 @@ import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
 
 import Lupe from "../Components/Lupe/Lupe";
 import SearchTerm from "../Components/SearchTerm/SearchTerm";
+import { SearchTermWrapper } from "../Components";
 import FilterWrapper from "../Components/FilterWrapper/FilterWrapper";
 import {
   searchInputArrayRecursive,
@@ -137,15 +138,18 @@ export default function Home(props) {
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
-          {state.searchTerms.map((term, index) => {
-            return <SearchTerm key={index} term={term}></SearchTerm>;
-          })}
+
           <Lupe
             setSearch={setSearch}
             handleKeyDown={handleKeyDown}
             handleSubmit={handleSubmit}
           ></Lupe>
         </FilterWrapper>
+        <SearchTermWrapper>
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+        </SearchTermWrapper>
       </HeaderWrapper>
 
       <TileGrid>

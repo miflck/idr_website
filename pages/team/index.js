@@ -214,15 +214,18 @@ const Team = (props) => {
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allFilter} />
-          {state.searchTerms.map((term, index) => {
-            return <SearchTerm key={index} term={term}></SearchTerm>;
-          })}
+
           <Lupe
             setSearch={setSearch}
             handleKeyDown={handleKeyDown}
             handleSubmit={handleSubmit}
           ></Lupe>
         </FilterWrapper>
+        <SearchTermWrapper>
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+        </SearchTermWrapper>
       </HeaderWrapper>
 
       {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}

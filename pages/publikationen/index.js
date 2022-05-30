@@ -16,6 +16,8 @@ import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 import { FilterWrapper } from "../../Components";
 import { Lupe } from "../../Components";
 import { SearchTerm } from "../../Components";
+import { SearchTermWrapper } from "../../Components";
+
 import {
   searchInput,
   searchInputArray,
@@ -239,15 +241,18 @@ export default function Publikationen(props) {
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
-          {state.searchTerms.map((term, index) => {
-            return <SearchTerm key={index} term={term}></SearchTerm>;
-          })}
+
           <Lupe
             setSearch={setSearch}
             handleKeyDown={handleKeyDown}
             handleSubmit={handleSubmit}
           ></Lupe>
         </FilterWrapper>
+        <SearchTermWrapper>
+          {state.searchTerms.map((term, index) => {
+            return <SearchTerm key={index} term={term}></SearchTerm>;
+          })}
+        </SearchTermWrapper>
       </HeaderWrapper>
 
       {/* <SuchFeldElement setSearch={setSearch}/> */}
