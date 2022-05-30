@@ -60,6 +60,7 @@ const Team = (props) => {
   };
 
   useEffect(() => {
+    console.log("use effect pageload");
     removeAllHoverFilter();
     removeAllActiveFilter();
     removeAllSearchterms();
@@ -111,34 +112,53 @@ const Team = (props) => {
       filterdForschungsfelder,
       filterdFunktionen,
     ]);
+    console.log(" intersection", resultFilter);
   } else {
     resultFilter =
       filterdForschungsfelder.length < filterdFunktionen.length
         ? filterdFunktionen
         : filterdForschungsfelder;
+    console.log(
+      "resultFilter",
+      resultFilter,
+      filterdForschungsfelder,
+      filterdFunktionen
+    );
   }
-
+  console.log(" resultfilter", resultFilter);
   if (resultFilter.length > 0 && searchFilterdList.length > 0) {
     result = getIntersection([resultFilter, searchFilterdList]);
+    console.log(" result", result, resultFilter, searchFilterdList);
   } else {
     result =
       resultFilter.length < searchFilterdList.length
         ? searchFilterdList
         : resultFilter;
+
+    console.log(
+      "else result",
+
+      result,
+      resultFilter,
+      searchFilterdList
+    );
   }
 
   // on change active filters
-  useEffect(() => {
+  /*useEffect(() => {
+    console.log("use effect state.activeFilters");
+
     setFilterdList(result);
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
       setShowGradient(false);
     }
-  }, [state.activeFilters]);
+  }, [state.activeFilters]);*/
 
   // on change active filters
   useEffect(() => {
+    console.log("use effect state.activeFilters2");
     setFilterdList(
       filterByKeys(allMenschens, state.activeFilters, [
         "forschungsfeld",

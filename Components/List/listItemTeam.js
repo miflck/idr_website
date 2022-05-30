@@ -99,6 +99,22 @@ const ListItemTeam = (props) => {
     background_style_image["zIndex"] = "100";
   }
 
+  const portrait = () => {
+    if (typeof props.portraitZoom === "object" && props.portraitZoom !== null) {
+      return (
+        <ResponsiveImage
+          responsiveImage={props.portraitZoom.responsiveImage}
+        ></ResponsiveImage>
+      );
+    } else if (typeof props.portrait === "object" && props.portrait !== null) {
+      return (
+        <ResponsiveImage
+          responsiveImage={props.portrait.responsiveImage}
+        ></ResponsiveImage>
+      );
+    } else return;
+  };
+
   // props.forschungsfeld = [...props.funktion, ...props.forschungsfeld];
   return (
     <Tile key={props.id} id={props.id}>
@@ -126,12 +142,13 @@ const ListItemTeam = (props) => {
                     // backgroundStyle={background_style_image}
                   >
                     {/**Check if portrait even exists */}
-                    {typeof props.portrait === "object" &&
-                      props.portrait !== null && (
+                    {/*typeof props.portraitZoom === "object" &&
+                      props.portraitZoom !== null && (
                         <ResponsiveImage
-                          responsiveImage={props.portrait.responsiveImage}
+                          responsiveImage={props.portraitZoom.responsiveImage}
                         ></ResponsiveImage>
-                      )}
+                      )*/}
+                    {portrait()}
                   </GradientContainer>
                 </div>
 
