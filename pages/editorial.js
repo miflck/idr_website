@@ -160,24 +160,26 @@ const Editorial = (props) => {
           ></Lupe>
         </FilterWrapper>
       </HeaderWrapper>
+      {filterdList.length == allEditorials.length && (
+        <div className={styles.editorialwrapper}>
+          <Container>
+            <Title title={editorialintro.editorialeinfHrungstext.titel} />
 
-      <div className={styles.editorialwrapper}>
-        <Container>
-          <Title title={editorialintro.editorialeinfHrungstext.titel} />
-          <TextContainer>
-            <div className={styles.text}>
-              <TextElement {...editorialintro.editorialeinfHrungstext.text} />
-            </div>
-            <ServiceElement></ServiceElement>
-          </TextContainer>
-        </Container>
-      </div>
+            <TextContainer>
+              <div className={styles.text}>
+                <TextElement {...editorialintro.editorialeinfHrungstext.text} />
+              </div>
+              <ServiceElement></ServiceElement>
+            </TextContainer>
+          </Container>
+        </div>
+      )}
 
       {filterdList.map((editorial) => {
         const filterdProjectlist = filterByForschungsfeld(
           allProjekts,
           editorial.forschungsfeld[0].id
-        );
+        ).slice(0, 5);
 
         let background_style;
         let background_style_small;
@@ -231,7 +233,10 @@ const Editorial = (props) => {
                     })}{" "}
                   </ServiceElement>
 
-                  <ServiceElement title={t("Projekte")}>
+                  <ServiceElement
+                    title={t("Projekte")}
+                    style={{ width: 66 + "%" }}
+                  >
                     {filterdProjectlist.map((projekt) => {
                       let href = `/projekte`;
                       if (projekt.slug != "") {
