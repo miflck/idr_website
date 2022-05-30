@@ -96,6 +96,8 @@ export default function Projekte(props) {
 
   // on change active filters
   useEffect(() => {
+    console.log("use effect", state.activeFilters);
+    console.log("yy", filterBy(data, state.activeFilters));
     setFilterdList(filterBy(data, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);

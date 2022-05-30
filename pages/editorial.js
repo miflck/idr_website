@@ -4,6 +4,8 @@ import styles from "./editorial.module.scss";
 import Layout from "../Components/Layout/layout";
 import Container from "../Components/Container/container";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import TextElement from "../Components/Composition/TextElement";
 import FilterElement from "../Components/FilterElement/filterElement";
@@ -14,7 +16,6 @@ import { Lupe } from "../Components";
 import { FilterWrapper } from "../Components";
 import { SearchTerm } from "../Components";
 import { SearchTermWrapper } from "../Components";
-import { searchInputArray } from "../lib/helpers";
 
 import Header from "../Components/Header/header";
 import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
@@ -27,6 +28,14 @@ import { GradientFadeIn } from "../Components";
 import { TextContainer } from "../Components";
 
 import { Title } from "../Components/Composition";
+
+import {
+  searchInput,
+  searchInputArray,
+  getIntersection,
+  searchInputArrayRecursive,
+} from "../lib/helpers";
+
 const Editorial = (props) => {
   const {
     editorialtexte: { allEditorials, allProjekts, allForschungsfelders },
@@ -37,6 +46,9 @@ const Editorial = (props) => {
   const globalState = useContext(AppContext);
   const { state } = globalState;
   const { dispatch } = globalState;
+
+  const router = useRouter();
+  console.log("Query", router.query);
 
   const { t } = useTranslation("common");
 
@@ -56,7 +68,18 @@ const Editorial = (props) => {
     removeAllSearchterms();
   }, []);
 
-  const [filterdList, setFilterdList] = useState(allEditorials);
+  useEffect(() => {
+    if (router.query.keyword) {
+      dispatch({
+        type: ACTIONS.ADD_ACTIVE_FILTER,
+        payload: { element: [router.query.keyword] },
+      });
+
+      /*  router.push({
+        query: {},
+      });*/
+    }
+  }, [router.query.keyword]);
 
   //Projekte zu Forschungsfeld dazufiltern
   function filterByForschungsfeld(data, filterterm) {
@@ -69,45 +92,57 @@ const Editorial = (props) => {
 
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
+    console.log("data", data);
+    if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
     return data.filter((obj) => {
-      // check if filter is active or show all
-      if (filterterms.length > 0) {
-        //kann sein: every für && und some für || ?
-        return filterterms.some((term) => {
-          return obj.forschungsfeld.some((feld) => {
-            return feld.id.toString().includes(term);
-          });
+      //kann sein: every für && und some für || ?
+      return filterterms.some((term) => {
+        return obj.forschungsfeld.some((feld) => {
+          return feld.id.toString().includes(term);
         });
-      } else {
-        return true;
-      }
+      });
     });
   }
 
+  const [filterdList, setFilterdList] = useState([]);
+  const [searchFilterdList, setSearchFilterdList] = useState([]);
+
+  // get data after all filters
+  let result =
+    getIntersection([filterdList, searchFilterdList]) || allEditorials;
+  console.log(
+    "result",
+    result,
+    getIntersection([filterdList, searchFilterdList])
+  );
+  // on change active filters
+
   useEffect(() => {
+    console.log("use effect", state.activeFilters);
+    console.log("yy", filterBy(allEditorials, state.activeFilters));
     setFilterdList(filterBy(allEditorials, state.activeFilters)); // filter if any filter is set, else show all
     window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
-  // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInput(data, inputvalue) {
-    return data.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (Array.isArray(obj[key])) {
-          return obj[key].some((entry) => {
-            return Object.keys(entry).some((kkey) => {
-              return entry[kkey].toString().includes(inputvalue);
-            });
-          });
-        } else {
-          return obj[key]
-            .toString()
-            .toLowerCase()
-            .includes(inputvalue.toLowerCase());
-        }
-      });
-    });
-  }
+  // fields to search
+  let fields = ["titel", "name", "value"];
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    let array = [...state.searchTerms, search];
+    setSearchFilterdList(
+      searchInputArrayRecursive(allEditorials, array, fields)
+    );
+    window.scrollTo(0, 0);
+  }, [search]);
+
+  useEffect(() => {
+    console.log(state.searchTerms);
+    setSearchFilterdList(
+      searchInputArrayRecursive(allEditorials, state.searchTerms, fields)
+    );
+
+    window.scrollTo(0, 0);
+  }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -126,20 +161,6 @@ const Editorial = (props) => {
       payload: { element: e },
     });
   };
-
-  useEffect(() => {
-    console.log(state.searchTerms);
-    const isEmpty = Object.keys(state.searchTerms).length === 0;
-    // if (!isEmpty)
-    setFilterdList(searchInputArray(allEditorials, state.searchTerms));
-  }, [state.searchTerms]);
-
-  const [search, setSearch] = useState("");
-  useEffect(() => {
-    if (search) {
-      setFilterdList(searchInput(allEditorials, search));
-    }
-  }, [search]);
 
   return (
     <Layout
@@ -180,7 +201,7 @@ const Editorial = (props) => {
         </div>
       )}
 
-      {filterdList.map((editorial) => {
+      {result.map((editorial) => {
         const filterdProjectlist = filterByForschungsfeld(
           allProjekts,
           editorial.forschungsfeld[0].id
