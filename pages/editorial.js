@@ -85,6 +85,7 @@ const Editorial = (props) => {
 
   useEffect(() => {
     setFilterdList(filterBy(allEditorials, state.activeFilters)); // filter if any filter is set, else show all
+    window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
   // Lupenfilter muss ins Textfeld, Forschungsfeld, Titel

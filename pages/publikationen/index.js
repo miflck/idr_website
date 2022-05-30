@@ -120,6 +120,7 @@ export default function Publikationen(props) {
     } else {
       setShowGradient(false);
     }
+    window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
   // fields to search
@@ -132,12 +133,14 @@ export default function Publikationen(props) {
     setSearchFilterdList(
       searchInputArrayRecursive(publicationData, array, fields)
     );
+    window.scrollTo(0, 0);
   }, [search]);
 
   useEffect(() => {
     setSearchFilterdList(
       searchInputArrayRecursive(publicationData, state.searchTerms, fields)
     );
+    window.scrollTo(0, 0);
   }, [state.searchTerms]);
 
   function groupByFlat(objectArray, property) {

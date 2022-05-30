@@ -88,6 +88,7 @@ const Veranstaltungen = (props) => {
     } else {
       setShowGradient(false);
     }
+    window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
   // fields to search

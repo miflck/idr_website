@@ -170,6 +170,7 @@ const Team = (props) => {
     } else {
       setShowGradient(false);
     }
+    window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
   const handleKeyDown = (e) => {

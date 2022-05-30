@@ -102,6 +102,7 @@ export default function Projekte(props) {
     } else {
       setShowGradient(false);
     }
+    window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
   // fields to search
@@ -110,6 +111,7 @@ export default function Projekte(props) {
   useEffect(() => {
     let array = [...state.searchTerms, search];
     setSearchFilterdList(searchInputArrayRecursive(data, array, fields));
+    window.scrollTo(0, 0);
   }, [search]);
 
   useEffect(() => {
@@ -121,6 +123,7 @@ export default function Projekte(props) {
       "use effect ",
       searchInputArrayRecursive(data, state.searchTerms, fields)
     );
+    window.scrollTo(0, 0);
   }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
