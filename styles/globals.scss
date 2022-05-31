@@ -82,7 +82,7 @@ body {
 
 html{
   font-size: var(--fontsizenormal);
-  line-height: var(--lineheighnormal);
+  line-height: var(--lineheightnormal);
 }
 
 
@@ -107,7 +107,7 @@ h2 {
   padding: 0;
   margin: 0;
   font-size: calc(var(--fontsizenormal) * 1.1);
-  line-height: var(--lineheighnormal);
+  line-height: var(--lineheightnormal);
   font-weight: normal;
   //padding-inline-start: 2rem;
 }
