@@ -8,7 +8,6 @@ import React, { useState, useEffect, useContext } from "react";
 import data from "../../lib/export_arbor_JSON";
 import { useRouter } from "next/router";
 import FilterElement from "../../Components/FilterElement/filterElement";
-import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import { AppContext, ACTIONS } from "../../context/state";
 import { PublicationFilter } from "../../lib/helpers";
 import Header from "../../Components/Header/header";
@@ -163,53 +162,7 @@ export default function Publikationen(props) {
 
   /*
 
-  //geht noch nicht, andere Strukturen, andere Loops
-  aber component ist schon mal drin zu SuchFeldElement
-// Lupenfilter muss ins Textfeld, Forschungsfeld, Titel
-  function searchInput(data, inputvalue,filterfields) {
-    console.log("search", data)
-    return data.filter((obj) => {
-      console.log("Object.keys(obj)",Object.keys(obj))
 
-        return Object.keys(obj).some((key)=>{
-
-          if(filterfields.indexOf(key)>-1){
-            console.log("key",key)
-
-            }
-
-          // objekte?
-          if(typeof obj[key] !=='undefined' ){
-            console.log("obj key",obj[key])
-
-					}
-
-        
-        // array
-        /*  if(Array.isArray(obj[key])){
-
-          return obj[key].some((entry)=>{
-            return Object.keys(entry).some((kkey=>{
-              return entry[kkey].toString().includes(inputvalue);
-            }))
-          })
-        }
-
-*/
-  /*
-
-        else{
-          return obj[key].toString().toLowerCase().includes(inputvalue.toLowerCase());
-        }
-      })
-      }
-    )
-  }
-  
-  const [search, setSearch] = useState('')
-  useEffect(() => {
-  setFilterdList(searchInput(publicationdata,search,filterfields));
-  },[search])
   */
 
   const handleKeyDown = (e) => {
@@ -254,8 +207,6 @@ export default function Publikationen(props) {
           })}
         </SearchTermWrapper>
       </HeaderWrapper>
-
-      {/* <SuchFeldElement setSearch={setSearch}/> */}
 
       <div className={styles.listwrapper}>
         {result.map((publikation) => {
