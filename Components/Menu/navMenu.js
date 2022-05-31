@@ -53,6 +53,7 @@ const NavMenu = (props) => {
             href={"/publikationen/"}
             sitetitle={"PUBLIKATIONEN"}
           ></SiteLink>
+          <SiteLink href={"/impressum/"} sitetitle={"IMPRESSUM"}></SiteLink>
         </div>
       }
     </div>
