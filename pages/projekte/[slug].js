@@ -54,6 +54,21 @@ export default function Projekteinzelansicht(props) {
     } = "",
   } = props || "";
 
+  console.log("mittarbeit --", mitarbeit);
+
+  const mitarbeitarray = mitarbeit.map((m) => {
+    let names = m.name.trim().split(" ");
+    console.log("lastname", names[names.length - 1]);
+
+    return { ...m, lastname: names[names.length - 1] };
+  });
+  console.log("mitarbeitarray --", mitarbeitarray);
+  mitarbeitarray.sort((a, b) => {
+    // console.log("lastname sort", a.lastname);
+    return a.lastname.localeCompare(b.lastname);
+  });
+  console.log("mitarbeitarray sorted --", mitarbeitarray);
+
   const globalState = useContext(AppContext);
   const { state } = globalState;
   const { dispatch } = globalState;
@@ -282,26 +297,29 @@ export default function Projekteinzelansicht(props) {
 
             {mitarbeit != "" && (
               <ServiceElement title={t("Mitarbeit")}>
-                {mitarbeit.map((e) => {
-                  console.log("mitarbeit", e.name);
-                  let href = `/team`;
-                  let org = "";
-                  if (e.organisation != null) {
-                    org = ", " + e.organisation.title;
-                  }
-                  if (e.slug != "") {
-                    href += `/${e.slug}`;
-                  }
-                  if (e.aktiv & !e.extern) {
-                    return <ButtonLink key={e.id} {...e} href={href} />;
-                  } else {
-                    return (
-                      <div key={e.id}>
-                        {e.name} {org}
-                      </div>
-                    );
-                  }
-                })}
+                {
+                  //mitarbeit.map((e) => {
+                  mitarbeitarray.map((e) => {
+                    console.log("mitarbeit", e.name);
+                    let href = `/team`;
+                    let org = "";
+                    if (e.organisation != null) {
+                      org = ", " + e.organisation.title;
+                    }
+                    if (e.slug != "") {
+                      href += `/${e.slug}`;
+                    }
+                    if (e.aktiv & !e.extern) {
+                      return <ButtonLink key={e.id} {...e} href={href} />;
+                    } else {
+                      return (
+                        <div key={e.id}>
+                          {e.name} {org}
+                        </div>
+                      );
+                    }
+                  })
+                }
               </ServiceElement>
             )}
 
