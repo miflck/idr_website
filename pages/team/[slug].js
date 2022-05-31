@@ -245,7 +245,10 @@ export default function Menscheinzelansicht(props) {
                   })}
                 </ServiceElement>
 
-                <ServiceElement title={t("Projekte (Auswahl)")}>
+                <ServiceElement
+                  title={t("Projekte (Auswahl)")}
+                  style={{ width: 66 + "%" }}
+                >
                   {ProjekteElement}
                 </ServiceElement>
               </ModularContentWrapper>
