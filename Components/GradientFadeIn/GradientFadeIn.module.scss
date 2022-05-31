@@ -1,7 +1,7 @@
 @import "../.././styles/breakpoints.scss";
 
 .root {
-    height: 10rem;
+    height: 7.5rem;
     width: 100vw;
     position: sticky;
     top:0;
@@ -19,6 +19,7 @@
 @media (min-width: $breakpointSmall) {
 
     .root{
+
         position:sticky;
         top:0;
         height: 20rem;

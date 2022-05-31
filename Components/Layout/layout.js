@@ -13,12 +13,12 @@ const Layout = (props) => {
       {/* <div className={styles.container}> */}
       {children}
       {/* </div> */}
-      <Footer
+      {/*<Footer
         setMainColor={props.setMainColor}
         setSecondColor={props.setSecondColor}
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
-      />
+  />*/}
     </div>
   );
 };

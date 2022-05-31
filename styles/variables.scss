@@ -9,8 +9,8 @@ html {
 
   --paddingabsatzbottom: 0.25rem; //5px;
 
-  --fontsizenormal: 18px;
-  --lineheightnormal: 21px;
+  --fontsizenormal: 16px;
+  --lineheightnormal: 19px;
 
   --fontsizesmall: calc(var(--fontsizenormal) * 0.65);
   --lineheighsmall: calc(var(--lineheightnormal) * 0.7);
@@ -49,6 +49,8 @@ html {
 @media (min-width: $breakpointSmall) {
   html {
     --columnwidth: 2;
+    --fontsizenormal: 18px;
+    --lineheightnormal: 21px;
   }
 }
 
