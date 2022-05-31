@@ -15,6 +15,8 @@ import TextElement from "../../Components/Composition/TextElement";
 import ImageElement from "../../Components/Composition/ImageElement";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
 
+import { useRouter } from "next/router";
+
 import Header from "../../Components/Header/header";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
