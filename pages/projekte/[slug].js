@@ -14,13 +14,8 @@ import Container from "../../Components/Container/container";
 import TextElement from "../../Components/Composition/TextElement";
 import ImageElement from "../../Components/Composition/ImageElement";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
-import FilterLink from "../../Components/FilterLink/filterLink";
-import Link from "next/link";
-
-import router, { useRouter } from "next/router";
 
 import Header from "../../Components/Header/header";
-import Footer from "../../Components/Footer/footer";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
 import Button from "../../Components/Button/Button";

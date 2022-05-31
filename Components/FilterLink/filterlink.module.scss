@@ -1,7 +1,8 @@
+@import "../.././styles/breakpoints.scss";
 .filterlink {
     text-transform: uppercase;
     font-size: var(--fontsizesmall);
-    line-height: var(--lineheightnormal);
+    line-height: var(--lineheightsmall);
     border: 1px solid var(--maincolor);
     border-radius: 20px;
     padding: var(--filterpadding1) var(--filterpadding2) var(--filterpadding3);
@@ -10,4 +11,20 @@
         color: var(--secondcolor);
         background-color: var(--maincolor);
     }
+    color:RED;
 }
+
+
+@media (min-width: $breakpointSmall) {
+   
+  }
+  
+  @media (min-width: $breakpointMedium) {
+  }
+  
+  @media (min-width: $breakpointLarge) {
+  }
+  
+  @media (min-width: $breakpointXLarge) {
+  }
+  

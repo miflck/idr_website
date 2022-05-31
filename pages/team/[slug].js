@@ -15,12 +15,8 @@ import Header from "../../Components/Header/header";
 
 import Container from "../../Components/Container/container";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
-import FilterLink from "../../Components/FilterLink/filterLink";
 import { Title } from "../../Components/Composition";
-import ImageElement from "../../Components/Composition/ImageElement";
 import { ModularContentWrapper } from "../../Components/Composition";
-import { SpacedWrapper } from "../../Components/Composition";
-import { GradientContainer } from "../../Components";
 import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
 import { ResponsiveImage } from "../../Components";

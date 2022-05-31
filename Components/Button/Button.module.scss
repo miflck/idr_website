@@ -1,3 +1,6 @@
+@import "../.././styles/breakpoints.scss";
+
+
 .root {
   // --backgroundcolor:#ff0000
   border: none;
@@ -22,4 +25,24 @@
   &:hover {
     background-color: var(--maincolor);
   }
+
+
+}
+
+
+@media (min-width: $breakpointSmall) {
+  .root{
+    font-size: var(--fontsizesmall); // 0.6875rem;
+
+  }
+   
+}
+
+@media (min-width: $breakpointMedium) {
+}
+
+@media (min-width: $breakpointLarge) {
+}
+
+@media (min-width: $breakpointXLarge) {
 }
