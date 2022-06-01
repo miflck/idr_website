@@ -25,8 +25,6 @@ import {
 import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
-import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
-import ListItemProjekt from "../../Components/List/listItemProjekt";
 
 const Veranstaltungen = (props) => {
   const {

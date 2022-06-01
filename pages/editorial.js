@@ -10,7 +10,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import TextElement from "../Components/Composition/TextElement";
 import FilterElement from "../Components/FilterElement/filterElement";
 import ButtonLink from "../Components/ButtonLink/buttonLink";
-import SuchFeldElement from "../Components/SuchFeldElement/SuchFeldElement";
 
 import { Lupe } from "../Components";
 import { FilterWrapper } from "../Components";

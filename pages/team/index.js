@@ -9,7 +9,6 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 // import ForschungsfeldElement from "../../Components/ForschungsfeldElement/forschungsfeldElement";
 import ListItemTeam from "../../Components/List/listItemTeam";
 import { AppContext, ACTIONS } from "../../context/state";
-import SuchFeldElement from "../../Components/SuchFeldElement/SuchFeldElement";
 import Container from "../../Components/Container/container";
 
 import Header from "../../Components/Header/header";
@@ -105,9 +104,16 @@ const Team = (props) => {
     "funktion",
   ]);
 
+  console.log("filterdFunktionen", filterdFunktionen);
+  console.log("filterdForschungsfelder", filterdForschungsfelder);
+
   let resultFilter, result;
 
   if (filterdForschungsfelder.length > 0 && filterdFunktionen.length > 0) {
+    console.log(
+      "filterdForschungsfelder.length",
+      filterdForschungsfelder.length
+    );
     resultFilter = getIntersection([
       filterdForschungsfelder,
       filterdFunktionen,
@@ -119,17 +125,17 @@ const Team = (props) => {
         ? filterdFunktionen
         : filterdForschungsfelder;
     console.log(
-      "resultFilter",
+      "else resultFilter",
       resultFilter,
       filterdForschungsfelder,
       filterdFunktionen
     );
   }
   console.log(" resultfilter", resultFilter);
-  if (resultFilter.length > 0 && searchFilterdList.length > 0) {
-    result = getIntersection([resultFilter, searchFilterdList]);
-    console.log(" result", result, resultFilter, searchFilterdList);
-  } else {
+  //if (resultFilter.length > 0 && searchFilterdList.length > 0) {
+  result = getIntersection([resultFilter, searchFilterdList]);
+  console.log(" result", result, resultFilter, searchFilterdList);
+  /*} else {
     result =
       resultFilter.length < searchFilterdList.length
         ? searchFilterdList
@@ -142,7 +148,7 @@ const Team = (props) => {
       resultFilter,
       searchFilterdList
     );
-  }
+  }*/
 
   // on change active filters
   /*useEffect(() => {
