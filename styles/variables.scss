@@ -57,6 +57,10 @@ html {
 @media (min-width: $breakpointMedium) {
   html {
     --imagewidth: 50%;
+
+    --fontsizesmall: calc(var(--fontsizenormal) * 0.8);
+    --lineheighsmall: calc(var(--lineheightnormal) * 0.8);
+
   }
 }
 
