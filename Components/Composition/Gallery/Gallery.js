@@ -36,7 +36,7 @@ const Gallery = (props) => {
               className={styles.arrowStyles}
               style={{ left: 15 + "px" }}
             >
-              {"\u2190"}
+              <p className={styles.innerArrowStyles}>{"\u2190"}</p>
             </div>
           )
         }
@@ -48,7 +48,7 @@ const Gallery = (props) => {
               className={styles.arrowStyles}
               style={{ right: 15 + "px" }}
             >
-              {"\u2192"}
+              <p className={styles.innerArrowStyles}>{"\u2192"}</p>
             </div>
           )
         }

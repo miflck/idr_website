@@ -48,7 +48,7 @@ export default function Menscheinzelansicht(props) {
     } = "",
   } = props || "";
 
-  const auswahllength = 10;
+  const auswahllength = 3;
 
   if (props.data) {
     function filterBy(data, filterterm) {
