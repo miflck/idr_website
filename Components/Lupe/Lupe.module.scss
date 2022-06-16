@@ -18,9 +18,13 @@
   transform: translateX(12rem);
   &.active {
     transform: translateX(0);
+    background-color: darken(white,90%);
+
 
     .inputfield {
       opacity: 1;
+      background-color: black;
+
     }
   }
 }
@@ -67,15 +71,34 @@
 
 .inputfield {
   //margin-left: 1rem;
+  -webkit-appearance: none;
+  border-style: solid; 
 
-  margin-right: 0.5rem;
+color:white;
+border:none;
+
+  box-sizing: border-box;
+  padding: 0.2rem;
+
+background-color: white;
+
+margin: 0;
+border-bottom: 2px solid white;
+  //margin-right: 0.5rem;
   outline: 0;
-  border-width: 0 0 1px;
-  border-color: black;
+  outline: none;
+
+  //border-width: 0 0 1px;
+  //border-color: white;
   font-size: var(--fontsizesmall);
   line-height: var(--lineheightsmall);
   opacity: 0;
   transition: all 0.5s ease-in-out;
+
+  &::placeholder{
+    color:white;
+    opacity: 0.75;
+  }
 }
 
 @media (min-width: $breakpointSmall) {
@@ -101,7 +124,7 @@
       height: 4rem;
     }
     .inputfield {
-      margin-right: 1rem;
+    //  margin-right: 1rem;
       font-size: var(--fontsizenormal);
       line-height: var(--lineheightnormal);
     }
