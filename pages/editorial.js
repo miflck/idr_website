@@ -1,4 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, {
+  useEffect,
+  useContext,
+  useState,
+  useRef,
+  useCallback,
+} from "react";
 import { request, EDITORIALTEXTE, EDITORIALINTRO } from "../lib/datocms";
 import styles from "./editorial.module.scss";
 import Layout from "../Components/Layout/layout";
@@ -47,7 +53,7 @@ const Editorial = (props) => {
   const { dispatch } = globalState;
 
   const router = useRouter();
-  console.log("Query", router.query);
+  //console.log("Query", router.query);
 
   const { t } = useTranslation("common");
 
@@ -60,6 +66,8 @@ const Editorial = (props) => {
   const removeAllSearchterms = () => {
     dispatch({ type: ACTIONS.REMOVE_ALL_SEARCHTERM });
   };
+
+  //const myRef = useRef(null);
 
   useEffect(() => {
     removeAllHoverFilter();
@@ -80,6 +88,8 @@ const Editorial = (props) => {
     }
   }, [router.query.keyword]);
 
+  const executeScroll = () => myRef.current.scrollIntoView();
+
   //Projekte zu Forschungsfeld dazufiltern
   function filterByForschungsfeld(data, filterterm) {
     return data.filter((obj) => {
@@ -91,7 +101,6 @@ const Editorial = (props) => {
 
   //nach Forschungsfelder filtern
   function filterBy(data, filterterms) {
-    console.log("data", data);
     if (filterterms.length < 1) return data; // wenn kein filter ist gibt some leer zurück
     return data.filter((obj) => {
       //kann sein: every für && und some für || ?
@@ -109,19 +118,58 @@ const Editorial = (props) => {
   // get data after all filters
   let result =
     getIntersection([filterdList, searchFilterdList]) || allEditorials;
-  console.log(
-    "result",
-    result,
-    getIntersection([filterdList, searchFilterdList])
-  );
+
+  /*const refs = allEditorials.reduce((item, value) => {
+    item[value.forschungsfeld[0].id] = React.createRef();
+    return item;
+  }, {});*/
+
+  const refs = allEditorials.reduce((item, value) => {
+    const ref = useRef(null);
+    const setRef = useCallback((node) => {
+      if (ref.current) {
+        // Make sure to cleanup any events/references added to the last instance
+      }
+      if (node !== null) {
+        // console.log(node.getBoundingClientRect().height);
+        // setHeight(node.getBoundingClientRect().height);
+      }
+      ref.current = node;
+      console.log("r", ref, setRef);
+    }, []);
+    item[value.forschungsfeld[0].id] = ref;
+
+    return item;
+  }, {});
+
+  console.log("refs", refs);
   // on change active filters
+  //refs[34113259].current.scrollIntoView();
+  /*if (refs[state.activeFilters] !== undefined) {
+    const lastItem = state.activeFilters[state.activeFilters.length - 1];
+    console.log("lastItem", refs, lastItem);
+    if (refs[lastItem].current !== null) {
+      refs[lastItem].current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }*/
+  useEffect(() => {
+    console.log("use effect state", state.activeFilters, refs);
+    setFilterdList(filterBy(allEditorials, state.activeFilters)); // filter if any filter is set, else show all
+    //window.scrollTo(0, 0);
+  }, [state.activeFilters]);
 
   useEffect(() => {
-    console.log("use effect", state.activeFilters);
-    console.log("yy", filterBy(allEditorials, state.activeFilters));
-    setFilterdList(filterBy(allEditorials, state.activeFilters)); // filter if any filter is set, else show all
-    window.scrollTo(0, 0);
-  }, [state.activeFilters]);
+    console.log("refs filterd list", refs);
+    const lastItem = state.activeFilters[state.activeFilters.length - 1];
+    // console.log(lastItem, refs[lastItem]);
+    if (refs[lastItem] !== undefined && refs[lastItem].current !== null) {
+      refs[lastItem].current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, [filterdList]);
 
   // fields to search
   let fields = ["titel", "name", "value"];
@@ -135,7 +183,6 @@ const Editorial = (props) => {
   }, [search]);
 
   useEffect(() => {
-    console.log(state.searchTerms);
     setSearchFilterdList(
       searchInputArrayRecursive(allEditorials, state.searchTerms, fields)
     );
@@ -145,7 +192,6 @@ const Editorial = (props) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("klicked enter", e.target.value);
       dispatch({
         type: ACTIONS.ADD_SEARCHTERM,
         payload: { element: e.currentTarget.value },
@@ -154,12 +200,25 @@ const Editorial = (props) => {
   };
 
   const handleSubmit = (e) => {
-    console.log("submit", e);
     dispatch({
       type: ACTIONS.ADD_SEARCHTERM,
       payload: { element: e },
     });
   };
+
+  /*useEffect(() => {
+    console.log("after render", refs);
+    if (state.activeFilters.length > 0) {
+      const lastItem = state.activeFilters[state.activeFilters.length - 1];
+      console.log("lastItem", refs, lastItem, refs[lastItem]);
+      if (refs[lastItem] !== null) {
+        refs[lastItem].current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    }
+    //refs[34113259].current.scrollIntoView();
+  });*/
 
   return (
     <Layout
@@ -185,6 +244,7 @@ const Editorial = (props) => {
           })}
         </SearchTermWrapper>
       </HeaderWrapper>
+      {console.log("render", result)}
       {filterdList.length == allEditorials.length && (
         <div className={styles.editorialwrapper}>
           <Container>
@@ -229,7 +289,9 @@ const Editorial = (props) => {
             className={styles.editorialwrapper}
             key={editorial.id}
             style={background_style}
+            ref={refs[editorial.forschungsfeld[0].id]}
           >
+            {console.log("ref", editorial.forschungsfeld[0].id)}
             <Container>
               {editorial.forschungsfeld.map((forschungsfeld) => {
                 return (
