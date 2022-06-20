@@ -199,7 +199,7 @@ export default function Veranstaltungseinzelansicht(props) {
 
         <Container>
           <div className={styles.serviceWrapper}>
-            <ServiceElement title={t("Zeit")}>{`${date} ${
+            <ServiceElement title={t("Datum")}>{`${date} ${
               new Date(datum) < now ? "" : "UHR"
             }`}</ServiceElement>
 

@@ -54,20 +54,37 @@ export default function Projekteinzelansicht(props) {
     } = "",
   } = props || "";
 
-  console.log("mittarbeit --", mitarbeit);
-
+  // Sort names
   const mitarbeitarray = mitarbeit.map((m) => {
     let names = m.name.trim().split(" ");
-    console.log("lastname", names[names.length - 1]);
 
     return { ...m, lastname: names[names.length - 1] };
   });
-  console.log("mitarbeitarray --", mitarbeitarray);
   mitarbeitarray.sort((a, b) => {
     // console.log("lastname sort", a.lastname);
     return a.lastname.localeCompare(b.lastname);
   });
-  console.log("mitarbeitarray sorted --", mitarbeitarray);
+
+  const leitungsarray = leitung.map((m) => {
+    let names = m.name.trim().split(" ");
+
+    return { ...m, lastname: names[names.length - 1] };
+  });
+
+  leitungsarray.sort((a, b) => {
+    // console.log("lastname sort", a.lastname);
+    return a.lastname.localeCompare(b.lastname);
+  });
+
+  const verantwortungarray = verantwortung.map((m) => {
+    let names = m.name.trim().split(" ");
+    return { ...m, lastname: names[names.length - 1] };
+  });
+
+  verantwortungarray.sort((a, b) => {
+    // console.log("lastname sort", a.lastname);
+    return a.lastname.localeCompare(b.lastname);
+  });
 
   const globalState = useContext(AppContext);
   const { state } = globalState;
@@ -225,6 +242,7 @@ export default function Projekteinzelansicht(props) {
                             key={block.id}
                             {...block}
                             href={block.pdf.url}
+                            newTab="true"
                           />
                         )}
                       </ModularContentWrapper>
@@ -246,7 +264,7 @@ export default function Projekteinzelansicht(props) {
             </ServiceElement>
 
             <ServiceElement title={t("Leitung")}>
-              {leitung.map((e) => {
+              {leitungsarray.map((e) => {
                 console.log("leitung", e);
                 let href = `/team`;
 
@@ -261,17 +279,18 @@ export default function Projekteinzelansicht(props) {
                   return <ButtonLink key={e.id} {...e} href={href} />;
                 } else {
                   return (
-                    <div key={e.id}>
-                      {e.name} {org}
+                    <div key={e.id} className={styles.serviceElement}>
+                      {e.name}
+                      {org}
                     </div>
                   );
                 }
               })}
             </ServiceElement>
 
-            {verantwortung != "" && (
+            {verantwortungarray != "" && (
               <ServiceElement title={t("Verantwortung")}>
-                {verantwortung.map((e) => {
+                {verantwortungarray.map((e) => {
                   let href = `/team`;
 
                   let org = "";
@@ -285,7 +304,7 @@ export default function Projekteinzelansicht(props) {
                     return <ButtonLink key={e.id} {...e} href={href} />;
                   } else {
                     return (
-                      <div key={e.id}>
+                      <div key={e.id} className={styles.serviceElement}>
                         {e.name}
                         {org}
                       </div>
@@ -313,8 +332,9 @@ export default function Projekteinzelansicht(props) {
                       return <ButtonLink key={e.id} {...e} href={href} />;
                     } else {
                       return (
-                        <div key={e.id}>
-                          {e.name} {org}
+                        <div key={e.id} className={styles.serviceElement}>
+                          {e.name}
+                          {org}
                         </div>
                       );
                     }
@@ -326,7 +346,11 @@ export default function Projekteinzelansicht(props) {
             {kooperationen != "" && (
               <ServiceElement title={t("Kooperationen")}>
                 {kooperationen.map((e) => {
-                  return <div key={e.id}>{e.title}</div>;
+                  return (
+                    <div key={e.id} className={styles.serviceElement}>
+                      {e.title}
+                    </div>
+                  );
                 })}
               </ServiceElement>
             )}
@@ -334,7 +358,11 @@ export default function Projekteinzelansicht(props) {
             {finanzierung != "" && (
               <ServiceElement title={t("Finanzierung")}>
                 {finanzierung.map((e) => {
-                  return <div key={e.id}>{e.title}</div>;
+                  return (
+                    <div key={e.id} className={styles.serviceElement}>
+                      {e.title}
+                    </div>
+                  );
                 })}
               </ServiceElement>
             )}

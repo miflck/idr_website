@@ -220,7 +220,10 @@ export default function Menscheinzelansicht(props) {
                   {BFHProfilElement}
                 </ServiceElement>
 
-                <ServiceElement title={t("Kontakt")}>
+                <ServiceElement
+                  title={t("Kontakt")}
+                  style={{ width: 66 + "%" }}
+                >
                   {EmailElement}
                   {WebsiteElement}{" "}
                 </ServiceElement>
