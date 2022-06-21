@@ -167,6 +167,7 @@ const Editorial = (props) => {
     if (refs[lastItem] !== undefined && refs[lastItem].current !== null) {
       refs[lastItem].current.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
     }
   }, [filterdList]);
@@ -244,7 +245,6 @@ const Editorial = (props) => {
           })}
         </SearchTermWrapper>
       </HeaderWrapper>
-      {console.log("render", result)}
       {filterdList.length == allEditorials.length && (
         <div className={styles.editorialwrapper}>
           <Container>
