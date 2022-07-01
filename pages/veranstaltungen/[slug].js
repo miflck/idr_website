@@ -83,7 +83,7 @@ export default function Veranstaltungseinzelansicht(props) {
     //});
     router.push({
       pathname: "/editorial",
-      //query: { keyword: `${filtermitgeben}` },
+      query: { keyword: `${id}` },
     });
   };
 

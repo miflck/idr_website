@@ -88,7 +88,7 @@ export default function Menscheinzelansicht(props) {
 
       router.push({
         pathname: "/editorial",
-        //query: { keyword: `${filtermitgeben}` }
+        query: { keyword: `${id}` },
       });
     };
 
