@@ -254,7 +254,7 @@ const Team = (props) => {
       <Container>
         <SpacedWrapper>
           <ModularContentWrapper>
-            <h2>{t("Ehemalige und Gastforscherinnen")}</h2>
+            <h2>{t("Ehemalige und Gastforscher*innen")}</h2>
             <br></br>
             <div className={styles.ehemalige}>
               {filterdList.map((mensch) => {
