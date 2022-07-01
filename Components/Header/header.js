@@ -7,7 +7,7 @@ const Header = (props) => {
   const router = useRouter();
   // console.log("router", router)
   if (router.pathname === "/") {
-    var seitentitel = "NEWS";
+    //var seitentitel = "NEWS";
     // console.log("Seite", seite)
   } else if (router.pathname === "/editorial") {
     var seite = router.pathname.split("/");
@@ -25,7 +25,7 @@ const Header = (props) => {
         <title>IDR</title>
         <link rel="icon" href="../favicon.ico" />
         <div className={styles.headertitle}>
-          <Link href="/">HKB — Institute of Design Research</Link>{" "}
+          <Link href="/projekte">HKB — Institute of Design Research</Link>{" "}
           <span className={styles.seitentitel}> — {seitentitel}</span>
         </div>
         <NavMenu />
