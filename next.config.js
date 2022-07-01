@@ -1,7 +1,7 @@
 const { i18n } = require("./next-i18next.config");
 
 module.exports = {
-  trailingSlash: true,
+  trailingSlash: false,
   i18n,
   async redirects() {
     return [
