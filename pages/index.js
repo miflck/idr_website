@@ -182,13 +182,13 @@ export async function getStaticProps({ locale }) {
 
   return {
     redirect: {
-      destination: "/",
+      destination: "/projekte",
       permanent: true,
     },
 
-    /* props: {
+    props: {
       news,
       ...(await serverSideTranslations(locale, ["common"])),
-    },*/
+    },
   };
 }
