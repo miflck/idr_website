@@ -31,10 +31,11 @@ import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
 
 import { Gallery } from "../../Components";
+import { Video } from "../../Components";
 
 export default function Projekteinzelansicht(props) {
   const { t } = useTranslation("common");
-  // console.log("props vergleich projekt", props)
+  console.log("props  projekt", props);
   const {
     data: {
       projekt: {
@@ -96,7 +97,6 @@ export default function Projekteinzelansicht(props) {
   }
 
   useEffect(() => {
-    console.log("state  slug!--", state, router);
     dispatch({
       type: ACTIONS.SET_PATH,
       payload: { element: router.pathname },
@@ -237,6 +237,14 @@ export default function Projekteinzelansicht(props) {
                           <Gallery data={block.galerie}></Gallery>
                         )}
 
+                        {block._modelApiKey === "video" && (
+                          <Video
+                            key={block.id}
+                            data={block.clip}
+                            caption={block.caption}
+                          ></Video>
+                        )}
+
                         {block._modelApiKey === "pdf" && block.pdf != null && (
                           <ButtonLink
                             key={block.id}
@@ -265,7 +273,6 @@ export default function Projekteinzelansicht(props) {
 
             <ServiceElement title={t("Leitung")}>
               {leitungsarray.map((e) => {
-                console.log("leitung", e);
                 let href = `/team`;
 
                 if (e.slug != "") {
@@ -319,7 +326,6 @@ export default function Projekteinzelansicht(props) {
                 {
                   //mitarbeit.map((e) => {
                   mitarbeitarray.map((e) => {
-                    console.log("mitarbeit", e.name);
                     let href = `/team`;
                     let org = "";
                     if (e.organisation != null) {
@@ -443,7 +449,6 @@ export async function getStaticPaths({ locales }) {
     query: ALLPROJEKTE,
   });
   // hier bei über 100 ein problem! irgend was rekursives bauen?
-  console.log("ooooooooooooooo", projekte._allProjektsMeta.count);
   locales.forEach((locale, i) => {
     projekte.allProjekts.forEach((projekt, j) => {
       paths.push({

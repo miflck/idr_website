@@ -8,3 +8,4 @@ export { default as SpacedWrapper } from "./SpacedWrapper";
 export { default as Gallery } from "./Gallery";
 export { default as ResponsiveImage } from "./ResponsiveImage";
 export { default as TextContainer } from "./TextContainer";
+export { default as Video } from "./Video";

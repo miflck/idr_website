@@ -1,9 +1,10 @@
 /* PLOP_INJECT_IMPORT */
-import HeaderWrapper from './HeaderWrapper';
-import SearchTermWrapper from './SearchTermWrapper';
-import FilterWrapper from './FilterWrapper';
-import SearchTerm from './SearchTerm';
-import Lupe from './Lupe';
+import Video from "./Composition/Video";
+import HeaderWrapper from "./HeaderWrapper";
+import SearchTermWrapper from "./SearchTermWrapper";
+import FilterWrapper from "./FilterWrapper";
+import SearchTerm from "./SearchTerm";
+import Lupe from "./Lupe";
 import Backbutton from "./Backbutton";
 import ResponsiveImage from "./Composition/ResponsiveImage";
 import TileGrid from "./Composition/TileGrid";
@@ -21,11 +22,12 @@ import { ElementTitle } from "./Composition";
 import { TextContainer } from "./Composition";
 export {
   /* PLOP_INJECT_EXPORT */
-	HeaderWrapper,
-	SearchTermWrapper,
-	FilterWrapper,
-	SearchTerm,
-	Lupe,
+  Video,
+  HeaderWrapper,
+  SearchTermWrapper,
+  FilterWrapper,
+  SearchTerm,
+  Lupe,
   TextContainer,
   Backbutton,
   ResponsiveImage,
