@@ -321,7 +321,7 @@ const Editorial = (props) => {
                   </ServiceElement>
 
                   <ServiceElement
-                    title={t("Projekte")}
+                    title={t("Projekte (Auswahl)")}
                     style={{ width: 66 + "%" }}
                   >
                     {filterdProjectlist.map((projekt) => {
