@@ -18,12 +18,13 @@
   ul {
     list-style: none;
     margin-left: 0;
-    padding-left: 1em;
+    padding-left: 2em;
     li {
       &::before {
-        content: "\2192";
+        content:'\2014';
+       // content: "\2192";
         position: absolute;
-        margin-left: -20px;
+        margin-left: -1.5rem;
       }
       p {
         margin-bottom: 0;
