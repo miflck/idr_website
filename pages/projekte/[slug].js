@@ -230,6 +230,8 @@ export default function Projekteinzelansicht(props) {
                             src={block.einzelbild.url}
                             title={block.einzelbild.title}
                             alt={block.einzelbild.alt}
+                            width={block.einzelbild.width}
+                            height={block.einzelbild.height}
                           />
                         )}
 
