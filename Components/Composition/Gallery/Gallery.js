@@ -86,9 +86,10 @@ const Gallery = (props) => {
               <ImageElement
                 key={element.id}
                 src={element.url}
-                title={element.title}
-                alt={element.alt}
+                //title={element.title}
+                //alt={element.alt}
               />
+              <p className="legend">{element.alt}</p>
 
               {/* <img src={element.url} alt="image1" />*/}
             </div>
