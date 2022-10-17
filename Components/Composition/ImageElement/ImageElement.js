@@ -25,8 +25,7 @@ const ImageElement = (props) => {
         sizes="(max-width: 640px) 640px,
         (max-width: 768px) 768px,
         (max-width: 900px) 900px,
-        (max-width: 1280px) 1280px,
-        100px"
+        (max-width: 1280px) 1280px"
       />
 
       {title ? <div className={styles.caption}>{title}</div> : ""}
