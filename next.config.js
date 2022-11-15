@@ -14,6 +14,6 @@ module.exports = {
   },
   images: {
     domains: ["www.datocms-assets.com"],
-    deviceSizes: [640, 768, 900, 1280, 1920, 2048, 3840],
+    deviceSizes: [640, 768, 900, 1280],
   },
 };
