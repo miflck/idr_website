@@ -35,6 +35,10 @@ const ListItemNews = (props) => {
     if (link._modelApiKey === "projekt") {
       hrefInternalLink += `/projekte/${link.slug}`;
     }
+
+    if (link._modelApiKey === "veranstaltung") {
+      hrefInternalLink += `/veranstaltungen/${link.slug}`;
+    }
   }
   /* let hrefveranstaltungen = `/veranstaltungen`
     if (props._modelApiKey === 'veranstaltung') {
