@@ -15,6 +15,7 @@ const Video = (props) => {
           className={styles.player}
           width="100%"
           height="100%"
+          controls="true"
         />
       </div>
 

@@ -98,7 +98,9 @@ const ListItemProjekt = (props) => {
             {startdatum} – {enddatum}
           </div>
           <Link href={href} as={href}>
-            <div className={styles.titel}>{props.titel}</div>
+            <a className={styles.listLinkBlank}>
+              <div className={styles.titel}>{props.titel}</div>
+            </a>
           </Link>
           <ForschungsfeldElement
             {...props}
