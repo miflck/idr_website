@@ -881,10 +881,32 @@ datocms-structured-text-generic-html-renderer@^1.1.0:
   dependencies:
     datocms-structured-text-utils "^1.1.1"
 
+datocms-structured-text-generic-html-renderer@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/datocms-structured-text-generic-html-renderer/-/datocms-structured-text-generic-html-renderer-2.0.4.tgz#df50488b486a20f45583c2e685998873c843c1dc"
+  integrity sha512-Rv5Y1eC9NZXNSz3FHvHGFvGnKEEbvG1kQWlylpCSoeDBZPBwSWAFD/ixIAOfa8Yk1EVpmoQd3KQd725WKYJwRQ==
+  dependencies:
+    datocms-structured-text-utils "^2.0.4"
+
+datocms-structured-text-to-plain-text@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/datocms-structured-text-to-plain-text/-/datocms-structured-text-to-plain-text-2.0.4.tgz#9798c5ea06417e7da4b4b14d1ed3dd9c0d550944"
+  integrity sha512-/0VQNo6xZXiGdnHCTIoEmdnwD1JZVMMsyEfSy2SNF7QW4YAOz8bKtWSwCT4cYRKrhA/jZWCq7G4u0kPmiy1FWg==
+  dependencies:
+    datocms-structured-text-generic-html-renderer "^2.0.4"
+    datocms-structured-text-utils "^2.0.4"
+
 datocms-structured-text-utils@^1.1.0, datocms-structured-text-utils@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/datocms-structured-text-utils/-/datocms-structured-text-utils-1.1.1.tgz#00c0c9dbf72e1fa49a1db2f73cb8ab1e10fc13b1"
   integrity sha512-Tdq0YnzxHK4t/i04LUlHL4mbKo6mKUw0/eWQs7/yLlEIAiRil7hrHOTL+esDFO+UGocpcG4qK42XFe3Blp4rQA==
+  dependencies:
+    array-flatten "^3.0.0"
+
+datocms-structured-text-utils@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/datocms-structured-text-utils/-/datocms-structured-text-utils-2.0.4.tgz#c429e6b74b90fbac228e1d28b8919f9af2c4bfff"
+  integrity sha512-JxDdJaipm3FePOli9s82MRrBDnlPP9GYhqajQJaYEu4V1jwUSZzbVkYVKMfVHUfP0Gh0VSCxPHjAGGAN1nWMJg==
   dependencies:
     array-flatten "^3.0.0"
 

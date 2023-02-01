@@ -18,11 +18,7 @@ import { SpacedWrapper } from "../../Components/Composition";
 import { ModularContentWrapper } from "../../Components/Composition";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import Lupe from "../../Components/Lupe/Lupe";
-import {
-  searchInput,
-  searchInputArray,
-  getIntersection,
-} from "../../lib/helpers";
+import { searchInput, searchInputArray, getIntersection } from "../../lib/helpers";
 import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
@@ -95,14 +91,8 @@ const Team = (props) => {
   const [filterdList, setFilterdList] = useState([]);
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
-  let filterdForschungsfelder = filterByKeys(
-    allMenschens,
-    state.activeFilters,
-    ["forschungsfeld"]
-  );
-  let filterdFunktionen = filterByKeys(allMenschens, state.activeFilters, [
-    "funktion",
-  ]);
+  let filterdForschungsfelder = filterByKeys(allMenschens, state.activeFilters, ["forschungsfeld"]);
+  let filterdFunktionen = filterByKeys(allMenschens, state.activeFilters, ["funktion"]);
 
   console.log("filterdFunktionen", filterdFunktionen);
   console.log("filterdForschungsfelder", filterdForschungsfelder);
@@ -110,26 +100,12 @@ const Team = (props) => {
   let resultFilter, result;
 
   if (filterdForschungsfelder.length > 0 && filterdFunktionen.length > 0) {
-    console.log(
-      "filterdForschungsfelder.length",
-      filterdForschungsfelder.length
-    );
-    resultFilter = getIntersection([
-      filterdForschungsfelder,
-      filterdFunktionen,
-    ]);
+    console.log("filterdForschungsfelder.length", filterdForschungsfelder.length);
+    resultFilter = getIntersection([filterdForschungsfelder, filterdFunktionen]);
     console.log(" intersection", resultFilter);
   } else {
-    resultFilter =
-      filterdForschungsfelder.length < filterdFunktionen.length
-        ? filterdFunktionen
-        : filterdForschungsfelder;
-    console.log(
-      "else resultFilter",
-      resultFilter,
-      filterdForschungsfelder,
-      filterdFunktionen
-    );
+    resultFilter = filterdForschungsfelder.length < filterdFunktionen.length ? filterdFunktionen : filterdForschungsfelder;
+    console.log("else resultFilter", resultFilter, filterdForschungsfelder, filterdFunktionen);
   }
   console.log(" resultfilter", resultFilter);
   //if (resultFilter.length > 0 && searchFilterdList.length > 0) {
@@ -165,12 +141,7 @@ const Team = (props) => {
   // on change active filters
   useEffect(() => {
     console.log("use effect state.activeFilters2");
-    setFilterdList(
-      filterByKeys(allMenschens, state.activeFilters, [
-        "forschungsfeld",
-        "funktion",
-      ])
-    );
+    setFilterdList(filterByKeys(allMenschens, state.activeFilters, ["forschungsfeld", "funktion"]));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
@@ -210,22 +181,13 @@ const Team = (props) => {
   }, [search]);
 
   return (
-    <Layout
-      setMainColor={props.setMainColor}
-      setSecondColor={props.setSecondColor}
-      colorHexCode={props.colorHexCode}
-      colorHexCodeSecond={props.colorHexCodeSecond}
-    >
+    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
       <HeaderWrapper>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allFilter} />
 
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
@@ -240,13 +202,7 @@ const Team = (props) => {
       <div className={styles.teamcontainer}>
         {result.map((mensch) => {
           if (mensch.aktiv && !mensch.extern) {
-            return (
-              <ListItemTeam
-                {...mensch}
-                showGradient={showGradient}
-                key={mensch.id}
-              />
-            );
+            return <ListItemTeam {...mensch} showGradient={showGradient} key={mensch.id} />;
           }
         })}
       </div>

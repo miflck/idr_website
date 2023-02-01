@@ -8,8 +8,6 @@ const ImageElement = (props) => {
   let x = focalPoint === undefined ? 50 : focalPoint.x * 100;
   let y = focalPoint === undefined ? 50 : focalPoint.y * 100;
 
-  console.log("img props", props, width, height);
-
   return (
     <div className={styles.root}>
       {/*<img src={src} alt={alt}/> */}

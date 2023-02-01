@@ -1,23 +1,23 @@
-import { request, ALLNEWS } from "../lib/datocms";
+import { request, ALLNEWS } from "../../lib/datocms";
 import styles from "./news.module.scss";
-import Layout from "../Components/Layout/layout";
+import Layout from "../../Components/Layout/layout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState, useEffect, useContext } from "react";
-import { AppContext, ACTIONS } from "../context/state";
-import FilterElement from "../Components/FilterElement/filterElement";
-import ListItemNews from "../Components/List/listItemNews";
-import TileGrid from "../Components/Composition/TileGrid/TileGrid";
-import { Tile } from "../Components";
+import { AppContext, ACTIONS } from "../../context/state";
+import FilterElement from "../../Components/FilterElement/filterElement";
+import ListItemNews from "../../Components/List/listItemNews";
+import TileGrid from "../../Components/Composition/TileGrid/TileGrid";
+import { Tile } from "../../Components";
 
-import Header from "../Components/Header/header";
-import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+import Header from "../../Components/Header/header";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 
-import Lupe from "../Components/Lupe/Lupe";
-import SearchTerm from "../Components/SearchTerm/SearchTerm";
-import { SearchTermWrapper } from "../Components";
-import FilterWrapper from "../Components/FilterWrapper/FilterWrapper";
-import { searchInputArrayRecursive, searchRecursive, getIntersection } from "../lib/helpers";
+import Lupe from "../../Components/Lupe/Lupe";
+import SearchTerm from "../../Components/SearchTerm/SearchTerm";
+import { SearchTermWrapper } from "../../Components";
+import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
+import { searchInputArrayRecursive, searchRecursive, getIntersection } from "../../lib/helpers";
 
 import { Checkboard } from "react-color/lib/components/common";
 
@@ -131,26 +131,7 @@ export default function Home(props) {
         </SearchTermWrapper>
       </HeaderWrapper>
 
-      <div className={styles.newscontainer}>
-        {result.map((beitrag) => {
-          return (
-            <ListItemNews
-              id={beitrag.id}
-              title={beitrag.title}
-              image={beitrag.image}
-              text={beitrag.text}
-              link={beitrag.internerLink}
-              forschungsfelder={beitrag.forschungsfeld}
-              showGradient={showGradient}
-              key={beitrag.id}
-              slug={beitrag.slug}
-              teaser={beitrag.teaser}
-            />
-          );
-        })}
-      </div>
-
-      {/**
+      {/*
       <TileGrid>
         {result.map((beitrag) => {
           return (
@@ -170,8 +151,7 @@ export default function Home(props) {
         })}
       </TileGrid>
 
-
-       */}
+      */}
     </Layout>
   );
 }
