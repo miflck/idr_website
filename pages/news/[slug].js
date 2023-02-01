@@ -27,7 +27,6 @@ import Button from "../../Components/Button/Button";
 
 export default function NewsSingleview(props) {
   const router = useRouter();
-
   console.log("props", props);
   const { t } = useTranslation("common");
 
@@ -55,10 +54,17 @@ export default function NewsSingleview(props) {
         payload: { element: [id] },
       });
     } else {
-      dispatch({ type: ACTIONS.ADD_ACTIVE_FILTER, payload: { element: [id] } });
+      dispatch({
+        type: ACTIONS.ADD_ACTIVE_FILTER,
+        payload: { element: [id] },
+      });
     }
-  };
 
+    router.push({
+      pathname: "/editorial",
+      query: { keyword: `${id}` },
+    });
+  };
   let background_style = "";
   let colors = [];
   if (forschungsfeld.length != 0) {

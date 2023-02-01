@@ -15,7 +15,8 @@ import TextElement from "../Composition/TextElement";
 import ForschungsfeldElement from "../ForschungsfeldElement/forschungsfeldElement";
 
 const ListItemNews = (props) => {
-  const { id, title, forschungsfelder, image, text, link, slug, teaser } = props;
+  const { id, title, forschungsfelder, image, text, link, weblink, slug, teaser } = props;
+  console.log("weblink prop", weblink);
 
   const globalState = useContext(AppContext);
   const { state } = globalState;
@@ -49,6 +50,9 @@ const ListItemNews = (props) => {
     } else {
       hrefInternalLink += `/news/${slug}`;
     }
+  } else if (weblink) {
+    console.log("weblink", hrefInternalLink);
+    hrefInternalLink = weblink;
   } else {
     hrefInternalLink += `/news/${slug}`;
   }
@@ -117,22 +121,27 @@ const ListItemNews = (props) => {
           <GradientContainer backgroundStyle={background_style}>
             <div className={`${styles.menschwrapper}`}>
               <Link href={hrefInternalLink}>
-                <span>
-                  {image && (
-                    <div className={styles.portraitWrapper}>
-                      <GradientContainer backgroundStyle={background_style_image}>
-                        <ImageElement src={image.url} alt={image.alt}></ImageElement>
-                      </GradientContainer>
-                    </div>
-                  )}
-                  <ElementTitle highlight={showHoverGradient}>{title}</ElementTitle>
-                </span>
-              </Link>
-              <TextElement key={id} {...teaser}></TextElement>
+                <a className={styles.listLinkBlank} {...(weblink ? { target: "_blank" } : {})}>
+                  <span>
+                    {image && (
+                      <div className={styles.portraitWrapper}>
+                        <GradientContainer backgroundStyle={background_style_image}>
+                          <ImageElement src={image.url} alt={image.alt}></ImageElement>
+                        </GradientContainer>
+                      </div>
+                    )}
+                    <ElementTitle highlight={showHoverGradient}>{title}</ElementTitle>
 
+                    <TextElement key={id} {...teaser}></TextElement>
+                  </span>
+                </a>
+              </Link>
               {/*plaintext(text)*/}
               {/*link && <Link href={hrefInternalLink}>{link.titel}</Link>*/}
-              <ForschungsfeldElement forschungsfeld={forschungsfelder} showHoverGradient={showHoverGradient} />
+              <ForschungsfeldElement
+                forschungsfeld={forschungsfelder}
+                showHoverGradient={showHoverGradient}
+              />
             </div>
           </GradientContainer>
         </div>

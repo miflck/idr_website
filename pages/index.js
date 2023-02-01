@@ -96,7 +96,9 @@ export default function Home(props) {
   useEffect(() => {
     console.log(state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
-    setSearchFilterdList(searchInputArrayRecursive(siteData, state.searchTerms, ["text", "titel", "value"]));
+    setSearchFilterdList(
+      searchInputArrayRecursive(siteData, state.searchTerms, ["text", "titel", "value"])
+    );
   }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
@@ -116,13 +118,22 @@ export default function Home(props) {
   };
 
   return (
-    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+    <Layout
+      setMainColor={props.setMainColor}
+      setSecondColor={props.setSecondColor}
+      colorHexCode={props.colorHexCode}
+      colorHexCodeSecond={props.colorHexCodeSecond}
+    >
       <HeaderWrapper>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
@@ -145,6 +156,7 @@ export default function Home(props) {
               key={beitrag.id}
               slug={beitrag.slug}
               teaser={beitrag.teaser}
+              weblink={beitrag.weblink}
             />
           );
         })}
