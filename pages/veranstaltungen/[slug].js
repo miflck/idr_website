@@ -2,11 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
 
 import Layout from "../../Components/Layout/layout";
-import {
-  request,
-  VERANSTALTUNGEINZEL,
-  ALLVERANSTALTUNGEN,
-} from "../../lib/datocms";
+import { request, VERANSTALTUNGEINZEL, ALLVERANSTALTUNGEN } from "../../lib/datocms";
 import styles from "./veranstaltungen.module.scss";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -114,9 +110,9 @@ export default function Veranstaltungseinzelansicht(props) {
     });
 
     background_style = {
-      background: `linear-gradient(to right, ${
-        colors[0] || "var(--maincolor)"
-      }, ${colors[1] || "white"}`,
+      background: `linear-gradient(to right, ${colors[0] || "var(--maincolor)"}, ${
+        colors[1] || "white"
+      }`,
     };
     let background_op = {
       background: `radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
@@ -138,9 +134,7 @@ export default function Veranstaltungseinzelansicht(props) {
           <Backbutton />
         </Container>
 
-        <BackgroundGradientFadeOut
-          backgroundStyle={background_style}
-        ></BackgroundGradientFadeOut>
+        <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
         <div className={styles.stickywrapper}>
           <GradientFadeIn
             backgroundStyle={background_style}
@@ -164,10 +158,7 @@ export default function Veranstaltungseinzelansicht(props) {
                     return (
                       <ModularContentWrapper key={block.id}>
                         {block._modelApiKey === "text" && (
-                          <TextElement
-                            key={block.id}
-                            {...block.text}
-                          ></TextElement>
+                          <TextElement key={block.id} {...block.text}></TextElement>
                         )}
                         {block._modelApiKey === "einzelbild" && (
                           <ImageElement
@@ -183,11 +174,7 @@ export default function Veranstaltungseinzelansicht(props) {
                         )}
 
                         {block._modelApiKey === "pdf" && (
-                          <ButtonLink
-                            key={block.id}
-                            {...block}
-                            href={block.pdf.url}
-                          />
+                          <ButtonLink key={block.id} {...block} href={block.pdf.url} />
                         )}
                       </ModularContentWrapper>
                     );
@@ -200,7 +187,7 @@ export default function Veranstaltungseinzelansicht(props) {
         <Container>
           <div className={styles.serviceWrapper}>
             <ServiceElement title={t("Datum")}>{`${date} ${
-              new Date(datum) < now ? "" : "UHR"
+              new Date(datum) < now ? "" : "Uhr"
             }`}</ServiceElement>
 
             {serviceBlocks != null &&
