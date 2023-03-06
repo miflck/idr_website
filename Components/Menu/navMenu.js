@@ -42,17 +42,11 @@ const NavMenu = (props) => {
       {
         <div className={`${styles.menucontent} ${menuopen}`}>
           <SiteLink href={"/editorial/"} sitetitle={"ÜBER UNS"}></SiteLink>
-          {/*<SiteLink href={"/"} sitetitle={"NEWS"}></SiteLink>*/}
+          <SiteLink href={"/"} sitetitle={"NEWS"}></SiteLink>
           <SiteLink href={"/projekte/"} sitetitle={"PROJEKTE"}></SiteLink>
           <SiteLink href={"/team/"} sitetitle={"TEAM"}></SiteLink>
-          <SiteLink
-            href={"/veranstaltungen/"}
-            sitetitle={"VERANSTALTUNGEN"}
-          ></SiteLink>
-          <SiteLink
-            href={"/publikationen/"}
-            sitetitle={"PUBLIKATIONEN"}
-          ></SiteLink>
+          <SiteLink href={"/veranstaltungen/"} sitetitle={"VERANSTALTUNGEN"}></SiteLink>
+          <SiteLink href={"/publikationen/"} sitetitle={"PUBLIKATIONEN"}></SiteLink>
           <SiteLink href={"/impressum/"} sitetitle={"IMPRESSUM"}></SiteLink>
         </div>
       }

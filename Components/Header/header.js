@@ -7,7 +7,7 @@ const Header = (props) => {
   const router = useRouter();
   // console.log("router", router)
   if (router.pathname === "/") {
-    //var seitentitel = "NEWS";
+    var seitentitel = "NEWS";
     // console.log("Seite", seite)
   } else if (router.pathname === "/editorial") {
     var seite = router.pathname.split("/");

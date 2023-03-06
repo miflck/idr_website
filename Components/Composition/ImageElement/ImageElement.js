@@ -8,6 +8,13 @@ const ImageElement = (props) => {
   let x = focalPoint === undefined ? 50 : focalPoint.x * 100;
   let y = focalPoint === undefined ? 50 : focalPoint.y * 100;
 
+  let h = "75h";
+  let w = "100w";
+  let fit = "cover";
+  if (height > width) {
+    fit = "contain";
+  }
+
   return (
     <div className={styles.root}>
       {/*<img src={src} alt={alt}/> */}
@@ -15,10 +22,11 @@ const ImageElement = (props) => {
         src={src}
         alt={alt}
         width={"100w"}
+        // width={w}
         //height={height}
         height={"75h"}
         layout="responsive"
-        objectFit="cover"
+        objectFit={fit}
         objectPosition={`${x}% ${y}%`}
         sizes="(max-width: 640px) 640px,
         (max-width: 768px) 768px,

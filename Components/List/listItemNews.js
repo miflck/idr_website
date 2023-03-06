@@ -15,8 +15,8 @@ import TextElement from "../Composition/TextElement";
 import ForschungsfeldElement from "../ForschungsfeldElement/forschungsfeldElement";
 
 const ListItemNews = (props) => {
-  const { id, title, forschungsfelder, image, text, link, weblink, slug, teaser } = props;
-  console.log("weblink prop", weblink);
+  const { id, title, forschungsfelder, image, text, link, weblink, slug, teaser, date } = props;
+  console.log(props);
 
   const globalState = useContext(AppContext);
   const { state } = globalState;
@@ -106,6 +106,26 @@ const ListItemNews = (props) => {
     return t;
   };
 
+  const now = new Date();
+  let date_parsed;
+  if (new Date(date) < now) {
+    date_parsed = new Date(date).toLocaleString([], {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } else {
+    date_parsed = new Date(date).toLocaleString([], {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  console.log(date, date_parsed);
+
   return (
     <>
       <Tile key={id} id={id}>
@@ -129,6 +149,11 @@ const ListItemNews = (props) => {
                           <ImageElement src={image.url} alt={image.alt}></ImageElement>
                         </GradientContainer>
                       </div>
+                    )}
+                    {date && (
+                      <div className={styles.datum}>{`${date_parsed} ${
+                        new Date(date_parsed) < now ? "" : "Uhr"
+                      }`}</div>
                     )}
                     <ElementTitle highlight={showHoverGradient}>{title}</ElementTitle>
 

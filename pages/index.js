@@ -157,6 +157,7 @@ export default function Home(props) {
               slug={beitrag.slug}
               teaser={beitrag.teaser}
               weblink={beitrag.weblink}
+              date={beitrag.date}
             />
           );
         })}
