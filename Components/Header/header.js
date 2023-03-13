@@ -25,7 +25,7 @@ const Header = (props) => {
         <title>IDR</title>
         <link rel="icon" href="../favicon.ico" />
         <div className={styles.headertitle}>
-          <Link href="/projekte">HKB — Institute of Design Research</Link>{" "}
+          <Link href="/">HKB — Institute of Design Research</Link>{" "}
           <span className={styles.seitentitel}> — {seitentitel}</span>
         </div>
         <NavMenu />
