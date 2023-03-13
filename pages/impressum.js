@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Components/Header/header";
 import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
 import { Backbutton } from "../Components";
+import { ImageElementContain } from "../Components/Composition";
 
 const Impressum = (props) => {
   const { t } = useTranslation("common");
@@ -29,20 +30,20 @@ const Impressum = (props) => {
       <Container>
         <div className={styles.impressumwrapper}>
           <div className={styles.subwrapper}>
-            {props.impressum.impressum.impressumsblock.map(
-              (impressumsblock) => {
-                return (
-                  <div>
-                    <div className={styles.subtitel}>
-                      {impressumsblock.titel}
-                    </div>
-                    <div className={styles.subtext}>
-                      <TextElement {...impressumsblock.text} />
-                    </div>
+            {props.impressum.impressum.impressumsblock.map((impressumsblock) => {
+              return (
+                <div>
+                  <div className={styles.subtitel}>{impressumsblock.titel}</div>
+                  <div className={styles.subtext}>
+                    <TextElement {...impressumsblock.text} />
                   </div>
-                );
-              }
-            )}
+                </div>
+              );
+            })}
+            <ImageElementContain
+              src="/HKB_Markenzeichen_Kooperation_RGB_Schwarz.svg"
+              width="100px"
+            ></ImageElementContain>
           </div>
         </div>
       </Container>
