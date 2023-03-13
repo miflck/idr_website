@@ -9,3 +9,4 @@ export { default as Gallery } from "./Gallery";
 export { default as ResponsiveImage } from "./ResponsiveImage";
 export { default as TextContainer } from "./TextContainer";
 export { default as Video } from "./Video";
+export { default as ImageElementContain } from "./ImageElementContain";

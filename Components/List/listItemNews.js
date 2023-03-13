@@ -6,6 +6,7 @@ import { GradientContainer } from "..";
 import { getColorArray, getGradientBackgroundStyle, makeGradient } from "../../lib";
 import { ElementTitle } from "../Composition";
 import { ImageElement } from "../Composition";
+import { ImageElementContain } from "../Composition";
 import Tile from "../Tile/Tile";
 import { StructuredText } from "react-datocms";
 import { render } from "datocms-structured-text-to-plain-text";
@@ -15,7 +16,19 @@ import TextElement from "../Composition/TextElement";
 import ForschungsfeldElement from "../ForschungsfeldElement/forschungsfeldElement";
 
 const ListItemNews = (props) => {
-  const { id, title, forschungsfelder, image, text, link, weblink, slug, teaser, date } = props;
+  const {
+    id,
+    title,
+    forschungsfelder,
+    image,
+    text,
+    link,
+    weblink,
+    slug,
+    teaser,
+    date,
+    hochformat,
+  } = props;
   console.log(props);
 
   const globalState = useContext(AppContext);
@@ -40,6 +53,15 @@ const ListItemNews = (props) => {
     }
   };
 
+  let imageComponent;
+  if (image) {
+    if (hochformat) {
+      console.log("------ img", image, hochformat);
+      imageComponent = <ImageElementContain src={image.url} alt={image.alt}></ImageElementContain>;
+    } else {
+      imageComponent = <ImageElement src={image.url} alt={image.alt}></ImageElement>;
+    }
+  }
   let hrefInternalLink = "";
 
   if (link) {
@@ -146,7 +168,7 @@ const ListItemNews = (props) => {
                     {image && (
                       <div className={styles.portraitWrapper}>
                         <GradientContainer backgroundStyle={background_style_image}>
-                          <ImageElement src={image.url} alt={image.alt}></ImageElement>
+                          {imageComponent}
                         </GradientContainer>
                       </div>
                     )}

@@ -158,6 +158,7 @@ export default function Home(props) {
               teaser={beitrag.teaser}
               weblink={beitrag.weblink}
               date={beitrag.date}
+              hochformat={beitrag.hochformat}
             />
           );
         })}
