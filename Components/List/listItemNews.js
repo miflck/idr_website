@@ -3,7 +3,12 @@ import { AppContext, ACTIONS } from "../../context/state";
 import styles from "./list.module.scss";
 import Link from "next/link";
 import { GradientContainer } from "..";
-import { getColorArray, getGradientBackgroundStyle, makeGradient } from "../../lib";
+import {
+  getColorArray,
+  getGradientBackgroundStyle,
+  makeGradient,
+  makeGradientFromArray,
+} from "../../lib";
 import { ElementTitle } from "../Composition";
 import { ImageElement } from "../Composition";
 import { ImageElementContain } from "../Composition";
@@ -99,10 +104,25 @@ const ListItemNews = (props) => {
   }, []);
 
   // get Array of colors from all tags
-  const colorArray = getColorArray(forschungsfelder);
+  // cant use factory as there second color gets added and here we want full color if its only one forschungsfeld
+  const colorArray = forschungsfelder.reduce((acc, it) => {
+    acc.push(it.colour.hex);
+    return acc;
+  }, []);
+
+  if (colorArray.length < 1) {
+    colorArray[0] = "var(--maincolor)";
+    colorArray[1] = "var(--secondcolor)";
+  }
+
+  //const colorArray = getColorArray(forschungsfelder);
   // make no gradient because of lots of text fade to white. Probably no news with more than one Forschungsfeld anyways
-  const gradient_highlight = colorArray[0]; //makeGradientFromArray(colorArray, "to right");
-  //const gradient_highlight = makeGradientFromArray(colorArray, "to right");
+  //const gradient_highlight = colorArray[0]; //makeGradientFromArray(colorArray, "to right");
+
+  let gradient_highlight = colorArray[0];
+  if (colorArray.length > 1) {
+    gradient_highlight = makeGradientFromArray(colorArray, "to right");
+  }
   const animationOut = `${styles.fadeOut} 1.2s ease`;
   const animationIn = ` ${styles.fadeIn} 0.5s ease`;
 
