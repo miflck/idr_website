@@ -33,7 +33,7 @@ const Team = (props) => {
     menschen: { allFunktions },
   } = props;
 
-  const allFilter = allForschungsfelders.concat(allFunktions);
+  const allFilter = allFunktions.concat(allForschungsfelders);
   //console.log("allMenschens", allMenschens, sortByLastname(allMenschens));
 
   const { t } = useTranslation("common");
@@ -104,7 +104,10 @@ const Team = (props) => {
     resultFilter = getIntersection([filterdForschungsfelder, filterdFunktionen]);
     console.log(" intersection", resultFilter);
   } else {
-    resultFilter = filterdForschungsfelder.length < filterdFunktionen.length ? filterdFunktionen : filterdForschungsfelder;
+    resultFilter =
+      filterdForschungsfelder.length < filterdFunktionen.length
+        ? filterdFunktionen
+        : filterdForschungsfelder;
     console.log("else resultFilter", resultFilter, filterdForschungsfelder, filterdFunktionen);
   }
   console.log(" resultfilter", resultFilter);
@@ -181,13 +184,24 @@ const Team = (props) => {
   }, [search]);
 
   return (
-    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+    <Layout
+      setMainColor={props.setMainColor}
+      setSecondColor={props.setSecondColor}
+      colorHexCode={props.colorHexCode}
+      colorHexCodeSecond={props.colorHexCodeSecond}
+    >
       <HeaderWrapper>
         <Header></Header>
         <FilterWrapper>
-          <FilterElement filterarray={allFilter} />
+          <FilterElement filterarray={allFunktions} />
+          <div className="break" style={{ flexBasis: "100%", height: "0" }}></div>
+          <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
