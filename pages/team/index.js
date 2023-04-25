@@ -194,7 +194,10 @@ const Team = (props) => {
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allFunktions} />
-          <div className="break" style={{ flexBasis: "100%", height: "0" }}></div>
+          {/*<div className="break" style={{ flexBasis: "100%", height: "0" }}></div>*/}
+        </FilterWrapper>
+
+        <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
           <Lupe
