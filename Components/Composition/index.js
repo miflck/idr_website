@@ -10,3 +10,5 @@ export { default as ResponsiveImage } from "./ResponsiveImage";
 export { default as TextContainer } from "./TextContainer";
 export { default as Video } from "./Video";
 export { default as ImageElementContain } from "./ImageElementContain";
+export { default as PodcastFeed } from "./PodcastFeed";
+export { default as PodcastPlayer } from "./PodcastPlayer";

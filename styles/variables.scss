@@ -1,4 +1,27 @@
 @import "./breakpoints.scss";
+@import 'react-h5-audio-player/src/styles.scss';
+
+
+.rhap_container{
+  box-shadow: none;
+}
+
+.rhap_volume-bar, .rhap_volume-indicator {
+  background-color: black;
+}
+
+.rhap_main-controls-button svg {
+  color: black;
+  width: 100%;
+  height: 100%;
+}
+.rhap_repeat-button, .rhap_volume-button{
+  color:black;
+}
+
+.rhap_progress-indicator{
+  background-color: black;
+}
 
 html {
   //-> hier in rem definieren?
@@ -38,12 +61,15 @@ html {
   --filterpadding3: 0px;
 
   --lightgrey: rgb(120, 120, 120);
+
 }
 
 @media (min-resolution: 0.001dpcm) {
   .safari10 {
     --filterpadding1: 0px;
   }
+
+  
 }
 
 @media (min-width: $breakpointSmall) {
@@ -52,6 +78,8 @@ html {
     --fontsizenormal: 18px;
     --lineheightnormal: 27px;
   }
+
+
 }
 
 @media (min-width: $breakpointMedium) {

@@ -16,4 +16,13 @@ module.exports = {
     domains: ["www.datocms-assets.com"],
     deviceSizes: [640, 768, 900, 1280],
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "/api/:path*",
+      },
+    ];
+  },
 };
