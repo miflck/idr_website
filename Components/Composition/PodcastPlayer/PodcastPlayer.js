@@ -38,12 +38,13 @@ const PodcastPlayer = ({ episode, audioUrl }) => {
           <div className={styles.datum}>{date} </div>
           <div className={styles.info}>
             <h2 className={styles.titel}>{episode.title}</h2>
-            <H5AudioPlayer
-              src={audioUrl}
-              playing={isPlaying}
-              className={styles["custom-audio-player"]} // Apply your custom class
-            />
+            <div>{episode.contentSnippet}</div>
           </div>
+          <H5AudioPlayer
+            src={audioUrl}
+            playing={isPlaying}
+            className={styles["custom-audio-player"]} // Apply your custom class
+          />
         </div>
       </Container>
     </div>
