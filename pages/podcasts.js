@@ -13,6 +13,7 @@ import TextElement from "../Components/Composition/TextElement";
 import Container from "../Components/Container/container";
 
 import { PodcastFeed } from "../Components/Composition";
+import { ImageElement, ModularContentWrapper } from "../Components/Composition";
 export default function Podcasts(props) {
   const {
     data: { podcast },

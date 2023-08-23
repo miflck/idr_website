@@ -1,3 +1,9 @@
 .modulareinhalte{
     padding-top: 1.25rem;
+    p { 
+        max-width: 700px;
+        margin: 0;
+       // padding-bottom: calc(var(--padding));
+        margin-bottom: calc(var(--padding));
+      }
 }
