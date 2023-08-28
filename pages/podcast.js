@@ -1,5 +1,5 @@
 import { request, ALLNEWS, PODCAST } from "../lib/datocms";
-import styles from "./podcasts.module.scss";
+import styles from "./podcast.module.scss";
 import Layout from "../Components/Layout/layout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -14,7 +14,7 @@ import Container from "../Components/Container/container";
 
 import { PodcastFeed } from "../Components/Composition";
 import { ImageElement, ModularContentWrapper } from "../Components/Composition";
-export default function Podcasts(props) {
+export default function Podcast(props) {
   const {
     data: { podcast },
   } = props;
