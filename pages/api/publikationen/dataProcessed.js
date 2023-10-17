@@ -1,12 +1,634 @@
 export const data = [
   {
+    date: "2023-06-21",
+    official_url:
+      "https://www.knoten-maschen.ch/vielfaeltiger-anklang-in-bern-west/?utm_source=mailpoet&utm_medium=email&utm_campaign=knoten-and-maschen-newsletter-post",
+    contributors: [
+      "Simone Gäumann",
+      "Beatrice Kaufmann",
+      "Daniela Pedemonte",
+      "Annina Tischhauser",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/19426",
+    abstract: [
+      "Ende Mai erklangen in Bern West neue Töne. Mit der Intervention «Mein Lied fürs Tscharni» wurde das bisherige Liederrepertoire des bekannten Glockenspiels für Melodien der heterogenen Quartierbevölkerung geöffnet. Im transdisziplinären Projekt «Quartier für alle» suchen das Departement Soziale Arbeit und die HKB mit Praxispartner*innen und Quartierbewohnenden nach Wegen, die Beteiligungsmöglichkeiten im Quartier diversitätssensibler zu gestalten.",
+    ],
+    type: "magazine_article",
+    title: ["Vielfältiger Anklang in Bern West"],
+    creators: [
+      "Simone Gäumann",
+      "Beatrice Kaufmann",
+      "Daniela Pedemonte",
+      "Annina Tischhauser",
+    ],
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--IN-0057",
+      "BFH-OE--S",
+    ],
+  },
+  {
+    date: "2023-06",
+    official_url: "http://www.vwh-verlag.de/vwh/?p=1397",
+    creators: ["Eugen Pfister"],
+    contributors: [
+      "Eugen Pfister",
+      "Aurelia Luisa Brandenburg",
+      "Peter Färberböck",
+      "Anna Klara Falke",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20025",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    type: "book_section",
+    title: [
+      '"Wie es wirklich war." Wider die Authentizitätsdebatte im Digitalen Spiel',
+    ],
+  },
+  {
+    date: "2023-05-12",
+    official_url:
+      "https://www.routledge.com/Reclaiming-Participatory-Governance-Social-Movements-and-the-Reinvention/Bua-Bussu/p/book/9781032111216",
+    contributors: ["Paola Pierri", "Adrian Bua", "Sonia Bussa"],
+    uri: "https://arbor.bfh.ch/id/eprint/20011",
+    type: "book_section",
+    title: [
+      'Towards Participatory Transition Governance: The Role of Social Movements as "Collaborators" for Democratic Innovation',
+    ],
+    creators: ["Paola Pierri"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2023,
+    official_url: "http://www.vwh-verlag.de/vwh/?p=1397",
+    contributors: [
+      "Eugen Pfister",
+      "Aurelia Luisa Brandenburg",
+      "Peter Färberböck",
+      "Anna Klara Falke",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20023",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    type: "book_section",
+    title: [
+      "Plädoyer für eine argumentenbasierte Debatte zur Wirkung gewalthaltiger Spiele",
+    ],
+  },
+  {
+    date: 2023,
+    official_url: "http://www.vwh-verlag.de/vwh/?p=1397",
+    contributors: [
+      "Aurelia Luisa Brandenburg",
+      "Peter Färberböck",
+      "Anna Klara Falke",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20027",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    type: "book",
+    title: ["Verspielte Vergangenheit: Texte aus sieben Jahren AKGWDS"],
+  },
+  {
+    date: 2023,
+    official_url: "http://www.vwh-verlag.de/vwh/?p=1397",
+    contributors: [
+      "Aurelia Luisa Brandenburg",
+      "Peter Färberböck",
+      "Anna Klara Falke",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+      "Aurelia Luisa Brandenburg",
+      "Peter Färberböck",
+      "Anna Klara Falke",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20026",
+    type: "book_section",
+    title: ["Einleitung: Verspielte Vergangenheit"],
+    creators: [
+      "Aurelia Luisa Brandenburg",
+      "Peter Färberböck",
+      "Anna Klara Falke",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+    ],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2023,
+    official_url: "https://www.oupress.com/",
+    contributors: ["Arno Görgen", "John Wills", "Esther Wright"],
+    uri: "https://arbor.bfh.ch/id/eprint/19028",
+    type: "book_section",
+    title: [
+      "The Medicalization of Arthur Morgan: Tuberculosis as the Good: Death in Red Dead Redemption 2",
+    ],
+    creators: ["Arno Görgen"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2023,
+    official_url:
+      "https://www.vandenhoeck-ruprecht-verlage.com/themen-entdecken/geschichte/geschichte-der-fruehen-neuzeit/58080/konkurrenzen-in-der-fruehen-neuzeit",
+    contributors: [
+      "Josef Köstlbauer",
+      "Eugen Pfister",
+      "Tobias Winnerling",
+      "Franziska Neumann",
+      "Jorun Poettering",
+      "Hillard von Thiessen",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20028",
+    type: "book_section",
+    title: [
+      "Piraten, Ninja und Strategen! Digitale Spiele als hyperkompetitive Inszenierung frühneuzeitlicher Konfliktfelder",
+    ],
+    creators: ["Josef Köstlbauer", "Eugen Pfister", "Tobias Winnerling"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2023,
+    official_url:
+      "https://www.friedrich-verlag.de/shop/geschichte-in-digitalen-spielen-523459",
+    contributors: ["Eugen Pfister", "Martin Tschiggerl"],
+    uri: "https://arbor.bfh.ch/id/eprint/20029",
+    type: "article",
+    title: ["Ranke ex machina? Geschichtstheorie in digitalen Spielen"],
+    creators: ["Eugen Pfister", "Martin Tschiggerl"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2023,
+    official_url: "https://ijoc.org/index.php/ijoc/article/view/18907/4191",
+    contributors: ["Paola Pierri", "Elizabeth Calderón Lüning"],
+    uri: "https://arbor.bfh.ch/id/eprint/19965",
+    abstract: [
+      "This article will be drawing on two cases to reflect on the impact of different ways of practicing civic engagement in urban digitalization policy. Both cases reflect on the importance of cities playing an active role in the promotion of digital rights, obligation of public participation in digital policy making, and need for political digital education to enable democratic conversations on digital transformation. From a democratic theory\r\npoint of view, the shifts happening through the digitalization of societies raise interesting questions regarding what modes of governance should be implemented for improving digital sovereignty, which could be in line with “locally” grounded politics. Theoretically, the article will frame these issues of governance and civic participation within the literature on “digital sovereignty,” understood as going beyond national territory toward issues of independence, democratic control, and autonomy over digital infrastructures, technologies, and content.",
+    ],
+    type: "article",
+    title: [
+      "A Democratic Approach to Digital Rights: Comparing perspectives on digital sovereignty on city level",
+    ],
+    creators: ["Paola Pierri", "Elizabeth Calderón Lüning"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+  },
+  {
+    date: "2022-11-10",
+    official_url: "https://uxschweiz.ch/events/world-usability-day-2022/",
+    contributors: ["Beatrice Kaufmann"],
+    uri: "https://arbor.bfh.ch/id/eprint/18249",
+    event_location: "Zürich",
+    abstract: [
+      "Eine verständliche Kommunikation ist zentral für eine sichere, qualitativ hochstehende und gleichwertige Gesundheitsversorgung aller Patient:innen. Sprachbarrieren sind dabei eine grosse Herausforderung für Gesundheitspersonal und anderssprachige Patient:innen und deren Angehörige und beeinflussen die Behandlungsqualität negativ. \r\nDa professionelle Dolmetscher sind nicht immer verfügbar und bestehende Hilfsmittel nur bedingt nützlich sind, hat ein interdisziplinäres Forschungsteam der Berner Fachhochschule den Prototyp einer digitalen Kommunikationshilfe für anderssprachige Kinderpatient:innen, deren Angehörige und Pflegefachpersonen entwickelt. Diese unterstützt bildbasiert die Kommunikation in der Notfall-Anamnese. Die Kommunikationshilfe wurde mit der Beteiligung von Nutzenden in einem partizipativen Prozess erarbeitet.\r\nBeatrice Kaufmann stellt in ihrem Input den Weg zum Prototyp vor und zeigt auf, welche Rolle User Centered Design in der Gesundheitskommunikation spielt.",
+    ],
+    type: "conference_item",
+    title: [
+      "Wenn Mimik und Gestik nicht ausreichen: eine bildbasierte Kommunikationshilfe zur Unterstützung bei Sprachbarrieren im Kindernotfall",
+    ],
+    creators: ["Beatrice Kaufmann"],
+    divisions: [
+      "BFH-OE--G",
+      "BFH-OE--IN-0005",
+      "BFH-OE--IN-0015",
+      "BFH-OE--IN-0030",
+      "BFH-OE--RU-0116",
+    ],
+  },
+  {
+    date: "2022-11-09",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18620",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit dem Soziologen Leon Wansleben und dem SNB-Verantwortlichen Nicolas Cuche-Curti über Bedeutung, Rolle und Handlungsspielraum der heutigen Zentralbanken. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Zentralbank-Zeiten – mit Leon Wansleben und Nicolas Cuche-Curti"],
+  },
+  {
+    date: "2022-11-07",
+    official_url:
+      "https://corporate.migros.ch/de/Magazin/2022/11/diskussionrunde-zum-mannsein.html",
+    contributors: [
+      "Ralf Kaminski",
+      "Hans-Ulrich Pfister",
+      "Nic Gaspari",
+      "Simon Renato Küffer",
+      "Josef Kunz",
+      "Dino Šabanović",
+      "Oscar Neira",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/18658",
+    abstract: [
+      "Auch Männer haben es heute nicht leicht. Nicht nur stehen sie oft unter Generalverdacht, sie sollen auch sensibel und genderflexibel sein. Was macht das mit ihnen?",
+    ],
+    type: "magazine_article",
+    title: ["Wann ist ein Mann ein Mann?"],
+    creators: ["Ralf Kaminski"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: "2022-11-02",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18619",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Sängerin Anna Rossinelli und dem Schriftsteller Jonas Lüscher über das Geld als Bedingung und Thema der Musik und Literatur. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Kunst und Kapitalismus – mit Anna Rossinelli und Jonas Lüscher"],
+  },
+  {
+    date: "2022-11",
+    official_url:
+      "https://www.bethesda-alterszentren.ch/hauptsitz-kuesnacht/defacto.html",
+    contributors: ["Eva Soom Ammann", "Minou Afzali"],
+    uri: "https://arbor.bfh.ch/id/eprint/18091",
+    type: "magazine_article",
+    title: ["Heimat im Alter – Lebensrückschau und Alltagsgestaltung"],
+    creators: ["Eva Soom Ammann", "Minou Afzali"],
+    divisions: [
+      "BFH-OE--G",
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--IN-0030",
+      "BFH-OE--RU-0069",
+      "BFH-OE--RU-0122",
+    ],
+  },
+  {
+    date: "2022-10-29",
+    official_url: "https://www.redesigningdeathcare.org/program",
+    creators: ["Tina Braun"],
+    contributors: ["Tina Braun"],
+    uri: "https://arbor.bfh.ch/id/eprint/18283",
+    event_location: "Melbourne",
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--RU-0012",
+      "BFH-OE--RU-0069",
+    ],
+    abstract: [
+      "My practice-led dissertation within the perspective design/visual communication of the research project “Settings of Dying” (SNSF project, 2020-2023) focuses on visual communication within palliative care institutions, and how the topic of dying is institutionally represented and reflected in different media and communication materials of palliative care institution and hospices. The methods used are navigating between the disciplines of anthropology and design including field research, rhetorical design analysis and research through design.",
+    ],
+    type: "conference_item",
+    title: [
+      "Drafting new imaginaries for palliative care through design ethnography",
+    ],
+  },
+  {
+    date: "2022-10-28",
+    official_url: "https://counterparts.ch/",
+    creators: ["Katharina Scheller"],
+    contributors: ["Katharina Scheller"],
+    uri: "https://arbor.bfh.ch/id/eprint/18049",
+    event_location: "Zurich",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+    abstract: [
+      "The design research project focuses on the observation that maps play a central role in information and knowledge transfer in the field of biodiversity conservation. However, the production and reception contexts of these maps have hardly been questioned yet. Critical map theory points out that the paradigm of objectivity and truthfulness can lead to false assumptions and thus have negative consequences for the perception and recognition of the needs of ethnic groups as well as the natural environment. These findings have not yet been reflected in ecological mapping practice. The ways in which we measure, visualize, and communicate our non-human co-living world should better encompass the dynamics and interdependencies of natural systems, as well as the species-specific needs.\r\nUsing the case study of urban tree mapping, the project examines the impact of the cartographic design on communication, planning, and decision-making within the context of biodiversity conservation: To what extent does the design of maps influence both the perception of the nature depicted and the resulting actions and decisions? What new or different forms and techniques of mapping are required to represent the diversity of the existences involved?",
+    ],
+    type: "conference_item",
+    title: [
+      "Critical Cartographies to Sustain and Care for Biodiversity in Central Europe",
+    ],
+  },
+  {
+    date: "2022-10-27",
+    official_url:
+      "https://www.sagw.ch/sagw/aktuell/hin-zu-einer-altersfreundlichen-gesundheitsversorgung",
+    creators: ["Minou Afzali"],
+    contributors: ["Minou Afzali"],
+    uri: "https://arbor.bfh.ch/id/eprint/18082",
+    event_location: "Bern",
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--RU-0069",
+      "BFH-OE--RU-0116",
+    ],
+    abstract: [
+      "In den letzten Jahren hat das Interesse an gestalterischen Aspekten im Gesundheitskontext zugenommen. Dies zeigt sich unter anderem in einem zunehmenden Bewusstsein der Gesundheitsinstitutionen für die Relevanz von Design und Architektur. In der Pandemie wurde dies besonders sichtbar – gerade in Bezug auf ältere Menschen. Bei der Gestaltung von Kommunikationsmitteln, Produkten, räumlichen Umgebungen und Angeboten für die Gesundheitsversorgung älterer Menschen ist Folgendes wichtig: die Berücksichtigung wissenschaftlicher Erkenntnisse (evidenzbasiertes Design) und der frühzeitige Einbezug relevanter Ansprechgruppen in den Designprozess. Dabei gilt es zu beachten, dass die primäre Ansprechgruppe, nämlich ältere Menschen, nicht weniger heterogen ist als die übrige Bevölkerung.",
+      "Ces dernières années, l’intérêt pour les aspects conceptuels dans le contexte de la santé s’est accru. Cela se traduit notamment par des institutions de santé de plus en plus conscientes de la pertinence du design et de l’architecture. Cela a été particulièrement visible lors de la pandémie, notamment en ce qui concerne les personnes âgées. Lors de la conception de moyens de communication, de produits, d’environnements spatiaux et d’offres pour les soins de santé des personnes âgées, il est important de tenir compte des connaissances scientifiques (evidence-based design) et d’impliquer suffisamment tôt les différents interlocuteurs dans le processus de conception. En outre, il convient de garder à l’esprit que les personnes âgées, qui constituent les premières personnes concernées, ne sont pas moins hétérogènes que le reste de la population.",
+    ],
+    type: "conference_item",
+    title: [
+      "Wie kann Design zu einer altersfreundlicheren Gesundheitsgrundversorgung beitragen?",
+    ],
+  },
+  {
+    date: "2022-10-26",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18617",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Soziologin Cornelia Bohn und der Banknoten-Gestalterin Manuela Pfrunder über den Zusammenhang von visueller Ästhetik, Bildmotiven und Geld. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Bilder des Geldes – mit Manuela Pfrunder und Cornelia Bohn"],
+  },
+  {
+    date: "2022-10-19",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18616",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit Daniel Thelesklaf der UN-Universität über moderne Sklaverei, Menschenhandel und Geldwäscherei. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Geld und Gewalt – mit Daniel Thelesklaf"],
+  },
+  {
+    date: "2022-10-14",
+    official_url: "https://www.romev.de/?p=4702",
+    creators: ["Ulrike Felsing", "Murielle Cornut"],
+    contributors: ["Ulrike Felsing", "Murielle Cornut"],
+    uri: "https://arbor.bfh.ch/id/eprint/18276",
+    event_location: "Online",
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0043"],
+    type: "conference_item",
+    title: [
+      "Der Alteritätsdiskurs in historischer Fotografie im digitalen Bildarchiv",
+    ],
+  },
+  {
+    date: "2022-10-13",
+    official_url: "https://www.pflegenetz.at/tagungen/high-noon-2022/",
+    creators: ["Minou Afzali"],
+    contributors: ["Minou Afzali"],
+    uri: "https://arbor.bfh.ch/id/eprint/18090",
+    event_location: "Wien, Austria Trend Hotel Schloss Wilhelminenberg",
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--RU-0069",
+      "BFH-OE--RU-0104",
+      "BFH-OE--RU-0116",
+    ],
+    abstract: [
+      "Ob in der Notaufnahme eines Akutkrankenhauses, in der psychiatrischen Klinik oder im Altersheim: Das räumliche Umfeld hat einen Einfluss auf Pflege- und Behandlungsprozesse sowie auf das Befinden von Versorgungsnutzenden und Gesundheitspersonal. Inwiefern die Gestaltung des räumlichen Umfelds auch Aggression fördern oder gar auslösen kann, wird in diesem Vortrag anhand von Projektbeispielen der interdisziplinären Arbeitsgruppe Health Care Communication Design HCCD der Berner Fachhochschule vorgestellt. Die Arbeitsgruppe besteht seit 2007 und vereint Forschende aus den Bereichen Design, Architektur, Pflege, Wirtschaft und Medizininformatik. Gemeinsam forschen sie zu Fragestellungen an der Schnittstelle zwischen Design und Gesundheit – seit diesem Jahr auch am neu gegründeten Swiss Center for Design and Health (SCDH).",
+    ],
+    type: "conference_item",
+    title: [
+      "Design als Trigger von Aggression? Die stressfördernde bzw. -lindernde Wirkung der Gestaltung des räumlichen Umfelds.",
+    ],
+  },
+  {
+    date: "2022-10-12",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18615",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Literaturwissenschaftlerin Elisabeth Bronfen und dem Podcaster Wolfgang Schmitt darüber, wie Filme Geld darstellen, thematisieren, konzipieren. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Geld im Film – mit Elisabeth Bronfen und Wolfgang M. Schmitt"],
+  },
+  {
+    date: "2022-10-05",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18614",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Pflegefachfrau Cevincia Singleton und dem Soziologen Oliver Nachtwey über systemrelevante Berufe mit schlechten Arbeitsbedingungen. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Unsichtbare Arbeit – mit Cevincia Singleton und Oliver Nachtwey"],
+  },
+  {
+    date: "2022-10",
+    official_url:
+      "https://www.sciencedirect.com/science/article/pii/S1618866722002722",
+    contributors: ["Harald Klingemann"],
+    uri: "https://arbor.bfh.ch/id/eprint/17753",
+    abstract: [
+      "For the first time, this study presents a natural experiment describing and explaining selected stakeholders’ attitudes toward the transformation of cemeteries into urban green spaces. In 2020, a real-life community conflict unfolded in Bern, the capital of Switzerland, over plans to close the smallest of its three municipal cemeteries by 2023. This study analyzes a representative sample (N = 519) of the city’s adult population and that of the adjacent town, Ostermundigen, capturing the views of residents of the conflict district and contrasting them with those of people living outside the district. It also compares attitudes of cemetery visitors and non-visitors. Survey interviews were conducted via telephone and through an online panel. The study focuses on conflicts triggered by alternative land-use plans, highlighting the need to include groups that are both familiar and unfamiliar with cemeteries. Interestingly, the latter group proved to be more open to change. The local meaning of cemeteries and municipal green urban-space policies are crucial context parameters, as demonstrated by the strong opposition to cemetery transformation in affected areas. The underlying beliefs of opponents and proponents are explored qualitatively and found to be complex and multidimensional. Individual attitude predictors include age and personal emotional attributes. Finally, factor analysis is used to develop a typology of users. The four emerging user types are linked to different perceptions of “the nature of cemeteries” and attitudes toward innovative plans (e.g., whether to create burial spaces for pets or a restaurant within the cemetery grounds, both of which received significant support). The findings inform policy decisions related to urban green-space management while balancing the interests of various groups. User perspectives should be reconciled by focusing on “dialogues of values” and participatory approaches, which complement information-centered municipal policies.",
+    ],
+    type: "article",
+    title: ["Cemeteries in transformation: a Swiss community conflict study"],
+    creators: ["Harald Klingemann"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0019", "BFH-OE--RU-0069"],
+  },
+  {
+    date: "2022-09-30",
+    official_url: "https://www.pflegekongress.at/",
+    contributors: ["Leonie Roos", "Michael Flückiger", "Niklaus Stefan Bernet"],
+    uri: "https://arbor.bfh.ch/id/eprint/17922",
+    event_location: "austria center vienna",
+    type: "conference_item",
+    title: [
+      "Pflegedaten nutzen - die Visualisierung risikoadjustierter Institutionsvergleiche im Fokus",
+    ],
+    creators: ["Leonie Roos", "Michael Flückiger", "Niklaus Stefan Bernet"],
+    divisions: [
+      "BFH-OE--G",
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0030",
+      "BFH-OE--RU-0116",
+      "BFH-OE--RU-0124",
+    ],
+  },
+  {
+    date: "2022-09-23",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18605",
+    event_location: "Leibniz-Center for Contemporary History Potsdam",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Presentation on how mass media images provide a versatile ideology of money which leads to an enhanced acceptance of money – therefore mass media images form a constitutive part of money and the political economy.",
+    ],
+    type: "conference_item",
+    title: [
+      "The Visual Rhetoric of Money – Aesthetics, Affects and Narratives in Contemporary Mass Media Images",
+    ],
+  },
+  {
+    date: "2022-09-10",
+    official_url:
+      "https://www.bfh.ch/en/news/events/european-doctoral-conference-in-nursing-science/",
+    creators: ["Minou Afzali"],
+    contributors: ["Minou Afzali"],
+    uri: "https://arbor.bfh.ch/id/eprint/18088",
+    event_location: "Bern",
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--RU-0069",
+      "BFH-OE--RU-0116",
+    ],
+    abstract: [
+      "Today’s healthcare system is permeated with design questions: To what extent does the spatial environment contribute to patient ag-gression? How can people with dementia better orient themselves in the hospital? How can communication between nurses and foreign-language patients be improved? Or: How must an intensive care unit be designed to support staff’s work processes? In order to be able to answer these complex questions, knowledge and competences from different fields are needed.\r\n\r\nThe lecture will give an overview of evidence-based design in health contexts and show how interprofessional collaboration between re-searchers from different fields, such as design, architecture and nurs-ing can work. It will address both the potential and challenges of in-terdisciplinary research using concrete project examples. At the newly founded Swiss Center for Design and Health (SCDH), knowledge and research competences of different disciplines are used to answer complex questions in healthcare and to come up with innovative solu-tions.",
+    ],
+    type: "conference_item",
+    title: ["Design for Health Care"],
+  },
+  {
+    date: "2022-09-10",
+    official_url:
+      "https://www.bfh.ch/en/news/events/european-doctoral-conference-in-nursing-science/",
+    creators: ["Minou Afzali", "Sabine Hahn"],
+    contributors: ["Minou Afzali", "Sabine Hahn"],
+    uri: "https://arbor.bfh.ch/id/eprint/18089",
+    event_location: "Bern",
+    divisions: [
+      "BFH-OE--G",
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--IN-0030",
+      "BFH-OE--RU-0069",
+      "BFH-OE--RU-0116",
+      "BFH-OE--RU-0157",
+    ],
+    abstract: [
+      "In this workshop, participants will discuss their individual experiences with design problems within health care contexts and with design research. Together we will deepen our understanding of what interprofessional research in design and health means and which methods are suitable to include different stakeholders in research processes. Finally, the participants will jointly develop project ideas that require interprofessional collaboration and can contribute to design better health care.",
+    ],
+    type: "conference_item",
+    title: ["Interprofessional Science to Design better Health Care"],
+  },
+  {
+    date: "2022-08-19",
+    official_url:
+      "https://www.deutschlandfunkkultur.de/tommy-vercetti-antikapitalistischer-mundard-rap-podcast-dlf-kultur-40678b6e-100.html",
+    creators: ["Kathrin Hondl"],
+    contributors: ["Kathrin Hondl", "Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18656",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    type: "audio_visual",
+    title: ["Antikapitalistischer Mundart-Rap"],
+  },
+  {
+    date: "2022-08-19",
+    official_url:
+      "https://www.societybyte.swiss/2022/08/19/wie-bilder-im-kindernotfall-die-sprachbarriere-ueberwingen/",
+    contributors: [
+      "Friederike J.S. Thilo",
+      "Anouk Haldemann",
+      "Kerstin Denecke",
+      "François von Kaenel",
+      "Loraine Olalia",
+      "Beatrice Kaufmann",
+      "null null",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/18265",
+    abstract: [
+      "Die Kommunikation mit Gesundheitspersonal ist schwierig, wenn man die Sprache nicht versteht. Erst recht in Notfällen und wenn es um Kinder geht. Eine interdisziplinäre Gruppe von Forscher*innen der Berner Fachhochschule Gesundheit und der Hochschule der Künste HKB hat deshalb «Sprechende Bilder» entwickelt. Eine Kommunikationshilfe für die Verwendung im Kindernotfall.",
+    ],
+    type: "magazine_article",
+    title: ["Mit Bildern die Sprachbarriere überwinden"],
+    creators: [
+      "Friederike J.S. Thilo",
+      "Anouk Haldemann",
+      "Kerstin Denecke",
+      "François von Kaenel",
+      "Loraine Olalia",
+      "Beatrice Kaufmann",
+    ],
+    divisions: [
+      "BFH-OE--G",
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--IN-0015",
+      "BFH-OE--IN-0030",
+      "BFH-OE--RU-0116",
+      "BFH-OE--RU-0125",
+      "BFH-OE--TI",
+    ],
+  },
+  {
+    date: "2022-06-23",
+    official_url:
+      "https://www.curem.uzh.ch/de/weiterbildungen/kompaktkurse/urbanpsychology.html?gclid=EAIaIQobChMIp-Ko2KKj-gIVwpBoCR32LQGtEAAYASAAEgI4L_D_BwE",
+    creators: ["Jimmy Schmid"],
+    contributors: ["Jimmy Schmid"],
+    uri: "https://arbor.bfh.ch/id/eprint/17725",
+    event_location: "Zürich",
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0019"],
+    abstract: [
+      "— Orientierung und Raumwahrnehmung\r\n· Orientierungsmodell\r\n· Einflussfaktoren und Empfehlungen\r\n· Orientierungsformen\r\n· Kognitive Karten und Landmarks\r\n· Urbane Strukturen und Gebäudetypologien\r\n— Signaletik – Orientierungs- und Informationssysteme\r\n— Orientierung und Raumwahrnehmung\r\n— Signaletik – Orientierungs- und Informationssysteme\r\n· Kommunikationsmodelle\r\n· Informationsarchitektur v/s Informationsdesign\r\n· Signaletisches Ordnungssystem\r\n· Positionierung\r\n· Methoden der Wirkungsmessung\r\n· Barrierefreiheit",
+    ],
+    type: "conference_item",
+    title: ["Orientierung und Wegfindung"],
+  },
+  {
+    date: "2022-06-22",
+    creators: ["Arno Görgen"],
+    contributors: ["Arno Görgen"],
+    uri: "https://arbor.bfh.ch/id/eprint/18284",
+    event_location: "Augsburg",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Am Mittwoch, den 22. Juni 2022, um 18 Uhr findet der nächste GameLab Stammtisch (R. 1126) des AB Medienrealität statt. Zu Gast ist der Kulturwissenschaftler Arno Görgen, der zu Krankheiten in Computerspielen forscht. In seinem Vortrag „Krankheit im Digitalen Spiel: ein Topos im Wandel“ gibt er Einblicke in seine Forschung und zeigt dabei wie vielschichtig Computerspielforschung sein kann.  Im Vortrag werden Aspekte von Krankheiten in Computerspielen beleuchtet. Denn ob somatische oder psychische Krankheiten - digitale Spiele denken diese zutiefst menschlichen Erfahrungen nicht mehr nur in Stereotypen, sondern bilden sie in einer komplexen Darstellung samt Illness Narratives ab. Und das auf doppelte Weise: empathisch wie auch unterhaltsam. Dieser Bandbreite soll sich im Vortrag analytisch-kritisch genähert werden und nebenbei aufgezeigt werden, wie vielschichtig heute Computerspieleforschung ist. Dabei wird deutlich werden, wie sehr Games es vermögen als vernetztes Narrativ alle Ebenen des Spiels als Medium zu durchdringen.",
+    ],
+    type: "conference_item",
+    title: ["Krankheit im Digitalen Spiel: ein Topos im Wandel"],
+  },
+  {
+    date: "2022-06-04",
+    official_url: "https://www.edra.org/page/edra53",
+    creators: [
+      "Minou Afzali",
+      "Rahel Ursula Inauen",
+      "Jimmy Schmid",
+      "Ramona Larissa Tschuppert",
+      "Jean Odermatt",
+      "Alexa Blum",
+    ],
+    contributors: [
+      "Minou Afzali",
+      "Rahel Ursula Inauen",
+      "Jimmy Schmid",
+      "Ramona Larissa Tschuppert",
+      "Jean Odermatt",
+      "Alexa Blum",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/18076",
+    event_location: "Greenville, SC",
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--RU-0069",
+      "BFH-OE--RU-0116",
+    ],
+    type: "conference_item",
+    title: ["Evicence-based Design in a Geriatric Clinic"],
+  },
+  {
     date: "2022-06-03",
     official_url: "https://www.dgtf.de/",
-    creators: ["Katharina Scheller"],
     contributors: ["Katharina Scheller"],
     uri: "https://arbor.bfh.ch/id/eprint/17086",
     event_location: "Kiel",
-    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
     abstract: [
       "Das Designforschungsprojekt «Mapping for Green Cities» untersucht die Rolle des Kartendesigns in der ökologischen Kartografie am Beispiel der städtischen Baumkartierung. Baumbestände nehmen im urbanen Raum eine wichtige Schlüsselrolle bezüglich Ökosystemleistungen und Biodiversität ein und haben einen wesentlichen Einfluss auf das menschliche Wohlbefinden. Angesichts der ökologischen und klimatischen Entwicklungen steht die städtische Planung vor der Herausforderung, solche Aspekte in ihren Entscheidungen stärker miteinzubeziehen. Es fehlt jedoch an erprobtem kartografischem Werkzeug für die Darstellung solcher Faktoren. Insbesondere die ökologischen Leistungen und die artspezifischen Anforderungen von Stadtbäumen sind in den Kartengrundlagen kaum repräsentiert.\r\nDie Forschungsarbeit geht der Frage nach, welche Auswirkungen die Unterrepräsentation von Baumbeständen auf die Planung und Gestaltung städtischer Räume hat und wie Karten diesbezüglich verbessert werden können.\r\nDas Ziel ist es, die Produktionsprozesse ökologischer Karten sowie ihre Rezeption und Nutzung im Praxisfeld zu untersuchen. Aufbauend auf den Erkenntnissen sollen in einem angewandten Forschungsansatz alternative Kartendarstellungen erprobt, prototypisch in die Praxis zurückgeführt und evaluiert werden. Damit soll eine forschungsbasierte Diskussionsgrundlage für eine ökologisch nachhaltigere Stadtplanung geschaffen werden.",
     ],
@@ -14,6 +636,217 @@ export const data = [
     title: [
       "Mapping for Green Cities: Analyse und Exploration am Beispiel der städtischen Baumkartierung",
     ],
+    creators: ["Katharina Scheller"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+  },
+  {
+    date: "2022-06",
+    official_url: "http://www.vwh-verlag.de/vwh/?p=1363",
+    contributors: [
+      "Eugen Pfister",
+      "Felix Zimmermann",
+      "Aurelia Brandenburg",
+      "Rudolf Thomas Inderst",
+      "Pascal Marc Wagner",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/18350",
+    type: "book_section",
+    title: [
+      '"Ich war so arrogant und dumm"– Zur Dialektik des Holocausts im First-Person-Shooter am Beispiel von Wolfenstein: The New Order.',
+    ],
+    creators: ["Eugen Pfister", "Felix Zimmermann"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: "2022-05-05",
+    official_url: "https://doi.org/10.5565/rev/tdevorado.166",
+    contributors: ["Eugen Pfister"],
+    uri: "https://arbor.bfh.ch/id/eprint/18352",
+    abstract: [
+      "Digital games are products of our society, products of our culture; they are not created in aseptic underground laboratories without contact to the outside world. Whether consciously or not, developers are always inspired by their environment, their experiences and worldviews in the creation of their game worlds. Fantasy game worlds, just like “historical” ones, therefore always transport political statements. Ideas of domination, gender and economy thus find their way into global strategy games, role-playing games and economic simulations. These communicated worldviews, however, do not remain static. On the contrary, they evolve with our societies. This becomes particularly clear in the case of historical settings.\r\nThe Cold War is particularly interesting for this type of research for two reasons: First of all, the Cold War was a geopolitical, but at the same time also a political and a cultural conflict that potentially had an impact on people's everyday lives. And second, we have here the rather unique opportunity to compare how one and the same medium first processed a contemporary conflict (until 1989/1990) and later went through a similar process but with a now historical phenomenon (from the 1990s to today)",
+    ],
+    type: "article",
+    title: [
+      '"Know Your History!" The Cold War in Video Games and its function.',
+    ],
+    creators: ["Eugen Pfister"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: "2022-05-04",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18613",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Historikerin Eva Haller und dem Ethnologen Stefan Leins über Geschichte und Rolle des Handels- und Finanzplatzes Schweiz. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Finanzplatz Schweiz – mit Lea Haller und Stefan Leins"],
+  },
+  {
+    date: "2022-04-27",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18612",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Journalistin und Elle-XX-Mitgründerin Nadine Jürgensen über Gender Gaps im Bereich Geld. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Geld, Gender, Gaps – mit Nadine Jürgensen"],
+  },
+  {
+    date: "2022-04-21",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18657",
+    event_location: "FHNW Basel",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Guest lecture on the visual rhetoric of money with some thesis on the relation of design and politics.",
+    ],
+    type: "conference_item",
+    title: ["Design & Politics"],
+  },
+  {
+    date: "2022-04-20",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18611",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit dem Soziologen Wolfgang Streeck über die Wachstumskrise des Kapitalismus und dessen Verzögerungsstrategien seit den 1970er Jahren bis heute. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Geldflut? Wo? – mit Wolfgang Streeck"],
+  },
+  {
+    date: "2022-04-13",
+    official_url: "https://econtent.hogrefe.com/loi/suc",
+    contributors: ["Harald Klingemann"],
+    uri: "https://arbor.bfh.ch/id/eprint/17963",
+    type: "article",
+    title: [
+      "Sucht und Zeitwahrnehmung - die unsichtbare Dimension",
+      "Addiction and Perceptions of Time – The Invisible Dimension",
+    ],
+    creators: ["Harald Klingemann"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0069"],
+  },
+  {
+    date: "2022-04-13",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18610",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit dem Literaturwissenschaftler Joseph Vogl über den Zusammenhang von Digitalisierung, finanzialisiertem Kapitalismus und Demokratie-Krise. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Geld regiert die Welt - mit Joseph Vogl"],
+  },
+  {
+    date: "2022-04-09",
+    official_url:
+      "https://web.bielertagblatt.ch/dass-wir-bargeld-denken-ist-ein-kleinbuergerlicher-impuls",
+    contributors: ["Tobias Graden", "Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18655",
+    abstract: [
+      "Geld sei nicht neutral, sagt Simon Küffer, man müsse es stets politisch denken. Er, der als Rapper Tommy Vercetti bekannt ist, forscht zur «visuellen Rhetorik des Geldes». Seine These: Die massenmedialen Bilder, welche die Geldgesellschaft produziert, helfen mit, dass wir das Geld überhaupt akzeptieren. Dabei sieht er eine «ideologische Arbeitsteilung» zwischen Rappern und der Finanzbranche.",
+    ],
+    type: "magazine_article",
+    title: ["«Dass wir an Bargeld denken, ist ein kleinbürgerlicher Impuls»"],
+    creators: ["Tobias Graden"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: "2022-04-04",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18609",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit den Digital-Experten Ela Kagel und David Simon über die wirtschaftliche und gesellschaftliche Bedeutung von Krypto-Währungen und NFTs. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Bitcoins & NFTs – mit Ela Kagel und David Simon"],
+  },
+  {
+    date: "2022-03-30",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18608",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Pfarrerin Catherine McMillan und dem Investigativ-Journalist Jörn Klare über die Käuflichkeit und den monetären Wert des Menschen. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Sind wir alle käuflich? – mit Catherine McMillan und Jörn Klare"],
+  },
+  {
+    date: "2022-03-28",
+    official_url:
+      "https://www.bpb.de/themen/kultur/digitale-spiele/504561/spiele-mit-hakenkreuzen-zum-umgang-mit-ideologie-und-vergangenheit/",
+    creators: ["Eugen Pfister", "André Postert"],
+    contributors: ["Eugen Pfister", "André Postert"],
+    uri: "https://arbor.bfh.ch/id/eprint/18355",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Die Entscheidung fiel unerwartet und räumte eine jahrzehntelange Rechts- und Vertriebspraxis beiseite: Seit dem Sommer 2018 ist es nicht mehr unmöglich, dass wir in digitalen Spielen Hakenkreuzen, SS-Runen und dem Hitlergruß begegnen. Um besser verstehen zu können, wie es zu diesem Paradigmenwechsel kam, zeigt ein Blick in die Geschichte der analogen und digitalen Spiele, wieso Hakenkreuze und andere NS-Symbole lange nicht zu sehen waren und warum sich das jetzt geändert hat.",
+    ],
+    type: "magazine_article",
+    title: [
+      "Spiele mit Hakenkreuzen: zum Umgang mit Ideologie und Vergangenheit",
+    ],
+  },
+  {
+    date: "2022-03-23",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18607",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit der Kulturhistorikerin und Gender-Forscherin Christina von Braun über kulturelle Geschichte des Geldes, sein Verhältnis zu Geschlecht, Gefühl, Religion. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Geld, Körper, Psyche – mit Christina von Braun"],
+  },
+  {
+    date: "2022-03-16",
+    official_url:
+      "https://www.bhm.ch/de/informationen/bildung-und-vermittlung/fuer-erwachsene/wechselausstellungen/das-entfesselte-geld/money-talks",
+    creators: ["Simon Renato Küffer"],
+    contributors: ["Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18606",
+    event_location: "Bernisches Historisches Museum",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Simon Küffer alias Tommy Vercetti spricht mit dem Soziolgen Axel Paul über die Frage, was Geld ist und wie es entstand. Im Rahmen der Gesprächsreihe «Money Talks» des Bernischen Historischen Museums.",
+    ],
+    type: "conference_item",
+    title: ["Was ist Geld? – mit Axel Paul"],
   },
   {
     date: "2022-03-15",
@@ -43,12 +876,41 @@ export const data = [
       "François von Kaenel",
       "Anouk Haldemann",
     ],
-    divisions: [
-      "BFH-OE--HKB",
-      "BFH-OE--IN-0005",
-      "BFH-OE--IN-0015",
-      "BFH-OE--RU-0125",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0125"],
+  },
+  {
+    date: "2022-03-14",
+    official_url:
+      "https://www.hanser-literaturverlage.de/buch/rache-geschichte-und-fantasie-dt-ausgabe/978-3-446-27245-3/",
+    contributors: [
+      "Eugen Pfister",
+      "Max Czollek",
+      "Mirjam Wenzel",
+      "Erik Riedel",
     ],
+    uri: "https://arbor.bfh.ch/id/eprint/18353",
+    type: "book_section",
+    title: [
+      '"Shooting, stabbing, strangling Nazis. Ready to set things straight". Das Motiv jüdischer Rache im Digitalen Spiel.',
+    ],
+    creators: ["Eugen Pfister"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: "2022-03-10",
+    official_url:
+      "https://www.derbund.ch/wem-wuerden-sie-gern-den-geldhahn-zudrehen-und-sagen-sie-nicht-putin-520804064195",
+    contributors: ["Michael Feller", "Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18621",
+    abstract: [
+      "Tommy Vercetti rappt nicht nur, er doktoriert auch über Geld. Er sagt: Das Versprechen der Bankenwerbung unterscheidet sich kaum von jenem eines Plattencovers.",
+    ],
+    type: "magazine_article",
+    title: [
+      "«Wem würden Sie gern den Geldhahn zudrehen? Und sagen Sie nicht Putin!»",
+    ],
+    creators: ["Michael Feller"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
   },
   {
     date: "2022-03-02",
@@ -59,6 +921,50 @@ export const data = [
     type: "other",
     title: [
       "Schweizerische Interessengemeinschaft zur Erhaltung von Grafik und Schriftgut SIGEGS-Input: «Swiss Graphic Design and Typography Revisited – Aktuelle Ansätze der Designgeschichte und die Rolle der Archive».",
+    ],
+  },
+  {
+    date: "2022-02-20",
+    official_url:
+      "https://www.srf.ch/play/tv/sternstunde-religion/video/rapper-tommy-vercetti---musik-zwischen-marx-und-maria-magdalena?urn=urn:srf:video:8b493f80-a706-418c-8091-768aa9e1ab85",
+    creators: ["Olivia Röllin"],
+    contributors: ["Olivia Röllin", "Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18654",
+    event_location: "Zürich",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "Über Marx und Geld spricht er oft, über Religion weniger. Obwohl sich Rapper Tommy Vercetti in seinen Texten oft mit Jesus und der Bibel auseinandersetzt. Mit Olivia Röllin spricht der intellektuelle Poet der Deutschschweizer Rapszene über Jesus, Paulus und das Paradies der Atheisten.\r\nAls Tommy Vercetti begeistert der Berner Rapper Simon Küffer Musikfans, die nicht nur Spass an fetten Beats, sondern auch Freude am Tiefgang haben. Seine system- und kapitalismuskritischen Texte stossen auf offene Ohren, unter anderem bei der Stadt Bern, die dem Wortakrobaten 2013 den Literaturpreis verliehen hat. Auch kommerziell ist der intellektuelle Poet erfolgreich: Seine letzten beiden Alben belegten jeweils Platz 1 der Schweizer Hitparade. Und das, obwohl oder weil er Zeilen rappt wie «di beste Christe si Atheiste» oder «ersch we Gott tot isch, chaner sech aune zeige.»",
+    ],
+    type: "audio_visual",
+    title: ["Rapper Tommy Vercetti: Musik zwischen Marx und Maria Magdalena"],
+  },
+  {
+    date: "2022-01-19",
+    official_url:
+      "https://www.srf.ch/play/tv/kulturplatz/video/tommy-vercetti---die-bilder-des-geldes?urn=urn:srf:video:a94394e1-64b6-4d9c-a5dd-9ea03bd8bd38",
+    creators: ["Nino Gadient"],
+    contributors: ["Nino Gadient", "Simon Renato Küffer"],
+    uri: "https://arbor.bfh.ch/id/eprint/18599",
+    event_location: "Zürich",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+    abstract: [
+      "SRF Kulturplatz spricht mit Simon Küffer alias Tommy Vercetti über seine Dissertationen zu Narrativen des Geldes in massenmedialen Bildern.",
+    ],
+    type: "audio_visual",
+    title: ["Tommy Vercetti: die Bilder des Geldes"],
+  },
+  {
+    date: "2022-01",
+    creators: ["Katharina Scheller"],
+    contributors: ["Katharina Scheller"],
+    uri: "https://arbor.bfh.ch/id/eprint/19216",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+    abstract: [
+      "Angesichts der Herausforderungen von Klimawandel und Biodiversitätskrise werden städtische Grünräume immer wichtiger. Besonders den Stadtbäumen kommt eine Schlüsselrolle zu. Sie erbringen wichtige Ökosystemleistungen und haben einen wesentlichen Einfluss auf das menschliche Wohlbefinden. Zudem sind sie von zentraler Bedeutung für die städtische Biodiversität. Während die ökologische Bedeutung der Bäume von wissenschaftlicher Seite immer differenzierter erkannt wird, haben sich diese Erkenntnisse in den Kartengrundlagen noch nicht etabliert: Wesentliche Eigenschaften von Baumbeständen werden darin unzulänglich dargestellt. Eine Unter-bzw. Nichtrepräsentation in Karten kann negative Folgen haben, denn kartografischer Inhalt und Design haben Einfluss darauf, wie Informationen und Botschaften verstanden werden. Somit tragen sie massgeblich dazu bei, welche Entscheidungen getroffen werden. Das Projekt möchte die Fragen klären: Welche Auswirkungen hat die Unterrepräsentation von Baumbeständen auf die Planung und Gestaltung städtischer Räume? Wie können Karten diesbezüglich verbessert werden? Im vierjährigen Forschungsprojekt werden die Produktionsprozesse und Nutzungskontexte städtischer Baumkataster systematisch untersucht. Das Potenzial der kartografischen Werkzeuge wird erforscht und nach Möglichkeiten gesucht, wie sie Eigenschaften, Ansprüche und ökologische Bedeutung von Stadtbäumen besser kommunizieren können. Ziel ist, die kartografischen Werkzeuge so zu optimieren, dass sie die wissenschaftlichen Erkenntnisse umfassend und verständlich abbilden, und so einen wichtigen Beitrag in der Kommunikation, Planung und Entscheidungsfindung leisten können. Das Projekt möchte dazu beitragen, das Verständnis für städtische Naturflächen, insbesondere Stadtbäume, zu verstärken.",
+    ],
+    type: "other",
+    title: [
+      "Mapping for Green Cities:  Analyse und Exploration am Beispiel der städtischen Baumkartierung",
     ],
   },
   {
@@ -77,6 +983,39 @@ export const data = [
     ],
     creators: ["Annina Schneller"],
     divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2022,
+    official_url:
+      "https://behind-the-screens.de/2022/10/30/das-politische-im-horrorspiel-podcast-e059/",
+    contributors: ["Arno Görgen", "Eugen Pfister", "Benjamin Strobel"],
+    uri: "https://arbor.bfh.ch/id/eprint/17930",
+    abstract: [
+      "Horror genießt gegenüber den vielen anderen Genres einen Vorteil: es aktualisiert sich jedes Jahr durch Halloween. Dieses Jahr wird seine Relevanz durch zahlreiche Ankündigungen noch erhöht: Resident Evil 4, Silent Hill 2, Dead Space und mehr. Was oft als Trash gilt, eignet sich besonders gut zur Verhandlung von Wertvorstellungen – diese Auffassung vertreten jedenfalls Eugen Pfister und Arno Görgen von der Hochschule der Künste in Bern. Doch wie kommt das Politische ins Horrorspiel? Für diese Halloween-Folge haben wir mit den beiden gesprochen.",
+    ],
+    type: "audio_visual",
+    title: ["Das Politische im Horrorspiel: Behind the Screens, Podcast E059"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2022,
+    official_url: "https://www.palliative.ch/de/",
+    creators: ["Tina Braun"],
+    contributors: ["Tina Braun"],
+    uri: "https://arbor.bfh.ch/id/eprint/18286",
+    divisions: [
+      "BFH-OE--HKB",
+      "BFH-OE--IN-0005",
+      "BFH-OE--RU-0012",
+      "BFH-OE--RU-0069",
+    ],
+    abstract: [
+      "In den letzten zwei Jahren waren Nachrichten über Covid-19 omnipräsent: Seien es fallende oder steigende Zahlen von Infizierten, der Entwicklungsprozess von Impfstoffen, Todesopferzahlen, Anpassungen bei der Maskenpflicht oder neue Lock-Down-Bestimmungen. Die Konfrontation mit Corona war und ist unumgänglich. Damit verbunden ist ein Einblick in Realitäten des Sterbens, der für die breite Bevölkerung in dieser Intensität neu war: Das Sterben von Menschen auf Intensivstationen, angeschlossen an Maschinen und umgeben von in Schutzanzügen gekleidetem Pflegepersonal. Diese Art des Sterbens prägte eine Bildwelt, in der das anonymisierte, isolierte und einsame Sterben, meist ohne An- und Zugehörige im Fokus steht. \r\nDie Rhetorik dieser Bilder wurde Teil unseres kollektiven Gedächtnisses und beeinflusst damit, wie wir uns an Corona und das damit verbundene Sterben erinnern werden. Das hat auch Auswirkungen auf die Bildwelten und Wertevermittlung von Palliative-Care-Institutionen: Ihre Bemühungen zu vermitteln, dass Sterben nicht nur in Institutionen, sondern mit ambulanter Palliative Care auch zu Hause, im Kreise der Familie und Freund*innen und in der gewohnten Umgebung von Dingen stattfinden kann, wurden infrage gestellt und untergraben. Gleichzeitig bietet diese aktuelle Konfrontation mit den Realitäten des Sterbens grosses Potenzial für Palliative-Care-Einrichtungen und ihre Bildwelten: Die Palliative Care kann nun die Bilder zur Vermittlung ihrer Werte und zur Kommunikation von Informationen reflektieren und auch neu denken.",
+    ],
+    type: "article",
+    title: [
+      "Palliative-Care-Bildwelten nach Covid-19: die mediale Darstellung von Corona und unsere veränderte Vorstellung vom Sterben",
+    ],
   },
   {
     date: 2022,
@@ -115,12 +1054,166 @@ export const data = [
       "BFH-OE--G",
       "BFH-OE--HKB",
       "BFH-OE--IN-0005",
-      "BFH-OE--IN-0015",
       "BFH-OE--IN-0030",
-      "BFH-OE--RU-0116",
+      "BFH-OE--RU-0125",
       "BFH-OE--TI",
-      "BFH-OE--humantec",
     ],
+  },
+  {
+    date: 2022,
+    official_url: "https://www.ggz.ch/news/zuger-neujahrsblatt-23",
+    contributors: ["Michaela Eicher", "Jimmy Schmid"],
+    uri: "https://arbor.bfh.ch/id/eprint/18324",
+    abstract: [
+      "Ein Signaletik-Experte ohne Ortskenntnisse, viele Wegweiser und ein Ziel: Wir wollen herausfinden, wie gut Signaletik in Zug funktioniert. Wie werden Gäste geleitet, welche Angebote erhalten sie beim Flanieren und welches Bild vermittelt die Signaletik von der Stadt Zug? Ein Stadtrundgang mit Irrwegen, einem Abstecher nach Rotkreuz und einer unerwarteten visuellen Überraschung.",
+    ],
+    type: "book_section",
+    title: [
+      "Von leise bis überraschend: Signaletik in Zug. Flanieren mit Jimmy Schmid.",
+    ],
+    creators: ["Michaela Eicher"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0019"],
+  },
+  {
+    date: 2022,
+    official_url: "https://www.dariah.ch/post/dariah-ch-study-day-programme",
+    contributors: ["Max Frischknecht"],
+    uri: "https://arbor.bfh.ch/id/eprint/17911",
+    event_location: "Mendrisio, Switzerland",
+    abstract: [
+      "The poster addresses generative design as a methodology for a critical-visual exploration of the 1940s Atlas of Swiss Folklore. When we look at visualizations, we are often intrigued by the idea that they represent naturally existing phenomena through visual form. This poses a challenge to humanities scholars who interpret context-dependent data that represents complex social interweaving that unwind across time and space. The data beneath the Atlas of Swiss Folklore, for example, is the product of a perennial and multilayered process of collection and analysis. This interpretative framework is often no longer comprehensible in the finished visualizations leading to the impression of unambiguous visual statements. But rather than depicting unique meaning, visualizations should invite the viewer to critically question what is being viewed and the circumstances of its creation. The poster presents Generative Design is a promising approach that utilizes morphology and iteration to create a plurality of visualizations. Through Generative Design the Atlas of Swiss Folklore and its circumstances of creation can be examined from different perspectives. Generative Design can be used, for example, to visualize the locations of the atlas data collection in different contexts and thus help evaluate which parts of the population the maps of the atlas are representative or not.",
+    ],
+    type: "conference_item",
+    title: [
+      "Generating Perspectives: Applying Generative Design to critically explore the Atlas of Swiss Folklore",
+    ],
+    creators: ["Max Frischknecht"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+  },
+  {
+    date: 2022,
+    official_url: "https://einblicke.hypotheses.org/511",
+    creators: ["Max Frischknecht"],
+    contributors: ["Max Frischknecht"],
+    uri: "https://arbor.bfh.ch/id/eprint/17913",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+    type: "magazine_article",
+    title: [
+      "Nodegoat: Eine web-basierte Forschungsumgebung für die Geisteswissenschaften",
+    ],
+  },
+  {
+    date: 2022,
+    official_url: "https://nu-aber.podigee.io/57-neue-episode",
+    contributors: ["Arno Görgen", "Eugen Pfister"],
+    uri: "https://arbor.bfh.ch/id/eprint/18281",
+    abstract: [
+      'Gespenster, Zombies und Vampire - Halloween steht vor der Tür. Aber nicht nur an Halloween suchen Menschen den Kick des Morbiden und Gruseligen. Das Genre "Horror" ist angesagt - auch bei Computerspielen. Grund genug für Arno Görgen um mit Dr. Eugen Pfister, Leiter des SNF-Ambizione Forschungsprojekt Horror-Game-Politics an der Fachhochschule Bern, über Horror, Games und Politik zu sprechen.',
+    ],
+    type: "audio_visual",
+    title: ["Hallo Wien!"],
+    creators: ["Arno Görgen"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2022,
+    official_url: "https://www.ssoar.info/ssoar/handle/document/79572",
+    contributors: [
+      "Arno Görgen",
+      "Eugen Pfister",
+      "Christian Schwarzenegger",
+      "Erik Koenen",
+      "Christian Pentzold",
+      "Thomas Birkner",
+      "Christian Katzenbach",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/17929",
+    abstract: [
+      "Der Beitrag befasst sich mit dem Verhältnis von Geschichte und digitalen Spielen. Es wird unterschieden zwischen einer Geschichte der digitalen Spiele (und den Problemfeldern einer konzisen und umfassenden Betrachtung der Geschichte des digitalen Spiels) und Repräsentationsformen von Geschichte im Digitalen Spiel. Diese wird aus unterschiedlichen Perspektiven betrachtet: erstens in Form einer Darstellung von Erwartungen historischer Authentizität und Akuratesse an digitale Spiele; zweitens in Form einer von Daniel Giere entwickelten Typologie historischer Repräsentation im Spiel; drittens einer Ergänzung dieser Typologie durch den Aspekt der Vergangenheitsatmosphären; und viertens einer Betrachtung des digitalen Spiels als eines interaktiven Simulationsortes historischer Kontingenzerfahrungen. Mittels dieser Aufteilung wird das digitale Spiel als Quelle sowohl ihrer eigenen Geschichtsschreibung wie auch einer umfassenden Geschichtskultur und somit als Kulturtechnik anerkannt.",
+    ],
+    type: "book_section",
+    title: [
+      "Codierte Chroniken? Erste Betrachtungen zur Beziehung zwischen Digitalen Spielen und Geschichte",
+    ],
+    creators: ["Arno Görgen", "Eugen Pfister"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2022,
+    official_url:
+      "https://verlag.koenigshausen-neumann.de/product/9783826077166-lebenswelten-gestalten/",
+    contributors: [
+      "Francis Müller",
+      "Bitten Anja Stetter",
+      "Isabella Kölz",
+      "Michaela Fenske",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/18344",
+    type: "book_section",
+    title: ["Dinge am Lebensende: Eine designethnografische Studie."],
+    creators: ["Francis Müller", "Bitten Anja Stetter"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2022,
+    official_url:
+      "https://www.degruyter.com/document/doi/10.1515/9783110430295/html",
+    contributors: [
+      "Nico Nolden",
+      "Eugen Pfister",
+      "Serge Noirent",
+      "Mark Tebeau",
+      "Gerben Zaagsma",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/18354",
+    abstract: [
+      "Over the past 50 years the part of digital games in our everyday’s media use has consistently grown. They are thus an extremely revealing source for public history. This chapter argues that digital games are among other things a ‘historical form.’ They are not merely products of entertainment, but as cultural artifacts communicate perceptions of history. Digital games are also ‘historical sources.’ Because they are developed from the inside of societies, they are shaped by cultures and politics. Furthermore, digital games are ‘historical research tools’. Historical simulations can help to understand historical structures and processes. There are however practical, methodical and technical challenges for public historians. Historians must have a comprehensive knowledge of a vast field of academic disciplines from game and media studies, political sciences, sociology to anthropology and philosophy. A historical analysis of games must search for historical game influences but also for other historical conditions and influences.",
+    ],
+    type: "book_section",
+    title: ["Gaming and Digital Public History"],
+    creators: ["Nico Nolden", "Eugen Pfister"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2022,
+    official_url:
+      "https://journals.univie.ac.at/index.php/oezg/article/view/7796/7888",
+    contributors: ["Eugen Pfister"],
+    uri: "https://arbor.bfh.ch/id/eprint/20030",
+    abstract: [
+      "The history of ideas of the late twentieth and early twenty-fist centuries requires to take into account new forms of media expression such as video games. Video games have been an integral part of our entertainment culture for more than 40 years and are an international billion dollar business. Questions like “What is power? What does justice mean in politics? Who should govern whom?” are not only encountered in political essays and parliamentary debates. In order to understand how people have thought about domination in concrete societies over the past 40 years, we also have to examine the games that were played. Games cannot be imagined as an element of our societies and cultures independently of them; they are spaces of discourse where statements are constructed and communicated, and political ideas can be tested and applied in a playful way. As a medium, they thus provide a necessary space of communication within our highly complex societies, and as models of abstraction they also offer very specific access to a (very specific?) political reality.",
+    ],
+    type: "article",
+    title: [
+      '"Wie lernt man die Welt am besten kennen? Man macht sie sich untertan": Zur Ideengeschichte von Herrschaft in digitalen Spielen',
+    ],
+    creators: ["Eugen Pfister"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
+  },
+  {
+    date: 2022,
+    official_url: "https://doi.org/10.34669/wi.wjds/2.2.3",
+    contributors: ["Paola Pierri"],
+    uri: "https://arbor.bfh.ch/id/eprint/20016",
+    abstract: [
+      "Digital activism is now considered a widespread form of activism. Studies on its impact and use have proliferated. Most research into this phenomenon has tended to analyze the impact of digital technologies on action and activism. In contrast, this study explores the role of organizations and organizational structures, focusing on internal processes and the functioning of digital campaigning. Based on ethnographic observation and interviews with staff of online campaigning organizations, this paper presents findings on how digital communication and its logic can affect the organization’s internal processes. The paper challenges two established ideas: a) the idea of de-materialization of organizational structures from digital activism; b) that digital platforms tend to support the dissemination of opinions of previously marginalized actors. My fieldwork’s findings demonstrate that the reality in both cases is far more nuanced, with significant identifiable inconsistencies. This research shows that organizations and organizational structures have not de-materialized and that the material conditions of digital activism are key to better understanding this phenomenon and new forms of inequality it might generate.\r\nRead in",
+    ],
+    type: "article",
+    title: [
+      "Who can still afford to do digital activism? Exploring the Material Conditions of Online Mobilisation",
+    ],
+    creators: ["Paola Pierri"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2022,
+    official_url: "https://www.superbuero.com/de/work.html",
+    contributors: ["Jimmy Schmid"],
+    uri: "https://arbor.bfh.ch/id/eprint/18092",
+    type: "book_section",
+    title: ["Was zeichnet eine gute Signaletik aus?"],
+    creators: ["Jimmy Schmid"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0019"],
   },
   {
     date: "2021-12",
@@ -188,7 +1281,7 @@ export const data = [
   {
     date: "2021-11-08",
     official_url:
-      "https://www.dh.unibe.ch/studium/lehrveranstaltungen/jeweils_im_herbstsemester_ringvorlesung_einblicke_in_die_digital_humanities/index_ger.html",
+      "https://www.dh.unibe.ch/studium/vergangene_lehrveranstaltungen/videoaufzeichnungen_vergangener_ringvorlesungen_hs2021/index_ger.html",
     creators: ["Jimmy Schmid", "Christian von Zimmermann"],
     contributors: ["Jimmy Schmid", "Christian von Zimmermann"],
     uri: "https://arbor.bfh.ch/id/eprint/15784",
@@ -465,8 +1558,7 @@ export const data = [
   },
   {
     date: "2021-08",
-    official_url:
-      "https://www.swissfuture.ch/de/magazin-fuer-zukunftsmonitoring-archiv/",
+    official_url: "https://www.swissfuture.ch/magazin/archiv/",
     contributors: ["Minou Afzali"],
     uri: "https://arbor.bfh.ch/id/eprint/15445",
     abstract: [
@@ -1100,8 +2192,7 @@ export const data = [
   },
   {
     date: 2021,
-    official_url:
-      "https://www.swissfuture.ch/de/magazin-fuer-zukunftsmonitoring-archiv/",
+    official_url: "https://www.swissfuture.ch/magazin/archiv/",
     contributors: ["Tina Kathrin Braun"],
     uri: "https://arbor.bfh.ch/id/eprint/15795",
     type: "article",
@@ -1180,6 +2271,16 @@ export const data = [
   },
   {
     date: 2021,
+    official_url: "https://hccd.hypotheses.org/1713",
+    creators: ["Max Frischknecht"],
+    contributors: ["Max Frischknecht"],
+    uri: "https://arbor.bfh.ch/id/eprint/17912",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+    type: "magazine_article",
+    title: ["Zur Barrierefreiheit der kantonalen Impfplattformen"],
+  },
+  {
+    date: 2021,
     official_url: "https://hccd.hypotheses.org",
     creators: ["Beatrice Kaufmann"],
     contributors: ["Beatrice Kaufmann"],
@@ -1212,6 +2313,19 @@ export const data = [
     title: ["Introduction: New Perspectives on Swiss Graphic Design"],
     creators: ["Robert Lzicar", "Arne Scheuermann"],
     divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0013"],
+  },
+  {
+    date: 2021,
+    official_url:
+      "https://www.ag.ch/de/verwaltung/dgs/gesellschaft/familie/information-und-kommunikation/toolbox-kommunikation",
+    creators: ["Dana Pedemonte", "Beatrice Kaufmann", "Jimmy Schmid"],
+    contributors: ["Dana Pedemonte", "Beatrice Kaufmann", "Jimmy Schmid"],
+    uri: "https://arbor.bfh.ch/id/eprint/18054",
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0043"],
+    type: "report",
+    title: [
+      "Toolbox Kommunikation. Hilfsmittel für Anbietende in der Frühen Kindheit.",
+    ],
   },
   {
     date: 2021,
@@ -1294,6 +2408,57 @@ export const data = [
   {
     date: 2021,
     official_url:
+      "https://www.transcript-verlag.de/978-3-8376-5760-9/practicing-sovereignty/?number=978-3-8394-5760-3",
+    contributors: [
+      "Paola Pierri",
+      "Bianca Herlo",
+      "Daniel Irrgang",
+      "Gesche Joost",
+      "Andreas Unteiding",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20001",
+    type: "book_section",
+    title: [
+      "Sovereign imaginaries: how corporate digital imaginary are endangering our political practices",
+    ],
+    creators: ["Paola Pierri"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2021,
+    official_url:
+      "https://www.tandfonline.com/doi/full/10.1080/24735132.2021.1928381",
+    contributors: ["Paola Pierri", "Bianca Herlo"],
+    uri: "https://arbor.bfh.ch/id/eprint/20002",
+    abstract: [
+      "Driven by a culture of ‘data fundamentalism’, datafication is being increasingly introduced in health services, sometimes with little transparency and patient engagement. This paper will be drawing on research from the UK in order to critically reflect on the wider impact of health digitalization and issues of digital rights and data justice, which are sometimes overlooked in this field. The case from the UK deals with the effects of datafication in community health services—and more broadly welfare services—within the field of mental health. People with experience of mental-health service using digital health services are in fact made visible, represented and treated differently as a result of their digital activities and records. Theoretically the paper will frame these issues and case studies within the available literature on Digital Sovereignty. The question of digital sovereignty is understood by the authors as central to deal with issues of independence, control and autonomy over the digital self. It raises Issues of transparency and accountability on several levels, from the Government’s purchasing of digital tools, to potential impact on health worker and algorithmicized decision making process.",
+    ],
+    type: "article",
+    title: [
+      "Exploring digital sovereignty: open questions for design in digital healthcare",
+    ],
+    creators: ["Paola Pierri", "Bianca Herlo"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069", "BFH-OE--RU-0116"],
+  },
+  {
+    date: 2021,
+    official_url:
+      "https://www.planung-neu-denken.de/2-2021-digital-citymakers/cities-and-citizens-for-digital-rights/",
+    contributors: ["Paola Pierri", "Elizabeth Wiltshire"],
+    uri: "https://arbor.bfh.ch/id/eprint/20003",
+    abstract: [
+      "Policymakers and institutions are currently struggling to set out the right regulatory framework to guarantee citizens’ rights online. Digital norms and standards continue to be set by global technology companies, many of whose business model lies in extracting value from individuals. This article will present the results of a yearlong intervention called Citizen Voices for Digital Rights, which was funded by the Municipality of Amsterdam, as part of the Cities Coalition for Digital Rights, and has engaged people in Milan, Tirana and Bordeaux as well. The project addressed the role of digital technologies and data at the urban scale, working with citizens, experts and policy makers in four European cities. The paper will present a practical approach to improve the active role of citizens in data collection, data governance, and knowledge creation.",
+    ],
+    type: "article",
+    title: [
+      "Cities and Citizens for Digital Rights: The Role for Public Participation in Digital Governance",
+    ],
+    creators: ["Paola Pierri", "Elizabeth Wiltshire"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2021,
+    official_url:
       "https://direct.mit.edu/desi/article/37/4/59/107431/Authenticity-and-Credibility-in-Science",
     contributors: ["Annina Schneller"],
     uri: "https://arbor.bfh.ch/id/eprint/16499",
@@ -1344,9 +2509,10 @@ export const data = [
   },
   {
     date: 2021,
+    official_url: "https://www.swissfuture.ch/magazin/archiv/",
     contributors: ["Bitten Anja Stetter"],
     uri: "https://arbor.bfh.ch/id/eprint/15805",
-    type: "article",
+    type: "magazine_article",
     title: [
       "Consumption of Dying. Lifestyle-trends für eine sich wandelnde Sterbekultur",
     ],
@@ -1421,6 +2587,23 @@ export const data = [
     type: "other",
     title: [
       'Interview mit Bitten Stetter: Ausstellungskatalog "The End – My Friend? Umsorgt in den Tod"',
+    ],
+  },
+  {
+    date: 2021,
+    creators: ["Laura Sullivan", "Paola Pierri", "Xavier Dutoit"],
+    contributors: [
+      "Laura Sullivan",
+      "Paola Pierri",
+      "Xavier Dutoit",
+      "Alberto Alemanno",
+      "James Organ",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/20013",
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+    type: "book_section",
+    title: [
+      "Connecting Online and Offline Citizen Participation through the Stop Glyphosate ECI and Mini Publics",
     ],
   },
   {
@@ -1863,7 +3046,8 @@ export const data = [
   },
   {
     date: "2020-06",
-    official_url: "https://swissdesignawardsblog.ch/blog/time-and-the-essence",
+    official_url:
+      "https://2020.swissdesignawardsblog.ch/blog/time-and-the-essence",
     creators: ["Jonas Berthod"],
     contributors: ["Jonas Berthod"],
     uri: "https://arbor.bfh.ch/id/eprint/11970",
@@ -1999,37 +3183,6 @@ export const data = [
   },
   {
     date: "2020-05-03",
-    contributors: [
-      "Beatrice Kaufmann",
-      "Tannys Helfer",
-      "Marika Anja Simon",
-      "Daniela Pedemonte",
-      "Sarah Joanne Colvin",
-    ],
-    uri: "https://arbor.bfh.ch/id/eprint/11838",
-    abstract: [
-      "Background: Many people receiving medical treatment in Switzerland speak none of the country’s four languages or English, which is a major communicative barrier for health staff. Appropriate treatment in hospitals depends on the successful communication between hospital staff and patients. Consequently, migrant patients can be particularly challenging for hospital staff.\r\nAims: The aim of this project was to examine the following topics: (a) which communicative challenges hospital nurses are confronted with in the care of migrant paediatric patients and how they cope with them, and (b) what requirements nurses (and other stakeholders) have regarding a digital communication aid to improve the care of migrant paediatric patients in the hospital setting.\r\nMethods: This study used a qualitative approach. The following steps of data collection were undertaken: (a) two literature searches corresponding to the research questions, (b) a focus group interview with paediatric hospital nurses, (c) observation of communication between paediatric nurses/healthcare professionals and children/parents through shadowing, (d) short interviews with paediatric nurses who were being shadowed, and (e) a focus group interviewwith experts. Data analysis was based on thematic analysis and was supported by MAXQDA software.\r\nResults: Evaluation of the data showed there are multiple communicative challenges that emerge in the care of migrant paediatric patients. These challenges influence each other and appear at different moments in the hospital stay. Additionally, the results revealed that digital communication aids must be user friendly and easily accessible.\r\nConclusions: This study highlights the areas of hospital care in which a digital communication aid could be feasible. However, many of the described communication challenges stem from issues that cannot be solved solely with a digital communication aid. Instead, strategies to tackle these issues must be embedded in the training of nursing staff, in the hospital management strategy and at the political level.",
-    ],
-    type: "article",
-    title: [
-      "Communication challenges between nurses and migrant paediatric patients",
-    ],
-    creators: [
-      "Beatrice Kaufmann",
-      "Tannys Helfer",
-      "Marika Anja Simon",
-      "Daniela Pedemonte",
-      "Sarah Joanne Colvin",
-    ],
-    divisions: [
-      "BFH-OE--G",
-      "BFH-OE--HKB",
-      "BFH-OE--IN-0005",
-      "BFH-OE--IN-0030",
-    ],
-  },
-  {
-    date: "2020-05-03",
     official_url: "https://hccd.hypotheses.org/",
     creators: ["Jimmy Schmid"],
     contributors: ["Jimmy Schmid"],
@@ -2046,7 +3199,7 @@ export const data = [
   {
     date: "2020-05",
     official_url:
-      "https://swissdesignawardsblog.ch/blog/careers-and-the-cultural-field",
+      "https://2020.swissdesignawardsblog.ch/blog/careers-and-the-cultural-field",
     creators: ["Jonas Berthod"],
     contributors: ["Jonas Berthod"],
     uri: "https://arbor.bfh.ch/id/eprint/11969",
@@ -2124,6 +3277,19 @@ export const data = [
     ],
     creators: ["Harald Klingemann"],
     divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0116"],
+  },
+  {
+    date: "2020-03-28",
+    contributors: ["Arno Görgen", "Eugen Pfister"],
+    uri: "https://arbor.bfh.ch/id/eprint/18285",
+    event_location: "Erlangen",
+    abstract: [
+      "Dieser Outbreak-Thriller, den wir gerade mit der Corona-Pandemie in Echtzeit erleben, wurde zuvor schon unzählige Male in Filmen, Spielen, Büchern und Comics vorgezeichnet. Insbesondere im Zombie-Subgenre ist es mittlerweile Standard, eine Pandemie zu behaupten. Allerdings sieht man hier bestenfalls die physiologischen Folgen des Pathogens am Menschen. Zombies mit ihren zerfallenen, missgestalteten Körpern etwa. Dagegen finden sich seit wenigen Jahren, und hier vor allem in digitalen Spielen, zunehmend Beispiele, in welchen das konkrete Pathogen sichtbarer Teil der jeweiligen Spielwelt wird und nicht mehr nur ausschließlich über indirekte Symptome identifizierbar ist.\r\nDiese biologistische Invasion des Spielraumes (daher auch: Space Invaders) führt zu einer Umkehrung der Agency und der Autonomie seiner Bewohner im Spiel: im biologisierten, entstellten Raum wird der Spieler (wie auch die NPCs) der Kontrolle beraubt, während das verräumlichte Monströse selbst zur handlungsleitenden Instanz des Spiels wird. \r\nDiese entgrenzende Hybridisierung von biologischem Körper und physischem Raum wird im Folgenden zunächst anhand der Beispiele Resident Evil VII und A Plague Tale: Innocence vorgestellt. Anschließend wird auf einer funktionalen Ebene beschrieben, wie die Invasion des Biologischen sowohl Einfluss auf den Möglichkeitsraum und die Eigenlogik von Spiel und Spieler nimmt, wie auch einen kognitiven Affektraum vorbereitet. Schließlich wird in einem dritten Schritt dieser Modus der Darstellung mit übergeordneten ideologischen Diskurssträngen in Einklang gebracht.",
+    ],
+    type: "conference_item",
+    title: ["Space Invaders: Biologistische Verräumlichungen des Monströsen"],
+    creators: ["Arno Görgen", "Eugen Pfister"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--IN-0005", "BFH-OE--RU-0012"],
   },
   {
     date: "2020-02-20",
@@ -2572,7 +3738,7 @@ export const data = [
   {
     date: 2020,
     official_url:
-      "https://www.swissfuture.ch/de/wp-content/uploads/sites/2/2021/09/sf_02_03_20.pdf",
+      "https://www.swissfuture.ch//wp-content/uploads/sites/2/2021/09/sf_02_03_20.pdf",
     contributors: ["Bitten Anja Stetter"],
     uri: "https://arbor.bfh.ch/id/eprint/13576",
     type: "magazine_article",
@@ -2638,7 +3804,7 @@ export const data = [
   {
     date: "2019-12",
     official_url:
-      "https://www.gamevironments.uni-bremen.de/current-papers-and-archive/",
+      "https://journals.suub.uni-bremen.de/index.php/gamevironments",
     contributors: ["Eugen Pfister"],
     uri: "https://arbor.bfh.ch/id/eprint/10317",
     type: "article",
@@ -2871,8 +4037,7 @@ export const data = [
   },
   {
     date: "2019-05-29",
-    official_url:
-      "https://oegfe.at/wordpress/wp-content/uploads/2019/06/OEGfE_Policy_Brief-2019.13.pdf",
+    official_url: "https://www.oegfe.at/",
     contributors: ["Eugen Pfister"],
     uri: "https://arbor.bfh.ch/id/eprint/10316",
     type: "article",
@@ -3142,7 +4307,7 @@ export const data = [
   {
     date: 2019,
     official_url:
-      "https://www.neue-politische-literatur.tu-darmstadt.de/index.php?id=3454&L=2",
+      "https://www.neue-politische-literatur.tu-darmstadt.de/fileadmin/npl/NPL_2018_3_Pfister.pdf",
     contributors: ["Eugen Pfister"],
     uri: "https://arbor.bfh.ch/id/eprint/10315",
     type: "article",
@@ -3177,6 +4342,22 @@ export const data = [
     ],
     creators: ["Eugen Pfister"],
     divisions: ["BFH-OE--IN-0005"],
+  },
+  {
+    date: 2019,
+    official_url:
+      "https://www.tandfonline.com/doi/abs/10.1080/14606925.2019.1595415",
+    contributors: ["Paola Pierri"],
+    uri: "https://arbor.bfh.ch/id/eprint/20005",
+    abstract: [
+      "This paper proposes a modality for engaging communities through design that is for, and from, autonomy. I will start by situating my experience using design in the social sector and introducing the concept of Autonomous Design, as proposed by Arturo Escobar. I will then unpack the three beliefs that Escobar says are historically embedded in the mainstream practices of design, to critic them and propose alternatives. I will then move to interrogate, by reflecting on an example from my own practice, how design could change, ontologically, when we move from a needs-based approach to one that focuses on strengths in groups and communities. I will then conclude by proposing a way to frame the design work with groups and communities, inspired by the work of Escobar.",
+    ],
+    type: "article",
+    title: [
+      "“Use what you have to secure what you have not”: On Design for and from Autonomy",
+    ],
+    creators: ["Paola Pierri"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
   },
   {
     date: 2019,
@@ -3223,8 +4404,6 @@ export const data = [
   },
   {
     date: 2019,
-    official_url:
-      "https://www.gr.ch/RM/instituziuns/administraziun/bvfd/tba/flv/actualitads/Seiten/graubuendenMOBIL-Fachtagung_Langsamverkehr_am_28-Mai-2019.aspx",
     creators: ["Jimmy Schmid"],
     contributors: ["Jimmy Schmid"],
     uri: "https://arbor.bfh.ch/id/eprint/13213",
@@ -3235,8 +4414,6 @@ export const data = [
   },
   {
     date: 2019,
-    official_url:
-      "https://www.unibe.ch/universitaet/dienstleistungen/universitaetsbibliothek/teilbibliotheken/philosophisch_historische_faecher/bibliotheken_unitobler/e_day_humanities_2019_agenda/index_ger.html",
     creators: [
       "Jimmy Schmid",
       "Nicolo Bernasconi",
@@ -3628,6 +4805,22 @@ export const data = [
   {
     date: 2018,
     official_url:
+      "https://direct.mit.edu/desi/article/34/4/25/69332/Participatory-Design-Practices-in-Mental-Health-in",
+    contributors: ["Paola Pierri"],
+    uri: "https://arbor.bfh.ch/id/eprint/19974",
+    abstract: [
+      "In what has been defined as an “era of participation,” design practices have become very central to the process of making publics and in bringing to life the dream of developing new ways of political engagement. By reflecting on my professional practice, I highlight the overly optimistic attitude that—most of the time—over-simplifies the role of design, especially when applied in public and community organizations. I illustrate participation as a paradox in itself, by problematizing the role and meaning of participatory encounters, and revealing some complex dynamics of exclusion and self-exclusion that are at play in the public realm.",
+    ],
+    type: "article",
+    title: [
+      "Participatory Design Practices in Mental Health in the UK: Rebutting the Optimism",
+    ],
+    creators: ["Paola Pierri"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2018,
+    official_url:
       "https://www.triest-verlag.ch/en/produkte/buch-26/design-140/unfrozen-2896",
     creators: ["Arne Scheuermann"],
     contributors: ["Arne Scheuermann"],
@@ -3801,6 +4994,22 @@ export const data = [
   },
   {
     date: 2017,
+    official_url:
+      "https://www.tandfonline.com/doi/abs/10.1080/14606925.2017.1352805",
+    contributors: ["Paola Pierri"],
+    uri: "https://arbor.bfh.ch/id/eprint/19975",
+    abstract: [
+      "This paper will reflect on some of the key changes that affect design, at a time when this approach is more and more used by Governments and communities around the world to influence what next for our societies. By reflecting on my practice working in a UK based mental health charity to “embed design” in the organisation, the paper will present two key shifts that are happening in design when applied to societal challenges: a shift in meaning, as the design object changes and becomes more associated with practices of policy-making, public engagement and emancipation of marginalised actors; and a shift in agency, towards a new identity for designers and a new sensibility towards issues of power. Based on my practice and reflections I will conclude by presenting three key areas that need to be addressed in order to improve the role of design for next in society.",
+    ],
+    type: "article",
+    title: [
+      "Decentralising Design. Raising the Question of Agency in Emerging Design Practice",
+    ],
+    creators: ["Paola Pierri"],
+    divisions: ["BFH-OE--HKB", "BFH-OE--RU-0069"],
+  },
+  {
+    date: 2017,
     contributors: ["Arne Scheuermann", "Francesca Vidal"],
     uri: "https://arbor.bfh.ch/id/eprint/6558",
     abstract: [
@@ -3835,12 +5044,8 @@ export const data = [
   },
   {
     date: 2017,
-    creators: [
-      "Jimmy Schmid",
-      "Harald Klingemann",
-      "Boris Bandyopadhyay",
-      "Arne Scheuermann",
-    ],
+    official_url:
+      "https://www.mitpressjournals.org/doi/abs/10.1162/DESI_a_00459",
     contributors: [
       "Jimmy Schmid",
       "Harald Klingemann",
@@ -3848,6 +5053,17 @@ export const data = [
       "Arne Scheuermann",
     ],
     uri: "https://arbor.bfh.ch/id/eprint/5920",
+    abstract: [
+      "Shifts between concepts of “graphic design” and “visual communication” offer numerous topical links and demonstrate their relevance for our research question: “How can communication designers design and steer rumor-based communication?” An interdisciplinary research team at the Bern University of the Arts (HKB) launched the project “Gerüchtekuchee” (“Rumour mill”) and conducted an experiment by planting a real-life rumor in organizational context. Results together with evidence from a literature review informed a practice application—“The Rumor Fighter”—as part of a museum exhibition, Gerücht: Museum für Kommunikation [Rumor: Museum of Communication], in Bern, Berlin, Frankfurt.",
+    ],
+    type: "magazine_article",
+    title: ["The Rumor Mill or 'How Rumors Evade the Grasp of Research'."],
+    creators: [
+      "Jimmy Schmid",
+      "Harald Klingemann",
+      "Boris Bandyopadhyay",
+      "Arne Scheuermann",
+    ],
     divisions: [
       "BFH-OE--HKB",
       "BFH-OE--IN-0005",
@@ -3855,11 +5071,6 @@ export const data = [
       "BFH-OE--RU-0019",
       "BFH-OE--RU-0043",
     ],
-    abstract: [
-      "Shifts between concepts of “graphic design” and “visual communication” offer numerous topical links and demonstrate their relevance for our research question: “How can communication designers design and steer rumor-based communication?” An interdisciplinary research team at the Bern University of the Arts (HKB) launched the project “Gerüchtekuchee” (“Rumour mill”) and conducted an experiment by planting a real-life rumor in organizational context. Results together with evidence from a literature review informed a practice application—“The Rumor Fighter”—as part of a museum exhibition, Gerücht: Museum für Kommunikation [Rumor: Museum of Communication], in Bern, Berlin, Frankfurt.",
-    ],
-    type: "magazine_article",
-    title: ["The Rumor Mill or 'How Rumors Evade the Grasp of Research'."],
   },
   {
     date: 2017,
@@ -3925,7 +5136,6 @@ export const data = [
   },
   {
     date: "2016-01-29",
-    official_url: "https://swissdesignnetwork.ch/en/symposia/unfrozen/",
     creators: ["Baur Ruedi", "Ulrike Felsing"],
     contributors: ["Baur Ruedi", "Ulrike Felsing"],
     uri: "https://arbor.bfh.ch/id/eprint/15167",
@@ -4003,7 +5213,7 @@ export const data = [
   {
     date: 2016,
     official_url:
-      "http://www.kunsttexte.de/index.php?id=6&tx_zjdspaceviewer_viewer%5Buuid%5D=fc999c4c-7248-47f2-8eff-58a381b8756d&tx_zjdspaceviewer_viewer%5Baction%5D=showItem&tx_zjdspaceviewer_viewer%5Bcontroller%5D=Viewer&cHash=ba708f2ed0728e099229c95c4bd2370f",
+      "https://journals.ub.uni-heidelberg.de/index.php/kunsttexte/article/view/88451",
     contributors: ["Ulrike Felsing"],
     uri: "https://arbor.bfh.ch/id/eprint/15173",
     abstract: [
@@ -4039,7 +5249,7 @@ export const data = [
   {
     date: 2016,
     official_url:
-      "https://www.verband-sonderpaedagogik.de/zeitschrift/zfh-artikel.html?zfhid=35213",
+      "https://www.verband-sonderpaedagogik.de/shop/punkt-fuer-punkt-ergebnisse-eines-forschungsprojekts-zur-gemeinsamen-vorbereitung-sehender-und-blinder-kinder-auf-den-schriftspracherwerb/",
     creators: [
       "Martin Gaberthüel",
       "Frank Laemers",
@@ -4270,6 +5480,29 @@ export const data = [
   {
     date: 2015,
     official_url:
+      "https://www.tandfonline.com/doi/abs/10.2752/175630615X14212498964312",
+    contributors: [
+      "Sara Donetto",
+      "Paola Pierri",
+      "Vicki Tsianakas",
+      "Glenn Robert",
+    ],
+    uri: "https://arbor.bfh.ch/id/eprint/19976",
+    type: "article",
+    title: [
+      "Experience-based Co-design and Healthcare Improvement: Realizing Participatory Design in the Public Sector",
+    ],
+    creators: [
+      "Sara Donetto",
+      "Paola Pierri",
+      "Vicki Tsianakas",
+      "Glenn Robert",
+    ],
+    divisions: ["BFH-OE--IN-0005", "BFH-OE--RU-0069", "BFH-OE--RU-0116"],
+  },
+  {
+    date: 2015,
+    official_url:
       "https://www.hesge.ch/head/sites/default/files/documents/Admissions/cas_visible_ou_invisible_prog_f.pdf",
     creators: ["Ulrike Felsing"],
     contributors: ["Ulrike Felsing"],
@@ -4283,8 +5516,7 @@ export const data = [
   },
   {
     date: 2015,
-    official_url:
-      "https://10plus1journal.com/wp-content/uploads/2015/09/09_INFOGRAPHICS_Kilchoer.pdf",
+    official_url: "http://10plus1journal.com/",
     creators: ["Fabienne Kilchör"],
     contributors: ["Fabienne Kilchör"],
     uri: "https://arbor.bfh.ch/id/eprint/5578",
@@ -4403,7 +5635,7 @@ export const data = [
   {
     date: "2014-12",
     official_url:
-      "https://www.unibe.ch/aktuell/magazine/unipress/aktuelle_ausgabe/index_ger.html",
+      "https://www.unibe.ch/aktuell/magazine/unipress/archiv_ausgabe/unipress_162/index_ger.html",
     creators: ["Robert Lzicar"],
     contributors: ["Robert Lzicar"],
     uri: "https://arbor.bfh.ch/id/eprint/9483",
@@ -4437,7 +5669,6 @@ export const data = [
   },
   {
     date: 2014,
-    official_url: "http://www.idpure.ch/ang/home.asp",
     creators: ["Jonas Berthod"],
     contributors: ["Jonas Berthod"],
     uri: "https://arbor.bfh.ch/id/eprint/9362",
@@ -4507,8 +5738,6 @@ export const data = [
   },
   {
     date: 2014,
-    official_url:
-      "http://www.editionsfavre.com/info.php?isbn=978-2-8289-1446-2",
     creators: ["Harald Klingemann"],
     contributors: ["Harald Klingemann"],
     uri: "https://arbor.bfh.ch/id/eprint/6222",
