@@ -45,8 +45,16 @@ const NavMenu = (props) => {
           <SiteLink href={"/"} sitetitle={"NEWS"}></SiteLink>
           <SiteLink href={"/projekte/"} sitetitle={"PROJEKTE"}></SiteLink>
           <SiteLink href={"/team/"} sitetitle={"TEAM"}></SiteLink>
-          <SiteLink href={"/veranstaltungen/"} sitetitle={"VERANSTALTUNGEN"}></SiteLink>
-          <SiteLink href={"/publikationen/"} sitetitle={"PUBLIKATIONEN"}></SiteLink>
+          <SiteLink
+            href={"/veranstaltungen/"}
+            sitetitle={"VERANSTALTUNGEN"}
+          ></SiteLink>
+          <SiteLink
+            href={"/publikationen/"}
+            sitetitle={"PUBLIKATIONEN"}
+          ></SiteLink>
+          <SiteLink href={"/podcast/"} sitetitle={"PODCAST"}></SiteLink>
+
           <SiteLink href={"/impressum/"} sitetitle={"IMPRESSUM"}></SiteLink>
         </div>
       }
