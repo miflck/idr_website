@@ -12,8 +12,14 @@ const ResponsiveImage = (props) => {
         data={responsiveImage}
         alt={props.alt}
         fadeInDuration="0"
-        layout="fill"
-        objectFit="cover"
+        // layout="fill"
+        // objectFit="cover"
+        // width={500}
+        // height={500}
+        style={{
+          objectFit: "cover",
+          layout: "fill",
+        }}
       />
     </div>
   );
