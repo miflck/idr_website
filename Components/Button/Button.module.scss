@@ -1,6 +1,5 @@
 @import "../.././styles/breakpoints.scss";
 
-
 .root {
   // --backgroundcolor:#ff0000
   border: none;
@@ -21,21 +20,16 @@
 
   //color:var(--maincolor);
   color: var(--maincolor);
-
+  white-space: nowrap;
   &:hover {
     background-color: var(--maincolor);
   }
-
-
 }
 
-
 @media (min-width: $breakpointSmall) {
-  .root{
+  .root {
     font-size: var(--fontsizesmall); // 0.6875rem;
-
   }
-   
 }
 
 @media (min-width: $breakpointMedium) {
