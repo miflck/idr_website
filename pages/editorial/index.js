@@ -315,7 +315,7 @@ const Editorial = (props) => {
             ref={refs[editorial.forschungsfeld[0].id]}
           >
             <Container>
-              <Link href={`editorial/${editorial.id}`}>
+              <Link href={`editorial/${editorial.slug}`}>
                 <div>
                   {editorial.forschungsfeld.map((forschungsfeld) => {
                     return (

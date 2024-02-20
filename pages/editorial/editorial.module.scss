@@ -1,5 +1,5 @@
 @import "../.././styles/breakpoints.scss";
-
+@import "../slug.module.scss";
 .editorialintro {
   padding: calc(var(--padding) * 3);
   border-bottom: 1px solid var(--maincolor);
