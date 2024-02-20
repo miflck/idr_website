@@ -5,41 +5,62 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { request, EDITORIALTEXTE, EDITORIALINTRO } from "../lib/datocms";
+import { request, EDITORIALTEXTE, EDITORIALINTRO } from "../../lib/datocms";
 import styles from "./editorial.module.scss";
-import Layout from "../Components/Layout/layout";
-import Container from "../Components/Container/container";
+//import Layout from "../Components/Layout/layout";
+import Link from "next/link";
+
+import Container from "../../Components/Container/container";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import TextElement from "../Components/Composition/TextElement";
-import FilterElement from "../Components/FilterElement/filterElement";
-import ButtonLink from "../Components/ButtonLink/buttonLink";
+import TextElement from "../../Components/Composition/TextElement";
 
-import { Lupe } from "../Components";
-import { FilterWrapper } from "../Components";
-import { SearchTerm } from "../Components";
-import { SearchTermWrapper } from "../Components";
+import FilterElement from "../../Components/FilterElement/filterElement";
+import ButtonLink from "../../Components/ButtonLink/buttonLink";
+import Layout from "../../Components/Layout/layout";
+import { Lupe } from "../../Components";
+import { FilterWrapper } from "../../Components";
+import { SearchTerm } from "../../Components";
+import { SearchTermWrapper } from "../../Components";
 
-import Header from "../Components/Header/header";
-import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+import Header from "../../Components/Header/header";
+import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import { ServiceElement } from "../../Components/Composition";
+import { BackgroundGradientFadeOut } from "../../Components";
+import { GradientFadeIn } from "../../Components";
+import { TextContainer } from "../../Components";
 
-import { AppContext, ACTIONS } from "../context/state";
-import { ServiceElement } from "../Components/Composition";
+import { Title } from "../../Components/Composition";
 
-import { BackgroundGradientFadeOut } from "../Components";
-import { GradientFadeIn } from "../Components";
-import { TextContainer } from "../Components";
-
-import { Title } from "../Components/Composition";
-
+import { AppContext, ACTIONS } from "../../context/state";
+/*
+import {
+  Layout,
+  Lupe,
+  Header,
+  HeaderWrapper,
+  Title,
+  TextElement,
+  TextContainer,
+  ServiceElement,
+  Container,
+  FilterElement,
+  ButtonLink,
+  FilterWrapper,
+  SearchTerm,
+  SearchTermWrapper,
+  BackgroundGradientFadeOut,
+  GradientFadeIn,
+} from "../../Components";
+*/
 import {
   searchInput,
   searchInputArray,
   getIntersection,
   searchInputArrayRecursive,
-} from "../lib/helpers";
+} from "../../lib/helpers";
 
 const Editorial = (props) => {
   const {
@@ -245,6 +266,7 @@ const Editorial = (props) => {
           })}
         </SearchTermWrapper>
       </HeaderWrapper>
+
       {filterdList.length == allEditorials.length && (
         <div className={styles.editorialwrapper}>
           <Container>
@@ -261,6 +283,7 @@ const Editorial = (props) => {
       )}
 
       {result.map((editorial) => {
+        console.log("------Editorial", editorial.id);
         const filterdProjectlist = filterByForschungsfeld(
           allProjekts,
           editorial.forschungsfeld[0].id
@@ -291,71 +314,56 @@ const Editorial = (props) => {
             style={background_style}
             ref={refs[editorial.forschungsfeld[0].id]}
           >
-            {console.log("ref", editorial.forschungsfeld[0].id)}
             <Container>
-              {editorial.forschungsfeld.map((forschungsfeld) => {
-                return (
-                  <Title key={forschungsfeld.id} title={forschungsfeld.titel} />
-                );
-              })}
-              <TextContainer>
-                <div className={styles.text}>
-                  {editorial.beitraege.map((beitrag) => {
+              <Link href={`editorial/${editorial.id}`}>
+                <div>
+                  {editorial.forschungsfeld.map((forschungsfeld) => {
                     return (
-                      <TextElement
-                        key={beitrag.id}
-                        {...beitrag.text}
-                      ></TextElement>
+                      <Title
+                        key={forschungsfeld.id}
+                        title={forschungsfeld.titel}
+                      />
                     );
                   })}
-                </div>
-                <div className={styles.serviceWrapper}>
-                  <ServiceElement title={t("Koord")}>
-                    {editorial.menschen.map((koordinatorin) => {
-                      let href = `/team`;
-                      if (koordinatorin.slug != "") {
-                        href += `/${koordinatorin.slug}`;
-                      }
-                      return <ButtonLink {...koordinatorin} href={href} />;
-                    })}{" "}
-                  </ServiceElement>
 
-                  <ServiceElement
-                    title={t("Projekte (Auswahl)")}
-                    style={{ width: 66 + "%" }}
-                  >
-                    {filterdProjectlist.map((projekt) => {
-                      let href = `/projekte`;
-                      if (projekt.slug != "") {
-                        href += `/${projekt.slug}`;
-                      }
-                      return <ButtonLink {...projekt} href={href} />;
-                    })}{" "}
-                  </ServiceElement>
-                </div>
-                {/* *
-              <div className={styles.listenwrapper}>
-                <div>{t("Koord")}</div>
-                {editorial.menschen.map((koordinatorin) => {
-                  let href = `/team`;
-                  if (koordinatorin.slug != "") {
-                    href += `/${koordinatorin.slug}`;
-                  }
-                  return <ButtonLink {...koordinatorin} href={href} />;
-                })}
+                  <TextContainer>
+                    <div className={styles.text}>
+                      {editorial.beitraege.map((beitrag) => {
+                        return (
+                          <TextElement
+                            key={beitrag.id}
+                            {...beitrag.text}
+                          ></TextElement>
+                        );
+                      })}
+                    </div>
+                    <div className={styles.serviceWrapper}>
+                      <ServiceElement title={t("Koord")}>
+                        {editorial.menschen.map((koordinatorin) => {
+                          let href = `/team`;
+                          if (koordinatorin.slug != "") {
+                            href += `/${koordinatorin.slug}`;
+                          }
+                          return <ButtonLink {...koordinatorin} href={href} />;
+                        })}{" "}
+                      </ServiceElement>
 
-                <div>{t("Projekte")}</div>
-                {filterdProjectlist.map((projekt) => {
-                  // console.log("projekt slug?", projekt)
-                  let href = `/projekte`;
-                  if (projekt.slug != "") {
-                    href += `/${projekt.slug}`;
-                  }
-                  return <ButtonLink {...projekt} href={href} />;
-                })}
-              </div>
-              */}
-              </TextContainer>
+                      <ServiceElement
+                        title={t("Projekte (Auswahl)")}
+                        style={{ width: 66 + "%" }}
+                      >
+                        {filterdProjectlist.map((projekt) => {
+                          let href = `/projekte`;
+                          if (projekt.slug != "") {
+                            href += `/${projekt.slug}`;
+                          }
+                          return <ButtonLink {...projekt} href={href} />;
+                        })}{" "}
+                      </ServiceElement>
+                    </div>
+                  </TextContainer>
+                </div>
+              </Link>
             </Container>
           </div>
         );

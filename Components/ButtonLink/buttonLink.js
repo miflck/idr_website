@@ -2,7 +2,6 @@ import styles from "./buttonlink.module.scss";
 import Link from "next/link";
 
 export default function Button(props) {
-  console.log("props Button", props);
   if (props.newTab) {
     return (
       <div className={styles.linkwrapper}>

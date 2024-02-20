@@ -1,25 +1,23 @@
-
-.linkwrapper{
-    padding-bottom: 0.5rem;
-   // padding-bottom: 1.25rem;
-    //line-height: calc(var(--lineheightnormal)*0.75);
-
+.linkwrapper {
+  padding-bottom: 0.5rem;
+  // padding-bottom: 1.25rem;
+  //line-height: calc(var(--lineheightnormal)*0.75);
 }
 
 .buttonlink {
-    // border: 1px solid var(--maincolor);
-    // border-radius: 20px;
-    // padding: 4px 4px 0px;
+  // border: 1px solid var(--maincolor);
+  // border-radius: 20px;
+  // padding: 4px 4px 0px;
 
-    // font-family: "SangItalic";
+  // font-family: "SangItalic";
 
-    // text-decoration: underline;
+  // text-decoration: underline;
 
-    &:hover {
-        // color: var(--secondcolor);
-        // background-color: var(--maincolor);
-        // margin-left: var(--padding);
-        // margin-left: 5px;
-        // font-family: "Sang";
-    }
+  &:hover {
+    // color: var(--secondcolor);
+    // background-color: var(--maincolor);
+    // margin-left: var(--padding);
+    // margin-left: 5px;
+    // font-family: "Sang";
+  }
 }
