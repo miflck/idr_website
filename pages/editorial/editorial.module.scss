@@ -9,14 +9,18 @@
     font-size: var(--fontsizenormal);
     line-height: var(--lineheightnormal);
     margin-bottom: var(--padding);
-    // margin-left: calc(var(--padding)*5);
   }
 }
 
 .editorialwrapper {
-  padding-top: calc(var(--padding) * 3);
+  //padding-top: calc(var(--padding) * 3);
+  padding-top: calc(var(--padding) * 2);
+
   border-top: 1px solid var(--maincolor);
-  margin-bottom: 6.5rem;
+  //margin-bottom: 6.5rem;
+
+  margin-bottom: calc(var(--padding) * 0);
+
   color: var(--maincolor);
   scroll-margin-top: 7.5rem;
   cursor: pointer;
@@ -25,7 +29,6 @@
 .serviceWrapper {
   margin-top: 5rem;
   padding-top: calc(var(--padding));
-
   border-top: solid thin black;
 
   position: relative;
@@ -35,11 +38,14 @@
 
 @media (min-width: $breakpointSmall) {
   .editorialwrapper {
-    padding-top: 6.5rem;
+    //padding-top: 6.5rem;
+    //padding-top: calc(var(--padding) * 5.2);
+    padding-top: calc(var(--padding) * 2);
   }
 
   .serviceWrapper {
     margin-top: 6.5rem;
+    margin-top: calc(var(--padding) * 2);
 
     //margin-top: calc(var(--padding));
     columns: 1;

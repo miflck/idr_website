@@ -12,3 +12,4 @@ export { default as Video } from "./Video";
 export { default as ImageElementContain } from "./ImageElementContain";
 export { default as PodcastFeed } from "./PodcastFeed";
 export { default as PodcastPlayer } from "./PodcastPlayer";
+export { default as ListTitle } from "./Listtitle";

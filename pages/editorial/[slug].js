@@ -14,7 +14,11 @@ import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
 import {
   Title,
   TextElement,
+  ImageElement,
+  Gallery,
+  Video,
   ServiceElement,
+  ModularContentWrapper,
 } from "../../Components/Composition";
 import {
   Backbutton,
@@ -23,7 +27,6 @@ import {
 } from "../../Components";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
 import Container from "../../Components/Container/container";
-import ModularContentWrapper from "../../Components/Composition/ModularContentWrapper/ModularContentWrapper";
 import ListItemProjekt from "../../Components/List/listItemProjekt";
 
 import styles from "./editorial.module.scss";
@@ -90,6 +93,28 @@ const EditorialSingleview = (props) => {
                     {block._modelApiKey === "text" && (
                       <TextElement key={block.id} {...block.text}></TextElement>
                     )}
+                    {block._modelApiKey === "einzelbild" && (
+                      <ImageElement
+                        key={block.einzelbild.id}
+                        src={block.einzelbild.url}
+                        title={block.einzelbild.title}
+                        alt={block.einzelbild.alt}
+                        width={block.einzelbild.width}
+                        height={block.einzelbild.height}
+                      />
+                    )}
+
+                    {block._modelApiKey === "galerie" && (
+                      <Gallery data={block.galerie}></Gallery>
+                    )}
+
+                    {block._modelApiKey === "video" && (
+                      <Video
+                        key={block.id}
+                        data={block.clip}
+                        caption={block.caption}
+                      ></Video>
+                    )}
                   </ModularContentWrapper>
                 );
               })}
@@ -112,7 +137,7 @@ const EditorialSingleview = (props) => {
                   );
                 })}{" "}
               </ServiceElement>
-              <ServiceElement title={t("Projekte")} style={{ width: 66 + "%" }}>
+              {/* <ServiceElement title={t("Projekte")} style={{ width: 66 + "%" }}>
                 {props.filteredProjekts.map((projekt) => {
                   let href = `/projekte`;
                   if (projekt.slug != "") {
@@ -122,7 +147,7 @@ const EditorialSingleview = (props) => {
                     <ButtonLink {...projekt} href={href} key={projekt.id} />
                   );
                 })}{" "}
-              </ServiceElement>
+              </ServiceElement> */}
             </div>
           </Container>
 

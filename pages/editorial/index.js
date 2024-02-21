@@ -7,32 +7,39 @@ import React, {
 } from "react";
 import { request, EDITORIALTEXTE, EDITORIALINTRO } from "../../lib/datocms";
 import styles from "./editorial.module.scss";
-//import Layout from "../Components/Layout/layout";
 import Link from "next/link";
-
-import Container from "../../Components/Container/container";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+import Container from "../../Components/Container/container";
 import TextElement from "../../Components/Composition/TextElement";
 
 import FilterElement from "../../Components/FilterElement/filterElement";
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
 import Layout from "../../Components/Layout/layout";
-import { Lupe } from "../../Components";
-import { FilterWrapper } from "../../Components";
-import { SearchTerm } from "../../Components";
-import { SearchTermWrapper } from "../../Components";
 
 import Header from "../../Components/Header/header";
 import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
-import { ServiceElement } from "../../Components/Composition";
-import { BackgroundGradientFadeOut } from "../../Components";
-import { GradientFadeIn } from "../../Components";
-import { TextContainer } from "../../Components";
-
-import { Title } from "../../Components/Composition";
+import {
+  ListTitle,
+  Title,
+  ImageElement,
+  Gallery,
+  Video,
+  ServiceElement,
+  ModularContentWrapper,
+} from "../../Components/Composition";
+import {
+  Lupe,
+  FilterWrapper,
+  SearchTerm,
+  SearchTermWrapper,
+  BackgroundGradientFadeOut,
+  GradientFadeIn,
+  TextContainer,
+} from "../../Components";
 
 import { AppContext, ACTIONS } from "../../context/state";
 /*
@@ -68,6 +75,8 @@ const Editorial = (props) => {
   } = props;
 
   const { editorialintro } = props;
+
+  console.log(props);
 
   const globalState = useContext(AppContext);
   const { state } = globalState;
@@ -279,16 +288,53 @@ const Editorial = (props) => {
                 <div>
                   {editorial.forschungsfeld.map((forschungsfeld) => {
                     return (
-                      <Title
+                      <ListTitle
                         key={forschungsfeld.id}
                         title={forschungsfeld.titel}
                       />
+                      // <div className={styles.titel}>{forschungsfeld.titel}</div>
                     );
                   })}
 
+                  {/* {editorial.beitraege != null &&
+                    editorial.beitraege.map((block) => {
+                      return (
+                        <ModularContentWrapper key={block.id}>
+                          {block._modelApiKey === "text" && (
+                            <TextElement
+                              key={block.id}
+                              {...block.text}
+                            ></TextElement>
+                          )}
+                          {block._modelApiKey === "einzelbild" && (
+                            <ImageElement
+                              key={block.einzelbild.id}
+                              src={block.einzelbild.url}
+                              title={block.einzelbild.title}
+                              alt={block.einzelbild.alt}
+                              width={block.einzelbild.width}
+                              height={block.einzelbild.height}
+                            />
+                          )}
+
+                          {block._modelApiKey === "galerie" && (
+                            <Gallery data={block.galerie}></Gallery>
+                          )}
+
+                          {block._modelApiKey === "video" && (
+                            <Video
+                              key={block.id}
+                              data={block.clip}
+                              caption={block.caption}
+                            ></Video>
+                          )}
+                        </ModularContentWrapper>
+                      );
+                    })} */}
+
                   <TextContainer>
                     <div className={styles.text}>
-                      {editorial.beitraege.map((beitrag) => {
+                      {editorial.listenansicht.map((beitrag) => {
                         return (
                           <TextElement
                             key={beitrag.id}
@@ -308,7 +354,7 @@ const Editorial = (props) => {
                         })}{" "}
                       </ServiceElement>
 
-                      <ServiceElement
+                      {/* <ServiceElement
                         title={t("Projekte (Auswahl)")}
                         style={{ width: 66 + "%" }}
                       >
@@ -319,7 +365,7 @@ const Editorial = (props) => {
                           }
                           return <ButtonLink {...projekt} href={href} />;
                         })}{" "}
-                      </ServiceElement>
+                      </ServiceElement> */}
                     </div>
                   </TextContainer>
                 </div>
