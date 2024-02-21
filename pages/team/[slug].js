@@ -56,7 +56,6 @@ export default function Menscheinzelansicht(props) {
       return data.filter((obj) => {
         return fields.some(function (field) {
           return obj[field].some((feld) => {
-            console.log(feld.name, filterterm);
             return feld.name.includes(filterterm);
           });
         });
@@ -129,7 +128,6 @@ export default function Menscheinzelansicht(props) {
 
     let ProjekteElement;
     if (filterdProjectlist.length != 0) {
-      // console.log("filterdProjectlist",filterdProjectlist)
       ProjekteElement = (
         <div className={styles.subwrapper}>
           {filterdProjectlist.slice(0, auswahllength).map((projekt) => {
@@ -147,7 +145,6 @@ export default function Menscheinzelansicht(props) {
     let colors = [];
     if (forschungsfeld.length != 0) {
       forschungsfeld.map((forschungsfeld) => {
-        // console.log("farbe hats oder nicht", forschungsfeld.titel)
         if (forschungsfeld.titel === "ForscherInnen") {
         } else if (forschungsfeld.titel === "Leitung und Büro") {
         } else {

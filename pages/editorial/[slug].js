@@ -24,10 +24,11 @@ import {
 import ButtonLink from "../../Components/ButtonLink/buttonLink";
 import Container from "../../Components/Container/container";
 import ModularContentWrapper from "../../Components/Composition/ModularContentWrapper/ModularContentWrapper";
+import ListItemProjekt from "../../Components/List/listItemProjekt";
+
 import styles from "./editorial.module.scss";
 
 const EditorialSingleview = (props) => {
-  console.log("props", props);
   const { t } = useTranslation("common");
 
   const {
@@ -124,6 +125,28 @@ const EditorialSingleview = (props) => {
               </ServiceElement>
             </div>
           </Container>
+
+          <Container>
+            {" "}
+            <div className={styles.serviceWrapper}>
+              <h3>{t("Projekte")}</h3>
+            </div>
+          </Container>
+
+          <div className={styles.listwrapper}>
+            {
+              //filterdList.map((projekt) => {
+              props.filteredProjekts.map((projekt) => {
+                return (
+                  <ListItemProjekt
+                    {...projekt}
+                    key={projekt.id}
+                    showGradient={false}
+                  />
+                );
+              })
+            }{" "}
+          </div>
         </div>
       </div>
     </Layout>
@@ -154,8 +177,6 @@ export async function getStaticProps({ params, locale }) {
 
   // Extract forschungsfeld ID from the editorial data
   const forschungsfeldId = data?.editorial?.forschungsfeld[0]?.id;
-
-  console.log("------forschungsfeldId", forschungsfeldId);
 
   // Assuming forschungsfeldId is a string
   const filteredProjekts = allProjekts.filter((projekt) => {

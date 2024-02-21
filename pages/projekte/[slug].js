@@ -35,7 +35,6 @@ import { Video } from "../../Components";
 
 export default function Projekteinzelansicht(props) {
   const { t } = useTranslation("common");
-  console.log("props  projekt", props);
   const {
     data: {
       projekt: {
@@ -62,7 +61,6 @@ export default function Projekteinzelansicht(props) {
     return { ...m, lastname: names[names.length - 1] };
   });
   mitarbeitarray.sort((a, b) => {
-    // console.log("lastname sort", a.lastname);
     return a.lastname.localeCompare(b.lastname);
   });
 
@@ -73,7 +71,6 @@ export default function Projekteinzelansicht(props) {
   });
 
   leitungsarray.sort((a, b) => {
-    // console.log("lastname sort", a.lastname);
     return a.lastname.localeCompare(b.lastname);
   });
 
@@ -83,7 +80,6 @@ export default function Projekteinzelansicht(props) {
   });
 
   verantwortungarray.sort((a, b) => {
-    // console.log("lastname sort", a.lastname);
     return a.lastname.localeCompare(b.lastname);
   });
 
@@ -110,18 +106,6 @@ export default function Projekteinzelansicht(props) {
       //  dispatch({ type: ACTIONS.REMOVE_HOVER_ELEMENT, payload: { element:[id] } })
     }
   };
-
-  /*
-  const handleClick = (bool,id) => {
-    console.log(id)
-    let f=forschungsfeld.filter((e) => e.id===id)
-    console.log("Klick auf Forschungsfeld",f)
-    var filtermitgeben = `${f[0].titel}`.split(" ").join("-");
-    router.push({
-      pathname: '/editorial', 
-      query: { keyword: `${filtermitgeben}` }
-    })
-};*/
 
   const handleClick = (bool, id) => {
     if (state.activeFilters.some((e) => e === id)) {
@@ -168,22 +152,6 @@ export default function Projekteinzelansicht(props) {
                       linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,1))`,
     };
 
-    /*
-    verantwortung.map((e) => {
-      console.log("------------e", e);
-
-      if (e.organisation != null) {
-        console.log("------------e.organisation", e.organisation.title);
-
-        const doubled = e.organisation.reduce((total, amount) => {
-          // total.push(amount * 2);
-
-          console.log("------------total", amount);
-          return total;
-        }, []);
-      } else return "";
-    });
-*/
     return (
       <Layout
         setMainColor={props.setMainColor}
@@ -215,7 +183,6 @@ export default function Projekteinzelansicht(props) {
               <div className={styles.modulareinhalte}>
                 {projektinhalte != null &&
                   projektinhalte.map((block) => {
-                    console.log("block", block);
                     return (
                       <ModularContentWrapper key={block.id}>
                         {block._modelApiKey === "text" && (
@@ -462,25 +429,6 @@ export async function getStaticPaths({ locales }) {
     });
   });
 
-  // Irgendwie so würde man wohl die pfade finden
-  /*
-  const data = await request({
-    query: ALLPROJEKTE
-  });
-  // loop durch die sprachen
-  locales.forEach((locale, i) => {
-    data.allProjekts.forEach((projekt, j) => {
-      console.log(locale,projekt)
-      paths.push({ 
-        params: { 
-          slug:projekt.slug
-        }, 
-        locale})
-
-      }
-    )
-  }
-  )*/
   return {
     paths,
     fallback: false,

@@ -109,19 +109,16 @@
     }
     */
 
-
   .referentIn {
     margin-left: calc(var(--padding) * 5);
     margin-bottom: calc(var(--padding) * 5);
   }
-
 }
 
 @media (min-width: $breakpointSmall) {
   .serviceWrapper {
     margin-top: 6.5rem;
     columns: 2;
-
     margin-inline-start: 0rem;
     margin-inline-end: 0rem;
   }

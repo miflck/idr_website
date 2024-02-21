@@ -19,7 +19,6 @@ export default function Podcast(props) {
     data: { podcast },
   } = props;
 
-  // console.log("homeprops", links);
   const { t } = useTranslation("common");
 
   // context
@@ -59,7 +58,6 @@ export default function Podcast(props) {
         <div className={styles.modulareinhalte}>
           {podcast.content != null &&
             podcast.content.map((block) => {
-              console.log("block", block);
               return (
                 <div key={block.id}>
                   {block._modelApiKey === "text" && (
@@ -76,14 +74,25 @@ export default function Podcast(props) {
                     />
                   )}
 
-                  {block._modelApiKey === "galerie" && <Gallery data={block.galerie}></Gallery>}
+                  {block._modelApiKey === "galerie" && (
+                    <Gallery data={block.galerie}></Gallery>
+                  )}
 
                   {block._modelApiKey === "video" && (
-                    <Video key={block.id} data={block.clip} caption={block.caption}></Video>
+                    <Video
+                      key={block.id}
+                      data={block.clip}
+                      caption={block.caption}
+                    ></Video>
                   )}
 
                   {block._modelApiKey === "pdf" && block.pdf != null && (
-                    <ButtonLink key={block.id} {...block} href={block.pdf.url} newTab="true" />
+                    <ButtonLink
+                      key={block.id}
+                      {...block}
+                      href={block.pdf.url}
+                      newTab="true"
+                    />
                   )}
                 </div>
               );

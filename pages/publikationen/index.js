@@ -82,8 +82,6 @@ export default function Publikationen(props) {
   const { t } = useTranslation("common");
 
   const router = useRouter();
-  // console.log("roter nach type", router.asPath.split(/=/)[1])
-  //var deliveredfilter = router.asPath.split(/=/)[1]
 
   let deliveredfilter = router.query.keyword;
 
@@ -156,14 +154,7 @@ export default function Publikationen(props) {
 
   // currently not used
   let typeList = groupByFlat(publicationData, "type");
-  //console.log("Type List ", typeList);
   const publicationTypes = Object.keys(typeList);
-  //console.log("publicationTypes ", publicationTypes);
-
-  /*
-
-
-  */
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -176,7 +167,6 @@ export default function Publikationen(props) {
   };
 
   const handleSubmit = (e) => {
-    console.log("submit", e);
     dispatch({
       type: ACTIONS.ADD_SEARCHTERM,
       payload: { element: e },

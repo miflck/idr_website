@@ -5,7 +5,6 @@ import ReactPlayer from "react-player";
 import { StructuredText } from "react-datocms";
 
 const Video = (props) => {
-  console.log("video props", props);
   const { data, caption } = props;
   return (
     <div className={styles.root}>

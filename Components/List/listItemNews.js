@@ -34,7 +34,6 @@ const ListItemNews = (props) => {
     date,
     hochformat,
   } = props;
-  console.log(props);
 
   const globalState = useContext(AppContext);
   const { state } = globalState;
@@ -61,10 +60,16 @@ const ListItemNews = (props) => {
   let imageComponent;
   if (image) {
     if (hochformat) {
-      console.log("------ img", image, hochformat);
-      imageComponent = <ImageElementContain src={image.url} alt={image.alt}></ImageElementContain>;
+      imageComponent = (
+        <ImageElementContain
+          src={image.url}
+          alt={image.alt}
+        ></ImageElementContain>
+      );
     } else {
-      imageComponent = <ImageElement src={image.url} alt={image.alt}></ImageElement>;
+      imageComponent = (
+        <ImageElement src={image.url} alt={image.alt}></ImageElement>
+      );
     }
   }
   let hrefInternalLink = "";
@@ -78,7 +83,6 @@ const ListItemNews = (props) => {
       hrefInternalLink += `/news/${slug}`;
     }
   } else if (weblink) {
-    console.log("weblink", hrefInternalLink);
     hrefInternalLink = weblink;
   } else {
     hrefInternalLink += `/news/${slug}`;
@@ -126,22 +130,41 @@ const ListItemNews = (props) => {
   const animationOut = `${styles.fadeOut} 1.2s ease`;
   const animationIn = ` ${styles.fadeIn} 0.5s ease`;
 
-  let background_style = getGradientBackgroundStyle(gradient_highlight, animationOut, 0);
+  let background_style = getGradientBackgroundStyle(
+    gradient_highlight,
+    animationOut,
+    0
+  );
   if (props.showGradient || showHoverGradient) {
-    background_style = getGradientBackgroundStyle(gradient_highlight, animationIn, 1);
+    background_style = getGradientBackgroundStyle(
+      gradient_highlight,
+      animationIn,
+      1
+    );
   }
 
-  const gradient_image = makeGradient(colorArray[0] + "80", "rgba(255,255,255,0)", "to bottom");
-  let background_style_image = getGradientBackgroundStyle(gradient_image, animationOut, 0);
+  const gradient_image = makeGradient(
+    colorArray[0] + "80",
+    "rgba(255,255,255,0)",
+    "to bottom"
+  );
+  let background_style_image = getGradientBackgroundStyle(
+    gradient_image,
+    animationOut,
+    0
+  );
   if (props.showGradient || showHoverGradient) {
-    background_style_image = getGradientBackgroundStyle(gradient_image, animationIn, 1);
+    background_style_image = getGradientBackgroundStyle(
+      gradient_image,
+      animationIn,
+      1
+    );
     // background_style_image["mix-blend-mode"] = "multiply";
     // background_style_image["zIndex"] = "100";
   }
 
   const plaintext = (txt) => {
     let t = render(txt);
-    console.log(t.length);
     if (t.length > 150) {
       t = t.replace(/(.{150})..+/, "$1…");
     }
@@ -166,13 +189,13 @@ const ListItemNews = (props) => {
     });
   }
 
-  console.log(date, date_parsed);
-
   return (
     <>
       <Tile key={id} id={id}>
         <div
-          className={` ${styles.wrapper} ${showHoverGradient ? styles.highlight : ""}`}
+          className={` ${styles.wrapper} ${
+            showHoverGradient ? styles.highlight : ""
+          }`}
           key={id}
           onMouseEnter={() => handleHover(true)}
           onTouchStart={() => handleHover(true)}
@@ -183,11 +206,16 @@ const ListItemNews = (props) => {
           <GradientContainer backgroundStyle={background_style}>
             <div className={`${styles.menschwrapper}`}>
               <Link href={hrefInternalLink}>
-                <a className={styles.listLinkBlank} {...(weblink ? { target: "_blank" } : {})}>
+                <a
+                  className={styles.listLinkBlank}
+                  {...(weblink ? { target: "_blank" } : {})}
+                >
                   <span>
                     {image && (
                       <div className={styles.portraitWrapper}>
-                        <GradientContainer backgroundStyle={background_style_image}>
+                        <GradientContainer
+                          backgroundStyle={background_style_image}
+                        >
                           {imageComponent}
                         </GradientContainer>
                       </div>
@@ -197,7 +225,9 @@ const ListItemNews = (props) => {
                         new Date(date_parsed) < now ? "" : "Uhr"
                       }`}</div>
                     )}
-                    <ElementTitle highlight={showHoverGradient}>{title}</ElementTitle>
+                    <ElementTitle highlight={showHoverGradient}>
+                      {title}
+                    </ElementTitle>
 
                     <TextElement key={id} {...teaser}></TextElement>
                   </span>

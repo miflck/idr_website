@@ -27,12 +27,19 @@ import Button from "../../Components/Button/Button";
 
 export default function NewsSingleview(props) {
   const router = useRouter();
-  console.log("props", props);
   const { t } = useTranslation("common");
 
   const {
     data: {
-      news: { id, forschungsfeld, title, subtitle, modularcontent, serviceBlocks, slug } = "",
+      news: {
+        id,
+        forschungsfeld,
+        title,
+        subtitle,
+        modularcontent,
+        serviceBlocks,
+        slug,
+      } = "",
     },
   } = props || "";
 
@@ -73,9 +80,9 @@ export default function NewsSingleview(props) {
     });
   }
   background_style = {
-    background: `linear-gradient(to right, ${colors[0] || "var(--maincolor)"}, ${
-      colors[1] || "white"
-    }`,
+    background: `linear-gradient(to right, ${
+      colors[0] || "var(--maincolor)"
+    }, ${colors[1] || "white"}`,
   };
   let background_op = {
     background: `radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
@@ -96,7 +103,9 @@ export default function NewsSingleview(props) {
         <Backbutton />
       </Container>
       {/* Hintergrund ganze seite */}
-      <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
+      <BackgroundGradientFadeOut
+        backgroundStyle={background_style}
+      ></BackgroundGradientFadeOut>
       <div className={styles.stickywrapper}>
         <GradientFadeIn
           backgroundStyle={background_style}
@@ -110,11 +119,13 @@ export default function NewsSingleview(props) {
               {/**Modular Content */}
               {modularcontent != null &&
                 modularcontent.map((block) => {
-                  console.log("block", block);
                   return (
                     <ModularContentWrapper key={block.id}>
                       {block._modelApiKey === "text" && (
-                        <TextElement key={block.id} {...block.text}></TextElement>
+                        <TextElement
+                          key={block.id}
+                          {...block.text}
+                        ></TextElement>
                       )}
                       {block._modelApiKey === "einzelbild" && (
                         <ImageElement
@@ -125,10 +136,16 @@ export default function NewsSingleview(props) {
                         />
                       )}
 
-                      {block._modelApiKey === "galerie" && <Gallery data={block.galerie}></Gallery>}
+                      {block._modelApiKey === "galerie" && (
+                        <Gallery data={block.galerie}></Gallery>
+                      )}
 
                       {block._modelApiKey === "pdf" && (
-                        <ButtonLink key={block.id} {...block} href={block.pdf.url} />
+                        <ButtonLink
+                          key={block.id}
+                          {...block}
+                          href={block.pdf.url}
+                        />
                       )}
                     </ModularContentWrapper>
                   );

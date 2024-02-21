@@ -11,7 +11,6 @@ export default function ForschungsfeldElement(props) {
   const { showGradient, showHoverGradient, mainColor, secondColor } = props;
 
   const handleHover = (isHover, id) => {
-    //console.log("isHover", isHover);
     if (isHover) {
       // dispatch({ type: ACTIONS.ADD_HOVER_ELEMENT, payload: { element: [id] } })
     } else {

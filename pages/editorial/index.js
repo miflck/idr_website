@@ -74,7 +74,6 @@ const Editorial = (props) => {
   const { dispatch } = globalState;
 
   const router = useRouter();
-  //console.log("Query", router.query);
 
   const { t } = useTranslation("common");
 
@@ -140,11 +139,6 @@ const Editorial = (props) => {
   let result =
     getIntersection([filterdList, searchFilterdList]) || allEditorials;
 
-  /*const refs = allEditorials.reduce((item, value) => {
-    item[value.forschungsfeld[0].id] = React.createRef();
-    return item;
-  }, {});*/
-
   const refs = allEditorials.reduce((item, value) => {
     const ref = useRef(null);
     const setRef = useCallback((node) => {
@@ -152,39 +146,20 @@ const Editorial = (props) => {
         // Make sure to cleanup any events/references added to the last instance
       }
       if (node !== null) {
-        // console.log(node.getBoundingClientRect().height);
-        // setHeight(node.getBoundingClientRect().height);
       }
       ref.current = node;
-      console.log("r", ref, setRef);
     }, []);
     item[value.forschungsfeld[0].id] = ref;
 
     return item;
   }, {});
 
-  console.log("refs", refs);
-  // on change active filters
-  //refs[34113259].current.scrollIntoView();
-  /*if (refs[state.activeFilters] !== undefined) {
-    const lastItem = state.activeFilters[state.activeFilters.length - 1];
-    console.log("lastItem", refs, lastItem);
-    if (refs[lastItem].current !== null) {
-      refs[lastItem].current.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  }*/
   useEffect(() => {
-    console.log("use effect state", state.activeFilters, refs);
     setFilterdList(filterBy(allEditorials, state.activeFilters)); // filter if any filter is set, else show all
-    //window.scrollTo(0, 0);
   }, [state.activeFilters]);
 
   useEffect(() => {
-    console.log("refs filterd list", refs);
     const lastItem = state.activeFilters[state.activeFilters.length - 1];
-    // console.log(lastItem, refs[lastItem]);
     if (refs[lastItem] !== undefined && refs[lastItem].current !== null) {
       refs[lastItem].current.scrollIntoView({
         behavior: "smooth",
@@ -228,20 +203,6 @@ const Editorial = (props) => {
     });
   };
 
-  /*useEffect(() => {
-    console.log("after render", refs);
-    if (state.activeFilters.length > 0) {
-      const lastItem = state.activeFilters[state.activeFilters.length - 1];
-      console.log("lastItem", refs, lastItem, refs[lastItem]);
-      if (refs[lastItem] !== null) {
-        refs[lastItem].current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    }
-    //refs[34113259].current.scrollIntoView();
-  });*/
-
   return (
     <Layout
       setMainColor={props.setMainColor}
@@ -283,7 +244,6 @@ const Editorial = (props) => {
       )}
 
       {result.map((editorial) => {
-        console.log("------Editorial", editorial.id);
         const filterdProjectlist = filterByForschungsfeld(
           allProjekts,
           editorial.forschungsfeld[0].id

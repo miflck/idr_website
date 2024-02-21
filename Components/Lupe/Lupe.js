@@ -33,7 +33,6 @@ const Lupe = (props) => {
 
   const handleMagClick = () => {
     if (active) {
-      console.log((inputRef.current.value = ""));
       props.setSearch("");
       //inputRef.current.target.value = "";
       inputRef.current.blur();

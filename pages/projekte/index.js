@@ -8,8 +8,7 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
 import Lupe from "../../Components/Lupe/Lupe";
-import SearchTerm from "../../Components/SearchTerm/SearchTerm";
-import { SearchTermWrapper } from "../../Components";
+import { SearchTermWrapper, SearchTerm } from "../../Components";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import { useRouter } from "next/router";
 
@@ -45,8 +44,6 @@ export default function Projekte(props) {
     });
   }, []);
 
-  console.log("1", router.pathname, state.currentPath, state.previousPath);
-
   const [showGradient, setShowGradient] = useState(false);
 
   const removeAllHoverFilter = () => {
@@ -62,13 +59,6 @@ export default function Projekte(props) {
   useEffect(() => {
     const params = router.pathname.split("/");
     const prevparams = state.currentPath.split("/");
-    console.log(
-      "2",
-      prevparams.length,
-      router.pathname,
-      state.currentPath,
-      state.previousPath
-    );
     if (prevparams.length <= 2) {
       removeAllHoverFilter();
       removeAllActiveFilter();
@@ -88,6 +78,7 @@ export default function Projekte(props) {
       });
     });
   }
+
   const [filterdList, setFilterdList] = useState([]);
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
@@ -96,8 +87,6 @@ export default function Projekte(props) {
 
   // on change active filters
   useEffect(() => {
-    console.log("use effect", state.activeFilters);
-    console.log("yy", filterBy(data, state.activeFilters));
     setFilterdList(filterBy(data, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
@@ -117,12 +106,7 @@ export default function Projekte(props) {
   }, [search]);
 
   useEffect(() => {
-    console.log(state.searchTerms);
     setSearchFilterdList(
-      searchInputArrayRecursive(data, state.searchTerms, fields)
-    );
-    console.log(
-      "use effect ",
       searchInputArrayRecursive(data, state.searchTerms, fields)
     );
     window.scrollTo(0, 0);

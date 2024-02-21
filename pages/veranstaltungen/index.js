@@ -25,7 +25,6 @@ import {
 import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 
-
 const Veranstaltungen = (props) => {
   const {
     veranstaltungen: { allVeranstaltungs: data },
@@ -34,8 +33,6 @@ const Veranstaltungen = (props) => {
     veranstaltungen: { allForschungsfelders },
   } = props;
 
-  console.log(data);
-  // console.log("props",props);
   const { t } = useTranslation("common");
 
   // context
@@ -105,7 +102,6 @@ const Veranstaltungen = (props) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("klicked enter", e.target.value);
       dispatch({
         type: ACTIONS.ADD_SEARCHTERM,
         payload: { element: e.currentTarget.value },
@@ -114,7 +110,6 @@ const Veranstaltungen = (props) => {
   };
 
   const handleSubmit = (e) => {
-    console.log("submit", e);
     dispatch({
       type: ACTIONS.ADD_SEARCHTERM,
       payload: { element: e },

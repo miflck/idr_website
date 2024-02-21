@@ -80,7 +80,6 @@ const Gallery = (props) => {
         }}
       >
         {data.map((element) => {
-          console.log(element);
           return (
             <div>
               <ImageElement

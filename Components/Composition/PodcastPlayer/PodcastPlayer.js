@@ -6,7 +6,6 @@ import H5AudioPlayer from "react-h5-audio-player";
 import styles from "./PodcastPlayer.module.scss";
 
 const PodcastPlayer = ({ episode, audioUrl }) => {
-  console.log("episode", episode, "audoUrl", audioUrl);
   const [isPlaying, setIsPlaying] = useState(false);
   const togglePlay = () => {
     setIsPlaying((prevState) => !prevState);

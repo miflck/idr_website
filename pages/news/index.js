@@ -17,7 +17,11 @@ import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
 import { SearchTermWrapper } from "../../Components";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
-import { searchInputArrayRecursive, searchRecursive, getIntersection } from "../../lib/helpers";
+import {
+  searchInputArrayRecursive,
+  searchRecursive,
+  getIntersection,
+} from "../../lib/helpers";
 
 import { Checkboard } from "react-color/lib/components/common";
 
@@ -29,7 +33,6 @@ export default function Home(props) {
     news: { allForschungsfelders },
   } = props;
 
-  // console.log("homeprops", links);
   const { t } = useTranslation("common");
 
   // context
@@ -79,7 +82,6 @@ export default function Home(props) {
 
   useEffect(() => {
     setFilterdList(filterBy(siteData, state.activeFilters));
-    console.log(filterBy(siteData, state.activeFilters));
     if (state.activeFilters.length > 0) {
       setShowGradient(true);
     } else {
@@ -90,13 +92,20 @@ export default function Home(props) {
   const [search, setSearch] = useState("");
   useEffect(() => {
     let array = [...state.searchTerms, search];
-    setSearchFilterdList(searchInputArrayRecursive(siteData, array, ["text", "titel", "value"]));
+    setSearchFilterdList(
+      searchInputArrayRecursive(siteData, array, ["text", "titel", "value"])
+    );
   }, [search]);
 
   useEffect(() => {
-    console.log(state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
-    setSearchFilterdList(searchInputArrayRecursive(siteData, state.searchTerms, ["text", "titel", "value"]));
+    setSearchFilterdList(
+      searchInputArrayRecursive(siteData, state.searchTerms, [
+        "text",
+        "titel",
+        "value",
+      ])
+    );
   }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
@@ -116,13 +125,22 @@ export default function Home(props) {
   };
 
   return (
-    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
+    <Layout
+      setMainColor={props.setMainColor}
+      setSecondColor={props.setSecondColor}
+      colorHexCode={props.colorHexCode}
+      colorHexCodeSecond={props.colorHexCodeSecond}
+    >
       <HeaderWrapper>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
+          <Lupe
+            setSearch={setSearch}
+            handleKeyDown={handleKeyDown}
+            handleSubmit={handleSubmit}
+          ></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {

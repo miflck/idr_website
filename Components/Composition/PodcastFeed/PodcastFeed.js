@@ -5,7 +5,6 @@ import Parser from "rss-parser";
 import PodcastPlayer from "../PodcastPlayer/PodcastPlayer";
 
 const PodcastFeed = (props) => {
-  console.log("podcast props", props);
   const [feed, setFeed] = useState(null);
   useEffect(() => {
     const parser = new Parser();
@@ -30,9 +29,14 @@ const PodcastFeed = (props) => {
       {feed ? (
         <div>
           {feed.items.map((item) => {
-            console.log("item", item);
             const audioUrl = item.enclosure?.url || item.link;
-            return <PodcastPlayer key={item.guid} episode={item} audioUrl={audioUrl} />;
+            return (
+              <PodcastPlayer
+                key={item.guid}
+                episode={item}
+                audioUrl={audioUrl}
+              />
+            );
           })}
         </div>
       ) : (

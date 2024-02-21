@@ -44,7 +44,6 @@ student.forEach((x, i) => {
     }
   });
 });
-console.log(student[0].uri);
 fs.writeFileSync(
   "./dataProcessed.json",
   JSON.stringify(student, null, 2),

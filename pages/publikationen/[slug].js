@@ -35,7 +35,6 @@ export default function Publikationseinzelansicht(props) {
   if (router.isFallback) {
     return <div>Loading…</div>;
   }
-  // console.log("router.query.slug",router.query.slug,publicationdata[0].eprintid);
 
   var data = publicationData.filter(
     (v) => v.eprintid.toString() === router.query.slug

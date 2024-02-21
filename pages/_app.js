@@ -12,9 +12,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const root = document.documentElement;
-    console.log("root", root);
     root?.style.setProperty("--maincolor", `${colorHexCode}`);
-    // console.log("USe Effect in App",colorHexCode)
   }, [colorHexCode]);
 
   useEffect(() => {
