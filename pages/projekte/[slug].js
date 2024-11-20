@@ -13,7 +13,7 @@ import ButtonLink from "../../Components/ButtonLink/buttonLink";
 import { useRouter } from "next/router";
 
 import Header from "../../Components/Header/header";
-import StickyHeaderContainer from "../../Components/StickyHeaderContainer/HeaderWraStickyHeaderContainerpper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import Button from "../../Components/Button/Button";
 import { Backbutton } from "../../Components";
