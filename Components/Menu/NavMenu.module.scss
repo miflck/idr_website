@@ -1,0 +1,58 @@
+/* styles/NavMenu.module.css */
+.wrapper {
+  position: relative;
+  z-index: 50;
+}
+
+.menuButton {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  cursor: pointer;
+  z-index: 50;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.menuButton svg {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.nav {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  max-height: 0;
+}
+
+.navOpen {
+  max-height: 1500px;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  background-color: var(--maincolor);
+  color: var(--secondcolor);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--secondcolor);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.link:hover,
+.link:focus {
+  background-color: var(--secondcolor);
+  color: var(--maincolor);
+}
+
+@media (min-width: 1024px) {
+  .menuButton {
+    padding-top: 12px;
+  }
+}
