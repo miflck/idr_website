@@ -18,6 +18,7 @@
   padding: var(--padding);
   padding-top: var(--paddingtop);
   padding-bottom: var(--paddingbottom);
+  padding-right: calc(var(--padding) * 2);
   font-size: var(--fontsizenormal);
   text-transform: uppercase;
   line-height: var(--lineheightnormal);
@@ -49,7 +50,7 @@
 }
 
 .logo {
-  height: 1.5em;
+  height: 1em;
   width: auto;
   color: var(--maincolor);
   display: inline-block;
@@ -66,5 +67,9 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     font-size: var(--fontsizebig);
+  }
+
+  .logo {
+    height: 1.5em;
   }
 }
