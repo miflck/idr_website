@@ -59,7 +59,7 @@ const Footer = (props) => {
               d="M33,16.9H20.9c-0.4,0-0.8,0.4-0.8,0.8v20.1c0,0.4,0.4,0.8,0.8,0.8h1.3c0.4,0,0.8-0.4,0.8-0.8v-8.9h8.5 c0.4,0,0.8-0.4,0.8-0.8v-0.9c0-0.4-0.4-0.8-0.8-0.8H23v-7h10c0.4,0,0.8-0.4,0.8-0.8v-0.9C33.8,17.3,33.4,16.9,33,16.9z"
             />
           </svg>
-          <div className={styles.threelines}> © Berner Fachhochschule 2024</div>
+          <div className={styles.threelines}>Berner Fachhochschule 2024</div>
         </a>
       </div>{" "}
       <div className={styles.logoContainer}>
