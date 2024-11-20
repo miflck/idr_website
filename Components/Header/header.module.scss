@@ -1,3 +1,4 @@
+// header.module.scss
 @import "../.././styles/breakpoints.scss";
 
 .root {
@@ -9,49 +10,66 @@
 
 .headercontainer {
   width: 100%;
-
   z-index: 1000;
   background-color: var(--secondcolor);
+}
 
-  .headertitle {
-    padding: var(--padding);
-    padding-top: var(--paddingtop);
-    padding-bottom: var(--paddingbottom);
-    font-size: var(--fontsizenormal);
-    text-transform: uppercase;
-    line-height: var(--lineheightnormal);
+.headertitle {
+  padding: var(--padding);
+  padding-top: var(--paddingtop);
+  padding-bottom: var(--paddingbottom);
+  padding-right: calc(var(--padding) * 2);
+  font-size: var(--fontsizenormal);
+  text-transform: uppercase;
+  line-height: var(--lineheightnormal);
+  color: var(--maincolor);
+  margin: 0;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.titleLink {
+  display: inline-flex;
+  flex-wrap: wrap; // Allow wrapping
+  align-items: center; // Uncomment this to vertically align items
+  gap: 8px;
+  color: var(--maincolor);
+  margin: 0;
+  padding: 0;
+
+  span {
+    width: fit-content;
+    // Remove white-space: nowrap to allow wrapping
+  }
+
+  &:hover {
     color: var(--maincolor);
-    margin: 0;
-    user-select: none;
-    a {
-      font-style: normal;
-      color: var(--maincolor);
-      &:hover {
-        color: var(--maincolor);
-        margin-left: 0;
-        animation: none;
-      }
-    }
   }
 }
 
-@media (min-width: $breakpointSmall) {
-  .headercontainer {
-  }
+.logo {
+  height: 1em;
+  width: auto;
+  color: var(--maincolor);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.seitentitel {
+  display: inline-flex;
+  align-items: center;
 }
 
 @media (min-width: $breakpointMedium) {
-  .headercontainer {
-    .headertitle {
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-      font-size: var(--fontsizebig);
-    }
+  .headertitle {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: var(--fontsizebig);
   }
-}
 
-@media (min-width: $breakpointLarge) {
-}
-
-@media (min-width: $breakpointXLarge) {
+  .logo {
+    height: 1.5em;
+  }
 }

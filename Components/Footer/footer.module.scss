@@ -1,99 +1,120 @@
 .footerwrapper {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: calc(var(--padding)/2);
-    background-color: var(--secondcolor);
-    border-top: 1px solid var(--maincolor);
-    font-size: var(--fontsizesmall);
-    line-height: var(--lineheighsmall);
-    text-transform: uppercase;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: calc(var(--padding) / 2);
+  background-color: var(--secondcolor);
+  border-top: 1px solid var(--maincolor);
+  font-size: var(--fontsizesmall);
+  line-height: var(--lineheighsmall);
+  text-transform: uppercase;
+  color: var(--maincolor);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // This spreads the items apart
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    margin-right: var(--padding);
+
+    svg {
+      height: 2rem;
+      width: auto;
+      margin-right: var(--padding);
+      fill: currentColor;
+
+      path {
+        &:first-child {
+          fill: currentColor; // Main logo shape
+        }
+        &.accent {
+          fill: white; // Yellow accent color from original
+        }
+      }
+    }
+  }
+
+  a {
+    font-style: normal;
+    border: 1px solid var(--maincolor);
+    border-radius: 20px;
+    padding: 2px 4px 0px;
+    margin-right: var(--padding);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    // font-family: "Sang";
     color: var(--maincolor);
-    z-index: 1000;
-    a {
-        font-style: normal;
-        border: 1px solid var(--maincolor);
-        border-radius: 20px;
-        padding: 2px 4px 0px;
-        margin-right: var(--padding);
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-       // font-family: "Sang";
-        color: var(--maincolor);
-        &.activelanguage {
-            background: var(--maincolor);
-            color: var(--secondcolor);
-        }
-        &:hover {
-            color: var(--secondcolor);
-            background-color: var(--maincolor);
-            margin-left: 0;
-            animation: none;
-        }
+    &.activelanguage {
+      background: var(--maincolor);
+      color: var(--secondcolor);
     }
-
-    .impressum {
-        cursor: pointer;
-        position: absolute;
-        float: right;
-        position: relative;
+    &:hover {
+      color: var(--secondcolor);
+      background-color: var(--maincolor);
+      margin-left: 0;
+      animation: none;
     }
-    // .buttonsmaincolor {
-    //         cursor: pointer;
-    //         // position: absolute;
-    //         float: right;
-    //         position: relative;
-    //         a {
-    //             background-color: var(--maincolor);
-    //             color: var(--maincolor);
-    //             -webkit-touch-callout: none;
-    //             -webkit-user-select: none;
-    //             -khtml-user-select: none;
-    //             -moz-user-select: none;
-    //             -ms-user-select: none;
-    //             user-select: none;
-    //         }
-    //         .farbauswahlmaincolor {
-    //             display: none;
-    //         }
-    //         &.open {
-    //             .farbauswahlmaincolor {
-    //                 display: block;
-    //             }
-    //         }
-    //     }
+  }
 
-    //     .buttonssecondcolor {
-    //         cursor: pointer;
-    //         float: right;
-    //         position: relative;
-    //             a {
-    //                 background-color: var(--secondcolor);
-    //                 color: var(--secondcolor);
-    //                 -webkit-touch-callout: none;
-    //                 -webkit-user-select: none;
-    //                 -khtml-user-select: none;
-    //                 -moz-user-select: none;
-    //                 -ms-user-select: none;
-    //                 user-select: none;
-    //             }
-    //             .farbauswahlsecondcolor {
-    //                 display: none;
-    //             }
-    //             &.open {
-    //                 .farbauswahlsecondcolor {
-    //                     display: block;
-    //                 }
-    //             }
-    //         }
-        
+  .impressum {
+    cursor: pointer;
+    position: absolute;
+    float: right;
+    position: relative;
+  }
+  // .buttonsmaincolor {
+  //         cursor: pointer;
+  //         // position: absolute;
+  //         float: right;
+  //         position: relative;
+  //         a {
+  //             background-color: var(--maincolor);
+  //             color: var(--maincolor);
+  //             -webkit-touch-callout: none;
+  //             -webkit-user-select: none;
+  //             -khtml-user-select: none;
+  //             -moz-user-select: none;
+  //             -ms-user-select: none;
+  //             user-select: none;
+  //         }
+  //         .farbauswahlmaincolor {
+  //             display: none;
+  //         }
+  //         &.open {
+  //             .farbauswahlmaincolor {
+  //                 display: block;
+  //             }
+  //         }
+  //     }
 
-        
-        
-    
+  //     .buttonssecondcolor {
+  //         cursor: pointer;
+  //         float: right;
+  //         position: relative;
+  //             a {
+  //                 background-color: var(--secondcolor);
+  //                 color: var(--secondcolor);
+  //                 -webkit-touch-callout: none;
+  //                 -webkit-user-select: none;
+  //                 -khtml-user-select: none;
+  //                 -moz-user-select: none;
+  //                 -ms-user-select: none;
+  //                 user-select: none;
+  //             }
+  //             .farbauswahlsecondcolor {
+  //                 display: none;
+  //             }
+  //             &.open {
+  //                 .farbauswahlsecondcolor {
+  //                     display: block;
+  //                 }
+  //             }
+  //         }
 }

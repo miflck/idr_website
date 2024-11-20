@@ -1,36 +1,54 @@
-import NavMenu from "../Menu/navMenu";
-import styles from "./header.module.scss";
+// Header.jsx
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Head from "next/head";
+import NavMenu from "../Menu/navMenu";
+import styles from "./header.module.scss";
+import Logo from "./Logo";
 
-const Header = (props) => {
+const ROUTE_TITLES = {
+  "/": "NEWS",
+  "/editorial": "ÜBER UNS",
+  "/projekte": "PROJEKTE",
+  "/team": "TEAM",
+  "/veranstaltungen": "VERANSTALTUNGEN",
+  "/publikationen": "PUBLIKATIONEN",
+  "/podcast": "PODCAST",
+  "/impressum": "IMPRESSUM",
+};
+
+const Header = () => {
   const router = useRouter();
-  // console.log("router", router)
-  if (router.pathname === "/") {
-    var seitentitel = "NEWS";
-    // console.log("Seite", seite)
-  } else if (router.pathname === "/editorial") {
-    var seite = router.pathname.split("/");
-    var seitentitel = "ÜBER UNS"; //seite[1]
-  } else {
-    // var seite = router.asPath.split('/').join('— ');
-    var seite = router.pathname.split("/");
-    var seitentitel = seite[1];
-    // console.log("seite", seite[1])
-  }
+
+  const getPageTitle = () => {
+    if (ROUTE_TITLES[router.pathname]) {
+      return ROUTE_TITLES[router.pathname];
+    }
+    return router.pathname.split("/")[1].toUpperCase();
+  };
 
   return (
-    <div className={styles.root}>
-      <div className={styles.headercontainer}>
+    <>
+      <Head>
         <title>IDR</title>
         <link rel="icon" href="../favicon.ico" />
-        <div className={styles.headertitle}>
-          <Link href="/">HKB — Institute of Design Research</Link>{" "}
-          <span className={styles.seitentitel}> — {seitentitel}</span>
+      </Head>
+
+      <div className={styles.root}>
+        <div className={styles.headercontainer}>
+          <div className={styles.headertitle}>
+            <Link href="/">
+              <div className={styles.titleLink}>
+                <Logo className={styles.logo} />
+                <span>— Institute of Design Research</span>
+                <span className={styles.seitentitel}>– {getPageTitle()}</span>
+              </div>
+            </Link>
+          </div>
+          <NavMenu />
         </div>
-        <NavMenu />
       </div>
-    </div>
+    </>
   );
 };
 

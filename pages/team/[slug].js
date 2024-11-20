@@ -10,7 +10,7 @@ import styles from "./team.module.scss";
 import Layout from "../../Components/Layout/layout";
 import React, { useEffect, useContext, useState } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 import Header from "../../Components/Header/header";
 
 import Container from "../../Components/Container/container";
@@ -33,20 +33,8 @@ export default function Menscheinzelansicht(props) {
   const { t } = useTranslation("common");
   const { data: { allProjekts } = "" } = props || "";
 
-  const {
-    data: {
-      menschen: {
-        name,
-        id,
-        slug,
-        forschungsfeld,
-        portrait,
-        bfhprofil,
-        email,
-        website,
-      } = "",
-    } = "",
-  } = props || "";
+  const { data: { menschen: { name, id, slug, forschungsfeld, portrait, bfhprofil, email, website } = "" } = "" } =
+    props || "";
 
   const auswahllength = 5;
 
@@ -156,14 +144,10 @@ export default function Menscheinzelansicht(props) {
       });
     }
     background_style = {
-      background: `linear-gradient(to right, ${colors[0]}, ${
-        colors[1] || "white"
-      })`,
+      background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
     };
     let background_style_small = {
-      background: `linear-gradient(to right, ${colors[0]}, ${
-        colors[1] || "white"
-      })`,
+      background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
     };
 
     let background_op = {
@@ -178,22 +162,17 @@ export default function Menscheinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
-        <HeaderWrapper>
+        <StickyHeaderContainer>
           <Header></Header>
-        </HeaderWrapper>
+        </StickyHeaderContainer>
         <Container>
           <Backbutton />
         </Container>
         {/* Hintergrund ganze seite */}
-        <BackgroundGradientFadeOut
-          backgroundStyle={background_style}
-        ></BackgroundGradientFadeOut>
+        <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
 
         <div className={styles.stickywrapper}>
-          <GradientFadeIn
-            backgroundStyle={background_style}
-            backgroundOpacity={background_op}
-          ></GradientFadeIn>
+          <GradientFadeIn backgroundStyle={background_style} backgroundOpacity={background_op}></GradientFadeIn>
 
           {/* Hintergrund fade  
           <div className={styles.gradient_opacity} style={background_style}>
@@ -207,23 +186,16 @@ export default function Menscheinzelansicht(props) {
               {portrait !== null && (
                 <ModularContentWrapper>
                   <div className={styles.portrait}>
-                    <ResponsiveImage
-                      responsiveImage={portrait.responsiveImage}
-                    ></ResponsiveImage>
+                    <ResponsiveImage responsiveImage={portrait.responsiveImage}></ResponsiveImage>
                   </div>
                   {/** <ImageElement src={portrait.url}  alt={portrait.alt} focalPoint={portrait.focalPoint} ></ImageElement>*/}
                 </ModularContentWrapper>
               )}
 
               <ModularContentWrapper>
-                <ServiceElement title={t("Personenprofil")}>
-                  {BFHProfilElement}
-                </ServiceElement>
+                <ServiceElement title={t("Personenprofil")}>{BFHProfilElement}</ServiceElement>
 
-                <ServiceElement
-                  title={t("Kontakt")}
-                  style={{ width: 66 + "%" }}
-                >
+                <ServiceElement title={t("Kontakt")} style={{ width: 66 + "%" }}>
                   {EmailElement}
                   {WebsiteElement}{" "}
                 </ServiceElement>
@@ -248,10 +220,7 @@ export default function Menscheinzelansicht(props) {
                   })}
                 </ServiceElement>
 
-                <ServiceElement
-                  title={t("Projekte (Auswahl)")}
-                  style={{ width: 66 + "%" }}
-                >
+                <ServiceElement title={t("Projekte (Auswahl)")} style={{ width: 66 + "%" }}>
                   {ProjekteElement}
                 </ServiceElement>
               </ModularContentWrapper>

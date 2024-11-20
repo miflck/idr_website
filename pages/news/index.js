@@ -11,7 +11,7 @@ import TileGrid from "../../Components/Composition/TileGrid/TileGrid";
 import { Tile } from "../../Components";
 
 import Header from "../../Components/Header/header";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import Lupe from "../../Components/Lupe/Lupe";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
@@ -116,8 +116,13 @@ export default function Home(props) {
   };
 
   return (
-    <Layout setMainColor={props.setMainColor} setSecondColor={props.setSecondColor} colorHexCode={props.colorHexCode} colorHexCodeSecond={props.colorHexCodeSecond}>
-      <HeaderWrapper>
+    <Layout
+      setMainColor={props.setMainColor}
+      setSecondColor={props.setSecondColor}
+      colorHexCode={props.colorHexCode}
+      colorHexCodeSecond={props.colorHexCodeSecond}
+    >
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
@@ -129,7 +134,7 @@ export default function Home(props) {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
 
       {/*
       <TileGrid>

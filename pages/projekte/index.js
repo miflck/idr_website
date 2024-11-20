@@ -13,14 +13,9 @@ import { SearchTermWrapper } from "../../Components";
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import { useRouter } from "next/router";
 
-import {
-  searchInput,
-  searchInputArray,
-  getIntersection,
-  searchInputArrayRecursive,
-} from "../../lib/helpers";
+import { searchInput, searchInputArray, getIntersection, searchInputArrayRecursive } from "../../lib/helpers";
 import Header from "../../Components/Header/header";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 export default function Projekte(props) {
   const {
@@ -62,13 +57,7 @@ export default function Projekte(props) {
   useEffect(() => {
     const params = router.pathname.split("/");
     const prevparams = state.currentPath.split("/");
-    console.log(
-      "2",
-      prevparams.length,
-      router.pathname,
-      state.currentPath,
-      state.previousPath
-    );
+    console.log("2", prevparams.length, router.pathname, state.currentPath, state.previousPath);
     if (prevparams.length <= 2) {
       removeAllHoverFilter();
       removeAllActiveFilter();
@@ -118,13 +107,8 @@ export default function Projekte(props) {
 
   useEffect(() => {
     console.log(state.searchTerms);
-    setSearchFilterdList(
-      searchInputArrayRecursive(data, state.searchTerms, fields)
-    );
-    console.log(
-      "use effect ",
-      searchInputArrayRecursive(data, state.searchTerms, fields)
-    );
+    setSearchFilterdList(searchInputArrayRecursive(data, state.searchTerms, fields));
+    console.log("use effect ", searchInputArrayRecursive(data, state.searchTerms, fields));
     window.scrollTo(0, 0);
   }, [state.searchTerms]);
 
@@ -151,37 +135,27 @@ export default function Projekte(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
           {/*state.searchTerms.map((term, index) => {
             //return <SearchTerm key={index} term={term}></SearchTerm>;
           })*/}
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
 
       <div className={styles.listwrapper}>
         {
           //filterdList.map((projekt) => {
           result.map((projekt) => {
-            return (
-              <ListItemProjekt
-                {...projekt}
-                key={projekt.id}
-                showGradient={showGradient}
-              />
-            );
+            return <ListItemProjekt {...projekt} key={projekt.id} showGradient={showGradient} />;
           })
         }
       </div>

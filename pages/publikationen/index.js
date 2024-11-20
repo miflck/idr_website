@@ -11,7 +11,7 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 import { AppContext, ACTIONS } from "../../context/state";
 import { PublicationFilter } from "../../lib/helpers";
 import Header from "../../Components/Header/header";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 import { FilterWrapper } from "../../Components";
 import { Lupe } from "../../Components";
 import { SearchTerm } from "../../Components";
@@ -88,10 +88,7 @@ export default function Publikationen(props) {
   let deliveredfilter = router.query.keyword;
 
   // ternary expression = if else shorthand
-  let initState =
-    typeof deliveredfilter === "undefined" || !deliveredfilter
-      ? []
-      : new Array(deliveredfilter);
+  let initState = typeof deliveredfilter === "undefined" || !deliveredfilter ? [] : new Array(deliveredfilter);
   const [filter, setFilter] = useState(initState);
 
   //nach Publikationstypen filtern
@@ -111,8 +108,7 @@ export default function Publikationen(props) {
   const [filterdList, setFilterdList] = useState([]);
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
-  let result =
-    getIntersection([filterdList, searchFilterdList]) || publicationData;
+  let result = getIntersection([filterdList, searchFilterdList]) || publicationData;
 
   useEffect(() => {
     setFilterdList(filterBy(publicationData, state.activeFilters));
@@ -131,16 +127,12 @@ export default function Publikationen(props) {
   useEffect(() => {
     let array = [...state.searchTerms, search];
     if (array.length < 0) return;
-    setSearchFilterdList(
-      searchInputArrayRecursive(publicationData, array, fields)
-    );
+    setSearchFilterdList(searchInputArrayRecursive(publicationData, array, fields));
     window.scrollTo(0, 0);
   }, [search]);
 
   useEffect(() => {
-    setSearchFilterdList(
-      searchInputArrayRecursive(publicationData, state.searchTerms, fields)
-    );
+    setSearchFilterdList(searchInputArrayRecursive(publicationData, state.searchTerms, fields));
     window.scrollTo(0, 0);
   }, [state.searchTerms]);
 
@@ -190,23 +182,19 @@ export default function Publikationen(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
 
       <div className={styles.listwrapper}>
         {result.map((publikation) => {

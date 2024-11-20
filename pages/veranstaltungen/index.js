@@ -13,18 +13,13 @@ import FilterElement from "../../Components/FilterElement/filterElement";
 import ListItemVeranstaltung from "../../Components/List/listItemVeranstaltung";
 
 import Header from "../../Components/Header/header";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import FilterWrapper from "../../Components/FilterWrapper/FilterWrapper";
 import Lupe from "../../Components/Lupe/Lupe";
-import {
-  searchInputArray,
-  getIntersection,
-  searchInputArrayRecursive,
-} from "../../lib/helpers";
+import { searchInputArray, getIntersection, searchInputArrayRecursive } from "../../lib/helpers";
 import { SearchTermWrapper } from "../../Components";
 import SearchTerm from "../../Components/SearchTerm/SearchTerm";
-
 
 const Veranstaltungen = (props) => {
   const {
@@ -98,9 +93,7 @@ const Veranstaltungen = (props) => {
   }, [search]);
 
   useEffect(() => {
-    setSearchFilterdList(
-      searchInputArrayRecursive(data, state.searchTerms, fields)
-    );
+    setSearchFilterdList(searchInputArrayRecursive(data, state.searchTerms, fields));
   }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
@@ -128,33 +121,23 @@ const Veranstaltungen = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
 
       <div className={styles.listwrapper}>
         {result.map((veranstaltung) => {
-          return (
-            <ListItemVeranstaltung
-              {...veranstaltung}
-              key={veranstaltung.id}
-              showGradient={showGradient}
-            />
-          );
+          return <ListItemVeranstaltung {...veranstaltung} key={veranstaltung.id} showGradient={showGradient} />;
         })}
       </div>
     </Layout>
