@@ -5,6 +5,7 @@ import Head from "next/head";
 import NavMenu from "../Menu/navMenu";
 import styles from "./header.module.scss";
 import Logo from "./Logo";
+import LogoBFH from "./LogoBFH";
 
 const ROUTE_TITLES = {
   "/": "NEWS",
@@ -37,13 +38,21 @@ const Header = () => {
       <div className={styles.root}>
         <div className={styles.headercontainer}>
           <div className={styles.headertitle}>
-            <Link href="/">
-              <div className={styles.titleLink}>
+            <div className={styles.titleLink}>
+              <a href="https://www.bfh.ch/de/" className={styles.outlink} target="_blank" rel="noopener noreferrer">
+                <LogoBFH className={styles.logoBFH} />
+              </a>
+              –
+              <a href="https://www.hkb.bfh.ch/de/" className={styles.outlink} target="_blank" rel="noopener noreferrer">
                 <Logo className={styles.logo} />
-                <span>— Institute of Design Research</span>
-                <span className={styles.seitentitel}>– {getPageTitle()}</span>
-              </div>
-            </Link>
+              </a>
+              <Link href="/">
+                <>
+                  <span>– Institute of Design Research</span>
+                  <span className={styles.seitentitel}>– {getPageTitle()}</span>
+                </>
+              </Link>
+            </div>
           </div>
           <NavMenu />
         </div>

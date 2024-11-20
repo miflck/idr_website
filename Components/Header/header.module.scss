@@ -48,13 +48,21 @@
     color: var(--maincolor);
   }
 }
-
-.logo {
-  height: 1em;
-  width: auto;
+.logo,
+.logoBFH {
+  height: 2em;
   color: var(--maincolor);
   display: inline-block;
   vertical-align: middle;
+
+  path,
+  polygon {
+    fill: currentColor;
+
+    &.accent {
+      fill: white;
+    }
+  }
 }
 
 .seitentitel {
@@ -70,6 +78,10 @@
   }
 
   .logo {
+    height: 1.5em;
+  }
+
+  .logoBFH {
     height: 1.5em;
   }
 }
