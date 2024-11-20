@@ -1,3 +1,5 @@
+@import "../.././styles/breakpoints.scss";
+
 .footerwrapper {
   position: fixed;
   right: 0;
@@ -20,7 +22,7 @@
     align-items: center;
 
     svg {
-      height: 2rem;
+      height: 2.5rem;
       width: auto;
       fill: currentColor;
 
@@ -38,7 +40,7 @@
   .outlink {
     display: flex;
     align-items: flex-end; // Align items to bottom
-    gap: 1rem;
+    gap: 0.5rem;
     text-decoration: none;
   }
 
@@ -49,8 +51,7 @@
     justify-content: space-between;
     justify-content: flex-end; // Align to bottom
 
-    height: 2.5rem;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     line-height: 1;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -111,4 +112,17 @@
   //                 }
   //             }
   //         }
+}
+
+@media (min-width: $breakpointMedium) {
+  .logoContainer {
+    svg {
+      height: 2rem !important;
+    }
+  }
+  .threelines {
+    font-size: 0.8rem !important;
+    line-height: 1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 }
