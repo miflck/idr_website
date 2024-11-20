@@ -1,6 +1,6 @@
 /* PLOP_INJECT_IMPORT */
 import Video from "./Composition/Video";
-import HeaderWrapper from "./HeaderWrapper";
+import StickyHeaderContainer from "./StickyHeaderContainer";
 import SearchTermWrapper from "./SearchTermWrapper";
 import FilterWrapper from "./FilterWrapper";
 import SearchTerm from "./SearchTerm";
@@ -18,7 +18,7 @@ import { TextContainer } from "./Composition";
 export {
   /* PLOP_INJECT_EXPORT */
   Video,
-  HeaderWrapper,
+  StickyHeaderContainer,
   SearchTermWrapper,
   FilterWrapper,
   SearchTerm,

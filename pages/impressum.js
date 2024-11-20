@@ -7,7 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import TextElement from "../Components/Composition/TextElement";
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Header/header";
-import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../Components/StickyHeaderContainer/StickyHeaderContainer";
 import { Backbutton } from "../Components";
 import { ImageElementContain } from "../Components/Composition";
 
@@ -21,9 +21,9 @@ const Impressum = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
       <Container>
         <Backbutton />
       </Container>

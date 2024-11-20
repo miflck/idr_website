@@ -7,7 +7,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AppContext, ACTIONS } from "../context/state";
 
 import Header from "../Components/Header/header";
-import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import TextElement from "../Components/Composition/TextElement";
 import Container from "../Components/Container/container";
@@ -52,9 +52,9 @@ export default function Podcast(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
       <Container>
         <div className={styles.modulareinhalte}>
           {podcast.content != null &&
@@ -62,9 +62,7 @@ export default function Podcast(props) {
               console.log("block", block);
               return (
                 <div key={block.id}>
-                  {block._modelApiKey === "text" && (
-                    <TextElement key={block.id} {...block.text}></TextElement>
-                  )}
+                  {block._modelApiKey === "text" && <TextElement key={block.id} {...block.text}></TextElement>}
                   {block._modelApiKey === "einzelbild" && (
                     <ImageElement
                       key={block.einzelbild.id}

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./HeaderWrapper.module.scss";
+import styles from "./StickyHeaderContainer.module.scss";
 
-const HeaderWrapper = (props) => {
+const StickyHeaderContainer = (props) => {
   const { children } = props;
   return (
     <div className={styles.root}>
@@ -11,6 +11,6 @@ const HeaderWrapper = (props) => {
   );
 };
 
-HeaderWrapper.defaultProps = {};
+StickyHeaderContainer.defaultProps = {};
 
-export default HeaderWrapper;
+export default StickyHeaderContainer;

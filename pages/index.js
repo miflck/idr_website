@@ -11,7 +11,7 @@ import TileGrid from "../Components/Composition/TileGrid/TileGrid";
 import { Tile } from "../Components";
 
 import Header from "../Components/Header/header";
-import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import Lupe from "../Components/Lupe/Lupe";
 import SearchTerm from "../Components/SearchTerm/SearchTerm";
@@ -96,9 +96,7 @@ export default function Home(props) {
   useEffect(() => {
     console.log(state.searchTerms);
     const isEmpty = Object.keys(state.searchTerms).length === 0;
-    setSearchFilterdList(
-      searchInputArrayRecursive(siteData, state.searchTerms, ["text", "titel", "value"])
-    );
+    setSearchFilterdList(searchInputArrayRecursive(siteData, state.searchTerms, ["text", "titel", "value"]));
   }, [state.searchTerms]);
 
   const handleKeyDown = (e) => {
@@ -124,23 +122,19 @@ export default function Home(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
 
       <div className={styles.newscontainer}>
         {result.map((beitrag) => {

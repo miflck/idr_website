@@ -1,12 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { AppContext, ACTIONS } from "../../context/state";
 import Layout from "../../Components/Layout/layout";
-import {
-  request,
-  PROJEKTEINZEL,
-  ALLPROJEKTE,
-  PROJEKTE,
-} from "../../lib/datocms";
+import { request, PROJEKTEINZEL, ALLPROJEKTE, PROJEKTE } from "../../lib/datocms";
 import styles from "./projekte.module.scss";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -18,7 +13,7 @@ import ButtonLink from "../../Components/ButtonLink/buttonLink";
 import { useRouter } from "next/router";
 
 import Header from "../../Components/Header/header";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/HeaderWraStickyHeaderContainerpper";
 
 import Button from "../../Components/Button/Button";
 import { Backbutton } from "../../Components";
@@ -141,14 +136,8 @@ export default function Projekteinzelansicht(props) {
 
   if (props.data) {
     var options = { year: "numeric", month: "long" };
-    const startzeitraum = new Date(startdatum).toLocaleDateString(
-      router.locale,
-      options
-    );
-    const endzeitraum = new Date(enddatum).toLocaleDateString(
-      router.locale,
-      options
-    );
+    const startzeitraum = new Date(startdatum).toLocaleDateString(router.locale, options);
+    const endzeitraum = new Date(enddatum).toLocaleDateString(router.locale, options);
 
     let background_style;
     let colors = [];
@@ -158,9 +147,7 @@ export default function Projekteinzelansicht(props) {
     });
 
     background_style = {
-      background: `linear-gradient(to right, ${colors[0]}, ${
-        colors[1] || "white"
-      })`,
+      background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
     };
 
     let background_op = {
@@ -191,23 +178,18 @@ export default function Projekteinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
-        <HeaderWrapper>
+        <StickyHeaderContainer>
           <Header></Header>
-        </HeaderWrapper>
+        </StickyHeaderContainer>
         <Container>
           <Backbutton />
         </Container>
         {/* Hintergrund ganze seite 
     <div className={styles.background} style={background_style}></div>
     */}
-        <BackgroundGradientFadeOut
-          backgroundStyle={background_style}
-        ></BackgroundGradientFadeOut>
+        <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
         <div className={styles.stickywrapper}>
-          <GradientFadeIn
-            backgroundStyle={background_style}
-            backgroundOpacity={background_op}
-          ></GradientFadeIn>
+          <GradientFadeIn backgroundStyle={background_style} backgroundOpacity={background_op}></GradientFadeIn>
 
           <div className={styles.slugwrapper}>
             <Container>
@@ -218,12 +200,7 @@ export default function Projekteinzelansicht(props) {
                     console.log("block", block);
                     return (
                       <ModularContentWrapper key={block.id}>
-                        {block._modelApiKey === "text" && (
-                          <TextElement
-                            key={block.id}
-                            {...block.text}
-                          ></TextElement>
-                        )}
+                        {block._modelApiKey === "text" && <TextElement key={block.id} {...block.text}></TextElement>}
                         {block._modelApiKey === "einzelbild" && (
                           <ImageElement
                             key={block.einzelbild.id}
@@ -235,25 +212,14 @@ export default function Projekteinzelansicht(props) {
                           />
                         )}
 
-                        {block._modelApiKey === "galerie" && (
-                          <Gallery data={block.galerie}></Gallery>
-                        )}
+                        {block._modelApiKey === "galerie" && <Gallery data={block.galerie}></Gallery>}
 
                         {block._modelApiKey === "video" && (
-                          <Video
-                            key={block.id}
-                            data={block.clip}
-                            caption={block.caption}
-                          ></Video>
+                          <Video key={block.id} data={block.clip} caption={block.caption}></Video>
                         )}
 
                         {block._modelApiKey === "pdf" && block.pdf != null && (
-                          <ButtonLink
-                            key={block.id}
-                            {...block}
-                            href={block.pdf.url}
-                            newTab="true"
-                          />
+                          <ButtonLink key={block.id} {...block} href={block.pdf.url} newTab="true" />
                         )}
                       </ModularContentWrapper>
                     );

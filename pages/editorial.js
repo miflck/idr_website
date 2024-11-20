@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-  useState,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useEffect, useContext, useState, useRef, useCallback } from "react";
 import { request, EDITORIALTEXTE, EDITORIALINTRO } from "../lib/datocms";
 import styles from "./editorial.module.scss";
 import Layout from "../Components/Layout/layout";
@@ -23,7 +17,7 @@ import { SearchTerm } from "../Components";
 import { SearchTermWrapper } from "../Components";
 
 import Header from "../Components/Header/header";
-import HeaderWrapper from "../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import { AppContext, ACTIONS } from "../context/state";
 import { ServiceElement } from "../Components/Composition";
@@ -34,12 +28,7 @@ import { TextContainer } from "../Components";
 
 import { Title } from "../Components/Composition";
 
-import {
-  searchInput,
-  searchInputArray,
-  getIntersection,
-  searchInputArrayRecursive,
-} from "../lib/helpers";
+import { searchInput, searchInputArray, getIntersection, searchInputArrayRecursive } from "../lib/helpers";
 
 const Editorial = (props) => {
   const {
@@ -116,8 +105,7 @@ const Editorial = (props) => {
   const [searchFilterdList, setSearchFilterdList] = useState([]);
 
   // get data after all filters
-  let result =
-    getIntersection([filterdList, searchFilterdList]) || allEditorials;
+  let result = getIntersection([filterdList, searchFilterdList]) || allEditorials;
 
   /*const refs = allEditorials.reduce((item, value) => {
     item[value.forschungsfeld[0].id] = React.createRef();
@@ -177,16 +165,12 @@ const Editorial = (props) => {
   const [search, setSearch] = useState("");
   useEffect(() => {
     let array = [...state.searchTerms, search];
-    setSearchFilterdList(
-      searchInputArrayRecursive(allEditorials, array, fields)
-    );
+    setSearchFilterdList(searchInputArrayRecursive(allEditorials, array, fields));
     window.scrollTo(0, 0);
   }, [search]);
 
   useEffect(() => {
-    setSearchFilterdList(
-      searchInputArrayRecursive(allEditorials, state.searchTerms, fields)
-    );
+    setSearchFilterdList(searchInputArrayRecursive(allEditorials, state.searchTerms, fields));
 
     window.scrollTo(0, 0);
   }, [state.searchTerms]);
@@ -228,23 +212,19 @@ const Editorial = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
       {filterdList.length == allEditorials.length && (
         <div className={styles.editorialwrapper}>
           <Container>
@@ -261,10 +241,7 @@ const Editorial = (props) => {
       )}
 
       {result.map((editorial) => {
-        const filterdProjectlist = filterByForschungsfeld(
-          allProjekts,
-          editorial.forschungsfeld[0].id
-        ).slice(0, 5);
+        const filterdProjectlist = filterByForschungsfeld(allProjekts, editorial.forschungsfeld[0].id).slice(0, 5);
 
         let background_style;
         let background_style_small;
@@ -274,14 +251,10 @@ const Editorial = (props) => {
         });
         background_style = {
           //            background: `linear-gradient(to right, white,${colors[0]}, ${colors[1] || "white"},white)`,
-          background: `linear-gradient(to bottom, ${
-            colors[0] + "DD"
-          },white, white)`,
+          background: `linear-gradient(to bottom, ${colors[0] + "DD"},white, white)`,
         };
         background_style_small = {
-          background: `linear-gradient(to right, ${colors[0]}, ${
-            colors[1] || "white"
-          })`,
+          background: `linear-gradient(to right, ${colors[0]}, ${colors[1] || "white"})`,
         };
 
         return (
@@ -294,19 +267,12 @@ const Editorial = (props) => {
             {console.log("ref", editorial.forschungsfeld[0].id)}
             <Container>
               {editorial.forschungsfeld.map((forschungsfeld) => {
-                return (
-                  <Title key={forschungsfeld.id} title={forschungsfeld.titel} />
-                );
+                return <Title key={forschungsfeld.id} title={forschungsfeld.titel} />;
               })}
               <TextContainer>
                 <div className={styles.text}>
                   {editorial.beitraege.map((beitrag) => {
-                    return (
-                      <TextElement
-                        key={beitrag.id}
-                        {...beitrag.text}
-                      ></TextElement>
-                    );
+                    return <TextElement key={beitrag.id} {...beitrag.text}></TextElement>;
                   })}
                 </div>
                 <div className={styles.serviceWrapper}>
@@ -320,10 +286,7 @@ const Editorial = (props) => {
                     })}{" "}
                   </ServiceElement>
 
-                  <ServiceElement
-                    title={t("Projekte (Auswahl)")}
-                    style={{ width: 66 + "%" }}
-                  >
+                  <ServiceElement title={t("Projekte (Auswahl)")} style={{ width: 66 + "%" }}>
                     {filterdProjectlist.map((projekt) => {
                       let href = `/projekte`;
                       if (projekt.slug != "") {

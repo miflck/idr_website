@@ -12,7 +12,7 @@ import { AppContext, ACTIONS } from "../../context/state";
 import Container from "../../Components/Container/container";
 
 import Header from "../../Components/Header/header";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 
 import { SpacedWrapper } from "../../Components/Composition";
 import { ModularContentWrapper } from "../../Components/Composition";
@@ -105,9 +105,7 @@ const Team = (props) => {
     console.log(" intersection", resultFilter);
   } else {
     resultFilter =
-      filterdForschungsfelder.length < filterdFunktionen.length
-        ? filterdFunktionen
-        : filterdForschungsfelder;
+      filterdForschungsfelder.length < filterdFunktionen.length ? filterdFunktionen : filterdForschungsfelder;
     console.log("else resultFilter", resultFilter, filterdForschungsfelder, filterdFunktionen);
   }
   console.log(" resultfilter", resultFilter);
@@ -190,25 +188,21 @@ const Team = (props) => {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
         <FilterWrapper>
           <FilterElement filterarray={allFunktions} />
           <div className="break" style={{ flexBasis: "100%", height: "0" }}></div>
           <FilterElement filterarray={allForschungsfelders} />
 
-          <Lupe
-            setSearch={setSearch}
-            handleKeyDown={handleKeyDown}
-            handleSubmit={handleSubmit}
-          ></Lupe>
+          <Lupe setSearch={setSearch} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit}></Lupe>
         </FilterWrapper>
         <SearchTermWrapper>
           {state.searchTerms.map((term, index) => {
             return <SearchTerm key={index} term={term}></SearchTerm>;
           })}
         </SearchTermWrapper>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
 
       {/* <FilterElement filterarray={neueListe} filter={filter} addMoreItem={addMoreItem} setFilter={setFilter}/>*/}
       {/** <FilterElement filterarray={allFilter} /> */}

@@ -12,7 +12,7 @@ import { Backbutton } from "../../Components";
 
 import { useRouter } from "next/router";
 
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 import Header from "../../Components/Header/header";
 import { BackgroundGradientFadeOut } from "../../Components";
 import { GradientFadeIn } from "../../Components";
@@ -110,9 +110,7 @@ export default function Veranstaltungseinzelansicht(props) {
     });
 
     background_style = {
-      background: `linear-gradient(to right, ${colors[0] || "var(--maincolor)"}, ${
-        colors[1] || "white"
-      }`,
+      background: `linear-gradient(to right, ${colors[0] || "var(--maincolor)"}, ${colors[1] || "white"}`,
     };
     let background_op = {
       background: `radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
@@ -126,9 +124,9 @@ export default function Veranstaltungseinzelansicht(props) {
         colorHexCode={props.colorHexCode}
         colorHexCodeSecond={props.colorHexCodeSecond}
       >
-        <HeaderWrapper>
+        <StickyHeaderContainer>
           <Header></Header>
-        </HeaderWrapper>
+        </StickyHeaderContainer>
 
         <Container>
           <Backbutton />
@@ -136,10 +134,7 @@ export default function Veranstaltungseinzelansicht(props) {
 
         <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
         <div className={styles.stickywrapper}>
-          <GradientFadeIn
-            backgroundStyle={background_style}
-            backgroundOpacity={background_op}
-          ></GradientFadeIn>
+          <GradientFadeIn backgroundStyle={background_style} backgroundOpacity={background_op}></GradientFadeIn>
 
           <div className={styles.slugwrapper}>
             <Container>
@@ -157,9 +152,7 @@ export default function Veranstaltungseinzelansicht(props) {
 
                     return (
                       <ModularContentWrapper key={block.id}>
-                        {block._modelApiKey === "text" && (
-                          <TextElement key={block.id} {...block.text}></TextElement>
-                        )}
+                        {block._modelApiKey === "text" && <TextElement key={block.id} {...block.text}></TextElement>}
                         {block._modelApiKey === "einzelbild" && (
                           <ImageElement
                             key={block.einzelbild.id}
@@ -169,13 +162,9 @@ export default function Veranstaltungseinzelansicht(props) {
                           />
                         )}
 
-                        {block._modelApiKey === "galerie" && (
-                          <Gallery data={block.galerie}></Gallery>
-                        )}
+                        {block._modelApiKey === "galerie" && <Gallery data={block.galerie}></Gallery>}
 
-                        {block._modelApiKey === "pdf" && (
-                          <ButtonLink key={block.id} {...block} href={block.pdf.url} />
-                        )}
+                        {block._modelApiKey === "pdf" && <ButtonLink key={block.id} {...block} href={block.pdf.url} />}
                       </ModularContentWrapper>
                     );
                   })}
@@ -186,9 +175,7 @@ export default function Veranstaltungseinzelansicht(props) {
 
         <Container>
           <div className={styles.serviceWrapper}>
-            <ServiceElement title={t("Datum")}>{`${date} ${
-              new Date(datum) < now ? "" : "Uhr"
-            }`}</ServiceElement>
+            <ServiceElement title={t("Datum")}>{`${date} ${new Date(datum) < now ? "" : "Uhr"}`}</ServiceElement>
 
             {serviceBlocks != null &&
               serviceBlocks.map((block) => {

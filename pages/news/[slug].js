@@ -10,7 +10,7 @@ import styles from "./news.module.scss";
 
 import Layout from "../../Components/Layout/layout";
 import Container from "../../Components/Container/container";
-import HeaderWrapper from "../../Components/HeaderWrapper/HeaderWrapper";
+import StickyHeaderContainer from "../../Components/StickyHeaderContainer/StickyHeaderContainer";
 import Header from "../../Components/Header/header";
 import { Backbutton } from "../../Components";
 import { BackgroundGradientFadeOut } from "../../Components";
@@ -31,9 +31,7 @@ export default function NewsSingleview(props) {
   const { t } = useTranslation("common");
 
   const {
-    data: {
-      news: { id, forschungsfeld, title, subtitle, modularcontent, serviceBlocks, slug } = "",
-    },
+    data: { news: { id, forschungsfeld, title, subtitle, modularcontent, serviceBlocks, slug } = "" },
   } = props || "";
 
   const globalState = useContext(AppContext);
@@ -73,9 +71,7 @@ export default function NewsSingleview(props) {
     });
   }
   background_style = {
-    background: `linear-gradient(to right, ${colors[0] || "var(--maincolor)"}, ${
-      colors[1] || "white"
-    }`,
+    background: `linear-gradient(to right, ${colors[0] || "var(--maincolor)"}, ${colors[1] || "white"}`,
   };
   let background_op = {
     background: `radial-gradient(ellipse at bottom,rgba(255,255,255,1),transparent),
@@ -89,19 +85,16 @@ export default function NewsSingleview(props) {
       colorHexCode={props.colorHexCode}
       colorHexCodeSecond={props.colorHexCodeSecond}
     >
-      <HeaderWrapper>
+      <StickyHeaderContainer>
         <Header></Header>
-      </HeaderWrapper>
+      </StickyHeaderContainer>
       <Container>
         <Backbutton />
       </Container>
       {/* Hintergrund ganze seite */}
       <BackgroundGradientFadeOut backgroundStyle={background_style}></BackgroundGradientFadeOut>
       <div className={styles.stickywrapper}>
-        <GradientFadeIn
-          backgroundStyle={background_style}
-          backgroundOpacity={background_op}
-        ></GradientFadeIn>
+        <GradientFadeIn backgroundStyle={background_style} backgroundOpacity={background_op}></GradientFadeIn>
 
         <div className={styles.slugwrapper}>
           <Container>
@@ -113,9 +106,7 @@ export default function NewsSingleview(props) {
                   console.log("block", block);
                   return (
                     <ModularContentWrapper key={block.id}>
-                      {block._modelApiKey === "text" && (
-                        <TextElement key={block.id} {...block.text}></TextElement>
-                      )}
+                      {block._modelApiKey === "text" && <TextElement key={block.id} {...block.text}></TextElement>}
                       {block._modelApiKey === "einzelbild" && (
                         <ImageElement
                           key={block.einzelbild.id}
@@ -127,9 +118,7 @@ export default function NewsSingleview(props) {
 
                       {block._modelApiKey === "galerie" && <Gallery data={block.galerie}></Gallery>}
 
-                      {block._modelApiKey === "pdf" && (
-                        <ButtonLink key={block.id} {...block} href={block.pdf.url} />
-                      )}
+                      {block._modelApiKey === "pdf" && <ButtonLink key={block.id} {...block} href={block.pdf.url} />}
                     </ModularContentWrapper>
                   );
                 })}
