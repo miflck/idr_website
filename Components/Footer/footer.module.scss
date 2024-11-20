@@ -37,32 +37,6 @@
     }
   }
 
-  a {
-    font-style: normal;
-    border: 1px solid var(--maincolor);
-    border-radius: 20px;
-    padding: 2px 4px 0px;
-    margin-right: var(--padding);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    // font-family: "Sang";
-    color: var(--maincolor);
-    &.activelanguage {
-      background: var(--maincolor);
-      color: var(--secondcolor);
-    }
-    &:hover {
-      color: var(--secondcolor);
-      background-color: var(--maincolor);
-      margin-left: 0;
-      animation: none;
-    }
-  }
-
   .impressum {
     cursor: pointer;
     position: absolute;
